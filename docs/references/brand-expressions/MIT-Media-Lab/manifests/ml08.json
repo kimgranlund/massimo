@@ -1,0 +1,36 @@
+{
+  "id": "ML08",
+  "title": "Directional arrow at architectural scale",
+  "image": "ml08.png",
+  "source": "../sources/ml08.jpg",
+  "location": {
+    "series": "Pentagram / MIT Media Lab / 2014 identity",
+    "item": 8,
+    "extent": "Published lightbox artwork"
+  },
+  "slide_intent": "Connect directional meaning with the identity’s angular vocabulary so navigation feels part of the institution.",
+  "strategic_value": "A distinctive arrow can join utility and recognition in a frequently encountered location.",
+  "demonstration": "A black stepped arrow rises on the wall beside an elevator.",
+  "category": "Geometry",
+  "practical_value": "Study how an orthogonal path can become a clear directional sign.",
+  "content_islands": [
+    {
+      "name": "Arrow",
+      "spec": "A thick stepped stem ends in an upward arrowhead."
+    },
+    {
+      "name": "Wall and doorway",
+      "spec": "Pale surfaces and metal doors surround the black graphic."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A black stepped arrow rises on the wall beside an elevator.",
+    "Application": "A black stepped arrow rises on the wall beside an elevator."
+  },
+  "ingredient": {
+    "name": "Directional arrow at architectural scale",
+    "role": "Connect directional meaning with the identity’s angular vocabulary so navigation feels part of the institution.",
+    "application": "Study how an orthogonal path can become a clear directional sign.",
+    "scope": "Observed in this historical case-study artwork; not a mandatory usage rule or a current brand standard."
+  }
+}

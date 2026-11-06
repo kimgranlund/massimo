@@ -1,0 +1,30 @@
+{
+  "id": "DB0400",
+  "title": "PowerPoint / title-slide examples",
+  "image": "db0400.png",
+  "source": "../sources/page-04.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 4,
+    "section": 0,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Teams-Hintergruende/Powerpoint"
+  },
+  "slide_intent": "Compare light and dark presentation treatments so identity can adapt to different imagery without losing recognition.",
+  "strategic_value": "Shared logo placement, typography and sleeper accents can connect contrasting DB presentation covers.",
+  "demonstration": "Two title-slide examples sit side by side on a gray field: one uses a light text panel and device photograph; the other uses dark text space and an employee portrait.",
+  "category": "Application",
+  "practical_value": "Choose a light or dark cover treatment based on the image and text contrast.",
+  "content_islands": [
+    {
+      "name": "Paired cover slides",
+      "spec": "Place the light slide left and dark slide right with matching title hierarchy and red DB marks."
+    },
+    {
+      "name": "Header motif",
+      "spec": "Run the red sleeper strip along the bottom of the gray surrounding field."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The image displays two branded presentation title slides."
+  }
+}

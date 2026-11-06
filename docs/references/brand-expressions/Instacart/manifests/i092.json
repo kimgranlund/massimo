@@ -1,0 +1,25 @@
+{
+  "id": "I092",
+  "title": "Shopper",
+  "image": "i092.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 92,
+    "printed_page": 98
+  },
+  "slide_intent": "Show how to vary the size of an identifier with the area available on a carried or worn object.",
+  "strategic_value": "Repeating the carrot at two scales can identify a shopper discreetly on clothing and visibly on a delivery bag.",
+  "demonstration": "Two photographs put a small carrot at a white shirt pocket and an enlarged, cropped carrot on a dark green tote.",
+  "category": "Application",
+  "practical_value": "Compare the shirt and bag before sizing a mark. Reserve the broad tote panel for the larger graphic.",
+  "content_islands": [
+    {
+      "name": "Shirt application",
+      "spec": "Use the left half for a front view of the shirt. Keep the small colored mark aligned to the pocket."
+    },
+    {
+      "name": "Bag application",
+      "spec": "Use the right half for the shopper carrying the bag. Place the large green and orange device low on the bag face."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "HX27",
+  "title": "Signs",
+  "image": "hx27.png",
+  "source": "../sources/design-and-create.offline.html",
+  "location": {
+    "series": "Web guideline introduction/component",
+    "order": 92,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/design-and-create",
+    "original_html": "../sources/design-and-create.html"
+  },
+  "slide_intent": "Design signs for finding and moving because identity succeeds only when people can locate the service.",
+  "strategic_value": "Shared logo, color and type can make Helsinki services recognizable while accessible symbols help across languages.",
+  "demonstration": "This webpage introduction connects branded signage with locating services, accessibility and language-independent symbols.",
+  "category": "Application",
+  "practical_value": "Evaluate a sign’s navigation task alongside its brand ingredients.",
+  "content_islands": [
+    {
+      "name": "Signage premise",
+      "spec": "Keep the identity elements and wayfinding/accessibility rationale together."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text explains that well-designed signs help locate services and support movement.",
+    "Application": "It identifies logo, color, type and symbols as signage tools."
+  }
+}

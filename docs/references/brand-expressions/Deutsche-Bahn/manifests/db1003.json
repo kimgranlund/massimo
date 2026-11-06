@@ -1,0 +1,31 @@
+{
+  "id": "DB1003",
+  "title": "Schwelle / information ring and headline connector",
+  "image": "db1003.png",
+  "source": "../sources/page-10.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 10,
+    "section": 3,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Schwelle"
+  },
+  "slide_intent": "Let geometry support the message’s structure so the same identity system can inform and persuade.",
+  "strategic_value": "The repeated-bar rhythm can connect an infographic with DB campaign typography.",
+  "demonstration": "A circular bar diagram on dark ground sits beside a traveler photograph with the red Schwelle joining STRESS and ZEIT.",
+  "category": "Application",
+  "practical_value": "Compare a radial information arrangement with a linear headline connection.",
+  "content_islands": [
+    {
+      "name": "Radial graphic",
+      "spec": "Arrange bars around a ring at left, with a red segment."
+    },
+    {
+      "name": "Headline connection",
+      "spec": "Place the red sequence between the large white words over the photograph at right."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The pair applies the bar language to a circular graphic and a campaign headline.",
+    "Expression": "Both use a repeated thin-to-thick bar rhythm."
+  }
+}

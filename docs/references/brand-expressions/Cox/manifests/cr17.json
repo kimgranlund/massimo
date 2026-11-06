@@ -1,0 +1,26 @@
+{
+  "id": "CR17",
+  "title": "Content Library Still — speaker interaction",
+  "image": "cr17.png",
+  "source": "../sources/cr17.jpg",
+  "location": {
+    "series": "Cox Brand Collection — Lindsay Little / Periscope",
+    "item": 17,
+    "extent": "whole source image"
+  },
+  "slide_intent": "Show the scale and operation of a product through a small human action so it feels usable.",
+  "strategic_value": "A simple speaker interaction can keep Cox’s accessory imagery approachable and grounded in everyday objects.",
+  "demonstration": "A hand reaches toward a black portable speaker resting on stacked books and a wooden side table.",
+  "category": "Imagery",
+  "practical_value": "Use a hand and familiar support objects to establish scale while keeping the product silhouette unobstructed.",
+  "content_islands": [
+    {
+      "name": "Product and gesture",
+      "spec": "Place the speaker diagonally across the books with the hand entering from the upper right."
+    },
+    {
+      "name": "Supporting objects",
+      "spec": "Keep the books and table below the product and the pale background largely empty."
+    }
+  ]
+}

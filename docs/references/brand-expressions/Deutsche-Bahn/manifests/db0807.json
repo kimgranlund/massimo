@@ -1,0 +1,37 @@
+{
+  "id": "DB0807",
+  "title": "Farbgewichtung / palette roles",
+  "image": "db0807.png",
+  "source": "../sources/page-08.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 8,
+    "section": 7,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Markenfarben"
+  },
+  "slide_intent": "Preserve a hierarchy between grounds and accents so identity remains visible without overwhelming content.",
+  "strategic_value": "A neutral foundation can keep DB Red recognizable while letting Lilac provide selective expression.",
+  "demonstration": "Three paragraphs assign roles to White/Cold Black, DB Red and Lilac above an unnumbered proportion graphic.",
+  "category": "Color",
+  "practical_value": "Favor White as the base and use the accent colors according to their roles without inventing a percentage.",
+  "content_islands": [
+    {
+      "name": "Role explanation",
+      "spec": "Explain backgrounds first, identity accent second and expressive accent third."
+    },
+    {
+      "name": "Weighting graphic",
+      "spec": "Place the unnumbered neutral/red/Lilac strip beneath the role descriptions."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The text assigns grounds to neutrals, identity accents to DB Red and selected expressive uses to Lilac.",
+    "Constraint": "White is the preferred ground; the graphic supplies no numeric area requirement."
+  },
+  "ingredient": {
+    "name": "Palette weighting",
+    "role": "Keep neutral support, identity and expression distinguishable.",
+    "application": "Prefer White for the base; balance light/dark grounds and use DB Red and Lilac as their stated accents.",
+    "scope": "The displayed strip is qualitative. It does not prescribe fixed percentages per composition."
+  }
+}

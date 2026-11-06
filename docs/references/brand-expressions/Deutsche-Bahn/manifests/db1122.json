@@ -1,0 +1,31 @@
+{
+  "id": "DB1122",
+  "title": "Dos & Don´ts / Icons",
+  "image": "db1122.png",
+  "source": "../sources/page-11.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 11,
+    "section": 22,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Icons"
+  },
+  "slide_intent": "Make exceptions and prohibited treatments visible so consistency survives everyday production.",
+  "strategic_value": "A comparison checklist can protect the clarity of DB’s functional icon language.",
+  "demonstration": "Eight paired examples address color, family, detail, stroke, rounding, size, proportions and grouping; a leaf-icon note appears above.",
+  "category": "Geometry",
+  "practical_value": "Check icon treatment against the paired examples and consult the source’s leaf-icon condition when relevant.",
+  "content_islands": [
+    {
+      "name": "Leaf condition",
+      "spec": "Place the source warning about EmpCo requirements above the comparisons."
+    },
+    {
+      "name": "Comparison grid",
+      "spec": "Arrange positive and crossed-out examples covering eight usage decisions."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The grid provides practical positive/negative checks for eight icon treatments.",
+    "Constraint": "Official icons retain proportions and 2 dp strokes; small 20/24 dp icons are not enlarged for prominent use; no old DB Puls treatment, decorative rounding or grouped-icon illustration. The leaf icon has an additional source-stated EmpCo condition."
+  }
+}

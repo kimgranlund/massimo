@@ -1,0 +1,31 @@
+{
+  "id": "DB1214",
+  "title": "Signature Graphics / single color focus",
+  "image": "db1214.png",
+  "source": "../sources/page-12.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 12,
+    "section": 14,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Signature-Graphics"
+  },
+  "slide_intent": "Limit competing accents so the viewer can identify the focal element in a graphic composition.",
+  "strategic_value": "A single color highlight can give DB scenes emphasis while retaining calm context.",
+  "demonstration": "A pale skyline with one lilac building is compared with a crossed-out multicolored skyline.",
+  "category": "Color",
+  "practical_value": "Highlight individual elements without coloring one graphic in multiple contrasting brand colors.",
+  "content_islands": [
+    {
+      "name": "Focused skyline",
+      "spec": "Use pale gray context and one lilac accent at left."
+    },
+    {
+      "name": "Competing colors",
+      "spec": "Cross out the red, lilac and dark multicolored version at right."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The comparison shows a focal accent against a restrained scene.",
+    "Constraint": "The source prohibits a signature graphic colored in several contrasting DB Digital Red, Transitional Lilac, Clear White and Cold Black tones."
+  }
+}

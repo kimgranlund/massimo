@@ -1,0 +1,25 @@
+{
+  "id": "I040",
+  "title": "Typeface Anatomy",
+  "image": "i040.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 40,
+    "printed_page": 40
+  },
+  "slide_intent": "Teach designers to identify the parts of a letter that change its voice. Comparing a few letters makes a distinction between related faces easier to see than describing an entire alphabet.",
+  "strategic_value": "Instacart can explain how Sans and Contrast play different roles through observable details such as stroke contrast and terminals.",
+  "demonstration": "Two very large lowercase specimen lines sit one above the other. Small annotations and circles point out high stroke contrast, vertical stress and flat terminals.",
+  "category": "Typography",
+  "practical_value": "Look at the marked details when deciding whether a specimen belongs to the Sans or Contrast voice.",
+  "content_islands": [
+    {
+      "name": "Stacked specimens",
+      "spec": "Give both faces a large horizontal line of lowercase letters. Identify each beneath its specimen and leave enough space to inspect curves and strokes."
+    },
+    {
+      "name": "Anatomy annotations",
+      "spec": "Use fine contrasting circles and small labels near the forms they explain. Keep explanations attached to the relevant glyphs."
+    }
+  ]
+}

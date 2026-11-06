@@ -1,0 +1,36 @@
+{
+  "id": "DB1409",
+  "title": "Bildbearbeitung",
+  "image": "db1409.png",
+  "source": "../sources/page-14.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 14,
+    "section": 9,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Bildwelt"
+  },
+  "slide_intent": "Refine tonal relationships without replacing the scene’s material reality so editing remains believable.",
+  "strategic_value": "Consistent natural color can connect DB photography across subjects.",
+  "demonstration": "A split comparison of rail work sits above a preferred and warm-tinted people photograph with Do and Don’t lists.",
+  "category": "Imagery",
+  "practical_value": "Preserve detail in highlights and shadows; avoid warm filters, artificial HDR, excessive saturation and sharpening.",
+  "content_islands": [
+    {
+      "name": "Editing comparison",
+      "spec": "Place the rail-work comparison beneath the principle paragraph."
+    },
+    {
+      "name": "Color comparison",
+      "spec": "Pair natural and overly warm people photographs."
+    },
+    {
+      "name": "Editing checklist",
+      "spec": "List desired tonal qualities and prohibited effects under the comparison."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source says editing creates depth, clarity and consistency while retaining the natural situation and material.",
+    "Application": "The before/after-style comparison and checklist guide tonal refinement.",
+    "Constraint": "No sepia/warm-filter look, artificial HDR, excessive saturation/sharpening or image effects."
+  }
+}

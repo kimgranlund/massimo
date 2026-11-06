@@ -1,0 +1,31 @@
+{
+  "id": "DB1410",
+  "title": "Perspektive und Komposition",
+  "image": "db1410.png",
+  "source": "../sources/page-14.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 14,
+    "section": 10,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Bildwelt"
+  },
+  "slide_intent": "Use viewpoint and lines to reveal spatial relationships so a scene gives orientation as well as visual interest.",
+  "strategic_value": "A deliberate relation between people and infrastructure can make DB’s scale understandable.",
+  "demonstration": "A person within a bright architectural space is paired with diagonal rail structure and station signage photographs.",
+  "category": "Imagery",
+  "practical_value": "Compare how each viewpoint establishes scale, direction and context.",
+  "content_islands": [
+    {
+      "name": "Composition principle",
+      "spec": "Place the orientation-and-tension statement above the collage."
+    },
+    {
+      "name": "Spatial examples",
+      "spec": "Pair the large human-scale scene with two smaller structural viewpoints."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source links perspective and line structure to orientation, tension, dimension and relationships.",
+    "Expression": "The collage demonstrates architectural lines and varied viewpoints."
+  }
+}

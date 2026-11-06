@@ -1,0 +1,28 @@
+{
+  "id": "BK014",
+  "title": "Design Principles",
+  "image": "bk014.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 14
+  },
+  "slide_intent": "Reduce strategic ambition to memorable criteria so contributors can judge different executions consistently.",
+  "strategic_value": "Four named principles can give Burger King a common vocabulary across media.",
+  "demonstration": "Four numbered principles dominate an orange field; a narrow explanation sits at left.",
+  "category": "Brand",
+  "practical_value": "Use the four principles as review criteria and consult the following examples for meaning.",
+  "content_islands": [
+    {
+      "name": "Explanation",
+      "spec": "Place the short definition of actionable principles at left."
+    },
+    {
+      "name": "Principle list",
+      "spec": "Set Mouthwatering, Big & Bold, Playfully Irreverent and Proudly True in a large numbered stack at right."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The explanation says the principles guide look and feel and capture distinguishing characteristics.",
+    "Expression": "Large brown lettering on orange gives the criteria their own emphatic presentation."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "IBT17",
+  "title": "Closing / Copyright 2022",
+  "image": "ibt17.png",
+  "source": "../sources/ibm-logo-third-parties.pdf",
+  "location": {
+    "page": 17,
+    "series": "IBM Logo and Brand Guidelines for Third Parties / copyright 2022",
+    "order": 100017
+  },
+  "slide_intent": "Close the guide with a clear source and date, so readers can identify whose guidance they are consulting and its historical context.",
+  "strategic_value": "The small totem rebus on the same pale-blue field as the cover can connect a restrained document ending to IBM’s heritage.",
+  "demonstration": "A pale-blue page places a small vertical rebus above the corporate name and copyright 2022 near the lower right.",
+  "category": "Brand",
+  "practical_value": "Use the copyright line to preserve this guide’s edition context when comparing its rules with other sources.",
+  "content_islands": [
+    {
+      "name": "Closing field",
+      "spec": "Keep the large pale-blue field largely empty."
+    },
+    {
+      "name": "Signature and provenance",
+      "spec": "Place the vertical eye-bee-M rebus above the full corporate name and copyright 2022 at lower right."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The closing page combines the totem rebus with a pale-blue field and restrained corporate attribution."
+  }
+}

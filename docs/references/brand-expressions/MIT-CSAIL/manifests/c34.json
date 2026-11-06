@@ -1,0 +1,28 @@
+{
+  "id": "C34",
+  "title": "Pop-up Banner",
+  "image": "c34.png",
+  "source": "../csail-branding-short-guide.pdf",
+  "location": {
+    "page": 34
+  },
+  "slide_intent": "Teach designers to compose a tall event surface for recognition at a distance. A stable signature position lets the large image field carry different people and messages.",
+  "strategic_value": "CSAIL can use the same portable banner format for different events. A constant mark and web address identify the lab while portraits bring attention to its members and research.",
+  "demonstration": "Two retractable banners appear side by side against gray. Both carry a large mark above angular tinted photographs and a web address below. The left runs a phrase across the portraits. The right places a phrase beneath the mark.",
+  "category": "Application",
+  "practical_value": "Compare the two placements when choosing where a short message belongs. Check whether it reads more clearly across a photograph or in the white space beneath the signature.",
+  "content_islands": [
+    {
+      "name": "Banner guidance",
+      "spec": "Set the title and a short explanation in the upper-left column. Keep the event use and contact instructions together."
+    },
+    {
+      "name": "Standing banner pair",
+      "spec": "Show the two retractable stands at equal height on a common gray field. Keep the white top and bottom zones, signature and website position consistent. Vary the central portrait sequence, tint and phrase placement."
+    },
+    {
+      "name": "Book footer",
+      "spec": "Align the short-guide identifier, laboratory name and folio along the bottom margin."
+    }
+  ]
+}

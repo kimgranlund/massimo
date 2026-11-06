@@ -1,0 +1,28 @@
+{
+  "id": "I056",
+  "title": "Oh yes, juuuuuicy.",
+  "image": "i056.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 56
+  },
+  "slide_intent": "Carry an appetizing image into a shopping journey. A visitor should be able to move from attraction to choosing an item without losing the visual connection.",
+  "strategic_value": "Instacart can use citrus imagery to tie a campaign message to store browsing and product selection.",
+  "demonstration": "Three tall rounded screens share a citrus crop. It fills the left screen behind a headline, becomes a promotional header above shopping categories in the middle and tops a product listing at right.",
+  "category": "Application",
+  "practical_value": "Determine when the photograph should dominate and when to reduce it to a header so shopping controls and item details take priority.",
+  "content_islands": [
+    {
+      "name": "Campaign screen",
+      "spec": "Center three equally tall panels on dark green. Fill the first with slices of citrus and place the white sensory headline over the crop."
+    },
+    {
+      "name": "Browse screen",
+      "spec": "Use a shallow citrus header above the promotional action, categories and food cards. Align successive content rows beneath it."
+    },
+    {
+      "name": "Store screen",
+      "spec": "Retain the citrus header and give the remaining area to store identity and item thumbnails with details."
+    }
+  ]
+}

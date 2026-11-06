@@ -1,0 +1,27 @@
+{
+  "id": "DB0901",
+  "title": "TYPOGRAFIE",
+  "image": "db0901.png",
+  "source": "../sources/page-09.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 9,
+    "section": 1,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Typografie_neu"
+  },
+  "slide_intent": "Choose related type families for different media so readers encounter a consistent voice without losing readability.",
+  "strategic_value": "The DB Neo, Screen and Office families can maintain a recognizable expression across daily communications.",
+  "demonstration": "A large heading introduces three related type families and the addition of DB Neo Extra Wide.",
+  "category": "Typography",
+  "practical_value": "Choose a family appropriate to analog, digital or office use.",
+  "content_islands": [
+    {
+      "name": "Introduction",
+      "spec": "Place the uppercase heading above the explanatory paragraph."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The paragraph connects the three families to accessibility, functionality and distinctive expression.",
+    "Application": "It distinguishes DB Neo, DB Neo Screen and DB Neo Office."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "GP09",
+  "title": "Product Sans / Glyph Set Continued",
+  "image": "gp09.png",
+  "source": "../product-sans-specimen.pdf",
+  "location": {
+    "page": 9,
+    "printed_page": "P–9"
+  },
+  "slide_intent": "Document specialist forms so numerical and symbolic content can be composed with the same typographic care as ordinary words.",
+  "strategic_value": "Purpose-built fractions, symbols and tabular figures can extend a consistent Google identity into less common content.",
+  "demonstration": "A compact blue-on-white column lists numerator/denominator forms, fractions, symbols, Roman numerals, circled digits, case-sensitive forms and tabular lining figures.",
+  "category": "Typography",
+  "practical_value": "Choose the relevant numeral or symbol feature from the actual specimen instead of substituting an unrelated face prematurely.",
+  "content_islands": [
+    {
+      "name": "Specialist feature list",
+      "spec": "Stack the labeled specimen groups in the lower-left area, leaving the broad upper and right fields empty."
+    },
+    {
+      "name": "Running metadata",
+      "spec": "Retain the small top labels identifying this as the second glyph-set page."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The displayed groups show the family’s specialist symbols and numerical forms.",
+    "Application": "The labels distinguish the available feature groups for composition."
+  }
+}

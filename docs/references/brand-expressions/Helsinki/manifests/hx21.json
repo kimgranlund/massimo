@@ -1,0 +1,26 @@
+{
+  "id": "HX21",
+  "title": "Maps",
+  "image": "hx21.png",
+  "source": "../sources/visual-storytelling.offline.html",
+  "location": {
+    "series": "Web guideline introduction/component",
+    "order": 77,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/visual-storytelling",
+    "original_html": "../sources/visual-storytelling.html"
+  },
+  "slide_intent": "Use maps to connect information to place because people need to locate services and changes in their own surroundings.",
+  "strategic_value": "Helsinki can make news, planning and construction information easier to relate to daily life.",
+  "demonstration": "This webpage introduction lists map uses in everyday communications, surveys, evaluations and construction guidance.",
+  "category": "Application",
+  "practical_value": "Choose a map when the reader’s main question concerns location or extent.",
+  "content_islands": [
+    {
+      "name": "Map premise",
+      "spec": "Keep the location-based communication contexts together beneath the heading."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The text names concrete map contexts, including construction guidance and surveys."
+  }
+}

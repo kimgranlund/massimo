@@ -1,0 +1,34 @@
+{
+  "id": "BK039",
+  "title": "Wordmark Clearspace",
+  "image": "bk039.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 39
+  },
+  "slide_intent": "Give a long wordmark enough separation so neighboring text does not become part of its silhouette.",
+  "strategic_value": "Consistent breathing room can keep the Burger King name distinct across narrow applications.",
+  "demonstration": "A red wordmark spans a shaded horizontal clearance diagram; U specimens mark the surrounding buffer.",
+  "category": "Geometry",
+  "practical_value": "Measure the wordmark’s minimum clearspace with its Burger U width.",
+  "content_islands": [
+    {
+      "name": "Clearspace definition",
+      "spec": "Place the rule in the left text column."
+    },
+    {
+      "name": "Wordmark clearance diagram",
+      "spec": "Set the wordmark horizontally at right and show the U-width buffer with shaded bands and rotated U specimens."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The source defines wordmark clearspace using the width of the Burger U.",
+    "Constraint": "The defined minimum separates the wordmark from all other visual and verbal elements."
+  },
+  "ingredient": {
+    "name": "Wordmark clearspace",
+    "role": "Prevent adjacent content from crowding the name.",
+    "application": "Reserve a minimum Burger U width around the wordmark.",
+    "scope": "Historical 2020 partner guide; applies to the Latin wordmark."
+  }
+}

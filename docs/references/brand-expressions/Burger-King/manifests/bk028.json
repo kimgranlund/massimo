@@ -1,0 +1,36 @@
+{
+  "id": "BK028",
+  "title": "Verbal Inspiration Examples",
+  "image": "bk028.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 28
+  },
+  "slide_intent": "Show a range of verbal possibilities so writers can move from abstract traits to concrete food messages.",
+  "strategic_value": "Ingredient, product and flame-grilling examples can give Burger King a familiar voice grounded in its food.",
+  "demonstration": "An introduction at left leads several columns of sample phrases grouped by ingredients, realness, product and fire.",
+  "category": "Voice",
+  "practical_value": "Choose a food topic and write sensory, conversational variations while checking claims and clearance.",
+  "content_islands": [
+    {
+      "name": "Introduction",
+      "spec": "Place the explanation of familiar speech and the messages-not-taglines qualification at left."
+    },
+    {
+      "name": "Ingredient phrases",
+      "spec": "List ingredient-focused examples in the next column."
+    },
+    {
+      "name": "Realness and product",
+      "spec": "Group the two labeled phrase sets in the middle-right column."
+    },
+    {
+      "name": "Sensory and fire phrases",
+      "spec": "Continue product adjectives above the Fire is Better list at far right."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The page groups example messages by ingredients, realness, product and fire.",
+    "Constraint": "The introduction says these examples are messages and claims, not taglines."
+  }
+}

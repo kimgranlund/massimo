@@ -1,0 +1,42 @@
+{
+  "id": "IB019",
+  "title": "Photography / Overview",
+  "image": "ib019.png",
+  "source": "../sources/photography-overview.txt",
+  "location": {
+    "series": "IBM Design Language / public web guidelines",
+    "item": 19,
+    "extent": "Complete webpage content-area capture; visible default tab states",
+    "url": "https://www.ibm.com/design/language/photography/overview/",
+    "order": 19000
+  },
+  "slide_intent": "Choose a photographic approach that fits the subject so viewers can understand both the working context and the people or objects within it.",
+  "strategic_value": "Editorial working-world imagery, equal-care portraiture and detailed still life can present IBM as an observant participant in real work.",
+  "demonstration": "The webpage introduces IBM’s photographic point of view, then separates reportage, portraiture and still-life sections with distinct image groups.",
+  "category": "Imagery",
+  "practical_value": "Choose reportage for context, portraiture for individual character or still life for objects and details instead of forcing every subject into one photographic mode.",
+  "content_islands": [
+    {
+      "name": "Point of view",
+      "spec": "Place the introductory rationale above a large working-space photograph and a mixed montage of people, objects and environments."
+    },
+    {
+      "name": "Reportage: Working world",
+      "spec": "Follow the photo-types introduction with documentary scenes of work and surroundings in a compact image grid."
+    },
+    {
+      "name": "Portraiture: Progress partners",
+      "spec": "Place the equal-care portrait rationale above photographs of individual people in varied settings."
+    },
+    {
+      "name": "Still-life: Exhibiting excellence",
+      "spec": "End with isolated objects, arranged components and technical details on contrasting grounds, followed by page navigation."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source explains that photography creates context for conversations and that different subjects require different photographic approaches.",
+    "Expression": "The three image groups show documentary context, individual character and isolated technical objects.",
+    "Application": "The copy assigns reportage to the working world, portraiture to individuals and teams, and still life to objects, details and otherwise difficult-to-render concepts.",
+    "Constraint": "The portraiture guidance says photographic investment must not vary according to a subject’s status or stature."
+  }
+}

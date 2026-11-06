@@ -1,0 +1,40 @@
+{
+  "id": "BK116",
+  "title": "Digital Icons",
+  "image": "bk116.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 116
+  },
+  "slide_intent": "Carry a familiar symbol style into small interface controls so people can recognize actions across physical and digital encounters.",
+  "strategic_value": "Brown illustration-derived icons and matching size colors can connect Burger King’s website and app with its packaging vocabulary.",
+  "demonstration": "A cream page pairs digital icon guidance with two rows of labeled action symbols and a lower row of red S, orange M and brown L circles.",
+  "category": "Imagery",
+  "practical_value": "Use the digital icon family at no more than 20 × 20 px, keeping BBQ Brown as the default and preserving size-color exceptions.",
+  "content_islands": [
+    {
+      "name": "Digital rules",
+      "spec": "Place the style rationale, maximum pixel dimensions and color exceptions in the left column."
+    },
+    {
+      "name": "Action icons",
+      "spec": "Arrange captioned pickup, dining, takeout, ordering, profile and other interface symbols in two rows."
+    },
+    {
+      "name": "Size markers",
+      "spec": "Show Small, Medium and Large circles below the action grid, labeled S, M and L."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text links the illustration-inspired shapes to simplicity and immediate identification.",
+    "Expression": "The digital symbols use bold brown silhouettes and three colored size markers.",
+    "Application": "The page specifies use in websites and phone apps and maps package size colors into digital icons.",
+    "Constraint": "Digital icons are no larger than 20 × 20 px; default is BBQ Brown, with Small Fiery Red, Medium Flaming Orange, Large BBQ Brown and Value no color."
+  },
+  "ingredient": {
+    "name": "Digital icons",
+    "role": "Make small interface actions recognizable within the brand.",
+    "application": "Keep icons at or below 20 × 20 px. Use BBQ Brown except size markers: Small Fiery Red, Medium Flaming Orange, Large BBQ Brown; Value has no color.",
+    "scope": "Historical website and phone-app guidance; distinct from operational packaging icon sizes in points."
+  }
+}

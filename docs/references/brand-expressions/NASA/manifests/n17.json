@@ -1,0 +1,24 @@
+{
+  "id": "N17",
+  "title": "Reproduction Art: Seal",
+  "image": "n17.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 17
+  },
+  "slide_intent": "Show where a circular seal should align during reproduction. A reference through its center makes alignment checkable on the production drawing.",
+  "strategic_value": "NASA can preserve the seal’s proportions and orientation by supplying camera-ready artwork with alignment guidance.",
+  "demonstration": "A single large seal sits beneath the instructions. Horizontal guide marks outside its circumference establish the alignment reference, with a note to trim them away.",
+  "category": "Geometry",
+  "practical_value": "Align the seal using the external reference and trim away the guide before reproducing the finished artwork.",
+  "content_islands": [
+    {
+      "name": "Reproduction note",
+      "spec": "Identify the seal master at the top and allow photographic enlargement or reduction."
+    },
+    {
+      "name": "Seal and alignment guide",
+      "spec": "Center the black seal in the lower field. Place short horizontal guide marks to either side and keep the trimming note outside the seal."
+    }
+  ]
+}

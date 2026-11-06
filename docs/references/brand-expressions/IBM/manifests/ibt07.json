@@ -1,0 +1,45 @@
+{
+  "id": "IBT07",
+  "title": "Usage",
+  "image": "ibt07.png",
+  "source": "../sources/ibm-logo-third-parties.pdf",
+  "location": {
+    "page": 7,
+    "series": "IBM Logo and Brand Guidelines for Third Parties / copyright 2022",
+    "order": 100007
+  },
+  "slide_intent": "Balance relationship explanation with visual prominence, because equal partners can appear unequal when their logos occupy different visual weights.",
+  "strategic_value": "Secondary placement and equal visual weight can help IBM appear accurately within a third party’s communication.",
+  "demonstration": "An introductory column sits beside three columns of rules about descriptive text, placement, multiple partners, clear space and web links.",
+  "category": "Application",
+  "practical_value": "Give IBM a secondary position within the host communication while matching the visual weight of equivalent partner marks.",
+  "content_islands": [
+    {
+      "name": "Usage introduction",
+      "spec": "Place the heading and short instruction in the leftmost column."
+    },
+    {
+      "name": "Role and position",
+      "spec": "Use the next column to describe explanatory text and secondary placement outside fixed navigation or mastheads."
+    },
+    {
+      "name": "Equivalent partners",
+      "spec": "Continue with collective-role text and equal visual weight across equivalent trademarks."
+    },
+    {
+      "name": "Isolation and links",
+      "spec": "End with clear-space and IBM destination-link instructions."
+    }
+  ],
+  "ingredient": {
+    "name": "Third-party IBM mark prominence",
+    "role": "Clarify contribution without implying authorship or unequal partner status.",
+    "application": "Place the mark near descriptive role text in the body of the communication; give equivalent partner marks equal visual weight rather than mechanically equal dimensions.",
+    "scope": "Copyright 2022 third-party guide. Secondary placement refers to the host communication; equal visual weight refers to equivalent third-party marks shown together."
+  },
+  "reference_purposes": {
+    "Intent": "The source explains that size, color and shape alter prominence, so equal visual weight differs from equal size.",
+    "Application": "The rules describe how to combine IBM with explanatory text and other partner marks.",
+    "Constraint": "IBM remains secondary to the host communication, must not occupy fixed masthead/navigation positions, and must link to ibm.com when used as a linking device."
+  }
+}

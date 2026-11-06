@@ -1,0 +1,30 @@
+{
+  "id": "GE02",
+  "title": "Designed Together / Identity Exploration",
+  "image": "ge02.png",
+  "source": "../sources/ge02.webp",
+  "location": {
+    "series": "Evolving the Google Identity / 2015",
+    "item": 2,
+    "extent": "whole source"
+  },
+  "slide_intent": "Compare related alternatives together so a team can judge which changes preserve recognition and which introduce a new character.",
+  "strategic_value": "A shared wall of wordmarks, symbols and dots can help Google evaluate whether several forms belong to the same identity.",
+  "demonstration": "Two designers review a wall covered with wordmark, lowercase-g, dot and geometric symbol explorations.",
+  "category": "Brand",
+  "practical_value": "Keep alternatives visible together during a review and distinguish exploratory concepts from the chosen identity.",
+  "content_islands": [
+    {
+      "name": "Reviewers",
+      "spec": "Keep the two people in the left foreground, with the pointing gesture leading toward the work."
+    },
+    {
+      "name": "Exploration wall",
+      "spec": "Fill the right and background with pinned sheets of related wordmarks and symbols at several scales."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The accompanying article describes a collaborative sprint addressing small contexts, responsive motion and cross-product consistency.",
+    "Expression": "The photograph preserves visibly different exploratory treatments; it does not present all of them as approved assets."
+  }
+}

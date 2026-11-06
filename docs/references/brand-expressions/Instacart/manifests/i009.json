@@ -1,0 +1,24 @@
+{
+  "id": "I009",
+  "title": "Logo",
+  "image": "i009.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 9
+  },
+  "slide_intent": "Give the reader a clear specimen of the complete signature before introducing exceptions or variants.",
+  "strategic_value": "Displaying the name with the full-color carrot can build a common reference for further applications.",
+  "demonstration": "The carrot mark and pale lowercase wordmark are centered as a horizontal unit on dark green.",
+  "category": "Brand",
+  "practical_value": "Use the page to check the order, color and relative prominence of the symbol and name.",
+  "content_islands": [
+    {
+      "name": "Running heading",
+      "spec": "Keep the book labels and Logo heading at upper left in small pale type."
+    },
+    {
+      "name": "Primary signature",
+      "spec": "Center one unannotated horizontal lockup. Place the carrot to the left of the wordmark."
+    }
+  ]
+}

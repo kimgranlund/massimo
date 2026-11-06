@@ -1,0 +1,34 @@
+{
+  "id": "IBS22",
+  "title": "Examples / Misuse — Prominence and signatures",
+  "image": "ibs22.png",
+  "source": "../sources/ibm-logo-strategic-partners.pdf",
+  "location": {
+    "page": 22,
+    "series": "IBM Logo Guidelines for Strategic Partners / Version 1.2 / copyright 2023",
+    "order": 200022
+  },
+  "slide_intent": "Identify hierarchy errors that change the apparent sender so readers do not attribute partner messages to IBM.",
+  "strategic_value": "Consistent sender cues can keep the IBM relationship clear across documents, social posts and email.",
+  "demonstration": "Red-crossed collateral, social and email examples show excessive IBM prominence, IBM social sign-off and a conflicting IBM header/partner footer.",
+  "category": "Application",
+  "practical_value": "Inspect both the first and last brand cues in a layout, not only the presence of the right logos.",
+  "content_islands": [
+    {
+      "name": "Collateral prominence",
+      "spec": "Place the two-page comparison at upper left, crossing out the oversized IBM presence."
+    },
+    {
+      "name": "Social signature",
+      "spec": "Place the social-post schematic below with IBM as the rejected sign-off."
+    },
+    {
+      "name": "Email source confusion",
+      "spec": "Place the tall email example at right with IBM in its header and the partner at its end."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The email caption explicitly explains avoiding confusion over the source of the message.",
+    "Constraint": "The page prohibits IBM social sign-offs, greater IBM prominence than the partner and an IBM-header/partner-signature email arrangement."
+  }
+}

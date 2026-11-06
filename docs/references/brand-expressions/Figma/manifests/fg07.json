@@ -1,0 +1,27 @@
+{
+  "id": "FG07",
+  "title": "The myth of the lone genius",
+  "image": "fg07.png",
+  "source": "../sources/fg07.png",
+  "location": {
+    "series": "COLLINS / Figma / Nothing Great Is Made Alone case study",
+    "item": 7,
+    "section": "Gallery",
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "State the belief behind a campaign plainly so the audience can understand what the brand is asking them to reconsider.",
+  "strategic_value": "A direct contrast between solitary genius and collaboration can make Figma’s position understandable beyond design specialists.",
+  "demonstration": "A centered black paragraph on lavender rejects the lone-genius myth and attributes ideas to collaboration.",
+  "category": "Voice",
+  "practical_value": "Write a concise belief statement that explains the campaign before its visual examples.",
+  "content_islands": [
+    {
+      "name": "Belief statement",
+      "spec": "Center three lines of black text with broad lavender margins."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The printed statement identifies collaboration as the source of great ideas.",
+    "Expression": "A plain sentence carries the argument without illustration or decorative framing."
+  }
+}

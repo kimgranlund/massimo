@@ -1,0 +1,24 @@
+{
+  "id": "F20",
+  "title": "Logo positioning",
+  "image": "f20.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 20
+  },
+  "slide_intent": "Tie logo size to canvas dimensions and placement to legibility. Those two judgments help a reader find the mark on surfaces with different shapes.",
+  "strategic_value": "Frontline AIDS can keep consistent margins across formats while allowing the mark to move when the surrounding content requires it.",
+  "demonstration": "The notes give the logo-width calculation as the sum of canvas width and height divided by 8.5. A portrait diagram emphasizes the upper-right position and shows three alternatives.",
+  "category": "Geometry",
+  "practical_value": "Start with the specified size and the top-right corner. Use the symbol width to set margins and judge another position when the composition needs it.",
+  "content_islands": [
+    {
+      "name": "Sizing and placement guidance",
+      "spec": "Use two text columns for the sizing calculation and placement preferences. Keep the symbol-based reference beside them."
+    },
+    {
+      "name": "Canvas diagram",
+      "spec": "Set the tall white page inside a green surround. Mark its width, height and inset positions, showing the preferred signature in black and alternate corners faintly."
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "id": "BK027",
+  "title": "Verbal Inspiration Examples",
+  "image": "bk027.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 27
+  },
+  "slide_intent": "Use a distinct chapter opening to signal a transition from voice principles to sample wording, helping readers keep the kinds of guidance apart.",
+  "strategic_value": "The repeated display style can make verbal inspiration examples feel part of one Burger King document.",
+  "demonstration": "A large Verbal Inspiration Examples title sits on a flat field with small running labels and notices.",
+  "category": "Voice",
+  "practical_value": "Use this divider to identify where verbal inspiration examples guidance begins without interpreting it as a standalone application rule.",
+  "content_islands": [
+    {
+      "name": "Chapter title",
+      "spec": "Place the oversized Verbal Inspiration Examples title at upper left, brown on orange, leaving an open field below."
+    },
+    {
+      "name": "Navigation and notices",
+      "spec": "Retain the small top navigation, page number and bottom publication notice."
+    },
+    {
+      "name": "Review qualification",
+      "spec": "Preserve the bottom note requiring trademark and local legal review for example lines."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The Verbal Inspiration Examples divider uses large rounded display type and the warm brown on orange treatment.",
+    "Constraint": "Example taglines require trademark clearance and local legal review."
+  }
+}

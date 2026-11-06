@@ -1,0 +1,30 @@
+{
+  "id": "IBS26",
+  "title": "Review and approval",
+  "image": "ibs26.png",
+  "source": "../sources/ibm-logo-strategic-partners.pdf",
+  "location": {
+    "page": 26,
+    "series": "IBM Logo Guidelines for Strategic Partners / Version 1.2 / copyright 2023",
+    "order": 200026
+  },
+  "slide_intent": "Make the release checkpoint explicit so partners know when execution needs review before becoming public.",
+  "strategic_value": "A defined review step can help catch trademark and hierarchy mistakes before IBM appears in published material.",
+  "demonstration": "A short approval paragraph occupies the left portion of an otherwise open page beneath its title.",
+  "category": "Brand",
+  "practical_value": "Submit the planned communication to the IBM contact before printing or posting it.",
+  "content_islands": [
+    {
+      "name": "Approval heading",
+      "spec": "Place Review and approval at upper left."
+    },
+    {
+      "name": "Release requirement",
+      "spec": "Set the short paragraph below, retaining the qualified typical response time of 72 hours."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The source names the IBM contact as the review route and states a typical response time.",
+    "Constraint": "Communications featuring IBM trademarks must be submitted before printing or posting. The 72-hour response is qualified as in most cases, not guaranteed."
+  }
+}

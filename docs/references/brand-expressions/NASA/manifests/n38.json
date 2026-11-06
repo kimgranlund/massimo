@@ -1,0 +1,28 @@
+{
+  "id": "N38",
+  "title": "The Grid—What it is",
+  "image": "n38.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 38
+  },
+  "slide_intent": "Teach designers to derive a publication grid from the material it must carry. Fixed alignment points give readers continuity as text and pictures change.",
+  "strategic_value": "NASA can organize diverse publications efficiently by settling margins, gutters and folios before placing individual elements.",
+  "demonstration": "Three numbered stages move from an empty spread to a two-column grid and then to a populated spread. Red guides expose the underlying alignments.",
+  "category": "Layout",
+  "practical_value": "Start with the trim size and required content. Establish margins, columns, gutter and folio positions, then block in actual text, headings, captions and images.",
+  "content_islands": [
+    {
+      "name": "Purpose of a grid",
+      "spec": "Place the heading beside a short explanation in the top columns."
+    },
+    {
+      "name": "Format and guides",
+      "spec": "Stack the blank spread and the spread with red guides. Pair each drawing with its numbered instruction at left."
+    },
+    {
+      "name": "Populated spread",
+      "spec": "Keep the same spread size for the final stage. Lay text, headings and the image against the visible grid and indicate the outer folio position."
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id": "C36",
+  "title": "Notional Examples",
+  "image": "c36.png",
+  "source": "../csail-branding-short-guide.pdf",
+  "location": {
+    "page": 36
+  },
+  "slide_intent": "Teach designers to adapt a recognizable identity to an object’s printable area and material. A mark on a mug and a message on a shirt solve different reading problems.",
+  "strategic_value": "CSAIL can carry its identifier, tagline and group affiliation into events and everyday objects without requiring a single composition on every surface.",
+  "demonstration": "An array of example objects includes a mug, shirts, notebook, tote, badge and stamp. A black shirt carries the tagline while a white shirt carries the mark.",
+  "category": "Application",
+  "practical_value": "Decide whether the object has room for an identifier, a line of language or an affiliation. Choose scale and contrast to suit the substrate.",
+  "content_islands": [
+    {
+      "name": "Closing guidance",
+      "spec": "Use the left column for the invitation to apply the brand and the values the guide names."
+    },
+    {
+      "name": "Objects worn or carried",
+      "spec": "Set the marked mug, two shirts, notebook and Alliances tote against light fields."
+    },
+    {
+      "name": "Small-format objects",
+      "spec": "Across the lower area, show a badge and lanyard, colored covers and a stamp impression."
+    }
+  ]
+}

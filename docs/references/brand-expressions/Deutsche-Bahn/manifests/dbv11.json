@@ -1,0 +1,35 @@
+{
+  "id": "DBV11",
+  "title": "Fläche_side-2c",
+  "image": "dbv11.png",
+  "source": "../sources/media/dbv11.mp4",
+  "location": {
+    "series": "DB new design / motion demonstrations",
+    "source_page": 15,
+    "section": "Bewegungsmuster-14021478",
+    "source_url": "https://ecm-mediathek-cdn.deutschebahn.com/cdnenhancedecmvidhls/db306394/2880769/video_config.json",
+    "capture_date": "2026-11-05"
+  },
+  "slide_intent": "Add a second plane deliberately so emphasis increases without obscuring the direction of travel.",
+  "strategic_value": "The red-and-white horizontal sequence can give DB bold content a more expressive transition.",
+  "demonstration": "A red plane and white trailing strip travel from left to right across the field.",
+  "category": "Motion",
+  "practical_value": "Choose two-color horizontal motion when a bold message supports a more expressive transition.",
+  "content_islands": [
+    {
+      "name": "Leading plane",
+      "spec": "Move the red field across the frame from the left."
+    },
+    {
+      "name": "Trailing plane",
+      "spec": "Follow it with the white strip along the same axis."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A red plane and white trailing strip travel from left to right across the field.",
+    "Application": "The source provides a playable demonstration of this repeatable sequence: A red plane and white trailing strip travel from left to right across the field.",
+    "Intent": "Accompanying Flächenverhalten prose says clear axes and straight movement keep focus on content; two-color variants add expression for bold content.",
+    "Constraint": "The source associates one-color planes with high information density and functional use, and two-color planes with bold, expressive content."
+  },
+  "motion": "../sources/media/dbv11.mp4"
+}

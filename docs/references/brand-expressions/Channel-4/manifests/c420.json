@@ -1,0 +1,31 @@
+{
+  "id": "C420",
+  "title": "Content worlds montage",
+  "image": "c420.png",
+  "source": "../sources/c420.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 masterbrand / 2023",
+    "item": 20,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Allow a shared framework to hold different visual languages so variety does not erase recognition.",
+  "strategic_value": "The persistent green 4 can connect Channel 4 worlds ranging from illustration to architecture and sport.",
+  "demonstration": "A ten-second montage holds the green logo centrally while switching among Stonehenge, soft forms, cellular objects, mirrored rooms, landscapes and other themed scenes.",
+  "category": "Imagery",
+  "practical_value": "Compare which identity cue remains constant as image style and subject change.",
+  "content_islands": [
+    {
+      "name": "Stable signature",
+      "spec": "Retain the centered green 4 as the common point of reference."
+    },
+    {
+      "name": "Changing worlds",
+      "spec": "Sequence distinct photographic, illustrated and dimensional settings behind it."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The sequence combines varied themed imagery with a consistent green logo.",
+    "Intent": "Pentagram explains that the worlds can contain functional content or elaborate narrative idents."
+  },
+  "motion": "../sources/c420.mp4"
+}

@@ -1,0 +1,52 @@
+{
+  "id": "IB020",
+  "title": "Photography / Tips and techniques",
+  "image": "ib020.png",
+  "source": "../sources/photography-tips-and-techniques.txt",
+  "location": {
+    "series": "IBM Design Language / public web guidelines",
+    "item": 20,
+    "extent": "Complete webpage content-area capture; visible default tab states",
+    "url": "https://www.ibm.com/design/language/photography/tips-and-techniques/",
+    "order": 20000
+  },
+  "slide_intent": "Choose viewpoint, focus and treatment deliberately so photographs reveal useful context rather than manufacture drama.",
+  "strategic_value": "Eye-level and aerial views, sharp detail and natural lighting can make IBM imagery feel observant and consistent with its fact-based voice.",
+  "demonstration": "The webpage compares photographic viewpoints, gridded framing and focal points, aspect ratios, lighting, depth of field, artificial effects and clichés, with rejected examples marked in red.",
+  "category": "Imagery",
+  "practical_value": "Evaluate a photograph against concrete criteria for viewpoint, framing, light and authenticity before selecting or commissioning it.",
+  "content_islands": [
+    {
+      "name": "Perspective",
+      "spec": "Begin with eye-level and aerial examples, then place rejected forced viewpoints underneath."
+    },
+    {
+      "name": "Composition",
+      "spec": "Pair photographs with rectangular grid diagrams showing framing and focal positions; keep the failed focal-point comparisons below."
+    },
+    {
+      "name": "Aspect ratios",
+      "spec": "Place the black ratio diagram between composition and lighting; it labels standard crop proportions."
+    },
+    {
+      "name": "Lighting and depth",
+      "spec": "Pair a large example for each topic with smaller rejected images, distinguishing natural light and broad sharpness from stylized lighting or shallow focus."
+    },
+    {
+      "name": "Effects and clichés",
+      "spec": "Finish with red-marked artificial treatments and stock metaphors, keeping the explanatory copy with each pair."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text connects eye-level views to equality, sharpness to context and detail, and restrained treatment to IBM’s fact-based communication.",
+    "Expression": "Editorial photographs and gridded overlays demonstrate IBM’s preferred natural, contextual image treatment.",
+    "Application": "The guidance supplies framing, focal-point and crop decisions, including 16:9, 4:3, 3:2, 2:1 or 1:1 unless a format specifies otherwise.",
+    "Constraint": "The source rejects forced perspectives, soft focus, color washes, overlays and artificial additions; natural light is preferred whenever possible."
+  },
+  "ingredient": {
+    "name": "Photographic viewpoint and treatment",
+    "role": "Present work and people with clear context.",
+    "application": "Use natural eye-level or overhead viewpoints, clear focal points and sharp contextual detail; choose a listed crop ratio unless the format specifies otherwise.",
+    "scope": "IBM photography selection and creation guidance. Natural light is qualified as whenever possible, while listed rejection examples establish specific unwanted treatments."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "DJ21",
+  "title": "Goodbye language barriers",
+  "image": "dj21.png",
+  "source": "../sources/johnson-banks/Duolingo_illustration3-by-Johnson-Banks.jpg",
+  "location": {
+    "series": "Johnson Banks / Everyone can Duolingo / 2019",
+    "item": 21,
+    "extent": "Whole published artwork",
+    "order": 2021
+  },
+  "slide_intent": "Give an inclusive promise a human gesture because welcoming language becomes more concrete when paired with a greeting.",
+  "strategic_value": "A waving character beside the short promise can make Duolingo’s language mission feel social and approachable.",
+  "demonstration": "White rounded text reading “goodbye language barriers” stands beside a waving, turbaned illustrated character on green.",
+  "category": "Voice",
+  "practical_value": "Pair a concise promise with a character action that reinforces its meaning.",
+  "content_islands": [
+    {
+      "name": "Message",
+      "spec": "Stack the white phrase at left in three lines."
+    },
+    {
+      "name": "Greeting character",
+      "spec": "Place the waving illustrated figure at right, retaining the full body and raised hand."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The short promise, green field and waving character express the identity together.",
+    "Intent": "The accompanying agency account grounds the narrative in universal access to language learning."
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "BK035",
+  "title": "Primary Logo with Background",
+  "image": "bk035.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 35
+  },
+  "slide_intent": "Match the logo’s backing to its medium so the same mark remains legible over images and in fabricated signs.",
+  "strategic_value": "A controlled backing can protect Burger King’s warm identity while allowing signage to remain bright.",
+  "demonstration": "Two logos on BBQ Brown compare a Mayo Egg White backing with registration for film/photography and a white backing without registration for restaurant signage.",
+  "category": "Brand",
+  "practical_value": "Select the backing by medium and seek the stated marketing or legal guidance for registration on signage.",
+  "content_islands": [
+    {
+      "name": "Medium-specific guidance",
+      "spec": "Place the film, photography and signage explanation in the left column."
+    },
+    {
+      "name": "Film and photography logo",
+      "spec": "Place the registered Mayo Egg White-backed logo in the center under its caption."
+    },
+    {
+      "name": "Restaurant signage logo",
+      "spec": "Place the white-backed logo to the right under the signage-only caption."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text explains that backing retains legibility over images and white appears brighter in acrylic or plastic signage.",
+    "Expression": "The side-by-side specimens reveal the warm image backing and brighter signage backing.",
+    "Application": "Film/photography and restaurant signage receive separately labeled versions.",
+    "Constraint": "The image-backed version is used only over an image; signage registration requires consultation."
+  },
+  "ingredient": {
+    "name": "Primary logo backing",
+    "role": "Separate the logo from complex imagery or support a bright fabricated sign.",
+    "application": "Use Mayo Egg White behind the logo over film or photography; use white for acrylic or plastic restaurant signage.",
+    "scope": "Historical guide; consult BKC marketing/legal for signage registration. The illustrated no-registration sign is not universal permission."
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "F11",
+  "title": "Our boilerplate",
+  "image": "f11.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 11
+  },
+  "slide_intent": "Provide reusable introductory copy so people can describe the same organization consistently. A dated number also needs its date to remain credible when reused.",
+  "strategic_value": "Frontline AIDS can maintain a recognizable purpose across publications while prompting writers to check time-sensitive facts.",
+  "demonstration": "A short usage note on cyan points to three paragraphs of supplied copy. The note calls for the latest statistics, and the example text refers to 2019 figures.",
+  "category": "Voice",
+  "practical_value": "Use the supplied description for an organizational introduction and verify the date of any figures before publication.",
+  "content_islands": [
+    {
+      "name": "Usage guidance",
+      "spec": "Set the title and small usage note at left, emphasizing the instruction about data currency."
+    },
+    {
+      "name": "Reusable copy",
+      "spec": "Place the three paragraphs in one larger, aligned block. Point a green hand-drawn arrow toward the copy from the right edge."
+    }
+  ]
+}

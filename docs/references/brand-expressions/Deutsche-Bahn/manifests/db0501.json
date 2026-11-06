@@ -1,0 +1,26 @@
+{
+  "id": "DB0501",
+  "title": "MARKENPERSÖNLICHKEIT",
+  "image": "db0501.png",
+  "source": "../sources/page-05.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 5,
+    "section": 1,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Unsere-Markenpersoenlichkeit"
+  },
+  "slide_intent": "Define an organization’s stance so behavior and communication can be judged against the same intent.",
+  "strategic_value": "Responsibility, performance and customer orientation can give DB’s visual choices a common direction.",
+  "demonstration": "An uppercase title leads a paragraph explaining how brand personality guides appearance, action and communication.",
+  "category": "Brand",
+  "practical_value": "Ask whether a design makes the stated personality understandable across touchpoints.",
+  "content_islands": [
+    {
+      "name": "Personality definition",
+      "spec": "Set the statement beneath the bold title, connecting behavior, design and communication in one paragraph."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The paragraph explicitly describes personality as orientation for consistent behavior, design and communication."
+  }
+}

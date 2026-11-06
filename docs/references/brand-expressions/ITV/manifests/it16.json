@@ -1,0 +1,31 @@
+{
+  "id": "IT16",
+  "title": "ITVX / Many typographic voices",
+  "image": "it16.png",
+  "source": "../sources/1782130909-mpctvp3nrq-sazxnjjq9va-itv_11-3.webp",
+  "location": {
+    "series": "DixonBaxi / ITV case-study artwork series",
+    "item": 16,
+    "extent": "Whole source artwork",
+    "source_asset_index": 16
+  },
+  "slide_intent": "Use type contrast to express a range of programme and audience voices, because letterforms shape the tone and reading emphasis of a message.",
+  "strategic_value": "This approach can strengthen a recognizable voice across different programme moods.",
+  "demonstration": "A yellow printed sheet mixes italic sans, serif, bold sans and fine sans phrases at different scales, including STREAMING NOW and Nice to meet you.",
+  "category": "Typography",
+  "practical_value": "Use type contrast to express a range of programme and audience voices.",
+  "content_islands": [
+    {
+      "name": "Paper",
+      "spec": "A curved yellow sheet is photographed against a neutral surface."
+    },
+    {
+      "name": "Type samples",
+      "spec": "Lines of differently styled copy fill the sheet and crop at its edges."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A yellow printed sheet mixes italic sans, serif, bold sans and fine sans phrases at different scales, including STREAMING NOW and Nice to meet you.",
+    "Intent": "The case-study section Type That Speaks Every Voice says the custom serif and sans families express ITV’s range of voices and scale from billboards to on-screen detail."
+  }
+}

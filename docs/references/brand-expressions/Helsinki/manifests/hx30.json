@@ -1,0 +1,27 @@
+{
+  "id": "HX30",
+  "title": "Social media",
+  "image": "hx30.png",
+  "source": "../sources/design-and-create.offline.html",
+  "location": {
+    "series": "Web guideline introduction/component",
+    "order": 112,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/design-and-create",
+    "original_html": "../sources/design-and-create.html"
+  },
+  "slide_intent": "Identify official channels clearly because people need to know who is speaking before trusting a post.",
+  "strategic_value": "Consistent names, descriptions and profile images can make Helsinki’s social accounts easier to recognize.",
+  "demonstration": "This webpage introduction identifies account name, about information and profile image as signals of an official city channel.",
+  "category": "Application",
+  "practical_value": "Audit the account-level identifiers before refining individual posts.",
+  "content_islands": [
+    {
+      "name": "Channel identification",
+      "spec": "Keep the three recognition signals together beneath the heading."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text connects account identifiers to recognition of official channels.",
+    "Application": "It names account name, about information and profile image as the relevant surfaces."
+  }
+}

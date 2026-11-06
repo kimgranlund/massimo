@@ -1,0 +1,31 @@
+{
+  "id": "HE109",
+  "title": "Pride event logos",
+  "image": "he109.png",
+  "source": "../sources/download-elements.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Pride event logos",
+    "order": 146,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/download-elements#pride-event-logos",
+    "original_html": "../sources/download-elements.html"
+  },
+  "slide_intent": "Provide a prepared event-specific signature so a special occasion can retain official identity.",
+  "strategic_value": "Shared Pride files can support consistent Helsinki identification across static and moving media.",
+  "demonstration": "Expanded webpage section: the section lists vector PDF, PNG, MP4 and GIF formats above a download link; no animation is shown.",
+  "category": "Brand",
+  "practical_value": "Select the relevant static or animated Pride file, then inspect the actual asset before making motion claims.",
+  "content_islands": [
+    {
+      "name": "Format list",
+      "spec": "A single line lists print, screen and animation formats."
+    },
+    {
+      "name": "Download",
+      "spec": "The source link sits below the format note."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The page identifies PDF, PNG, MP4 and GIF versions of the Pride event logo."
+  }
+}

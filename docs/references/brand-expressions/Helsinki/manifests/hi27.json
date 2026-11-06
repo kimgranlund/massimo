@@ -1,0 +1,36 @@
+{
+  "id": "HI27",
+  "title": "Illustration use / Title page with waterfront fragments",
+  "image": "hi27.png",
+  "source": "../sources/illustration-examples.pdf",
+  "location": {
+    "page": 27,
+    "series": "Helsinki illustration examples — PDF derived from the official PowerPoint deck with LibreOffice",
+    "order": 217
+  },
+  "slide_intent": "Reserve clear space for the main message so illustration enriches a title without competing with it.",
+  "strategic_value": "A bold title beside familiar waterfront motifs can make a Helsinki presentation feel both clear and distinctive.",
+  "demonstration": "Large black placeholder text fills the upper left on pale blue; smaller date text and logo sit below, while separate building, plant and walking motifs occupy the right.",
+  "category": "Layout",
+  "practical_value": "Concentrate illustration on one side when a title requires a large uninterrupted reading area.",
+  "content_islands": [
+    {
+      "name": "Title hierarchy",
+      "spec": "Stack the large heading, small subtitle/date and tiny framed logo at left."
+    },
+    {
+      "name": "Loose illustration field",
+      "spec": "Distribute waterfront, plant and walking fragments down the right with some cropped at the edges."
+    }
+  ],
+  "ingredient": {
+    "name": "Title-page illustration placement",
+    "role": "Support the title without crowding it.",
+    "application": "Group motifs on one side and leave the title area open.",
+    "scope": "Observed placeholder layout, not a mandatory template; the printed date does not establish the edition of the whole deck."
+  },
+  "reference_purposes": {
+    "Application": "The slide applies isolated illustration elements to a title-page layout.",
+    "Expression": "The pale-blue field and scattered fragments establish an informal illustrated character."
+  }
+}

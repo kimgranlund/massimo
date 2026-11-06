@@ -1,0 +1,27 @@
+{
+  "id": "DB0815",
+  "title": "Dos and Don’ts / flat color",
+  "image": "db0815.png",
+  "source": "../sources/page-08.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 8,
+    "section": 15,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Markenfarben"
+  },
+  "slide_intent": "Keep color treatment consistent so effects do not change the visual language unpredictably.",
+  "strategic_value": "Flat color can preserve DB’s clear graphic contrast across layouts.",
+  "demonstration": "A flat-color composition sits beside a crossed-out gradient treatment.",
+  "category": "Color",
+  "practical_value": "Use uniform color fills rather than a gradient in the shown design system.",
+  "content_islands": [
+    {
+      "name": "Fill comparison",
+      "spec": "Compare the flat field at left with the crossed-out gradient field at right."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The two examples make the color-treatment difference visible.",
+    "Constraint": "The source says colors are uniform and gradients are not used."
+  }
+}

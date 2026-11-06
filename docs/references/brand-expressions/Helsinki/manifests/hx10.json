@@ -1,0 +1,26 @@
+{
+  "id": "HX10",
+  "title": "Visual storytelling premise",
+  "image": "hx10.png",
+  "source": "../sources/visual-storytelling.offline.html",
+  "location": {
+    "series": "Web guideline introduction/component",
+    "order": 39,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/visual-storytelling",
+    "original_html": "../sources/visual-storytelling.html"
+  },
+  "slide_intent": "Choose images for the life they portray because viewers infer a city’s values from visible people, places and activities.",
+  "strategic_value": "The stated mix of freedom, equality, trust and urban nature can distinguish Helsinki’s account of sustainable city life.",
+  "demonstration": "This webpage text introduces visual storytelling through good sustainable life, freedom of self-expression, functionality, equality, trust, nature and a quirky atmosphere across seasons.",
+  "category": "Imagery",
+  "practical_value": "Evaluate whether an image supports one of these stated city qualities.",
+  "content_islands": [
+    {
+      "name": "Storytelling premise",
+      "spec": "Keep the two introductory paragraphs together before the medium-specific sections."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text explicitly states the image of Helsinki that visual storytelling should build."
+  }
+}

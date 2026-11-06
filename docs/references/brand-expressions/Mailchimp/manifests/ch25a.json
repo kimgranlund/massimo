@@ -1,0 +1,42 @@
+{
+  "id": "CH25A",
+  "title": "Cooper Light / Typography",
+  "image": "ch25a.png",
+  "source": "../sources/ch25.gif",
+  "location": {
+    "series": "COLLINS / Mailchimp case study",
+    "item": 25,
+    "extent": "Complete photographed spread from one GIF frame",
+    "section": "Gallery",
+    "frame": 1
+  },
+  "slide_intent": "Choose a typeface for the tone it gives words because readers hear character through visual form.",
+  "strategic_value": "The light serif and rounded details can give Mailchimp an editorial voice with warmth.",
+  "demonstration": "A yellow spread pairs a greeting and rationale at left with a large introduction to Cooper Light at right.",
+  "category": "Typography",
+  "practical_value": "Connect the stated typeface role with an actual large-scale specimen.",
+  "content_islands": [
+    {
+      "name": "Left page",
+      "spec": "Place the greeting above the explanatory paragraph naming the primary face."
+    },
+    {
+      "name": "Right page",
+      "spec": "Set the large multiline introduction across most of the page height."
+    },
+    {
+      "name": "Folio",
+      "spec": "Retain printed folio 72 and Version 1.0 footer as historical context."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The visible rationale links the light weight and rounded details to editorial tone and personality.",
+    "Application": "The spread identifies Cooper Light as the primary brand face and demonstrates it in headlines."
+  },
+  "ingredient": {
+    "name": "Cooper Light",
+    "role": "Give headline language an editorial voice with warmth.",
+    "application": "Use the large greeting and introduction to assess the stated primary-face role.",
+    "scope": "Historical Version 1.0 photographed spread; not a current font license or complete typography specification."
+  }
+}

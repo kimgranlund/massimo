@@ -1,0 +1,30 @@
+{
+  "id": "CH16",
+  "title": "Editorial spread / Create better campaigns",
+  "image": "ch16.png",
+  "source": "../sources/ch16.jpg",
+  "location": {
+    "series": "COLLINS / Mailchimp case study",
+    "item": 16,
+    "extent": "Complete published artwork",
+    "section": "Gallery"
+  },
+  "slide_intent": "Balance an explanation with a human example because readers need both the proposition and evidence of its relevance.",
+  "strategic_value": "The founder photograph and orderly text can make Mailchimp’s service story feel credible without abandoning yellow or illustration.",
+  "demonstration": "A photographed open spread pairs a large headline, columns and small illustrations on the left with a framed portrait and quotation on yellow at right.",
+  "category": "Layout",
+  "practical_value": "Compare the roles of headline, editorial explanation and customer imagery in a spread.",
+  "content_islands": [
+    {
+      "name": "Left page",
+      "spec": "Place the large serif headline above columns and a narrow set of illustrated points."
+    },
+    {
+      "name": "Right page",
+      "spec": "Frame the portrait above its quotation on a yellow page with a large folio at the foot."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The identity is applied to an editorial spread combining text, photography and small illustrations."
+  }
+}

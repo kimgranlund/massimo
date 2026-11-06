@@ -1,0 +1,29 @@
+{
+  "id": "DW144",
+  "title": "Help / Unanswered color questions",
+  "image": "dw144.png",
+  "source": "../sources/pages/help.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/help",
+    "section": "Color",
+    "item": 144,
+    "order": 1440
+  },
+  "slide_intent": "Keep unresolved color questions explicit because missing guidance should not become an invented palette rule.",
+  "strategic_value": "A visible list of unanswered questions can reveal where Duolingo needs additional cross-brand clarification.",
+  "demonstration": "Two questions address alternate shades and mixing Plus with the learning app beside lorem ipsum.",
+  "category": "Color",
+  "practical_value": "Treat these questions as documentation gaps, not permission to change shades or combine palettes.",
+  "content_islands": [
+    {
+      "name": "Unfinished introduction",
+      "spec": "Place Color and the placeholder paragraph at left."
+    },
+    {
+      "name": "Open questions",
+      "spec": "Place the alternate-shade question above the Plus-and-learning-app palette question at right, retaining the source’s wording."
+    }
+  ],
+  "reference_purposes": {}
+}

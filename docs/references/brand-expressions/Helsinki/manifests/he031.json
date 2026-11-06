@@ -1,0 +1,47 @@
+{
+  "id": "HE031",
+  "title": "Style of photographs – how is it being depicted?",
+  "image": "he031.png",
+  "source": "../sources/visual-storytelling.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Style of photographs – how is it being depicted?",
+    "order": 43,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/visual-storytelling#style-of-photographs---how-is-it-being-depicted-",
+    "original_html": "../sources/visual-storytelling.html"
+  },
+  "slide_intent": "Choose photographic treatment that feels believable and specific because atmosphere shapes whether a city story feels authentic or generic.",
+  "strategic_value": "Natural movement, unusual viewpoints and real weather can make Helsinki’s character more memorable.",
+  "demonstration": "This expanded webpage section compares natural movement, unposed activity, peculiar details, unusual viewpoints, rain and storm light, then states retouching and black-and-white guidance.",
+  "category": "Imagery",
+  "practical_value": "Assess viewpoint, light and editing alongside subject matter; preserve natural results.",
+  "content_islands": [
+    {
+      "name": "Human atmosphere",
+      "spec": "Compare natural motion and unposed people."
+    },
+    {
+      "name": "Authentic character",
+      "spec": "Show distinctive details and real events against generic staged alternatives."
+    },
+    {
+      "name": "Light and viewpoint",
+      "spec": "Compare angles, night reflections and dramatic weather."
+    },
+    {
+      "name": "Finishing guidance",
+      "spec": "End with natural retouching and historical black-and-white scope."
+    }
+  ],
+  "ingredient": {
+    "name": "Photographic treatment",
+    "role": "Give city stories a natural yet distinctive atmosphere.",
+    "application": "Use believable motion, authentic activity and considered light, viewpoint and crop; keep retouching natural.",
+    "scope": "Reserve black and white for historical subjects; the examples do not prescribe a universal camera setting or filter."
+  },
+  "reference_purposes": {
+    "Intent": "The source says atmosphere and unusual viewpoints can evoke stronger emotions and make messages memorable.",
+    "Application": "The paired photographs compare treatments of similar subjects.",
+    "Constraint": "Black-and-white images are used only for historical subjects; retouching must remain natural."
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "CH23",
+  "title": "Website / Introducing the new look",
+  "image": "ch23.png",
+  "source": "../sources/ch23.png",
+  "location": {
+    "series": "COLLINS / Mailchimp case study",
+    "item": 23,
+    "extent": "Complete published artwork",
+    "section": "Gallery"
+  },
+  "slide_intent": "Explain a visual change in familiar terms because existing users need continuity while meeting a new identity.",
+  "strategic_value": "The yellow announcement page can connect Mailchimp’s evolving product scope with a recognizable visual voice.",
+  "demonstration": "A browser mockup combines navigation, a centered redesign headline and paragraph on yellow with a surreal gray-and-black scene below.",
+  "category": "Brand",
+  "practical_value": "Compare how a redesign announcement combines explanation with a specimen of the new style.",
+  "content_islands": [
+    {
+      "name": "Header",
+      "spec": "Keep the familiar signature, links and actions across the top."
+    },
+    {
+      "name": "Announcement",
+      "spec": "Center the headline and explanation within the yellow area."
+    },
+    {
+      "name": "Image",
+      "spec": "Let the imaginative scene cross from yellow into the white lower field."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The visible paragraph links the updated identity to evolving products and customer needs.",
+    "Application": "The source presents a website announcement explaining the redesign."
+  }
+}

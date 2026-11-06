@@ -1,0 +1,31 @@
+{
+  "id": "BK020",
+  "title": "Verbal Identity / Why voice matters",
+  "image": "bk020.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 20
+  },
+  "slide_intent": "Treat words as part of identity because what a brand says and how it says it shape people’s impressions.",
+  "strategic_value": "A consistent voice across social, merchandising and communications can make Burger King recognizable beyond its logo.",
+  "demonstration": "Two large paragraphs compare brands with people and explain consistency across communication settings.",
+  "category": "Voice",
+  "practical_value": "Include voice decisions alongside visual and behavioral decisions when defining identity.",
+  "content_islands": [
+    {
+      "name": "Voice rationale",
+      "spec": "Place the brand-as-person explanation in the upper right column."
+    },
+    {
+      "name": "Scope",
+      "spec": "Place the paragraph naming social media, merchandising and communications below."
+    },
+    {
+      "name": "Topic label",
+      "spec": "Keep Verbal Identity at left."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text explicitly explains how language shapes perceptions and why a consistent voice matters."
+  }
+}

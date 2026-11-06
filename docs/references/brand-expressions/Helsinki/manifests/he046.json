@@ -1,0 +1,33 @@
+{
+  "id": "HE046",
+  "title": "Colours",
+  "image": "he046.png",
+  "source": "../sources/visual-storytelling.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Colours",
+    "order": 66,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/visual-storytelling#colours",
+    "original_html": "../sources/visual-storytelling.html"
+  },
+  "slide_intent": "Judge color against its background so a viewer can read a moving-image message.",
+  "strategic_value": "Retaining the city palette while checking legibility can connect Helsinki videos without sacrificing comprehension.",
+  "demonstration": "This expanded webpage-section capture states that the full city palette is available for video and links to definitions and accessible combinations.",
+  "category": "Color",
+  "practical_value": "Choose a palette color only after checking its pairing and any image behind the text.",
+  "content_islands": [
+    {
+      "name": "Color permission and condition",
+      "spec": "Keep the all-colors permission with the legibility qualification."
+    },
+    {
+      "name": "Reference links",
+      "spec": "Place city definitions and accessible-combination links below the explanation."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text explains accessibility as making text easy enough to read.",
+    "Application": "It instructs designers to consider color pairs and background images.",
+    "Constraint": "Use of the palette in video is conditional on accessible reading."
+  }
+}

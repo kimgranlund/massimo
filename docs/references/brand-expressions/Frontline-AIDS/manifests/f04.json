@@ -1,0 +1,24 @@
+{
+  "id": "F04",
+  "title": "We are here, on the frontline of sexual health / against discrimination",
+  "image": "f04.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 4
+  },
+  "slide_intent": "Use concrete subjects to ground an advocacy statement. The photograph gives a reader a point of entry before the words name the concern.",
+  "strategic_value": "The paired scenes can connect sexual health and opposition to discrimination within the same campaign voice.",
+  "demonstration": "A close-up of a condom demonstration and a portrait occupy adjacent panels. Their headlines use the repeated opening with different endings and color treatments.",
+  "category": "Voice",
+  "practical_value": "Choose a photograph and headline that make sense together, and describe what appears without assigning a health status or identity to a person pictured.",
+  "content_islands": [
+    {
+      "name": "Demonstration panel",
+      "spec": "Place the demonstration at left, keeping the hand action legible above the pink headline block."
+    },
+    {
+      "name": "Portrait panel",
+      "spec": "Fill the right panel with the portrait. Place the blue-on-black declaration in the lower-right field to keep the face clear."
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "id": "BK016",
+  "title": "2. Big & Bold",
+  "image": "bk016.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 16
+  },
+  "slide_intent": "Use scale and detail deliberately so viewers notice the product quickly and read confidence in its presentation.",
+  "strategic_value": "An oversized burger and rich orange field can make Burger King’s food visually assertive.",
+  "demonstration": "Cream heading and explanatory copy sit at left; a macro burger photograph fills the right with a shadow below.",
+  "category": "Imagery",
+  "practical_value": "Judge whether cropping preserves appetizing detail while making the product dominant.",
+  "content_islands": [
+    {
+      "name": "Principle copy",
+      "spec": "Place the cream heading and statements about scale and rich color at left."
+    },
+    {
+      "name": "Macro food",
+      "spec": "Place the large burger at right, cropped along the outer edge with its shadow on the field."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The copy describes confidence and directness as the reason for macro photography and detail.",
+    "Application": "The page explicitly calls for playing with scale and macro photography, demonstrated by the enlarged burger."
+  },
+  "ingredient": {
+    "name": "Macro food photography",
+    "role": "Give the food confident visual presence.",
+    "application": "Play with scale, emphasize details and use full, rich colors.",
+    "scope": "Design principle in this historical guide; the sample does not set a mandatory product-to-page ratio."
+  }
+}

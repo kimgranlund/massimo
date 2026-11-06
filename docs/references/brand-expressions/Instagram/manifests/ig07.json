@@ -1,0 +1,31 @@
+{
+  "id": "IG07",
+  "title": "Inspire expression / Pride Here",
+  "image": "ig07.png",
+  "source": "../sources/ig07.jpg",
+  "location": {
+    "series": "Elvis Dinh / Instagram brand design system / project year 2022",
+    "item": 7,
+    "extent": "whole source artwork"
+  },
+  "slide_intent": "Let a cultural message vary the visual voice so people can recognize their own interests within the brand.",
+  "strategic_value": "Expressive type, stickers and photography can connect Instagram to the Pride moment shown.",
+  "demonstration": "An offset portrait sits on purple with tilted orange Pride Here lettering, a rainbow heart and the line To be here is defiance.",
+  "category": "Brand",
+  "practical_value": "Use a cultural message to justify more expressive type and color while keeping the photograph central.",
+  "content_islands": [
+    {
+      "name": "Purple field and portrait",
+      "spec": "Offset the photograph to expose a broad purple strip at left and above."
+    },
+    {
+      "name": "Pride headline and sticker",
+      "spec": "Angle orange lettering over the photo edge and place the rainbow heart near the upper right."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The accompanying Inspire expression principle identifies creative interests and self-expression as the aim.",
+    "Expression": "Tilted type, a rainbow heart and purple field show a deliberately expressive composition.",
+    "Application": "The example applies the identity to Pride communication."
+  }
+}

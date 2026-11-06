@@ -1,0 +1,32 @@
+{
+  "id": "DB10",
+  "title": "Motion signature / portrait sequence",
+  "image": "db10.png",
+  "source": "../sources/db10.mp4",
+  "location": {
+    "series": "COLLINS / Dropbox / 2017 identity case study",
+    "item": 10,
+    "section": "Gallery",
+    "extent": "Complete published clip; PNG is a frame at 0.5 seconds",
+    "duration_seconds": 16.13
+  },
+  "slide_intent": "Keep a recognizable action across changing colors because variation can otherwise obscure continuity.",
+  "strategic_value": "The recurring diamond assembly can hold Dropbox’s identity together across contrasting palette combinations.",
+  "demonstration": "A portrait sequence folds the mark into stacked diamonds and separates it into moving pieces, changing from blue/gray to red/blue, purple/pink and orange/green.",
+  "category": "Motion",
+  "practical_value": "Compare color-pair changes while keeping the assembly behavior consistent.",
+  "content_islands": [
+    {
+      "name": "Diamond movement",
+      "spec": "Follow the central mark through compression, separation and reconstruction."
+    },
+    {
+      "name": "Color episodes",
+      "spec": "Retain each background change and the closing return to blue on gray."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A portrait sequence folds the mark into stacked diamonds and separates it into moving pieces, changing from blue/gray to red/blue, purple/pink and orange/green."
+  },
+  "motion": "../sources/db10.mp4"
+}

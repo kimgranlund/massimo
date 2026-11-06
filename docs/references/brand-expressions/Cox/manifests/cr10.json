@@ -1,0 +1,30 @@
+{
+  "id": "CR10",
+  "title": "Virtual Cox Home Tour — video poster",
+  "image": "cr10.png",
+  "source": "../sources/cr10.jpg",
+  "location": {
+    "series": "Cox Brand Collection — Lindsay Little / Periscope",
+    "item": 10,
+    "extent": "whole source image"
+  },
+  "slide_intent": "Place an explanation in the room where a service is used so the reader can understand its practical relevance.",
+  "strategic_value": "The annotated kitchen can make Cox’s mobile viewing offer easier to imagine at home.",
+  "demonstration": "The supplied video poster shows an interactive home-tour view with blue hotspots and an open Contour explanation over a kitchen counter. This is a poster, not a playable tour.",
+  "category": "Application",
+  "practical_value": "Anchor a product explanation beside a plausible use location and keep the rest of the room available for orientation.",
+  "content_islands": [
+    {
+      "name": "Room view",
+      "spec": "Fill the canvas with the kitchen and adjacent living area."
+    },
+    {
+      "name": "Hotspots and explanation",
+      "spec": "Mark interactive locations with blue circular hotspots and place the black explanatory card near the tablet on the counter."
+    },
+    {
+      "name": "Player furniture",
+      "spec": "Retain the supplied tour title and playback controls as evidence that this image is a video poster."
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": "BK105",
+  "title": "Primary Stripe Usage",
+  "image": "bk105.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 105
+  },
+  "slide_intent": "Control enlargement so an abstract motif keeps enough of its structure for people to recognize what it represents.",
+  "strategic_value": "Retaining the Whopper cross-section can keep cropped Burger King stripe graphics tied to the product.",
+  "demonstration": "Two tall stripe crops labeled Minimum and Maximum are joined by a horizontal double arrow, showing a fuller cross-section and a tighter enlargement.",
+  "category": "Imagery",
+  "practical_value": "Use the illustrated crop range to assess recognition when enlarging the primary stripes; do not invent a numeric zoom limit.",
+  "content_islands": [
+    {
+      "name": "Usage guidance",
+      "spec": "Place the explanation about retaining the Whopper cross-section at left."
+    },
+    {
+      "name": "Minimum crop",
+      "spec": "Show the more complete stripe cross-section in the first tall frame."
+    },
+    {
+      "name": "Maximum crop",
+      "spec": "Place the enlarged crop at right and connect the examples with a two-headed arrow."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The copy explains that excessive zoom loses recognition of the Whopper cross-section.",
+    "Application": "Minimum and Maximum examples demonstrate the qualitative enlargement range.",
+    "Constraint": "The instruction limits enlargement by retained recognition; no numeric zoom percentage is supplied."
+  },
+  "ingredient": {
+    "name": "Primary stripe crop",
+    "role": "Keep the food cross-section recognizable at different scales.",
+    "application": "Retain the Whopper cross-section when enlarging the stripes; compare against the shown minimum and maximum examples.",
+    "scope": "Applies to primary illustration stripes in this historical guide; the range is visual, not numeric."
+  }
+}

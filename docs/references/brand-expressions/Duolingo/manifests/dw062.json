@@ -1,0 +1,40 @@
+{
+  "id": "DW062",
+  "title": "Writing / Tone / Context",
+  "image": "dw062.png",
+  "source": "../sources/pages/writing-tone.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/tone",
+    "section": "Context",
+    "item": 62,
+    "order": 620
+  },
+  "slide_intent": "Respond differently to success and setbacks so feedback acknowledges progress without discouraging continued effort.",
+  "strategic_value": "Concise celebration and supportive correction can make Duolingo’s product feedback feel responsive to the learner.",
+  "demonstration": "Success examples appear above setback examples, each contrasting preferred concise copy with formal or excessive alternatives.",
+  "category": "Voice",
+  "practical_value": "Choose celebration for success and a short helpful next step for a setback.",
+  "content_islands": [
+    {
+      "name": "Guidance column",
+      "spec": "Place the Context heading and product-moment explanation at left."
+    },
+    {
+      "name": "Worked examples",
+      "spec": "Divide the right panel into success and setback groups, each with a rule followed by preferred and rejected messages."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text explains that learners should be celebrated when they succeed and supported when they stumble so they keep going.",
+    "Expression": "The product messages demonstrate cheerful and supportive registers.",
+    "Application": "The paired success and setback examples show how to adapt feedback.",
+    "Constraint": "The setback guidance warns against overdoing reassurance."
+  },
+  "ingredient": {
+    "name": "Product-feedback tone",
+    "role": "Acknowledge the outcome while encouraging continuation.",
+    "application": "Celebrate success; keep setback messages friendly, helpful and concise.",
+    "scope": "Historical official guidelines from the 2024–2025 archived snapshot; this records the displayed guidance, not current Duolingo product behavior."
+  }
+}

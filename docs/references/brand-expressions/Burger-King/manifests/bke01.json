@@ -1,0 +1,42 @@
+{
+  "id": "BKE01",
+  "title": "Restaurant identity film",
+  "image": "bke01.png",
+  "source": "../sources/bke01.mp4",
+  "location": {
+    "series": "JKR / Burger King identity case study",
+    "item": 1,
+    "extent": "Complete clip; PNG is a poster frame",
+    "duration_seconds": 37.89
+  },
+  "slide_intent": "Carry a visual identity into physical navigation so visitors can recognize the place and understand where to go.",
+  "strategic_value": "Warm stripes, signatures and materials can connect Burger King’s exterior, drive-through and counter experiences.",
+  "demonstration": "The film moves from colored bands into restaurant renderings, pavement arrows, facade lettering, counters and illuminated exterior views.",
+  "category": "Application",
+  "practical_value": "Compare the identity’s role at arrival, navigation and ordering distances.",
+  "content_islands": [
+    {
+      "name": "Graphic introduction",
+      "spec": "Open with stacked brown, red and orange bands on cream."
+    },
+    {
+      "name": "Exterior and navigation",
+      "spec": "Sequence restaurant exteriors, drive-through paths and striped pavement arrows."
+    },
+    {
+      "name": "Interior and evening",
+      "spec": "Show facade detail, counter signage and day-to-night views before returning to the bands."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "Restaurant renderings show the palette and signatures on buildings, pavement guidance and ordering surfaces.",
+    "Expression": "The same warm bands link the film transitions with physical navigation."
+  },
+  "motion": "../sources/bke01.mp4",
+  "ingredient": {
+    "name": "Striped environmental graphics",
+    "role": "Connect recognition with direction.",
+    "application": "Observe how the bands become pavement arrows and edge treatments around restaurant architecture.",
+    "scope": "JKR case-study renderings; not a dimensional wayfinding or building specification."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "LH01",
+  "title": "Identity overview",
+  "image": "lh01.png",
+  "source": "../sources/lh01.jpg",
+  "location": {
+    "series": "Mona Franz / Lufthansa 2018",
+    "item": 1,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Connect separate ingredients into one recognizable experience because people encounter a brand through many objects.",
+  "strategic_value": "Blue, yellow, the crane and a consistent type voice can connect travel communications with service environments.",
+  "demonstration": "A left column of signatures and type sits beside a mosaic of uniforms, materials, signage, interiors and devices.",
+  "category": "Brand",
+  "practical_value": "Compare whether the same identity remains recognizable across a service journey.",
+  "content_islands": [
+    {
+      "name": "Identity column",
+      "spec": "Place the signatures and alphabet at left."
+    },
+    {
+      "name": "Application mosaic",
+      "spec": "Group physical and digital examples at right."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A left column of signatures and type sits beside a mosaic of uniforms, materials, signage, interiors and devices."
+  }
+}

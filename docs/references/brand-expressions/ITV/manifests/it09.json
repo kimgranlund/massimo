@@ -1,0 +1,37 @@
+{
+  "id": "IT09",
+  "title": "ITVX / Spark yellow signature",
+  "image": "it09.png",
+  "source": "../sources/1782130855-dr-igk9saem6aj_br5xeq-itv-x-logo-spark-yellow.jpg",
+  "location": {
+    "series": "DixonBaxi / ITV case-study artwork series",
+    "item": 9,
+    "extent": "Whole source artwork",
+    "source_asset_index": 8
+  },
+  "slide_intent": "Evaluate the recognition of a two-colour signature before adding content, because a repeated colour contrast can become a fast recognition cue.",
+  "strategic_value": "This approach can strengthen distinctive brand recall through repetition.",
+  "demonstration": "A dark ITVX logo sits centrally on a full bright yellow field with generous space.",
+  "category": "Color",
+  "practical_value": "Evaluate the recognition of a two-colour signature before adding content.",
+  "content_islands": [
+    {
+      "name": "Field",
+      "spec": "Yellow covers the entire artwork."
+    },
+    {
+      "name": "Wordmark",
+      "spec": "The dark ITVX lockup occupies the centre."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A dark ITVX logo sits centrally on a full bright yellow field with generous space.",
+    "Intent": "The case study says colour reflects distinct personalities across ITV; its ITVX section describes an identity built to focus attention and amplify content."
+  },
+  "ingredient": {
+    "name": "ITVX yellow and dark signature",
+    "role": "Identify the streaming service quickly.",
+    "application": "Evaluate the recognition of a two-colour signature before adding content.",
+    "scope": "Observed in this DixonBaxi ITV/ITVX case study. No numeric colour, sizing, spacing or exclusivity rule is supplied by this artwork."
+  }
+}

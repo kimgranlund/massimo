@@ -1,0 +1,134 @@
+{
+  "id": "IB024",
+  "title": "Infographics / Technical diagrams — Design",
+  "image": "ib024.png",
+  "source": "../sources/infographics-technical-diagrams-design.txt",
+  "location": {
+    "series": "IBM Design Language / public web guidelines",
+    "item": 24,
+    "extent": "Complete webpage content-area capture; visible default tab states",
+    "url": "https://www.ibm.com/design/language/infographics/technical-diagrams/design/",
+    "order": 24000
+  },
+  "slide_intent": "Make structural relationships legible through consistent nodes and connectors so viewers can distinguish hierarchy, sequence and meaning in complex systems.",
+  "strategic_value": "A common diagram vocabulary can make IBM technical communication recognizable while reducing the effort needed to decode each new diagram.",
+  "demonstration": "The webpage progresses from complete diagrams to bullet, small and large nodes, connectors, icon and type rules, measured grid construction, color tables and additional indicators.",
+  "category": "Geometry",
+  "practical_value": "Select a node type for the amount of information, then construct and label connections on the shared grid without relying on color alone.",
+  "content_islands": [
+    {
+      "name": "Resources and examples",
+      "spec": "Place starter-kit and library cards above a group of complete technical diagrams illustrating different densities and structures."
+    },
+    {
+      "name": "Node family",
+      "spec": "Compare bullet, small and large nodes, then show text behavior and nesting with the visible default tab."
+    },
+    {
+      "name": "Connections",
+      "spec": "Arrange line styles and endings above four routing examples: square elbow, rounded elbow, straight and curved."
+    },
+    {
+      "name": "Icons and type",
+      "spec": "Follow with icon/logo examples, type specifications, alignment diagrams and red-marked prohibited text treatments."
+    },
+    {
+      "name": "Grid and spacing",
+      "spec": "Place dimensioned node drawings before the gridded full-diagram example and artboard guidance."
+    },
+    {
+      "name": "Color",
+      "spec": "Keep the light/dark specification table with example nodes and rejected low-contrast or mixed-color treatments."
+    },
+    {
+      "name": "Additional elements",
+      "spec": "Finish with line styles, indicator badges and offset repeated-instance examples, keeping their legend and counting instructions attached."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The introduction states that diagrams make relationships, hierarchy and sequence clear; color guidance explains redundant encoding for accessibility.",
+    "Expression": "The diagrams combine IBM Plex, UI icons, restrained color and regular node geometry.",
+    "Application": "The page specifies 8px construction, node formats, 24px node icons, 16px badge icons, label hierarchy and routing alternatives.",
+    "Constraint": "Never rely on color alone. A legend is always required, nodes remain monochromatic, and repeated instances use two offset lines regardless of the actual count."
+  },
+  "ingredient": {
+    "name": "Technical-diagram nodes and connectors",
+    "role": "Make entities and relationships distinguishable.",
+    "application": "Choose bullet, small or large nodes for the content; snap nodes and connectors to an 8px grid and explain color and line meanings in a legend.",
+    "scope": "IBM technical documentation diagrams. Small nodes require icons; large nodes can omit them. The 8px construction and legend requirement are specific to this guidance."
+  },
+  "motion_assets": [
+    {
+      "title": "Outlined node expansion",
+      "file": "../sources/media/52f8c0f01457.mp4",
+      "poster": "../sources/media/52f8c0f01457-poster.png",
+      "duration_seconds": 9.19,
+      "source_url": "https://www.ibm.com/design/language/bae1be3960d2628ead6aedc413027f55/outlined_node.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Side-bar node expansion",
+      "file": "../sources/media/110bcca4d576.mp4",
+      "poster": "../sources/media/110bcca4d576-poster.png",
+      "duration_seconds": 9.19,
+      "source_url": "https://www.ibm.com/design/language/46e8d6195e4dddbf46d95451681099c5/sidebar_node.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Color-block node expansion",
+      "file": "../sources/media/f000efa25bb6.mp4",
+      "poster": "../sources/media/f000efa25bb6-poster.png",
+      "duration_seconds": 9.19,
+      "source_url": "https://www.ibm.com/design/language/03dfcee0e518cadc11494c0e208a0483/block_node.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Diagram label arrangements",
+      "file": "../sources/media/e59dee90650b.mp4",
+      "poster": "../sources/media/e59dee90650b-poster.png",
+      "duration_seconds": 10.94,
+      "source_url": "https://www.ibm.com/design/language/8e6c7dbb705f17b5de34a3bfab6fcd37/typography.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Diagram colors on light backgrounds",
+      "file": "../sources/media/154877ee5eb0.mp4",
+      "poster": "../sources/media/154877ee5eb0-poster.png",
+      "duration_seconds": 10.79,
+      "source_url": "https://www.ibm.com/design/language/aced53866d890b25febe293c55b3967e/color2-light.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Diagram colors on dark backgrounds",
+      "file": "../sources/media/33beb92cde8e.mp4",
+      "poster": "../sources/media/33beb92cde8e-poster.png",
+      "duration_seconds": 10.79,
+      "source_url": "https://www.ibm.com/design/language/40e5cfab45843f70d77fec9cff8ed905/color2-dark.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    }
+  ]
+}

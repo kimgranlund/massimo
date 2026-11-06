@@ -1,0 +1,37 @@
+{
+  "id": "BK122",
+  "title": "Legal Standards / Terms & Conditions Cont.",
+  "image": "bk122.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 122
+  },
+  "slide_intent": "Keep localization and ownership information explicit so a brand’s legal markings are not copied blindly between countries or media.",
+  "strategic_value": "Territorial examples and legal-line distinctions can help Burger King teams recognize when a local review is needed.",
+  "demonstration": "Three dense reference columns continue country designations, symbol placement, local-language marks, copyright and legal-line examples, with region-specific ownership wording.",
+  "category": "Brand",
+  "practical_value": "Distinguish the historical guide’s US symbol-placement instructions from its directions to seek local guidance elsewhere.",
+  "content_islands": [
+    {
+      "name": "Continuation label",
+      "spec": "Place the small section label at left."
+    },
+    {
+      "name": "Country symbols and position",
+      "spec": "Continue the designation list and US symbol-position FAQ in the next column."
+    },
+    {
+      "name": "Language and copyright",
+      "spec": "Place the localization and copyright questions in the middle column."
+    },
+    {
+      "name": "Legal-line examples",
+      "spec": "Use the far-right column for ownership explanation and regional legal-line examples."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text links local-language marks to local consumer appeal and legal lines to identifying ownership.",
+    "Application": "The source illustrates upper-right wordmark and lower-right design-mark placement in the US and provides regional legal-line examples.",
+    "Constraint": "The guide requires legal checks for local-language marks and registration uncertainty; it distinguishes US instructions from outside-US referral. These are historical source statements."
+  }
+}

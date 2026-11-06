@@ -1,0 +1,25 @@
+{
+  "id": "I076",
+  "title": "Grid",
+  "image": "i076.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 76,
+    "printed_page": 76
+  },
+  "slide_intent": "Teach designers to relate margins to internal spacing so the outer edge reads as a boundary and the spaces inside it organize information.",
+  "strategic_value": "Instacart can retain a consistent rhythm across layouts by starting from one repeatable spacing relationship.",
+  "demonstration": "A landscape frame holds six rows of six pale blue cells. The gutter is labeled x, and the top and left margins are labeled 2x.",
+  "category": "Layout",
+  "practical_value": "Set up the starting grid with six columns and six rows, then set the margins to twice the gutter.",
+  "content_islands": [
+    {
+      "name": "Grid instructions",
+      "spec": "Place the heading and spacing rule in the narrow left column."
+    },
+    {
+      "name": "Measured grid",
+      "spec": "Fill the wider right field with 36 blue cells separated by white gutters. Dimension the first gutter and both outer margins at the upper left."
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id": "F67",
+  "title": "Our partner stamp",
+  "image": "f67.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 67
+  },
+  "slide_intent": "Introduce a compact identifier for affiliation so audiences can recognize a partner’s relationship to Frontline AIDS on the partner’s own material.",
+  "strategic_value": "A consistent stamp can communicate that relationship while leaving the partner’s identity in the lead.",
+  "demonstration": "The black stamp appears large on gray, then appears again in a clear-space diagram surrounded by alignment guides and faint symbol references.",
+  "category": "Brand",
+  "practical_value": "Use the supplied stamp artwork for affiliation and apply the clearance shown in the diagram before placing adjacent copy or imagery.",
+  "content_islands": [
+    {
+      "name": "Partnership guidance",
+      "spec": "Set the heading, role explanation and asset reference in the white text column."
+    },
+    {
+      "name": "Stamp specimen",
+      "spec": "Center the large stamp on the gray field and keep its enclosing line, symbol and Partner text intact."
+    },
+    {
+      "name": "Clear-space construction",
+      "spec": "Align the smaller diagram beneath the specimen. Show the required breathing room around the outer boundary with guides."
+    }
+  ]
+}

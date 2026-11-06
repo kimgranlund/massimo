@@ -1,0 +1,26 @@
+{
+  "id": "HX07",
+  "title": "Wave motifs",
+  "image": "hx07.png",
+  "source": "../sources/use-basic-elements.offline.html",
+  "location": {
+    "series": "Web guideline introduction/component",
+    "order": 28,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/use-basic-elements",
+    "original_html": "../sources/use-basic-elements.html"
+  },
+  "slide_intent": "Use a repeated edge to organize space because a boundary can divide content and carry identity simultaneously.",
+  "strategic_value": "The coat-of-arms-inspired wave motifs can make surface divisions recognizable as Helsinki.",
+  "demonstration": "This webpage introduction describes wave motifs as repeated edge patterns for dividing surfaces; it contains no motif specimen.",
+  "category": "Geometry",
+  "practical_value": "Consider a wave boundary when a composition needs distinct surfaces.",
+  "content_islands": [
+    {
+      "name": "Motif definition",
+      "spec": "Keep the origin and surface-division explanation together under the heading."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The text describes repeated edge patterns used to divide surfaces."
+  }
+}

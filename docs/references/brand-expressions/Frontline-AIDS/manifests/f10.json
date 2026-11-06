@@ -1,0 +1,24 @@
+{
+  "id": "F10",
+  "title": "Our brand narrative",
+  "image": "f10.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 10
+  },
+  "slide_intent": "Teach writers how an opening assumption and a short rebuttal can create a reason to keep reading. The pacing makes the longer explanation accessible.",
+  "strategic_value": "Frontline AIDS can challenge the idea that the end of AIDS is already assured and lead readers toward collective action.",
+  "demonstration": "A brief premise at left ends with the single-word rebuttal “Wrong.” Two adjacent columns develop the narrative, finishing with a bold collective statement.",
+  "category": "Voice",
+  "practical_value": "Choose a strong opening and follow it with context that explains the claim and the action being asked of readers.",
+  "content_islands": [
+    {
+      "name": "Opening",
+      "spec": "Place the heading and provocative opening in the narrow field beside the navigation. Isolate the rebuttal below."
+    },
+    {
+      "name": "Narrative",
+      "spec": "Run the account through two reading columns. Keep paragraph breaks visible and give the closing statement a heavier weight."
+    }
+  ]
+}

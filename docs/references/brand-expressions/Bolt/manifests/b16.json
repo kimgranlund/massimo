@@ -1,0 +1,24 @@
+{
+  "id": "B16",
+  "title": "Typography",
+  "image": "b16.png",
+  "source": "../bolt-brand-guidelines-2025-12.pdf",
+  "location": {
+    "page": 16
+  },
+  "slide_intent": "Announce the shift from palette to type and let the heading act as a specimen. The reader encounters the section’s subject in the form of its title.",
+  "strategic_value": "A familiar cover rhythm can connect the typographic rules to the rest of Bolt’s identity book.",
+  "demonstration": "The large word Typography appears in the same position and contrast used on the earlier chapter dividers.",
+  "category": "Layout",
+  "practical_value": "Use the title page to introduce the two typefaces before presenting their roles, color pairings and emphasis rules.",
+  "content_islands": [
+    {
+      "name": "Book identifiers",
+      "spec": "Place a small white Bolt mark in the upper-left corner and the folio in the lower-left corner."
+    },
+    {
+      "name": "Section title",
+      "spec": "Set “Typography” in large white type on the dark full-page field. Align the title near mid-height, inset farther than the small identifiers."
+    }
+  ]
+}

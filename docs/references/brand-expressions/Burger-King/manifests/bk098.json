@@ -1,0 +1,39 @@
+{
+  "id": "BK098",
+  "title": "Illustration Library Cont.",
+  "image": "bk098.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 98
+  },
+  "slide_intent": "Build stories from a consistent illustration vocabulary so people recognize both the food and the playful human experience around it.",
+  "strategic_value": "The repeated ingredient colors and expressive faces can make Burger King food feel familiar and personable across communications.",
+  "demonstration": "A green field pairs a library note with labeled products and storytelling illustrations, including fries, cups, pickle eye masks, fry mustaches and hands holding food.",
+  "category": "Imagery",
+  "practical_value": "Choose an existing product or storytelling asset while retaining its supplied colors.",
+  "content_islands": [
+    {
+      "name": "Library note",
+      "spec": "Place the Cachetejack partnership note and prohibition on color changes at left."
+    },
+    {
+      "name": "Products",
+      "spec": "Arrange fries, bursting ketchup sachets and soda cups across the upper right."
+    },
+    {
+      "name": "Storytelling",
+      "spec": "Group faces, hands, food gestures and flames beneath the products, retaining descriptive captions."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The specimens use irregular flat shapes and playful faces and gestures in the food palette.",
+    "Application": "The labeled library supplies product and storytelling assets for selection.",
+    "Constraint": "The note says no colors should be amended."
+  },
+  "ingredient": {
+    "name": "Illustration library",
+    "role": "Make food and playful eating gestures recognizable.",
+    "application": "Select the supplied product or story asset without amending its colors.",
+    "scope": "Historical 2020 partner guide; this page continues the Cachetejack library."
+  }
+}

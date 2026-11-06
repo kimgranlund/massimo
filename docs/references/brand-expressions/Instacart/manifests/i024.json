@@ -1,0 +1,24 @@
+{
+  "id": "I024",
+  "title": "Color Intro",
+  "image": "i024.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 24
+  },
+  "slide_intent": "Introduce the subject association a palette should evoke before specifying individual colors.",
+  "strategic_value": "Connecting color to fresh food can give Instacart a consistent basis for evaluating new applications.",
+  "demonstration": "A short statement describes a modern, fresh palette grounded in food. The dark text sits on a warm pale canvas.",
+  "category": "Color",
+  "practical_value": "Evaluate a proposed color direction against the food-led character stated here.",
+  "content_islands": [
+    {
+      "name": "Section heading",
+      "spec": "Place Color Intro under the running labels."
+    },
+    {
+      "name": "Palette premise",
+      "spec": "Set the dark text in a large two-line block at upper left, keeping the lower field empty."
+    }
+  ]
+}

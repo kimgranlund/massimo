@@ -1,0 +1,36 @@
+{
+  "id": "IG12",
+  "title": "Full-spectrum gradient",
+  "image": "ig12.png",
+  "source": "../sources/ig12.png",
+  "location": {
+    "series": "Elvis Dinh / Instagram brand design system / project year 2022",
+    "item": 12,
+    "extent": "whole source artwork"
+  },
+  "slide_intent": "Connect individual palette colors through a continuous field so color can act as one recognizable signature.",
+  "strategic_value": "The continuous warm-to-violet field can retain Instagram recognition without relying on a large glyph.",
+  "demonstration": "Five sampling rings sit across the gradient; a five-dot legend below names it Full-spectrum gradient.",
+  "category": "Color",
+  "practical_value": "Read the solid colors as parts of a continuous gradient rather than unrelated swatches.",
+  "content_islands": [
+    {
+      "name": "Gradient field",
+      "spec": "Fill the wide upper area with smooth yellow, orange, pink and violet transitions."
+    },
+    {
+      "name": "Sampling key",
+      "spec": "Place white sampling circles on the field and the five-dot key centered below."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The gradient specimen and sampling rings show the palette as a continuous field.",
+    "Application": "The key connects the gradient to its five constituent color positions."
+  },
+  "ingredient": {
+    "name": "Full-spectrum gradient",
+    "role": "Act as a continuous color signature.",
+    "application": "Use the shown continuous transitions when studying the full-spectrum treatment.",
+    "scope": "This specimen does not supply gradient coordinates, timing or area requirements."
+  }
+}

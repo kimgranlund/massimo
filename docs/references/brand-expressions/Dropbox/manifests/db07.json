@@ -1,0 +1,41 @@
+{
+  "id": "DB07",
+  "title": "High Expressive Ratio / tension diagrams",
+  "image": "db07.png",
+  "source": "../sources/db07.jpg",
+  "location": {
+    "series": "COLLINS / Dropbox / 2017 identity case study",
+    "item": 7,
+    "section": "High Expressive Ratio",
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Explain a small set of compositional changes because controlled variation makes a system easier to reuse.",
+  "strategic_value": "Position and scale shifts can give Dropbox’s paired planes variety without abandoning their common seam.",
+  "demonstration": "Six blue-and-gray diagrams compare aligned rectangles, positional shifts and scale shifts in landscape and portrait arrangements; orange lines emphasize the seams.",
+  "category": "Layout",
+  "practical_value": "Choose whether contrast comes from alignment, displacement or unequal scale.",
+  "content_islands": [
+    {
+      "name": "Landscape row",
+      "spec": "Arrange three side-by-side pairings across the top with labels below."
+    },
+    {
+      "name": "Portrait row",
+      "spec": "Stack the paired planes across the lower row and retain their labels."
+    },
+    {
+      "name": "Seam annotations",
+      "spec": "Use orange strokes and the central tension annotation to identify the shared boundaries."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The High Expressive Ratio caption explains the aim of producing broad variation from few elements.",
+    "Application": "Six blue-and-gray diagrams compare aligned rectangles, positional shifts and scale shifts in landscape and portrait arrangements; orange lines emphasize the seams."
+  },
+  "ingredient": {
+    "name": "Paired planes",
+    "role": "Create contrast between joined visual fields while preserving a shared boundary.",
+    "application": "Choose whether contrast comes from alignment, displacement or unequal scale.",
+    "scope": "Observed or explained in this historical COLLINS case study; no numeric dimensions or universal rule are supplied."
+  }
+}

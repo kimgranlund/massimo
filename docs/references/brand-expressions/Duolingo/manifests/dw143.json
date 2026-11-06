@@ -1,0 +1,29 @@
+{
+  "id": "DW143",
+  "title": "Help / Unanswered logo questions",
+  "image": "dw143.png",
+  "source": "../sources/pages/help.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/help",
+    "section": "Logos",
+    "item": 143,
+    "order": 1430
+  },
+  "slide_intent": "Separate a question from an instruction because a listed uncertainty does not establish a permitted brand treatment.",
+  "strategic_value": "Identifying recurrent logo questions can guide Duolingo support priorities, although this page supplies no answers.",
+  "demonstration": "Six logo questions alternate between white and pale rows beside a lorem ipsum introduction.",
+  "category": "Brand",
+  "practical_value": "Use the question list to identify missing documentation; consult actual logo guidance for answers.",
+  "content_islands": [
+    {
+      "name": "Unfinished introduction",
+      "spec": "Place Logos and placeholder text in the narrow left column."
+    },
+    {
+      "name": "Question list",
+      "spec": "Stack six bold questions about Duo, CMYK, typing the logo, sub-brands, presentations and rule exceptions at right."
+    }
+  ],
+  "reference_purposes": {}
+}

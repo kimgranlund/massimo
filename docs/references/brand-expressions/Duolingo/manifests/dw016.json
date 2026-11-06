@@ -1,0 +1,31 @@
+{
+  "id": "DW016",
+  "title": "Identity / Color introduction",
+  "image": "dw016.png",
+  "source": "../sources/pages/identity-color.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/identity/color",
+    "section": "Color",
+    "item": 16,
+    "order": 160
+  },
+  "slide_intent": "State the reason for a palette because color choices should express a point of view as well as identify a brand.",
+  "strategic_value": "A bright palette can connect Duolingo’s visual identity with its stated view of a diverse world.",
+  "demonstration": "A color-section title and introduction explain the relationship between diversity and the chosen palette.",
+  "category": "Color",
+  "practical_value": "Assess a proposed color choice against the source’s stated expressive purpose.",
+  "content_islands": [
+    {
+      "name": "Color introduction",
+      "spec": "Place the white Color title and diversity rationale at the left of the green header."
+    },
+    {
+      "name": "Celebration illustration",
+      "spec": "Group the colorful balloons, confetti, bottle and cup on the right."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text explicitly says the palette aims to reflect a diverse and wonderful world."
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "I013",
+  "title": "Our Wordmark",
+  "image": "i013.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 13
+  },
+  "slide_intent": "Show how the lettering draws from the same shapes as the mark so a designer can recognize a family resemblance.",
+  "strategic_value": "Repeating the carrot’s curves and joins in the letters can tie the name, symbol and typeface together.",
+  "demonstration": "Blue construction notes overlay a pale wordmark. They identify circular curves, rounded counters and joints in individual letters.",
+  "category": "Typography",
+  "practical_value": "Compare letter details with the mark when assessing whether new lettering belongs to the system.",
+  "content_islands": [
+    {
+      "name": "Origin note",
+      "spec": "Set the wordmark heading and its explanation at the left."
+    },
+    {
+      "name": "Letter construction",
+      "spec": "Place a pale large signature across the center-right. Draw blue guides and captions against individual letter details and the adjacent symbol."
+    }
+  ]
+}

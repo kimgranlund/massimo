@@ -1,0 +1,30 @@
+{
+  "id": "C440",
+  "title": "Embedded footage parallax",
+  "image": "c440.png",
+  "source": "../sources/c440.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 masterbrand / 2023",
+    "item": 40,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Explain spatial layers so movement through content has depth rather than becoming a flat slide.",
+  "strategic_value": "The camera-and-plane relationship can connect Channel 4 programme footage to the world metaphor.",
+  "demonstration": "A diagram places footage on several planes behind a wireframe room and camera; movement changes the overlap and view of the image planes.",
+  "category": "Motion",
+  "practical_value": "Plan the distance and movement of image planes relative to the camera.",
+  "content_islands": [
+    {
+      "name": "Layered footage",
+      "spec": "Arrange programme imagery on separated planes through the scene."
+    },
+    {
+      "name": "Camera diagram",
+      "spec": "Overlay the white camera, view cone and room edges to explain the changing view."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The labeled Embedded footage parallax diagram explains a layered camera treatment."
+  },
+  "motion": "../sources/c440.mp4"
+}

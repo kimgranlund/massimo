@@ -1,0 +1,29 @@
+{
+  "id": "HI18",
+  "title": "Food building, truck and diner",
+  "image": "hi18.png",
+  "source": "../sources/illustration-examples.pdf",
+  "location": {
+    "page": 18,
+    "series": "Helsinki illustration examples — PDF derived from the official PowerPoint deck with LibreOffice",
+    "order": 208
+  },
+  "slide_intent": "Link food to the places and people that provide it so the illustration communicates a living culture.",
+  "strategic_value": "A food-related building, mobile vendor and diner can connect Helsinki food imagery across different settings.",
+  "demonstration": "A pink brick facade occupies upper left, an orange food truck sits below, and a seated diner, pan and food fill the right on pale blue.",
+  "category": "Imagery",
+  "practical_value": "Choose a venue, vendor or dining motif according to the food story being told.",
+  "content_islands": [
+    {
+      "name": "Food places",
+      "spec": "Stack the pink building above the orange truck at left."
+    },
+    {
+      "name": "Food and dining",
+      "spec": "Group the pan, utensils, food details and diner across the right."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A pink brick facade occupies upper left, an orange food truck sits below, and a seated diner, pan and food fill the right on pale blue."
+  }
+}

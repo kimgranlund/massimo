@@ -1,0 +1,30 @@
+{
+  "id": "C437",
+  "title": "Social story / Multi-content navigation",
+  "image": "c437.png",
+  "source": "../sources/c437.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 masterbrand / 2023",
+    "item": 37,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Make a vertical sequence feel connected so a viewer can follow multiple recommendations within one story.",
+  "strategic_value": "Moving tiles and gradient panels can give Channel 4 a recognizable social-story rhythm.",
+  "demonstration": "The clip moves from footage through a Stream now panel and a tiled sequence of programme portraits to First Dates. The published poster shows a hand-held phone outdoors; the video uses a phone on a plain surface.",
+  "category": "Application",
+  "practical_value": "Compare how the same tiled system moves between footage, action and programme title.",
+  "content_islands": [
+    {
+      "name": "Published context",
+      "spec": "Preserve the outdoor hand-held phone as the source preview."
+    },
+    {
+      "name": "Playable story",
+      "spec": "Show moving portrait tiles and gradient rooms within the vertical social frame."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The animation applies the multi-content world system to a social story."
+  },
+  "motion": "../sources/c437.mp4"
+}

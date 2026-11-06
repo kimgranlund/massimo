@@ -1,0 +1,30 @@
+{
+  "id": "C453",
+  "title": "4mojis on warning tape",
+  "image": "c453.png",
+  "source": "../sources/c453.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 / 2023 masterbrand case study",
+    "item": 53,
+    "extent": "Full published artwork"
+  },
+  "slide_intent": "Carry expressive symbols into functional surroundings, because everyday instructions can remain recognizable without losing their words.",
+  "strategic_value": "The outlined icons paired with Danger and Wet floors can extend Channel 4’s graphic voice into physical workplace materials.",
+  "demonstration": "Several crossing white strips repeat black Danger and Wet floors text with lightning-bolt and hatching-egg icons.",
+  "category": "Application",
+  "practical_value": "Assess how inline symbols and repeated words behave on narrow, overlapping strips.",
+  "content_islands": [
+    {
+      "name": "Repeated instructions",
+      "spec": "Run the warning words and their adjacent icons along the white strips."
+    },
+    {
+      "name": "Physical overlap",
+      "spec": "Show the strips crossing at different angles, preserving enough complete phrases to demonstrate repetition."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Several crossing white strips repeat black Danger and Wet floors text with lightning-bolt and hatching-egg icons.",
+    "Application": "The source demonstrates this treatment in physical warning strips."
+  }
+}

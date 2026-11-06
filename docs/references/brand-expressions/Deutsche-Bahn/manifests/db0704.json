@@ -1,0 +1,38 @@
+{
+  "id": "DB0704",
+  "title": "Primärer Logoeinsatz",
+  "image": "db0704.png",
+  "source": "../sources/page-07.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 7,
+    "section": 4,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Logo_neu"
+  },
+  "slide_intent": "Choose logo contrast deliberately so the sender remains identifiable on every background.",
+  "strategic_value": "Controlled red and white variants can preserve DB recognition across light, dark and photographic fields.",
+  "demonstration": "Text limits the logo to DB Red or Clear White and four examples show appropriate background relationships.",
+  "category": "Brand",
+  "practical_value": "Select the permitted variant that supplies the strongest contrast for the actual background.",
+  "content_islands": [
+    {
+      "name": "Rule and rationale",
+      "spec": "Place color and contrast guidance above the examples."
+    },
+    {
+      "name": "Variant matrix",
+      "spec": "Compare red on light grounds, red or white on dark ground and white over a dark photograph."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The prose connects sufficient contrast to logo legibility and presence.",
+    "Application": "Four specimens demonstrate background-dependent variant selection.",
+    "Constraint": "The source limits logo colors to DB Red or Clear White and cites its own 4.5:1 / 3:1 contrast requirements."
+  },
+  "ingredient": {
+    "name": "Logo color variant",
+    "role": "Keep the sender identifiable against its background.",
+    "application": "Use DB Red or Clear White and select by contrast; follow the source’s stated contrast requirements.",
+    "scope": "New-design logo guidance captured 2026-11-05; the ratios are recorded as source requirements, not independently certified accessibility results."
+  }
+}

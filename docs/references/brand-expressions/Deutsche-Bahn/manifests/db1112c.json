@@ -1,0 +1,32 @@
+{
+  "id": "DB1112C",
+  "title": "Größen & Schutzraum / Small",
+  "image": "db1112c.png",
+  "source": "../sources/db1112c-page.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 11,
+    "section": 12,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Icons",
+    "tab": "Small 20 × 20 dp"
+  },
+  "slide_intent": "Protect space around the smallest symbol so adjacent content does not reduce its recognition.",
+  "strategic_value": "A dedicated small variant can keep DB controls usable in dense interfaces.",
+  "demonstration": "The Small tab compares a 20×20 dp plus-circle at actual size with an enlarged 16×16 dp live area and 2 dp margin.",
+  "category": "Geometry",
+  "practical_value": "Use the small asset at its intended 20 dp size with the full margin.",
+  "content_islands": [
+    {
+      "name": "Selected size",
+      "spec": "Show Small 20×20 dp selected above the specimen."
+    },
+    {
+      "name": "Small construction",
+      "spec": "Pair the actual-size symbol with an enlarged live-area and safe-area diagram."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The Small tab exposes the construction of the smallest supplied variant.",
+    "Constraint": "Outer size is 20×20 dp, live area 16×16 dp and clear space 2 dp."
+  }
+}

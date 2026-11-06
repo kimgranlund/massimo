@@ -1,0 +1,28 @@
+{
+  "id": "BK001",
+  "title": "Burger King Brand Partners Guidelines",
+  "image": "bk001.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 1
+  },
+  "slide_intent": "Introduce the guide in the identity it governs so readers encounter its character before its rules.",
+  "strategic_value": "Oversized rounded lettering and warm colors can establish Burger King’s food-led personality immediately.",
+  "demonstration": "Orange and red title lines occupy a dark brown field; small publication and distribution notices sit at the edges.",
+  "category": "Brand",
+  "practical_value": "Use the cover to compare how a guide can demonstrate its own typography and palette.",
+  "content_islands": [
+    {
+      "name": "Title",
+      "spec": "Place the large three-line title at upper left with the brand name orange and remaining lines red."
+    },
+    {
+      "name": "Publication notices",
+      "spec": "Retain the small guide label above and the copyright and internal-distribution notes along the bottom."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The cover applies rounded display lettering and a warm three-color treatment.",
+    "Constraint": "The cover identifies the document as for authorized internal recipients and prohibits external distribution."
+  }
+}

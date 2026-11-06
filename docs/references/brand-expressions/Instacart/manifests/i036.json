@@ -1,0 +1,25 @@
+{
+  "id": "I036",
+  "title": "to savoring",
+  "image": "i036.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 36,
+    "printed_page": 36
+  },
+  "slide_intent": "Complete the shift from an ingredient to an eating experience. A change of type and image can make the difference between buying and enjoying perceptible.",
+  "strategic_value": "The same campaign can move from practical shopping language to an expressive food moment without losing its narrative connection.",
+  "demonstration": "A close-up of a bowl of macaroni and stretching cheese fills the page. The light high-contrast phrase to savoring rests over the bowl.",
+  "category": "Typography",
+  "practical_value": "Use the display treatment and an appetizing detail when the message shifts from acquiring an item to enjoying a meal.",
+  "content_islands": [
+    {
+      "name": "Food close-up",
+      "spec": "Fill the canvas with the bowl and the food rising above it. Retain a darker area across the lower bowl for the overlay."
+    },
+    {
+      "name": "Savoring phrase",
+      "spec": "Set two lines of large light display type at lower left to answer the preceding shopping phrase."
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id": "B08",
+  "title": "Logo usage",
+  "image": "b08.png",
+  "source": "../bolt-brand-guidelines-2025-12.pdf",
+  "location": {
+    "page": 8
+  },
+  "slide_intent": "Teach designers to decide whether the mark leads or signs a message. A deliberate size difference lets a viewer tell what to read first.",
+  "strategic_value": "The same Bolt mark can dominate a street poster or credit a headline-led communication without competing with the words.",
+  "demonstration": "One example places a large mark below a short line on an outdoor ad. The second gives most of a dark field to a multiline headline and signs it with a much smaller mark.",
+  "category": "Layout",
+  "practical_value": "Choose the dominant element before sizing the logo. Compare the intended use with the primary and secondary examples on this page.",
+  "content_islands": [
+    {
+      "name": "Section rail",
+      "spec": "Place the wordmark at the top of the dark rail, highlight the current topic in the navigation and set the small folio at the foot."
+    },
+    {
+      "name": "Role guidance",
+      "spec": "Place the heading and explanation in the left column. Add numbered keys for the two logo roles."
+    },
+    {
+      "name": "Primary and secondary comparison",
+      "spec": "Set the photographed outdoor ad and the dark headline composition in two equally tall frames. Label each in the upper left and preserve the scale of the logo relative to the adjacent words."
+    }
+  ]
+}

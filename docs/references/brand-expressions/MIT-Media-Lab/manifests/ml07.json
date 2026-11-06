@@ -1,0 +1,36 @@
+{
+  "id": "ML07",
+  "title": "Floor number at the elevator",
+  "image": "ml07.png",
+  "source": "../sources/ml07.jpg",
+  "location": {
+    "series": "Pentagram / MIT Media Lab / 2014 identity",
+    "item": 7,
+    "extent": "Published lightbox artwork"
+  },
+  "slide_intent": "Make location readable at a glance so visitors can orient themselves while moving.",
+  "strategic_value": "An oversized floor numeral can reduce uncertainty within the lab’s open interior.",
+  "demonstration": "A large black 1 occupies the pale wall beside elevator doors.",
+  "category": "Application",
+  "practical_value": "Compare wayfinding scale against the doorway and approaching people.",
+  "content_islands": [
+    {
+      "name": "Floor identifier",
+      "spec": "The numeral extends through most of the wall height."
+    },
+    {
+      "name": "Elevator threshold",
+      "spec": "Doors and adjacent circulation give the number its navigational context."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A large black 1 occupies the pale wall beside elevator doors.",
+    "Application": "A large black 1 occupies the pale wall beside elevator doors."
+  },
+  "ingredient": {
+    "name": "Floor number at the elevator",
+    "role": "Make location readable at a glance so visitors can orient themselves while moving.",
+    "application": "Compare wayfinding scale against the doorway and approaching people.",
+    "scope": "Observed in this historical case-study artwork; not a mandatory usage rule or a current brand standard."
+  }
+}

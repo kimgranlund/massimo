@@ -1,0 +1,42 @@
+{
+  "id": "FG20",
+  "title": "Editable star field",
+  "image": "fg20.png",
+  "source": "../sources/fg20.mp4",
+  "location": {
+    "series": "COLLINS / Figma / Nothing Great Is Made Alone case study",
+    "item": 20,
+    "section": "Gallery",
+    "extent": "Complete clip; PNG is midpoint poster",
+    "poster_seconds": 5.005
+  },
+  "slide_intent": "Keep the act of making visible in an abstract graphic because motion can convey participation without a literal scene.",
+  "strategic_value": "Moving control points and cursors can make Figma’s editing environment recognizable as expressive brand material.",
+  "demonstration": "Colored starbursts morph on black among cyan vector outlines, nodes and moving cursor shapes.",
+  "category": "Motion",
+  "practical_value": "Use visible editing controls to connect abstract animation to a product’s creative behavior.",
+  "content_islands": [
+    {
+      "name": "Filled shapes",
+      "spec": "Move and reshape colored gradient starbursts across the dark field."
+    },
+    {
+      "name": "Construction outlines",
+      "spec": "Retain cyan paths and control points around and between filled shapes."
+    },
+    {
+      "name": "Pointers",
+      "spec": "Move several differently colored cursor and hand symbols through the construction."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Abstract starbursts visibly change shape among vector controls and multiple cursors."
+  },
+  "ingredient": {
+    "name": "Editable starburst",
+    "role": "Make change and contribution visible in abstract motion.",
+    "application": "Pair changing filled geometry with exposed vector paths and multiple pointers.",
+    "scope": "Observed campaign animation; timing, easing and permitted shape ranges are not specified as rules."
+  },
+  "motion": "../sources/fg20.mp4"
+}

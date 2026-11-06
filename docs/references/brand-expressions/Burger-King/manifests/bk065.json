@@ -1,0 +1,34 @@
+{
+  "id": "BK065",
+  "title": "Color Don’ts",
+  "image": "bk065.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 65
+  },
+  "slide_intent": "Make color boundaries visible so accidental effects and outdated palettes do not weaken repeated recognition.",
+  "strategic_value": "Protecting the specified hues can keep Burger King applications coherent across different producers.",
+  "demonstration": "Four crossed-out examples reject a palette gradient, modified colors, the previous palette and distressed red.",
+  "category": "Color",
+  "practical_value": "Check proposed artwork for gradients, hue modifications, obsolete colors and distressing effects.",
+  "content_islands": [
+    {
+      "name": "Color protection rule",
+      "spec": "Place the non-modification rule and example explanation in the left column."
+    },
+    {
+      "name": "Incorrect color treatments",
+      "spec": "Arrange four crossed-out panels at right, with a specific prohibition caption beneath each."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The negative examples give designers a concrete color-use review checklist.",
+    "Constraint": "Do not create gradients from the brand colors, modify the colors, use previous-identity colors or add distressing effects."
+  },
+  "ingredient": {
+    "name": "Unmodified brand colors",
+    "role": "Maintain repeatable color recognition.",
+    "application": "Keep the supplied hues flat and unaltered; reject gradients, modified hues, former palette colors and distressed effects.",
+    "scope": "Historical 2020 partner guide; the page describes these examples as illustrative rather than a complete catalog of every mistake."
+  }
+}

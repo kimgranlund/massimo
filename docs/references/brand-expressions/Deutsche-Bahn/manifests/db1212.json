@@ -1,0 +1,31 @@
+{
+  "id": "DB1212",
+  "title": "Dos and Don'ts / graphic contrast and coexistence",
+  "image": "db1212.png",
+  "source": "../sources/page-12.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 12,
+    "section": 12,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Signature-Graphics"
+  },
+  "slide_intent": "Protect separation between identity elements so their forms remain understandable.",
+  "strategic_value": "Clear contrast and restrained combinations can prevent DB’s bar-derived elements from competing.",
+  "demonstration": "A red heart on a light background is paired with a crossed-out dark heart over strong red bars.",
+  "category": "Layout",
+  "practical_value": "Preserve contrast and follow this checklist’s subtle-background exception, noting the conflicting earlier paragraph.",
+  "content_islands": [
+    {
+      "name": "Positive example",
+      "spec": "Show the red heart clearly separated from its light background."
+    },
+    {
+      "name": "Negative example",
+      "spec": "Cross out the competing heart and strong Schwelle combination."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The pair makes the competing forms visible.",
+    "Constraint": "This checklist prohibits signature graphics with other Schwelle forms except a subtle-background Schwelle; the earlier illustrative-Schwelle paragraph is less restrictive."
+  }
+}

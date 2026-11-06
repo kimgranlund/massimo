@@ -1,0 +1,24 @@
+{
+  "id": "F25",
+  "title": "Adding character",
+  "image": "f25.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 25
+  },
+  "slide_intent": "Introduce a symbol through its posture and gestures. An open arm and a stride can express movement or connection at a size where a long name is difficult to read.",
+  "strategic_value": "Frontline AIDS can connect an abbreviated identity to its activist origins through the hand-drawn figure and its open stance.",
+  "demonstration": "A large green field contains a photographic portrait inside the cutout of the striding person. The left text connects its shape with movement, partnerships and the letters F and A.",
+  "category": "Brand",
+  "practical_value": "Choose the standalone person for a compact application when the figure can carry the brand shorthand.",
+  "content_islands": [
+    {
+      "name": "Symbol rationale",
+      "spec": "Set the Adding character heading and short paragraphs alongside the brand-assets rail. Tie the figure’s gestures to the specific ideas they are meant to suggest."
+    },
+    {
+      "name": "Portrait in figure",
+      "spec": "Fill the right field with green. Cut the large person from the field so the sitter’s portrait appears through its body and detached circular head. Add the loose blue arrow above the figure."
+    }
+  ]
+}

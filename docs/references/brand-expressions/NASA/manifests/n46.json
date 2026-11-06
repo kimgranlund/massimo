@@ -1,0 +1,28 @@
+{
+  "id": "N46",
+  "title": "NASA Signs",
+  "image": "n46.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 46
+  },
+  "slide_intent": "Show designers how an interior sign system can guide someone from corridor to room and still accommodate a change in destination, occupant or event.",
+  "strategic_value": "NASA can keep permanent directions recognizable while allowing names, room status and temporary messages to change without replacing a whole installation.",
+  "demonstration": "The sheet groups interior signs by purpose. Modular overhead directions, floor directories and room plaques appear above a building directory, movable information sign, symbols and access restrictions.",
+  "category": "Application",
+  "practical_value": "Choose which part of a sign must last and which part must be replaceable. A sliding room-name panel calls for a different construction from a permanent identifier.",
+  "content_islands": [
+    {
+      "name": "Interior principles",
+      "spec": "Place the title and columns of guidance at the top. Specify normally spaced Helvetica for directional reading and mounting appropriate to the architecture."
+    },
+    {
+      "name": "Directions and identification",
+      "spec": "Group overhead and wall directions with the floor directory. Alongside them, show the room and desk identifiers, including changeable occupancy and name panels."
+    },
+    {
+      "name": "Information and restrictions",
+      "spec": "Use a lower band for the building directory, movable notice, pictograms and regulatory signs. Keep each lettered sign keyed to its description."
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "id": "IB006",
+  "title": "Typography / Type scale",
+  "image": "ib006.png",
+  "source": "../sources/typography-type-scale.txt",
+  "location": {
+    "series": "IBM Design Language / public web guidelines",
+    "item": 6,
+    "extent": "Complete webpage content-area capture; interactive elements retain their captured state",
+    "url": "https://www.ibm.com/design/language/typography/type-scale/",
+    "order": 6000
+  },
+  "slide_intent": "Coordinate type size and line height while adapting to script and viewing distance, because equal numeric sizes do not always produce equally readable text.",
+  "strategic_value": "A shared Plex scale with explicit language adjustments can maintain hierarchy across IBM’s global and large-format communications.",
+  "demonstration": "The page presents a size sequence and formula, default versus adjusted script examples, scale tables, a tester and large-format viewing-distance guidance. The screenshot preserves the visible default table and control states.",
+  "category": "Typography",
+  "practical_value": "Choose the appropriate script scale and format multiplier before setting type; consult the preserved source text for table rows or tabs outside the captured state.",
+  "content_islands": [
+    {
+      "name": "Scale foundation",
+      "spec": "Place the introduction above the increasing Plex size specimen and the formula strip."
+    },
+    {
+      "name": "Script adjustment",
+      "spec": "Compare New with Japanese text before and after adjustment, then show paired multilingual examples marked incorrect and correct."
+    },
+    {
+      "name": "Universal table and tester",
+      "spec": "Present default size, 95% adjusted size and line-height columns above the captured type tester."
+    },
+    {
+      "name": "Viewing distance",
+      "spec": "Explain print and digital scaling beside the diagram of progressively larger planes."
+    },
+    {
+      "name": "Large-format table and resources",
+      "spec": "Close with the multiplier tabs and visible table rows, followed by Plex and Carbon resource cards."
+    }
+  ],
+  "ingredient": {
+    "name": "Adjusted Plex type scale",
+    "role": "Preserve legibility and comparable hierarchy across scripts.",
+    "application": "Use the default scale for Latin, Cyrillic, Hebrew and Greek; reduce point size to 95% for Chinese, Japanese, Korean, Thai, Devanagari and Arabic while keeping the default line height.",
+    "scope": "The adjustment belongs to the IBM type scale. Separate print and digital multipliers apply to large formats; the source conditions those rules on artwork produced at 100%."
+  },
+  "reference_purposes": {
+    "Intent": "The source explains that a shared scale maintains coherence, that script anatomy requires adjustment, and that viewing distance changes apparent size.",
+    "Expression": "The increasing Plex specimen and multilingual comparisons demonstrate hierarchy and optical differences.",
+    "Application": "The page supplies the scale formula, size/line-height tables and format examples.",
+    "Constraint": "Chinese, Japanese, Korean, Thai, Devanagari and Arabic use 95% point size while retaining default line height; large-format rules assume artwork at 100% scale."
+  }
+}

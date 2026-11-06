@@ -1,0 +1,37 @@
+{
+  "id": "LH13",
+  "title": "Head and Text families",
+  "image": "lh13.png",
+  "source": "../sources/lh13.gif",
+  "location": {
+    "series": "Mona Franz / Lufthansa 2018",
+    "item": 13,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Compare optical roles in place because display impact and small-text readability require different letter treatment.",
+  "strategic_value": "Related Head and Text families can give Lufthansa a consistent voice across large and small reading tasks.",
+  "demonstration": "A two-frame animation alternates three Head weights with three Text weights, using Aa and character samples in aligned rows.",
+  "category": "Typography",
+  "practical_value": "Compare Head and Text at matching specimen positions before assigning a reading role.",
+  "content_islands": [
+    {
+      "name": "Weight rows",
+      "spec": "Stack three Aa specimens with family labels and character samples."
+    },
+    {
+      "name": "Family switch",
+      "spec": "Alternate Head Bold, Light and Thin with Text Bold, Regular and Light."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A two-frame animation alternates three Head weights with three Text weights, using Aa and character samples in aligned rows.",
+    "Intent": "HvD’s accompanying account explains the separate display and small-text roles."
+  },
+  "motion": "../sources/lh13.mp4",
+  "ingredient": {
+    "name": "Head and Text families",
+    "role": "Separate display emphasis from sustained small-text reading.",
+    "application": "Compare Head and Text at matching specimen positions before assigning a reading role.",
+    "scope": "Historical 2018 Lufthansa airline refresh case study; observed example, not a complete brand manual or a current Lufthansa Group rule."
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "LH24",
+  "title": "Travel-language type specimen",
+  "image": "lh24.png",
+  "source": "../sources/lh24.svg",
+  "location": {
+    "series": "HvD Fonts / Lufthansa 2018",
+    "item": 3,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Test a typeface with real service phrases because voice and hierarchy become clear in meaningful words.",
+  "strategic_value": "A family that handles aircraft names, destinations and service labels can connect different Lufthansa communications.",
+  "demonstration": "Blue travel phrases in contrasting weights and sizes stack on a white field.",
+  "category": "Typography",
+  "practical_value": "Compare the emphasis of bold service names against light explanatory phrases.",
+  "content_islands": [
+    {
+      "name": "Phrase stack",
+      "spec": "Alternate large bold names with lighter lines through the specimen."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Blue travel phrases in contrasting weights and sizes stack on a white field."
+  }
+}

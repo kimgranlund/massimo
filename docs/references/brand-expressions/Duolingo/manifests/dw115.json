@@ -1,0 +1,42 @@
+{
+  "id": "DW115",
+  "title": "Illustration / Duo / Feet",
+  "image": "dw115.png",
+  "source": "../sources/pages/illustration-duo.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/illustration/duo",
+    "section": "Feet",
+    "item": 115,
+    "order": 1150
+  },
+  "slide_intent": "Allow controlled deformation because rigid appendages can make an expressive mascot feel less alive.",
+  "strategic_value": "Detached and flexible orange feet can support Duo’s emotional range while remaining recognizable.",
+  "demonstration": "Six expressive Duo poses sit above three simplified constructions focused on foot position and shape.",
+  "category": "Motion",
+  "practical_value": "Use separation and deformation of the feet to support the pose while retaining their simple volume.",
+  "content_islands": [
+    {
+      "name": "Expressive poses",
+      "spec": "Arrange six finished poses in two rows of three on the pale panel."
+    },
+    {
+      "name": "Foot construction",
+      "spec": "Place three simplified body outlines and orange feet in the bottom row."
+    },
+    {
+      "name": "Motion behavior",
+      "spec": "Explain separation, bending, lengthening, wiggling and circular footprints at right."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "Static poses demonstrate foot placement and deformation.",
+    "Constraint": "Feet can separate in motion, bend, lengthen and wiggle; the source specifies perfectly circular footprints."
+  },
+  "ingredient": {
+    "name": "Duo feet",
+    "role": "Carry movement and expression through simple orange forms.",
+    "application": "Allow feet to separate from the body in motion and to bend, lengthen or wiggle; preserve circular footprints.",
+    "scope": "Historical behavior guidance shown through static SVG illustrations, not a timed animation."
+  }
+}

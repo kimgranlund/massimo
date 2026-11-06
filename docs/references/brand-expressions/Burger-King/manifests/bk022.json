@@ -1,0 +1,28 @@
+{
+  "id": "BK022",
+  "title": "Verbal Identity / Characteristics",
+  "image": "bk022.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 22
+  },
+  "slide_intent": "Name a small set of voice traits so writers can coordinate how the brand sounds across audiences.",
+  "strategic_value": "Four traits tied to design principles can connect Burger King’s speech with its visual personality.",
+  "demonstration": "Four numbered voice traits dominate an orange field beside explanatory copy.",
+  "category": "Voice",
+  "practical_value": "Use enthusiastic, confident, witty and approachable as adjustable dimensions of a writing brief.",
+  "content_islands": [
+    {
+      "name": "Context",
+      "spec": "Place the design-principles connection and audience qualification at left."
+    },
+    {
+      "name": "Traits",
+      "spec": "Stack the four numbered characteristics in large brown type at right."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The left copy connects tone of voice with design principles.",
+    "Application": "The source says the degree of each characteristic changes with platform and audience."
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "id": "BK038",
+  "title": "Wordmark",
+  "image": "bk038.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 38
+  },
+  "slide_intent": "Choose a horizontal signature without losing the fuller identity context so a constrained format still reads as the same brand.",
+  "strategic_value": "A supporting wordmark can extend Burger King into wide formats while preserving the primary logo’s precedence.",
+  "demonstration": "Two red Burger King wordmarks compare the registered asset and the unregistered restaurant-signage version.",
+  "category": "Brand",
+  "practical_value": "Use the wordmark as additional branding in horizontal formats, alongside other brand elements.",
+  "content_islands": [
+    {
+      "name": "Wordmark usage",
+      "spec": "Place the hierarchy and context instructions at left, followed by the signage-registration consultation note."
+    },
+    {
+      "name": "Registered wordmark",
+      "spec": "Place the long red wordmark at upper right with its registration caption."
+    },
+    {
+      "name": "Signage wordmark",
+      "spec": "Repeat it below without registration, explicitly captioned for restaurant signage only."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The page identifies horizontal formats as the wordmark’s role and compares two supplied versions.",
+    "Constraint": "The primary logo should appear more often; the wordmark must not be used alone without other branding elements."
+  },
+  "ingredient": {
+    "name": "Horizontal wordmark",
+    "role": "Add identification where horizontal space favors a long signature.",
+    "application": "Use it as supporting branding with other brand elements; retain greater use of the primary logo.",
+    "scope": "Historical guide; restaurant-signage registration remains subject to BKC marketing/legal guidance."
+  }
+}

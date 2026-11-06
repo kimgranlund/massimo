@@ -1,0 +1,32 @@
+{
+  "id": "DB0801",
+  "title": "MARKENFARBEN",
+  "image": "db0801.png",
+  "source": "../sources/page-08.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 8,
+    "section": 1,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Markenfarben"
+  },
+  "slide_intent": "Explain the role of each color so designers can use repetition and contrast intentionally.",
+  "strategic_value": "A consistent red accent with neutral grounds and expressive Lilac can sustain DB recognition without requiring large red fields.",
+  "demonstration": "The introduction assigns identity to DB Red, expressive warmth to Lilac and focused backgrounds to White and Cold Black.",
+  "category": "Color",
+  "practical_value": "Choose color by its job rather than by how much area it can fill.",
+  "content_islands": [
+    {
+      "name": "Color-role statement",
+      "spec": "Place the uppercase title above the paragraph describing each color’s role and the value of consistent use."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The prose explicitly says recognition comes from consistency, not quantity, and explains each color’s job."
+  },
+  "ingredient": {
+    "name": "Brand palette roles",
+    "role": "Separate recognition, expression and visual support.",
+    "application": "Use DB Red as the identifying accent, Lilac for expressive emphasis and White/Cold Black for calm grounds.",
+    "scope": "This introductory role statement supplies no numerical area proportions; detailed use constraints follow elsewhere in the guide."
+  }
+}

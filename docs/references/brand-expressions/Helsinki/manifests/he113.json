@@ -1,0 +1,31 @@
+{
+  "id": "HE113",
+  "title": "Usage examples in a PowerPoint presentation",
+  "image": "he113.png",
+  "source": "../sources/download-elements.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Usage examples in a PowerPoint presentation",
+    "order": 156,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/download-elements#usage-examples-in-a-powerpoint-presentation",
+    "original_html": "../sources/download-elements.html"
+  },
+  "slide_intent": "Show reusable illustrations in actual layouts so authors understand how separate elements can support a message.",
+  "strategic_value": "An example deck can help Helsinki staff use the shared illustration library coherently.",
+  "demonstration": "Expanded webpage section: a PPT download button and 36-page description appear above a nine-thumbnail collage of illustrated slides.",
+  "category": "Imagery",
+  "practical_value": "Compare complete compositions with separate illustration elements in the linked deck.",
+  "content_islands": [
+    {
+      "name": "Deck access and scope",
+      "spec": "The button and paragraph identify a 14.7 MB file with 36 pages."
+    },
+    {
+      "name": "Usage preview",
+      "spec": "A grid below combines colored fields, illustrations and text."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The source says the deck contains original collages, individual elements and usage examples; the preview shows illustrated presentation layouts."
+  }
+}

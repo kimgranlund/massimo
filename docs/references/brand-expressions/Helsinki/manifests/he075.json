@@ -1,0 +1,43 @@
+{
+  "id": "HE075",
+  "title": "Flags",
+  "image": "he075.png",
+  "source": "../sources/design-and-create.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Flags",
+    "order": 102,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/design-and-create#flags",
+    "original_html": "../sources/design-and-create.html"
+  },
+  "slide_intent": "Choose flag proportions for viewing conditions so the city identifier remains visible outdoors.",
+  "strategic_value": "A coherent range of Helsinki flag colors and logo languages can make events recognizable across different locations.",
+  "demonstration": "This expanded webpage-section capture combines purchasing guidance, flag dimensions, photographs, color/logo variants and a three-row bunting illustration.",
+  "category": "Application",
+  "practical_value": "Choose horizontal or vertical format for pole height and wind conditions, then use the appropriate logo-language and color option.",
+  "content_islands": [
+    {
+      "name": "Flag selection",
+      "spec": "Keep procurement, dimensions, pole heights and color conditions together."
+    },
+    {
+      "name": "Flags in use and variants",
+      "spec": "Show outdoor photographs followed by the horizontal, vertical and Pride-style flag range."
+    },
+    {
+      "name": "Bunting",
+      "spec": "Close with pennant dimensions and the illustrated strings."
+    }
+  ],
+  "ingredient": {
+    "name": "Helsinki flags and bunting",
+    "role": "Identify civic events at outdoor scale.",
+    "application": "Choose the prescribed flag format for pole height and conditions; use the listed logo and color variants.",
+    "scope": "Horizontal flags: 250 × 150 cm for about 9 m poles; vertical: 140 × 350 cm for about 9–11 m poles. Bunting pennants: 200 × 290 mm, 10 m string, double-sided."
+  },
+  "reference_purposes": {
+    "Intent": "The text explains that vertical flags fly with less wind, while horizontal flags need stronger winds.",
+    "Application": "It gives horizontal 250 × 150 cm and vertical 140 × 350 cm options with approximate pole heights.",
+    "Constraint": "A white short-term/event flag must be paired with a colorful theme/event banner; completely black flags are not recommended."
+  }
+}

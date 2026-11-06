@@ -1,0 +1,27 @@
+{
+  "id": "BK081",
+  "title": "Grid System & Layouts Overview",
+  "image": "bk081.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 81
+  },
+  "slide_intent": "Frame composition as a repeatable construction process so designers can transfer it to new formats.",
+  "strategic_value": "A step-by-step promise can help Burger King teams treat layout consistency as a method rather than a fixed template.",
+  "demonstration": "A left-column section label accompanies a large statement introducing grid construction and primary layouts.",
+  "category": "Layout",
+  "practical_value": "Use the following pages as a construction sequence, beginning with the margin formula.",
+  "content_islands": [
+    {
+      "name": "Section label",
+      "spec": "Place the compact two-line label at upper left."
+    },
+    {
+      "name": "Process statement",
+      "spec": "Set the large brown explanatory paragraph to its right on cream."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The statement explicitly introduces step-by-step grid construction and primary layouts; this page is an overview rather than a construction diagram."
+  }
+}

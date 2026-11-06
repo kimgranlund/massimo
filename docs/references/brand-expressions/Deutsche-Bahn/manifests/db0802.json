@@ -1,0 +1,30 @@
+{
+  "id": "DB0802",
+  "title": "Color applications / destination and journey",
+  "image": "db0802.png",
+  "source": "../sources/page-08.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 8,
+    "section": 2,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Markenfarben"
+  },
+  "slide_intent": "Demonstrate how a small accent can identify contrasting campaigns so color remains purposeful.",
+  "strategic_value": "Red DB and sleeper accents can connect a bright destination offer with a dark photographic travel message.",
+  "demonstration": "A light South Tyrol price poster sits beside a dark Berlin–Paris photograph with red brand accents.",
+  "category": "Application",
+  "practical_value": "Compare a predominantly light offer with a predominantly dark image-led campaign.",
+  "content_islands": [
+    {
+      "name": "Destination offer",
+      "spec": "Place the price and mountain photograph on the light station poster at left."
+    },
+    {
+      "name": "Journey message",
+      "spec": "Place the travelers, white city names and red accents in the dark composition at right."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The two campaign specimens apply the palette to light and dark communication."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "DBG07",
+  "title": "Immer in Bewegung / Natural flow",
+  "image": "dbg07.png",
+  "source": "../sources/media/1bc2011635d7-Bild_07-data.gif",
+  "location": {
+    "series": "DB new design / original GIF demonstrations",
+    "source_page": 15,
+    "section": 4,
+    "url": "https://marketingportal.extranet.deutschebahn.com/resource/blob/14025286/e9d2a2c0f1000ab26d610710eb113660/Bild_07-data.gif"
+  },
+  "slide_intent": "Shape acceleration deliberately because a simple translation can feel either natural or mechanical.",
+  "strategic_value": "A single bar moving with a varied pace can establish the feel of DB motion without extra decoration.",
+  "demonstration": "One red vertical bar traverses a dark field horizontally and changes position through the loop.",
+  "category": "Motion",
+  "practical_value": "Compare the bar’s travel with the explicit easing specimens before selecting a timing curve.",
+  "content_islands": [
+    {
+      "name": "Traveling bar",
+      "spec": "Preserve the bar’s upright shape while changing its horizontal position."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The accompanying text specifies natural flow through easing and a lively rather than mechanical impression.",
+    "Expression": "The single bar isolates movement on a dark field."
+  },
+  "motion": "../sources/media/dbg07.mp4"
+}

@@ -1,0 +1,39 @@
+{
+  "id": "HE045",
+  "title": "Typography",
+  "image": "he045.png",
+  "source": "../sources/visual-storytelling.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Typography",
+    "order": 65,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/visual-storytelling#typography",
+    "original_html": "../sources/visual-storytelling.html"
+  },
+  "slide_intent": "Limit typographic variation in moving images so viewers can read quickly without losing a consistent voice.",
+  "strategic_value": "Restricting video to Regular and Bold can keep Helsinki’s changing messages recognizable.",
+  "demonstration": "This expanded webpage-section capture pairs the video weight rule with a specimen that emphasizes Regular and Bold while fading Medium and Black.",
+  "category": "Typography",
+  "practical_value": "Choose Regular or Bold, including their italics, for video and animation rather than importing every available weight.",
+  "content_islands": [
+    {
+      "name": "Video type rule",
+      "spec": "Place the allowed-style explanation above the specimen."
+    },
+    {
+      "name": "Weight comparison",
+      "spec": "Show the allowed and faded weights in a shared two-column character display."
+    }
+  ],
+  "ingredient": {
+    "name": "Helsinki Grotesk video weights",
+    "role": "Give moving-image text a consistent voice.",
+    "application": "Use Regular or Bold; either may be italic.",
+    "scope": "Video and animation materials; specimen examples are guidance."
+  },
+  "reference_purposes": {
+    "Application": "The text assigns Helsinki Grotesk Regular and Bold, with italic options, to video and animation.",
+    "Constraint": "Only Regular and Bold are permitted here; the specimen examples are described as guidance only.",
+    "Expression": "The specimen compares the selected styles through alphabets, numerals and punctuation."
+  }
+}

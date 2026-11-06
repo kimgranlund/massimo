@@ -1,0 +1,36 @@
+{
+  "id": "DB19",
+  "title": "Website walkthrough",
+  "image": "db19.png",
+  "source": "../sources/db19.mp4",
+  "location": {
+    "series": "COLLINS / Dropbox / 2017 identity case study",
+    "item": 19,
+    "section": "Gallery",
+    "extent": "Complete published clip; PNG is a frame at 0.5 seconds",
+    "duration_seconds": 29.93
+  },
+  "slide_intent": "Show how expressive identity supports a task because a visitor must move from attention to understanding and action.",
+  "strategic_value": "Color fields and imagery can introduce Dropbox’s creative proposition while structured product examples explain its use.",
+  "demonstration": "A browser walkthrough moves from a headline and sign-up panel through image pairings, collaboration examples, Paper content, audience choices and footer.",
+  "category": "Application",
+  "practical_value": "Evaluate the transition from campaign language to product explanation along one page.",
+  "content_islands": [
+    {
+      "name": "Opening panel",
+      "spec": "Pair the colored headline area with the white registration form."
+    },
+    {
+      "name": "Product sequence",
+      "spec": "Follow screenshots and supporting copy as the page scrolls."
+    },
+    {
+      "name": "Closing navigation",
+      "spec": "Retain the audience split and footer at the end of the clip."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "A browser walkthrough moves from a headline and sign-up panel through image pairings, collaboration examples, Paper content, audience choices and footer."
+  },
+  "motion": "../sources/db19.mp4"
+}

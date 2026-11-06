@@ -1,0 +1,34 @@
+{
+  "id": "BK051",
+  "title": "Logo Don’ts",
+  "image": "bk051.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 51
+  },
+  "slide_intent": "Identify unacceptable changes explicitly so local adaptations do not erode a recognizable shared mark.",
+  "strategic_value": "A stable silhouette, lettering and color treatment can preserve Burger King recognition across partner executions.",
+  "demonstration": "A three-by-three grid crosses out distortion, outlining, effects, tint changes, rotation, type substitution, missing words, missing buns and the previous logo.",
+  "category": "Brand",
+  "practical_value": "Reject altered logo constructions and outdated assets before release.",
+  "content_islands": [
+    {
+      "name": "Non-alteration rule",
+      "spec": "Place the rule and non-exhaustive-list note at left."
+    },
+    {
+      "name": "Incorrect examples",
+      "spec": "Arrange nine crossed-out examples at right with a short error caption below each."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The labeled error grid supports checking a proposed logo execution.",
+    "Constraint": "The source prohibits altering orientation, color or composition, extends the rules to wordmark and favicon, and says the examples are not exhaustive."
+  },
+  "ingredient": {
+    "name": "Protected logo construction",
+    "role": "Preserve consistent identity through unchanged source assets.",
+    "application": "Do not distort, outline, add effects, recolor or fade, rotate, replace type, remove words or buns, or reuse the previous logo.",
+    "scope": "Historical guide; restrictions include wordmark and favicon and are not limited to the nine illustrated mistakes."
+  }
+}

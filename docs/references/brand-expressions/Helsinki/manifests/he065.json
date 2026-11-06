@@ -1,0 +1,28 @@
+{
+  "id": "HE065",
+  "title": "Indicate use of artificial intelligence",
+  "image": "he065.png",
+  "source": "../sources/visual-storytelling.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Indicate use of artificial intelligence",
+    "order": 90,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/visual-storytelling#indicate-use-of-artificial-intelligence",
+    "original_html": "../sources/visual-storytelling.html"
+  },
+  "slide_intent": "Carry provenance disclosure into asset handling so synthetic content remains identifiable when shared.",
+  "strategic_value": "Repeating the AI condition near image resources can help Helsinki keep disclosure attached to production work.",
+  "demonstration": "This expanded webpage-section capture repeats the condition for wholly generated or meaning-changing AI content and the watermark/text/audio instruction without the earlier section’s sample statements.",
+  "category": "Imagery",
+  "practical_value": "Retain the disclosure instruction during image handling and do not assume missing sample wording adds another rule.",
+  "content_islands": [
+    {
+      "name": "Condition and method",
+      "spec": "Keep the AI-use condition above the marking-method line; preserve the absence of further wording examples."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "It instructs the use of watermark and text or audio to mark relevant content.",
+    "Constraint": "The condition is wholly AI-produced content or significant modification that changes meaning."
+  }
+}

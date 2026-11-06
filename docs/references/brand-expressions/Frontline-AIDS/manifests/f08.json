@@ -1,0 +1,24 @@
+{
+  "id": "F08",
+  "title": "Our brand strategy",
+  "image": "f08.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 8
+  },
+  "slide_intent": "Separate the organization’s reason for existing from its proposed action and supporting evidence. Readers can trace a claim to the material offered in its support.",
+  "strategic_value": "Frontline AIDS can give teams a common explanation of why it exists and how its movement approaches barriers to care.",
+  "demonstration": "On cyan, three ruled rows label purpose, proposition and proof points. Proof points occupy the deepest row.",
+  "category": "Brand",
+  "practical_value": "Choose the appropriate level when writing a statement of intent, an explanation of the work or a supporting example.",
+  "content_islands": [
+    {
+      "name": "Navigation and introduction",
+      "spec": "Place the section rail at left, then the heading and short framing paragraph."
+    },
+    {
+      "name": "Strategy rows",
+      "spec": "In the right field give each row a bold label and a corresponding text block. Separate the three entries with horizontal rules."
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "HX29",
+  "title": "Commissioning visual communications",
+  "image": "hx29.png",
+  "source": "../sources/design-and-create.offline.html",
+  "location": {
+    "series": "Web guideline introduction/component",
+    "order": 107,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/design-and-create",
+    "original_html": "../sources/design-and-create.html"
+  },
+  "slide_intent": "Brief collaborators clearly because shared expectations affect whether the result answers the real communication need.",
+  "strategic_value": "A well-defined assignment can help Helsinki partners work within brand parameters.",
+  "demonstration": "This webpage introduction connects assignment quality and background information to collaboration and the resulting visual communication.",
+  "category": "Application",
+  "practical_value": "Prepare the communication background and intended outcome before commissioning design.",
+  "content_islands": [
+    {
+      "name": "Commissioning premise",
+      "spec": "Place the brief-quality and collaboration explanation beneath the heading."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source explains why a good assignment and background information matter to collaboration and outcomes."
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "IG27",
+  "title": "Creator Lab / It pays to be you",
+  "image": "ig27.png",
+  "source": "../sources/ig27.jpg",
+  "location": {
+    "series": "Elvis Dinh / Instagram brand design system / project year 2022",
+    "item": 27,
+    "extent": "whole source artwork"
+  },
+  "slide_intent": "Use a short message and a distinct field to maintain recognition at architectural scale.",
+  "strategic_value": "A purple surround and familiar glyph can connect Instagram’s creator message to a large city wall.",
+  "demonstration": "A mural places a photograph inside a purple field, with dispersed pink words and you highlighted in a rounded block.",
+  "category": "Application",
+  "practical_value": "Check the hierarchy of image, short copy and signature at the scale of a building.",
+  "content_islands": [
+    {
+      "name": "Purple mural field",
+      "spec": "Frame the central photograph with a broad purple surround and upper-right glyph."
+    },
+    {
+      "name": "Creator message",
+      "spec": "Distribute the pink phrase around the photo and emphasize you in a rounded pink tile."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The image shows the identity applied as a large Creator Lab mural.",
+    "Expression": "Purple, pink and loose headline placement give the mural the system’s expressive voice."
+  }
+}

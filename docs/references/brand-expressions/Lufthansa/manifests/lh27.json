@@ -1,0 +1,23 @@
+{
+  "id": "LH27",
+  "title": "Historical type master",
+  "image": "lh27.png",
+  "source": "../sources/lh27.jpg",
+  "location": {
+    "series": "HvD Fonts / Lufthansa 2018",
+    "item": 6,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Retain an original specimen because historical details are easier to compare when the evidence is concrete.",
+  "strategic_value": "The old character sheet can help Lufthansa preserve characteristic proportions while updating the system.",
+  "demonstration": "A taped paper specimen displays uppercase, lowercase, numerals and punctuation beneath a handwritten handling note.",
+  "category": "Typography",
+  "practical_value": "Compare a new alphabet with the actual historical repertoire rather than memory.",
+  "content_islands": [
+    {
+      "name": "Paper specimen",
+      "spec": "Keep the character rows, taped corners and handwritten note together."
+    }
+  ],
+  "reference_purposes": {}
+}

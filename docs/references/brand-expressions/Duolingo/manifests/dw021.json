@@ -1,0 +1,31 @@
+{
+  "id": "DW021",
+  "title": "Identity / Typography introduction",
+  "image": "dw021.png",
+  "source": "../sources/pages/identity-typography.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/identity/typography",
+    "section": "Typography",
+    "item": 21,
+    "order": 210
+  },
+  "slide_intent": "Treat type as part of voice because people hear character in the appearance of words as well as their literal meaning.",
+  "strategic_value": "A distinctive typeface and consistent guidance can make Duolingo’s language-centered identity recognizable in text.",
+  "demonstration": "The typography introduction connects the company’s focus on language with the development of its typeface and usage guidance.",
+  "category": "Typography",
+  "practical_value": "Evaluate typography as an expressive brand choice before selecting sizes and roles.",
+  "content_islands": [
+    {
+      "name": "Type introduction",
+      "spec": "Place the white title and language-company rationale on the left of the green header."
+    },
+    {
+      "name": "Letter construction",
+      "spec": "Place the enlarged outline g and its geometry guides at right, cropped by the header edge."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source explicitly links written words and typeface choices to expressing the brand."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "IT26",
+  "title": "ITV / Service transition lockup",
+  "image": "it26.png",
+  "source": "../sources/1749146334-itv_16-2.png",
+  "location": {
+    "series": "DixonBaxi / ITV case-study artwork series",
+    "item": 26,
+    "extent": "Whole source artwork",
+    "source_asset_index": 26
+  },
+  "slide_intent": "Show the relationship between a broadcast channel and its streaming destination, because audiences need both a recognizable network and distinct programme destinations.",
+  "strategic_value": "This approach can strengthen network coherence without erasing channel personality.",
+  "demonstration": "A small ITV1 and ITVX pair sits near the centre of a tall dark artwork, with a short pale line of copy above. Cyan and yellow distinguish the services.",
+  "category": "Brand",
+  "practical_value": "Show the relationship between a broadcast channel and its streaming destination.",
+  "content_islands": [
+    {
+      "name": "Background",
+      "spec": "A large dark field isolates a compact message."
+    },
+    {
+      "name": "Pair",
+      "spec": "ITV1 and ITVX appear side by side beneath the small copy."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A small ITV1 and ITVX pair sits near the centre of a tall dark artwork, with a short pale line of copy above. Cyan and yellow distinguish the services.",
+    "Intent": "The case-study section Embracing eclectic says distinct channel personalities are joined into one connected brand beyond broadcast."
+  }
+}

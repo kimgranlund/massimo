@@ -1,0 +1,37 @@
+{
+  "id": "BK121",
+  "title": "Legal Standards / Terms & Conditions / Trademark questions",
+  "image": "bk121.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 121
+  },
+  "slide_intent": "Explain the distinction between brand recognition and permitted trademark use so teams know which decisions require qualified review.",
+  "strategic_value": "A question-led reference can help Burger King partners preserve consistent naming and route uncertainty to the company’s legal team.",
+  "demonstration": "An introductory column explains the role of names and logos, followed by dense question-and-answer columns on trademarks, trade names, infringement, franchisees and territorial symbols.",
+  "category": "Brand",
+  "practical_value": "Use the historical FAQ to locate the relevant trademark topic and its referral route; do not treat it as current jurisdictional advice.",
+  "content_islands": [
+    {
+      "name": "Identity rationale",
+      "spec": "Place the section title and introductory explanation in the left column."
+    },
+    {
+      "name": "Definitions and naming",
+      "spec": "Use the next column for trademark versus trade-name examples and why correct use matters."
+    },
+    {
+      "name": "Clearance and infringement",
+      "spec": "Continue the FAQ in the central-right column with proposed-mark clearance and infringement topics."
+    },
+    {
+      "name": "Franchisees and symbols",
+      "spec": "Use the far-right column for franchisee restrictions and country-dependent symbol examples."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The introduction explicitly links correct names and logos to preserving recognition, strength and identity.",
+    "Application": "The FAQ compares trademark and trade-name forms and gives country-dependent designation examples.",
+    "Constraint": "The source requires clearance of new marks and prior approval of franchisee uses, and directs uncertain cases to the Legal Department."
+  }
+}

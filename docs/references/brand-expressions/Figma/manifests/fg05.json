@@ -1,0 +1,37 @@
+{
+  "id": "FG05",
+  "title": "UI-as-Identity",
+  "image": "fg05.png",
+  "source": "../sources/fg05.jpg",
+  "location": {
+    "series": "COLLINS / Figma / Nothing Great Is Made Alone case study",
+    "item": 5,
+    "section": "UI-as-Identity",
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Use recognizable product behavior as brand material because it can connect a promise with the experience that fulfills it.",
+  "strategic_value": "Figma’s pointers, tools and name labels can communicate collaboration without a conventional product screenshot.",
+  "demonstration": "Four colored panels pair a tool or cursor with a boxed participant label: Famous Architect, Grog, Veteran Writer and Art Thief.",
+  "category": "Brand",
+  "practical_value": "Select functional interface elements that remain recognizable when isolated as brand graphics.",
+  "content_islands": [
+    {
+      "name": "Four panels",
+      "spec": "Arrange equal salmon, pink, yellow and blue-violet fields in one row."
+    },
+    {
+      "name": "Participant units",
+      "spec": "Center a differently colored tool and outlined name label within each field."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The adjacent UI-as-Identity description explains turning functional interface components into brand assets.",
+    "Expression": "Cursor, pen, pencil and hand shapes pair with contrasting role labels."
+  },
+  "ingredient": {
+    "name": "Tool and participant unit",
+    "role": "Represent a person’s contribution through a familiar editing cue.",
+    "application": "Combine a tool shape with a short outlined label and a contrasting flat field.",
+    "scope": "Observed campaign treatment, not a specification of actual interface behavior or an exhaustive color palette."
+  }
+}

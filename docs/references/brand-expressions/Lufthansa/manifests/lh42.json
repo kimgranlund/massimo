@@ -1,0 +1,29 @@
+{
+  "id": "LH42",
+  "title": "Large-format advertising",
+  "image": "lh42.png",
+  "source": "../sources/lh42.jpg",
+  "location": {
+    "series": "HvD Fonts / Lufthansa 2018",
+    "item": 21,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Use type with imagery at urban scale because a message must be read amid competing surroundings.",
+  "strategic_value": "Consistent lettering across differently colored campaigns can retain Lufthansa recognition while varying the destination story.",
+  "demonstration": "Two adjoining building wraps carry large white German headlines, photographic backgrounds and small Lufthansa signatures.",
+  "category": "Application",
+  "practical_value": "Compare headline visibility and signature placement across adjacent outdoor executions.",
+  "content_islands": [
+    {
+      "name": "Paired campaigns",
+      "spec": "Keep the blue and red wraps together across the building corner."
+    },
+    {
+      "name": "Street context",
+      "spec": "Preserve vehicles and architecture below to indicate viewing distance."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "Two adjoining building wraps carry large white German headlines, photographic backgrounds and small Lufthansa signatures."
+  }
+}

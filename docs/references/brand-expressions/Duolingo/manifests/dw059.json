@@ -1,0 +1,40 @@
+{
+  "id": "DW059",
+  "title": "Writing / Voice / Worldly",
+  "image": "dw059.png",
+  "source": "../sources/pages/writing-voice.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/voice",
+    "section": "Worldly",
+    "item": 59,
+    "order": 590
+  },
+  "slide_intent": "Write with cultural awareness so a global audience can understand references and feel addressed.",
+  "strategic_value": "Examples spanning news, entertainment and multilingual replies can help Duolingo express curiosity without defaulting to insider slang.",
+  "demonstration": "The page compares Interested, Knowledgeable, Universal and Multilingual examples with narrow or less suitable alternatives.",
+  "category": "Voice",
+  "practical_value": "Check whether a reference travels across audiences and whether a reply respects the recipient’s language.",
+  "content_islands": [
+    {
+      "name": "Guidance column",
+      "spec": "Place the Worldly heading, localization rationale and positive/negative lists at left."
+    },
+    {
+      "name": "Worked examples",
+      "spec": "Stack four comparison rows at right, preserving the Spanish-response example and the distinction between informed references and obscure slang."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source explicitly links worldwide reach with content that excludes no one.",
+    "Expression": "Examples use informed cultural references and multilingual replies.",
+    "Application": "Four comparisons help writers assess breadth, comprehensibility and language choice.",
+    "Constraint": "The source rejects references likely to be misunderstood and distinguishes multilingual writing from English-only replies."
+  },
+  "ingredient": {
+    "name": "Worldly voice",
+    "role": "Make cultural knowledge accessible.",
+    "application": "Use understandable references and appropriate multilingual replies; preserve meaning during localization.",
+    "scope": "Historical official guidelines from the 2024–2025 archived snapshot; this records the displayed guidance, not current Duolingo product behavior. The displayed trait says multilingual but English first; it does not require English-only replies."
+  }
+}

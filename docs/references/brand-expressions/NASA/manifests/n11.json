@@ -1,0 +1,24 @@
+{
+  "id": "N11",
+  "title": "The Logotype: Grid Drawing for Large Applications",
+  "image": "n11.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 11
+  },
+  "slide_intent": "Teach designers to enlarge a mark without losing the relationships between curves and strokes. Small changes to a letterform become conspicuous at sign scale.",
+  "strategic_value": "NASA can maintain the identity when a large surface requires a constructed master. The square grid gives a fabricator a repeatable geometric reference.",
+  "demonstration": "The landscape sheet enlarges the black master across a square grid. The accompanying text sets the vertical stroke width at three grid units.",
+  "category": "Geometry",
+  "practical_value": "Use the grid for a large application when photographic reproduction is impractical. Check stroke width, proportions and curves against the drawing.",
+  "content_islands": [
+    {
+      "name": "Construction guidance",
+      "spec": "Place the title, explanation and contact guidance in a narrow upper band."
+    },
+    {
+      "name": "Gridded master",
+      "spec": "Run the gridded field across the lower page, keeping the entire black logotype and several open grid cells around it visible."
+    }
+  ]
+}

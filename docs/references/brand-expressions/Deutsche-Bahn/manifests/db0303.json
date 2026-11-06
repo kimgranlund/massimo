@@ -1,0 +1,35 @@
+{
+  "id": "DB0303",
+  "title": "Barrierefreiheit / email signature",
+  "image": "db0303.png",
+  "source": "../sources/page-03.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 3,
+    "section": 3,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Teams-Hintergruende/E-Mail-Signatur"
+  },
+  "slide_intent": "Make contact information accessible so different recipients can understand who is writing.",
+  "strategic_value": "Alternative text and optional pronouns can make DB correspondence more inclusive and useful.",
+  "demonstration": "A text introduction is followed by an alternative-text dialog over a signature screenshot and an optional-pronouns example.",
+  "category": "Application",
+  "practical_value": "Add meaningful text alternatives to signature graphics and consider an appropriate pronoun line.",
+  "content_islands": [
+    {
+      "name": "Accessibility rationale",
+      "spec": "Explain above the screenshot why recipients must be able to understand signature information."
+    },
+    {
+      "name": "Alternative-text example",
+      "spec": "Show the signature and the image-description dialog together."
+    },
+    {
+      "name": "Pronoun example",
+      "spec": "Place the optional pronoun guidance and sample name block below."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The section explicitly connects accessibility to recipients understanding the information regardless of individual needs.",
+    "Application": "The screenshot demonstrates alternative-text entry and the text provides a pronoun-line example."
+  }
+}

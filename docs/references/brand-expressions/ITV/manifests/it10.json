@@ -1,0 +1,35 @@
+{
+  "id": "IT10",
+  "title": "ITVX / Full bus wrap",
+  "image": "it10.png",
+  "source": "../sources/1782130862-upovdwdxrm27hyqzhrbhqw-itv_6.webp",
+  "location": {
+    "series": "DixonBaxi / ITV case-study artwork series",
+    "item": 10,
+    "extent": "Whole source artwork",
+    "source_asset_index": 9
+  },
+  "slide_intent": "Adapt an identity device to an irregular moving surface while keeping a readable service mark, because viewers need to recognize the same service across different situations.",
+  "strategic_value": "This approach can strengthen continuity between campaign recognition and service use.",
+  "demonstration": "A double-decker bus uses yellow and dark angular fields across its body, with ITVX and programme imagery spanning the side.",
+  "category": "Application",
+  "practical_value": "Adapt an identity device to an irregular moving surface while keeping a readable service mark.",
+  "content_islands": [
+    {
+      "name": "Street",
+      "spec": "The city scene gives the vehicle context."
+    },
+    {
+      "name": "Wrap",
+      "spec": "Yellow and dark shapes extend across panels."
+    },
+    {
+      "name": "Content",
+      "spec": "Programme portraits and ITVX share the vehicle side."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A double-decker bus uses yellow and dark angular fields across its body, with ITVX and programme imagery spanning the side.",
+    "Application": "Adapt an identity device to an irregular moving surface while keeping a readable service mark. Evidence is the shown application, not a mandatory layout rule."
+  }
+}

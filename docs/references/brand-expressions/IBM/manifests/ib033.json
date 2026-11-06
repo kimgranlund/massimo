@@ -1,0 +1,66 @@
+{
+  "id": "IB033",
+  "title": "Pictograms / Design",
+  "image": "ib033.png",
+  "source": "../sources/iconography-pictograms-design.txt",
+  "location": {
+    "series": "IBM Design Language / public web guidelines",
+    "item": 33,
+    "extent": "Complete webpage content area, default interactive state",
+    "url": "https://www.ibm.com/design/language/iconography/pictograms/design/",
+    "order": 33000
+  },
+  "slide_intent": "Build recognizable metaphors from a shared construction language, because symbols must stay clear when their size or context changes.",
+  "strategic_value": "The shared grid, Plex-like corners and controlled gradients can make many subjects feel related to IBM.",
+  "demonstration": "The page compares productive and expressive pictograms, then pairs construction diagrams and approved examples with marked errors.",
+  "category": "Geometry",
+  "practical_value": "Choose a pictogram type, construct its geometry and check contrast without treating expressive treatment as the default.",
+  "content_islands": [
+    {
+      "name": "Introduction and types",
+      "spec": "Place the title and resource cards above the paired productive and expressive symbols."
+    },
+    {
+      "name": "Foundation and style",
+      "spec": "Follow with the 32px grid, padding comparisons and enlarged corner, cap and angle specimens."
+    },
+    {
+      "name": "Stroke and detail comparisons",
+      "spec": "Pair measured strokes and viewing angles with green approval and red rejection examples."
+    },
+    {
+      "name": "Color treatments",
+      "spec": "Compare monochrome, tinted and gradient pictograms in tabbed light-background specimens; dark states have separate captures."
+    },
+    {
+      "name": "Expressive color construction",
+      "spec": "Finish with the masked 45° gradient layer and examples of permitted and rejected changes."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The introduction says pictograms communicate at a glance and simplify complex ideas.",
+    "Expression": "The symbols combine rounded exterior corners, square details and controlled color gradients.",
+    "Application": "Construction diagrams specify a 32px master grid and explain productive versus expressive treatment.",
+    "Constraint": "The page specifies 0.72px productive strokes, 1.44px expressive strokes, 1px exterior padding and contrast of 4.5:1; it prohibits perspective and radial gradients."
+  },
+  "ingredient": {
+    "name": "Pictogram construction",
+    "role": "Make varied metaphors legible within a common visual family.",
+    "application": "Draw on the 32px grid; use 0.72px productive strokes and double the expressive strokes to 1.44px. Preserve the source contrast and gradient rules.",
+    "scope": "IBM pictograms, not UI icons. Additional radii and angles remain permitted when necessary to clarify the metaphor."
+  },
+  "motion_assets": [
+    {
+      "title": "Pictogram grid construction",
+      "file": "../sources/media/9c540b4ef9ae.mp4",
+      "poster": "../sources/media/9c540b4ef9ae-poster.png",
+      "duration_seconds": 10.27,
+      "source_url": "https://www.ibm.com/design/language/videos/Pictograms_video_v2.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    }
+  ]
+}

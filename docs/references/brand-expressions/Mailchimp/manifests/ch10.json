@@ -1,0 +1,35 @@
+{
+  "id": "CH10",
+  "title": "Growing illustrated landscape",
+  "image": "ch10.png",
+  "source": "../sources/ch10.mp4",
+  "location": {
+    "series": "COLLINS / Mailchimp case study",
+    "item": 10,
+    "extent": "Complete published artwork",
+    "section": "Gallery"
+  },
+  "slide_intent": "Let a simple scene accumulate detail because a viewer can follow development when the visual ground remains stable.",
+  "strategic_value": "The black-on-yellow world can make Mailchimp’s growth theme recognizable through an unfolding story.",
+  "demonstration": "A sparse line landscape develops through plants, figures and oversized hands before ending with the Freddie signature.",
+  "category": "Motion",
+  "practical_value": "Study how a shared line and background connect changing scenes to a brand ending.",
+  "content_islands": [
+    {
+      "name": "Landscape",
+      "spec": "Hold the yellow field while black terrain and characters evolve across the frame."
+    },
+    {
+      "name": "Interventions",
+      "spec": "Introduce oversized hands and new objects as the scene becomes denser."
+    },
+    {
+      "name": "Signature",
+      "spec": "Finish with the brand character and lockup after the illustrated sequence."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The film uses rough black drawing on yellow across an evolving landscape and brand ending."
+  },
+  "motion": "../sources/ch10.mp4"
+}

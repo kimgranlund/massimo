@@ -1,0 +1,32 @@
+{
+  "id": "DBG10",
+  "title": "Logozusatz / Vertical centered",
+  "image": "dbg10.png",
+  "source": "../sources/media/959c82c3890f-Bild_110-data.gif",
+  "location": {
+    "series": "DB new design / original GIF demonstrations",
+    "source_page": 15,
+    "section": 6,
+    "url": "https://marketingportal.extranet.deutschebahn.com/resource/blob/14025292/3f8961a9c232b461ad852293398291a8/Bild_110-data.gif"
+  },
+  "slide_intent": "Stack the sender and descriptor when a vertical arrangement supports recognition in the available space.",
+  "strategic_value": "A centered two-level lockup can retain DB identity in a narrower composition.",
+  "demonstration": "The red DB logo resolves above the black Zusatz descriptor; both remain centered on the pale field.",
+  "category": "Motion",
+  "practical_value": "Compare the stacked signature with horizontal alternatives before choosing an orientation.",
+  "content_islands": [
+    {
+      "name": "Stacked lockup",
+      "spec": "Place the red mark above the descriptor and align their centers."
+    },
+    {
+      "name": "Business descriptor",
+      "spec": "Keep the black Zusatz text subordinate to the DB mark and reveal it after the mark."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The source presents this arrangement as a business/product suffix variant.",
+    "Constraint": "The accompanying text permits the suffix when communication relates exclusively to a particular business or product area."
+  },
+  "motion": "../sources/media/dbg10.mp4"
+}

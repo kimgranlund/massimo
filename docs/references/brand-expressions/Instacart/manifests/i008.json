@@ -1,0 +1,24 @@
+{
+  "id": "I008",
+  "title": "Logo Intro",
+  "image": "i008.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 8
+  },
+  "slide_intent": "Connect the logo to what the service offers so its construction has a purpose the reader can judge.",
+  "strategic_value": "Explaining the symbol as both efficiency and enjoyment can carry the Shop + Savor premise into the identity.",
+  "demonstration": "Two separated text blocks call the logo the root of the system and connect it to efficiency and enjoyment.",
+  "category": "Brand",
+  "practical_value": "Read the two statements before choosing which detail of the symbol to emphasize in an explanation.",
+  "content_islands": [
+    {
+      "name": "Running heading",
+      "spec": "Place Logo Intro beneath the page identifiers."
+    },
+    {
+      "name": "Two-part proposition",
+      "spec": "Stack the two dark green statements at the left on Cashew. Leave a gap after the first to distinguish the claim from its meaning."
+    }
+  ]
+}

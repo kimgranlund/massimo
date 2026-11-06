@@ -1,0 +1,32 @@
+{
+  "id": "C23",
+  "title": "When to Use Secondary Colors",
+  "image": "c23.png",
+  "source": "../csail-branding-short-guide.pdf",
+  "location": {
+    "page": 23
+  },
+  "slide_intent": "Teach where supporting colors can separate information inside dense research material. Color should help a reader identify groups or values.",
+  "strategic_value": "CSAIL can give posters, slides and event schedules useful accents while leaving the main logo in its established colors.",
+  "demonstration": "A research-poster excerpt sits beside a bar-chart slide and an event schedule. Supporting hues carry different quantities and schedule blocks across the three examples.",
+  "category": "Color",
+  "practical_value": "Choose a secondary hue for a chart series, callout or schedule block. Keep ordinary body copy in a legible text color.",
+  "content_islands": [
+    {
+      "name": "Usage guidance",
+      "spec": "Set the heading and notes on highlights, background colors and body copy in a narrow left column."
+    },
+    {
+      "name": "Research-poster excerpt",
+      "spec": "Show a tall crop with a large percentage, a pie chart, type samples and bars."
+    },
+    {
+      "name": "Chart slide",
+      "spec": "Place a presentation example at upper right with color identifying bar groups."
+    },
+    {
+      "name": "Event schedule",
+      "spec": "Place a schedule below the slide, dividing dated events into colored angular cells."
+    }
+  ]
+}

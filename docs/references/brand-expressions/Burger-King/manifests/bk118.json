@@ -1,0 +1,38 @@
+{
+  "id": "BK118",
+  "title": "Illustration and Iconography Don’ts",
+  "image": "bk118.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 118
+  },
+  "slide_intent": "Separate retired and current assets so viewers encounter one coherent visual identity rather than a mixture of eras.",
+  "strategic_value": "Explicitly retiring older product, claims, stripe and promotional graphics can protect the consistency of Burger King’s new system.",
+  "demonstration": "Four crossed-out panels show previous product icons, claims badges, textured stripes and promotional graphics beside a note against mixing old and new identities.",
+  "category": "Imagery",
+  "practical_value": "Check whether a proposed illustration belongs to the retired system before placing it in the new identity.",
+  "content_islands": [
+    {
+      "name": "Retirement explanation",
+      "spec": "Place the consistency rationale and explanation of old examples at left."
+    },
+    {
+      "name": "Product and claims examples",
+      "spec": "Show crossed-out product silhouettes and claims badges across the top."
+    },
+    {
+      "name": "Stripe and promotion examples",
+      "spec": "Show crossed-out textured stripes and promotional marks beneath, retaining each prohibition caption."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The copy explicitly links the prohibition to consistency throughout the visual identity.",
+    "Constraint": "The page prohibits using the shown product icons, claims icons, stripes and promotional icons from the previous identity."
+  },
+  "ingredient": {
+    "name": "Retired illustration assets",
+    "role": "Prevent visual mixing between the previous and new identities.",
+    "application": "Do not use the previous product icons, claims icons, stripes or promotional icons shown.",
+    "scope": "Historical transition rule in the 2020 guide; crossed-out examples are rejected assets, not current expression specimens."
+  }
+}

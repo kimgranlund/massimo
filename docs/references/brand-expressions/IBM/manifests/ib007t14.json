@@ -1,0 +1,38 @@
+{
+  "id": "IB007T14",
+  "title": "Color / Full palette — CMYK specifications",
+  "image": "ib007t14.png",
+  "source": "../sources/alternate-tabs.json",
+  "location": {
+    "series": "IBM Design Language / alternate tab states",
+    "parent": "IB007",
+    "group": 1,
+    "tab": 4,
+    "label": "CMYK",
+    "url": "https://www.ibm.com/design/language/color/",
+    "order": 7114
+  },
+  "slide_intent": "Specify the ink mixture for each named color, because visual resemblance on a screen does not define a repeatable print build.",
+  "strategic_value": "A common process-color table can reduce inconsistent ad hoc conversions in IBM printed communication.",
+  "demonstration": "The CMYK tab shows cyan, magenta, yellow and black values inside the dark-to-light hue and gray swatches.",
+  "category": "Color",
+  "practical_value": "Use the supplied four-channel build when preparing process-color artwork for the selected palette entry.",
+  "content_islands": [
+    {
+      "name": "Process-color selector",
+      "spec": "Place the selected CMYK tab above the swatch table."
+    },
+    {
+      "name": "Hue builds",
+      "spec": "Show seven hue families with c/m/y/k values beside each named grade."
+    },
+    {
+      "name": "Gray builds",
+      "spec": "Close with the three neutral families, including four-channel Black and zero-ink White."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The swatch rows preserve IBM’s chromatic and neutral family structure.",
+    "Application": "The tab gives explicit CMYK builds; Blue 60 is c 80 m 60 y 0 k 0 and White is c 0 m 0 y 0 k 0."
+  }
+}

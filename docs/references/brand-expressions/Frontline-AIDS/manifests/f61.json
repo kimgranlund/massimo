@@ -1,0 +1,24 @@
+{
+  "id": "F61",
+  "title": "Character illustrations",
+  "image": "f61.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 61
+  },
+  "slide_intent": "Introduce drawn people as a way to depict a specific human interaction when a suitable photograph is unavailable. The gesture needs to remain legible at a glance.",
+  "strategic_value": "Frontline AIDS can keep a human focus across publications and campaigns through a recurring, adaptable character style.",
+  "demonstration": "Two simplified figures embrace on a green field. A few blue strokes emphasize the gesture, and the lower headline picks up the same blue.",
+  "category": "Imagery",
+  "practical_value": "Select or compose a character scene around the action the reader needs to understand; size it so the figures and gesture lead.",
+  "content_islands": [
+    {
+      "name": "Purpose note",
+      "spec": "Place the character introduction in the narrow white column beside the rail."
+    },
+    {
+      "name": "Character-led composition",
+      "spec": "Let the embracing figures fill the green panel. Keep the silhouettes simple, add a few emphasis strokes and place the headline at lower right."
+    }
+  ]
+}

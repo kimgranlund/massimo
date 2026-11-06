@@ -1,0 +1,32 @@
+{
+  "id": "DB1112B",
+  "title": "Größen & Schutzraum / Medium",
+  "image": "db1112b.png",
+  "source": "../sources/db1112b-page.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 11,
+    "section": 12,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Icons",
+    "tab": "Medium 24 × 24 dp"
+  },
+  "slide_intent": "Keep the same margin while changing the icon drawing so medium-size controls retain clear separation.",
+  "strategic_value": "A defined medium variant can keep DB interface symbols crisp and aligned.",
+  "demonstration": "The Medium tab compares a 24×24 dp plus-circle at actual size with an enlarged 20×20 dp live area inside a 2 dp margin.",
+  "category": "Geometry",
+  "practical_value": "Use the medium asset and its 2 dp margin rather than reducing the large drawing without checking its construction.",
+  "content_islands": [
+    {
+      "name": "Selected size",
+      "spec": "Show Medium 24×24 dp selected above the comparison."
+    },
+    {
+      "name": "Medium construction",
+      "spec": "Pair the 100% icon with an 800% view labeling live and safe areas."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The Medium tab shows the actual-size symbol and enlarged margin diagram.",
+    "Constraint": "The outer size is 24×24 dp, live area 20×20 dp and clear space 2 dp."
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "id": "FG06",
+  "title": "Nothing Great Is Made Alone / collaborative typesetting",
+  "image": "fg06.png",
+  "source": "../sources/fg06.mp4",
+  "location": {
+    "series": "COLLINS / Figma / Nothing Great Is Made Alone case study",
+    "item": 6,
+    "section": "Gallery",
+    "extent": "Complete clip; PNG is midpoint poster",
+    "poster_seconds": 7.68
+  },
+  "slide_intent": "Let the act of rearranging words explain a teamwork claim because seeing the contribution can make the promise concrete.",
+  "strategic_value": "Multiple cursors building the campaign line can connect Figma’s brand story directly to its shared editing model.",
+  "demonstration": "Colored cursors select and rearrange black words into the campaign sentence, followed by wordmark selection and assembly of the colored symbol.",
+  "category": "Motion",
+  "practical_value": "Use sequential typesetting to make the meaning of a campaign line emerge through collaboration.",
+  "content_islands": [
+    {
+      "name": "Word sequence",
+      "spec": "Begin with ALONE and progressively add and reposition the other words on white."
+    },
+    {
+      "name": "Editing cues",
+      "spec": "Retain selection boxes and several colored cursors while the sentence is assembled."
+    },
+    {
+      "name": "Signature",
+      "spec": "Finish with the wordmark and collaborative symbol reveal."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The case-study narrative says the campaign challenges the lone-genius story and invites wider teams to participate.",
+    "Expression": "Several visible cursors transform the word arrangement and build the final identity."
+  },
+  "motion": "../sources/fg06.mp4"
+}

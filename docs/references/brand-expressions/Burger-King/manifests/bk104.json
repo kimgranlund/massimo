@@ -1,0 +1,35 @@
+{
+  "id": "BK104",
+  "title": "Illustration: Primary Stripes",
+  "image": "bk104.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 104
+  },
+  "slide_intent": "Ground an abstract motif in recognizable ingredients so its colors and proportions communicate a food association rather than arbitrary decoration.",
+  "strategic_value": "A stripe system derived from the Whopper can give Burger King a proprietary graphic reference beyond its logo.",
+  "demonstration": "A left explanation accompanies a large striped rectangle labeled from bun crown through lettuce, tomato, onion, pickles and patty to bun heel.",
+  "category": "Imagery",
+  "practical_value": "Trace each stripe to its ingredient reference when choosing or assessing the primary artwork.",
+  "content_islands": [
+    {
+      "name": "Food rationale",
+      "spec": "Place the explanation of the Whopper cross-section at left."
+    },
+    {
+      "name": "Labeled stripe diagram",
+      "spec": "Show the layered rectangle at right with small ingredient labels inside the corresponding bands."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The copy explains that the stripes take their inspiration directly from the Whopper and its ingredient layers.",
+    "Expression": "The diagram presents uneven, food-colored bands of different thicknesses.",
+    "Application": "Labels connect each band to an ingredient and establish the shown order."
+  },
+  "ingredient": {
+    "name": "Primary illustration stripes",
+    "role": "Refer to a Whopper cross-section without literal food photography.",
+    "application": "Use the layered stripe artwork with its ingredient order intact.",
+    "scope": "Historical guide. Body copy mentions mayo while the diagram labels the white band Onion Rings; preserve that source inconsistency. No numeric band proportions are specified."
+  }
+}

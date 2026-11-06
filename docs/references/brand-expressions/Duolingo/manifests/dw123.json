@@ -1,0 +1,38 @@
+{
+  "id": "DW123",
+  "title": "Illustration / Characters / Eye mistakes",
+  "image": "dw123.png",
+  "source": "../sources/pages/illustration-characters.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/illustration/characters",
+    "section": "Please don't...",
+    "item": 123,
+    "order": 1230
+  },
+  "slide_intent": "Keep facial features readable because the viewer relies on eyes to recognize a character’s emotional state.",
+  "strategic_value": "Consistent eye construction can preserve the expressive quality of Duolingo characters across drawings.",
+  "demonstration": "Three crossed-out face examples compare small glasses, vertically centered pupils and insufficiently rounded eye forms.",
+  "category": "Geometry",
+  "practical_value": "Check eye construction against the source’s three prohibited treatments.",
+  "content_islands": [
+    {
+      "name": "Rejected examples",
+      "spec": "Arrange the three face details in a pale panel at left, each inside a pink crossed-out frame."
+    },
+    {
+      "name": "Reasons and limits",
+      "spec": "List the three eye prohibitions beneath the Eyes label at right."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The first prohibition explains that small glasses hide eye emotions.",
+    "Constraint": "The page prohibits small glasses, vertically centered pupils and eye shapes other than fully rounded pills."
+  },
+  "ingredient": {
+    "name": "Character eyes",
+    "role": "Carry emotion clearly within a simple face.",
+    "application": "Use fully rounded pill forms, avoid vertically centered pupils and do not hide eyes with small glasses.",
+    "scope": "Historical character-construction guidance; this page’s restrictions accompany the eye-style options elsewhere in the guide."
+  }
+}

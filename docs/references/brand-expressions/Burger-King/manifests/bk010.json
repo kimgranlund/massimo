@@ -1,0 +1,31 @@
+{
+  "id": "BK010",
+  "title": "Brand Positioning / Authenticity of food & people",
+  "image": "bk010.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 10
+  },
+  "slide_intent": "Name the shared value behind product and audience expression so design choices have a coherent reference point.",
+  "strategic_value": "A single authenticity premise can connect Burger King’s food presentation with its invitation to be oneself.",
+  "demonstration": "An oversized two-line positioning phrase sits above a paragraph about individuality and real food.",
+  "category": "Brand",
+  "practical_value": "Evaluate a creative proposal against the same value across food and people.",
+  "content_islands": [
+    {
+      "name": "Positioning headline",
+      "spec": "Place the large authenticity phrase in the wide right column."
+    },
+    {
+      "name": "Explanation",
+      "spec": "Set the shorter supporting paragraph directly beneath."
+    },
+    {
+      "name": "Topic label",
+      "spec": "Place Brand Positioning at left."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The supporting text makes authenticity central to the brand and its Your Way promise."
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "N14",
+  "title": "Reproduction Art: Logotype",
+  "image": "n14.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 14
+  },
+  "slide_intent": "Give production teams a reliable master at a useful size. Reusing prepared artwork preserves the proportions of a signature through reproduction.",
+  "strategic_value": "NASA can distribute one recognizable form to many producers through camera-ready copies of the same logotype.",
+  "demonstration": "Seven black masters descend in size down a shared left edge. The note permits photographic reduction or enlargement of this standalone mark.",
+  "category": "Geometry",
+  "practical_value": "Choose an appropriately sized master and reproduce it photographically using the instructions at the head of the page.",
+  "content_islands": [
+    {
+      "name": "Master instructions",
+      "spec": "Set the title, reproduction guidance and supply contact near the upper left."
+    },
+    {
+      "name": "Size series",
+      "spec": "Stack seven complete logotypes from largest to smallest down one margin. Leave each master free of surrounding graphics."
+    }
+  ]
+}

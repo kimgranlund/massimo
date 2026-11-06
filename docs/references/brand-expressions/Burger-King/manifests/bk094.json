@@ -1,0 +1,27 @@
+{
+  "id": "BK094",
+  "title": "Illustration",
+  "image": "bk094.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 94
+  },
+  "slide_intent": "Mark a new expressive ingredient clearly so readers can distinguish image-making guidance from layout construction.",
+  "strategic_value": "The familiar orange divider can carry Burger King’s identity through the transition into illustration.",
+  "demonstration": "A large brown ILLUSTRATION heading occupies the upper-left portion of a plain orange divider.",
+  "category": "Imagery",
+  "practical_value": "Use this page as the boundary of the illustration chapter, without treating it as an illustration specimen.",
+  "content_islands": [
+    {
+      "name": "Chapter heading",
+      "spec": "Place the oversized brown title on orange near the top."
+    },
+    {
+      "name": "Document labels",
+      "spec": "Keep small navigation labels across the top and rights information below."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The divider demonstrates the consistent chapter-heading treatment, though it contains no illustration specimen."
+  }
+}

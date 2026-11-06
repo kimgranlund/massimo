@@ -1,0 +1,35 @@
+{
+  "id": "C460",
+  "title": "Derry Girls, deceit and Taskmaster campaign family",
+  "image": "c460.png",
+  "source": "../sources/c460.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 / 2023 masterbrand case study",
+    "item": 60,
+    "extent": "Full published artwork"
+  },
+  "slide_intent": "Compare programme variation against shared attribution, because a broadcaster must hold several distinct tones together.",
+  "strategic_value": "Consistent upper-left green 4 marks can connect comedy, drama and entertainment while preserving each show’s own imagery and lettering.",
+  "demonstration": "Three horizontal campaign artworks stack vertically: Derry Girls pairs a cast photograph with angled lettering, deceit pairs a portrait with textured thin letters, and Taskmaster pairs a theatrical ensemble with widely spaced lettering.",
+  "category": "Application",
+  "practical_value": "Identify which elements can stay fixed across a campaign family while title treatments and photographs change.",
+  "content_islands": [
+    {
+      "name": "Derry Girls panel",
+      "spec": "Place the cast and energetic angled title in the top panel, retaining the small green 4 at upper left."
+    },
+    {
+      "name": "deceit panel",
+      "spec": "Use the split-tone portrait and textured lowercase title in the middle panel."
+    },
+    {
+      "name": "Taskmaster panel",
+      "spec": "Keep the theatrical scene and broad title across the lower panel, with the same small broadcaster position."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "Pentagram’s accompanying case study explains that show color and typography align with the masterbrand while allowing individual tonal flexibility.",
+    "Expression": "Three horizontal campaign artworks stack vertically: Derry Girls pairs a cast photograph with angled lettering, deceit pairs a portrait with textured thin letters, and Taskmaster pairs a theatrical ensemble with widely spaced lettering.",
+    "Application": "The source demonstrates this treatment in three programme campaign artworks."
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "C08",
+  "title": "Our Logo",
+  "image": "c08.png",
+  "source": "../csail-branding-short-guide.pdf",
+  "location": {
+    "page": 8
+  },
+  "slide_intent": "Teach a designer what the primary mark already communicates. That helps avoid repeating affiliations or crowding its silhouette.",
+  "strategic_value": "The MIT initials built into the graphic can tell viewers the lab’s affiliation in a single signature.",
+  "demonstration": "A single large mark occupies the center of a pale panel. The left text explains the separate decisions about a lab descriptor, the available variants and mark placement.",
+  "category": "Brand",
+  "practical_value": "Check whether the primary mark alone identifies the lab or whether the expanded name would help the audience.",
+  "content_islands": [
+    {
+      "name": "Usage guidance",
+      "spec": "Set the title and explanation in the left rail. Discuss choosing the artwork for its size, setting and composition."
+    },
+    {
+      "name": "Primary mark",
+      "spec": "Center the color mark in a large pale field and keep generous clear space around it."
+    }
+  ]
+}

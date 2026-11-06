@@ -1,0 +1,34 @@
+{
+  "id": "GE09",
+  "title": "Product / Voice Search Flow",
+  "image": "ge09.png",
+  "source": "../sources/ge09.mp4",
+  "location": {
+    "series": "Evolving the Google Identity / 2015",
+    "item": 9,
+    "extent": "whole source",
+    "poster_seconds": 6.775,
+    "duration_seconds": 13.55
+  },
+  "slide_intent": "Carry identity through a task so visual feedback helps people follow the transition from asking to receiving an answer.",
+  "strategic_value": "The recurring dots and wordmark can make a Google voice query feel like one continuous service.",
+  "demonstration": "A phone demonstration opens voice input, displays the spoken weather query, animates processing dots and reveals a New York weather result.",
+  "category": "Application",
+  "practical_value": "Check whether branded feedback remains understandable across input, processing and result states within one actual flow.",
+  "content_islands": [
+    {
+      "name": "Phone frame",
+      "spec": "Keep a single portrait phone fixed on the pale background."
+    },
+    {
+      "name": "Query and result sequence",
+      "spec": "Move from the search bar to a voice overlay, transcribed query, animated feedback and weather result inside that phone."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The accompanying article identifies Search as the first product embodiment of the identity’s text and voice expression.",
+    "Expression": "The dots, bars and logotype keep the recognizable color family through the flow.",
+    "Application": "The clip places the identity states inside a complete voice-search example."
+  },
+  "motion": "../sources/ge09.mp4"
+}

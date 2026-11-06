@@ -1,0 +1,24 @@
+{
+  "id": "F53",
+  "title": "‘Hidden’ frame",
+  "image": "f53.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 53
+  },
+  "slide_intent": "Teach designers to use a revealing mask selectively. A partial view can invite a reader to look again at people and experiences that often go unseen.",
+  "strategic_value": "Frontline AIDS can connect the form of the word AIDS to the purpose of a major campaign or report cover. Rare use can give that treatment particular emphasis.",
+  "demonstration": "The left column shows the abstract cut-out; the black example at right reveals photographic fragments through its openings with two short blue text blocks.",
+  "category": "Imagery",
+  "practical_value": "Choose the device for a high-emphasis placement and test which details remain recognizable through its apertures.",
+  "content_islands": [
+    {
+      "name": "Device and rationale",
+      "spec": "Explain the origin and occasional use in the left column. Show the isolated black mask below the explanation."
+    },
+    {
+      "name": "Framed campaign image",
+      "spec": "Set the large field in black. Reveal parts of the photograph through the letter-derived openings and align the separate blue messages to the right."
+    }
+  ]
+}

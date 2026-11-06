@@ -1,0 +1,56 @@
+{
+  "id": "IB026",
+  "title": "Layout / Overview",
+  "image": "ib026.png",
+  "source": "../sources/layout-overview.txt",
+  "location": {
+    "series": "IBM Design Language / public web guidelines",
+    "item": 26,
+    "extent": "Complete webpage content-area capture; visible default tab states",
+    "url": "https://www.ibm.com/design/language/layout/overview/",
+    "order": 26000
+  },
+  "slide_intent": "Coordinate elements into a purposeful whole so a viewer can find meaning through hierarchy, space and relationships.",
+  "strategic_value": "Essential content, dynamic balance and engineered alignment can make IBM communication recognizable across editorial, event and product contexts.",
+  "demonstration": "The page introduces three layout qualities—Essential, Dynamic and Engineered—and pairs each with named examples including field guides, a business card, interfaces, posters and philosophy cards.",
+  "category": "Layout",
+  "practical_value": "Evaluate a composition against the three qualities while recognizing that one design need not express all three equally.",
+  "content_islands": [
+    {
+      "name": "Point of view",
+      "spec": "Begin with the title and rationale explaining how arrangement expresses IBM character."
+    },
+    {
+      "name": "Essential",
+      "spec": "Pair the criteria with field-guide covers, a business card and a Security Connect interface, keeping short captions beside each example."
+    },
+    {
+      "name": "Dynamic",
+      "spec": "Follow with an ethics publication, Project Debater page and blueprint poster demonstrating variation, contrast and spatial movement."
+    },
+    {
+      "name": "Engineered",
+      "spec": "Close with philosophy cards, a Town Hall poster and Garage posters whose repeated alignment and grid structures make their logic visible."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The point-of-view section says arrangement is essential to achieving IBM’s look; each quality connects a design approach to communication or brand character.",
+    "Expression": "The page shows recurring IBM blue, Plex typography, geometric imagery and asymmetric compositions across different media.",
+    "Application": "Named examples demonstrate how negative space, hierarchy, repetition and alignment enact the three qualities.",
+    "Constraint": "The source qualifies these qualities at the aggregate level: individual designs do not need to feature all of them equally."
+  },
+  "motion_assets": [
+    {
+      "title": "Editorial layout sequence",
+      "file": "../sources/media/de90c7ed7374.mp4",
+      "poster": "../sources/media/de90c7ed7374-poster.png",
+      "duration_seconds": 12.0,
+      "source_url": "https://www.ibm.com/design/language/87ca69865fa999bd27ac1ccd634413d2/AI-Ethics-GIF_v3.gif",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    }
+  ]
+}

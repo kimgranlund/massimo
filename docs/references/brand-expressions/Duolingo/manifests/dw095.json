@@ -1,0 +1,38 @@
+{
+  "id": "DW095",
+  "title": "Writing / Style / Capitalize",
+  "image": "dw095.png",
+  "source": "../sources/pages/writing-style.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/style",
+    "section": "Capitalize",
+    "item": 95,
+    "order": 950
+  },
+  "slide_intent": "Distinguish named offerings and features from ordinary nouns so readers can recognize specific parts of the product.",
+  "strategic_value": "A grouped naming chart can help Duolingo maintain recognizable labels across interface instructions and communications.",
+  "demonstration": "Seven groups list capitalized features, achievements, purchased items, add-ons, specific levels, products and UI page titles, with usage examples.",
+  "category": "Voice",
+  "practical_value": "Check whether a term names a specific feature or item before capitalizing it.",
+  "content_islands": [
+    {
+      "name": "Guidance column",
+      "spec": "Place the Capitalize heading and rule for Duolingo-specific names at left."
+    },
+    {
+      "name": "Worked examples",
+      "spec": "Stack the seven named categories at right, pairing checked names with example sentences where supplied."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "Grouped names and example sentences show capitalization in context.",
+    "Constraint": "The source calls for capitals on named features, achievements, purchased items, add-ons, specific levels, products and page titles as they appear in the UI."
+  },
+  "ingredient": {
+    "name": "Capitalized product names",
+    "role": "Identify specific named parts of the offer.",
+    "application": "Capitalize named features, achievements, purchased items, add-ons, specific levels, products and UI page titles as listed.",
+    "scope": "Historical official guidelines from the 2024–2025 archived snapshot; this records the displayed guidance, not current Duolingo product behavior. The chart includes retired product and feature names; it is not a current inventory."
+  }
+}

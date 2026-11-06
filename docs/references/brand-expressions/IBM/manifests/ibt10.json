@@ -1,0 +1,42 @@
+{
+  "id": "IBT10",
+  "title": "Logos and color",
+  "image": "ibt10.png",
+  "source": "../sources/ibm-logo-third-parties.pdf",
+  "location": {
+    "page": 10,
+    "series": "IBM Logo and Brand Guidelines for Third Parties / copyright 2022",
+    "order": 100010
+  },
+  "slide_intent": "Use the correct optical logo drawing for the background, because a simple color inversion can change perceived bar weight and clarity.",
+  "strategic_value": "Consistent positive and reversed marks can preserve IBM’s visual integrity across light and dark partner materials.",
+  "demonstration": "A left explanation and Blue 60 specifications accompany six panels: three dark marks on light backgrounds and three reversed marks on dark backgrounds.",
+  "category": "Color",
+  "practical_value": "Select the supplied positive or reversed mark before pairing it with a background color.",
+  "content_islands": [
+    {
+      "name": "Version guidance",
+      "spec": "Place the heading and explanation of optical differences in the left column."
+    },
+    {
+      "name": "Blue 60 specification",
+      "spec": "Below the copy, list PMS 2132, RGB 15/98/254 and CMYK 80/60/0/0, followed by the design-language link."
+    },
+    {
+      "name": "Background comparison",
+      "spec": "Fill the right area with a three-column, two-row array of contrasting logo/background combinations."
+    }
+  ],
+  "ingredient": {
+    "name": "Positive and reversed 8-bar artwork",
+    "role": "Preserve optical weight and recognition on different backgrounds.",
+    "application": "Choose the appropriate supplied version for a light or dark field; use the specified Blue 60 values when applying that color.",
+    "scope": "Copyright 2022 third-party guide. The six background panels are examples, not an exhaustive new palette."
+  },
+  "reference_purposes": {
+    "Intent": "The text explains that subtle differences between positive and reversed artwork preserve optical integrity.",
+    "Expression": "Six color panels demonstrate IBM’s blue, neutral and reversed logo treatments.",
+    "Application": "The page supplies Blue 60 values and examples for choosing the appropriate logo version.",
+    "Constraint": "The source directs use of the appropriate positive or reversed artwork for the background."
+  }
+}

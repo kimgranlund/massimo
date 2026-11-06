@@ -1,0 +1,30 @@
+{
+  "id": "IG30",
+  "title": "Post the real ones / urban billboard",
+  "image": "ig30.png",
+  "source": "../sources/ig30.jpg",
+  "location": {
+    "series": "Elvis Dinh / Instagram brand design system / project year 2022",
+    "item": 30,
+    "extent": "whole source artwork"
+  },
+  "slide_intent": "Keep an outdoor message short enough to read amid competing street information.",
+  "strategic_value": "A gradient frame and simple phrase can help Instagram retain identity around a candid photograph.",
+  "demonstration": "A long billboard above a storefront places a photograph between Post the and real ones, with a small white glyph.",
+  "category": "Application",
+  "practical_value": "Compare the headline and central image at the viewing distance implied by the streetscape.",
+  "content_islands": [
+    {
+      "name": "Billboard composition",
+      "spec": "Place the photograph centrally with short white text on the gradient at either side."
+    },
+    {
+      "name": "Urban context",
+      "spec": "Retain storefronts, traffic and neighboring buildings to show the competition for attention."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The photograph shows the campaign in a busy urban placement.",
+    "Expression": "The gradient and concise split headline frame a candid human scene."
+  }
+}

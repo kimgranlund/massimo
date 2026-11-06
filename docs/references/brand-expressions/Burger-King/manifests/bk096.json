@@ -1,0 +1,40 @@
+{
+  "id": "BK096",
+  "title": "Illustration Overview",
+  "image": "bk096.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 96
+  },
+  "slide_intent": "Connect drawing style to what the brand wants people to notice while protecting the integrity of approved artwork.",
+  "strategic_value": "Hand-drawn ingredients, a tall burger and a dripping ice cream can give Burger King a playful food vocabulary across packaging, stores and social media.",
+  "demonstration": "A green explanatory column sits beside three labeled subjects: onion ingredients, an enlarged burger product and a hand holding soft serve on yellow and red.",
+  "category": "Imagery",
+  "practical_value": "Choose among ingredient, product and storytelling illustrations, and follow the explicit limits on editing and extension.",
+  "content_islands": [
+    {
+      "name": "Style and use guidance",
+      "spec": "Place the description, use contexts and alteration limits in the left column."
+    },
+    {
+      "name": "Ingredients",
+      "spec": "Use onion drawings in the adjoining green area under its label."
+    },
+    {
+      "name": "Products and storytelling",
+      "spec": "Place the burger on yellow and hand-held soft serve on red in two tall panels."
+    }
+  ],
+  "ingredient": {
+    "name": "Storytelling illustration library",
+    "role": "Express food and playful human moments with a consistent hand-drawn voice.",
+    "application": "Use complete approved images without recoloring or cropping; make them big and bold where possible. Consult the Global Design Team for new simple illustrations or library expansion.",
+    "scope": "Historical 2020 partner guidelines, PDF produced January 2021. The overview artwork itself contains edge crops; retain the written no-cropping rule rather than deriving permission from this presentation."
+  },
+  "reference_purposes": {
+    "Intent": "The copy describes the intended color, energy, humor and irony, focused on fresh ingredients, heroic products and playful storytelling.",
+    "Expression": "The three illustrated subjects demonstrate the hand-drawn style and color treatment.",
+    "Application": "The text names packaging, in-store artwork and social as use contexts.",
+    "Constraint": "Illustrations must not be recolored or cropped; use whole images, big and bold where possible, and consult the Global Design Team for new work or library expansion."
+  }
+}

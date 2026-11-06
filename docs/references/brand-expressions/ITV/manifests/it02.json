@@ -1,0 +1,31 @@
+{
+  "id": "IT02",
+  "title": "ITVX / Portrait billboard variant",
+  "image": "it02.png",
+  "source": "../sources/1782130982-urfkuo2wt0o_d4jhj6dpzg-itv-x-mobile-header.jpg",
+  "location": {
+    "series": "DixonBaxi / ITV case-study artwork series",
+    "item": 2,
+    "extent": "Whole source artwork",
+    "source_asset_index": 2
+  },
+  "slide_intent": "Compare how the central brand and offer survive a tighter photographed composition, because viewers need to recognize the same service across different situations.",
+  "strategic_value": "This approach can strengthen continuity between campaign recognition and service use.",
+  "demonstration": "A portrait-format source image shows a billboard with a different set of talent portraits and a STREAM FREE message beneath ITVX.",
+  "category": "Application",
+  "practical_value": "Compare how the central brand and offer survive a tighter photographed composition.",
+  "content_islands": [
+    {
+      "name": "Street context",
+      "spec": "Buildings and road frame the installation."
+    },
+    {
+      "name": "Billboard",
+      "spec": "Talent columns sit behind ITVX and a short offer."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A portrait-format source image shows a billboard with a different set of talent portraits and a STREAM FREE message beneath ITVX.",
+    "Application": "Compare how the central brand and offer survive a tighter photographed composition. Evidence is the shown application, not a mandatory layout rule."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "B21",
+  "title": "Highlights",
+  "image": "b21.png",
+  "source": "../bolt-brand-guidelines-2025-12.pdf",
+  "location": {
+    "page": 21
+  },
+  "slide_intent": "Teach designers to identify the words that deserve extra emphasis. A change in color can direct the eye to one term while the rest of the sentence retains a coherent voice.",
+  "strategic_value": "Bolt can associate its lead blue with the point of a checkout message on both light and dark surfaces.",
+  "demonstration": "Two large headline cards compare a light ground and a dark ground. Blue picks out “one-click.” at the end of the first headline and “(half)” inside the second. Each card number corresponds to a color recipe on the left.",
+  "category": "Typography",
+  "practical_value": "Choose a short phrase that carries the point of the headline, then match the surrounding type color to the chosen ground using the numbered examples.",
+  "content_islands": [
+    {
+      "name": "Section rail",
+      "spec": "Keep the dark rail and Typography section marker along the left edge."
+    },
+    {
+      "name": "Highlight guidance and key",
+      "spec": "Set the title and brief principle at upper left. Below it, pair the two numbered notes with their background, text and highlight roles."
+    },
+    {
+      "name": "Headline comparison",
+      "spec": "Set the two rounded cards at equal height on the right. Center the large multiline text on each card. Invert the ordinary text between the light and dark versions and keep the chosen emphasis blue."
+    }
+  ]
+}

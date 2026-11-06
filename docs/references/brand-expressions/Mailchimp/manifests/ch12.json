@@ -1,0 +1,26 @@
+{
+  "id": "CH12",
+  "title": "Freddie monochrome",
+  "image": "ch12.png",
+  "source": "../sources/ch12.png",
+  "location": {
+    "series": "COLLINS / Mailchimp case study",
+    "item": 12,
+    "extent": "Complete published artwork",
+    "section": "Gallery"
+  },
+  "slide_intent": "Test a character without its color field because recognition must sometimes survive reduced reproduction.",
+  "strategic_value": "The solid black silhouette and open facial details can preserve Freddie’s identity in monochrome.",
+  "demonstration": "A large black Freddie head is centered on a white portrait field.",
+  "category": "Brand",
+  "practical_value": "Inspect the character’s silhouette and internal negative spaces without yellow.",
+  "content_islands": [
+    {
+      "name": "Character",
+      "spec": "Center the isolated black face and cap on white with surrounding clear space."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The source presents the character mark alone in black and white."
+  }
+}

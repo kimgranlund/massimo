@@ -1,0 +1,29 @@
+{
+  "id": "IBT01",
+  "title": "IBM Logo and Brand Guidelines for Third Parties",
+  "image": "ibt01.png",
+  "source": "../sources/ibm-logo-third-parties.pdf",
+  "location": {
+    "page": 1,
+    "series": "IBM Logo and Brand Guidelines for Third Parties / copyright 2022",
+    "order": 100001
+  },
+  "slide_intent": "Identify the audience and authority of the guidance immediately, so partners know the document concerns their use of another organization’s identity.",
+  "strategic_value": "The restrained blue cover and small IBM signature can establish recognition while making the third-party scope explicit.",
+  "demonstration": "A pale-blue field holds a two-line title above a small corporate name and a bottom-right IBM logo.",
+  "category": "Brand",
+  "practical_value": "Distinguish this third-party usage guide from IBM’s internal design language before applying its rules.",
+  "content_islands": [
+    {
+      "name": "Title",
+      "spec": "Set the guide title in the upper-left portion of the main text alignment."
+    },
+    {
+      "name": "Corporate identification",
+      "spec": "Place the full corporate name near the lower left and the 8-bar mark at the lower right."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The cover uses a pale-blue field, restrained type and an isolated IBM 8-bar mark."
+  }
+}

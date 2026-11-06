@@ -1,0 +1,27 @@
+{
+  "id": "DB0810",
+  "title": "Sekundärfarben neu",
+  "image": "db0810.png",
+  "source": "../sources/page-08.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 8,
+    "section": 10,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Markenfarben"
+  },
+  "slide_intent": "Make shade families inspectable so designers can select a defined value rather than improvise a new color.",
+  "strategic_value": "Named shade families can support consistent DB production and information graphics.",
+  "demonstration": "Four adjacent cards display Cold Black, DB Red, Lilac and S-Bahn Green values with rows of shade swatches.",
+  "category": "Color",
+  "practical_value": "Use the card’s named family and level when matching a shade to a role defined elsewhere.",
+  "content_islands": [
+    {
+      "name": "Shade-family cards",
+      "spec": "Align the four base cards with their color-system values and shade rows beneath each."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The four color-family specimens display the palette’s tonal range.",
+    "Application": "Each card supplies named color values and selectable shade levels."
+  }
+}

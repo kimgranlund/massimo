@@ -1,0 +1,35 @@
+{
+  "id": "FG16",
+  "title": "Desktop objects and cursor pins",
+  "image": "fg16.png",
+  "source": "../sources/fg16.jpg",
+  "location": {
+    "series": "COLLINS / Figma / Nothing Great Is Made Alone case study",
+    "item": 16,
+    "section": "Gallery",
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Carry recognizable digital shapes into everyday objects because physical encounters can reinforce the same identity.",
+  "strategic_value": "Figma-shaped trays and cursor pins can extend product recognition into the workspace.",
+  "demonstration": "Colored compartments form a Figma-like desk organizer among keys, clips, drawing tools and cursor or hand pins.",
+  "category": "Application",
+  "practical_value": "Compare how a screen-based symbol can become both a useful object and a small collectible.",
+  "content_islands": [
+    {
+      "name": "Organizer",
+      "spec": "Place the colored curved compartments within the metal tray, holding keys and clips."
+    },
+    {
+      "name": "Drawing tools",
+      "spec": "Arrange pencils, eraser and protractor beside the organizer."
+    },
+    {
+      "name": "Pins",
+      "spec": "Scatter small colored cursor and hand objects around the larger tray."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The image translates logo geometry into a desk organizer and pointer shapes into pins.",
+    "Expression": "The familiar multicolor shapes remain identifiable in three-dimensional objects."
+  }
+}

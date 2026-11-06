@@ -1,0 +1,30 @@
+{
+  "id": "DB0609",
+  "title": "Factual applications / information and report",
+  "image": "db0609.png",
+  "source": "../sources/page-06.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 6,
+    "section": 9,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Designprinzipien"
+  },
+  "slide_intent": "Preserve hierarchy in quieter communications so readers can find the main subject without decorative competition.",
+  "strategic_value": "A restrained dark field and small identity cues can connect DB information and reporting.",
+  "demonstration": "A passenger-service information card and an Immer besser report cover share dark grounds and restrained red branding.",
+  "category": "Application",
+  "practical_value": "Compare how a photograph-led information card and a type-led cover establish hierarchy.",
+  "content_islands": [
+    {
+      "name": "Information card",
+      "spec": "Place the station photograph above the passenger-service heading and explanatory text."
+    },
+    {
+      "name": "Report cover",
+      "spec": "Place the small mark above the centered title and the rising sleeper graphic at the lower edge."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The pair demonstrates factual information and report-cover treatments."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "C24",
+  "title": "Photography",
+  "image": "c24.png",
+  "source": "../csail-branding-short-guide.pdf",
+  "location": {
+    "page": 24
+  },
+  "slide_intent": "Teach designers to reserve space in a photograph for the story it must carry. Subject focus and room for type affect how quickly a viewer connects image and research.",
+  "strategic_value": "CSAIL can explain specific work with recognizable photography and consistent identifying marks, even when the images come from different settings.",
+  "demonstration": "Two image pairs compare source photographs with finished treatments: a portrait becomes a ColorMod graphic, and multicolored gloves are rearranged around copy on black.",
+  "category": "Imagery",
+  "practical_value": "Choose a single subject, consider where type will sit, and use a darker treatment or a neutral field when the original image leaves too little contrast.",
+  "content_islands": [
+    {
+      "name": "Photography guidance",
+      "spec": "Give the left column to subject focus, contrast, neutral grounds and image-credit instructions."
+    },
+    {
+      "name": "Portrait comparison",
+      "spec": "Place the untreated portrait at top left of the image field and its titled treatment to the right."
+    },
+    {
+      "name": "Glove comparison",
+      "spec": "Show the original pair of hands at lower left. Position the hands, research text and identifier together at lower right."
+    }
+  ]
+}

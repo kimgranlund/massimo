@@ -1,0 +1,33 @@
+{
+  "id": "IB046",
+  "title": "Data visualization / Usage",
+  "image": "ib046.png",
+  "source": "../sources/data-visualization-design-usage.txt",
+  "location": {
+    "series": "IBM Design Language / public web guidelines",
+    "item": 46,
+    "extent": "Complete webpage content area, default interactive state",
+    "url": "https://www.ibm.com/design/language/data-visualization/design/usage/",
+    "order": 46000
+  },
+  "slide_intent": "Adapt information density to the viewer’s task so monitoring remains coherent and communication remains clear.",
+  "strategic_value": "A shared chart language can connect IBM product dashboards with simpler marketing and editorial uses.",
+  "demonstration": "Dense dashboards and multi-device screens appear above isolated marketing charts, figures and illustrative data treatments.",
+  "category": "Application",
+  "practical_value": "Choose coordinated chart sets for monitoring and a simpler focused message for editorial or marketing work.",
+  "content_islands": [
+    {
+      "name": "Product and dashboard applications",
+      "spec": "Group dark dashboards, monitoring screens and related analytical views under the first section."
+    },
+    {
+      "name": "Marketing applications",
+      "spec": "Follow with presentation graphics, tablet and mobile examples, percentage figures and abstract dimensional charts."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text distinguishes multi-perspective monitoring from marketing situations where a simple message matters most.",
+    "Expression": "Charts share restrained typography, dark fields and selective saturated color.",
+    "Application": "The two galleries apply data-visualization guidance in product and marketing contexts."
+  }
+}

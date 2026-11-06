@@ -1,0 +1,28 @@
+{
+  "id": "N20",
+  "title": "Center Letterheads and Envelopes",
+  "image": "n20.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 20
+  },
+  "slide_intent": "Show how a local center identifies itself within a common correspondence system. The recipient should see both the agency and the location responsible for the letter.",
+  "strategic_value": "NASA can make a center-specific sender legible while retaining the national signature and standard government stationery sizes.",
+  "demonstration": "The Goddard Space Flight Center letterhead and envelope pair the agency identity with the center’s name and Maryland address. The letterhead places the black logotype apart from the sender block.",
+  "category": "Application",
+  "practical_value": "Use the center example to arrange a local sender address and the NASA mark across letterhead and envelope while retaining the specified type roles.",
+  "content_islands": [
+    {
+      "name": "Formats and type",
+      "spec": "Set the title and short specifications across the upper band. Include the 5/16-inch logotype cap height with the corresponding type guidance."
+    },
+    {
+      "name": "Center letterhead",
+      "spec": "Place the center and address block at the upper left and the logotype at the upper right of the outlined page. Keep the reply line and open writing area below."
+    },
+    {
+      "name": "Center envelope",
+      "spec": "Set the wide envelope beneath the letter, with the return address at left, the mark next to it and the postal indicia at right."
+    }
+  ]
+}

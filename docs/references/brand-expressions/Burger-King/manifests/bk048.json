@@ -1,0 +1,40 @@
+{
+  "id": "BK048",
+  "title": "Logo Color Usage / Secondary and Limited Colorways",
+  "image": "bk048.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 48
+  },
+  "slide_intent": "Separate broadly useful alternatives from restricted ones so expressive variety does not hide the logo.",
+  "strategic_value": "Controlled secondary and limited palettes can give Burger King flexibility while acknowledging contrast differences.",
+  "demonstration": "A left group of ten tiles presents secondary single-color treatments; a right group of six presents lower-contrast limited combinations.",
+  "category": "Color",
+  "practical_value": "Choose a secondary treatment for harmony with type or images; reserve limited combinations for sparse out-of-home marketing and swag use.",
+  "content_islands": [
+    {
+      "name": "Shared color rationale",
+      "spec": "Place the consistency and core-color description in the left text column."
+    },
+    {
+      "name": "Secondary colorways",
+      "spec": "Place the secondary-use explanation above ten small logo/background tiles in the center-left."
+    },
+    {
+      "name": "Limited colorways",
+      "spec": "Place the restriction and lower-contrast warning above six tiles at right."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The secondary group supports harmony with typography or images; limited combinations are restrained because some have lower contrast.",
+    "Expression": "The tile groups demonstrate the permitted single-color and limited pairings.",
+    "Application": "Secondary treatments support applications and packaging where a single-color logo works better with other elements.",
+    "Constraint": "Limited colorways are used most rarely, sparingly, and only in out-of-home marketing and swag."
+  },
+  "ingredient": {
+    "name": "Secondary and limited logo colorways",
+    "role": "Permit variation while preserving a readable signature.",
+    "application": "Use a secondary single-color logo when it better harmonizes with imagery or type; use limited combinations sparingly only for out-of-home marketing and swag.",
+    "scope": "Historical 2020 guide. Logo colorway groups are not identical to the primary/secondary palette groups defined later."
+  }
+}

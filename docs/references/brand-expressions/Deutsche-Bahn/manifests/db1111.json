@@ -1,0 +1,32 @@
+{
+  "id": "DB1111",
+  "title": "Organische Formen",
+  "image": "db1111.png",
+  "source": "../sources/page-11.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 11,
+    "section": 11,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Icons"
+  },
+  "slide_intent": "Allow form-specific rounding so a strict style does not make recognizable objects inaccurate.",
+  "strategic_value": "Limited exceptions can keep DB icons clear while preserving family consistency.",
+  "demonstration": "Device and person examples contrast harsh corners with controlled rounding and enlarged corner details.",
+  "category": "Geometry",
+  "practical_value": "Use subtle rounding when recognition improves; preserve natural forms and distinguish technical radius guidance.",
+  "content_islands": [
+    {
+      "name": "Exception rules",
+      "spec": "Place the device, body and vehicle explanations above the comparison."
+    },
+    {
+      "name": "Shape comparison",
+      "spec": "Contrast rigid and rounded device/body details in two columns."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text justifies rounding through improved recognition and fidelity to natural forms.",
+    "Application": "It permits body-form radii such as 4 dp and technical/geometric outer radii of 2 dp.",
+    "Constraint": "Rounding is tied to form recognition, not a blanket stylistic treatment."
+  }
+}

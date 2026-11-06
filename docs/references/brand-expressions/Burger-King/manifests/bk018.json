@@ -1,0 +1,34 @@
+{
+  "id": "BK018",
+  "title": "4. Proudly True",
+  "image": "bk018.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 18
+  },
+  "slide_intent": "Allow human and material imperfections to remain visible so authenticity feels credible rather than overly staged.",
+  "strategic_value": "A cropped person holding a burger can connect Burger King’s heritage claim with an ordinary eating moment.",
+  "demonstration": "Brown copy on yellow occupies the left while a person in a denim jacket holding a burger fills the right.",
+  "category": "Imagery",
+  "practical_value": "Assess whether photography feels human and unforced instead of rigidly perfected.",
+  "content_islands": [
+    {
+      "name": "Principle copy",
+      "spec": "Set the authenticity statement at left under the numbered heading."
+    },
+    {
+      "name": "Human crop",
+      "spec": "Crop the person at the torso on the right, retaining the hand, jacket, shirt graphic and burger."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The paragraph links the principle to heritage, people, food and acceptance of imperfections.",
+    "Expression": "The photograph shows a casually dressed person holding the food rather than an isolated product."
+  },
+  "ingredient": {
+    "name": "Authentic human imagery",
+    "role": "Make the food experience feel familiar and human.",
+    "application": "Avoid rigid or overly crafted presentation; allow imperfections.",
+    "scope": "Stated Proudly True principle in this historical partner guide."
+  }
+}

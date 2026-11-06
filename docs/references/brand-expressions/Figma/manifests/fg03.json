@@ -1,0 +1,35 @@
+{
+  "id": "FG03",
+  "title": "High Expressive Ratio",
+  "image": "fg03.png",
+  "source": "../sources/fg03.jpg",
+  "location": {
+    "series": "COLLINS / Figma / Nothing Great Is Made Alone case study",
+    "item": 3,
+    "section": "High Expressive Ratio",
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Demonstrate a shared visual vocabulary across subjects because consistent cues help viewers connect different stories.",
+  "strategic_value": "Contributor labels and editing marks can keep Figma identifiable across art, science, architecture and literature.",
+  "demonstration": "Two illustrated posters and a street-poster photograph share outlined drawings, colored contributor labels and editing cues; orange handwriting names the subject areas.",
+  "category": "Brand",
+  "practical_value": "Compare whether a small set of recognizable ingredients can support several subjects.",
+  "content_islands": [
+    {
+      "name": "Art and science",
+      "spec": "Place the Mona Lisa and relativity illustrations side by side at left."
+    },
+    {
+      "name": "Street series",
+      "spec": "Place the wider campaign photograph at right, preserving its varied poster messages."
+    },
+    {
+      "name": "Subject annotations",
+      "spec": "Keep orange Art, Science, Architecture and Literature notes beside their examples."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The adjacent High Expressive Ratio description explains generating expressive variety from few elements.",
+    "Application": "The comparison applies the same labels, cursors and drawing style to several campaign subjects."
+  }
+}

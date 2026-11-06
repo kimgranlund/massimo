@@ -1,0 +1,36 @@
+{
+  "id": "BK031",
+  "title": "Visual Identity / Kit-of-Parts",
+  "image": "bk031.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 31
+  },
+  "slide_intent": "Show the identity’s ingredients together so designers can see how distinct elements form a recognizable family.",
+  "strategic_value": "The warm palette, rounded type, food imagery and illustration can reinforce one Burger King character across formats.",
+  "demonstration": "A left introduction faces a three-by-three matrix of logo, wordmark, color, type, icons, lockup, illustration, illustrated type and food photography.",
+  "category": "Brand",
+  "practical_value": "Inventory the available ingredient types before choosing which a particular application needs.",
+  "content_islands": [
+    {
+      "name": "Introduction",
+      "spec": "Place the kit explanation in the left quarter."
+    },
+    {
+      "name": "Signature row",
+      "spec": "Use the upper row for logo, wordmark and palette."
+    },
+    {
+      "name": "Graphic row",
+      "spec": "Use the middle row for type, icons and a signature lockup."
+    },
+    {
+      "name": "Image row",
+      "spec": "Use the bottom row for illustration, shaped lettering and food photography."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The matrix brings the distinct visual ingredients into one coordinated overview.",
+    "Application": "The labels identify the toolkit parts available to build identity applications."
+  }
+}

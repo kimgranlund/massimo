@@ -1,0 +1,31 @@
+{
+  "id": "DJ19",
+  "title": "Travel stickers on a suitcase",
+  "image": "dj19.png",
+  "source": "../sources/johnson-banks/Duolingo_suitcase-by-Johnson-Banks.jpg",
+  "location": {
+    "series": "Johnson Banks / Everyone can Duolingo / 2019",
+    "item": 19,
+    "extent": "Whole published artwork",
+    "order": 2019
+  },
+  "slide_intent": "Let a flexible set of small expressions accumulate because personal objects can carry several encounters with a brand at once.",
+  "strategic_value": "Multilingual stickers and Duo can connect Duolingo to the personal experience of travel.",
+  "demonstration": "A silver suitcase against green carries word stickers, a flag, a helmeted Duo and a Duolingo wordmark beneath its black handle.",
+  "category": "Application",
+  "practical_value": "Compare how individual stickers remain recognizable when mixed on an irregular object.",
+  "content_islands": [
+    {
+      "name": "Suitcase",
+      "spec": "Keep the silver case and extended black handle against the green field."
+    },
+    {
+      "name": "Sticker cluster",
+      "spec": "Scatter multilingual green-and-white phrases, flag, Duo and wordmark across the visible case."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The artwork shows a sticker family placed together on luggage.",
+    "Expression": "Multilingual phrases and character graphics extend the identity as separate small pieces."
+  }
+}

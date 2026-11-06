@@ -1,0 +1,30 @@
+{
+  "id": "MC13",
+  "title": "Masterpass payment confirmation",
+  "image": "mc13.png",
+  "source": "../sources/mc13.jpg",
+  "location": {
+    "series": "Pentagram / Mastercard / 2016 identity case study",
+    "item": 13,
+    "extent": "Full published artwork"
+  },
+  "slide_intent": "Show identity at a service completion moment because customers need to connect a digital payment experience with the trusted payment brand.",
+  "strategic_value": "A shared symbol can link the service name, stored card and confirmation screen.",
+  "demonstration": "A hand holds a white phone displaying Masterpass, a World card, a green check and an orange return control.",
+  "category": "Application",
+  "practical_value": "Inspect how identity and confirmation information occupy separate parts of a small screen.",
+  "content_islands": [
+    {
+      "name": "Hand and device",
+      "spec": "Retain the hand holding the centered white phone on the pale background."
+    },
+    {
+      "name": "Payment screen",
+      "spec": "Stack the Masterpass signature, card image, confirmation check and orange return control."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The caption identifies Masterpass on mobile.",
+    "Intent": "Pentagram states that the mark creates a single system for the company and its products, beginning with Masterpass implementation."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "DB0903",
+  "title": "Typography / destination and fare pair",
+  "image": "db0903.png",
+  "source": "../sources/page-09.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 9,
+    "section": 3,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Typografie_neu"
+  },
+  "slide_intent": "Let type change roles between atmosphere and information so the viewer can distinguish a place from a price.",
+  "strategic_value": "A repeated Berlin field and a prominent fare can extend DB typography across expressive and transactional messages.",
+  "demonstration": "A Berlin tower graphic overlays repeated pale BERLIN lettering; a BahnCard offer places a large 9.99-euro price beside a card.",
+  "category": "Typography",
+  "practical_value": "Compare decorative word repetition with a price-led offer hierarchy.",
+  "content_islands": [
+    {
+      "name": "Destination graphic",
+      "spec": "Place the colored tower over repeated pale city lettering at left."
+    },
+    {
+      "name": "Offer",
+      "spec": "Set the fare prominently beside the angled BahnCard at right."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The pair contrasts repeating city typography with heavy fare numerals.",
+    "Application": "A destination treatment and BahnCard offer demonstrate two communication uses."
+  }
+}

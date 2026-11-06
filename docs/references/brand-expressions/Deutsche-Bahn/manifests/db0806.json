@@ -1,0 +1,37 @@
+{
+  "id": "DB0806",
+  "title": "Expressive Farbe / Zeitgeist, Trend und Emotionalisierung",
+  "image": "db0806.png",
+  "source": "../sources/page-08.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 8,
+    "section": 6,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Markenfarben"
+  },
+  "slide_intent": "Give an accent a defined expressive role so variation carries meaning rather than decoration alone.",
+  "strategic_value": "Lilac can give DB’s familiar red-and-neutral identity a more contemporary and approachable register.",
+  "demonstration": "A short rationale sits above a Lilac swatch and its printed color values.",
+  "category": "Color",
+  "practical_value": "Use Lilac to emphasize an expressive element such as an illustration or Signature Graphic.",
+  "content_islands": [
+    {
+      "name": "Expressive role",
+      "spec": "Place the title and rationale above the specimen."
+    },
+    {
+      "name": "Lilac specimen",
+      "spec": "Show the colored swatch with its multi-system values as a single production reference."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The prose links Lilac to transformation, change, creative impulses and emotional expression.",
+    "Application": "Illustrations and Signature Graphics are named as examples of accent use."
+  },
+  "ingredient": {
+    "name": "Lilac",
+    "role": "Add expressive and contemporary emphasis.",
+    "application": "Apply as an intentional accent, for example in illustration or Signature Graphics.",
+    "scope": "This section describes its role; the later rules prohibit using Lilac as a general layout field or standard text color."
+  }
+}

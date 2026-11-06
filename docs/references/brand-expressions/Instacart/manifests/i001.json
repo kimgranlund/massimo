@@ -1,0 +1,24 @@
+{
+  "id": "I001",
+  "title": "Brand Guidelines v1.0 — 2.25.22",
+  "image": "i001.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 1
+  },
+  "slide_intent": "Introduce the identity at a scale where the reader can recognize the signature before studying its parts.",
+  "strategic_value": "A single strong appearance of the full lockup can establish a visual reference for the component studies that follow.",
+  "demonstration": "A small edition line and a large carrot-and-wordmark lockup occupy opposite ends of a dark green field.",
+  "category": "Brand",
+  "practical_value": "Use the cover to compare the full lockup with later pages that isolate its symbol or letters.",
+  "content_islands": [
+    {
+      "name": "Edition line",
+      "spec": "Set the version and date in a small pale line at the upper left."
+    },
+    {
+      "name": "Cover lockup",
+      "spec": "Align the arrow and orange root with the pale lowercase name near the bottom. Let the lockup span nearly the entire width."
+    }
+  ]
+}

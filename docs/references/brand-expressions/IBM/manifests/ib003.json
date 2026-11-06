@@ -1,0 +1,44 @@
+{
+  "id": "IB003",
+  "title": "Philosophy / Principles",
+  "image": "ib003.png",
+  "source": "../sources/philosophy-principles.txt",
+  "location": {
+    "series": "IBM Design Language / public web guidelines",
+    "item": 3,
+    "extent": "Complete webpage content-area capture; interactive elements retain their captured state",
+    "url": "https://www.ibm.com/design/language/philosophy/principles/",
+    "order": 3000
+  },
+  "slide_intent": "Turn an abstract ethos into questions that people can use when judging work, so craft and continuity remain deliberate decisions.",
+  "strategic_value": "Four named principles can help distributed IBM teams assess whether an experience is useful, recognizable, carefully made and progressive.",
+  "demonstration": "Four vertically stacked sections pair short principle names with explanations and practical review questions.",
+  "category": "Brand",
+  "practical_value": "Use the four question groups to review an execution’s purpose, relationship to the system, craft and contribution.",
+  "content_islands": [
+    {
+      "name": "Introduction",
+      "spec": "Place the Principles title above a short statement identifying designers and non-designers as the audience."
+    },
+    {
+      "name": "Carefully Considered",
+      "spec": "Pair the first left-column principle with questions about utility, resources, gratuitous elements and respect for time."
+    },
+    {
+      "name": "Uniquely Unified",
+      "spec": "Pair the next principle with questions about reusable solutions, recognition without the logo and relationships between experiences."
+    },
+    {
+      "name": "Expertly Executed",
+      "spec": "Follow with craft questions about improvement, expertise, detail and the care visible in the experience."
+    },
+    {
+      "name": "Positively Progressive",
+      "spec": "Close with questions about advancement, confidence, ingenuity and obstacles to understanding."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The introduction says the principles establish criteria for conception, craftsmanship and creativity; each principle explains its underlying judgment.",
+    "Application": "Each section provides explicit questions to apply when reviewing design."
+  }
+}

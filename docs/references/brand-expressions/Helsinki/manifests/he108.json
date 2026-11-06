@@ -1,0 +1,31 @@
+{
+  "id": "HE108",
+  "title": "Language versions: Arabic, Estonian, Japanese, Chinese, Korean, Sámi, Ukrainian and Russian logos",
+  "image": "he108.png",
+  "source": "../sources/download-elements.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Language versions: Arabic, Estonian, Japanese, Chinese, Korean, Sámi, Ukrainian and Russian logos",
+    "order": 145,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/download-elements#language-versions--arabic--estonian--japanese--chinese--korean--sami--ukrainian-and-russian-logos",
+    "original_html": "../sources/download-elements.html"
+  },
+  "slide_intent": "Match a signature to its language context so residents can recognize the city in the language of the communication.",
+  "strategic_value": "A specified multilingual asset set can support consistent Helsinki identification across scripts.",
+  "demonstration": "Expanded webpage section: the long title lists eight language versions; the body gives PDF/PNG formats and one download link.",
+  "category": "Brand",
+  "practical_value": "Find the requested language version and choose the print or screen file type.",
+  "content_islands": [
+    {
+      "name": "Language inventory",
+      "spec": "The heading lists Arabic, Estonian, Japanese, Chinese, Korean, Sámi, Ukrainian and Russian."
+    },
+    {
+      "name": "Formats and access",
+      "spec": "The short note distinguishes PDF print originals from PNG screen images."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The source lists available language versions and maps vector PDF to print and PNG to screen."
+  }
+}

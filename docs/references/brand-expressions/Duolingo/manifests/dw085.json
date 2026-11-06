@@ -1,0 +1,29 @@
+{
+  "id": "DW085",
+  "title": "Writing / Style / Parts of speech",
+  "image": "dw085.png",
+  "source": "../sources/pages/writing-style.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/style",
+    "section": "Parts of speech",
+    "item": 85,
+    "order": 850
+  },
+  "slide_intent": "Signal that conversational grammar is a deliberate brand choice so writers can use natural language with confidence.",
+  "strategic_value": "A short framing note can help Duolingo explain departures from rigid schoolroom conventions.",
+  "demonstration": "A narrow separator pairs Parts of Speech at left with a short invitation to the brand’s own word-type rules at right.",
+  "category": "Voice",
+  "practical_value": "Read the following rules as brand-specific editorial choices rather than a general grammar textbook.",
+  "content_islands": [
+    {
+      "name": "Section heading",
+      "spec": "Place Parts of Speech at left."
+    },
+    {
+      "name": "Editorial framing",
+      "spec": "Set the brief explanation at right, introducing the brand’s conventions for word types."
+    }
+  ],
+  "reference_purposes": {}
+}

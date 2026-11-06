@@ -1,0 +1,35 @@
+{
+  "id": "FG24",
+  "title": "Framed tool composition",
+  "image": "fg24.png",
+  "source": "../sources/fg24.jpg",
+  "location": {
+    "series": "COLLINS / Figma / Nothing Great Is Made Alone case study",
+    "item": 24,
+    "section": "Gallery",
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Use familiar tools as a coherent composition because ordinary interface elements can carry identity when their visual relationships are deliberate.",
+  "strategic_value": "A framed arrangement of editing tools and the mark can make Figma recognizable without a product screen.",
+  "demonstration": "A framed print groups pen, pointer, pencil, eyedropper, hand and outlined Figma symbol inside a cyan selection box.",
+  "category": "Application",
+  "practical_value": "Build a brand composition from product tools while keeping their silhouettes distinct.",
+  "content_islands": [
+    {
+      "name": "Tool arrangement",
+      "spec": "Pack large black-outlined tools and symbol across the light-gray portrait print."
+    },
+    {
+      "name": "Selection frame",
+      "spec": "Place the cyan rectangular box and corner handles behind the objects."
+    },
+    {
+      "name": "Physical frame",
+      "spec": "Retain the black frame and its wall shadow to show the print application."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The photograph applies editing-tool shapes and selection handles to a framed print.",
+    "Expression": "Heavy black outlines and selective bright fills unify different tool silhouettes."
+  }
+}

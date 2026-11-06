@@ -1,0 +1,24 @@
+{
+  "id": "N43",
+  "title": "Interior Grid Formats: Quality Publications",
+  "image": "n43.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 43
+  },
+  "slide_intent": "Teach designers to vary image scale and leave room around text when a publication gives visual storytelling priority. Readers can follow a deliberate change of pace across a spread.",
+  "strategic_value": "NASA can distinguish a picture-led publication from a dense technical journal while keeping consistent editorial alignments.",
+  "demonstration": "The three examples use edge-to-edge pictures and uneven text columns, white borders with a text block echoing the image shape, and a stable text area beside images of varying sizes.",
+  "category": "Layout",
+  "practical_value": "Choose a repeated relationship for the spread, such as aligned upper and lower edges or a fixed text area, before deciding which image deserves a larger field.",
+  "content_islands": [
+    {
+      "name": "Format options",
+      "spec": "Set the title and lettered explanations above the diagrams. Explain the relationship of each option to space and image scale."
+    },
+    {
+      "name": "Spread sequences",
+      "spec": "Stack the three options, with two spreads side by side in each row. In a, bleed the large image to the sides. In b, keep the white border and horizontal guides. In c, preserve the text position while varying the pictures and consolidating captions."
+    }
+  ]
+}

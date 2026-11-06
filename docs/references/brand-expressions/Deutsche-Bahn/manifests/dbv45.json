@@ -1,0 +1,34 @@
+{
+  "id": "DBV45",
+  "title": "Do_Axis",
+  "image": "dbv45.png",
+  "source": "../sources/media/dbv45.mp4",
+  "location": {
+    "series": "DB new design / motion demonstrations",
+    "source_page": 15,
+    "section": "Do-s-und-Don-ts-14021640",
+    "source_url": "https://ecm-mediathek-cdn.deutschebahn.com/cdnenhancedecmvidhls/db306489/2881191/video_config.json",
+    "capture_date": "2026-11-05"
+  },
+  "slide_intent": "Keep motion on clear axes so viewers can anticipate where content is going.",
+  "strategic_value": "The straight image reveal can make a DB layout feel ordered while its components arrive.",
+  "demonstration": "A woman’s photograph enters on the right beside a dark left panel containing a white DB logo, headline, small copy, and red Schwelle.",
+  "category": "Motion",
+  "practical_value": "Use the horizontal image entrance as the approved comparison for the diagonal version in DBV46.",
+  "content_islands": [
+    {
+      "name": "Image entrance",
+      "spec": "Reveal the photograph on the right along the horizontal axis."
+    },
+    {
+      "name": "Message panel",
+      "spec": "Stage the white logo and text above the red bar motif on the dark left side."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A woman’s photograph enters on the right beside a dark left panel containing a white DB logo, headline, small copy, and red Schwelle.",
+    "Application": "The source provides a playable demonstration of this repeatable sequence: A woman’s photograph enters on the right beside a dark left panel containing a white DB logo, headline, small copy, and red Schwelle.",
+    "Constraint": "The source says all movement follows clear axes and diagonal animations are never used."
+  },
+  "motion": "../sources/media/dbv45.mp4"
+}

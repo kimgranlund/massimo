@@ -1,0 +1,39 @@
+{
+  "id": "N08",
+  "title": "The NASA Logotype: Use of Color",
+  "image": "n08.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 8
+  },
+  "slide_intent": "Teach designers to judge the mark against its actual background. A change in background value can change which lettering a viewer can distinguish.",
+  "strategic_value": "NASA can keep a recognizable mark across one-color and multicolor applications by changing the foreground to suit the ground.",
+  "demonstration": "Three signatures compare red, black and warm gray on white. A white logotype on black sits below. The lowest specimen is partly obscured in the scan, while the text supplies the medium-value background rule.",
+  "category": "Color",
+  "practical_value": "Use the background-value guidance to choose black, white or an approved color treatment before placing the master.",
+  "content_islands": [
+    {
+      "name": "Background guidance",
+      "spec": "Introduce the choices for white, very light, dark and medium-value grounds in columns across the top."
+    },
+    {
+      "name": "White-ground alternatives",
+      "spec": "Arrange three signatures on white and hold their proportions and alignment steady as the mark changes color."
+    },
+    {
+      "name": "Dark and middle-value specimens",
+      "spec": "Place the white-on-black specimen below the three white-ground signatures. Retain the partly obscured lowest specimen as scanned; use the accompanying text to identify the medium-value rule."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The visible specimens compare red, black and warm-gray signatures and white marks on dark grounds.",
+    "Application": "The text assigns logotype colors to white, very light, very dark and medium-value backgrounds.",
+    "Constraint": "It requires white on black, very dark or NASA-red grounds, and prohibits red on medium or dark grounds; red on very light grounds has a four-color-process exception."
+  },
+  "ingredient": {
+    "name": "Logotype foreground color",
+    "role": "Keep the logotype distinct from its background while preserving approved color treatments.",
+    "application": "On white, use the illustrated red-and-black, black or warm-gray treatment. On very light backgrounds, use black, except that red is allowed in very light areas of four-color reproduction. Use white on black, very dark or NASA-red grounds. On medium-value grounds, choose black or white, never red.",
+    "scope": "Background cases in the 1976 manual’s section 1.4. These are historical reproduction rules; the page gives no measured accessibility ratio."
+  }
+}

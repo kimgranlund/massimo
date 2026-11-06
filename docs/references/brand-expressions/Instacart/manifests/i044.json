@@ -1,0 +1,25 @@
+{
+  "id": "I044",
+  "title": "Incorrect Usage",
+  "image": "i044.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 44,
+    "printed_page": 44
+  },
+  "slide_intent": "Teach designers to spot typographic choices that make a familiar message harder to read or recognize. Repeating the same phrase makes each deviation easier to isolate.",
+  "strategic_value": "A compact set of counterexamples can protect Instacart’s hierarchy, face selection and tone across contributors.",
+  "demonstration": "Two rows of examples vary the face, weight, color, case, effects and angle of an order-complete message, and include a body-copy misuse. Each has a red cross and short caption.",
+  "category": "Typography",
+  "practical_value": "Compare a proposed text treatment with the relevant example, then identify the specific attribute that needs correction.",
+  "content_islands": [
+    {
+      "name": "Misuse grid",
+      "spec": "Arrange eight examples in two rows of four on white. Reserve the upper-right cell for the body-copy example."
+    },
+    {
+      "name": "Correction captions",
+      "spec": "Give each sample its own red cross and short contrasting label below. Keep the cause of the problem close to the type that demonstrates it."
+    }
+  ]
+}

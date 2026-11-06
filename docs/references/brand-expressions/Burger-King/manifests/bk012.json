@@ -1,0 +1,31 @@
+{
+  "id": "BK012",
+  "title": "Design Approach / Make our brand and food more crave-able",
+  "image": "bk012.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 12
+  },
+  "slide_intent": "Translate a sensory ambition into several design disciplines so contributors can act on the same idea.",
+  "strategic_value": "Relating color, food photography, font forms and illustration to taste can align Burger King’s toolkit.",
+  "demonstration": "A large headline leads two smaller paragraphs describing sensory choices and heritage.",
+  "category": "Brand",
+  "practical_value": "Trace each ingredient back to food appeal while considering inherited brand recognition.",
+  "content_islands": [
+    {
+      "name": "Ambition",
+      "spec": "Set the large three-line crave-able headline in the right column."
+    },
+    {
+      "name": "Design ingredients",
+      "spec": "Place the explanation of color, photography, type and illustration below."
+    },
+    {
+      "name": "Heritage",
+      "spec": "Finish with the paragraph connecting original identity and future expression."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The page says the design ingredients should evoke food taste and carry forward aspects of heritage."
+  }
+}

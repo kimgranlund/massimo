@@ -1,0 +1,43 @@
+{
+  "id": "DW133",
+  "title": "Illustration / Characters / Posing",
+  "image": "dw133.png",
+  "source": "../sources/pages/illustration-characters.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/illustration/characters",
+    "section": "Posing",
+    "item": 133,
+    "order": 1330
+  },
+  "slide_intent": "Choose poses that convey personality while preserving a readable silhouette so expression does not collapse into visual confusion.",
+  "strategic_value": "Active human poses and a character-specific exception can help Duolingo make its cast feel alive without applying one pose rule mechanically.",
+  "demonstration": "Three rows compare expressive poses with rejected alternatives; the final row uses a gorilla to show the need to keep large color blocks distinct.",
+  "category": "Imagery",
+  "practical_value": "Try expressive poses, then adjust the choice to the character’s proportions and the separation of its major color areas.",
+  "content_islands": [
+    {
+      "name": "Human-pose comparisons",
+      "spec": "Place two human-character rows at upper left, showing expressive alternatives before a crossed static pose in each row."
+    },
+    {
+      "name": "Gorilla exception",
+      "spec": "Place the gorilla comparisons below, retaining the rejected blocky pose beside alternatives that separate the large forms."
+    },
+    {
+      "name": "Pose rationale and exception",
+      "spec": "Place Posing and two paragraphs at right, explaining both the general preference for expression and the gorilla-specific static-pose guidance."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text links posing with personality and storytelling and warns that static, expressionless characters can feel lifeless.",
+    "Application": "The comparisons test poses against different character structures.",
+    "Constraint": "The general preference against static poses is qualified: the gorilla’s large color blocks are best kept separated in a static pose."
+  },
+  "ingredient": {
+    "name": "Character-specific posing",
+    "role": "Show personality while keeping the character readable.",
+    "application": "Prefer expressive poses where possible, but test them against the character’s construction; use a separated static pose for the illustrated gorilla case.",
+    "scope": "Historical official Duolingo illustration guidance from the 2024–2025 archived snapshot. The source’s static-pose exception prevents treating activity as a universal requirement."
+  }
+}

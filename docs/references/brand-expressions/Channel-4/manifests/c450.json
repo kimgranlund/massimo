@@ -1,0 +1,31 @@
+{
+  "id": "C450",
+  "title": "Stream all episodes / Trending",
+  "image": "c450.png",
+  "source": "../sources/c450.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 / 2023 masterbrand case study",
+    "item": 50,
+    "extent": "Full published artwork"
+  },
+  "slide_intent": "Distinguish an action from scheduling detail and status, because viewers scan short promotional messages for different kinds of information.",
+  "strategic_value": "The emphasized Stream word and inline trending icon can connect functional viewing information to Channel 4’s playful type system.",
+  "demonstration": "Three black lines on a turquoise gradient read Stream all episodes, Watch live Friday 9pm and Trending with an upward sparkling arrow; Stream uses a heavier italic treatment.",
+  "category": "Typography",
+  "practical_value": "Compare typographic emphasis for a viewing action with regular text for timing and status.",
+  "content_islands": [
+    {
+      "name": "Message stack",
+      "spec": "Align the three lines at the upper left, emphasizing only Stream and keeping the arrow with Trending."
+    },
+    {
+      "name": "Gradient setting",
+      "spec": "Place the text over the broad turquoise field with a narrow neighboring pale field at left."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "Pentagram’s accompanying case study connects clear typographic hierarchy with playful 4mojis integrated into the typefaces.",
+    "Expression": "Three black lines on a turquoise gradient read Stream all episodes, Watch live Friday 9pm and Trending with an upward sparkling arrow; Stream uses a heavier italic treatment.",
+    "Application": "The specimen applies italic bold emphasis to the viewing action, regular type to schedule and status text, and an inline icon to Trending."
+  }
+}

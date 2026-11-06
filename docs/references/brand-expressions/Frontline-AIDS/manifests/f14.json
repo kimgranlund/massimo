@@ -1,0 +1,24 @@
+{
+  "id": "F14",
+  "title": "Our dynamism is our power",
+  "image": "f14.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 14
+  },
+  "slide_intent": "Introduce a toolkit by showing its elements working together. The opening image gives the reader a visual example before the components are described separately.",
+  "strategic_value": "Frontline AIDS can connect the energy of its visual devices to a concrete human-scale image.",
+  "demonstration": "A close-up photograph shows an open hand holding a white object. Large type on green fields, a cyan loop and a pink arrow overlap the photograph.",
+  "category": "Brand",
+  "practical_value": "Judge the relationship between photography, type and graphic gestures on a composed example before selecting individual assets.",
+  "content_islands": [
+    {
+      "name": "Section rail and preface",
+      "spec": "Set the Brand assets navigation and introduction over the dark left side of the photograph."
+    },
+    {
+      "name": "Photographic headline",
+      "spec": "Place the large stepped headline in the lower-right field. Keep the object in the palm visible above the headline and use drawn gestures to frame the words."
+    }
+  ]
+}

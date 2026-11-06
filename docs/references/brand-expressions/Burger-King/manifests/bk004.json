@@ -1,0 +1,27 @@
+{
+  "id": "BK004",
+  "title": "Introduction",
+  "image": "bk004.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 4
+  },
+  "slide_intent": "Use a distinct chapter opening to separate orientation from detailed rules, helping readers keep the kinds of guidance apart.",
+  "strategic_value": "The repeated display style can make introduction feel part of one Burger King document.",
+  "demonstration": "A large Introduction title sits on a flat field with small running labels and notices.",
+  "category": "Brand",
+  "practical_value": "Use this divider to identify where introduction guidance begins without interpreting it as a standalone application rule.",
+  "content_islands": [
+    {
+      "name": "Chapter title",
+      "spec": "Place the oversized Introduction title at upper left, orange on brown, leaving an open field below."
+    },
+    {
+      "name": "Navigation and notices",
+      "spec": "Retain the small top navigation, page number and bottom publication notice."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The Introduction divider uses large rounded display type and the warm orange on brown treatment."
+  }
+}

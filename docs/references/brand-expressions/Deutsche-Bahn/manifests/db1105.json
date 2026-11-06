@@ -1,0 +1,27 @@
+{
+  "id": "DB1105",
+  "title": "Designprinzipien / Icons",
+  "image": "db1105.png",
+  "source": "../sources/page-11.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 11,
+    "section": 5,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Icons"
+  },
+  "slide_intent": "Balance simplicity, consistency and familiar meaning so symbols can be understood quickly.",
+  "strategic_value": "Shared construction and learned metaphors can make DB controls predictable.",
+  "demonstration": "Three cards pair a person, directional symbol and checked circle with Einfach, Konsistent and Verlässlich.",
+  "category": "Geometry",
+  "practical_value": "Evaluate whether an icon contains only necessary detail, fits the family and uses a learned metaphor.",
+  "content_islands": [
+    {
+      "name": "Principle cards",
+      "spec": "Arrange three icon specimens above their named principles and short explanations."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source connects minimal detail to recognition and established metaphors to immediate understanding.",
+    "Application": "The three principles provide explicit evaluation criteria."
+  }
+}

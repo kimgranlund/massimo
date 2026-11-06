@@ -1,0 +1,33 @@
+{
+  "id": "MC06",
+  "title": "Payment card family",
+  "image": "mc06.png",
+  "source": "../sources/mc06.jpg",
+  "location": {
+    "series": "Pentagram / Mastercard / 2016 identity case study",
+    "item": 6,
+    "extent": "Full published artwork"
+  },
+  "slide_intent": "Compare identity across product tiers because differentiation must coexist with a recognizable payment brand.",
+  "strategic_value": "A shared mark position and recurring circular detail can connect cards with different material impressions.",
+  "demonstration": "Four cards in a two-by-two arrangement show World Elite, World, Platinum and Mastercard treatments.",
+  "category": "Application",
+  "practical_value": "Compare the colored and metallic symbol treatments within this historical card family.",
+  "content_islands": [
+    {
+      "name": "Card grid",
+      "spec": "Arrange four rounded cards in two rows on a pale field."
+    },
+    {
+      "name": "Product details",
+      "spec": "Retain each tier name, chip, account details and circular linework."
+    },
+    {
+      "name": "Identity marks",
+      "spec": "Keep each small signature at the lower right, including the monochrome World Elite treatment."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The artwork places the identity on four named payment cards."
+  }
+}

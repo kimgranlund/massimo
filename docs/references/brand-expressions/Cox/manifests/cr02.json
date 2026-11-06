@@ -1,0 +1,26 @@
+{
+  "id": "CR02",
+  "title": "Brand Awareness Video — connection poster",
+  "image": "cr02.png",
+  "source": "../sources/cr02.jpg",
+  "location": {
+    "series": "Cox Brand Collection — Lindsay Little / Periscope",
+    "item": 2,
+    "extent": "whole source image"
+  },
+  "slide_intent": "Pair an abstract promise with visible relationships so the words have a human referent.",
+  "strategic_value": "The relaxed gathering can associate Cox connectivity with shared leisure.",
+  "demonstration": "The supplied video poster places a white sentence fragment over people gathered beside an outdoor television. No temporal sequence is represented by this still.",
+  "category": "Voice",
+  "practical_value": "Judge whether the picture supplies the human meaning of the headline without requiring a technical product explanation.",
+  "content_islands": [
+    {
+      "name": "Social scene",
+      "spec": "Fill the frame with people seated around a patio table, keeping the television in the upper right."
+    },
+    {
+      "name": "Connection line",
+      "spec": "Place the large white line across the center of the gathering."
+    }
+  ]
+}

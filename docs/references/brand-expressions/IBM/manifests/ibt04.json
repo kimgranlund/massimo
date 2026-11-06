@@ -1,0 +1,30 @@
+{
+  "id": "IBT04",
+  "title": "Appropiate trademark usage",
+  "image": "ibt04.png",
+  "source": "../sources/ibm-logo-third-parties.pdf",
+  "location": {
+    "page": 4,
+    "series": "IBM Logo and Brand Guidelines for Third Parties / copyright 2022",
+    "order": 100004
+  },
+  "slide_intent": "Make the business relationship legible through placement and explanation, because a familiar mark can otherwise imply an unsupported association.",
+  "strategic_value": "Clear prominence and explanatory text can preserve the meaning of IBM’s identity in external communications.",
+  "demonstration": "The heading at left accompanies two explanatory paragraphs and a linked trademark list in the next column.",
+  "category": "Brand",
+  "practical_value": "Identify which relationship the mark must communicate before deciding its size and placement.",
+  "content_islands": [
+    {
+      "name": "Section heading",
+      "spec": "Set the printed Appropiate trademark usage heading in the left column."
+    },
+    {
+      "name": "Relationship and ownership",
+      "spec": "Explain placement, prominence and text in the adjacent column, then define the trademark scope and link to the list."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source says placement, prominence and explanatory text must make the business relationship clear.",
+    "Constraint": "The page requires a clearly indicated IBM relationship and states IBM’s ownership of the trademarks."
+  }
+}

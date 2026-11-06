@@ -1,0 +1,35 @@
+{
+  "id": "BKE08",
+  "title": "Food illustration film",
+  "image": "bke08.png",
+  "source": "../sources/bke08.mp4",
+  "location": {
+    "series": "JKR / Burger King identity case study",
+    "item": 8,
+    "extent": "Complete clip; PNG is a poster frame",
+    "duration_seconds": 24.21
+  },
+  "slide_intent": "Animate familiar eating gestures so illustration conveys pleasure and playfulness rather than serving as decoration alone.",
+  "strategic_value": "Hands, faces and food transformations can make Burger King’s playful character recognizable in motion.",
+  "demonstration": "The clip sequences a tomato, dipping fries, a burger held and bitten, onion rings, fries at a mouth, ice cream and faces playing with food.",
+  "category": "Motion",
+  "practical_value": "Compare how simple graphic actions carry sensory ideas without photorealism.",
+  "content_islands": [
+    {
+      "name": "Ingredients and handling",
+      "spec": "Begin with a hand and tomato, then move through dipping and holding food."
+    },
+    {
+      "name": "Eating and play",
+      "spec": "Show a bitten burger and playful uses of rings and fries."
+    },
+    {
+      "name": "People and treats",
+      "spec": "Finish with illustrated faces and ice-cream gestures across changing color fields."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The full clip animates flat food illustrations through holding, dipping, biting and playful facial gestures."
+  },
+  "motion": "../sources/bke08.mp4"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "C06",
+  "title": "Clarity and Consistency",
+  "image": "c06.png",
+  "source": "../csail-branding-short-guide.pdf",
+  "location": {
+    "page": 6
+  },
+  "slide_intent": "Show how separate communications can belong to one institution while doing different jobs. Seeing them together makes their common features easier to judge.",
+  "strategic_value": "The lab can carry the building’s colors and angular forms into both a formal letter and an event announcement.",
+  "demonstration": "A gray presentation field combines letterhead, an envelope, cards, a seminar flyer, a news cover and small branded objects. An orange note links the visual family to the building.",
+  "category": "Application",
+  "practical_value": "Compare the mark, accent colors and edges across several pieces when deciding how much identity a new format needs.",
+  "content_islands": [
+    {
+      "name": "Guidance and source note",
+      "spec": "Place the short introduction at upper left and the building reference near the foot in orange italic type."
+    },
+    {
+      "name": "Stationery and objects",
+      "spec": "Arrange overlapping white stationery, cards and small orange and yellow objects against gray. Keep their variations in scale apparent."
+    },
+    {
+      "name": "Editorial applications",
+      "spec": "Along the bottom, contrast the seminar flyer’s warm graphic edges with a news cover built around a portrait."
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "id": "I012",
+  "title": "Logo Lockup",
+  "image": "i012.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 12
+  },
+  "slide_intent": "Teach when to keep a symbol attached to its name so an unfamiliar audience can learn the association.",
+  "strategic_value": "Using the two together can build recognition for the revised symbol during its introduction.",
+  "demonstration": "A small note calls for the symbol and wordmark together for the immediate future. A large color lockup appears to its right on white.",
+  "category": "Brand",
+  "practical_value": "Use the paired signature for the introduction described in this edition.",
+  "content_islands": [
+    {
+      "name": "Adoption guidance",
+      "spec": "Place the heading and short usage note in a narrow left column."
+    },
+    {
+      "name": "Lockup specimen",
+      "spec": "Show the full-color carrot and dark wordmark in a single horizontal line on white."
+    }
+  ]
+}

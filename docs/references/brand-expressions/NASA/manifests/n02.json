@@ -1,0 +1,24 @@
+{
+  "id": "N02",
+  "title": "Index",
+  "image": "n02.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 2
+  },
+  "slide_intent": "Help readers move from a design question to a numbered manual section. Grouping topics by the work at hand shortens the search for a specific instruction.",
+  "strategic_value": "NASA can connect a rule about its identity with the production page needed to use it. Separate groups cover logotype rules, reproduction art, stationery, forms and publications.",
+  "demonstration": "The first index page gives the effective date above a ruled list. Numbered section names occupy the left column, titles and dotted leaders fill the middle, and section references align at right.",
+  "category": "Layout",
+  "practical_value": "Choose the section group, then follow the individual reference for a rule, a master or an application.",
+  "content_islands": [
+    {
+      "name": "Index heading and scope",
+      "spec": "Place Index and the short effective-date notice at the top, apart from the listings."
+    },
+    {
+      "name": "Section directory",
+      "spec": "Group the introduction and sections 1–5 in sequence. Pair each title with its section reference and separate groups by thin rules."
+    }
+  ]
+}

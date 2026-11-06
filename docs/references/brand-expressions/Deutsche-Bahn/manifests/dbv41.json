@@ -1,0 +1,35 @@
+{
+  "id": "DBV41",
+  "title": "Do_Timing",
+  "image": "dbv41.png",
+  "source": "../sources/media/dbv41.mp4",
+  "location": {
+    "series": "DB new design / motion demonstrations",
+    "source_page": 15,
+    "section": "Do-s-und-Don-ts-14021640",
+    "source_url": "https://ecm-mediathek-cdn.deutschebahn.com/cdnenhancedecmvidhls/db306516/2881241/video_config.json",
+    "capture_date": "2026-11-05"
+  },
+  "slide_intent": "Judge timing as part of identity because the same mark can feel decisive or hesitant depending on its arrival.",
+  "strategic_value": "A controlled white-logo reveal can connect DB’s motion character to ordinary photographic content.",
+  "demonstration": "A centered white DB logo appears and holds over a train-interior photograph before disappearing.",
+  "category": "Motion",
+  "practical_value": "Compare this approved timing with DBV42 while keeping the logo and photograph constant.",
+  "content_islands": [
+    {
+      "name": "Photographic context",
+      "spec": "Fill the frame with the train seating and table."
+    },
+    {
+      "name": "Approved timing",
+      "spec": "Reveal and remove the centered white logo with the demonstrated cadence."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A centered white DB logo appears and holds over a train-interior photograph before disappearing.",
+    "Application": "The source provides a playable demonstration of this repeatable sequence: A centered white DB logo appears and holds over a train-interior photograph before disappearing.",
+    "Intent": "The paired source captions connect suitable timing and the defined curves to decisiveness; excessively fast or slow movement distracts from content.",
+    "Constraint": "The negative caption rejects movement that is too fast or too slow; it supplies no universal numeric duration."
+  },
+  "motion": "../sources/media/dbv41.mp4"
+}

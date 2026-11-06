@@ -1,0 +1,37 @@
+{
+  "id": "DB03",
+  "title": "Isometric Design",
+  "image": "db03.png",
+  "source": "../sources/db03.jpg",
+  "location": {
+    "series": "COLLINS / Dropbox / 2017 identity case study",
+    "item": 3,
+    "section": "Isometric Design",
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Relate a modular form to shared creation so viewers can understand how separate contributions become a whole.",
+  "strategic_value": "The repeated diamond can connect Dropbox’s platform role with its collaboration story.",
+  "demonstration": "Two gray panels isolate the lower diamond in blue at left and the upper four in blue at right; orange annotations explain platform and expansion.",
+  "category": "Geometry",
+  "practical_value": "Separate an identity’s foundational unit from the arrangement that expresses growth.",
+  "content_islands": [
+    {
+      "name": "Platform",
+      "spec": "Place the single blue lower diamond beneath four gray diamonds in the left panel."
+    },
+    {
+      "name": "Expansion",
+      "spec": "Highlight the upper four diamonds in the right panel and retain the outward orange arrows."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The accompanying Isometric Design text links repeated diamonds to collaboration and shared creation.",
+    "Application": "Two gray panels isolate the lower diamond in blue at left and the upper four in blue at right; orange annotations explain platform and expansion."
+  },
+  "ingredient": {
+    "name": "Diamond module",
+    "role": "Connect individual contributions to one recognizable assembly.",
+    "application": "Separate an identity’s foundational unit from the arrangement that expresses growth.",
+    "scope": "Observed or explained in this historical COLLINS case study; no numeric dimensions or universal rule are supplied."
+  }
+}

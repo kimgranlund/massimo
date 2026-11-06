@@ -1,0 +1,37 @@
+{
+  "id": "LH06",
+  "title": "Standard and small crane comparison",
+  "image": "lh06.png",
+  "source": "../sources/lh06.gif",
+  "location": {
+    "series": "Mona Franz / Lufthansa 2018",
+    "item": 6,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Compare optical variants because a mark needs different detail treatment at different reproduction sizes.",
+  "strategic_value": "A small-use crane can help Lufthansa retain recognizable detail when the standard drawing loses clarity.",
+  "demonstration": "A two-frame animation keeps the outline comparison at left and switches the filled right specimen between Standard and Small.",
+  "category": "Geometry",
+  "practical_value": "Choose a size-specific drawing by comparing ring weight and internal openings, without inventing a size threshold.",
+  "content_islands": [
+    {
+      "name": "Overlay comparison",
+      "spec": "Keep the pale filled standard and outlined small drawings together at left."
+    },
+    {
+      "name": "Alternating specimen",
+      "spec": "Switch the right filled crane and its Standard or Small label in place."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A two-frame animation keeps the outline comparison at left and switches the filled right specimen between Standard and Small.",
+    "Intent": "Mona Franz explains that the small version and usage tests respond to different sizes, materials and reversed reproduction."
+  },
+  "motion": "../sources/lh06.mp4",
+  "ingredient": {
+    "name": "Standard and small crane comparison",
+    "role": "Preserve the crane’s internal detail at small reproduction sizes.",
+    "application": "Choose a size-specific drawing by comparing ring weight and internal openings, without inventing a size threshold.",
+    "scope": "Historical 2018 Lufthansa airline refresh case study; observed example, not a complete brand manual or a current Lufthansa Group rule."
+  }
+}

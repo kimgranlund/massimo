@@ -1,0 +1,32 @@
+{
+  "id": "HE066",
+  "title": "Key principles of sign design",
+  "image": "he066.png",
+  "source": "../sources/design-and-create.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Key principles of sign design",
+    "order": 93,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/design-and-create#key-principles-of-sign-design",
+    "original_html": "../sources/design-and-create.html"
+  },
+  "slide_intent": "Limit wayfinding to a coherent set of elements so visitors can recognize and follow signs quickly.",
+  "strategic_value": "A shared logo, Medium type and icon vocabulary can unify Helsinki buildings with different interiors.",
+  "demonstration": "This expanded webpage-section capture lists four main signage elements above a photograph of black-and-white overhead and freestanding signs in a corridor.",
+  "category": "Application",
+  "practical_value": "Begin a signage scheme with the specified logo, Medium type, black/white palette and icons.",
+  "content_islands": [
+    {
+      "name": "Element list",
+      "spec": "Place the four signage ingredients above the application."
+    },
+    {
+      "name": "Corridor example",
+      "spec": "Show the signage within its building environment and retain the photo credit."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The list identifies logo, Helsinki Grotesk Medium, black/white color and signage icons.",
+    "Expression": "The corridor photograph shows these ingredients in a physical setting."
+  }
+}

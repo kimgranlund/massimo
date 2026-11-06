@@ -1,0 +1,32 @@
+{
+  "id": "BK128",
+  "title": "Brand Team Contacts",
+  "image": "bk128.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 128
+  },
+  "slide_intent": "Invite review while work can still change so collaborators can resolve brand questions before production decisions become fixed.",
+  "strategic_value": "Early involvement of Regional and Global Marketing can help Burger King keep outside-vendor work aligned with its communications.",
+  "demonstration": "A left paragraph explains when feedback adds value, while two large text blocks ask about questions and direct readers to Regional and Global Marketing.",
+  "category": "Brand",
+  "practical_value": "Route brand questions and draft communications to the named teams during development, especially when working with an outside vendor.",
+  "content_islands": [
+    {
+      "name": "Review timing",
+      "spec": "Place the Brand Team Contacts heading and development-phase feedback explanation at left."
+    },
+    {
+      "name": "Question prompt",
+      "spec": "Set the large question about concerns or further information across the upper right."
+    },
+    {
+      "name": "Contact direction",
+      "spec": "Place the Regional and Global Marketing instruction beneath the question in equally prominent type."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The copy says feedback adds most value during development because there is still time to incorporate changes, especially with outside vendors.",
+    "Application": "The page directs branding questions and communications review to Regional and Global Marketing; it supplies no individual email or phone number."
+  }
+}

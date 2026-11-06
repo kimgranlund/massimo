@@ -1,0 +1,27 @@
+{
+  "id": "BK052",
+  "title": "Signature Lockups",
+  "image": "bk052.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 52
+  },
+  "slide_intent": "Signal a new topic clearly so designers can find the approved forms of recurring brand phrases.",
+  "strategic_value": "The large rounded heading can make the guide itself demonstrate Burger King’s typographic character.",
+  "demonstration": "A brown two-line Signature Lockups heading occupies the upper left of a full orange field.",
+  "category": "Typography",
+  "practical_value": "Use this divider to locate the phrase-lockup section and compare its headline treatment with other chapter openings.",
+  "content_islands": [
+    {
+      "name": "Chapter title",
+      "spec": "Set the large brown heading in two lines near the upper left."
+    },
+    {
+      "name": "Orange field and navigation",
+      "spec": "Keep the remaining orange space open, with small running header and footer details at the edges."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The oversized rounded brown letters against orange demonstrate the guide’s headline voice."
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "DBV12",
+  "title": "Fläche_up-2c",
+  "image": "dbv12.png",
+  "source": "../sources/media/dbv12.mp4",
+  "location": {
+    "series": "DB new design / motion demonstrations",
+    "source_page": 15,
+    "section": "Bewegungsmuster-14021478",
+    "source_url": "https://ecm-mediathek-cdn.deutschebahn.com/cdnenhancedecmvidhls/db306397/2880789/video_config.json",
+    "capture_date": "2026-11-05"
+  },
+  "slide_intent": "Keep expressive transitions on one axis so viewers can follow layered movement.",
+  "strategic_value": "A red-and-white upward sequence can add tension while retaining DB’s direct movement pattern.",
+  "demonstration": "A red plane and white trailing strip move from bottom to top.",
+  "category": "Motion",
+  "practical_value": "Choose two-color vertical motion for a bold composition that benefits from an upward sequence.",
+  "content_islands": [
+    {
+      "name": "Leading plane",
+      "spec": "Raise the red plane from the bottom."
+    },
+    {
+      "name": "Trailing plane",
+      "spec": "Follow the red field with a white band on the same vertical path."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A red plane and white trailing strip move from bottom to top.",
+    "Application": "The source provides a playable demonstration of this repeatable sequence: A red plane and white trailing strip move from bottom to top.",
+    "Intent": "Accompanying Flächenverhalten prose says clear axes and straight movement keep focus on content; two-color variants add expression for bold content.",
+    "Constraint": "The source associates one-color planes with high information density and functional use, and two-color planes with bold, expressive content."
+  },
+  "motion": "../sources/media/dbv12.mp4"
+}

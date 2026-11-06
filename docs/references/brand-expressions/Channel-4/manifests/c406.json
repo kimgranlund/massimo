@@ -1,0 +1,38 @@
+{
+  "id": "C406",
+  "title": "Parametric motion behaviour",
+  "image": "c406.png",
+  "source": "../sources/c406.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 masterbrand / 2023",
+    "item": 6,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Separate a recognizable shape from variable movement so personality can change without losing identity.",
+  "strategic_value": "A shared parametric reveal can give Channel 4 different tonal treatments while preserving attribution.",
+  "demonstration": "A green logo rotates and separates into blocks as three slider controls change beneath it; the graphic returns to a readable 4.",
+  "category": "Motion",
+  "practical_value": "Compare variations in the reveal while checking that the final silhouette remains identifiable.",
+  "content_islands": [
+    {
+      "name": "Parametric specimen",
+      "spec": "Keep the animated logo in the central black stage."
+    },
+    {
+      "name": "Controls",
+      "spec": "Place three small sliders and the cursor below to expose adjustable behavior."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The animation shows several block rotations and returns to the assembled mark.",
+    "Application": "The displayed sliders demonstrate a parameter-driven motion system.",
+    "Intent": "Pentagram explains that parametric possibilities let channel brands express different tones with clear masterbrand attribution."
+  },
+  "motion": "../sources/c406.mp4",
+  "ingredient": {
+    "name": "Parametric 4 reveal",
+    "role": "Vary personality while retaining recognition.",
+    "application": "Adjust the movement of the component blocks while resolving them into the 4.",
+    "scope": "Observed demonstration in the 2023 case study; slider names and production values are not supplied."
+  }
+}

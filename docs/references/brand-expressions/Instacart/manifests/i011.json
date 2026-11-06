@@ -1,0 +1,24 @@
+{
+  "id": "I011",
+  "title": "Symbol Anatomy",
+  "image": "i011.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 11
+  },
+  "slide_intent": "Show which shapes create the symbol’s contrasting character. Viewers can read efficiency and softness in the same form.",
+  "strategic_value": "Instacart can carry the straight-versus-curved distinction into other shapes and letters.",
+  "demonstration": "Construction marks pick out a straight segment and a rounded end on the pale green arrow above the pale orange root.",
+  "category": "Geometry",
+  "practical_value": "Use straight edges and rounded ends from the symbol as a reference when designing a related shape.",
+  "content_islands": [
+    {
+      "name": "Principle",
+      "spec": "Set the anatomy heading and short description in the left column."
+    },
+    {
+      "name": "Geometry diagram",
+      "spec": "Fade the mark so blue guides and labels stand out. Point from the Shop and Savor captions to a straight edge and a curved end."
+    }
+  ]
+}

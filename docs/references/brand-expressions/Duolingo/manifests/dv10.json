@@ -1,0 +1,41 @@
+{
+  "id": "DV10",
+  "title": "Brand family / Sub-brands / White variant",
+  "image": "dv10.png",
+  "source": "../sources/pages/dv10.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/identity/brand-family",
+    "section": "Sub-brands",
+    "selected_control_index": 4,
+    "related_default": "DW043",
+    "order": 432
+  },
+  "slide_intent": "Preserve family hierarchy in reversal because a colored background should not obscure the relationship between parent brand and initiative.",
+  "strategic_value": "The white signature and descriptor on green can give Duolingo initiatives a consistent family presence.",
+  "demonstration": "A white parent wordmark and sub-brand descriptor share a green field beside the generic-layout rationale.",
+  "category": "Color",
+  "practical_value": "Retain the parent and descriptor relationship when applying the reversed family lockup.",
+  "content_islands": [
+    {
+      "name": "Alternate color specimen",
+      "spec": "Place the white wordmark and descriptor on one line on green, retaining the selected white control and download symbol."
+    },
+    {
+      "name": "Scope distinction",
+      "spec": "Place the heading and distinction between uniquely governed products and other initiatives in the right column."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text says the generic layout helps keep the family consistent.",
+    "Application": "The generic layout is assigned to sub-brands and initiatives without their own rules.",
+    "Constraint": "The source distinguishes products with specific branding rules from those using the generic layout.",
+    "Expression": "A white parent wordmark and sub-brand descriptor share a green field beside the generic-layout rationale."
+  },
+  "ingredient": {
+    "name": "Generic sub-brand lockup",
+    "role": "Keep initiatives attached to the master identity.",
+    "application": "Use the generic layout for initiatives that lack dedicated branding rules.",
+    "scope": "Historical archived guidelines. Historical default architecture; uniquely branded offerings such as the source’s Plus example have separate guidance."
+  }
+}

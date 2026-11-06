@@ -1,0 +1,32 @@
+{
+  "id": "DB1207B",
+  "title": "Farbigkeit / dark backgrounds",
+  "image": "db1207b.png",
+  "source": "../sources/db1207b-page.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 12,
+    "section": 7,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Signature-Graphics",
+    "tab": "Dunkle Hintergründe"
+  },
+  "slide_intent": "Distinguish brand accents, exceptions and quiet background marks so a dark composition retains hierarchy.",
+  "strategic_value": "Defined dark-ground treatments can keep DB graphics coherent across light and dark media.",
+  "demonstration": "The dark-background tab compares DB Red, Transitional Lilac, Clear White for special cases and Grey 700/800 for backgrounds.",
+  "category": "Color",
+  "practical_value": "Choose the dark-ground treatment by role, retaining the special-case status of white.",
+  "content_islands": [
+    {
+      "name": "Color rules",
+      "spec": "Place preferred colors and the white/Cold Black exception above the tabs."
+    },
+    {
+      "name": "Dark-ground comparison",
+      "spec": "Align the four striped samples with their brand, expressive, special-case and background labels."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The dark tab demonstrates four role-specific treatments.",
+    "Constraint": "Clear White is labeled for special cases; background specimens use Grey 700/800, while DB Red and Transitional Lilac remain preferred."
+  }
+}

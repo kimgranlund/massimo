@@ -1,0 +1,24 @@
+{
+  "id": "N04",
+  "title": "Letter from Richard H. Truly",
+  "image": "n04.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 4
+  },
+  "slide_intent": "Explain why colleagues should adopt a common visual system. A signed institutional letter can connect the details in a manual to decisions people make throughout the organization.",
+  "strategic_value": "NASA can frame graphics as a shared agency responsibility. The letter connects the new logotype with communications ranging from publications to vehicles and signage.",
+  "demonstration": "A letter addressed to colleagues introduces the visual system and asks employees for their support. The administrator’s signature and printed name close a single column of prose.",
+  "category": "Voice",
+  "practical_value": "Use this page to explain the stated rationale for adoption and the audience expected to maintain the standards.",
+  "content_islands": [
+    {
+      "name": "Address and letter",
+      "spec": "Keep the address and paragraphs in one column at the right, with a broad empty left margin."
+    },
+    {
+      "name": "Signature",
+      "spec": "Close beneath the text with the handwritten signature, Richard H. Truly’s name and his Administrator title."
+    }
+  ]
+}

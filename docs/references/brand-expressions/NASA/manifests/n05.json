@@ -1,0 +1,24 @@
+{
+  "id": "N05",
+  "title": "The NASA Logotype",
+  "image": "n05.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 5
+  },
+  "slide_intent": "Introduce the shape that should identify the agency. Isolating the letters allows readers to inspect the continuity, strokes and unusual A forms that distinguish the mark.",
+  "strategic_value": "NASA can concentrate recognition in one signature. A stable master can carry the same letterforms across different agency communications.",
+  "demonstration": "Two text columns explain the design and reproduction guidance. A single large, solid black NASA logotype occupies the field below a horizontal rule.",
+  "category": "Brand",
+  "practical_value": "Use the isolated specimen to recognize the master form and consult section 2 for reproduction artwork.",
+  "content_islands": [
+    {
+      "name": "Description and reproduction guidance",
+      "spec": "Place the heading at upper left and the two explanatory columns to its right."
+    },
+    {
+      "name": "Logotype specimen",
+      "spec": "Center one large horizontal black mark in the open lower field with generous white space around it."
+    }
+  ]
+}

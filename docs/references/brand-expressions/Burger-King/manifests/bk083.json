@@ -1,0 +1,39 @@
+{
+  "id": "BK083",
+  "title": "Margin Construction",
+  "image": "bk083.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 83
+  },
+  "slide_intent": "Test a formula across aspect ratios because a consistent rule still needs optical judgment at extremes.",
+  "strategic_value": "The same margin method can keep Burger King banners and posters related while avoiding unsuitable spacing in unusual formats.",
+  "demonstration": "Three numbered diagrams apply 27 px margins to 674 px horizontal examples and 30 px margins to a 756 px vertical example.",
+  "category": "Layout",
+  "practical_value": "Apply the longest-side calculation, using the rounded displayed examples and preserving the optical exception.",
+  "content_islands": [
+    {
+      "name": "Construction explanation",
+      "spec": "Place the rule and extreme-format note at upper left."
+    },
+    {
+      "name": "Three diagrams",
+      "spec": "Stack a wide banner over a taller format at center and place a vertical format at right, with measured margins."
+    },
+    {
+      "name": "Calculation key",
+      "spec": "Place the three numbered equations beneath the explanatory column."
+    }
+  ],
+  "ingredient": {
+    "name": "Margin construction across formats",
+    "role": "Carry proportional spacing while allowing optical correction.",
+    "application": "Use longest side/25; the examples round 674 px to 27 px and 756 px to 30 px. Adjust extreme wide or tall formats manually if needed.",
+    "scope": "Historical 2020 partner guidelines, PDF produced January 2021. The source gives displayed rounded values but does not define a general rounding algorithm."
+  },
+  "reference_purposes": {
+    "Intent": "The text explains that the modular margin scales proportionately across application sizes.",
+    "Application": "The three diagrams demonstrate 674/25 as 27 px and 756/25 as 30 px.",
+    "Constraint": "Very wide or tall applications may need manual margin adjustment for optical correctness."
+  }
+}

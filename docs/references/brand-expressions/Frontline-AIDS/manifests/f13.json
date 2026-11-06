@@ -1,0 +1,24 @@
+{
+  "id": "F13",
+  "title": "Our brand values",
+  "image": "f13.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 13
+  },
+  "slide_intent": "Translate abstract values into behaviors people can recognize. The explanations let a team discuss what each value demands in practice.",
+  "strategic_value": "Frontline AIDS can align teams around a shared ethos while giving each value a distinct behavioral meaning.",
+  "demonstration": "Five labels on black identify Insightful, Challenging, Fast, Courageous and Solidarity. Each sits beside explanatory copy on a cyan field.",
+  "category": "Brand",
+  "practical_value": "Choose a behavior that fits a stated value and check it against the accompanying explanation.",
+  "content_islands": [
+    {
+      "name": "Section introduction",
+      "spec": "Set the navigation rail, heading and short paragraph at left."
+    },
+    {
+      "name": "Value rows",
+      "spec": "Right-align the boxed value names against one edge and align the explanatory paragraphs in an adjacent column. Separate the rows with horizontal rules."
+    }
+  ]
+}

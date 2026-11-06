@@ -1,0 +1,28 @@
+{
+  "id": "F42",
+  "title": "Headlines & colour",
+  "image": "f42.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 42
+  },
+  "slide_intent": "Show how the color of text and its immediate box determine whether a headline stays readable across backgrounds. Changing the surrounding field creates a useful comparison.",
+  "strategic_value": "Frontline AIDS can give its strongest hues different roles while the same word remains distinguishable over color or photography.",
+  "demonstration": "Six groups demonstrate the three bright headlines on black and their inverse arrangements. A smaller set of crossed examples shows incorrect combinations.",
+  "category": "Color",
+  "practical_value": "Choose a permitted type-and-box pair, then compare it on the actual page background or photograph.",
+  "content_islands": [
+    {
+      "name": "Pairing matrix",
+      "spec": "Arrange three columns across two rows. Put light-catching color on a black box in the top row and reverse the roles in the lower row."
+    },
+    {
+      "name": "Background variations",
+      "spec": "Within each group repeat the same boxed word on several colored fields and a photograph so viewers can compare surrounding contrast."
+    },
+    {
+      "name": "Excluded combinations",
+      "spec": "Set a compact stack of incorrect swatches beneath the explanation at lower left. Attach the caution and pink cross to that group."
+    }
+  ]
+}

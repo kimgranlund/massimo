@@ -1,0 +1,41 @@
+{
+  "id": "IBS07",
+  "title": "Logo versions",
+  "image": "ibs07.png",
+  "source": "../sources/ibm-logo-strategic-partners.pdf",
+  "location": {
+    "page": 7,
+    "series": "IBM Logo Guidelines for Strategic Partners / Version 1.2 / copyright 2023",
+    "order": 200007
+  },
+  "slide_intent": "Choose an optically appropriate mark for the background so the striped letters retain their intended visual weight.",
+  "strategic_value": "Using distinct positive and reversed artwork can preserve IBM recognition across light and dark settings.",
+  "demonstration": "Black and white IBM logos are paired with enlarged M-counter details, exposing different bar widths and counter shapes.",
+  "category": "Geometry",
+  "practical_value": "Select the supplied positive or reversed artwork rather than recoloring one version as a substitute.",
+  "content_islands": [
+    {
+      "name": "Version explanation",
+      "spec": "Place the two optical differences in the left column."
+    },
+    {
+      "name": "Positive specimen",
+      "spec": "Use the upper right-area row for the black logo and enlarged sharp M counter."
+    },
+    {
+      "name": "Reversed specimen",
+      "spec": "Use the lower row for the white-on-black logo and enlarged blunt counter, keeping the comparison aligned."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source explains that the two versions preserve legibility and optical integrity on light and dark backgrounds.",
+    "Expression": "The paired specimens expose the mark’s bar rhythm and distinct counter shapes.",
+    "Constraint": "The page requires the appropriate positive or reversed version for the background; the artworks are explicitly not identical."
+  },
+  "ingredient": {
+    "name": "Positive and reversed 8-bar artwork",
+    "role": "Preserve optical weight across background tones.",
+    "application": "Use the appropriate supplied version rather than treating positive and reversed marks as simple color inversions.",
+    "scope": "IBM 8-bar logo artwork in the strategic-partner guide; bar widths and M counters differ between versions."
+  }
+}

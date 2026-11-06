@@ -1,0 +1,27 @@
+{
+  "id": "HX31",
+  "title": "Design assistance",
+  "image": "hx31.png",
+  "source": "../sources/design-and-create.offline.html",
+  "location": {
+    "series": "Web guideline introduction/component",
+    "order": 114,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/design-and-create",
+    "original_html": "../sources/design-and-create.html"
+  },
+  "slide_intent": "Make design support findable because contributors need feedback and practical help to apply a shared identity.",
+  "strategic_value": "A visible support route can help Helsinki improve consistency across many creators.",
+  "demonstration": "This webpage introduction offers questions about feedback, practical advice, shared practices and skills, then points to contacts, tools, tips and FAQs below.",
+  "category": "Application",
+  "practical_value": "Choose the support route that matches the production problem.",
+  "content_islands": [
+    {
+      "name": "Support questions",
+      "spec": "Place the contributor questions before the description of resources below."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text describes support for managing and improving the visual identity.",
+    "Application": "It directs contributors toward contacts, tools, tips and frequently asked questions."
+  }
+}

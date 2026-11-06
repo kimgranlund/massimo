@@ -1,0 +1,38 @@
+{
+  "id": "HE072",
+  "title": "Designing signs",
+  "image": "he072.png",
+  "source": "../sources/design-and-create.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Designing signs",
+    "order": 99,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/design-and-create#designing-signs",
+    "original_html": "../sources/design-and-create.html"
+  },
+  "slide_intent": "Coordinate text, symbols and languages so a sign can be read as one navigational instruction.",
+  "strategic_value": "Consistent icon scaling and language arrangement can make Helsinki signage easier to compare across locations.",
+  "demonstration": "This expanded webpage-section capture compares icons inline with text or in separate boxes, then compares multilingual lines and columns.",
+  "category": "Layout",
+  "practical_value": "Scale inline icons to text, use protected areas for separate icons, and choose lines or columns according to text volume.",
+  "content_islands": [
+    {
+      "name": "Text/icon arrangements",
+      "spec": "Place A–C sign examples under the shared-scaling explanation."
+    },
+    {
+      "name": "Language arrangements",
+      "spec": "Follow with A–C multilingual line and column examples."
+    }
+  ],
+  "ingredient": {
+    "name": "Sign information arrangement",
+    "role": "Connect words and symbols clearly.",
+    "application": "Scale inline icons to text; size separate icons by their protected area. Separate languages into lines, or columns for large text volumes.",
+    "scope": "Signage arrangements shown in this section."
+  },
+  "reference_purposes": {
+    "Application": "The diagrams compare integrated/separate icons and multilingual lines/columns.",
+    "Constraint": "Separate icons use their protected area; multilingual signs separate languages into lines, with columns permitted for substantial text."
+  }
+}

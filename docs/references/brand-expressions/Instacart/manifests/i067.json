@@ -1,0 +1,24 @@
+{
+  "id": "I067",
+  "title": "Spot Illustrations",
+  "image": "i067.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 67
+  },
+  "slide_intent": "Convey a small moment with a few interacting elements. A single gesture lets the reader follow a story in a compact card.",
+  "strategic_value": "Instacart can bring a suggestion for weeknight cooking to life through the action of a fingertip.",
+  "demonstration": "A narrow Discover More screen contains a yellow recipe card. Beneath the headline, an outlined hand presses a button accompanied by musical notes.",
+  "category": "Imagery",
+  "practical_value": "Choose a spot when one gesture carries the idea and there is room for more detail than a small object cue.",
+  "content_islands": [
+    {
+      "name": "Spot guidance",
+      "spec": "Explain the scope of a spot illustration in the narrow left column against dark green."
+    },
+    {
+      "name": "Recipe card",
+      "spec": "Center the cream mobile panel and retain its compact navigation above the yellow card. Place the headline high, the hand and notes below it, and the arrow near the card’s lower right."
+    }
+  ]
+}

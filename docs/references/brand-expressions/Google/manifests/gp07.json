@@ -1,0 +1,30 @@
+{
+  "id": "GP07",
+  "title": "Product Sans / Numerals",
+  "image": "gp07.png",
+  "source": "../product-sans-specimen.pdf",
+  "location": {
+    "page": 7,
+    "printed_page": "P–7"
+  },
+  "slide_intent": "Study numeral construction as carefully as letters because numbers must share the typeface’s character while staying distinct.",
+  "strategic_value": "Related counters and terminals can make numerical content feel part of the Product Sans family.",
+  "demonstration": "Oversized white 6 7 8 9 sit across the upper blue field, with a lower-left note about circular counters and extended terminals.",
+  "category": "Typography",
+  "practical_value": "Compare number counters and overshoot together rather than assuming every numeral aligns mechanically to the same bounds.",
+  "content_islands": [
+    {
+      "name": "Numeral row",
+      "spec": "Set 6 7 8 9 at very large scale with enough separation to inspect their forms."
+    },
+    {
+      "name": "Construction explanation",
+      "spec": "Place the note beneath the row, describing slight optical corrections and terminal extensions."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The note explains how circular counters and squared terminals maintain the typeface’s geometric character.",
+    "Expression": "The enlarged numerals reveal their counters and terminal shapes.",
+    "Application": "The caption identifies optical corrections and extensions beyond baseline or cap height."
+  }
+}

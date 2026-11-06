@@ -1,0 +1,37 @@
+{
+  "id": "AU01",
+  "title": "From monologue to dialogue — identity film",
+  "image": "au01.png",
+  "source": "../sources/01-kms-team-audi_Casefilm_EN_16-9.mov",
+  "location": {
+    "series": "KMS TEAM / Audi and Audi Sport identity case study",
+    "item": 1,
+    "extent": "Complete source media",
+    "poster_time_seconds": 30
+  },
+  "slide_intent": "Connect a small set of recognizable ingredients to varied encounters, because people meet the same brand through different screens and situations.",
+  "strategic_value": "Simplified rings, adaptable Audi Type and a shared palette can keep Audi recognizable while its communications change format.",
+  "demonstration": "The 89.48-second film moves from people and driving scenes through rings, type, palette, imagery, interface icons and controls, the brand portal and applications.",
+  "category": "Brand",
+  "practical_value": "Compare the continuity of ingredients across explanation, interface and campaign rather than treating each format as a separate identity.",
+  "content_islands": [
+    {
+      "name": "Human context",
+      "spec": "Open with automotive and everyday-life footage and principle words."
+    },
+    {
+      "name": "Identity ingredients",
+      "spec": "Sequence the rings, variable typography, neutral/red palette and images through full-frame demonstrations."
+    },
+    {
+      "name": "Digital tools and applications",
+      "spec": "Show icons, controls, portal and ring calculator before web applications and a scenic logo ending."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The film identifies Audi Type as a brand identifier and basis for flexibility; accompanying KMS prose explains the need for adaptable digital communication.",
+    "Expression": "The film changes scale, placement, imagery and typography while retaining Audi rings and shared colors.",
+    "Application": "Screens demonstrate the identity in controls, websites, mobile layouts and a brand portal."
+  },
+  "motion": "../sources/au01.mp4"
+}

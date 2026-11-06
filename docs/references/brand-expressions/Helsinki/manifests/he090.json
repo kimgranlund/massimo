@@ -1,0 +1,31 @@
+{
+  "id": "HE090",
+  "title": "Helsinki Design System",
+  "image": "he090.png",
+  "source": "../sources/design-and-create.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Helsinki Design System",
+    "order": 122,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/design-and-create#helsinki-design-system",
+    "original_html": "../sources/design-and-create.html"
+  },
+  "slide_intent": "Reuse shared interface foundations so attention can go to user needs instead of rebuilding common functions.",
+  "strategic_value": "Helsinki Design System can connect accessibility and visual consistency across city services.",
+  "demonstration": "Expanded webpage section: an introductory paragraph explains HDS, followed by four bullets about building blocks, guidance, components and models.",
+  "category": "Application",
+  "practical_value": "Use HDS for reusable interface foundations alongside the brand guidelines.",
+  "content_islands": [
+    {
+      "name": "System rationale",
+      "spec": "The opening paragraph links reuse to customer needs."
+    },
+    {
+      "name": "Resources",
+      "spec": "The list describes accessible building blocks and ends with the documentation link."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source says shared functionality lets designers focus on customer needs and experience."
+  }
+}

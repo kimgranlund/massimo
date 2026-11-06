@@ -1,0 +1,41 @@
+{
+  "id": "IB040",
+  "title": "Pictograms / Contribution",
+  "image": "ib040.png",
+  "source": "../sources/iconography-pictograms-contribute.txt",
+  "location": {
+    "series": "IBM Design Language / public web guidelines",
+    "item": 40,
+    "extent": "Complete webpage content area, default interactive state",
+    "url": "https://www.ibm.com/design/language/iconography/pictograms/contribute/",
+    "order": 40000
+  },
+  "slide_intent": "Keep a growing illustration vocabulary coherent by specifying how new symbols are built and reviewed.",
+  "strategic_value": "A common starter grid and preserved strokes can help IBM extend its pictogram library without losing characteristic line quality.",
+  "demonstration": "The text-led page groups resource cards, construction criteria, delivery requirements and approval stages.",
+  "category": "Application",
+  "practical_value": "Prepare a 32px Illustrator pictogram with intact strokes and the correct grouping before submission.",
+  "content_islands": [
+    {
+      "name": "Resource cards",
+      "spec": "Place productive and expressive master files beside starter and library references."
+    },
+    {
+      "name": "Design criteria",
+      "spec": "Explain uniqueness, accessibility and understandable metaphors."
+    },
+    {
+      "name": "Construction and delivery",
+      "spec": "Specify 1px padding, grid alignment, named layers, Illustrator format and intact strokes."
+    },
+    {
+      "name": "Approval process",
+      "spec": "Close with numbered review and publication stages plus request links."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The introduction explains the need for a contribution process as IBM adds products and services.",
+    "Application": "The page specifies workspace setup, grouping, naming and delivery.",
+    "Constraint": "Production-ready pictograms are 32×32px Illustrator files with strokes kept intact, unlike the expanded-stroke UI-icon requirements."
+  }
+}

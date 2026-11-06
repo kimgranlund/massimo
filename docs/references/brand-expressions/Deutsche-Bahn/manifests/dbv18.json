@@ -1,0 +1,36 @@
+{
+  "id": "DBV18",
+  "title": "Type_Secondary-left",
+  "image": "dbv18.png",
+  "source": "../sources/media/dbv18.mp4",
+  "location": {
+    "series": "DB new design / motion demonstrations",
+    "source_page": 15,
+    "section": "Animation-14021536",
+    "source_url": "https://ecm-mediathek-cdn.deutschebahn.com/cdnenhancedecmvidhls/db306411/2880897/video_config.json",
+    "capture_date": "2026-11-05",
+    "note": "The adjacent page caption does not reliably describe this embedded file. This manifest follows the inspected video and its file title; broader typography rules come from the surrounding prose. Adjacent caption: Klicken, um das folgende Video zu überspringen Ende des oberhalb befindlichen Videos Animiertes Stacking-Prinzip (getürmte Wörter) nach den Bewegungsmustern."
+  },
+  "slide_intent": "Preserve a stable reading edge in animated body copy so people can continue from one line to the next.",
+  "strategic_value": "The left-aligned paragraph can keep DB explanatory copy clear while participating in the motion system.",
+  "demonstration": "A left-aligned multi-line paragraph enters, holds, and exits on a pale field.",
+  "category": "Motion",
+  "practical_value": "Choose the left-aligned body-copy treatment when the surrounding layout uses a shared left edge.",
+  "content_islands": [
+    {
+      "name": "Text block",
+      "spec": "Align the paragraph lines to one left edge."
+    },
+    {
+      "name": "Reading hold",
+      "spec": "Keep the complete paragraph visible before its exit."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A left-aligned multi-line paragraph enters, holds, and exits on a pale field.",
+    "Application": "The source provides a playable demonstration of this repeatable sequence: A left-aligned multi-line paragraph enters, holds, and exits on a pale field.",
+    "Intent": "Accompanying Typografie prose prioritizes legibility and uses simple staggered line movement to keep text lively and clear.",
+    "Constraint": "The source prioritizes legibility when animating typography."
+  },
+  "motion": "../sources/media/dbv18.mp4"
+}

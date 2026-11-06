@@ -1,0 +1,32 @@
+{
+  "id": "C26",
+  "title": "Putting It All Together",
+  "image": "c26.png",
+  "source": "../csail-branding-short-guide.pdf",
+  "location": {
+    "page": 26
+  },
+  "slide_intent": "Teach designers to give information a consistent reading order before introducing a diagonal or breaking the grid. Generous margins and stable alignments help a reader distinguish the headline, image and detail.",
+  "strategic_value": "CSAIL can connect the rhythm of its publication layouts with the angles of its identity. The event poster places those angles around a recognizable subject and keeps the lab signature in a predictable position.",
+  "demonstration": "A blue column grid overlays a sample publication at left. A separate event poster at right combines event details, a speaker portrait and overlapping angled color fields. The two sheets sit at the same scale.",
+  "category": "Layout",
+  "practical_value": "Set the margins, text roles and column alignments first. Use the adjacent poster to decide where an angled field can cross that structure while keeping the speaker’s name and event information legible.",
+  "content_islands": [
+    {
+      "name": "Layout principles",
+      "spec": "Place the heading above three paragraphs in a narrow left column. Keep the guidance on margins, type hierarchy and departures from the grid together."
+    },
+    {
+      "name": "Layout comparison",
+      "spec": "Place two upright sheets side by side on a pale field. Show the column guides, text blocks, image and signature on the left sheet. On the right, place event details above the talk title, speaker name and angular portrait composition."
+    },
+    {
+      "name": "Signature note",
+      "spec": "Below the principles, use a short orange rule and italic note to explain why the guide favors a left-hand logo position."
+    },
+    {
+      "name": "Book footer",
+      "spec": "Align the short-guide identifier, laboratory name and folio along the bottom margin."
+    }
+  ]
+}

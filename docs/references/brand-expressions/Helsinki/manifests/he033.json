@@ -1,0 +1,42 @@
+{
+  "id": "HE033",
+  "title": "Sensitive subjects",
+  "image": "he033.png",
+  "source": "../sources/visual-storytelling.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Sensitive subjects",
+    "order": 45,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/visual-storytelling#sensitive-subjects",
+    "original_html": "../sources/visual-storytelling.html"
+  },
+  "slide_intent": "Represent sensitive subjects clearly without exposing people because both privacy and interpretation shape the effect of an image.",
+  "strategic_value": "Indirect, concrete storytelling can help Helsinki communicate care without reducing residents to clichés.",
+  "demonstration": "This expanded webpage section combines guidance on anonymity, image/text interpretation and outcome-led subjects with examples of sensitive-topic imagery and symbolic clichés.",
+  "category": "Imagery",
+  "practical_value": "Choose a concrete subject, protect recognizability where needed and use accompanying text to clarify meaning.",
+  "content_islands": [
+    {
+      "name": "Privacy approach",
+      "spec": "Describe distance, depth of field, motion and reflections as ways to protect clients."
+    },
+    {
+      "name": "Interpretation examples",
+      "spec": "Pair sensitive-topic images with captions explaining ambiguity."
+    },
+    {
+      "name": "Outcome-led examples",
+      "spec": "Contrast clear results and everyday feelings with clichéd symbolism."
+    }
+  ],
+  "ingredient": {
+    "name": "Sensitive-topic imagery",
+    "role": "Communicate difficult subjects while protecting dignity and clarity.",
+    "application": "Use indirect viewpoints or illustration where appropriate; make the intended meaning concrete and reinforce it with text.",
+    "scope": "The section recommends professional consultation for illustration/storyboards; no camera settings or blanket anonymity rule for all photographs are specified."
+  },
+  "reference_purposes": {
+    "Intent": "The source explains that viewers interpret images differently and that supporting text can reduce misinterpretation.",
+    "Application": "It offers concrete photographic techniques and illustration as approaches for sensitive subjects."
+  }
+}

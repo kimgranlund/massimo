@@ -1,0 +1,36 @@
+{
+  "id": "CR18",
+  "title": "Internet Service posters — Premium wifi",
+  "image": "cr18.png",
+  "source": "../sources/cr18.png",
+  "location": {
+    "series": "Cox Brand Collection — Lindsay Little / Periscope",
+    "item": 18,
+    "extent": "whole source image"
+  },
+  "slide_intent": "Place a service beside familiar household benefits so readers understand its relevance to choosing a home.",
+  "strategic_value": "The repeated final line can position Cox wifi as a desirable home amenity alongside architectural features.",
+  "demonstration": "Three framed posters pair interior scenes with lists of home features that end in bold Premium wifi, followed by an offer and Cox signature.",
+  "category": "Voice",
+  "practical_value": "Use a repeated sentence structure to connect different images while giving the service benefit the strongest type weight.",
+  "content_islands": [
+    {
+      "name": "Three poster comparison",
+      "spec": "Align the three framed posters across a blue wall, preserving their distinct room scenes."
+    },
+    {
+      "name": "Headline and offer",
+      "spec": "Place short feature lists in each image’s quiet space, with Premium wifi in bold and the smaller offer below."
+    },
+    {
+      "name": "Shared signature",
+      "spec": "Align the welcome-home cue and Cox mark near the bottom of every poster."
+    }
+  ],
+  "ingredient": {
+    "name": "Premium wifi headline ending",
+    "role": "Make connectivity read as one of the home’s desirable features.",
+    "application": "List two architectural or interior features in light type and end with Premium wifi in bold. Keep the smaller offer immediately below.",
+    "scope": "The three residential Internet Service posters shown here. This is an observed campaign pattern, not a company-wide copy rule."
+  }
+}

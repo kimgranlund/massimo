@@ -1,0 +1,34 @@
+{
+  "id": "BK082",
+  "title": "Margin Formula",
+  "image": "bk082.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 82
+  },
+  "slide_intent": "Tie spacing to format size so compositions can retain comparable breathing room across different dimensions.",
+  "strategic_value": "A single proportional formula can give Burger King layouts consistent edges without separate arbitrary margins for every size.",
+  "demonstration": "The oversized equation Longest Side / 25 = Margin runs across a red page.",
+  "category": "Layout",
+  "practical_value": "Calculate a starting margin from the application’s longest dimension.",
+  "content_islands": [
+    {
+      "name": "Formula label",
+      "spec": "Place the small heading at upper left."
+    },
+    {
+      "name": "Equation",
+      "spec": "Set the cream formula across the center, stacking Longest Side at its left."
+    }
+  ],
+  "ingredient": {
+    "name": "Proportional margin",
+    "role": "Maintain comparable edge spacing across formats.",
+    "application": "Divide the longest side of the application by 25 to obtain the margin.",
+    "scope": "Historical 2020 partner guidelines, PDF produced January 2021. Page 83 permits manual optical adjustment for very wide or tall formats."
+  },
+  "reference_purposes": {
+    "Application": "The equation defines margin as longest side divided by 25.",
+    "Constraint": "The formula fixes the divisor at 25; page 83 supplies the extreme-format optical exception."
+  }
+}

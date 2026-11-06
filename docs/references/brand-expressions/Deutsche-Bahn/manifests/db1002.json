@@ -1,0 +1,30 @@
+{
+  "id": "DB1002",
+  "title": "Schwelle / security and destination applications",
+  "image": "db1002.png",
+  "source": "../sources/page-10.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 10,
+    "section": 2,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Schwelle"
+  },
+  "slide_intent": "Adapt one visual idea to different messages so the brand remains recognizable across content.",
+  "strategic_value": "The bar sequence and its gate-shaped derivative can connect DB security and destination communication.",
+  "demonstration": "A security-device campaign with a red Schwelle appears beside a framed Berlin poster with a lilac gate graphic.",
+  "category": "Application",
+  "practical_value": "Compare the baseline bar sequence with a destination-specific derivative.",
+  "content_islands": [
+    {
+      "name": "Security message",
+      "spec": "Pair the headline and red sequence with the close-up device photograph."
+    },
+    {
+      "name": "Berlin poster",
+      "spec": "Place a lilac gate graphic beneath the white message inside the dark poster frame."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The two campaigns use the Schwelle system for security and destination content."
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "id": "IB036",
+  "title": "App icons / Design",
+  "image": "ib036.png",
+  "source": "../sources/iconography-app-icons-design.txt",
+  "location": {
+    "series": "IBM Design Language / public web guidelines",
+    "item": 36,
+    "extent": "Complete webpage content area, default interactive state",
+    "url": "https://www.ibm.com/design/language/iconography/app-icons/design/",
+    "order": 36000
+  },
+  "slide_intent": "Distinguish products without fragmenting the parent identity, because people need to recognize both the app and its family.",
+  "strategic_value": "Three coordinated icon styles can accommodate IBM product differences while retaining common geometry and color behavior.",
+  "demonstration": "The guide compares stroke, fill and Plex app icons, decomposes their layers and supplies correct-versus-incorrect construction examples.",
+  "category": "Geometry",
+  "practical_value": "Choose the appropriate app-icon style and assemble its required components rather than borrowing a product symbol as a general metaphor.",
+  "content_islands": [
+    {
+      "name": "Three style families",
+      "spec": "Introduce stroke, fill and Plex examples beneath the resources."
+    },
+    {
+      "name": "Stroke components",
+      "spec": "Show the stationary color gradient, gradient mask and solid-stroke layer with labeled examples and prohibitions."
+    },
+    {
+      "name": "Fill components",
+      "spec": "Explain the primary gradient, secondary accent and tertiary gradient with geometric masks and comparisons."
+    },
+    {
+      "name": "Plex components",
+      "spec": "Finish with solid letterforms, character-count limits, baseline alignment and whole-icon color examples."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The introduction says app icons identify products at a glance while expressing the IBM brand.",
+    "Expression": "Stroke, filled and typographic icons share geometry and luminous gradients.",
+    "Application": "Layer diagrams teach assembly of each icon style.",
+    "Constraint": "The source says app icons are rights restricted and must not be altered or used for topics other than their names; stroke gradients remain stationary at 45°."
+  },
+  "ingredient": {
+    "name": "App-icon families",
+    "role": "Differentiate products within the IBM identity.",
+    "application": "Use the documented stroke, fill or Plex construction. Preserve each style’s required elements and color behavior.",
+    "scope": "App icons represent named products or services, not generic subject matter or standalone brands."
+  },
+  "motion_assets": [
+    {
+      "title": "App-icon gradient production",
+      "file": "../sources/media/0b9657e6c5a8.mp4",
+      "poster": "../sources/media/0b9657e6c5a8-poster.png",
+      "duration_seconds": 79.1,
+      "source_url": "https://www.ibm.com/design/language/9213c77e5715d44bbabb5c70f8de0ed3/30-idl-iconography-app-icons-design.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    }
+  ]
+}

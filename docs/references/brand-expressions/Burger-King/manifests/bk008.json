@@ -1,0 +1,31 @@
+{
+  "id": "BK008",
+  "title": "Our Story / Have It Your Way",
+  "image": "bk008.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 8
+  },
+  "slide_intent": "Expand a functional benefit into a human belief so people understand what the promise means beyond a transaction.",
+  "strategic_value": "Linking customization with individuality can give Burger King a broader emotional role.",
+  "demonstration": "Two large paragraphs explain a shift from customizing food to living authentically.",
+  "category": "Brand",
+  "practical_value": "Distinguish a product feature from the broader value a brand wants it to represent.",
+  "content_islands": [
+    {
+      "name": "Expanded promise",
+      "spec": "Place the paragraph about food customization and life choices in the upper right text area."
+    },
+    {
+      "name": "Identity statement",
+      "spec": "Place the shorter individuality statement below with generous separation."
+    },
+    {
+      "name": "Section label",
+      "spec": "Keep Our Story in the narrow left column."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The copy explicitly extends the customization promise into personal authenticity."
+  }
+}

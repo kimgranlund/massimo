@@ -1,0 +1,37 @@
+{
+  "id": "DW140",
+  "title": "Resources / Emoji",
+  "image": "dw140.png",
+  "source": "../sources/pages/resources.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/resources",
+    "section": "Emoji",
+    "item": 140,
+    "order": 1400
+  },
+  "slide_intent": "Provide a bounded vocabulary of familiar symbols because notification tone depends on small expressive choices.",
+  "strategic_value": "A shared emoji selection can help Duolingo messages feel related without prescribing identical wording.",
+  "demonstration": "A manually selected emoji grid sits beside an explanation of its relevance to notifications. Glyph appearance comes from the capture environment.",
+  "category": "Voice",
+  "practical_value": "Use an approved selection as a starting point while checking context and platform rendering.",
+  "content_islands": [
+    {
+      "name": "Selection rationale",
+      "spec": "Keep the heading and explanation in the narrow left column."
+    },
+    {
+      "name": "Emoji grid",
+      "spec": "Arrange the source glyphs in rows on a pale panel at right, retaining the source duplicates."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The source presents emoji selected as relevant to Duolingo notifications and acceptable for its branding."
+  },
+  "ingredient": {
+    "name": "Notification emoji",
+    "role": "Add recognizable emotional or topical cues to short messages.",
+    "application": "Choose from the supplied selection while checking message context.",
+    "scope": "Historical guideline selection; rendered glyph appearance is platform-dependent, not proprietary Duolingo illustration."
+  }
+}

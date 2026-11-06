@@ -1,0 +1,36 @@
+{
+  "id": "ML28",
+  "title": "Made-with group T-shirt",
+  "image": "ml28.png",
+  "source": "../sources/ml28.jpg",
+  "location": {
+    "series": "Pentagram / MIT Media Lab / 2014 identity",
+    "item": 28,
+    "extent": "Published lightbox artwork"
+  },
+  "slide_intent": "Combine a short phrase with a group glyph so a wearable message feels personal and connected to the institution.",
+  "strategic_value": "A verbal cue can turn a group mark into an approachable expression of affiliation.",
+  "demonstration": "A black T-shirt carries the white words made with beside an angular symbol.",
+  "category": "Voice",
+  "practical_value": "Study how a concise phrase changes the reading of a geometric mark.",
+  "content_islands": [
+    {
+      "name": "Phrase and glyph",
+      "spec": "Small white type and a paired angular symbol form one chest-level line."
+    },
+    {
+      "name": "Wearer",
+      "spec": "The seated person establishes a casual everyday context."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A black T-shirt carries the white words made with beside an angular symbol.",
+    "Application": "A black T-shirt carries the white words made with beside an angular symbol."
+  },
+  "ingredient": {
+    "name": "Made-with group T-shirt",
+    "role": "Combine a short phrase with a group glyph so a wearable message feels personal and connected to the institution.",
+    "application": "Study how a concise phrase changes the reading of a geometric mark.",
+    "scope": "Observed in this historical case-study artwork; not a mandatory usage rule or a current brand standard."
+  }
+}

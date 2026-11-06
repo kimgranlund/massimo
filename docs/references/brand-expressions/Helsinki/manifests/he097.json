@@ -1,0 +1,31 @@
+{
+  "id": "HE097",
+  "title": "Word",
+  "image": "he097.png",
+  "source": "../sources/design-and-create.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Word",
+    "order": 131,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/design-and-create#word",
+    "original_html": "../sources/design-and-create.html"
+  },
+  "slide_intent": "Start recurring documents from shared structures so routine communications remain recognizable.",
+  "strategic_value": "Predetermined Word layouts can reduce inconsistency across Helsinki memos, badges and place cards.",
+  "demonstration": "Expanded webpage section: bullets explain the shared Word template folder and a numbered list identifies badges and place cards.",
+  "category": "Application",
+  "practical_value": "Locate the intended Word template and preserve its established layout and text hierarchy.",
+  "content_islands": [
+    {
+      "name": "Template access",
+      "spec": "Upper bullets name the shared folder and fixed layout/text sizes."
+    },
+    {
+      "name": "Related formats",
+      "spec": "A numbered list describes badges with Excel autoflow and place cards."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The source identifies Word’s shared template folder and describes badge autoflow from Excel."
+  }
+}

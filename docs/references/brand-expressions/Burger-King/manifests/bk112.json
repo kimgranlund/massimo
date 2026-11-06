@@ -1,0 +1,32 @@
+{
+  "id": "BK112",
+  "title": "Illustrated wrapper typography detail",
+  "image": "bk112.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 112
+  },
+  "slide_intent": "Evaluate expressive lettering on the folded object because creases and curvature change what a customer can read.",
+  "strategic_value": "Large colorful words on white wrappers can retain Burger King character even when the paper bunches around food.",
+  "demonstration": "A close overhead crop centers a red Hearty Melty wrapper among green, orange, yellow and red lettered packages on a brown surface.",
+  "category": "Application",
+  "practical_value": "Check the readability and shape coverage of the central lettering after wrapping, rather than assessing only flat artwork.",
+  "content_islands": [
+    {
+      "name": "Central wrapper",
+      "spec": "Give the red Hearty Melty round the largest uninterrupted area near the center-left."
+    },
+    {
+      "name": "Surrounding variants",
+      "spec": "Crop other lettered packages at the edges to show the family’s color and word-shape variations."
+    },
+    {
+      "name": "Material evidence",
+      "spec": "Retain paper wrinkles, folds and shadows that reveal the typography on physical packaging."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The crop emphasizes oversized food-descriptive lettering and distinct package colors.",
+    "Application": "The photograph tests the lettering treatment on crumpled, folded wrappers."
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "id": "DW065",
+  "title": "Writing / Duo / Duos and duon'ts",
+  "image": "dw065.png",
+  "source": "../sources/pages/writing-duo.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/duo",
+    "section": "Duos and duon'ts",
+    "item": 65,
+    "order": 650
+  },
+  "slide_intent": "Define a mascot’s permissible behavior so different creators preserve a consistent character.",
+  "strategic_value": "A paired behavior list can help Duolingo keep Duo’s voice and movement coherent across executions.",
+  "demonstration": "A checked Duo list sits above a Duon’t list, specifying attribution, pronouns, small gestures and restrictions on speech and movement.",
+  "category": "Voice",
+  "practical_value": "Distinguish a character rule from a general brand voice rule when planning a historical Duo execution.",
+  "content_islands": [
+    {
+      "name": "Guidance column",
+      "spec": "Place the Duos and Duon’ts heading and staying-in-character rationale at left."
+    },
+    {
+      "name": "Worked examples",
+      "spec": "Stack the permitted actions above prohibited behaviors at right, preserving their separate labels."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source explicitly connects behavioral consistency with the way people recognize familiar characters.",
+    "Application": "The allowed list describes attribution and small gestures.",
+    "Constraint": "The archived rules prohibit spoken sounds, unassigned narration, signs or weapons and sudden movement, and identify Duo as a day owl."
+  },
+  "ingredient": {
+    "name": "Duo’s historical behavior",
+    "role": "Maintain a consistent character across creators.",
+    "application": "Attribute first-person text explicitly to Duo; use restrained gestures. Preserve the listed speech and movement prohibitions.",
+    "scope": "Historical official guidelines from the 2024–2025 archived snapshot; this records the displayed guidance, not current Duolingo product behavior. These are historical character rules, not statements about today’s mascot campaigns."
+  }
+}

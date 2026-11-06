@@ -1,0 +1,42 @@
+{
+  "id": "DB0804",
+  "title": "Rolle der Farben",
+  "image": "db0804.png",
+  "source": "../sources/page-08.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 8,
+    "section": 4,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Markenfarben"
+  },
+  "slide_intent": "Separate identity from functional signals so viewers can recognize both the organization and the service context.",
+  "strategic_value": "Stable assignments can help DB preserve brand recognition while distinguishing wayfinding, replacement service and service communication.",
+  "demonstration": "The section explains brand-identity colors before presenting DB Red and function-specific blue, purple and service-red swatches.",
+  "category": "Color",
+  "practical_value": "Check whether the color is identifying a brand or signaling a service function before applying it.",
+  "content_islands": [
+    {
+      "name": "Role introduction",
+      "spec": "Explain consistent communication and list DB Red and S-Bahn Green as brand-identity colors."
+    },
+    {
+      "name": "Brand specimen",
+      "spec": "Present the DB Red values beneath its role statement; retain the source’s S-Bahn label where its separate specimen is absent."
+    },
+    {
+      "name": "Functional colors",
+      "spec": "Group wayfinding blue, replacement-service purple and service red with their intended uses."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text links color roles to recognition, orientation and differentiation.",
+    "Application": "The functional assignments connect named colors to specific communication contexts.",
+    "Constraint": "The source says brand-identity colors occur at least once in a layout."
+  },
+  "ingredient": {
+    "name": "Identity and functional colors",
+    "role": "Distinguish the sender from the service being communicated.",
+    "application": "Use the relevant identity color at least once and preserve the specified functional color assignments.",
+    "scope": "The section distinguishes DB and S-Bahn identities; it does not require both identity colors in every DB layout."
+  }
+}

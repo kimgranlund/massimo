@@ -1,0 +1,38 @@
+{
+  "id": "DW135",
+  "title": "Marketing / Duo",
+  "image": "dw135.png",
+  "source": "../sources/pages/marketing-assets.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/marketing/assets",
+    "section": "Duo",
+    "item": 135,
+    "order": 1350
+  },
+  "slide_intent": "Give a recognizable mascot expressive roles because repeated recognition is more useful when it can also communicate a feeling.",
+  "strategic_value": "Duo’s green silhouette and varied poses can connect campaigns while expressing excitement, affection or sadness.",
+  "demonstration": "Nine Duo expressions form a three-by-three array beside a description of his marketing role.",
+  "category": "Imagery",
+  "practical_value": "Select a pose that supports the message or occasion instead of treating the mascot as a fixed stamp.",
+  "content_islands": [
+    {
+      "name": "Expression repertoire",
+      "spec": "Arrange the nine green owls on the pale panel with gestures and accents intact."
+    },
+    {
+      "name": "Marketing role",
+      "spec": "Explain recognition, emotional range and special occasions at right."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source calls Duo the most recognizable brand element and connects that recognition to a starring marketing role.",
+    "Application": "It recommends using him for excitement, a range of emotions and special occasions such as Valentine’s Day."
+  },
+  "ingredient": {
+    "name": "Duo in marketing",
+    "role": "Link recognition with emotional communication.",
+    "application": "Give Duo a prominent role where useful and select a pose for the emotion or occasion.",
+    "scope": "Historical marketing guidance; prominence is frequent rather than mandatory in every communication."
+  }
+}

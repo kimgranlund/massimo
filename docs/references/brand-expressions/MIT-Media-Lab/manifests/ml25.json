@@ -1,0 +1,36 @@
+{
+  "id": "ML25",
+  "title": "Grid-based puzzle cube",
+  "image": "ml25.png",
+  "source": "../sources/ml25.jpg",
+  "location": {
+    "series": "Pentagram / MIT Media Lab / 2014 identity",
+    "item": 25,
+    "extent": "Published lightbox artwork"
+  },
+  "slide_intent": "Translate the graphic grid into a manipulable object so the identity’s structure can become a physical experience.",
+  "strategic_value": "A puzzle cube can connect the lab’s modular visual language with experimentation.",
+  "demonstration": "A black cube with white square units carries angular lab-like forms across visible faces.",
+  "category": "Geometry",
+  "practical_value": "Explore correspondence between a two-dimensional modular symbol and a three-dimensional grid.",
+  "content_islands": [
+    {
+      "name": "Cube faces",
+      "spec": "Three visible faces divide into small square units."
+    },
+    {
+      "name": "White paths",
+      "spec": "Contrasting units form large angular figures."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A black cube with white square units carries angular lab-like forms across visible faces.",
+    "Application": "A black cube with white square units carries angular lab-like forms across visible faces."
+  },
+  "ingredient": {
+    "name": "Grid-based puzzle cube",
+    "role": "Translate the graphic grid into a manipulable object so the identity’s structure can become a physical experience.",
+    "application": "Explore correspondence between a two-dimensional modular symbol and a three-dimensional grid.",
+    "scope": "Observed in this historical case-study artwork; not a mandatory usage rule or a current brand standard."
+  }
+}

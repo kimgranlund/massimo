@@ -1,0 +1,31 @@
+{
+  "id": "DB0905",
+  "title": "Funktionale Anwendungen",
+  "image": "db0905.png",
+  "source": "../sources/page-09.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 9,
+    "section": 5,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Typografie_neu"
+  },
+  "slide_intent": "Separate headline and reading roles by medium so readers can scan and then read comfortably.",
+  "strategic_value": "Office and Screen variants can carry DB identity through documents and interfaces.",
+  "demonstration": "Two rows pair Head and body families for office communication and digital applications, with weight specimens and notes.",
+  "category": "Typography",
+  "practical_value": "Choose Office for documents and Screen for digital use, then distinguish headings from body text.",
+  "content_islands": [
+    {
+      "name": "Office families",
+      "spec": "Pair Office Head and Office text specimens across the upper row."
+    },
+    {
+      "name": "Screen families",
+      "spec": "Pair Screen Head and Screen Sans specimens across the lower row."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source links Screen Sans to readability at small digital sizes and Office Head to brand recognition.",
+    "Application": "It specifies Head families for headlines and regular-to-bold body families for reading and emphasis."
+  }
+}

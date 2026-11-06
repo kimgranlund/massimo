@@ -1,0 +1,30 @@
+{
+  "id": "C405",
+  "title": "New logo / 2016 / 1982",
+  "image": "c405.png",
+  "source": "../sources/c405.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 masterbrand / 2023",
+    "item": 5,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Compare revisions with inherited structure because recognition depends on what a redesign preserves as well as changes.",
+  "strategic_value": "Keeping the segmented silhouette can maintain Channel 4 continuity while increasing digital presence.",
+  "demonstration": "Three stacked black panels compare the new green mark with a white 2016 DBLG version and the multicolored 1982 Martin Lambie-Nairn version.",
+  "category": "Brand",
+  "practical_value": "Identify retained geometry and changed color or weight before judging the redesign in isolation.",
+  "content_islands": [
+    {
+      "name": "New mark",
+      "spec": "Place the green revision in the upper panel with its New label."
+    },
+    {
+      "name": "Historical comparison",
+      "spec": "Keep the labeled 2016 and 1982 marks underneath at comparable scale."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The page compares three historical treatments of the same segmented 4.",
+    "Intent": "Pentagram states that the logo was redrawn for greater visual presence in digital assets while retaining its legacy."
+  }
+}

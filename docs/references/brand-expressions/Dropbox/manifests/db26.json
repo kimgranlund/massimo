@@ -1,0 +1,30 @@
+{
+  "id": "DB26",
+  "title": "Transit shelter campaign pair",
+  "image": "db26.png",
+  "source": "../sources/db26.jpg",
+  "location": {
+    "series": "COLLINS / Dropbox / 2017 identity case study",
+    "item": 26,
+    "section": "Gallery",
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Compare alternative images in a repeated placement because a campaign needs variation without losing its reading structure.",
+  "strategic_value": "Consistent copy and signature placement can connect Dropbox’s abstract and photographic executions.",
+  "demonstration": "Two transit-shelter photographs contrast a pink abstract image with a burgundy photographic collage advertisement.",
+  "category": "Application",
+  "practical_value": "Identify which layout relationships stay fixed when image content changes.",
+  "content_islands": [
+    {
+      "name": "Left shelter",
+      "spec": "Retain the abstract image above its copy in the pink advertisement."
+    },
+    {
+      "name": "Right shelter",
+      "spec": "Keep the burgundy ground, upper copy and lower photographic composition within the shelter."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "Two transit-shelter photographs contrast a pink abstract image with a burgundy photographic collage advertisement."
+  }
+}

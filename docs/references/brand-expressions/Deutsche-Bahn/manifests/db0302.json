@@ -1,0 +1,46 @@
+{
+  "id": "DB0302",
+  "title": "Email signature / installation and formatting",
+  "image": "db0302.png",
+  "source": "../sources/page-03.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 3,
+    "section": 2,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Teams-Hintergruende/E-Mail-Signatur"
+  },
+  "slide_intent": "Make an everyday identity repeatable across software so names, contact details and brand cues survive implementation.",
+  "strategic_value": "Platform-specific instructions can reduce broken or inconsistent DB signatures.",
+  "demonstration": "Five expanded instruction groups cover Outlook, mobile setup, sleeper placement, typography and Teams links, with signature examples in the mobile group.",
+  "category": "Application",
+  "practical_value": "Start with the provided template, check the target email client and send a test before relying on the result.",
+  "content_islands": [
+    {
+      "name": "Outlook setup",
+      "spec": "Sequence the six desktop steps and caveats at the top."
+    },
+    {
+      "name": "Mobile setup",
+      "spec": "Follow with separate device instructions and before/after signature illustrations."
+    },
+    {
+      "name": "Sleeper and type",
+      "spec": "Explain PNG placement between personal and contact information, then the 11 pt Aptos default and optional name emphasis."
+    },
+    {
+      "name": "Teams links",
+      "spec": "Finish with chat/call links below contact details and their spacing instruction."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text explains preserving the sleeper-to-text relationship and making the sender name visible.",
+    "Application": "The expanded instructions describe setup, inserting assets, testing and adding Teams contact links.",
+    "Constraint": "The sleeper PNG is not resized after insertion; the source notes mobile embedding remains unreliable and prescribes a blank line above Teams links."
+  },
+  "ingredient": {
+    "name": "Email signature construction",
+    "role": "Keep sender identification, contact details and brand accent consistent.",
+    "application": "Place the supplied sleeper PNG between personal and contact blocks without subsequent resizing; the shown default is Aptos 11 pt, with optional bold name one point larger.",
+    "scope": "These are source-specific email instructions. Mobile embedding is explicitly described as unreliable; generic graphic-resizing advice elsewhere does not override the sleeper restriction."
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "HX44",
+  "title": "Icons ",
+  "image": "hx44.png",
+  "source": "../sources/download-elements.offline.html",
+  "location": {
+    "series": "Web guideline introduction/component",
+    "order": 159,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/download-elements",
+    "original_html": "../sources/download-elements.html"
+  },
+  "slide_intent": "Select both icon family and file format by use because print, screen and navigation impose different production needs.",
+  "strategic_value": "Separate download routes can help Helsinki retain recognizable icons without mixing their functional roles.",
+  "demonstration": "This webpage component groups signage, illustration and HDS user-interface icon sources, naming SVG/PDF vector originals for print and PNG for screen where specified.",
+  "category": "Application",
+  "practical_value": "Choose the functional icon family first, then retrieve a file suitable for the output medium.",
+  "content_islands": [
+    {
+      "name": "Signage icons",
+      "spec": "Place the building/park uses and SVG/PDF-print versus PNG-screen guidance with the signage download."
+    },
+    {
+      "name": "Illustration icons",
+      "spec": "Follow with communication examples and PDF-print versus PNG-screen guidance."
+    },
+    {
+      "name": "UI icons",
+      "spec": "End with the Helsinki Design System download route."
+    }
+  ],
+  "ingredient": {
+    "name": "Icon assets",
+    "role": "Provide suitable symbols for signage, illustration or interfaces.",
+    "application": "Choose signage SVG/PDF or illustration PDF for print, and PNG for screen; use HDS for UI icons.",
+    "scope": "Format recommendations are stated for signage and illustration downloads; this component does not show icon artwork."
+  },
+  "reference_purposes": {
+    "Application": "The source maps signage and illustration icons to uses and formats and routes UI icons to HDS."
+  }
+}

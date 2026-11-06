@@ -1,0 +1,31 @@
+{
+  "id": "C430",
+  "title": "Full-frame menu and next/later strip",
+  "image": "c430.png",
+  "source": "../sources/c430.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 masterbrand / 2023",
+    "item": 30,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Show adjacent choices without losing the current focus so viewers understand a schedule as a sequence.",
+  "strategic_value": "The nudge between gradient panels can make Channel 4’s programme navigation feel like movement through one content universe.",
+  "demonstration": "The film compares a full-frame 9pm/10pm menu, footage with a side panel, next/later cards and a shallow scheduling strip beneath end credits.",
+  "category": "Layout",
+  "practical_value": "Choose a menu scale appropriate to how much of the current programme must remain visible.",
+  "content_islands": [
+    {
+      "name": "Full-frame choices",
+      "spec": "Move horizontally between large time-and-title panels."
+    },
+    {
+      "name": "Reduced layouts",
+      "spec": "Apply the same neighboring-panel idea beside footage and beneath credits."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The film compares scheduling treatments at full-frame, side-panel and credit-strip scales.",
+    "Intent": "Pentagram describes nudging into adjoining worlds as a functional tool for showing what is next."
+  },
+  "motion": "../sources/c430.mp4"
+}

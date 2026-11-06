@@ -1,0 +1,36 @@
+{
+  "id": "C401",
+  "title": "Masterbrand presentation film",
+  "image": "c401.png",
+  "source": "../sources/c401.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 masterbrand / 2023",
+    "item": 1,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Demonstrate a system across encounters because consistency must survive changes in content, medium and scale.",
+  "strategic_value": "The repeated green 4 and connected worlds can unite Channel 4 broadcasts, streaming and social output.",
+  "demonstration": "The 147-second film sequences logo reveals, content worlds, app and television examples, color, 4mojis, type and layout demonstrations. The PNG is the published close-up poster.",
+  "category": "Brand",
+  "practical_value": "Trace the same identity ingredients from abstract demonstrations to working applications.",
+  "content_islands": [
+    {
+      "name": "Opening identity",
+      "spec": "Begin with dimensional green blocks and the assembled 4."
+    },
+    {
+      "name": "Application sequence",
+      "spec": "Move through content worlds, screens and programme promotion."
+    },
+    {
+      "name": "System explanation",
+      "spec": "Follow with color, icons, typography, camera movement and layout examples before the closing signature."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The film demonstrates the green mark, gradient worlds and playful typographic icons.",
+    "Application": "App, television, social and promotional examples show the system in use.",
+    "Intent": "Pentagram describes a masterbrand that brings the broadcaster’s channels, content and streaming service together."
+  },
+  "motion": "../sources/c401.mp4"
+}

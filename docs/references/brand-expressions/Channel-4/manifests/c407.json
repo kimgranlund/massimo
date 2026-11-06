@@ -1,0 +1,34 @@
+{
+  "id": "C407",
+  "title": "Drama billboard detail",
+  "image": "c407.png",
+  "source": "../sources/c407.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 masterbrand / 2023",
+    "item": 7,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Use hierarchy to connect brand, promise and programme before a passing viewer reads every detail.",
+  "strategic_value": "The leading green 4 and broad color panel can give diverse drama titles a common Channel 4 presence.",
+  "demonstration": "A close billboard view pairs a leading 4, a green panel reading It’s just one drama after another, and The Light in the Hall imagery.",
+  "category": "Layout",
+  "practical_value": "Compare the area assigned to the brand promise with the adjacent programme image.",
+  "content_islands": [
+    {
+      "name": "Leading signature",
+      "spec": "Keep the green logo in the left strip."
+    },
+    {
+      "name": "Promise panel",
+      "spec": "Place Stream now above the large black headline on green."
+    },
+    {
+      "name": "Programme image",
+      "spec": "Place the named programme portrait to the right with a smaller title."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The identity is applied to an outdoor drama promotion.",
+    "Intent": "Pentagram identifies 4 leads as the principle informing lockups and layouts."
+  }
+}

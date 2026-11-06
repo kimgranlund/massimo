@@ -1,0 +1,40 @@
+{
+  "id": "BK107",
+  "title": "Illustration: Masterbrand Color Alternate Stripes",
+  "image": "bk107.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 107
+  },
+  "slide_intent": "Simplify a graphic when its setting demands clarity so people can recognize the brand on uniforms and directional surfaces.",
+  "strategic_value": "Four ordered brand colors can preserve Burger King recognition where the more detailed ingredient stripes would be cumbersome.",
+  "demonstration": "A four-band horizontal specimen sits above restaurant frontage, ground-direction and uniform examples; the left text defines when the alternate stripes apply.",
+  "category": "Color",
+  "practical_value": "Choose the alternate four-color treatment for applications requiring simplicity and preserve its stated color order.",
+  "content_islands": [
+    {
+      "name": "Alternate-stripe guidance",
+      "spec": "Place the scope and ordered color list in the left column."
+    },
+    {
+      "name": "Four-color specimen",
+      "spec": "Show cream, orange, red and brown horizontal bands across the upper right."
+    },
+    {
+      "name": "Application examples",
+      "spec": "Group a restaurant and directional-ground treatment with uniform photographs below the specimen."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The copy explains that alternate stripes serve instances where simplicity is required, such as uniforms and directional stripes.",
+    "Expression": "The specimen reduces the motif to four straight color bands.",
+    "Application": "Restaurant, directional and uniform examples show the alternate treatment in context.",
+    "Constraint": "The specified order is Mayo Egg White, Flaming Orange, Fiery Red and BBQ Brown."
+  },
+  "ingredient": {
+    "name": "Alternate masterbrand stripes",
+    "role": "Provide a simpler identifying color sequence.",
+    "application": "Use four colors in order: Mayo Egg White, Flaming Orange, Fiery Red, BBQ Brown.",
+    "scope": "For instances requiring simplicity, including uniforms and directional stripes; this does not replace primary illustration stripes everywhere."
+  }
+}

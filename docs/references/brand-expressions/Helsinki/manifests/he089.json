@@ -1,0 +1,31 @@
+{
+  "id": "HE089",
+  "title": "Digital customer experience playbook",
+  "image": "he089.png",
+  "source": "../sources/design-and-create.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Digital customer experience playbook",
+    "order": 121,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/design-and-create#digital-customer-experience-playbook",
+    "original_html": "../sources/design-and-create.html"
+  },
+  "slide_intent": "Connect visual execution with customer-centered service design so a consistent appearance supports useful experiences.",
+  "strategic_value": "The linked playbook can help Helsinki teams align research, content and interface development.",
+  "demonstration": "Expanded webpage section: a paragraph introduces the playbook, a three-item list identifies its contents and a final link points to it.",
+  "category": "Application",
+  "practical_value": "Use the playbook for service research and content decisions beyond the graphic rules.",
+  "content_islands": [
+    {
+      "name": "Playbook purpose",
+      "spec": "Opening text describes agile, customer-centered development."
+    },
+    {
+      "name": "Contents and access",
+      "spec": "Three bullets cover projects, research and content before the link."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source explains that the playbook supports service design and customer-centered digital services."
+  }
+}

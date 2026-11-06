@@ -1,0 +1,25 @@
+{
+  "id": "I039",
+  "title": "tap tap / nom nom",
+  "image": "i039.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 39,
+    "printed_page": 39
+  },
+  "slide_intent": "Show how two typographic voices can make a sequence audible in a short line. The transition connects an interface gesture to a sensory result.",
+  "strategic_value": "Instacart can tell the story of ordering and eating through four short words, with the photograph supplying the eating moment.",
+  "demonstration": "A billboard pairs tap tap in a simpler face with nom nom in a heavier high-contrast face. The green type panel sits beside a photograph of a person eating.",
+  "category": "Application",
+  "practical_value": "Choose which part of a two-part headline describes the task and which deserves expressive emphasis. Use a photograph that completes the second phrase.",
+  "content_islands": [
+    {
+      "name": "Billboard context",
+      "spec": "Frame the wide placement within its surrounding wall and dark border."
+    },
+    {
+      "name": "Type and photograph",
+      "spec": "Split the board into a green text field and a photograph. Stack the two phrases at upper left and align the signature near the lower-left corner."
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": "HE047",
+  "title": "Wave motifs",
+  "image": "he047.png",
+  "source": "../sources/visual-storytelling.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Wave motifs",
+    "order": 67,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/visual-storytelling#wave-motifs",
+    "original_html": "../sources/visual-storytelling.html"
+  },
+  "slide_intent": "Use decorative division only where it supports the message so brand recognition does not compete with content.",
+  "strategic_value": "A familiar wave behind a title or logo can identify Helsinki while leaving the message prominent.",
+  "demonstration": "This expanded webpage-section capture pairs guidance on wave use in videos with a blue field divided by a repeated wave edge.",
+  "category": "Motion",
+  "practical_value": "Consider a wave behind the opening frame or logo, and omit it when it interferes with content.",
+  "content_islands": [
+    {
+      "name": "Wave guidance",
+      "spec": "Place permission and the warning against overuse above the example."
+    },
+    {
+      "name": "Divided blue field",
+      "spec": "Show two blue areas joined by the wave edge as a static video-layout example."
+    }
+  ],
+  "ingredient": {
+    "name": "Video wave motif",
+    "role": "Add a recognizable division behind a message.",
+    "application": "Use the approved wave in a logo-screen or opening-frame background without overuse.",
+    "scope": "Video and animation; this capture does not demonstrate movement or timing."
+  },
+  "reference_purposes": {
+    "Application": "The text permits waves behind the framed logo or opening frame.",
+    "Constraint": "Waves must follow the identity guidelines and should not interfere with content.",
+    "Expression": "The static specimen demonstrates a repeated wave separating blue fields."
+  }
+}

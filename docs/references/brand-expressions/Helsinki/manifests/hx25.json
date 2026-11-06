@@ -1,0 +1,24 @@
+{
+  "id": "HX25",
+  "title": "Instructions for ordering and uploading images (PDF)",
+  "image": "hx25.png",
+  "source": "../sources/visual-storytelling.offline.html",
+  "location": {
+    "series": "Web guideline introduction/component",
+    "order": 87,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/visual-storytelling",
+    "original_html": "../sources/visual-storytelling.html"
+  },
+  "slide_intent": "Separate production procedures from creative examples because contributors need a clear route to the right instructions.",
+  "strategic_value": "A named ordering and uploading section can help Helsinki contributors locate the image-production workflow.",
+  "demonstration": "This webpage component contains only the heading Instructions for ordering and uploading images (PDF) and an Open all control. The procedures themselves are outside this capture.",
+  "category": "Application",
+  "practical_value": "Use this as a section locator, not as evidence of an ordering rule.",
+  "content_islands": [
+    {
+      "name": "Section header",
+      "spec": "Retain the heading and expansion control together."
+    }
+  ],
+  "reference_purposes": {}
+}

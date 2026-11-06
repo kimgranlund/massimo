@@ -1,0 +1,24 @@
+{
+  "id": "I051",
+  "title": "Lifestyle",
+  "image": "i051.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 51
+  },
+  "slide_intent": "Direct a food scene around an action or exchange. A gesture gives the viewer a way into the meal.",
+  "strategic_value": "Instacart can connect grocery shopping with the pleasure of eating together by showing ingredients and people in the same moment.",
+  "demonstration": "A shopping bag, a person tasting food, a kiss and a laughing diner share a collage with a family at a table. A dark green column calls for rich color, texture and candid action.",
+  "category": "Imagery",
+  "practical_value": "Choose a frame in which the gesture and appetizing food both read. Use the four direction words as criteria when comparing candidate shots.",
+  "content_islands": [
+    {
+      "name": "Art direction",
+      "spec": "Set the title and short brief high on the dark left panel. Stack Active, Lush, Passionate and Candid near its foot."
+    },
+    {
+      "name": "Lifestyle collage",
+      "spec": "Tile the photographs edge to edge at right. Let the laughing diner occupy a wider panel below the smaller preparation and tasting scenes, with the paired portrait and table scene at far right."
+    }
+  ]
+}

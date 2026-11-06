@@ -1,0 +1,28 @@
+{
+  "id": "BK049",
+  "title": "Logo Color Usage / Outdoor sequence",
+  "image": "bk049.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 49
+  },
+  "slide_intent": "Compare a color family at environmental scale because a permitted swatch pair must also work in a viewer’s surroundings.",
+  "strategic_value": "Repeated burger silhouettes can connect varied Burger King colorways along a street frontage.",
+  "demonstration": "Six adjacent outdoor panels repeat the logo at a common scale across pale, red, brown and orange fields.",
+  "category": "Application",
+  "practical_value": "Assess how repeated scale and shape connect varied color treatments in an outdoor sequence.",
+  "content_islands": [
+    {
+      "name": "Logo panel sequence",
+      "spec": "Run six equal-height panels across the lower central field, retaining each logo/background combination."
+    },
+    {
+      "name": "Street context",
+      "spec": "Keep the buildings above and pavement below so the sequence reads as environmental marketing."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Six coordinated colorways keep the same burger silhouette and letterforms.",
+    "Application": "The color combinations are presented on an outdoor panel installation."
+  }
+}

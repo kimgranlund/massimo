@@ -1,0 +1,40 @@
+{
+  "id": "IT25",
+  "title": "ITVX / Interface symbol family",
+  "image": "it25.png",
+  "source": "../sources/1749146324-itv_16-3.png",
+  "location": {
+    "series": "DixonBaxi / ITV case-study artwork series",
+    "item": 25,
+    "extent": "Whole source artwork",
+    "source_asset_index": 25
+  },
+  "slide_intent": "Compare common interface actions for a coherent drawing character, because consistent shapes help small symbols read as one family.",
+  "strategic_value": "This approach can strengthen coherence and legibility in small interface elements.",
+  "demonstration": "Four yellow outline symbols appear in a two-by-two arrangement on dark ground: play, search, download and heart. Rounded line endings and open interiors relate the shapes.",
+  "category": "Geometry",
+  "practical_value": "Compare common interface actions for a coherent drawing character.",
+  "content_islands": [
+    {
+      "name": "Upper row",
+      "spec": "Play and search use simple directional and circular forms."
+    },
+    {
+      "name": "Lower row",
+      "spec": "Download and heart continue the outline treatment."
+    },
+    {
+      "name": "Field",
+      "spec": "Dark negative space separates the four symbols."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Four yellow outline symbols appear in a two-by-two arrangement on dark ground: play, search, download and heart. Rounded line endings and open interiors relate the shapes."
+  },
+  "ingredient": {
+    "name": "Yellow outline action symbols",
+    "role": "Identify common interface actions.",
+    "application": "Compare common interface actions for a coherent drawing character.",
+    "scope": "Observed in this DixonBaxi ITV/ITVX case study. No numeric colour, sizing, spacing or exclusivity rule is supplied by this artwork."
+  }
+}

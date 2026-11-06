@@ -1,0 +1,30 @@
+{
+  "id": "IG13",
+  "title": "Core colors",
+  "image": "ig13.png",
+  "source": "../sources/ig13.png",
+  "location": {
+    "series": "Elvis Dinh / Instagram brand design system / project year 2022",
+    "item": 13,
+    "extent": "whole source artwork"
+  },
+  "slide_intent": "Name reproducible colors so different assets can share a stable visual vocabulary.",
+  "strategic_value": "The five bright colors plus black and white can keep Instagram materials related across creators and formats.",
+  "demonstration": "Five colored columns sit above two neutral rectangles, each labelled by name and hex value.",
+  "category": "Color",
+  "practical_value": "Use the named swatches for color reference without interpreting their display areas as usage quotas.",
+  "content_islands": [
+    {
+      "name": "Chromatic swatches",
+      "spec": "Align Yellow, Orange, Pink, Lavender and Purple in equal columns across the top."
+    },
+    {
+      "name": "Neutral swatches",
+      "spec": "Place White and Black in two broad lower fields and retain their labels."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Five vivid swatches show the core palette’s character.",
+    "Application": "Names and hex labels make the color references reproducible."
+  }
+}

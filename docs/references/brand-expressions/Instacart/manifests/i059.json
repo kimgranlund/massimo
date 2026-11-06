@@ -1,0 +1,24 @@
+{
+  "id": "I059",
+  "title": "Illustration Principles",
+  "image": "i059.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 59
+  },
+  "slide_intent": "Set criteria for selecting an illustration. A reader can compare its complexity, tone and energy with the role the image needs to play.",
+  "strategic_value": "Instacart can reserve pictures of actual food for photography and use illustration to make an abstract idea approachable.",
+  "demonstration": "A short explanation at left leads into parallel lists: approved traits in green and counterexamples in red. Effortless is paired with complex, witty with literal, lively with static and delightful with didactic.",
+  "category": "Imagery",
+  "practical_value": "Use the paired words during review to name why a concept needs simplification, a more surprising subject or a clearer sense of action.",
+  "content_islands": [
+    {
+      "name": "Illustration remit",
+      "spec": "Set the section heading and food-first explanation in a narrow column at left."
+    },
+    {
+      "name": "Trait comparison",
+      "spec": "Place a green check above the preferred column and a red cross above the other. Align each pair horizontally at the same size and spacing."
+    }
+  ]
+}

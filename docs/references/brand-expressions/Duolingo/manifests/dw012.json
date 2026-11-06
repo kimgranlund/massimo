@@ -1,0 +1,38 @@
+{
+  "id": "DW012",
+  "title": "Logos / Portrait lockup",
+  "image": "dw012.png",
+  "source": "../sources/pages/identity-logos.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/identity/logos",
+    "section": "Portrait lockup",
+    "item": 12,
+    "order": 120
+  },
+  "slide_intent": "Adapt a fixed signature to tall spaces because composition shape affects which recognition cue can lead.",
+  "strategic_value": "A larger Duo above the name can help Duolingo stand out among other apps and brands.",
+  "demonstration": "A stacked logo specimen accompanies instructions for square or tall third-party placements.",
+  "category": "Brand",
+  "practical_value": "Select the portrait version when the supplied logo must fit a square or tall area.",
+  "content_islands": [
+    {
+      "name": "Stacked specimen",
+      "spec": "Place the prominent Duo above the wordmark within the left panel."
+    },
+    {
+      "name": "Third-party guidance",
+      "spec": "Place the heading, recognition rationale and square-or-tall condition at right."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text says Duo’s larger, prominent placement helps the brand stand out.",
+    "Application": "The source directs this version to third-party use within square or tall spaces."
+  },
+  "ingredient": {
+    "name": "Portrait lockup",
+    "role": "Lead with the mascot in a compact vertical signature.",
+    "application": "Use the supplied stacked version for third-party logos in square or tall spaces.",
+    "scope": "Historical archived guidelines. Historical portrait lockup; does not replace the landscape version in all contexts."
+  }
+}

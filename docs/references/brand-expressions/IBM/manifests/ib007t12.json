@@ -1,0 +1,38 @@
+{
+  "id": "IB007T12",
+  "title": "Color / Full palette — RGB specifications",
+  "image": "ib007t12.png",
+  "source": "../sources/alternate-tabs.json",
+  "location": {
+    "series": "IBM Design Language / alternate tab states",
+    "parent": "IB007",
+    "group": 1,
+    "tab": 2,
+    "label": "RGB",
+    "url": "https://www.ibm.com/design/language/color/",
+    "order": 7112
+  },
+  "slide_intent": "Translate a named palette into reproducible screen values, because recognizable color needs a specification as well as a visual example.",
+  "strategic_value": "A shared RGB reference can help IBM teams preserve the same named colors across digital assets.",
+  "demonstration": "The RGB tab pairs color names and numbered grades with red, green and blue channel values across seven hue families and three gray families.",
+  "category": "Color",
+  "practical_value": "Look up a color by its family and grade when implementing an RGB digital asset.",
+  "content_islands": [
+    {
+      "name": "Encoding selector",
+      "spec": "Keep the HEX, RGB, PMS and CMYK tabs above the table, with RGB selected."
+    },
+    {
+      "name": "Hue families",
+      "spec": "Arrange red, magenta, purple, blue, cyan, teal and green as dark-to-light named swatch columns."
+    },
+    {
+      "name": "Neutral families",
+      "spec": "Place cool gray, gray and warm gray columns beneath the hues, each bounded by black and white."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The complete swatch arrangement shows the range and tonal organization of IBM’s palette.",
+    "Application": "Each named grade is paired with its RGB channels; Blue 60, for example, reads r 15 g 98 b 254."
+  }
+}

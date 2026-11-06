@@ -1,0 +1,24 @@
+{
+  "id": "I057",
+  "title": "Illustration",
+  "image": "i057.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 57
+  },
+  "slide_intent": "Orient readers to a change of medium before introducing its rules. A distinct chapter opening helps them locate the illustration guidance.",
+  "strategic_value": "Instacart can give illustration an identifiable place in the book through the same dark divider treatment used for neighboring chapters.",
+  "demonstration": "A large cream chapter title stands alone on a dark green page below the small running identifiers.",
+  "category": "Imagery",
+  "practical_value": "Use this divider to mark the beginning of the illustration section and separate it from the preceding photography and application examples.",
+  "content_islands": [
+    {
+      "name": "Running identifiers",
+      "spec": "Keep the book label, version and folio small along the top edge."
+    },
+    {
+      "name": "Chapter title",
+      "spec": "Place Illustration in large cream type on the left of the green field. Leave open space around it."
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "id": "IT08",
+  "title": "ITV / Connected network motion reel",
+  "image": "it08.png",
+  "source": "../sources/1782130851-apn58dovsucc6puhyynjva-itv_4.mp4",
+  "location": {
+    "series": "DixonBaxi / ITV case-study artwork series",
+    "item": 8,
+    "extent": "Whole original clip; PNG is one representative frame",
+    "source_asset_index": 7,
+    "duration_seconds": 33.43,
+    "representative_timestamp_seconds": 19.102857142857143,
+    "reviewed_timestamps_seconds": [
+      0.1,
+      4.775714285714286,
+      9.551428571428572,
+      14.327142857142857,
+      19.102857142857143,
+      23.87857142857143,
+      28.654285714285713,
+      33.33
+    ]
+  },
+  "slide_intent": "Use a moving sequence to test continuity between streaming navigation, programme promotion and channel identity, because change over time can orient attention and distinguish channels.",
+  "strategic_value": "This approach can strengthen recognition and navigation across the network.",
+  "demonstration": "The reel moves from an X mark and a television streaming interface through programme footage, scheduling typography and pink ITV2 identity animations, ending with ITVX.",
+  "category": "Motion",
+  "practical_value": "Use a moving sequence to test continuity between streaming navigation, programme promotion and channel identity.",
+  "content_islands": [
+    {
+      "name": "Service introduction",
+      "spec": "X and a television interface identify the streaming context."
+    },
+    {
+      "name": "Programmes",
+      "spec": "Footage and scheduling copy carry content."
+    },
+    {
+      "name": "Channel identity",
+      "spec": "ITV2 numerals and stacked Back Soon type introduce a distinct motion personality."
+    },
+    {
+      "name": "Close",
+      "spec": "The ITVX logo returns on dark ground."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The reel moves from an X mark and a television streaming interface through programme footage, scheduling typography and pink ITV2 identity animations, ending with ITVX.",
+    "Intent": "The case-study section Bringing ITV to Life says motion adds energy and clarity, amplifies stories and guides audiences through the channel ecosystem."
+  },
+  "motion": "../sources/1782130851-apn58dovsucc6puhyynjva-itv_4.mp4"
+}

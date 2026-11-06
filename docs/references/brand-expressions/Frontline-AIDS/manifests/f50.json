@@ -1,0 +1,24 @@
+{
+  "id": "F50",
+  "title": "Photography content",
+  "image": "f50.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 50
+  },
+  "slide_intent": "Teach editors to choose the story an image can tell. A visible detail, expression or action gives a reader a way into that story.",
+  "strategic_value": "Frontline AIDS can communicate a range of experiences by selecting for energy, impact, individuality and human connection.",
+  "demonstration": "The six images from the style page reappear with new subject captions and campaign headlines set in colored strips.",
+  "category": "Imagery",
+  "practical_value": "Name the editorial purpose of a candidate image, then judge whether the headline and the photograph support that reading together.",
+  "content_islands": [
+    {
+      "name": "Subject brief",
+      "spec": "Place the content heading, short explanation and reference to illustration in the narrow column on the left."
+    },
+    {
+      "name": "Captioned examples",
+      "spec": "Reuse the two-row grid. Place bright headline strips within each photo and set its content criterion and explanation below. Include both everyday details and challenging subjects."
+    }
+  ]
+}

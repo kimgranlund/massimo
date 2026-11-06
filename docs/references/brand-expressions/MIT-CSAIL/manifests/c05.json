@@ -1,0 +1,32 @@
+{
+  "id": "C05",
+  "title": "Our Home is Our Inspiration",
+  "image": "c05.png",
+  "source": "../csail-branding-short-guide.pdf",
+  "location": {
+    "page": 5
+  },
+  "slide_intent": "Teach designers to look at the place an organization inhabits before choosing an abstract form. A surface, angle or color found there can give an unfamiliar identity a specific point of reference.",
+  "strategic_value": "CSAIL can tie its graphic vocabulary to a place its researchers share. The irregular volumes and contrasting materials in the Stata Center photograph give the lab a source for visual decisions beyond its name.",
+  "demonstration": "A wide photograph of the Stata Center shows leaning metal faces, orange masonry, white surfaces and a yellow volume. The adjacent text identifies the building’s polygons, angles, volumes, colors and materials as sources for the identity.",
+  "category": "Brand",
+  "practical_value": "Use the photograph to select a relationship worth carrying into a graphic, such as a tilted edge against a vertical one. The later pattern page shows how the lab uses such angles in a different medium.",
+  "content_islands": [
+    {
+      "name": "Origin story",
+      "spec": "Set the heading and short account of the Stata Center in a narrow upper-left column. Keep its description of the building’s form beside the image."
+    },
+    {
+      "name": "Architecture photograph",
+      "spec": "Give the large right field to a single photograph. Keep enough of the building in the frame to show relationships between neighboring volumes, colors and surfaces."
+    },
+    {
+      "name": "Brand statement",
+      "spec": "Place a short orange rule and italic orange statement near the foot of the left column, apart from the origin story."
+    },
+    {
+      "name": "Book footer",
+      "spec": "Align the short-guide identifier, laboratory name and folio along the bottom margin."
+    }
+  ]
+}

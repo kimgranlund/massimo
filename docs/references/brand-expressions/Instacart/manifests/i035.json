@@ -1,0 +1,25 @@
+{
+  "id": "I035",
+  "title": "From shopping",
+  "image": "i035.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 35,
+    "printed_page": 35
+  },
+  "slide_intent": "Establish the practical end of the type range with a familiar purchase. The ordinary object gives readers a concrete starting point for the following contrast.",
+  "strategic_value": "Instacart can connect its typographic system to the routine act of buying a grocery item.",
+  "demonstration": "A cream field carries the dark Sans phrase From shopping at lower left and a plastic milk jug tilted across the right.",
+  "category": "Typography",
+  "practical_value": "Use a direct sans-serif treatment when the communication emphasizes the item or the shopping task. Compare the next page to see how the same story changes after preparation.",
+  "content_islands": [
+    {
+      "name": "Shopping phrase",
+      "spec": "Place two large dark lines at lower left, with generous space above."
+    },
+    {
+      "name": "Grocery object",
+      "spec": "Angle the milk jug into the right side of the pale canvas, retaining its cap and cast shadow."
+    }
+  ]
+}

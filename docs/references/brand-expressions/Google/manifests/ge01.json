@@ -1,0 +1,32 @@
+{
+  "id": "GE01",
+  "title": "Evolving the Google Identity / Logotype",
+  "image": "ge01.png",
+  "source": "../sources/ge01.webp",
+  "location": {
+    "series": "Evolving the Google Identity / 2015",
+    "item": 1,
+    "extent": "whole source"
+  },
+  "slide_intent": "Retain familiar color and introduce simpler letterforms so people can recognize a brand as its contexts change.",
+  "strategic_value": "The familiar color sequence and rotated e can connect Google’s 2015 identity to earlier encounters while the geometric letters support a simpler presentation.",
+  "demonstration": "A large six-letter multicolored Google wordmark sits alone on a white field.",
+  "category": "Brand",
+  "practical_value": "Evaluate the recognition carried by color order and one distinctive letter before adding supporting graphics.",
+  "content_islands": [
+    {
+      "name": "Logotype",
+      "spec": "Center the multicolored wordmark on white and leave generous space on every side."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The accompanying official article explains the aim of retaining an approachable character while adapting to new devices and surfaces.",
+    "Expression": "The isolated wordmark demonstrates the geometric letterforms, four-color sequence and tilted e."
+  },
+  "ingredient": {
+    "name": "2015 Google wordmark",
+    "role": "Identify Google through a familiar color sequence and approachable letterforms.",
+    "application": "Preserve the demonstrated color sequence and rotated e when examining this historical mark.",
+    "scope": "The 2015 identity presentation; this image is not a current logo usage manual."
+  }
+}

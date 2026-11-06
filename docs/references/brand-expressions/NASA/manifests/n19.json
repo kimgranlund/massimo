@@ -1,0 +1,28 @@
+{
+  "id": "N19",
+  "title": "Headquarters Letterhead and Envelope",
+  "image": "n19.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 19
+  },
+  "slide_intent": "Teach designers how a headquarters signature carries across two pieces of correspondence. A recipient should recognize the sender on the envelope and again on the letter.",
+  "strategic_value": "NASA can distinguish headquarters correspondence with a consistent signature, return address and typographic treatment across the two formats.",
+  "demonstration": "The page pairs a letterhead with a matching envelope. Red logotypes mark both pieces, while black type identifies the agency and its Washington address.",
+  "category": "Application",
+  "practical_value": "Use the letterhead and envelope together to locate the return address, reply line, postal indicia and mark. The upper notes also describe the alternative warm-gray printing scheme.",
+  "content_islands": [
+    {
+      "name": "Format and printing guidance",
+      "spec": "Place the heading, paper sizes, type specifications and color instructions across the top."
+    },
+    {
+      "name": "Letterhead specimen",
+      "spec": "Place the vertically proportioned letterhead beneath the guidance. Keep the signature block near its upper left, the reply line below it and the writing field open."
+    },
+    {
+      "name": "Envelope specimen",
+      "spec": "Align the wide envelope below the letter. Place the sender block at left, the red mark farther right and the postal indicia at the far right."
+    }
+  ]
+}

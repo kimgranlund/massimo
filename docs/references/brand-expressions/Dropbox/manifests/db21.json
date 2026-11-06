@@ -1,0 +1,32 @@
+{
+  "id": "DB21",
+  "title": "Social launch animation",
+  "image": "db21.png",
+  "source": "../sources/db21.mp4",
+  "location": {
+    "series": "COLLINS / Dropbox / 2017 identity case study",
+    "item": 21,
+    "section": "Gallery",
+    "extent": "Complete published clip; PNG is a frame at 0.5 seconds",
+    "duration_seconds": 8.77
+  },
+  "slide_intent": "Show expression within a platform frame because branded content must remain identifiable amid another interface.",
+  "strategic_value": "The moving patterns can introduce Dropbox’s new visual world while the phone context demonstrates a social placement.",
+  "demonstration": "A phone displays a social post; a short welcome message appears before colored patterned forms fill both the post and the surrounding ochre field.",
+  "category": "Application",
+  "practical_value": "Compare the bounded social post with the expanded presentation treatment around it.",
+  "content_islands": [
+    {
+      "name": "Phone and interface",
+      "spec": "Keep the white handset and social controls fixed during the animation."
+    },
+    {
+      "name": "Expanding pattern",
+      "spec": "Follow the colored forms as they spread within and outside the phone frame."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "A phone displays a social post; a short welcome message appears before colored patterned forms fill both the post and the surrounding ochre field."
+  },
+  "motion": "../sources/db21.mp4"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "B13",
+  "title": "Secondary colors",
+  "image": "b13.png",
+  "source": "../bolt-brand-guidelines-2025-12.pdf",
+  "location": {
+    "page": 13
+  },
+  "slide_intent": "Teach designers to distinguish a supporting accent from a color that carries the identity. Restraint helps a viewer notice a change of mood while continuing to recognize the brand.",
+  "strategic_value": "Pink and Cyan can expand the range of Bolt illustrations while the primary palette continues to identify the product and its actions.",
+  "demonstration": "Two full-height color cards sit at the far right of the white field. The copy assigns Pink and Cyan to illustration and supporting accents and excludes calls to action, backgrounds and typography.",
+  "category": "Color",
+  "practical_value": "Decide whether a pink or cyan accent belongs in an illustration. Use the primary palette when specifying a button, type or background.",
+  "content_islands": [
+    {
+      "name": "Section rail",
+      "spec": "Repeat the dark book rail with the wordmark, section labels and folio."
+    },
+    {
+      "name": "Usage guidance",
+      "spec": "Set the title and short paragraphs near the left edge of the white page. Leave a broad interval before the swatches."
+    },
+    {
+      "name": "Secondary swatches",
+      "spec": "Place Pink and Cyan side by side at the right edge. Use equal dimensions, dark labels and compact screen and print references at the top."
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id": "BK120",
+  "title": "Legal Standards / Terms & Conditions",
+  "image": "bk120.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 120
+  },
+  "slide_intent": "Distinguish preliminary brand development from local readiness so teams understand that a global design system still needs market-specific clearance.",
+  "strategic_value": "The prominent local-clearance instruction can help Burger King coordinate rollout across countries with different requirements.",
+  "demonstration": "A small section label at left faces a large bold paragraph explaining preliminary searches and required local legal review before new brand elements are used.",
+  "category": "Brand",
+  "practical_value": "Identify local clearance as a stated prerequisite in this historical guide, rather than treating inclusion in the book as permission to launch.",
+  "content_islands": [
+    {
+      "name": "Section label",
+      "spec": "Place the compact Legal Standards / Terms & Conditions label at left."
+    },
+    {
+      "name": "Clearance statement",
+      "spec": "Set the long, bold local-review paragraph across the upper central and right area, leaving open space below."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The paragraph connects local review to the usability of brand content in each country.",
+    "Constraint": "The guide requires local legal representatives to clear icons and validate claims before a market uses new elements, allowing sufficient time for country-specific review."
+  }
+}

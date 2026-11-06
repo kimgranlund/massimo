@@ -1,0 +1,41 @@
+{
+  "id": "IT19",
+  "title": "ITV / Channel family",
+  "image": "it19.png",
+  "source": "../sources/1749146174-itv_12.png",
+  "location": {
+    "series": "DixonBaxi / ITV case-study artwork series",
+    "item": 19,
+    "extent": "Whole source artwork",
+    "source_asset_index": 18
+  },
+  "slide_intent": "Separate what unifies the network from what distinguishes its channels, because audiences need both a recognizable network and distinct programme destinations.",
+  "strategic_value": "This approach can strengthen network coherence without erasing channel personality.",
+  "demonstration": "Six coloured logos form two rows on a dark field: ITVX, ITV1, ITV2, ITV3, ITV4 and ITVBe. Shared ITV lettering coexists with distinct suffixes and colours.",
+  "category": "Brand",
+  "practical_value": "Separate what unifies the network from what distinguishes its channels.",
+  "content_islands": [
+    {
+      "name": "Upper row",
+      "spec": "ITVX, ITV1 and ITV2 establish three signatures."
+    },
+    {
+      "name": "Lower row",
+      "spec": "ITV3, ITV4 and ITVBe complete the family."
+    },
+    {
+      "name": "Shared field",
+      "spec": "A dark background makes differences in colour and suffix visible."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Six coloured logos form two rows on a dark field: ITVX, ITV1, ITV2, ITV3, ITV4 and ITVBe. Shared ITV lettering coexists with distinct suffixes and colours.",
+    "Intent": "The case-study section Embracing eclectic says distinct channel personalities are joined into one connected brand beyond broadcast."
+  },
+  "ingredient": {
+    "name": "Shared ITV wordmark with channel suffixes",
+    "role": "Connect channels while distinguishing destinations.",
+    "application": "Separate what unifies the network from what distinguishes its channels.",
+    "scope": "Observed in this DixonBaxi ITV/ITVX case study. No numeric colour, sizing, spacing or exclusivity rule is supplied by this artwork."
+  }
+}

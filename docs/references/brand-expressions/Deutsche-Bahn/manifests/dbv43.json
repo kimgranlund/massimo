@@ -1,0 +1,35 @@
+{
+  "id": "DBV43",
+  "title": "Do_Effekte",
+  "image": "dbv43.png",
+  "source": "../sources/media/dbv43.mp4",
+  "location": {
+    "series": "DB new design / motion demonstrations",
+    "source_page": 15,
+    "section": "Do-s-und-Don-ts-14021640",
+    "source_url": "https://ecm-mediathek-cdn.deutschebahn.com/cdnenhancedecmvidhls/db306498/2881201/video_config.json",
+    "capture_date": "2026-11-05"
+  },
+  "slide_intent": "Limit the number of animated properties so viewers can read a motif clearly through its movement.",
+  "strategic_value": "The crisp Schwelle sequence can keep DB motion consistent and straightforward to reproduce.",
+  "demonstration": "Red Schwelle bars build, change width, and retract with crisp edges on a pale background.",
+  "category": "Motion",
+  "practical_value": "Use this positive example to compare a small set of geometric changes with the added effects in DBV44.",
+  "content_islands": [
+    {
+      "name": "Bar construction",
+      "spec": "Build the horizontal row of red bars."
+    },
+    {
+      "name": "Crisp progression",
+      "spec": "Preserve sharp edges as the width pattern changes and the group retracts."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Red Schwelle bars build, change width, and retract with crisp edges on a pale background.",
+    "Application": "The source provides a playable demonstration of this repeatable sequence: Red Schwelle bars build, change width, and retract with crisp edges on a pale background.",
+    "Intent": "The source says animating fewer parameters produces consistent motion that is straightforward to implement, and excluding effects preserves clarity.",
+    "Constraint": "The source states that effects such as motion blur are not intended."
+  },
+  "motion": "../sources/media/dbv43.mp4"
+}

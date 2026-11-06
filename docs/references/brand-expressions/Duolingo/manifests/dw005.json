@@ -1,0 +1,39 @@
+{
+  "id": "DW005",
+  "title": "Logotype / Minimum sizes",
+  "image": "dw005.png",
+  "source": "../sources/pages/identity-logos.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/identity/logos",
+    "section": "Minimum sizes",
+    "item": 5,
+    "order": 50
+  },
+  "slide_intent": "Set a lower size boundary because recognition fails when lettering becomes too small to read.",
+  "strategic_value": "Separate screen and print minima can preserve Duolingo’s signature across media.",
+  "demonstration": "Two logotype examples label screen width at 100 px and print width at 35 mm / 1.375 in, beside a legibility rule.",
+  "category": "Geometry",
+  "practical_value": "Check the wordmark’s width against the minimum for its medium.",
+  "content_islands": [
+    {
+      "name": "Screen and print minima",
+      "spec": "Pair the screen and print specimens within the left panel, retaining their 100 px and 35 mm / 1.375 in labels."
+    },
+    {
+      "name": "Legibility rule",
+      "spec": "Keep the section heading and never-smaller instruction at right."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The copy states that the logotype should always be legible.",
+    "Application": "Separate screen and print examples show the specified minima.",
+    "Constraint": "The source prohibits sizes below 100 px on screen or 35 mm / 1.375 in in print."
+  },
+  "ingredient": {
+    "name": "Logotype minimum width",
+    "role": "Maintain legibility at small sizes.",
+    "application": "Keep width at least 100 px on screen or 35 mm / 1.375 in in print.",
+    "scope": "Historical archived guidelines. Minimum width for the historical logotype, not a universal minimum for every brand mark."
+  }
+}

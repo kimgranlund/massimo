@@ -1,0 +1,38 @@
+{
+  "id": "DW074",
+  "title": "Writing / Style / Ellipses",
+  "image": "dw074.png",
+  "source": "../sources/pages/writing-style.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/style",
+    "section": "Ellipses",
+    "item": 74,
+    "order": 740
+  },
+  "slide_intent": "Control the spacing of a trailing thought so readers can distinguish a pause from a sentence boundary.",
+  "strategic_value": "A small paired example can help Duolingo retain a conversational rhythm without inconsistent punctuation.",
+  "demonstration": "Two preferred and two rejected lines compare ellipsis spacing within a sentence and before a new sentence.",
+  "category": "Voice",
+  "practical_value": "Check whether the ellipsis continues the sentence or ends it before adding a space.",
+  "content_islands": [
+    {
+      "name": "Guidance column",
+      "spec": "Place the topic heading, its parent label and the written convention in the narrow left column."
+    },
+    {
+      "name": "Worked examples",
+      "spec": "Place the worked copy in the pale right panel, keeping preference labels and green checks with their examples."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The examples contrast an internal pause with an ellipsis followed by a new sentence.",
+    "Constraint": "Use ellipses infrequently; put no space on either side within a sentence, but add a following space when the ellipsis ends the sentence."
+  },
+  "ingredient": {
+    "name": "Ellipses convention",
+    "role": "Readers can distinguish a pause from a sentence boundary.",
+    "application": "Use ellipses infrequently; put no space on either side within a sentence, but add a following space when the ellipsis ends the sentence.",
+    "scope": "Historical official guidelines from the 2024–2025 archived snapshot; this records the displayed guidance, not current Duolingo product behavior."
+  }
+}

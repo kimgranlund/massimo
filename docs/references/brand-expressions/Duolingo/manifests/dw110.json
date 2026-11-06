@@ -1,0 +1,42 @@
+{
+  "id": "DW110",
+  "title": "Illustration / Too much color",
+  "image": "dw110.png",
+  "source": "../sources/pages/illustration-shape-language.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/illustration/shape-language",
+    "section": "Too much color",
+    "item": 110,
+    "order": 1100
+  },
+  "slide_intent": "Limit competing hues because small illustrations need clear parts and a readable silhouette.",
+  "strategic_value": "A restrained palette can keep Duolingo icons legible at reduced sizes.",
+  "demonstration": "A green frog and three green swatches contrast with a crossed-out frog and five varied swatches.",
+  "category": "Color",
+  "practical_value": "Reduce unnecessary hue changes and check the result at the intended display size.",
+  "content_islands": [
+    {
+      "name": "Restrained palette",
+      "spec": "Keep the green frog and its three swatches together at left."
+    },
+    {
+      "name": "Rejected palette",
+      "spec": "Place the more varied frog and five swatches inside the pink rejection frame beside it."
+    },
+    {
+      "name": "Scale rationale",
+      "spec": "Explain small-size legibility at right."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source says too many colors can hurt legibility when an object scales down.",
+    "Constraint": "Keep an illustration to a few colors; no fixed maximum is stated."
+  },
+  "ingredient": {
+    "name": "Illustration color count",
+    "role": "Support small-size recognition.",
+    "application": "Use a few colors and remove changes that reduce legibility at small sizes.",
+    "scope": "Three versus five swatches illustrate this frog comparison, not a universal three-color maximum."
+  }
+}

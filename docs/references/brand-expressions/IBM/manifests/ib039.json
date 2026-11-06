@@ -1,0 +1,48 @@
+{
+  "id": "IB039",
+  "title": "Pictograms / Usage",
+  "image": "ib039.png",
+  "source": "../sources/iconography-pictograms-usage.txt",
+  "location": {
+    "series": "IBM Design Language / public web guidelines",
+    "item": 39,
+    "extent": "Complete webpage content area, default interactive state",
+    "url": "https://www.ibm.com/design/language/iconography/pictograms/usage/",
+    "order": 39000
+  },
+  "slide_intent": "Match a symbol’s expressive strength to its job so visual emphasis helps people rather than overwhelming them.",
+  "strategic_value": "A distinction between productive and expressive pictograms can preserve IBM consistency across quiet interfaces and large communications.",
+  "demonstration": "The page compares use contexts, sizes, containers and color themes, then shows pictograms in illustrations, signage and merchandise.",
+  "category": "Application",
+  "practical_value": "Choose productive artwork for most contexts and reserve expressive artwork for a large, deliberate presence.",
+  "content_islands": [
+    {
+      "name": "Productive and expressive roles",
+      "spec": "Begin with contextual examples and explicit prohibitions on UI-icon substitution and logo lockups."
+    },
+    {
+      "name": "Sizing and placement",
+      "spec": "Follow with size steps, optical alignment, accepted containers and clearance diagrams."
+    },
+    {
+      "name": "Color and backgrounds",
+      "spec": "Compare accepted contrast with rejected tone and gradient combinations, then provide the four-theme lookup table."
+    },
+    {
+      "name": "Illustration and physical applications",
+      "spec": "Finish with a constructed illustration, signage, event graphic, cap and digital use."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source explains that productive symbols support most contexts while expressive symbols create a strong presence.",
+    "Expression": "Pictograms vary from simple linework to layered gradient forms.",
+    "Application": "Examples show placement in interfaces, communication, signage and merchandise.",
+    "Constraint": "The guide sets a 48px minimum and quarter-grid padding; it prohibits using pictograms as logos or replacements for UI icons and limits expressive use."
+  },
+  "ingredient": {
+    "name": "Productive and expressive pictograms",
+    "role": "Provide either quiet explanation or deliberate graphic emphasis.",
+    "application": "Use productive pictograms for most contexts. Use expressive pictograms selectively at sufficient size; match the background theme and preserve quarter-grid clearance.",
+    "scope": "These are illustrations, not UI icons or logos. The general minimum is 48px; use the expressive sizing specimen for its shown larger steps."
+  }
+}

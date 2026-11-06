@@ -1,0 +1,29 @@
+{
+  "id": "HE119",
+  "title": "Instruction signs for parks",
+  "image": "he119.png",
+  "source": "../sources/download-elements.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Instruction signs for parks",
+    "order": 165,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/download-elements#instruction-signs-for-parks",
+    "original_html": "../sources/download-elements.html"
+  },
+  "slide_intent": "Direct authors to the shared park instruction signs resource so recurring materials can begin from a consistent source.",
+  "strategic_value": "A named source for park instruction signs can reduce ad hoc Helsinki production.",
+  "demonstration": "Expanded webpage section: the park instruction-sign resource contains a title and a download link for order forms, texts, icons, InDesign templates and ZIP examples files; it does not display the template design.",
+  "category": "Application",
+  "practical_value": "Locate the park instruction signs resource before judging or adapting the actual template.",
+  "content_islands": [
+    {
+      "name": "Resource heading",
+      "spec": "The section title identifies the resource."
+    },
+    {
+      "name": "Download link",
+      "spec": "A single link below points to park instruction signs files."
+    }
+  ],
+  "reference_purposes": {}
+}

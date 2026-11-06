@@ -1,0 +1,28 @@
+{
+  "id": "B05",
+  "title": "Our logo",
+  "image": "b05.png",
+  "source": "../bolt-brand-guidelines-2025-12.pdf",
+  "location": {
+    "page": 5
+  },
+  "slide_intent": "Teach designers to examine how the parts of a wordmark carry meaning. A viewer can recognize both the heavy capitals and the lightning-shaped opening between the last two letters.",
+  "strategic_value": "Bolt can tie the promise of quick checkout to a feature within the name itself. The large specimen gives the distinctive cut enough room to be seen.",
+  "demonstration": "The explanatory copy links the lightning detail with speed and the solid capitals with trustworthiness. A large blue wordmark fills the lower width of the white page.",
+  "category": "Brand",
+  "practical_value": "Use the enlarged mark to identify which shapes need to survive when the mark is reproduced elsewhere.",
+  "content_islands": [
+    {
+      "name": "Section rail",
+      "spec": "Place the wordmark at the top of the dark rail, highlight the current topic in the navigation and set the small folio at the foot."
+    },
+    {
+      "name": "Meaning of the mark",
+      "spec": "Place the heading and short rationale in a narrow upper-left column and leave the rest of the upper field open."
+    },
+    {
+      "name": "Wordmark specimen",
+      "spec": "Set the blue wordmark across the lower field from the left text margin to the right edge of the content area. Preserve its overhangs and interior spaces."
+    }
+  ]
+}

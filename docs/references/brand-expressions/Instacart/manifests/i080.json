@@ -1,0 +1,25 @@
+{
+  "id": "I080",
+  "title": "Logo Proportions",
+  "image": "i080.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 80,
+    "printed_page": 80
+  },
+  "slide_intent": "Show how a signature and a short headline can share one card while the headline remains the message a viewer reads first.",
+  "strategic_value": "The half-height relationship can leave enough room for a distinctive delivery headline and an appetizing image.",
+  "demonstration": "A cream delivery-status card places a small Instacart wordmark above the headline about risen bread. A photograph of a person holding a baked pie occupies the other half. The rail identifies the logo as half the headline height.",
+  "category": "Geometry",
+  "practical_value": "Use this worked example when a short headline and an image compete for attention in the same layout.",
+  "content_islands": [
+    {
+      "name": "Ratio note",
+      "spec": "State the half-height relationship in a short note on the dark green left rail."
+    },
+    {
+      "name": "Delivery card",
+      "spec": "Align the wordmark above the status eyebrow, two-line headline and notification button on cream. Place the large pie photograph at right."
+    }
+  ]
+}

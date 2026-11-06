@@ -1,0 +1,42 @@
+{
+  "id": "DBV19",
+  "title": "Type_Expressive-A",
+  "image": "dbv19.png",
+  "source": "../sources/media/dbv19.mp4",
+  "location": {
+    "series": "DB new design / motion demonstrations",
+    "source_page": 15,
+    "section": "Animation-14021536",
+    "source_url": "https://ecm-mediathek-cdn.deutschebahn.com/cdnenhancedecmvidhls/db306406/2880847/video_config.json",
+    "capture_date": "2026-11-05",
+    "note": "The adjacent page caption does not reliably describe this embedded file. This manifest follows the inspected video and its file title; broader typography rules come from the surrounding prose. Adjacent caption: Klicken, um das folgende Video zu überspringen Ende des oberhalb befindlichen Videos Zeilenweise Textanimation von links nach rechts"
+  },
+  "slide_intent": "Reserve emphatic lettering motion for a short word so a viewer can recognize the message through the effect.",
+  "strategic_value": "The large SPARPREIS word can make a DB offer memorable without burdening a full sentence with the same treatment.",
+  "demonstration": "Wide uppercase SPARPREIS lettering reveals and changes spacing across the pale field.",
+  "category": "Motion",
+  "practical_value": "Use expressive word motion for a short offer or keyword, not a paragraph.",
+  "content_islands": [
+    {
+      "name": "Word reveal",
+      "spec": "Build the large uppercase SPARPREIS across the center."
+    },
+    {
+      "name": "Resolved word",
+      "spec": "Let the complete word occupy the horizontal field."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Wide uppercase SPARPREIS lettering reveals and changes spacing across the pale field.",
+    "Application": "The source provides a playable demonstration of this repeatable sequence: Wide uppercase SPARPREIS lettering reveals and changes spacing across the pale field.",
+    "Intent": "Accompanying Typografie prose prioritizes legibility and uses simple staggered line movement to keep text lively and clear.",
+    "Constraint": "Expressive typography is suited to individual keywords, not whole sentences or text blocks."
+  },
+  "motion": "../sources/media/dbv19.mp4",
+  "ingredient": {
+    "name": "Expressive type motion",
+    "role": "Emphasize a short verbal message through lettering movement.",
+    "application": "Apply the expressive treatment to individual keywords.",
+    "scope": "Official DB new-design web guidance, undated live edition captured 2026-11-05; applies to the demonstrated motion context. The source excludes whole sentences and text blocks from this treatment."
+  }
+}

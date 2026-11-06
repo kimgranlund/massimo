@@ -1,0 +1,38 @@
+{
+  "id": "DW030",
+  "title": "Typography / Please don’t",
+  "image": "dw030.png",
+  "source": "../sources/pages/identity-typography.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/identity/typography",
+    "section": "Please don't...",
+    "item": 30,
+    "order": 300
+  },
+  "slide_intent": "Show typographic failure cases because brand voice can break through color, case and hierarchy even when the correct fonts are present.",
+  "strategic_value": "Concrete prohibitions can help Duolingo keep its two-face system clear and recognizable.",
+  "demonstration": "Six illustrated examples identify mixed-face sentences, multicolor Feather Bold, neutral display type, clipped text, incorrect case and headline/logo scale conflicts.",
+  "category": "Typography",
+  "practical_value": "Review a composition for these setting errors before release.",
+  "content_islands": [
+    {
+      "name": "Misuse specimens",
+      "spec": "Stack six crossed-out typography examples in the left panel."
+    },
+    {
+      "name": "Prohibitions and exception",
+      "spec": "Place the matching prohibitions at right, retaining the one-color-printing exception for neutral display text."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The illustrated cases make common setting errors concrete.",
+    "Constraint": "The source forbids the six shown treatments, while allowing neutral Feather Bold for one-color printing."
+  },
+  "ingredient": {
+    "name": "Typographic integrity",
+    "role": "Preserve the distinction between headline voice, supporting copy and signature.",
+    "application": "Do not mix faces in one sentence, use multiple secondary colors within Feather Bold, run text off the display, use display-face sentence/title case or size a DIN headline equal to the logo.",
+    "scope": "Historical archived guidelines. Historical misuse guidance. Neutral Feather Bold is prohibited except in one-color printing; retain that exception."
+  }
+}

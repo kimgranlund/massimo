@@ -1,0 +1,31 @@
+{
+  "id": "C433",
+  "title": "Picks of the week social carousel",
+  "image": "c433.png",
+  "source": "../sources/c433.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 masterbrand / 2023",
+    "item": 33,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Preview adjacent items so a viewer understands that a recommendation card is the start of a sequence.",
+  "strategic_value": "A green opening card and repeated colored captions can connect Channel 4 recommendations while supporting browsing.",
+  "demonstration": "A phone carousel starts with Picks of the week and a popcorn icon, nudges sideways to programme recommendations and returns to the opening card.",
+  "category": "Application",
+  "practical_value": "Compare the visible sliver of the next card with a completely closed composition.",
+  "content_islands": [
+    {
+      "name": "Opening recommendation",
+      "spec": "Use green behind the weekly heading, icon and streaming instruction."
+    },
+    {
+      "name": "Programme cards",
+      "spec": "Slide to images with colored title-and-time bands while keeping the social interface visible."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "A mobile social carousel applies the nudge mechanic to weekly programme recommendations.",
+    "Intent": "Pentagram explains that partial views of adjoining worlds hint at more content to explore."
+  },
+  "motion": "../sources/c433.mp4"
+}

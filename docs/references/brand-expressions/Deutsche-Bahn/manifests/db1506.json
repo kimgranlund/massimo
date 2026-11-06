@@ -1,0 +1,46 @@
+{
+  "id": "DB1506",
+  "title": "Bewegtbild",
+  "image": "db1506.png",
+  "source": "../sources/page-15.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 15,
+    "section": 6,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Motion-Branding"
+  },
+  "slide_intent": "Make changing scenes and speaker information easy to follow because recurring audiovisual elements provide orientation.",
+  "strategic_value": "Consistent logo endings, transitions and lower thirds can identify DB while keeping a film understandable.",
+  "demonstration": "The section presents logo treatment, endings, business-unit lockup specimens, separators, lower thirds and the default Title and Action Safe diagram. Video placeholders mark the preserved webpage state; clips are separately playable.",
+  "category": "Motion",
+  "practical_value": "Choose a transition or lower third by content complexity, and place essential information within the specified title-safe area.",
+  "content_islands": [
+    {
+      "name": "Logo and endings",
+      "spec": "Lead with logo guidance and the preferred and reduced endings."
+    },
+    {
+      "name": "Lockup specimens",
+      "spec": "Compare centered horizontal, left-aligned horizontal and centered vertical arrangements."
+    },
+    {
+      "name": "Separators and lower thirds",
+      "spec": "Keep dynamic and simple choices with their context-specific instructions."
+    },
+    {
+      "name": "Safe area",
+      "spec": "Finish with the landscape frame diagram and its 5% action-safe and 10% title-safe margins."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source says separators distinguish sequences and make content easier to navigate.",
+    "Application": "For classic video, the page specifies an all-round 5% Action Safe and 10% Title Safe; important information such as subtitles belongs in Title Safe.",
+    "Constraint": "A logo suffix may be added when communication relates exclusively to a particular business or product area."
+  },
+  "ingredient": {
+    "name": "Bewegtbild",
+    "role": "Make changing scenes and speaker information easy to follow because recurring audiovisual elements provide orientation.",
+    "application": "Choose a transition or lower third by content complexity, and place essential information within the specified title-safe area.",
+    "scope": "Official DB new-design website captured 2026-11-05; edition undated. Instructions are local to this motion section. Source caption inconsistencies are documented separately."
+  }
+}

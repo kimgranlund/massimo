@@ -1,0 +1,78 @@
+{
+  "id": "IB018",
+  "title": "Illustration / People",
+  "image": "ib018.png",
+  "source": "../sources/illustration-people.txt",
+  "location": {
+    "series": "IBM Design Language / public web guidelines",
+    "item": 18,
+    "extent": "Complete webpage content-area capture; visible default tab states",
+    "url": "https://www.ibm.com/design/language/illustration/people/",
+    "order": 18000
+  },
+  "slide_intent": "Represent people with recognizable proportions and varied identities so viewers can see themselves without being reduced to caricature.",
+  "strategic_value": "A shared geometric anatomy with diverse bodies, cultures and skin tones can connect IBM’s engineered visual language with its stated human purpose.",
+  "demonstration": "The webpage moves from illustrated workplace scenes through gridded anatomy and an eight-head skeleton to portraits, diverse figures and a Rose/Almond people palette.",
+  "category": "Imagery",
+  "practical_value": "Construct a figure from the common skeleton, then select proportions, features and purposeful details that represent the intended person or community.",
+  "content_islands": [
+    {
+      "name": "Purpose and examples",
+      "spec": "Place the title and inclusion rationale above a montage of workplace, medical and individual scenes in flat and isometric treatments."
+    },
+    {
+      "name": "Anatomy and skeleton",
+      "spec": "Follow gridded figures with the eight-head construction, joint diagrams and line-to-finished-figure progression examples."
+    },
+    {
+      "name": "Portraiture",
+      "spec": "Place geometric front/profile heads above simplified portraits, followed by higher-fidelity portraits showing recognizable individuals."
+    },
+    {
+      "name": "Diversity and inclusion",
+      "spec": "Continue with a group portrait and examples varying activity, clothing, ability, body shape and props."
+    },
+    {
+      "name": "People palette",
+      "spec": "Close with Rose and Almond swatch columns and numeric values, keeping the skin/hair/nails-only explanation and palette download with them."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The introduction connects inclusive representation to IBM’s global audience; the anatomy section explains that realistic simplification helps people recognize themselves.",
+    "Expression": "Figures share simplified geometry while varying bodies, skin tones, clothing, activities and portrait fidelity.",
+    "Application": "The page teaches eight-head-high construction, grid use, portrait refinement and purposeful selection of character details.",
+    "Constraint": "The source rejects caricature and exaggerated expressions. Rose and Almond are reserved for skin, hair and nails and are not extensions of the main IBM palette."
+  },
+  "ingredient": {
+    "name": "People palette",
+    "role": "Represent a range of people within the illustration system.",
+    "application": "Use the Rose and Almond scales for skin, hair and nails; choose character details with purpose and retain realistic proportions.",
+    "scope": "Specific to IBM people illustration. The page explicitly excludes these hues from general use as an expanded corporate palette."
+  },
+  "motion_assets": [
+    {
+      "title": "Portraiture sequence",
+      "file": "../sources/media/eb1d48e737e4.mp4",
+      "poster": "../sources/media/eb1d48e737e4-poster.png",
+      "duration_seconds": 9.2,
+      "source_url": "https://www.ibm.com/design/language/06064a86590f8c7b01fd61f55dca4237/20_People_Portraiture.gif",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Cycling character",
+      "file": "../sources/media/b8a9ddc9ddef.mp4",
+      "poster": "../sources/media/b8a9ddc9ddef-poster.png",
+      "duration_seconds": 5.9,
+      "source_url": "https://www.ibm.com/design/language/d78ea188ebbd313d44f9e2eb1fd478f8/34_Bike_FlatStyle_optimized1.gif",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    }
+  ]
+}

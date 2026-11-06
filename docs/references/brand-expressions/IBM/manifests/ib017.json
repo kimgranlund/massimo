@@ -1,0 +1,70 @@
+{
+  "id": "IB017",
+  "title": "Illustration / Hybrid UI style — Design",
+  "image": "ib017.png",
+  "source": "../sources/illustration-hybrid-ui-style-design.txt",
+  "location": {
+    "series": "IBM Design Language / public web guidelines",
+    "item": 17,
+    "extent": "Complete webpage content-area capture; visible default tab states",
+    "url": "https://www.ibm.com/design/language/illustration/hybrid-ui-style/design/",
+    "order": 17000
+  },
+  "slide_intent": "Choose how much product detail to retain so a viewer can understand a process without mistaking a conceptual illustration for an exact interface.",
+  "strategic_value": "Combining recognizable UI fragments with IBM pictograms and consistent spacing can make product benefits easier to explain while keeping the illustration within the brand.",
+  "demonstration": "The long webpage pairs hybrid UI compositions with fidelity comparisons, an 8px grid, actual and greeked type, pictogram containers, shadows, connector lines and background comparisons.",
+  "category": "Imagery",
+  "practical_value": "Tune fidelity for scale and purpose, then distinguish literal UI elements from expressive pictograms when applying text, containers and shadows.",
+  "content_islands": [
+    {
+      "name": "Introduction and examples",
+      "spec": "Begin with the dark title band, definition and resource card, then a four-image grid showing UI fragments combined with diagrams and abstract elements."
+    },
+    {
+      "name": "Fidelity and grid",
+      "spec": "Below the definition, compare high-, mid- and low-fidelity versions in a horizontal row, followed by a gridded composition illustrating spacing."
+    },
+    {
+      "name": "Typography",
+      "spec": "Place type guidance and the rectangle-height table above light/dark-theme tabs; the capture shows the light-theme greeking comparison."
+    },
+    {
+      "name": "Iconography and illustration",
+      "spec": "Follow the conceptual-flow specimen with sized pictogram containers, UI-icon examples and a mixed illustration composition."
+    },
+    {
+      "name": "Composition and depth",
+      "spec": "Continue with container examples, light/dark panels and shadow specifications, keeping illustrative elements distinct from shadow-bearing UI."
+    },
+    {
+      "name": "Connectors and background",
+      "spec": "End the guidance with the gridded connector example and paired acceptable/plain and rejected/busy backgrounds; retain ancillary page navigation below."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The opening text says hybrid UI illustration builds understanding and clarity; fidelity guidance explains removing detail to keep attention on conceptual flow.",
+    "Expression": "The examples combine product fragments, IBM pictograms, line illustrations and restrained color fields.",
+    "Application": "The page specifies an 8px grid, standard spacing, actual versus greeked type, connector construction and separate shadow treatments.",
+    "Constraint": "Only UI elements and containers showing UI patterns receive shadows; expressive pictograms and illustrations do not. Photography, busy patterns, other illustrations and renderings are prohibited as backgrounds."
+  },
+  "ingredient": {
+    "name": "Hybrid UI composition",
+    "role": "Explain relationships between product functions and concepts.",
+    "application": "Select fidelity for audience, scale and intent; use the 8px grid and keep shadows on UI elements rather than expressive pictograms.",
+    "scope": "IBM hybrid UI illustration guidance, not a rule for all product interfaces or all IBM illustrations. The image records visible tab states."
+  },
+  "motion_assets": [
+    {
+      "title": "Hybrid UI: productive and expressive treatments",
+      "file": "../sources/media/f7bd20211ab6.mp4",
+      "poster": "../sources/media/f7bd20211ab6-poster.png",
+      "duration_seconds": 7.27,
+      "source_url": "https://www.ibm.com/design/language/eb8fbd87f7355e0f7b0833ef67bebfb1/expressive.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id": "HT03",
+  "title": "Helsinki Grotesk Pro / Character Set",
+  "image": "ht03.png",
+  "source": "../sources/helsinki-grotesk-pro-2025.pdf",
+  "location": {
+    "page": 3,
+    "order": 181
+  },
+  "slide_intent": "Check character coverage before committing a message to a typeface so names, numbers and language-specific marks can be represented.",
+  "strategic_value": "A broad glyph inventory can support consistent Helsinki communications across languages and data.",
+  "demonstration": "Two dense columns group Latin and Cyrillic letters, figures, punctuation, mathematical signs, arrows, fractions, accents and alternates.",
+  "category": "Typography",
+  "practical_value": "Check a required character against the supplied inventory rather than assuming every script is supported.",
+  "content_islands": [
+    {
+      "name": "Core characters",
+      "spec": "Left groups show alphabets, figures, punctuation and symbols with small labels."
+    },
+    {
+      "name": "Extended characters",
+      "spec": "Right groups show accents, accented letters, inferiors and stylistic variants."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Two dense columns group Latin and Cyrillic letters, figures, punctuation, mathematical signs, arrows, fractions, accents and alternates."
+  }
+}

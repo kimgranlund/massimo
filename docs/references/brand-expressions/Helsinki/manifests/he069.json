@@ -1,0 +1,39 @@
+{
+  "id": "HE069",
+  "title": "Colours and materials",
+  "image": "he069.png",
+  "source": "../sources/design-and-create.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Colours and materials",
+    "order": 96,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/design-and-create#colours-and-materials",
+    "original_html": "../sources/design-and-create.html"
+  },
+  "slide_intent": "Choose contrast for the actual sign material so information remains readable in its environment.",
+  "strategic_value": "A mostly black-and-white signage palette can make Helsinki information consistent across varied building finishes.",
+  "demonstration": "This expanded webpage-section capture places material and contrast guidance above black and white circular swatches.",
+  "category": "Color",
+  "practical_value": "Start with black or white, then evaluate contrast against the selected physical surface before considering other palette colors.",
+  "content_islands": [
+    {
+      "name": "Material guidance",
+      "spec": "Keep the default-color advice and location-dependent material choice together."
+    },
+    {
+      "name": "Neutral swatches",
+      "spec": "Pair the black and white discs as the primary signage options."
+    }
+  ],
+  "ingredient": {
+    "name": "Signage color contrast",
+    "role": "Keep wayfinding legible against its material.",
+    "application": "Generally use black and/or white; use other palette colors carefully and ensure sufficient contrast.",
+    "scope": "Signs; evaluate the actual building or location material."
+  },
+  "reference_purposes": {
+    "Intent": "The text links black/white use and adequate contrast to clarity, readability and accessibility.",
+    "Application": "It ties sign materials to the building or location.",
+    "Constraint": "Other palette colors require careful use with accessibility in mind; black/white is the general default."
+  }
+}

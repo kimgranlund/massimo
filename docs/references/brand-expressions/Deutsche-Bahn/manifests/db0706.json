@@ -1,0 +1,42 @@
+{
+  "id": "DB0706",
+  "title": "Platzierungsmöglichkeiten / Größenverhältnisse / Schutzraum",
+  "image": "db0706.png",
+  "source": "../sources/page-07.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 7,
+    "section": 6,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Logo_neu"
+  },
+  "slide_intent": "Control spacing and scale so a familiar mark remains readable without losing layout flexibility.",
+  "strategic_value": "A measurable clear space and bounded type relationship can keep DB identifiable across formats and viewing distances.",
+  "demonstration": "Layout specimens precede two logo-to-headline scale examples and a half-logo-height clear-space diagram.",
+  "category": "Geometry",
+  "practical_value": "Choose a flexible position while checking relative scale, edge spacing and the applicable exception process.",
+  "content_islands": [
+    {
+      "name": "Placement examples",
+      "spec": "Group five format examples below the statement that position can vary with the whole composition."
+    },
+    {
+      "name": "Relative scale",
+      "spec": "Compare minimum half-cap-height and maximum double-cap-height logo relationships."
+    },
+    {
+      "name": "Clear-space construction",
+      "spec": "Show the blue half-height perimeter around the logo beneath the exception text."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text connects clear space to protecting the mark’s effect and scale to recognition at different sizes and distances.",
+    "Application": "The formats and construction diagram make spacing and relative sizing inspectable.",
+    "Constraint": "Clear space is half a logo height; exceptions for constrained uses or composite marks are qualified and deviations require Brand Service Desk coordination."
+  },
+  "ingredient": {
+    "name": "Logo scale and clear space",
+    "role": "Keep the mark visually distinct and recognizable.",
+    "application": "Use logo-to-headline relationships from half to twice the headline cap height and reserve half a logo height of clear space around the mark.",
+    "scope": "Position remains flexible; constrained wayfinding/promotional applications and composite identifiers may have exceptions. Deviations from clear space must be coordinated with Brand Service Desk."
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "DB1010",
+  "title": "Download / Schwelle",
+  "image": "db1010.png",
+  "source": "../sources/page-10.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 10,
+    "section": 10,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Schwelle"
+  },
+  "slide_intent": "Make the approved asset easy to obtain so designers do not rebuild its defining proportions by eye.",
+  "strategic_value": "A direct source asset can support consistent DB applications.",
+  "demonstration": "A Download heading appears above the Schwelle Herunterladen link.",
+  "category": "Geometry",
+  "practical_value": "Use the provided download as the starting point for production.",
+  "content_islands": [
+    {
+      "name": "Asset link",
+      "spec": "Place the Schwelle download directly beneath the heading."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The section supplies a download link for the Schwelle."
+  }
+}

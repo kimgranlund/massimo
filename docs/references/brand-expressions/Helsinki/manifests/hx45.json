@@ -1,0 +1,30 @@
+{
+  "id": "HX45",
+  "title": "Layout templates",
+  "image": "hx45.png",
+  "source": "../sources/download-elements.offline.html",
+  "location": {
+    "series": "Web guideline introduction/component",
+    "order": 160,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/download-elements",
+    "original_html": "../sources/download-elements.html"
+  },
+  "slide_intent": "Choose a template for the tool and content because a shared layout must remain usable in the contributor’s production environment.",
+  "strategic_value": "Word, InDesign and Illustrator routes can help Helsinki maintain consistency across office and specialist work.",
+  "demonstration": "This webpage component describes Word templates using Arial, InDesign templates using Helsinki Grotesk, and Illustrator templates for processes, organization charts, timelines, quantity symbols and official-district choropleth maps.",
+  "category": "Layout",
+  "practical_value": "Select the tool-specific source that matches the document or information graphic.",
+  "content_islands": [
+    {
+      "name": "Document templates",
+      "spec": "Place the Word/Arial and InDesign/Helsinki Grotesk explanation first."
+    },
+    {
+      "name": "Information templates",
+      "spec": "Follow with Illustrator chart and map types, then three download links."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The source assigns template tools and fonts and lists available Illustrator diagram types."
+  }
+}

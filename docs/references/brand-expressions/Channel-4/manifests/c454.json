@@ -1,0 +1,34 @@
+{
+  "id": "C454",
+  "title": "Social content notice",
+  "image": "c454.png",
+  "source": "../sources/c454.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 / 2023 masterbrand case study",
+    "item": 54,
+    "extent": "Full published artwork"
+  },
+  "slide_intent": "Make content context visible before viewing, because audiences may need a quick indication of the material’s tone.",
+  "strategic_value": "A green notice strip, 4moji and channel signature can identify Channel 4 content within a social platform’s own interface.",
+  "demonstration": "A cropped social post shows the channel4 account header, a green avatar, a white 4 over programme footage and a green text strip including Adult humour with a devil-face icon.",
+  "category": "Application",
+  "practical_value": "Compare the platform account identity with the brand’s own content notice and in-frame logo.",
+  "content_islands": [
+    {
+      "name": "Platform header",
+      "spec": "Retain the channel4 name, verification mark and green avatar above the post."
+    },
+    {
+      "name": "Content notice",
+      "spec": "Place the black notice and devil icon on the green strip above the programme subject."
+    },
+    {
+      "name": "Programme image",
+      "spec": "Keep the white 4 at the upper left of the footage and the presenter’s face as the main image."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A cropped social post shows the channel4 account header, a green avatar, a white 4 over programme footage and a green text strip including Adult humour with a devil-face icon.",
+    "Application": "The source demonstrates this treatment in a social post with a content notice."
+  }
+}

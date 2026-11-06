@@ -1,0 +1,41 @@
+{
+  "id": "DBV07",
+  "title": "Curve-Primary",
+  "image": "dbv07.png",
+  "source": "../sources/media/dbv07.mp4",
+  "location": {
+    "series": "DB new design / motion demonstrations",
+    "source_page": 15,
+    "section": "Bewegungsmuster-14021478",
+    "source_url": "https://ecm-mediathek-cdn.deutschebahn.com/cdnenhancedecmvidhls/db306389/2880727/video_config.json",
+    "capture_date": "2026-11-05"
+  },
+  "slide_intent": "Choose acceleration deliberately because people read the start and stop of a movement as character.",
+  "strategic_value": "The primary curve’s energetic start and soft stop can give DB movement a consistent sense of decisiveness.",
+  "demonstration": "A red square travels horizontally beside a red easing graph with a moving position marker.",
+  "category": "Motion",
+  "practical_value": "Use the primary curve for the leading movement and compare its progress with the plotted curve.",
+  "content_islands": [
+    {
+      "name": "Motion specimen",
+      "spec": "Place the red square and faded position samples on the left."
+    },
+    {
+      "name": "Curve diagram",
+      "spec": "Place the rising curve on the right and trace it with a circular marker."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A red square travels horizontally beside a red easing graph with a moving position marker.",
+    "Application": "The source provides a playable demonstration of this repeatable sequence: A red square travels horizontally beside a red easing graph with a moving position marker.",
+    "Intent": "Accompanying Motion Curves prose assigns the primary curve an energetic start and soft stop for decisiveness, and the secondary curve a supporting role that does not distract.",
+    "Constraint": "The source specifies cubic-bezier(0.25,0,0.35,1); start keyframe Out 25%, end keyframe In 65%."
+  },
+  "motion": "../sources/media/dbv07.mp4",
+  "ingredient": {
+    "name": "Primary motion curve",
+    "role": "Lead the motion with an energetic start and soft stop.",
+    "application": "Use cubic-bezier(0.25,0,0.35,1); start keyframe Out 25%, end keyframe In 65%.",
+    "scope": "Official DB new-design web guidance, undated live edition captured 2026-11-05; applies to the demonstrated motion context. Primary curve is the usual leading curve; the separate Ken-Burns examples specify linear easing."
+  }
+}

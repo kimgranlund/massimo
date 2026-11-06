@@ -1,0 +1,34 @@
+{
+  "id": "C447",
+  "title": "Event lanyard and badge",
+  "image": "c447.png",
+  "source": "../sources/c447.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 / 2023 masterbrand case study",
+    "item": 47,
+    "extent": "Full published artwork"
+  },
+  "slide_intent": "Keep a person’s identity legible within a recognizable event credential, because the badge must help people identify one another.",
+  "strategic_value": "The green strap and badge can connect an individual attendee to Channel 4 without competing with their name.",
+  "demonstration": "A green lanyard clip holds a transparent badge against black clothing; the insert places a 4 above the name Orla McCool and smaller National Comedy Awards 2023 text.",
+  "category": "Application",
+  "practical_value": "Choose a clear hierarchy between brand, attendee name and event details on a badge.",
+  "content_islands": [
+    {
+      "name": "Lanyard attachment",
+      "spec": "Show the green strap and clip joining the clear badge holder."
+    },
+    {
+      "name": "Badge hierarchy",
+      "spec": "Position the small 4 above the large two-line name and smaller event information on the green insert."
+    },
+    {
+      "name": "Worn context",
+      "spec": "Keep the black clothing visible to demonstrate contrast and practical placement."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A green lanyard clip holds a transparent badge against black clothing; the insert places a 4 above the name Orla McCool and smaller National Comedy Awards 2023 text.",
+    "Application": "The source demonstrates this treatment in a worn event credential."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "id": "DW117",
+  "title": "Illustration / Characters / Introduction",
+  "image": "dw117.png",
+  "source": "../sources/pages/illustration-characters.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/illustration/characters",
+    "section": "Characters",
+    "item": 117,
+    "order": 1170
+  },
+  "slide_intent": "Use simple parts to create distinct personalities because a consistent construction system still needs human variety.",
+  "strategic_value": "A shared drawing method can make different Duolingo characters recognizable as members of one cast.",
+  "demonstration": "Two differently styled characters accompany the introductory text on purple.",
+  "category": "Imagery",
+  "practical_value": "Evaluate both construction consistency and individual character when expanding a cast.",
+  "content_islands": [
+    {
+      "name": "Construction premise",
+      "spec": "Keep the title and explanation of combining simple parts at left."
+    },
+    {
+      "name": "Contrasting characters",
+      "spec": "Place the long-haired character beside the blue-haired smiling character at right, retaining their different expressions and gestures."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text explains that simple parts should combine into characters that feel greater than their components.",
+    "Expression": "The two figures share flat rounded geometry while differing in hair, expression and pose."
+  }
+}

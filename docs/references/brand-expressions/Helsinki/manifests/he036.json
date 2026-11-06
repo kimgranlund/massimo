@@ -1,0 +1,27 @@
+{
+  "id": "HE036",
+  "title": "Download ready-to-use photographs",
+  "image": "he036.png",
+  "source": "../sources/visual-storytelling.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Download ready-to-use photographs",
+    "order": 48,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/visual-storytelling#download-ready-to-use-photographs",
+    "original_html": "../sources/visual-storytelling.html"
+  },
+  "slide_intent": "Provide a clear route to approved imagery so designers can begin with materials intended for city use.",
+  "strategic_value": "A shared download destination can reduce fragmented sourcing of Helsinki photographs.",
+  "demonstration": "This expanded webpage section contains a short direction to the Download elements section and its linked label.",
+  "category": "Imagery",
+  "practical_value": "Follow the collection’s official image-download route before selecting a photograph.",
+  "content_islands": [
+    {
+      "name": "Download direction",
+      "spec": "Place the sentence and link beneath the section heading."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The source directs readers to Download elements for image materials and download information."
+  }
+}

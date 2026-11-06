@@ -1,0 +1,38 @@
+{
+  "id": "BK090",
+  "title": "Square Format Layouts",
+  "image": "bk090.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 90
+  },
+  "slide_intent": "Allow optical centering without losing hierarchy because square social formats often need a different balance from posters.",
+  "strategic_value": "The matched square examples can keep Burger King social posts consistent across short and longer copy.",
+  "demonstration": "Two cream square layouts center headline, subhead and bottom logo while grid lines show margins and different text widths.",
+  "category": "Layout",
+  "practical_value": "Adjust headline and subhead sizes for copy length and move vertical margins to achieve optical centering.",
+  "content_islands": [
+    {
+      "name": "Square-format guidance",
+      "spec": "Place the Instagram-specific explanation at left."
+    },
+    {
+      "name": "Short-copy square",
+      "spec": "Center the shorter headline, subhead and logo in the first grid."
+    },
+    {
+      "name": "Longer-copy square",
+      "spec": "Use a smaller wider headline in the adjacent grid, preserving proportion and alignment."
+    }
+  ],
+  "ingredient": {
+    "name": "Square social composition",
+    "role": "Keep varied copy balanced within a square.",
+    "application": "Use the established grid; center type if needed, adjust size to copy length and adjust vertical margins for optical centering.",
+    "scope": "Historical 2020 partner guidelines, PDF produced January 2021. Guidance is explicitly for Instagram posts; centered type is permitted, not compulsory."
+  },
+  "reference_purposes": {
+    "Application": "Two Instagram-style squares compare shorter and longer centered copy.",
+    "Constraint": "The text permits centered type when needed, requires proportionate headline/subhead sizing and calls for vertical-margin adjustment for optical centering."
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "HI04",
+  "title": "Original collages / Maritime seasons and food",
+  "image": "hi04.png",
+  "source": "../sources/illustration-examples.pdf",
+  "location": {
+    "page": 4,
+    "series": "Helsinki illustration examples — PDF derived from the official PowerPoint deck with LibreOffice",
+    "order": 194
+  },
+  "slide_intent": "Compare seasonal and cultural subjects so the illustration family can express variety without changing its visual grammar.",
+  "strategic_value": "Summer, winter and food scenes can extend Helsinki’s familiar character across different messages.",
+  "demonstration": "Three portrait sheets combine maritime activities, winter scenes and food culture on a shared pale-blue surround.",
+  "category": "Imagery",
+  "practical_value": "Select a complete collage by its subject and season while retaining the series’ common drawing style.",
+  "content_islands": [
+    {
+      "name": "Season and food comparison",
+      "spec": "Place the three original sheets in a single row with matching scale and margins."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The row compares boats and waterside activity, winter recreation, and food scenes through related linework and color."
+  }
+}

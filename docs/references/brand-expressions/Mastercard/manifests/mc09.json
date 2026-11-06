@@ -1,0 +1,29 @@
+{
+  "id": "MC09",
+  "title": "Corporate website on tablet",
+  "image": "mc09.png",
+  "source": "../sources/mc09.jpg",
+  "location": {
+    "series": "Pentagram / Mastercard / 2016 identity case study",
+    "item": 9,
+    "extent": "Full published artwork"
+  },
+  "slide_intent": "Show the identity organizing service content because brand recognition must support useful navigation and messages.",
+  "strategic_value": "A consistent relationship among imagery, headlines and color can make a varied website feel coherent.",
+  "demonstration": "A cropped tablet shows a payment headline, photographic content tiles and an orange bottom panel.",
+  "category": "Application",
+  "practical_value": "Inspect how the identity supports a hierarchy of website content.",
+  "content_islands": [
+    {
+      "name": "Device",
+      "spec": "Center the black tablet on the pale ground with its lower edge cropped."
+    },
+    {
+      "name": "Page hierarchy",
+      "spec": "Retain the dark navigation, large introductory message, image tiles and orange action area."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The source caption identifies this tablet mockup as the website."
+  }
+}

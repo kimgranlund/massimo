@@ -1,0 +1,44 @@
+{
+  "id": "GE03",
+  "title": "The Elements / Logotype, Dots and G",
+  "image": "ge03.png",
+  "source": "../sources/ge03.gif",
+  "location": {
+    "series": "Evolving the Google Identity / 2015",
+    "item": 3,
+    "extent": "whole source",
+    "poster_seconds": 0.765,
+    "duration_seconds": 1.53
+  },
+  "slide_intent": "Give one identity several forms so it can remain recognizable when space and interaction needs change.",
+  "strategic_value": "The same four colors can connect Google’s name, compact icon and responsive assistant behavior.",
+  "demonstration": "A short looping animation aligns the full wordmark, four vertically shifting colored dots and the compact multicolored G on white.",
+  "category": "Brand",
+  "practical_value": "Choose between naming the brand, indicating an interaction and fitting a small space by comparing the three forms together.",
+  "content_islands": [
+    {
+      "name": "Full name",
+      "spec": "Place the logotype at left."
+    },
+    {
+      "name": "Responsive dots",
+      "spec": "Center four animated colored dots between the fixed marks."
+    },
+    {
+      "name": "Compact identifier",
+      "spec": "Place the multicolored G at right at a comparable optical scale."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The article explains that the dots serve interactive and transitional moments while the G works in small contexts.",
+    "Expression": "The three aligned forms share color but differ in structure and movement.",
+    "Application": "The accompanying captions assign a different use to each form."
+  },
+  "ingredient": {
+    "name": "Three identity states",
+    "role": "Maintain recognition across a name, an interaction and a small icon.",
+    "application": "Use the logotype for the full name, dots for interactive or transitional moments, and G for compact contexts as described by the article.",
+    "scope": "The 2015 identity family; the saved MP4 is a playback conversion of the original short GIF."
+  },
+  "motion": "../sources/ge03.mp4"
+}

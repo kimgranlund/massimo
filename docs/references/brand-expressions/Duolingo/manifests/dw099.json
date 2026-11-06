@@ -1,0 +1,38 @@
+{
+  "id": "DW099",
+  "title": "Writing / Glossary / Words to use",
+  "image": "dw099.png",
+  "source": "../sources/pages/writing-glossary.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/glossary",
+    "section": "Words to use",
+    "item": 99,
+    "order": 990
+  },
+  "slide_intent": "Choose one form for recurring words so readers are not distracted by inconsistent spelling and grammatical use.",
+  "strategic_value": "A practical lookup of common terms can help Duolingo align many writers without requiring case-by-case debate.",
+  "demonstration": "Six groups compare preferred forms with alternatives for okay, website, internet, login-related wording and anytime.",
+  "category": "Voice",
+  "practical_value": "Check the word’s grammatical role before choosing log in or login, and follow the listed spellings for other recurring terms.",
+  "content_islands": [
+    {
+      "name": "Guidance column",
+      "spec": "Place Words to Use and the explanation of spelling choices at left."
+    },
+    {
+      "name": "Worked examples",
+      "spec": "Stack six comparison groups at right with checked preferred wording, sample sentences and rejected forms underneath."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "Examples show preferred forms in complete lines of copy.",
+    "Constraint": "The guide prefers okay, website, lowercase internet and anytime; it separates log in/log out/sign up as verbs from login as a noun or adjective."
+  },
+  "ingredient": {
+    "name": "Preferred word forms",
+    "role": "Keep familiar vocabulary predictable.",
+    "application": "Use the displayed spellings; distinguish verb phrases log in, log out and sign up from the noun or adjective login.",
+    "scope": "Historical official guidelines from the 2024–2025 archived snapshot; this records the displayed guidance, not current Duolingo product behavior."
+  }
+}

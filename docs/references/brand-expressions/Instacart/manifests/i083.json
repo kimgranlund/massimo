@@ -1,0 +1,25 @@
+{
+  "id": "I083",
+  "title": "Motion",
+  "image": "i083.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 83,
+    "printed_page": 83
+  },
+  "slide_intent": "Signal the start of the motion chapter so readers can locate where the identity’s behavior is addressed.",
+  "strategic_value": "A strong chapter break can make motion as easy to find in the brand book as color or typography.",
+  "demonstration": "The section opens with a single cream Motion title on a dark green field and small running furniture.",
+  "category": "Motion",
+  "practical_value": "Use the page as the entry point to the principles and video grid that follow.",
+  "content_islands": [
+    {
+      "name": "Running header",
+      "spec": "Place the small book identifier, version and folio at the top."
+    },
+    {
+      "name": "Section title",
+      "spec": "Give Motion the largest type, align it left, and leave the surrounding dark field open."
+    }
+  ]
+}

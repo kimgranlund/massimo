@@ -1,0 +1,29 @@
+{
+  "id": "IG33",
+  "title": "Experiential / goal and perimeter signs",
+  "image": "ig33.png",
+  "source": "../sources/ig33.jpg",
+  "location": {
+    "series": "Elvis Dinh / Instagram brand design system / project year 2022",
+    "item": 33,
+    "extent": "whole source artwork"
+  },
+  "slide_intent": "Coordinate event partners, venue details and color so operational elements belong to the same setting.",
+  "strategic_value": "Shared hues and adjacent marks can connect Instagram to the event without erasing partner identification.",
+  "demonstration": "A goal sits before a color-blocked perimeter wall with partner and Instagram marks, with pink steps through white seating above.",
+  "category": "Application",
+  "practical_value": "Inspect fixtures and perimeter signs alongside the main surface when assessing consistency.",
+  "content_islands": [
+    {
+      "name": "Goal and perimeter",
+      "spec": "Keep the goal, brush-lettered slogan and color blocks in one view."
+    },
+    {
+      "name": "Seats and signatures",
+      "spec": "Retain the white seating, pink stair aisle and paired identifiers above the wall."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The photograph documents how the event identity reaches barriers, signage and seating accents."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "LH46",
+  "title": "On-board information",
+  "image": "lh46.png",
+  "source": "../sources/lh46.jpg",
+  "location": {
+    "series": "HvD Fonts / Lufthansa 2018",
+    "item": 25,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Keep identity legible at a personal viewing distance because a traveler must read information in a confined seat environment.",
+  "strategic_value": "A recognizable blue interface can carry Lufthansa’s identity into the passenger’s immediate experience.",
+  "demonstration": "A seat-back screen shows Lufthansa identification, a city image, seat 28G and device symbols.",
+  "category": "Application",
+  "practical_value": "Check hierarchy between personal identification and supporting interface information.",
+  "content_islands": [
+    {
+      "name": "Screen",
+      "spec": "Center the seat-back display with its large seat number."
+    },
+    {
+      "name": "Cabin context",
+      "spec": "Retain the surrounding seats to show the viewing environment."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "A seat-back screen shows Lufthansa identification, a city image, seat 28G and device symbols."
+  }
+}

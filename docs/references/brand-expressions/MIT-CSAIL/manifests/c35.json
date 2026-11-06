@@ -1,0 +1,28 @@
+{
+  "id": "C35",
+  "title": "Folder",
+  "image": "c35.png",
+  "source": "../csail-branding-short-guide.pdf",
+  "location": {
+    "page": 35
+  },
+  "slide_intent": "Teach how a pocket folder can introduce a research story on the outside and organize supporting material inside.",
+  "strategic_value": "CSAIL can make a packet of separate documents read as a laboratory publication through repeated warm tones, research imagery and the mark.",
+  "demonstration": "A slim portrait cover overlaps an opened folder. A strip of tinted photographs runs down the cover; interior panels combine text, image fields and a colored pocket.",
+  "category": "Application",
+  "practical_value": "Keep the exterior readable at a glance and move denser mission or research information into the interior.",
+  "content_islands": [
+    {
+      "name": "Format explanation",
+      "spec": "Place the folder purpose and contact guidance in the left column."
+    },
+    {
+      "name": "Closed cover",
+      "spec": "Tilt the closed cover over the left part of the open spread. Put the mark in the white area beside a vertical image strip."
+    },
+    {
+      "name": "Open interior",
+      "spec": "Show both inside panels and the pocket at the foot, using tinted imagery and separate text blocks."
+    }
+  ]
+}

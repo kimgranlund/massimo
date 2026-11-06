@@ -1,0 +1,30 @@
+{
+  "id": "BK021",
+  "title": "Verbal Identity / Flexible guidance",
+  "image": "bk021.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 21
+  },
+  "slide_intent": "Keep personality stable while adapting tone so language suits the situation and audience.",
+  "strategic_value": "Allowing degrees of wit and directness can help Burger King remain recognizable without sounding mechanical.",
+  "demonstration": "One large text block explains that the voice guidance must flex across different situations.",
+  "category": "Voice",
+  "practical_value": "Adjust the intensity of voice characteristics rather than applying every trait equally everywhere.",
+  "content_islands": [
+    {
+      "name": "Flexibility statement",
+      "spec": "Place the large paragraph in the right column, with the section label separated at left."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source explains that situations call for different degrees of wit or directness.",
+    "Application": "It directs readers to flex the voice rather than treat the guide as a long fixed rule list."
+  },
+  "ingredient": {
+    "name": "Voice flexibility",
+    "role": "Keep language appropriate to context.",
+    "application": "Vary wit and directness for different situations while remaining authentically BK.",
+    "scope": "Verbal guidance in this edition; this permission does not override explicit legal or trademark limits."
+  }
+}

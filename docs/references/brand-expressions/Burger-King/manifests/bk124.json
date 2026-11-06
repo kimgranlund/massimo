@@ -1,0 +1,39 @@
+{
+  "id": "BK124",
+  "title": "Legal Standards / Guidelines for Trademark Usage",
+  "image": "bk124.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 124
+  },
+  "slide_intent": "Treat a trademark as a distinct modifier rather than an interchangeable product name so readers can separate brand identity from the generic item.",
+  "strategic_value": "Consistent naming examples can help Burger King partners maintain recognizable wording across written materials.",
+  "demonstration": "Two content columns present three numbered topics: distinguishing marks, pairing marks with generic names, and copy specifications, with correct and incorrect examples.",
+  "category": "Voice",
+  "practical_value": "Use the paired examples to check capitalization, generic nouns and line breaks while retaining the guide’s historical legal-review context.",
+  "content_islands": [
+    {
+      "name": "Section label",
+      "spec": "Place the compact trademark-usage heading at left."
+    },
+    {
+      "name": "Distinction and generic nouns",
+      "spec": "Stack numbered topics one and two in the central column with correct/incorrect copy examples."
+    },
+    {
+      "name": "Copy specifications",
+      "spec": "Place topic three at right, including trade-name capitalization, notation and the prohibition on splitting marks across lines."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text explains that the generic noun should keep the trademark from becoming the generic name.",
+    "Application": "Correct and incorrect examples compare marked names, generic nouns and company trade names.",
+    "Constraint": "The historical source requires marks to be distinguished, generic nouns after the first or most prominent use per page, and no line break within the company’s trademarks."
+  },
+  "ingredient": {
+    "name": "Trademark wording in copy",
+    "role": "Distinguish the branded name from the product or company description.",
+    "application": "Follow the source’s distinction and generic-noun examples; keep BURGER KING together on one line and distinguish trademarks from company trade names.",
+    "scope": "Historical legal-copy guidance. The page’s notation wording is not a substitute for its earlier country-specific legal instructions."
+  }
+}

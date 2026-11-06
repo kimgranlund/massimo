@@ -1,0 +1,60 @@
+{
+  "id": "IB012",
+  "title": "Illustration / Overview",
+  "image": "ib012.png",
+  "source": "../sources/illustration-overview.txt",
+  "location": {
+    "series": "IBM Design Language / public web guidelines",
+    "item": 12,
+    "extent": "Complete webpage content-area capture; interactive elements retain their captured state",
+    "url": "https://www.ibm.com/design/language/illustration/overview/",
+    "order": 12000
+  },
+  "slide_intent": "Choose an illustration style that serves the idea, because attractive imagery must still help people understand the content.",
+  "strategic_value": "Shared principles across line, flat and isometric styles can give IBM expressive range while keeping a recognizable aesthetic.",
+  "demonstration": "The page pairs an illustration-film state with five principles and three illustrated style sections.",
+  "category": "Imagery",
+  "practical_value": "Select line, flat or isometric treatment according to whether precision, graphic impact or spatial explanation best serves the subject.",
+  "content_islands": [
+    {
+      "name": "Purpose and film",
+      "spec": "Open with the Overview heading, explanation of illustration’s job and the captured purple face film state."
+    },
+    {
+      "name": "Five principles",
+      "spec": "Stack Engineered, Clear, Nimble, Diverse and Delightful beside their explanatory text."
+    },
+    {
+      "name": "Line specimens",
+      "spec": "Introduce precise linework with a gradient spiral and smaller circuit and finger examples."
+    },
+    {
+      "name": "Flat specimens",
+      "spec": "Follow with a bold circle composition and eye and finger graphics."
+    },
+    {
+      "name": "Isometric specimens",
+      "spec": "Close with spatial technology scenes on dark, teal and light backgrounds."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The introduction explicitly says illustrations should support content and help users understand difficult concepts, products or services.",
+    "Expression": "Line, flat and isometric specimens demonstrate three distinct but related IBM treatments.",
+    "Application": "The style descriptions identify precision, bold graphic impact and spatial explanation as reasons to choose each approach.",
+    "Constraint": "The Clear principle says to retain essential, non-decorative elements; the Diverse principle requires considering gender, cultural and geographical representation."
+  },
+  "motion_assets": [
+    {
+      "title": "Illustration introduction",
+      "file": "../sources/media/89b7bcc4d082.mp4",
+      "poster": "../sources/media/89b7bcc4d082-poster.png",
+      "duration_seconds": 86.21,
+      "source_url": "https://www.ibm.com/design/language/static/425895600-8428c08a877e26b6d11d1f95e30f0995.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "DB1103",
+  "title": "Icons / transport mark and navigation",
+  "image": "db1103.png",
+  "source": "../sources/page-11.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 11,
+    "section": 3,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Icons"
+  },
+  "slide_intent": "Test symbols at both prominent and compact sizes so recognition survives changes of context.",
+  "strategic_value": "A consistent DB line language can connect a large transport symbol with small navigation controls.",
+  "demonstration": "A large frontal transit icon sits beside a rounded four-item navigation bar with icon labels.",
+  "category": "Application",
+  "practical_value": "Compare the visual weight of a standalone transport symbol and icons paired with text.",
+  "content_islands": [
+    {
+      "name": "Transport specimen",
+      "spec": "Place the enlarged frontal vehicle symbol on a light field."
+    },
+    {
+      "name": "Navigation bar",
+      "spec": "Arrange Buchen, Umgebung, Reisen and Profil controls horizontally at right."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The right specimen shows icons as labeled navigation controls.",
+    "Expression": "The large vehicle and compact controls use the same dark outline language."
+  }
+}

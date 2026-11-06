@@ -1,0 +1,24 @@
+{
+  "id": "F65",
+  "title": "Dos & don’ts",
+  "image": "f65.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 65
+  },
+  "slide_intent": "Teach reviewers to judge an illustration in context. A graphic can clarify a message, obscure a face or change how a photographed subject is understood.",
+  "strategic_value": "Frontline AIDS can keep its illustrations expressive while respecting the people and issues depicted.",
+  "demonstration": "Two aligned rows of five small designs pair accepted and rejected treatments. The captions address hero scale, stickers, overlays, hand-drawn marks and use with data.",
+  "category": "Application",
+  "practical_value": "Compare the treatment with the example in the same column. Check that the message remains readable, faces remain visible and the relationship between graphic and subject is appropriate.",
+  "content_islands": [
+    {
+      "name": "Review guidance",
+      "spec": "Introduce the interaction of illustration, photography and type in the left text column."
+    },
+    {
+      "name": "Matched treatment pairs",
+      "spec": "Align each positive example over a related negative example. Keep the check or cross and the explanatory caption with its own image."
+    }
+  ]
+}

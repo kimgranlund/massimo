@@ -1,0 +1,28 @@
+{
+  "id": "C03",
+  "title": "Guidelines",
+  "image": "c03.png",
+  "source": "../csail-branding-short-guide.pdf",
+  "location": {
+    "page": 3
+  },
+  "slide_intent": "Help readers find a particular design decision without reading the guide in sequence. Grouping ideas separately from templates makes the next page easier to choose.",
+  "strategic_value": "The lab can serve both readers learning its identity and staff looking for a ready-to-use format through one index.",
+  "demonstration": "Two columns group numbered page entries under Our Branding, Basic Elements, Templates and Contact Us. An angular rust tab carries the vertical Guidelines label.",
+  "category": "Layout",
+  "practical_value": "Use the index to find a rule, such as minimum logo size, or a deliverable, such as a research poster.",
+  "content_islands": [
+    {
+      "name": "Topic index",
+      "spec": "List page numbers and names down two columns. Keep each number aligned with its entry and use section headings to distinguish the groups."
+    },
+    {
+      "name": "Section tab",
+      "spec": "Set Guidelines vertically in white on an angled rust-colored tab entering from the right edge."
+    },
+    {
+      "name": "Publication footer",
+      "spec": "Align the guide title, descriptor and page number along the bottom."
+    }
+  ]
+}

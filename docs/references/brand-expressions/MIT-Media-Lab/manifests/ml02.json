@@ -1,0 +1,35 @@
+{
+  "id": "ML02",
+  "title": "Reversed institutional signature",
+  "image": "ml02.png",
+  "source": "../sources/ml02.jpg",
+  "location": {
+    "series": "Pentagram / MIT Media Lab / 2014 identity",
+    "item": 2,
+    "extent": "Published lightbox artwork"
+  },
+  "slide_intent": "Preserve recognition on a dark field because an identity must survive changes in background.",
+  "strategic_value": "A white version can extend the lab signature to dark screens and objects.",
+  "demonstration": "The lab symbol and stacked name appear in white against a black rectangle.",
+  "category": "Color",
+  "practical_value": "Compare positive and reversed signatures without treating this example as a formal contrast standard.",
+  "content_islands": [
+    {
+      "name": "Black field",
+      "spec": "A solid dark background isolates the signature."
+    },
+    {
+      "name": "White signature",
+      "spec": "Symbol and name retain their arrangement in reverse."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The lab symbol and stacked name appear in white against a black rectangle."
+  },
+  "ingredient": {
+    "name": "Reversed institutional signature",
+    "role": "Preserve recognition on a dark field because an identity must survive changes in background.",
+    "application": "Compare positive and reversed signatures without treating this example as a formal contrast standard.",
+    "scope": "Observed in this historical case-study artwork; not a mandatory usage rule or a current brand standard."
+  }
+}

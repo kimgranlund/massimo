@@ -1,0 +1,41 @@
+{
+  "id": "DBV08",
+  "title": "Curve-Secondary",
+  "image": "dbv08.png",
+  "source": "../sources/media/dbv08.mp4",
+  "location": {
+    "series": "DB new design / motion demonstrations",
+    "source_page": 15,
+    "section": "Bewegungsmuster-14021478",
+    "source_url": "https://ecm-mediathek-cdn.deutschebahn.com/cdnenhancedecmvidhls/db306390/2880737/video_config.json",
+    "capture_date": "2026-11-05"
+  },
+  "slide_intent": "Give supporting movements a quieter arrival so they do not compete with the leading action.",
+  "strategic_value": "The secondary ease-out can let DB’s concluding details settle without restarting the visual emphasis.",
+  "demonstration": "A red square traverses the left field while a marker follows a curve that rises early and flattens near the end.",
+  "category": "Motion",
+  "practical_value": "Choose the supporting curve for a subsequent movement such as the logo in an ending.",
+  "content_islands": [
+    {
+      "name": "Movement specimen",
+      "spec": "Show the square’s horizontal progress and repeated position samples."
+    },
+    {
+      "name": "Supporting curve",
+      "spec": "Trace the steep initial rise and flatter final approach on the right."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A red square traverses the left field while a marker follows a curve that rises early and flattens near the end.",
+    "Application": "The source provides a playable demonstration of this repeatable sequence: A red square traverses the left field while a marker follows a curve that rises early and flattens near the end.",
+    "Intent": "Accompanying Motion Curves prose assigns the primary curve an energetic start and soft stop for decisiveness, and the secondary curve a supporting role that does not distract.",
+    "Constraint": "The source specifies cubic-bezier(0,0,0.2,1); start keyframe Out 0%, end keyframe In 80%."
+  },
+  "motion": "../sources/media/dbv08.mp4",
+  "ingredient": {
+    "name": "Supporting motion curve",
+    "role": "Settle a subsequent movement without competing with the leading action.",
+    "application": "Use cubic-bezier(0,0,0.2,1); start keyframe Out 0%, end keyframe In 80%.",
+    "scope": "Official DB new-design web guidance, undated live edition captured 2026-11-05; applies to the demonstrated motion context.For subsequent movements, such as the logo in an ending; not a replacement for the primary curve."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "id": "DW050",
+  "title": "Writing / Brand Narrative / Brand personality",
+  "image": "dw050.png",
+  "source": "../sources/pages/writing-brand-narrative.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/brand-narrative",
+    "section": "Brand personality",
+    "item": 50,
+    "order": 500
+  },
+  "slide_intent": "Define personality through behavior so abstract traits can guide words that people actually encounter.",
+  "strategic_value": "Five explained traits can help Duolingo sound welcoming and energetic without relying on a single catchphrase.",
+  "demonstration": "The right panel pairs Inspiring, Inclusive, Can-do, Curious and Quirky with explanatory paragraphs.",
+  "category": "Brand",
+  "practical_value": "Use the behavioral descriptions to evaluate whether a message conveys the intended personality.",
+  "content_islands": [
+    {
+      "name": "Guidance column",
+      "spec": "Place the Brand Personality title and desired-perception caption at left."
+    },
+    {
+      "name": "Worked examples",
+      "spec": "Arrange five labeled rows at right, keeping each trait beside its explanation."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The caption identifies the traits as how the brand wants to be perceived; the explanations connect inclusion and play to access and learning.",
+    "Application": "Each trait is paired with language describing how it should appear in communications."
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "id": "DW042",
+  "title": "Duolingo Plus / Clear space",
+  "image": "dw042.png",
+  "source": "../sources/pages/identity-brand-family.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/identity/brand-family",
+    "section": "Clear space",
+    "item": 42,
+    "order": 420
+  },
+  "slide_intent": "Protect a product signature from nearby content because recognition depends on separating the complete lockup from its surroundings.",
+  "strategic_value": "Clear space can keep the Duolingo name and Plus token readable as one identifier.",
+  "demonstration": "A Plus clearance diagram is beside a prohibition on placing graphics or text in the shown area.",
+  "category": "Geometry",
+  "practical_value": "Keep nearby objects outside the diagrammed Plus exclusion zone.",
+  "content_islands": [
+    {
+      "name": "Plus clearance",
+      "spec": "Retain the full product lockup and its marked boundary in the left panel."
+    },
+    {
+      "name": "Exclusion instruction",
+      "spec": "Place the heading and no-objects rule in the right column."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source says clear space allows the logotype to stand out.",
+    "Application": "The diagram shows the protected zone around the complete Plus signature.",
+    "Constraint": "Objects such as graphics or text cannot be placed in the shown area."
+  }
+}

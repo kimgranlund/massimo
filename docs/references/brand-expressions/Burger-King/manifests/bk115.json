@@ -1,0 +1,39 @@
+{
+  "id": "BK115",
+  "title": "Operational Icons on Color Backgrounds",
+  "image": "bk115.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 115
+  },
+  "slide_intent": "Adapt icon contrast to the packaging field while retaining meaningful exceptions so ingredient information stays distinguishable.",
+  "strategic_value": "White reversals with controlled cheese and spicy highlights can keep Burger King packaging readable and consistent across product colors.",
+  "demonstration": "An orange panel shows a labeled grid of white icons plus highlighted cheese and spicy variants; the left copy specifies reversal, exceptions and size limits.",
+  "category": "Color",
+  "practical_value": "Reverse operational icons to white on colored packaging and apply the separate cheese and spicy highlight rules.",
+  "content_islands": [
+    {
+      "name": "Background rules",
+      "spec": "Place the reversal rule, highlight exceptions and size interval in the left column."
+    },
+    {
+      "name": "White icon panel",
+      "spec": "Use an orange rectangle behind rows of captioned reversed ingredient and operational symbols."
+    },
+    {
+      "name": "Highlighted variants",
+      "spec": "Place orange-cheese, yellow-cheese and red-spicy icons on white circles at the lower right of the panel."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The orange panel shows white silhouettes with isolated colored highlights.",
+    "Application": "The copy defines the white reversal and distinguishes Whopper-with-cheese from other cheese-wrap treatments.",
+    "Constraint": "Cheese and spicy highlights use white circles; Whopper cheese is Flaming Orange, other colored wraps use Melty Yellow cheese, and spicy remains red. Icons stay 24–84 pt with consistent height."
+  },
+  "ingredient": {
+    "name": "Operational icon reversals",
+    "role": "Keep packaging symbols legible and distinguish special ingredient markers.",
+    "application": "On colored packaging reverse icons to white. Highlight cheese and spicy on white circles: Flaming Orange cheese for Whopper sandwiches with cheese, Melty Yellow cheese for other colored wraps, Fiery Red spicy on all colored packaging.",
+    "scope": "Historical packaging rule; preserve 24–84 pt consistent-height limits and the named product exceptions."
+  }
+}

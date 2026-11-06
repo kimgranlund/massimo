@@ -1,0 +1,24 @@
+{
+  "id": "I005",
+  "title": "Framework Intro",
+  "image": "i005.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 5
+  },
+  "slide_intent": "Explain why a framework comes first: the reader needs a principle for choosing how ingredients fit together.",
+  "strategic_value": "A recipe metaphor can make a design system feel native to Instacart’s subject.",
+  "demonstration": "A short line compares the framework to a recipe and occupies a small portion of a pale page.",
+  "category": "Brand",
+  "practical_value": "Decide how to describe the relationship between the organizing idea and the design elements before specifying either.",
+  "content_islands": [
+    {
+      "name": "Section heading",
+      "spec": "Set Framework Intro beneath the running labels."
+    },
+    {
+      "name": "Recipe statement",
+      "spec": "Place the two-line dark statement at the left, with generous open space around it."
+    }
+  ]
+}

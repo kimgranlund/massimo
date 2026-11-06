@@ -1,0 +1,29 @@
+{
+  "id": "BKE06",
+  "title": "Meal packaging suite",
+  "image": "bke06.png",
+  "source": "../sources/bke06.webp",
+  "location": {
+    "series": "JKR / Burger King identity case study",
+    "item": 6,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Coordinate different containers so customers recognize one service experience across separate objects.",
+  "strategic_value": "Repeated signatures and warm materials can connect Burger King’s bag, cup, fries and burger packaging.",
+  "demonstration": "A kraft bag, cup, fries carton and wrapped burger form a meal arrangement on an orange ground with a brown tray.",
+  "category": "Application",
+  "practical_value": "Compare signature scale and supporting graphics across a coordinated packaging set.",
+  "content_islands": [
+    {
+      "name": "Tall containers",
+      "spec": "Arrange the bag, fries and drink toward the rear."
+    },
+    {
+      "name": "Tray and wrap",
+      "spec": "Place the wrapped burger on the foreground tray with a patterned liner."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The logo and supporting graphics appear across a complete meal packaging arrangement."
+  }
+}

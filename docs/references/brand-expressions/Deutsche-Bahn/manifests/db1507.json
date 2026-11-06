@@ -1,0 +1,24 @@
+{
+  "id": "DB1507",
+  "title": "Download / Motion Toolkit",
+  "image": "db1507.png",
+  "source": "../sources/page-15.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 15,
+    "section": 7,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Motion-Branding"
+  },
+  "slide_intent": "Expose the availability of production resources so designers know whether implementation files accompany the guidance.",
+  "strategic_value": "A clear resource status can reduce confusion between displayed examples and downloadable tooling.",
+  "demonstration": "A Download heading states that the Motion Toolkit will become available at the end of September. No download link is visible in this captured section.",
+  "category": "Motion",
+  "practical_value": "Treat this as a source availability notice; do not assume the toolkit has been downloaded or that the unspecified September establishes an edition date.",
+  "content_islands": [
+    {
+      "name": "Resource notice",
+      "spec": "Keep the heading and single availability sentence together on white."
+    }
+  ],
+  "reference_purposes": {}
+}

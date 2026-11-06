@@ -1,0 +1,28 @@
+{
+  "id": "N54",
+  "title": "NASA Aircraft Paint and Marking Scheme",
+  "image": "n54.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 54
+  },
+  "slide_intent": "Show how aircraft structure and operational markings govern identity placement. A tail marking must remain readable across equipment, hinges and control surfaces.",
+  "strategic_value": "NASA can coordinate its fleet appearance with aircraft identification and safety markings through one paint and lettering specification.",
+  "demonstration": "Annotated Gulfstream II side and top views locate the white upper surfaces, blue stripe, gray underside and safety markings. Enlarged tail details show the red logotype above black numerals, flush left on one side and flush right on the other.",
+  "category": "Application",
+  "practical_value": "Start from an actual airframe drawing. Locate the stripe against windows, inspect tail edges and moving surfaces, and check both sides before sizing the mark or numerals.",
+  "content_islands": [
+    {
+      "name": "Paint and marking principles",
+      "spec": "Spread the guidance across the top row. State the relationship between the logotype and numeral sizes and the rules for the two sides of the fin."
+    },
+    {
+      "name": "Annotated aircraft views",
+      "spec": "Use the left field for a side view above a plan view. Draw leader lines to the stripe, window and exit markings, paint fields and registration."
+    },
+    {
+      "name": "Tail details",
+      "spec": "Enlarge the two tail faces at right and align the numerals under the red logotype. Show how reversing alignment changes the fit against the rudder and leading edge."
+    }
+  ]
+}

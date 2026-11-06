@@ -1,0 +1,26 @@
+{
+  "id": "DB0305",
+  "title": "Download / email signature",
+  "image": "db0305.png",
+  "source": "../sources/page-03.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 3,
+    "section": 5,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Teams-Hintergruende/E-Mail-Signatur"
+  },
+  "slide_intent": "Provide a reusable starting point so routine correspondence can retain the approved identity.",
+  "strategic_value": "A shared signature template can reduce divergence in DB’s everyday communications.",
+  "demonstration": "A Download heading, one instruction and a link offer the sleeper and email-signature template.",
+  "category": "Application",
+  "practical_value": "Start from the supplied signature materials instead of recreating the motif.",
+  "content_islands": [
+    {
+      "name": "Download instruction",
+      "spec": "Keep the short instruction and signature-download link together under the heading."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The source offers the sleeper and email-signature template for download."
+  }
+}

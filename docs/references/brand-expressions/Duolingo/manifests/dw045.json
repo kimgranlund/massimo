@@ -1,0 +1,39 @@
+{
+  "id": "DW045",
+  "title": "Sub-brands / Alternate layout",
+  "image": "dw045.png",
+  "source": "../sources/pages/identity-brand-family.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/identity/brand-family",
+    "section": "Alternate layout",
+    "item": 45,
+    "order": 450
+  },
+  "slide_intent": "Change emphasis for an unfamiliar audience because a sub-brand label is less useful when people do not recognize the parent name.",
+  "strategic_value": "A stronger core signature can help unfamiliar viewers connect a Duolingo initiative to its source.",
+  "demonstration": "An alternate lockup specimen accompanies a condition for use when the audience may not know Duolingo but a sub-brand or team must be represented.",
+  "category": "Layout",
+  "practical_value": "Choose the alternate arrangement when audience familiarity requires greater master-brand emphasis.",
+  "content_islands": [
+    {
+      "name": "Alternate lockup construction",
+      "spec": "Place the large wordmark above the smaller sub-brand name at left, preserving the alignment lines and X, Y and 1/2Y annotations."
+    },
+    {
+      "name": "Audience condition",
+      "spec": "Place the unfamiliar-audience rationale and conditional permission in the right column."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text explains that the alternate arrangement puts greater emphasis on core branding for unfamiliar audiences.",
+    "Application": "The alternate lockup is an option when a sub-brand or team still needs representation.",
+    "Constraint": "The stated condition concerns an audience that may be unfamiliar with Duolingo."
+  },
+  "ingredient": {
+    "name": "Alternate sub-brand layout",
+    "role": "Lead with the core identity when familiarity is low.",
+    "application": "Use the alternate lockup when representing a sub-brand or team to an audience that may not know Duolingo.",
+    "scope": "Historical archived guidelines. Historical conditional option, not a universal replacement for the generic construction."
+  }
+}

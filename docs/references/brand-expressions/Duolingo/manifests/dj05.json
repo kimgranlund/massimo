@@ -1,0 +1,37 @@
+{
+  "id": "DJ05",
+  "title": "Wordmark anatomy",
+  "image": "dj05.png",
+  "source": "../sources/johnson-banks/Duolingo_typography5-by-Johnson-Banks.jpg",
+  "location": {
+    "series": "Johnson Banks / Everyone can Duolingo / 2019",
+    "item": 5,
+    "extent": "Whole published artwork",
+    "order": 2005
+  },
+  "slide_intent": "Explain the specific choices inside a custom wordmark because distinctiveness depends on details that should survive refinement.",
+  "strategic_value": "Wing-inspired features, broad proportions and short ascenders can connect Duolingo’s lettering to its mascot while keeping the name readable.",
+  "demonstration": "Six annotations surround a large green wordmark, identifying the wing-inspired ascender, circular low-contrast forms, short ascenders, wing-tipped stem junction, wide proportions and eyebrow-inspired g.",
+  "category": "Typography",
+  "practical_value": "Use annotated anatomy to distinguish meaningful signature features from incidental drawing choices.",
+  "content_islands": [
+    {
+      "name": "Wordmark specimen",
+      "spec": "Stretch the green signature across the center of the pale field."
+    },
+    {
+      "name": "Feature annotations",
+      "spec": "Keep each handwritten note with its dotted circle or alignment marker above or below the relevant letters."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The printed annotations explicitly connect the d ascender and g flick to Duo; accompanying agency prose explains the aim of expressing the brand’s personality.",
+    "Expression": "The diagram identifies six characteristic formal choices in the signature."
+  },
+  "ingredient": {
+    "name": "Feather Bold and the Duolingo wordmark",
+    "role": "Carry mascot-derived character into typography.",
+    "application": "Preserve the identified wing features, broad proportions and rounded forms when assessing the signature.",
+    "scope": "Historical 2019 case-study evidence. These are observed design relationships, not a license to redraw the mark or a complete type-usage specification."
+  }
+}

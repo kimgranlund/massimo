@@ -1,0 +1,35 @@
+{
+  "id": "IT22",
+  "title": "ITVX / Living-room interface",
+  "image": "it22.png",
+  "source": "../sources/1782130934-bcfrtdrzrpelvfxz5r3rta-itv_15.webp",
+  "location": {
+    "series": "DixonBaxi / ITV case-study artwork series",
+    "item": 22,
+    "extent": "Whole source artwork",
+    "source_asset_index": 22
+  },
+  "slide_intent": "Check that brand recognition supports content discovery at television distance, because viewers need to recognize the same service across different situations.",
+  "strategic_value": "This approach can strengthen continuity between campaign recognition and service use.",
+  "demonstration": "A television in a domestic room displays a dark ITVX browsing interface with rows of programme artwork and navigation along the left.",
+  "category": "Application",
+  "practical_value": "Check that brand recognition supports content discovery at television distance.",
+  "content_islands": [
+    {
+      "name": "Room",
+      "spec": "Furniture establishes the viewing setting."
+    },
+    {
+      "name": "Screen",
+      "spec": "Programme tiles dominate the browsing surface."
+    },
+    {
+      "name": "Navigation",
+      "spec": "A compact left-hand rail separates service controls from content."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A television in a domestic room displays a dark ITVX browsing interface with rows of programme artwork and navigation along the left.",
+    "Application": "Check that brand recognition supports content discovery at television distance. Evidence is the shown application, not a mandatory layout rule."
+  }
+}

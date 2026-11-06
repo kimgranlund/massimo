@@ -1,0 +1,24 @@
+{
+  "id": "I073",
+  "title": "Layout",
+  "image": "i073.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 73
+  },
+  "slide_intent": "Signal the shift from individual identity elements to decisions about composing them. Readers can find the section where the elements begin to work together.",
+  "strategic_value": "Instacart can mark this transition using the same dark green chapter treatment introduced for the individual element families.",
+  "demonstration": "A large cream Layout title on dark green introduces the section, with small book identifiers along the top.",
+  "category": "Layout",
+  "practical_value": "Use this divider as the starting point for the composition rules that follow.",
+  "content_islands": [
+    {
+      "name": "Running identifiers",
+      "spec": "Place the book label, version and folio at the top with consistent alignment."
+    },
+    {
+      "name": "Section title",
+      "spec": "Set Layout large and left aligned on the dark green field. Leave the remainder of the divider open."
+    }
+  ]
+}

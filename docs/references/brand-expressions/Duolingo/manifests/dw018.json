@@ -1,0 +1,39 @@
+{
+  "id": "DW018",
+  "title": "Color / Secondary colors",
+  "image": "dw018.png",
+  "source": "../sources/pages/identity-color.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/identity/color",
+    "section": "Secondary colors",
+    "item": 18,
+    "order": 180
+  },
+  "slide_intent": "Give supporting colors a stated purpose because variety should add expression without obscuring the core identity.",
+  "strategic_value": "The six vibrant hues can let Duolingo create delight and variety in illustrations, interfaces and backgrounds.",
+  "demonstration": "Six named swatch cards supply values for Macaw, Cardinal, Bee, Fox, Beetle and Humpback beside a short use statement.",
+  "category": "Color",
+  "practical_value": "Use supporting hues for the source’s stated contexts rather than treating them as competing primary signatures.",
+  "content_islands": [
+    {
+      "name": "Secondary swatches",
+      "spec": "Arrange the six named color cards and their values in the left area."
+    },
+    {
+      "name": "Permitted uses",
+      "spec": "Place the heading and UI, illustration and full-bleed background guidance at right."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source describes secondary colors as adding splashes of delight.",
+    "Application": "The text allows secondary hues in UI, illustration and bold full-bleed backgrounds.",
+    "Expression": "Six bright swatches present the secondary palette."
+  },
+  "ingredient": {
+    "name": "Secondary palette",
+    "role": "Add expressive variety around the core identity.",
+    "application": "Use the supplied hues for UI and illustration accents; full-bleed backgrounds are also permitted.",
+    "scope": "Historical archived guidelines. Historical secondary palette. No fixed proportion or prohibition on large fields is stated here."
+  }
+}

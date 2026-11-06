@@ -1,0 +1,25 @@
+{
+  "id": "I098",
+  "title": "Social",
+  "image": "i098.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 98,
+    "printed_page": 104
+  },
+  "slide_intent": "Show why a post and a story need different reading structures. One includes a caption outside the image while the other must carry its message inside a vertical frame.",
+  "strategic_value": "Instacart can keep food imagery central across social formats and vary the type treatment to fit the pace of each format.",
+  "demonstration": "The post pairs a mocktail preparation image with a short seasonal headline and a caption. The taller story pairs a close image of pasta with oversized cropped lettering.",
+  "category": "Application",
+  "practical_value": "For a feed post, divide information between image and caption. For a story, put the expressive line directly in the image frame.",
+  "content_islands": [
+    {
+      "name": "Feed post",
+      "spec": "Center the social post on the left. Include the account header, image headline and caption beneath."
+    },
+    {
+      "name": "Story",
+      "spec": "Set the taller story on the right and crop the repeated lettering at the image edges. Keep the contrasting food moment visible between the words."
+    }
+  ]
+}

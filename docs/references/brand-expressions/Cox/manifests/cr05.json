@@ -1,0 +1,26 @@
+{
+  "id": "CR05",
+  "title": "Exterior signage",
+  "image": "cr05.png",
+  "source": "../sources/cr05.jpg",
+  "location": {
+    "series": "Cox Brand Collection — Lindsay Little / Periscope",
+    "item": 5,
+    "extent": "whole source image"
+  },
+  "slide_intent": "Adapt a message to building divisions so pedestrians can identify the store and read the promise at a distance.",
+  "strategic_value": "Color bands and large lifestyle images can make the Cox storefront recognizable along two elevations.",
+  "demonstration": "A corner storefront combines the mounted Cox sign with photo panels and colored message strips across its glazing.",
+  "category": "Application",
+  "practical_value": "Check the reading order around a corner and place key words where mullions will not interrupt them.",
+  "content_islands": [
+    {
+      "name": "Building identity",
+      "spec": "Retain the mounted Cox names on the solid walls flanking the glazed corner."
+    },
+    {
+      "name": "Window bands",
+      "spec": "Run photos and short message fragments across the upper windows, alternating turquoise and purple bands."
+    }
+  ]
+}

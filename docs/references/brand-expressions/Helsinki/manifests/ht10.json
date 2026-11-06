@@ -1,0 +1,28 @@
+{
+  "id": "HT10",
+  "title": "Helsinki Grotesk Pro / Medium and Medium Italic",
+  "image": "ht10.png",
+  "source": "../sources/helsinki-grotesk-pro-2025.pdf",
+  "location": {
+    "page": 10,
+    "order": 188
+  },
+  "slide_intent": "Judge medium and medium italic in real words and paragraphs so weight and slant can be chosen for both voice and reading.",
+  "strategic_value": "The medium and medium italic specimens can help Helsinki retain a consistent family while selecting an appropriate degree of emphasis.",
+  "demonstration": "A two-column specimen combines an English paragraph, large Me It 24171 and alternating upright and italic multilingual words.",
+  "category": "Typography",
+  "practical_value": "Compare the medium and medium italic cuts at display and paragraph scale before assigning them to a communication.",
+  "content_islands": [
+    {
+      "name": "Word specimens",
+      "spec": "Large words demonstrate the selected upright and italic cuts."
+    },
+    {
+      "name": "Paragraph and large forms",
+      "spec": "A smaller paragraph and oversized letter or numeral forms provide contrasting reading scales."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A two-column specimen combines an English paragraph, large Me It 24171 and alternating upright and italic multilingual words."
+  }
+}

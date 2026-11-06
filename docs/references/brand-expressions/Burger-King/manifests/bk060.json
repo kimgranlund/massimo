@@ -1,0 +1,34 @@
+{
+  "id": "BK060",
+  "title": "Your Way / Logo Lockup Clearspace",
+  "image": "bk060.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 60
+  },
+  "slide_intent": "Distinguish the gap within a lockup from clearance around it so the elements read as one signature without crowding other content.",
+  "strategic_value": "Separate repeatable measurements can keep Burger King’s closing signature balanced at different sizes.",
+  "demonstration": "A shaded diagram surrounds the logo-and-Your Way lockup, using W-height for external clearance and Burger G-width between the elements.",
+  "category": "Geometry",
+  "practical_value": "Use W-height around the combination and G-width inside it, measuring vertical clearance from the logo edges.",
+  "content_islands": [
+    {
+      "name": "Measurement explanation",
+      "spec": "Place the external and internal spacing definitions and edge note at left."
+    },
+    {
+      "name": "Lockup construction",
+      "spec": "Show the pale lockup inside a shaded diagram at right, with W units around the perimeter and G between logo and phrase."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The page defines external clearspace by Your Way W-height and the internal gap by Burger G-width.",
+    "Constraint": "Top and bottom clearspace are measured from the edges of the logo element."
+  },
+  "ingredient": {
+    "name": "Your Way lockup spacing",
+    "role": "Keep the promise and logo connected while separating the complete signature from other content.",
+    "application": "Reserve W-height around the lockup and G-width between logo and phrase; measure vertical clearance from the logo edges.",
+    "scope": "Historical guide; applies to the supplied Your Way logo lockup."
+  }
+}

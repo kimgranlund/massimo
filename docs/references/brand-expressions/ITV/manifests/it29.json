@@ -1,0 +1,35 @@
+{
+  "id": "IT29",
+  "title": "ITVX / Digital brand toolkit",
+  "image": "it29.png",
+  "source": "../sources/1782130961-l8cugover_ghdrbc8gq0cw-itv_18.webp",
+  "location": {
+    "series": "DixonBaxi / ITV case-study artwork series",
+    "item": 29,
+    "extent": "Whole source artwork",
+    "source_asset_index": 29
+  },
+  "slide_intent": "Organize reusable ingredients into discoverable groups in a digital reference, because viewers need to recognize the same service across different situations.",
+  "strategic_value": "This approach can strengthen continuity between campaign recognition and service use.",
+  "demonstration": "A laptop shows a dark toolkit overview with tiles for the ITVX logo, X, typography, overlapping colour circles, layouts and symbols.",
+  "category": "Application",
+  "practical_value": "Organize reusable ingredients into discoverable groups in a digital reference.",
+  "content_islands": [
+    {
+      "name": "Device",
+      "spec": "The laptop situates the toolkit in use."
+    },
+    {
+      "name": "Tile grid",
+      "spec": "Named visual ingredients appear as a compact matrix."
+    },
+    {
+      "name": "Brand cues",
+      "spec": "Dark ground and yellow marks identify the system being documented."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A laptop shows a dark toolkit overview with tiles for the ITVX logo, X, typography, overlapping colour circles, layouts and symbols.",
+    "Application": "Organize reusable ingredients into discoverable groups in a digital reference. Evidence is the shown application, not a mandatory layout rule."
+  }
+}

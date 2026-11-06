@@ -1,0 +1,35 @@
+{
+  "id": "FG08",
+  "title": "Mona Lisa / contributors",
+  "image": "fg08.png",
+  "source": "../sources/fg08.png",
+  "location": {
+    "series": "COLLINS / Figma / Nothing Great Is Made Alone case study",
+    "item": 8,
+    "section": "Gallery",
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Reveal the surrounding participants in a familiar creative story because a famous individual can obscure the wider network.",
+  "strategic_value": "Recasting an iconic painting with participant labels can extend Figma’s collaboration message to people outside digital design.",
+  "demonstration": "A framed black-and-white Mona Lisa is surrounded by colored roles, editing tools and cyan control marks.",
+  "category": "Imagery",
+  "practical_value": "Show a familiar cultural object as a shared process through labels and editing cues.",
+  "content_islands": [
+    {
+      "name": "Portrait",
+      "spec": "Center the outlined painting inside a black outer border on gray."
+    },
+    {
+      "name": "Contributors",
+      "spec": "Distribute five labels around the portrait and pair each with a colored tool or pointer."
+    },
+    {
+      "name": "Editing marks",
+      "spec": "Attach cyan nodes and paths to the mouth and shoulder rather than depicting a finished untouched image."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The familiar portrait combines monochrome linework with colored labels and editing tools.",
+    "Intent": "The accompanying narrative says the campaign debunks familiar stories of isolated genius."
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "id": "DB1504",
+  "title": "Bewegungsmuster",
+  "image": "db1504.png",
+  "source": "../sources/page-15.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 15,
+    "section": 4,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Motion-Branding"
+  },
+  "slide_intent": "Give motion a consistent grammar because predictable direction and rhythm help viewers follow change.",
+  "strategic_value": "A shared set of patterns and easing curves can connect DB campaigns and small interface details.",
+  "demonstration": "Three illustrated patterns precede primary and secondary curve specifications and one-color versus two-color area behaviors. Video embeds show consent placeholders in this source capture; each film is separately available offline.",
+  "category": "Motion",
+  "practical_value": "Choose the primary curve for leading motion and the secondary curve for subsequent motion; choose a simple or dynamic area transition for the communication context.",
+  "content_islands": [
+    {
+      "name": "Patterns",
+      "spec": "Read the three columns from A-to-B through step-by-step to continuous movement."
+    },
+    {
+      "name": "Curves",
+      "spec": "Keep the two curve descriptions, numeric Bézier values and influence percentages together."
+    },
+    {
+      "name": "Area behaviors",
+      "spec": "Compare simple one-color and dynamic two-color movements, each with horizontal and vertical examples."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source connects clear axes and simple movement with room for content and reduced distraction.",
+    "Application": "The primary curve is (0.25,0,0.35,1); the supporting ease-out is (0,0,0.2,1). The source distinguishes leading from subsequent motion.",
+    "Constraint": "The page says animation never becomes complicated or distracts from the content."
+  },
+  "ingredient": {
+    "name": "Bewegungsmuster",
+    "role": "Give motion a consistent grammar because predictable direction and rhythm help viewers follow change.",
+    "application": "Choose the primary curve for leading motion and the secondary curve for subsequent motion; choose a simple or dynamic area transition for the communication context.",
+    "scope": "Official DB new-design website captured 2026-11-05; edition undated. Instructions are local to this motion section. Source caption inconsistencies are documented separately."
+  }
+}

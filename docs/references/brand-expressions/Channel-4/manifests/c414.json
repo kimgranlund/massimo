@@ -1,0 +1,36 @@
+{
+  "id": "C414",
+  "title": "4-leading category lockups",
+  "image": "c414.png",
+  "source": "../sources/c414.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 masterbrand / 2023",
+    "item": 14,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Use a consistent leading sign to make category names read as related destinations.",
+  "strategic_value": "The repeated green 4 can let Channel 4 expand content labels while keeping the parent identity visible.",
+  "demonstration": "A tall list pairs green 4 marks with white Drama, Comedy, Docs and Sport labels; one row contains an outlined placeholder.",
+  "category": "Brand",
+  "practical_value": "Compare a fixed symbol position with variable label lengths.",
+  "content_islands": [
+    {
+      "name": "Category column",
+      "spec": "Align the green marks vertically to the left of the large white names."
+    },
+    {
+      "name": "Open slot",
+      "spec": "Keep the empty outlined label row among the examples to indicate extensibility."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The page applies a shared leading mark to several content categories.",
+    "Intent": "Pentagram calls 4 leads the basis of the lockup framework."
+  },
+  "ingredient": {
+    "name": "Leading 4 lockup",
+    "role": "Connect category labels to the parent brand.",
+    "application": "Place the 4 before the category name as demonstrated.",
+    "scope": "The 2023 source states the leading principle; this artwork supplies no numeric spacing specification."
+  }
+}

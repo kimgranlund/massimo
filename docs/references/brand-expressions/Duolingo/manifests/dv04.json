@@ -1,0 +1,39 @@
+{
+  "id": "DV04",
+  "title": "Typography / DIN Next Rounded / Gray variant",
+  "image": "dv04.png",
+  "source": "../sources/pages/dv04.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/identity/typography",
+    "section": "DIN Next Rounded",
+    "selected_control_index": 3,
+    "related_default": "DW024",
+    "order": 241
+  },
+  "slide_intent": "Separate type character from color because long-text selection depends on letterforms and weight as well as brand hue.",
+  "strategic_value": "A neutral DIN specimen can show how Duolingo’s rounded reading face works without the emphasis of green.",
+  "demonstration": "Four gray weight specimens sit on a pale field beside the long-text and marketing-headline guidance.",
+  "category": "Typography",
+  "practical_value": "Compare the four weights in neutral color before choosing a reading hierarchy.",
+  "content_islands": [
+    {
+      "name": "Alternate color specimen",
+      "spec": "Stack the four gray specimens from heavy to light and retain the selected gray control below."
+    },
+    {
+      "name": "Reading role",
+      "spec": "Place the heading and longer-text role in the right column."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The source assigns DIN Next Rounded to longer sections and says it is used in marketing headlines of 10 words or longer.",
+    "Expression": "Four gray weight specimens sit on a pale field beside the long-text and marketing-headline guidance."
+  },
+  "ingredient": {
+    "name": "DIN Next Rounded",
+    "role": "Support longer reading within the brand voice.",
+    "application": "Use for longer sections of text; this introduction names marketing headlines of 10 words or longer.",
+    "scope": "Historical archived guidelines. Historical source. The adjacent usage section says “longer than 10 words”; preserve that slight threshold difference rather than silently rewriting it."
+  }
+}

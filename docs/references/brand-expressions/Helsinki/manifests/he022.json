@@ -1,0 +1,43 @@
+{
+  "id": "HE022",
+  "title": "Use motifs to create contrast and interest",
+  "image": "he022.png",
+  "source": "../sources/use-basic-elements.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Use motifs to create contrast and interest",
+    "order": 29,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/use-basic-elements#use-motifs-to-create-contrast-and-interest",
+    "original_html": "../sources/use-basic-elements.html"
+  },
+  "slide_intent": "Use a motif for a communication job because a recognizable shape can divide, connect or guide rather than merely decorate.",
+  "strategic_value": "Selective wave use can make Helsinki layouts distinctive while leaving other identity elements room to work.",
+  "demonstration": "This expanded webpage section explains functional wave roles, shows applied examples and follows them with guidance that motifs are optional.",
+  "category": "Geometry",
+  "practical_value": "Decide what the wave should organize before including one, and omit it when color, imagery and type already carry the composition.",
+  "content_islands": [
+    {
+      "name": "Functional rationale",
+      "spec": "Explain contrast, cohesion, division and guidance."
+    },
+    {
+      "name": "Applications with and without waves",
+      "spec": "Show a wave-divided photograph, plain blue flag and a montage of signage, print and annual covers."
+    },
+    {
+      "name": "Restraint",
+      "spec": "End with text explaining why motifs are optional and should not be overused."
+    }
+  ],
+  "ingredient": {
+    "name": "Wave motif",
+    "role": "Organize and distinguish surfaces through a recognizable divider.",
+    "application": "Choose a motif that strengthens the message, using one motif per view; omit it when unnecessary.",
+    "scope": "One motif per view concerns motif choice, not an invented limit on the number of repeated wave tips."
+  },
+  "reference_purposes": {
+    "Intent": "The source explicitly gives waves functional roles of cohesion, division and guidance.",
+    "Application": "The examples place wave divisions in actual compositions.",
+    "Constraint": "Use only one motif per view; applications do not always require one."
+  }
+}

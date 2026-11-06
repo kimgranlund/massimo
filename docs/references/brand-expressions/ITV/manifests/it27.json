@@ -1,0 +1,35 @@
+{
+  "id": "IT27",
+  "title": "ITV / Typography guidance interface",
+  "image": "it27.png",
+  "source": "../sources/1782130954-xedsrpnms1wozz-jkegmkg-itv_16-4.webp",
+  "location": {
+    "series": "DixonBaxi / ITV case-study artwork series",
+    "item": 27,
+    "extent": "Whole source artwork",
+    "source_asset_index": 27
+  },
+  "slide_intent": "Pair named type roles with examples so designers can compare function and expression, because viewers need to recognize the same service across different situations.",
+  "strategic_value": "This approach can strengthen continuity between campaign recognition and service use.",
+  "demonstration": "A laptop displays a guideline page with a type hierarchy table on the left and yellow-backed copy examples on the right. The screen includes Headline, Emphasis and Supporting labels.",
+  "category": "Application",
+  "practical_value": "Pair named type roles with examples so designers can compare function and expression.",
+  "content_islands": [
+    {
+      "name": "Device",
+      "spec": "The laptop presents the guidance in use."
+    },
+    {
+      "name": "Role table",
+      "spec": "Left-side labels organize the hierarchy."
+    },
+    {
+      "name": "Examples",
+      "spec": "Right-side typography illustrates the roles in compositions."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A laptop displays a guideline page with a type hierarchy table on the left and yellow-backed copy examples on the right. The screen includes Headline, Emphasis and Supporting labels.",
+    "Application": "Pair named type roles with examples so designers can compare function and expression. Evidence is the shown application, not a mandatory layout rule."
+  }
+}

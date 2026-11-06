@@ -1,0 +1,40 @@
+{
+  "id": "BK043",
+  "title": "Favicon",
+  "image": "bk043.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 43
+  },
+  "slide_intent": "Simplify identification only where space requires it because an abbreviated mark relies on existing recognition.",
+  "strategic_value": "The two-color BK device can retain the burger silhouette on small social and digital surfaces.",
+  "demonstration": "A small orange-and-red BK symbol is paired with a shaded clearspace diagram marked X; text explains its restricted use and rollout.",
+  "category": "Brand",
+  "practical_value": "Use the favicon only where the full logo would not be legible, retain its two colors and confirm market launch readiness.",
+  "content_islands": [
+    {
+      "name": "Favicon guidance",
+      "spec": "Place the small-size rationale, color restriction and market-rollout note in the left column."
+    },
+    {
+      "name": "Favicon specimen",
+      "spec": "Show the small BK burger device near the upper center."
+    },
+    {
+      "name": "Clearspace diagram",
+      "spec": "Show the matching symbol at right inside shaded clearance bands, with X measured from the K counter top to the bottom bun top."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source explains small-size legibility and says the two primary colors are essential to reading B and K.",
+    "Expression": "The compressed BK letters and buns preserve the burger form in two colors.",
+    "Application": "The page defines the vertical clearspace unit X using the K counter and bottom bun.",
+    "Constraint": "Do not use an alternate colorway or replace a legible full logo; launch follows identity establishment and consultation with the regional marketing communication lead."
+  },
+  "ingredient": {
+    "name": "BK favicon",
+    "role": "Identify the brand at sizes where the full name cannot remain legible.",
+    "application": "Keep the supplied two-color asset; use X-based vertical clearance and use the full logo whenever it remains legible.",
+    "scope": "Historical rollout guidance; market release requires consultation and follows establishment of the new visual identity."
+  }
+}

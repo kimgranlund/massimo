@@ -1,0 +1,33 @@
+{
+  "id": "DW013",
+  "title": "Portrait lockup / Clear space",
+  "image": "dw013.png",
+  "source": "../sources/pages/identity-logos.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/identity/logos",
+    "section": "Clear space",
+    "item": 13,
+    "order": 130
+  },
+  "slide_intent": "Reserve a boundary around a stacked signature because nearby content can compete with both mascot and name.",
+  "strategic_value": "A protected portrait lockup can keep Duolingo’s recognition cues together and visible.",
+  "demonstration": "The portrait lockup is shown inside a marked clearance diagram with a prohibition on objects in that area.",
+  "category": "Geometry",
+  "practical_value": "Preserve the diagrammed boundary when placing a stacked logo.",
+  "content_islands": [
+    {
+      "name": "Portrait clearance",
+      "spec": "Keep the stacked logo and its surrounding measurement marks in the left panel."
+    },
+    {
+      "name": "Exclusion rule",
+      "spec": "Place the heading and instruction about graphics and text in the right column."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text links clear space with letting the logotype stand out.",
+    "Application": "The diagram shows the portrait lockup’s protected area.",
+    "Constraint": "No graphics or text may occupy the shown clear space."
+  }
+}

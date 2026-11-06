@@ -1,0 +1,36 @@
+{
+  "id": "C441",
+  "title": "Cube-depth perception consistency",
+  "image": "c441.png",
+  "source": "../sources/c441.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 masterbrand / 2023",
+    "item": 41,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Compare physical construction with the viewer’s resulting image so spatial continuity can be judged directly.",
+  "strategic_value": "Consistent perceived room depth can help Channel 4 transitions feel connected when the underlying cubes change.",
+  "demonstration": "An upper isometric camera-and-cube diagram changes cube sizes while a lower front view moves across blue, pink and green rooms.",
+  "category": "Geometry",
+  "practical_value": "Judge the perceived depth in the lower view against the construction changes above.",
+  "content_islands": [
+    {
+      "name": "Construction view",
+      "spec": "Place the camera and three colored cubes in the upper panel."
+    },
+    {
+      "name": "Viewer result",
+      "spec": "Show the synchronized front-facing room view below for comparison."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The two synchronized views demonstrate cube-depth perception consistency."
+  },
+  "motion": "../sources/c441.mp4",
+  "ingredient": {
+    "name": "Perceived cube depth",
+    "role": "Maintain spatial continuity during travel.",
+    "application": "Compare the viewer-facing result with the camera and cube arrangement while changing room dimensions.",
+    "scope": "The demonstration shows relationships but provides no numeric camera or cube-depth values."
+  }
+}

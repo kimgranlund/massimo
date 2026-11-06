@@ -1,0 +1,24 @@
+{
+  "id": "N10",
+  "title": "The Logotype: Incorrect Uses",
+  "image": "n10.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 10
+  },
+  "slide_intent": "Show which alterations undermine a signature. Specific counterexamples let a reviewer recognize a misuse during production.",
+  "strategic_value": "NASA can preserve the silhouette and horizontal orientation of its mark by showing exactly which alterations to catch.",
+  "demonstration": "Nine numbered treatments correspond to nine cautions above. The specimens cover a pattern over the strokes, enclosures, an outline, a shadow, distortion, screened tones and a vertical orientation.",
+  "category": "Brand",
+  "practical_value": "Compare proposed artwork with the numbered examples and identify the particular alteration that conflicts with the master.",
+  "content_islands": [
+    {
+      "name": "Numbered cautions",
+      "spec": "Set the rationale beside two columns of numbered rules in the top band."
+    },
+    {
+      "name": "Misuse specimens",
+      "spec": "Place a labeled three-by-three array beneath the divider. Change one salient treatment in each cell and retain the numbers that connect it to the rules."
+    }
+  ]
+}

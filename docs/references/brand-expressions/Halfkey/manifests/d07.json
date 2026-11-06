@@ -8,10 +8,10 @@
     "column": 1
   },
   "slide_intent": "Teach designers to choose how much space a color occupies as deliberately as they choose its hue. Repetition can give viewers a point of recognition, while a change in area can turn a small cue into the first thing they see.",
-  "strategic_value": "Halfkey can build recognition around Signal blue. A blue field on one poster can carry the same identity as a small blue allowance graphic on a quiet screen.",
+  "strategic_value": "Repeated use of one blue can build recognition across the wallet and its advertising, even when their compositions differ.",
   "demonstration": "Four equal-width swatches give Signal blue, Ink, Ground and White equal room for inspection. In the strip showing use across a typical set of pages, Ground occupies 56% and Blue occupies 3%.",
   "category": "Color",
-  "practical_value": "Review the balance across a campaign. A full-blue poster can sit within the guidance when the surrounding pieces give most of their area to neutrals.",
+  "practical_value": "Review several pages together. If blue dominates throughout, choose which moment deserves the emphasis and return more of the surrounding area to neutrals.",
   "content_islands": [
     {
       "name": "Running header",
@@ -37,5 +37,16 @@
       "name": "Usage strip and legend",
       "spec": "Span the four columns with a thin segmented bar. Caption it “Proportions of use across a typical set of pages.” Label the segments Ground 56%, Ink 18%, White 14%, Greys 7%, Blue 3%, Screen 2%."
     }
-  ]
+  ],
+  "ingredient": {
+    "name": "Signal blue",
+    "role": "Draw attention to a chosen moment against a mostly neutral field.",
+    "application": "Reserve Signal blue for emphasis. The usage strip assigns Blue 3% and Ground 56%. For large blue fields on paper, specify Pantone 2728 C as a spot color and do not build the field from CMYK.",
+    "scope": "The proportions describe a typical set of pages, not a percentage requirement for each individual poster or screen. The spot-color restriction applies to large blue fields on paper."
+  },
+  "reference_purposes": {
+    "Expression": "Signal blue appears beside near-black, pale ground and white, while the headline describes it as rare and loud.",
+    "Application": "The usage strip assigns Blue 3% across a typical set of pages and the print note specifies Pantone 2728 C for large blue fields on paper.",
+    "Constraint": "The print note prohibits building large blue fields from CMYK; the percentage strip applies to a set of pages rather than each individual composition."
+  }
 }

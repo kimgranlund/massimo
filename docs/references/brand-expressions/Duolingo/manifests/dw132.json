@@ -1,0 +1,39 @@
+{
+  "id": "DW132",
+  "title": "Illustration / Characters / Arms and hands / Please don’t…",
+  "image": "dw132.png",
+  "source": "../sources/pages/illustration-characters.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/illustration/characters",
+    "section": "Please don't...",
+    "item": 132,
+    "order": 1320
+  },
+  "slide_intent": "Reject unnecessary hand complexity and broken limb construction so a gesture remains coherent and easy to maintain.",
+  "strategic_value": "Specific negative examples can help Duolingo keep character hands consistent across different illustrators.",
+  "demonstration": "Five crossed panels show rejected arm or finger constructions, beside a five-item prohibition list.",
+  "category": "Geometry",
+  "practical_value": "Audit the arm-to-hand connection, forearm length and finger count before finalizing a gesture.",
+  "content_islands": [
+    {
+      "name": "Rejected constructions",
+      "spec": "Arrange three crossed arm examples above two crossed isolated hands at left, matching the subjects in the warning list."
+    },
+    {
+      "name": "Prohibition list",
+      "spec": "Place the Please Don’t heading and five warnings at right, including the maximum finger count."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text explains that unnecessary fingers add more detail to keep track of.",
+    "Application": "Five rejected examples demonstrate the listed construction problems.",
+    "Constraint": "The source prohibits excess or unnecessary fingers, shortened forearms, detached hands and more than four fingers."
+  },
+  "ingredient": {
+    "name": "Arm and hand construction limits",
+    "role": "Preserve coherent limbs with no unnecessary detail.",
+    "application": "Keep the hand connected to the arm, avoid shortening the forearm, and use only necessary fingers with a maximum of four.",
+    "scope": "Historical official Duolingo illustration guidance from the 2024–2025 archived snapshot. Applies to the displayed character illustration system; the limit should not be generalized to all brands or anatomical drawing."
+  }
+}

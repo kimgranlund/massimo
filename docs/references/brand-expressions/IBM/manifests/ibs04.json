@@ -1,0 +1,30 @@
+{
+  "id": "IBS04",
+  "title": "Trademark license",
+  "image": "ibs04.png",
+  "source": "../sources/ibm-logo-strategic-partners.pdf",
+  "location": {
+    "page": 4,
+    "series": "IBM Logo Guidelines for Strategic Partners / Version 1.2 / copyright 2023",
+    "order": 200004
+  },
+  "slide_intent": "Separate permission from execution so a partner understands that knowing the artwork rules does not itself grant usage rights.",
+  "strategic_value": "Clear licensing and attribution instructions can help preserve IBM’s ownership while enabling permitted collaboration.",
+  "demonstration": "The main text explains trademark licensing and attribution; a separate right-hand column gives the attribution statement.",
+  "category": "Brand",
+  "practical_value": "Confirm the applicable license and determine whether the stated attribution exception applies to the intended format.",
+  "content_islands": [
+    {
+      "name": "License guidance",
+      "spec": "Place the title at left and licensing paragraphs in the center column."
+    },
+    {
+      "name": "Attribution specimen",
+      "spec": "Separate the sample attribution statement at right with a thin vertical rule."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The page directs partners to establish the appropriate agreement and supplies a trademark-attribution format.",
+    "Constraint": "Other than fair use, trademark use requires a license. Attribution may be omitted in limited-space cases or where it would impair the message, as the source qualifies."
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "DBV33",
+  "title": "Logo_Ending-expressive",
+  "image": "dbv33.png",
+  "source": "../sources/media/dbv33.mp4",
+  "location": {
+    "series": "DB new design / motion demonstrations",
+    "source_page": 15,
+    "section": "Bewegtbild-14021636",
+    "source_url": "https://ecm-mediathek-cdn.deutschebahn.com/cdnenhancedecmvidhls/db306437/2881067/video_config.json",
+    "capture_date": "2026-11-05"
+  },
+  "slide_intent": "Give a film ending a recognizable transition so viewers connect the final brand sign to the preceding story.",
+  "strategic_value": "The red-and-white plane sequence can join live-action rail footage to a distinct DB closing frame.",
+  "demonstration": "Countryside train footage gives way to moving red and white vertical planes, ending on the centered red DB logo on white.",
+  "category": "Motion",
+  "practical_value": "Choose the preferred expressive ending when the film supports a stronger closing transition.",
+  "content_islands": [
+    {
+      "name": "Footage transition",
+      "spec": "Move red and white planes across the train scene."
+    },
+    {
+      "name": "Brand frame",
+      "spec": "Resolve the sequence to the centered red DB logo on white."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Countryside train footage gives way to moving red and white vertical planes, ending on the centered red DB logo on white.",
+    "Application": "The source provides a playable demonstration of this repeatable sequence: Countryside train footage gives way to moving red and white vertical planes, ending on the centered red DB logo on white.",
+    "Constraint": "The source prefers the primary logo ending and provides reduced variants for a simpler treatment."
+  },
+  "motion": "../sources/media/dbv33.mp4",
+  "ingredient": {
+    "name": "Logo ending",
+    "role": "Close audiovisual content with a recognizable DB signature.",
+    "application": "Prefer the primary ending; use a reduced variant for a simpler treatment.",
+    "scope": "Official DB new-design web guidance, undated live edition captured 2026-11-05; applies to the demonstrated motion context. This record describes visible motion; it does not analyze the soundtrack."
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "id": "DW034",
+  "title": "Imagery / Characters",
+  "image": "dw034.png",
+  "source": "../sources/pages/identity-imagery.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/identity/imagery",
+    "section": "Characters",
+    "item": 34,
+    "order": 340
+  },
+  "slide_intent": "Represent different people through expressive figures because an inclusive promise should be visible in who appears in the work.",
+  "strategic_value": "A varied character cast can make Duolingo’s “everyone” positioning tangible while keeping a shared illustration style.",
+  "demonstration": "Character examples accompany guidance on multicultural representation, enthusiastic poses and occasional cropping to focus expression or action.",
+  "category": "Imagery",
+  "practical_value": "Choose an expressive pose and consider a crop when it clarifies mood or activity.",
+  "content_islands": [
+    {
+      "name": "Full-length characters",
+      "spec": "Place four varied figures on one baseline at upper left."
+    },
+    {
+      "name": "Cropped expressions",
+      "spec": "Place the four cropped characters in a horizontal strip below."
+    },
+    {
+      "name": "Activity examples",
+      "spec": "Place two larger expressive poses at the bottom of the left panel."
+    },
+    {
+      "name": "Representation guidance",
+      "spec": "Place the inclusive rationale, mood/activity guidance, optional cropping and character-guidelines link at right."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text says the multicultural world should be echoed in the characters because everyone can Duolingo.",
+    "Application": "The source describes expressive poses and occasional crops to emphasize action or expression.",
+    "Expression": "The examples show a varied illustrated cast."
+  },
+  "ingredient": {
+    "name": "Illustrated character cast",
+    "role": "Make inclusion and activity visible.",
+    "application": "Use expressive poses that communicate mood or activity; crop when it helps concentrate on expression or action.",
+    "scope": "Historical archived guidelines. Historical character guidance. Cropping is an occasional option, not a requirement for every figure."
+  }
+}

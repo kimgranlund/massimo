@@ -1,0 +1,33 @@
+{
+  "id": "DW032",
+  "title": "Imagery / Illustration",
+  "image": "dw032.png",
+  "source": "../sources/pages/identity-imagery.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/identity/imagery",
+    "section": "Illustration",
+    "item": 32,
+    "order": 320
+  },
+  "slide_intent": "Establish a primary visual language because repeated image-making choices help a brand feel familiar.",
+  "strategic_value": "A recognizable illustration style and recurring characters can connect Duolingo communications to its product world.",
+  "demonstration": "An illustration specimen accompanies the statement that illustration is Duolingo’s default visual style and a link to drawing guidance.",
+  "category": "Imagery",
+  "practical_value": "Begin new artwork with the illustration system and its dedicated guidance.",
+  "content_islands": [
+    {
+      "name": "Illustrated cast",
+      "spec": "Arrange the eight varied characters together on one baseline within the left panel."
+    },
+    {
+      "name": "Default style and guidance",
+      "spec": "Place the heading, role explanation and illustration-guidelines link in the right column."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source says illustration feels like Duolingo and its characters are critical to the brand story.",
+    "Application": "The text directs new artwork creation to the illustration guidelines.",
+    "Expression": "The specimen demonstrates the brand’s illustrated visual language."
+  }
+}

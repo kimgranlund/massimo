@@ -1,0 +1,30 @@
+{
+  "id": "HI33",
+  "title": "Illustration use / Winter scene with short copy",
+  "image": "hi33.png",
+  "source": "../sources/illustration-examples.pdf",
+  "location": {
+    "page": 33,
+    "series": "Helsinki illustration examples — PDF derived from the official PowerPoint deck with LibreOffice",
+    "order": 223
+  },
+  "slide_intent": "Match illustration density to the amount of text so a brief message can remain spacious.",
+  "strategic_value": "A blue cabin and sled scene can establish a Helsinki winter setting without a full-page collage.",
+  "demonstration": "A heading and one paragraph occupy the upper left on pale blue; a cabin and sled-pulling figure fill the right, leaving open space below the copy.",
+  "category": "Layout",
+  "practical_value": "Use one coherent scene when the text is short and the seasonal context matters.",
+  "content_islands": [
+    {
+      "name": "Short copy",
+      "spec": "Place the heading and single paragraph in the upper-left area."
+    },
+    {
+      "name": "Winter scene",
+      "spec": "Group the cabin and pulling figure at right with the sled extending toward the center."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The slide combines short copy with one related winter scene.",
+    "Expression": "Blue architecture and bundled figures establish the seasonal character."
+  }
+}

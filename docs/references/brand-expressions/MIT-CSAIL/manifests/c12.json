@@ -1,0 +1,24 @@
+{
+  "id": "C12",
+  "title": "Minimum Size Usage",
+  "image": "c12.png",
+  "source": "../csail-branding-short-guide.pdf",
+  "location": {
+    "page": 12
+  },
+  "slide_intent": "Teach designers to choose artwork at the intended output size. The relationship between detail and scale changes what a reader can distinguish.",
+  "strategic_value": "Dedicated regular and large drawings can keep the lab’s signature legible in print and digital placements.",
+  "demonstration": "Two marks appear at different sizes, with bracketed labels for the 90-point regular minimum and the 3.5-inch threshold for the large drawing.",
+  "category": "Geometry",
+  "practical_value": "For web use choose the regular artwork. For print check the width against the regular minimum and the large-version threshold, and request special artwork for the stated 85-point exception.",
+  "content_islands": [
+    {
+      "name": "Selection guidance",
+      "spec": "Set the print, web and exception guidance in the left rail."
+    },
+    {
+      "name": "Size comparison",
+      "spec": "Show the regular and large marks on a common pale field. Align the width brackets and the Regular and Large labels below the specimens."
+    }
+  ]
+}

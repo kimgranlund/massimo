@@ -1,0 +1,37 @@
+{
+  "id": "DB0301",
+  "title": "E-MAIL-SIGNATUR",
+  "image": "db0301.png",
+  "source": "../sources/page-03.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 3,
+    "section": 1,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Teams-Hintergruende/E-Mail-Signatur"
+  },
+  "slide_intent": "Explain why a small signature element matters so identity remains intentional in routine communication.",
+  "strategic_value": "Repeated use of the sleeper and bold sender name can connect DB recognition with a personal dialogue.",
+  "demonstration": "Two paragraphs distinguish centrally governed signature contents from the sleeper motif and emphasized sender name.",
+  "category": "Application",
+  "practical_value": "Keep organizational content requirements separate from the visual signature treatment.",
+  "content_islands": [
+    {
+      "name": "Content authority",
+      "spec": "Begin below the heading with the reference to corporate requirements in EVI."
+    },
+    {
+      "name": "Visual rationale",
+      "spec": "Follow with the sleeper’s subtle brand role and the bold name’s personal emphasis."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text says the sleeper strengthens the brand in each dialogue and the bold name emphasizes the personal level.",
+    "Constraint": "Signature contents follow the corporate organization’s requirements stored in EVI."
+  },
+  "ingredient": {
+    "name": "Email signature",
+    "role": "Connect a named person to DB in routine correspondence.",
+    "application": "Use the sleeper with the prescribed written details and emphasize the sender name in bold.",
+    "scope": "Signature content authority remains EVI; this section describes the visual treatment."
+  }
+}

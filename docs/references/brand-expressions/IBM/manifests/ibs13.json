@@ -1,0 +1,41 @@
+{
+  "id": "IBS13",
+  "title": "Size and position",
+  "image": "ibs13.png",
+  "source": "../sources/ibm-logo-strategic-partners.pdf",
+  "location": {
+    "page": 13,
+    "series": "IBM Logo Guidelines for Strategic Partners / Version 1.2 / copyright 2023",
+    "order": 200013
+  },
+  "slide_intent": "Scale and position partner marks according to context so the audience can read ownership and support at the intended viewing distance.",
+  "strategic_value": "A flexible but clear hierarchy can keep IBM legible without implying equal co-branding.",
+  "demonstration": "The page combines a partner/IBM alignment study with a physical-distance example and a laptop example, beside contextual guidance.",
+  "category": "Layout",
+  "practical_value": "Judge relative visual prominence and viewing context instead of copying one fixed logo size or position.",
+  "content_islands": [
+    {
+      "name": "Context guidance",
+      "spec": "Place the explanation of size, format and communication ownership at left."
+    },
+    {
+      "name": "Size relationship",
+      "spec": "Show the large green partner mark and smaller IBM mark with horizontal guide lines in the upper area."
+    },
+    {
+      "name": "Position studies",
+      "spec": "Compare a physical display with viewer silhouette and a laptop layout below, retaining the note that examples are not exhaustive."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source connects relative size with avoiding the impression of co-branding and connects placement to how formats are consumed.",
+    "Application": "The examples compare screen and physical settings and explain sizing by the formal qualities of the partner logo.",
+    "Constraint": "IBM must be smaller than the partner logo; sizing and positions are not restricted to the suggested examples."
+  },
+  "ingredient": {
+    "name": "Relative partner-logo scale",
+    "role": "Show IBM as support rather than the communication owner.",
+    "application": "Size IBM smaller than the partner mark while considering the partner mark’s visual qualities and the format’s viewing conditions.",
+    "scope": "Strategic-partner communications. The page supplies studies, not a numerical logo-size ratio or exhaustive placement template."
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "CH20",
+  "title": "Website / Create better campaigns",
+  "image": "ch20.png",
+  "source": "../sources/ch20.jpg",
+  "location": {
+    "series": "COLLINS / Mailchimp case study",
+    "item": 20,
+    "extent": "Complete published artwork",
+    "section": "Gallery"
+  },
+  "slide_intent": "Separate navigation, promise and image because a website must orient visitors before asking them to act.",
+  "strategic_value": "A pale green hero and large illustration can combine Mailchimp’s usable structure with its expressive drawing style.",
+  "demonstration": "A browser mockup places compact navigation above a centered serif headline and short text, with a large reclining figure crossing the green-to-white boundary.",
+  "category": "Layout",
+  "practical_value": "Study how an illustration can cross a background division without disrupting the header.",
+  "content_islands": [
+    {
+      "name": "Navigation",
+      "spec": "Keep the compact logo, links and actions across the top."
+    },
+    {
+      "name": "Promise",
+      "spec": "Center the headline and supporting copy in the green hero region."
+    },
+    {
+      "name": "Illustration",
+      "spec": "Place the large drawing below the copy so it extends into the white lower field."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The artwork applies the identity to a full-width website hero."
+  }
+}

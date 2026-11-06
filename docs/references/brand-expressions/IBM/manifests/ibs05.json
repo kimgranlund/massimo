@@ -1,0 +1,29 @@
+{
+  "id": "IBS05",
+  "title": "Fundamentals",
+  "image": "ibs05.png",
+  "source": "../sources/ibm-logo-strategic-partners.pdf",
+  "location": {
+    "page": 5,
+    "series": "IBM Logo Guidelines for Strategic Partners / Version 1.2 / copyright 2023",
+    "order": 200005
+  },
+  "slide_intent": "Mark the transition into core logo rules so the reader can distinguish identity construction from later application examples.",
+  "strategic_value": "A quiet divider can make IBM’s foundational requirements easier to find in the guide.",
+  "demonstration": "Fundamentals appears as a large heading on a pale-blue field above the corporate footer.",
+  "category": "Brand",
+  "practical_value": "Use the divider to locate the beginning of logo fundamentals.",
+  "content_islands": [
+    {
+      "name": "Section title",
+      "spec": "Place Fundamentals high in the pale-blue field with generous empty space."
+    },
+    {
+      "name": "Footer",
+      "spec": "Keep the corporate name and page number in the white band below."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The divider repeats the cover’s pale-blue field and restrained type treatment."
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "id": "DB1508",
+  "title": "Do’s und Don'ts",
+  "image": "db1508.png",
+  "source": "../sources/page-15.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 15,
+    "section": 8,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Motion-Branding"
+  },
+  "slide_intent": "Contrast preferred and rejected movement because a similar final frame can hide very different reading experiences.",
+  "strategic_value": "Explicit comparisons can keep DB motion clear and consistent across independently produced work.",
+  "demonstration": "Four paired rows compare timing, effects, movement axes and animation order. The capture retains consent placeholders and the positive/negative captions; all eight films are available separately.",
+  "category": "Motion",
+  "practical_value": "Evaluate a proposed animation against timing, simplicity, axis and sequence before approving its final behavior.",
+  "content_islands": [
+    {
+      "name": "Timing pair",
+      "spec": "Compare appropriate timing with movements that are too fast or slow."
+    },
+    {
+      "name": "Effects pair",
+      "spec": "Contrast few animated parameters with unnecessary effects."
+    },
+    {
+      "name": "Axes pair",
+      "spec": "Keep clear-axis movement opposite the diagonal-motion prohibition."
+    },
+    {
+      "name": "Sequence pair",
+      "spec": "End with structured order versus an overloaded, unclear build."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The captions connect timing with decisiveness, few parameters with consistency, and structured sequences with orientation.",
+    "Constraint": "The source excludes effects such as motion blur and states that diagonal animations without a clear axis are never used."
+  },
+  "ingredient": {
+    "name": "Do’s und Don'ts",
+    "role": "Contrast preferred and rejected movement because a similar final frame can hide very different reading experiences.",
+    "application": "Evaluate a proposed animation against timing, simplicity, axis and sequence before approving its final behavior.",
+    "scope": "Official DB new-design website captured 2026-11-05; edition undated. Instructions are local to this motion section. Source caption inconsistencies are documented separately."
+  }
+}

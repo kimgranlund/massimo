@@ -1,0 +1,32 @@
+{
+  "id": "HE078",
+  "title": "Helsinki Design Manual",
+  "image": "he078.png",
+  "source": "../sources/design-and-create.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Helsinki Design Manual",
+    "order": 106,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/design-and-create#helsinki-design-manual",
+    "original_html": "../sources/design-and-create.html"
+  },
+  "slide_intent": "Distinguish the city’s physical character from its graphic identity so design decisions can connect both without confusing their roles.",
+  "strategic_value": "Referencing Helsinki’s materials, greenery and urban history can ground contemporary expression in recognizable local experience.",
+  "demonstration": "This expanded webpage-section capture describes the city’s physical features, links to the urban design manual and explains its relationship to visual identity.",
+  "category": "Brand",
+  "practical_value": "Use the manual for urban materials and forms while using the visual guidelines for graphic expression.",
+  "content_islands": [
+    {
+      "name": "Urban character",
+      "spec": "Introduce furniture, greenery, buildings and materials as contributors to city experience."
+    },
+    {
+      "name": "Related manual",
+      "spec": "Place the manual link before the explanation of the two complementary design levels."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text identifies the surrounding city as an inspiration for the visual identity and relates the two to stability and change.",
+    "Application": "It points readers to the manual for shapes, materials, vegetation, colors and history."
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "I031",
+  "title": "Color in Layout",
+  "image": "i031.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 31,
+    "printed_page": 31
+  },
+  "slide_intent": "Show how color changes in importance as it moves from the overall page to the content area and the image. That order lets a reader recognize the source before inspecting the subject.",
+  "strategic_value": "Using a core field beneath the logo can anchor the composition while a smaller secondary area responds to the photograph.",
+  "demonstration": "An exploded layout joins a pale core frame, a smaller colored content field and a photograph with plus signs. The labels give 3:2 primary to secondary color and 2:1 secondary color to photography.",
+  "category": "Color",
+  "practical_value": "Use the two labeled relationships to compare layer sizes in a campaign layout. Choose the secondary hue in relation to the image.",
+  "content_islands": [
+    {
+      "name": "Role guidance",
+      "spec": "Keep the explanation and numbered usage rules in a left-hand column."
+    },
+    {
+      "name": "Layer diagram",
+      "spec": "Arrange the core frame, colored headline panel and photograph from left to right, decreasing the area as shown. Label the two proportions above the panels."
+    }
+  ]
+}

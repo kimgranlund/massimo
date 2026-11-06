@@ -1,0 +1,162 @@
+{
+  "id": "IB008",
+  "title": "Geometry / 2x Grid",
+  "image": "ib008.png",
+  "source": "../sources/2x-grid.txt",
+  "location": {
+    "series": "IBM Design Language / public web guidelines",
+    "item": 8,
+    "extent": "Complete webpage content-area capture; interactive elements retain their captured state",
+    "url": "https://www.ibm.com/design/language/2x-grid/",
+    "order": 8000
+  },
+  "slide_intent": "Relate spacing and scale to a common structure and viewing distance, so viewers can follow content across very different formats.",
+  "strategic_value": "The same divisions-of-two logic can connect IBM interfaces, printed pieces and physical environments without requiring identical compositions.",
+  "demonstration": "The page pairs grid construction media states and diagrams with application examples, base-unit and viewing-distance tables, spatial multiples and a video-format grid.",
+  "category": "Geometry",
+  "practical_value": "Choose margins, gutters and an appropriate base unit for the medium before composing content and setting type.",
+  "content_islands": [
+    {
+      "name": "Framework and applications",
+      "spec": "Open with the 2x Grid introduction and media states, then show varied applications under the divisions-of-two explanation."
+    },
+    {
+      "name": "Grid construction",
+      "spec": "Compare margin and gutter configurations; follow with rows, columns and evenly distributed gutter examples."
+    },
+    {
+      "name": "Base units",
+      "spec": "Present the base-unit media state, mini-unit viewing-distance diagram and table, followed by baseline and hybrid grid examples."
+    },
+    {
+      "name": "Spatial and aspect relationships",
+      "spec": "Show the spacing-multiple progression, banner and letterhead examples, and aspect-ratio diagram."
+    },
+    {
+      "name": "Digital and video adaptation",
+      "spec": "Close with a UI grid example and the dedicated 1920×1080 video grid and template resource."
+    }
+  ],
+  "ingredient": {
+    "name": "2x Grid base unit",
+    "role": "Establish consistent spatial relationships at the scale people encounter them.",
+    "application": "Divide the live area into equal rows or columns; choose a mini or baseline unit; use the source spacing multiples and select the mini unit for the viewing distance.",
+    "scope": "Print mini units vary with distance. Product and web use an 8px mini unit. The standard 1920×1080 video adaptation uses 7.5px, with recommended 30px alignment increments."
+  },
+  "reference_purposes": {
+    "Intent": "The introduction explains that structure frees attention for the creative idea; base-unit guidance connects scale to legibility over distance.",
+    "Expression": "Application images show the same grid logic across print, screens and spatial work.",
+    "Application": "Construction diagrams and tables teach margins, columns, gutters, base units and spacing multiples.",
+    "Constraint": "The source requires equal rows and columns, specifies dividing the live area when margins exist, and distinguishes the 8px product/web mini unit from the 7.5px unit for 1920×1080 video."
+  },
+  "motion_assets": [
+    {
+      "title": "2x Grid introduction",
+      "file": "../sources/media/295c08db885d.mp4",
+      "poster": "../sources/media/295c08db885d-poster.png",
+      "duration_seconds": 73.6,
+      "source_url": "https://www.ibm.com/design/language/static/337387156-0e5168efc04e803bb442340617a9814e.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Divisions of two",
+      "file": "../sources/media/263bfa030f4c.mp4",
+      "poster": "../sources/media/263bfa030f4c-poster.png",
+      "duration_seconds": 12.07,
+      "source_url": "https://www.ibm.com/design/language/videos/divisions-of-two.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Margins across formats",
+      "file": "../sources/media/5bea894af64f.mp4",
+      "poster": "../sources/media/5bea894af64f-poster.png",
+      "duration_seconds": 8.53,
+      "source_url": "https://www.ibm.com/design/language/videos/margins.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Columns and rows",
+      "file": "../sources/media/2865a8673c6e.mp4",
+      "poster": "../sources/media/2865a8673c6e-poster.png",
+      "duration_seconds": 9.3,
+      "source_url": "https://www.ibm.com/design/language/videos/columns-and-rows.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Gutters",
+      "file": "../sources/media/a8ecec6f48e7.mp4",
+      "poster": "../sources/media/a8ecec6f48e7-poster.png",
+      "duration_seconds": 2.63,
+      "source_url": "https://www.ibm.com/design/language/videos/gutters.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Base-unit subdivisions",
+      "file": "../sources/media/b966bae875f4.mp4",
+      "poster": "../sources/media/b966bae875f4-poster.png",
+      "duration_seconds": 9.47,
+      "source_url": "https://www.ibm.com/design/language/videos/base-unit.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Aspect ratios in layouts",
+      "file": "../sources/media/6f3cff14ce90.mp4",
+      "poster": "../sources/media/6f3cff14ce90-poster.png",
+      "duration_seconds": 11.77,
+      "source_url": "https://www.ibm.com/design/language/videos/aspect-ratios.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "App-icon construction grids",
+      "file": "../sources/media/10e913812a68.mp4",
+      "poster": "../sources/media/10e913812a68-poster.png",
+      "duration_seconds": 12.0,
+      "source_url": "https://www.ibm.com/design/language/c213233666e7b1c183b81853543cf552/IconGrid.gif",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Watson and cloud pictogram grids",
+      "file": "../sources/media/b269e727882f.mp4",
+      "poster": "../sources/media/b269e727882f-poster.png",
+      "duration_seconds": 6.0,
+      "source_url": "https://www.ibm.com/design/language/e2176b95970b00b594379a9841b23f1f/WatsonCloud.gif",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    }
+  ]
+}

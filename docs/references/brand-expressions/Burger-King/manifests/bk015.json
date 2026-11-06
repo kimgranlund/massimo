@@ -1,0 +1,34 @@
+{
+  "id": "BK015",
+  "title": "1. Mouthwatering",
+  "image": "bk015.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 15
+  },
+  "slide_intent": "Link descriptive language with sensory imagery so viewers can imagine the product’s taste and texture.",
+  "strategic_value": "A close view of hands holding a burger can make Burger King’s food the focal point of the identity.",
+  "demonstration": "Brown principle copy occupies the left side of a yellow field; hands and an oversized burger fill the right and lower edge.",
+  "category": "Imagery",
+  "practical_value": "Compare whether an image makes ingredients and eating cues immediately visible.",
+  "content_islands": [
+    {
+      "name": "Principle copy",
+      "spec": "Place the numbered heading and two short paragraphs at left."
+    },
+    {
+      "name": "Food and hands",
+      "spec": "Let the burger and hands dominate the right, cropped at the page edges."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The copy connects food pride and brand elements with taste and flavor.",
+    "Expression": "The large food photograph shows bun, vegetables, cheese and hands in a saturated warm setting."
+  },
+  "ingredient": {
+    "name": "Food close-up",
+    "role": "Make taste and texture easy to imagine.",
+    "application": "Use the example to evaluate ingredient visibility and the immediacy of an eating gesture.",
+    "scope": "Observed principle illustration in the 2020 partner guide; no numeric crop ratio is prescribed."
+  }
+}

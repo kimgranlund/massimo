@@ -1,0 +1,45 @@
+{
+  "id": "IB017T12",
+  "title": "Hybrid UI illustration / Greeked text — Dark themes",
+  "image": "ib017t12.png",
+  "source": "../sources/alternate-tabs.json",
+  "location": {
+    "series": "IBM Design Language / alternate tab states",
+    "parent": "IB017",
+    "group": 1,
+    "tab": 2,
+    "label": "Dark themes",
+    "url": "https://www.ibm.com/design/language/illustration/hybrid-ui-style/design/",
+    "order": 17112
+  },
+  "slide_intent": "Tune textual detail to an illustration’s purpose, because readable UI content and implied text guide attention differently.",
+  "strategic_value": "A consistent dark-theme greeking treatment can keep IBM product explanations recognizable without distracting readers with incidental wording.",
+  "demonstration": "Two dark accordion examples sit side by side: the left uses gray bars and a blue bar to imply text, while the right retains labels, paragraph text and a link.",
+  "category": "Typography",
+  "practical_value": "Choose which text must remain readable and which can be reduced to bars at the illustration’s intended scale.",
+  "content_islands": [
+    {
+      "name": "Theme selector",
+      "spec": "Show Dark themes selected beside Light themes."
+    },
+    {
+      "name": "Implied text",
+      "spec": "Place the simplified accordion at left, using different gray-bar weights and a blue interactive-text bar."
+    },
+    {
+      "name": "Literal text",
+      "spec": "Place the readable accordion at right with an expanded section and explanatory paragraph."
+    }
+  ],
+  "ingredient": {
+    "name": "Dark-theme greeked type",
+    "role": "Preserve UI hierarchy while reducing incidental detail.",
+    "application": "Use Gray 70 rectangles for regular text, Gray 50 for semibold/bold and Blue 70 for interactive text; retain actual wording where it carries the concept.",
+    "scope": "Hybrid UI illustration text treatment. This is not permission to put the whole composition on a dark background; the page separately discourages dark-theme compositions."
+  },
+  "reference_purposes": {
+    "Intent": "The accompanying hybrid UI guidance says greeking removes irrelevant or illegible detail to keep attention on conceptual flow.",
+    "Application": "The paired accordion treatments demonstrate translating literal UI text into a simplified typographic representation.",
+    "Constraint": "The accompanying text assigns Gray 70 to regular greeked text, Gray 50 to stronger text and Blue 70 to interactive type in dark themes."
+  }
+}

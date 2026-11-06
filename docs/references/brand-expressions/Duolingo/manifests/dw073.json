@@ -1,0 +1,38 @@
+{
+  "id": "DW073",
+  "title": "Writing / Style / Commas",
+  "image": "dw073.png",
+  "source": "../sources/pages/writing-style.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/style",
+    "section": "Commas",
+    "item": 73,
+    "order": 730
+  },
+  "slide_intent": "Mark the final item of a list consistently so readers can parse the sequence without an editorial style change.",
+  "strategic_value": "A simple serial-comma preference can keep Duolingo’s multi-writer copy uniform.",
+  "demonstration": "The same three-part description appears with and without a comma before the final and.",
+  "category": "Voice",
+  "practical_value": "Apply the serial comma when listing three or more items in this historical style.",
+  "content_islands": [
+    {
+      "name": "Guidance column",
+      "spec": "Place the topic heading, its parent label and the written convention in the narrow left column."
+    },
+    {
+      "name": "Worked examples",
+      "spec": "Place the worked copy in the pale right panel, keeping preference labels and green checks with their examples."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The preferred example separates all three lesson qualities with the serial comma.",
+    "Constraint": "Use the serial, or Oxford, comma."
+  },
+  "ingredient": {
+    "name": "Commas convention",
+    "role": "Readers can parse the sequence without an editorial style change.",
+    "application": "Use the serial, or Oxford, comma.",
+    "scope": "Historical official guidelines from the 2024–2025 archived snapshot; this records the displayed guidance, not current Duolingo product behavior."
+  }
+}

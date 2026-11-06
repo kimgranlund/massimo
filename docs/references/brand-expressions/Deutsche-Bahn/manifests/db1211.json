@@ -1,0 +1,31 @@
+{
+  "id": "DB1211",
+  "title": "Animation / Signature Graphics",
+  "image": "db1211.png",
+  "source": "../sources/page-12.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 12,
+    "section": 11,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Signature-Graphics"
+  },
+  "slide_intent": "Make movement purposeful so expressive graphics remain clear rather than distracting.",
+  "strategic_value": "Consistent motion principles can connect DB illustrations to the rest of the identity.",
+  "demonstration": "A short motion rule precedes two media-embed placeholders labeled build/removal and transformation between graphics.",
+  "category": "Motion",
+  "practical_value": "Use the separately preserved clips to compare the two named behaviors; this PNG alone does not demonstrate motion.",
+  "content_islands": [
+    {
+      "name": "Motion rule",
+      "spec": "Place the restraint guidance above the examples."
+    },
+    {
+      "name": "Example positions",
+      "spec": "Pair the two embed placeholders with their behavior captions."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The captions distinguish build/removal from transformation between two graphics.",
+    "Constraint": "The text says signature graphics follow motion-branding principles and must not feel disturbing or complex."
+  }
+}

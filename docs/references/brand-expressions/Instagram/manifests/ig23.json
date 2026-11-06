@@ -1,0 +1,29 @@
+{
+  "id": "IG23",
+  "title": "Motion design system sizzle — video poster",
+  "image": "ig23.png",
+  "source": "../sources/ig23.jpg",
+  "location": {
+    "series": "Elvis Dinh / Instagram brand design system / project year 2022",
+    "item": 23,
+    "extent": "whole source artwork"
+  },
+  "slide_intent": "Give a motion presentation a simple recognizable signature before its examples begin.",
+  "strategic_value": "The gradient and wordmark can establish Instagram identity with few elements.",
+  "demonstration": "The supplied Vimeo poster centers a white Instagram wordmark over a full-spectrum gradient. The sizzle video was not retrieved.",
+  "category": "Brand",
+  "practical_value": "Read this as a title treatment; the still cannot establish the video’s motion behavior.",
+  "content_islands": [
+    {
+      "name": "Gradient background",
+      "spec": "Fill the landscape field with the smooth multicolor gradient."
+    },
+    {
+      "name": "Wordmark",
+      "spec": "Center the white Instagram name with generous surrounding space."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The poster combines the brand gradient and white wordmark."
+  }
+}

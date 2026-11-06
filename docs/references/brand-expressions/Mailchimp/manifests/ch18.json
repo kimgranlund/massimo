@@ -1,0 +1,31 @@
+{
+  "id": "CH18",
+  "title": "Magnifying-glass illustration loop",
+  "image": "ch18.png",
+  "source": "../sources/ch18.gif",
+  "location": {
+    "series": "COLLINS / Mailchimp case study",
+    "item": 18,
+    "extent": "Complete published artwork",
+    "section": "Gallery"
+  },
+  "slide_intent": "Animate a focal detail rather than every part because viewers need a stable subject while noticing a small surprise.",
+  "strategic_value": "An eye, plants and small figures moving within the rough drawing can give Mailchimp’s illustration a curious personality.",
+  "demonstration": "The large figure holds a magnifying glass while the eye and smaller plant-like characters change in a short white-backed loop.",
+  "category": "Motion",
+  "practical_value": "Compare localized motion with the largely fixed silhouette of an illustration.",
+  "content_islands": [
+    {
+      "name": "Large figure",
+      "spec": "Keep the oversized hand and upper body as the stable left mass."
+    },
+    {
+      "name": "Small actions",
+      "spec": "Animate the eye and small figures near the magnifying glass and plants at right."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The loop preserves rough black linework while changing the eye and small characters."
+  },
+  "motion": "../sources/ch18.mp4"
+}

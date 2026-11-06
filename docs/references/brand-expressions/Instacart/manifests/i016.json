@@ -1,0 +1,28 @@
+{
+  "id": "I016",
+  "title": "Partnerships",
+  "image": "i016.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 16
+  },
+  "slide_intent": "Teach how to share a line between unequal marks while preserving each partner’s legibility.",
+  "strategic_value": "Using a spacing unit from Instacart’s own name can make partner lockups consistent across varying logo shapes.",
+  "demonstration": "Three diagrams show a single partner, multiple partners and a Powered by treatment. The text defines the gap with the width of the c and calls for optically balanced scale.",
+  "category": "Geometry",
+  "practical_value": "Use c-width gaps, then adjust the heights by eye when partner symbols have different proportions.",
+  "content_islands": [
+    {
+      "name": "Rule column",
+      "spec": "Place the spacing and optical-size guidance to the left."
+    },
+    {
+      "name": "Partnership rows",
+      "spec": "Stack the single- and multiple-partner lockups at right. Overlay pale dimensions and c markers."
+    },
+    {
+      "name": "Attribution variant",
+      "spec": "Place the Powered by lockup as a separate, smaller example below the partnership rows."
+    }
+  ]
+}

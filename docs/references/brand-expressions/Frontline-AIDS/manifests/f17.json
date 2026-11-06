@@ -1,0 +1,24 @@
+{
+  "id": "F17",
+  "title": "Primary",
+  "image": "f17.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 17
+  },
+  "slide_intent": "Teach designers to choose a logo configuration for the space it must occupy. A recognizable arrangement can remain legible in a narrower format if the alternate is chosen deliberately.",
+  "strategic_value": "The organization can build familiarity with its primary signature while accommodating square or horizontally constrained surfaces.",
+  "demonstration": "The white upper band labels the wordmark and symbol of the primary logo. A gray lower band shows the more tightly stacked secondary arrangement with the same components labeled.",
+  "category": "Brand",
+  "practical_value": "Start with the primary lockup and consider the secondary version where horizontal room is limited.",
+  "content_islands": [
+    {
+      "name": "Primary lockup",
+      "spec": "Place the guidance at left and a large primary specimen at right. Bracket and label its two components."
+    },
+    {
+      "name": "Secondary alternative",
+      "spec": "Repeat the comparison on a pale lower band. Show how the wordmark stacks and the symbol sits beside it. Keep the usage note with the secondary specimen."
+    }
+  ]
+}

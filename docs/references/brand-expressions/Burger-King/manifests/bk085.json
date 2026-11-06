@@ -1,0 +1,39 @@
+{
+  "id": "BK085",
+  "title": "Applying Subheads",
+  "image": "bk085.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 85
+  },
+  "slide_intent": "Keep support visibly subordinate while adapting its width to the headline because readers need an obvious reading order.",
+  "strategic_value": "The three paired layouts can give Burger King flexible supporting copy without losing hierarchy.",
+  "demonstration": "Three grid examples place smaller subheads beside or below the headline, with body copy and marked spacing. The running header says Applying Body Copy while the main title says Applying Subheads.",
+  "category": "Layout",
+  "practical_value": "Size and position the subhead relative to its headline, noting the source’s differing measurement wording.",
+  "content_islands": [
+    {
+      "name": "Subhead guidance",
+      "spec": "Place the main title and 50% statement at upper left."
+    },
+    {
+      "name": "Paired layouts",
+      "spec": "Reuse the three format diagrams, adding subheads and body text with X spacing guides."
+    },
+    {
+      "name": "Example descriptions",
+      "spec": "Place the numbered width and vertical-space descriptions below the guidance."
+    }
+  ],
+  "ingredient": {
+    "name": "Subhead relationship",
+    "role": "Support the headline without competing with it.",
+    "application": "Set subheads relative to headline size and available columns; this page states a maximum 50% of headline type size.",
+    "scope": "Historical 2020 partner guidelines, PDF produced January 2021. Page 71 instead measures headline ascender height. Preserve the source discrepancy; the printed reference to page 70 also differs from the physical hierarchy page 71."
+  },
+  "reference_purposes": {
+    "Intent": "The copy links the size limit to proper hierarchy.",
+    "Application": "The examples place subheads within the headline’s column or two of three columns and alongside a banner headline.",
+    "Constraint": "This page says subhead type size should be at most 50% of headline type size."
+  }
+}

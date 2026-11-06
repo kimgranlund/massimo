@@ -1,0 +1,28 @@
+{
+  "id": "C30",
+  "title": "Email Signature",
+  "image": "c30.png",
+  "source": "../csail-branding-short-guide.pdf",
+  "location": {
+    "page": 30
+  },
+  "slide_intent": "Teach how a sender can make role and affiliation easy to find at the end of an email. Each line should help the recipient identify or contact the person.",
+  "strategic_value": "CSAIL can give everyday messages a consistent institutional signature while accommodating individual roles and groups.",
+  "demonstration": "A mock email includes a message followed by a stacked block for name, pronouns, role, group, institution, website, email, phone, social handle and address. The logo sits beneath.",
+  "category": "Application",
+  "practical_value": "Use the sample to order the relevant details for a sender, then place the identifier below the contact block.",
+  "content_islands": [
+    {
+      "name": "Signature rationale",
+      "spec": "Place the heading and prose on recognition and professional tone in the narrow left column."
+    },
+    {
+      "name": "Email context",
+      "spec": "Give the wider field a message header, greeting and short body before the sample signature."
+    },
+    {
+      "name": "Contact block",
+      "spec": "Stack identity, contact channels and physical address in groups. Finish with the colored CSAIL mark."
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": "HE055",
+  "title": "Helsinki framed logo screen",
+  "image": "he055.png",
+  "source": "../sources/visual-storytelling.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Helsinki framed logo screen",
+    "order": 75,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/visual-storytelling#helsinki-framed-logo-screen",
+    "original_html": "../sources/visual-storytelling.html"
+  },
+  "slide_intent": "Give a video a recognizable signature so viewers can associate the preceding content with its source.",
+  "strategic_value": "A centered framed logo can connect varied Helsinki films through one consistent final identifier.",
+  "demonstration": "This expanded webpage-section capture compares the framed logo on pink, photographic and wave-divided backgrounds, followed by a proportional placement diagram.",
+  "category": "Brand",
+  "practical_value": "Keep the logo centered and size it from the frame height rather than judging each background independently.",
+  "content_islands": [
+    {
+      "name": "Background alternatives",
+      "spec": "Group three static logo-screen examples with the placement text."
+    },
+    {
+      "name": "Proportional diagram",
+      "spec": "Stack a dark central logo between pale copies above and below to illustrate the central one-third height."
+    }
+  ],
+  "ingredient": {
+    "name": "Video signature logo",
+    "role": "Identify the city behind the video.",
+    "application": "Center the framed logo in both directions at one-third of the video height.",
+    "scope": "Logo screens; background may be an image, color or wave motif."
+  },
+  "reference_purposes": {
+    "Application": "The section permits image, color and wave backgrounds for the logo screen.",
+    "Constraint": "The logo is centered vertically and horizontally and sized to one-third of the video height.",
+    "Expression": "Three backgrounds demonstrate different expressions around the same white framed logo."
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "HI28",
+  "title": "Illustration use / Large white headline on orange",
+  "image": "hi28.png",
+  "source": "../sources/illustration-examples.pdf",
+  "location": {
+    "page": 28,
+    "series": "Helsinki illustration examples — PDF derived from the official PowerPoint deck with LibreOffice",
+    "order": 218
+  },
+  "slide_intent": "Give one statement visual priority so the viewer can grasp it before exploring the accompanying scene.",
+  "strategic_value": "A large white headline on orange can make a Helsinki message emphatic while retaining illustrated warmth.",
+  "demonstration": "Four lines of white placeholder headline dominate the left; a photographer-like figure, fire and winding boardwalk cluster at right.",
+  "category": "Layout",
+  "practical_value": "Use an asymmetrical headline-and-image split when the message needs immediate emphasis.",
+  "content_islands": [
+    {
+      "name": "Headline field",
+      "spec": "Set the four-line white headline across the left half of the orange background."
+    },
+    {
+      "name": "Right-hand scene",
+      "spec": "Cluster the figure, fire and winding boardwalk on the right, allowing edge cropping."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The page combines a large statement with a compact illustration cluster.",
+    "Expression": "White text and orange ground create a strong contrast beside black, white and ochre motifs."
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "I019",
+  "title": "App Icon",
+  "image": "i019.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 19
+  },
+  "slide_intent": "Judge two related icons at their actual point of choice on a phone.",
+  "strategic_value": "Comparing both changes in context can reveal whether the main and shopper apps remain distinguishable.",
+  "demonstration": "Two cropped phone screens show paired Instacart and Shopper icons under Version 1.0 and Version 2.0 labels.",
+  "category": "Application",
+  "practical_value": "Compare the neighboring primary and shopper icons in each version before selecting artwork for a launcher.",
+  "content_islands": [
+    {
+      "name": "Version 1.0 preview",
+      "spec": "Use the left dark field for a large crop of the phone’s upper corner and the two original icons."
+    },
+    {
+      "name": "Version 2.0 preview",
+      "spec": "Mirror the crop on a pale field at right, holding the arrangement steady while swapping icon artwork."
+    }
+  ]
+}

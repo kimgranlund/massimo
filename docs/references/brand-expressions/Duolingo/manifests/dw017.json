@@ -1,0 +1,39 @@
+{
+  "id": "DW017",
+  "title": "Color / Core brand colors",
+  "image": "dw017.png",
+  "source": "../sources/pages/identity-color.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/identity/color",
+    "section": "Core brand colors",
+    "item": 17,
+    "order": 170
+  },
+  "slide_intent": "Assign colors different jobs because recognition and hierarchy depend on more than collecting attractive swatches.",
+  "strategic_value": "Repeating Feather Green while giving other colors defined roles can make Duolingo familiar and its communications orderly.",
+  "demonstration": "Four numbered swatches provide digital and print values for Feather Green, Mask Green, Eel and Snow, beside a role hierarchy.",
+  "category": "Color",
+  "practical_value": "Choose a color by its role: core brand hue, backdrop for Duo, typography or primary background.",
+  "content_islands": [
+    {
+      "name": "Core swatches",
+      "spec": "Keep each numbered color with its name and digital/print values in the left specimen area."
+    },
+    {
+      "name": "Role hierarchy",
+      "spec": "Use the right column for the heading and numbered explanation of brand green, secondary green, type gray and background white."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source says Feather Green is the hue associated with Duolingo and traces the core palette to Duo.",
+    "Application": "The numbered explanation assigns Mask Green as a backdrop for Duo, Eel commonly to typography and Snow as primary background.",
+    "Expression": "The four swatches establish the core palette."
+  },
+  "ingredient": {
+    "name": "Core color roles",
+    "role": "Build recognition while separating supporting visual jobs.",
+    "application": "Prioritize Feather Green #58CC02; use Mask Green #89E219 as the secondary green backdrop for Duo, Eel #4B4B4B commonly for type and Snow #FFFFFF as primary background.",
+    "scope": "Historical archived guidelines. Historical core palette. The hierarchy is qualitative; swatch areas do not prescribe usage percentages."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "HI08",
+  "title": "Waterfront and gardening",
+  "image": "hi08.png",
+  "source": "../sources/illustration-examples.pdf",
+  "location": {
+    "page": 8,
+    "series": "Helsinki illustration examples — PDF derived from the official PowerPoint deck with LibreOffice",
+    "order": 198
+  },
+  "slide_intent": "Bring recreation and care for surroundings into one vocabulary so city life includes both public space and personal activity.",
+  "strategic_value": "A paddleboarder, waterfront building and gardeners can give Helsinki’s environmental scenes a human scale.",
+  "demonstration": "A dark-blue water shape with paddleboarder and sailboat sits left; a white building, tall black trees and gardening figures fill the right.",
+  "category": "Imagery",
+  "practical_value": "Compare water, architecture and gardening elements as separable groups for a scene.",
+  "content_islands": [
+    {
+      "name": "Water activities",
+      "spec": "Place the paddleboarder and sailboat on the irregular blue field at left."
+    },
+    {
+      "name": "Built and planted setting",
+      "spec": "Group the white building, trees, planter and gardening figures to the right."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A dark-blue water shape with paddleboarder and sailboat sits left; a white building, tall black trees and gardening figures fill the right."
+  }
+}

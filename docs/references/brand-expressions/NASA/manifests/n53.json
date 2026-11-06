@@ -1,0 +1,24 @@
+{
+  "id": "N53",
+  "title": "Aerospace Education Unit",
+  "image": "n53.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 53
+  },
+  "slide_intent": "Show designers how to give a special-purpose vehicle a distinctive appearance while allowing people at a distance to recognize its agency before reading its function.",
+  "strategic_value": "NASA can give the education unit a distinct color treatment while retaining the familiar mark, Helvetica lettering and ordering of information.",
+  "demonstration": "Opposing side views show a red and warm-gray van with a large light logotype, a prominent unit name and smaller agency and center lettering. The government-use information sits on the front doors.",
+  "category": "Application",
+  "practical_value": "Rank the logo first, the unit name second and agency details third, then test that sequence on both sides of the vehicle.",
+  "content_islands": [
+    {
+      "name": "Identification hierarchy",
+      "spec": "Set the heading and short explanatory columns across the top. Describe the roles of the agency mark, unit designation and smaller supporting names."
+    },
+    {
+      "name": "Opposing side elevations",
+      "spec": "Stack both sides of the van at equal scale. Keep the red upper field, gray lower field and light divider. Fit the mark and type around each side’s doors and windows."
+    }
+  ]
+}

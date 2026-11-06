@@ -1,0 +1,29 @@
+{
+  "id": "MC11",
+  "title": "Golf championship billboard",
+  "image": "mc11.png",
+  "source": "../sources/mc11.jpg",
+  "location": {
+    "series": "Pentagram / Mastercard / 2016 identity case study",
+    "item": 11,
+    "extent": "Full published artwork"
+  },
+  "slide_intent": "Test brand expression at advertising scale because sponsorship must be identifiable within a larger event message.",
+  "strategic_value": "Circular linework and a compact mark can connect event photography to the parent identity.",
+  "demonstration": "An urban billboard combines a golfer photograph, white circular arcs and an Open Championship headline.",
+  "category": "Application",
+  "practical_value": "Inspect graphic restraint when an event image carries most of the message.",
+  "content_islands": [
+    {
+      "name": "Urban context",
+      "spec": "Retain the building facades around the large billboard."
+    },
+    {
+      "name": "Campaign face",
+      "spec": "Preserve the golfer photograph, circle outlines, event title and small upper-right identity."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The source caption identifies the outdoor execution as a billboard."
+  }
+}

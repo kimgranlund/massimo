@@ -1,0 +1,30 @@
+{
+  "id": "HI29",
+  "title": "Illustration use / Neighbourhood text page on pink",
+  "image": "hi29.png",
+  "source": "../sources/illustration-examples.pdf",
+  "location": {
+    "page": 29,
+    "series": "Helsinki illustration examples — PDF derived from the official PowerPoint deck with LibreOffice",
+    "order": 219
+  },
+  "slide_intent": "Separate explanation from illustration so the reader can follow the text while the image supplies context.",
+  "strategic_value": "A pink page with varied residents and housing can give Helsinki informational copy a recognizable human setting.",
+  "demonstration": "A heading and two text paragraphs occupy the left; building, plant, person with dog and wheelchair user form a right-hand cluster, with a small logo below the text.",
+  "category": "Layout",
+  "practical_value": "Keep the explanatory column distinct from the illustration cluster while using a shared background.",
+  "content_islands": [
+    {
+      "name": "Text column",
+      "spec": "Place heading and two paragraphs at left with the framed logo near the bottom."
+    },
+    {
+      "name": "Neighbourhood cluster",
+      "spec": "Arrange building, plant and residents across the right half with cropped edges."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The page demonstrates body copy beside a group of neighbourhood illustrations.",
+    "Expression": "Pink, green and ochre connect the separate subjects through one background."
+  }
+}

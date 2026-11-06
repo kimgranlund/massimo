@@ -1,0 +1,29 @@
+{
+  "id": "LH38",
+  "title": "Paired type specimen posters",
+  "image": "lh38.png",
+  "source": "../sources/lh38.jpg",
+  "location": {
+    "series": "HvD Fonts / Lufthansa 2018",
+    "item": 17,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Compare a family across background treatments because contrast affects hierarchy and perceived weight.",
+  "strategic_value": "Consistent numeral and alphabet organization can make the Lufthansa family identifiable on both pale and dark fields.",
+  "demonstration": "Two posters share oversized numerals, alphabets, crane marks and weight specimens; one is gray and one dark blue.",
+  "category": "Typography",
+  "practical_value": "Test the same type hierarchy in light and dark versions.",
+  "content_islands": [
+    {
+      "name": "Poster pair",
+      "spec": "Place the gray specimen at left and blue specimen at right."
+    },
+    {
+      "name": "Repeated hierarchy",
+      "spec": "Keep large numerals above alphabets and smaller family samples."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Two posters share oversized numerals, alphabets, crane marks and weight specimens; one is gray and one dark blue."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "DB0909",
+  "title": "Typography / price and infrastructure campaigns",
+  "image": "db0909.png",
+  "source": "../sources/page-09.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 9,
+    "section": 9,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Typografie_neu"
+  },
+  "slide_intent": "Make the main offer or achievement dominant so a viewer can find the message quickly.",
+  "strategic_value": "The same heavy headline language can connect DB sales and infrastructure communication.",
+  "demonstration": "Two light/dark BahnCard discount variants appear beside a photographic 2.300 WEICHEN campaign.",
+  "category": "Application",
+  "practical_value": "Compare percentage-led and quantity-led headlines across contrasting backgrounds.",
+  "content_islands": [
+    {
+      "name": "Discount variants",
+      "spec": "Place the white and dark discount posters together at left."
+    },
+    {
+      "name": "Infrastructure message",
+      "spec": "Set the large numeric headline over rail photography at right, with the red Schwelle below."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The examples apply heavy headlines to a discount and an infrastructure message.",
+    "Expression": "Large white or black numerals lead each composition."
+  }
+}

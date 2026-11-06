@@ -1,0 +1,24 @@
+{
+  "id": "F63",
+  "title": "How to use characters",
+  "image": "f63.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 63
+  },
+  "slide_intent": "Show how placement and size change the job of a character. A cover may need an arresting silhouette while an interior spread can use a smaller scene to explain a situation.",
+  "strategic_value": "Frontline AIDS can use characters across publications, posters and social posts while retaining a recognizable illustration style.",
+  "demonstration": "A tilted toolkit cover leads into a green field containing two publication spreads, a pink poster and a small social application.",
+  "category": "Application",
+  "practical_value": "Compare the cover and spreads when deciding how much area an illustration deserves. Reserve enough space for the character to remain legible.",
+  "content_islands": [
+    {
+      "name": "Placement principle",
+      "spec": "Place the short guidance to the left and lead into the examples with a small pink arrow."
+    },
+    {
+      "name": "Applications board",
+      "spec": "Overlap the enlarged blue cover with the edge of the green field. Arrange editorial spreads, poster and social example to its right so the changes of scale are visible."
+    }
+  ]
+}

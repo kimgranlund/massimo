@@ -1,0 +1,28 @@
+{
+  "id": "F07",
+  "title": "Because we are human",
+  "image": "f07.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 7
+  },
+  "slide_intent": "Anchor a section on strategy in the beliefs that guide it. Readers can understand why the design system belongs to an organization working with people.",
+  "strategic_value": "The organization can connect its identity to equal human worth and access to HIV information and services.",
+  "demonstration": "A photograph of a group handling containers fills the page. Two numbered beliefs appear in white, and a large boxed statement occupies the lower-right field.",
+  "category": "Brand",
+  "practical_value": "Use the beliefs as the first check when choosing a claim or photograph for the organization.",
+  "content_islands": [
+    {
+      "name": "Section navigation",
+      "spec": "Use the narrow left rail to introduce Our brand upfront and list its topics."
+    },
+    {
+      "name": "Beliefs",
+      "spec": "Set the introduction and two numbered beliefs in white over the darker portion of the photograph."
+    },
+    {
+      "name": "Headline and photograph",
+      "spec": "Place the black headline on stepped pink fields at lower right with drawn gestures. Keep the photographed faces visible above the type."
+    }
+  ]
+}

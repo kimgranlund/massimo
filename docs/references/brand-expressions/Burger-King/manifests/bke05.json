@@ -1,0 +1,34 @@
+{
+  "id": "BKE05",
+  "title": "Growing letter billboard",
+  "image": "bke05.png",
+  "source": "../sources/bke05.webp",
+  "location": {
+    "series": "JKR / Burger King identity case study",
+    "item": 5,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Let type scale carry the message so a simple phrase can communicate intensity at a distance.",
+  "strategic_value": "An expanding run of letters can turn Burger King’s appetite language into a memorable roadside graphic.",
+  "demonstration": "A long cream billboard shows red M forms increasing from small at left to large at right, with Juicy and the logo at the end.",
+  "category": "Typography",
+  "practical_value": "Compare directional changes in scale as a way to use an unusually wide format.",
+  "content_islands": [
+    {
+      "name": "Letter progression",
+      "spec": "Run the repeated red M shapes across the billboard, increasing their height toward the right."
+    },
+    {
+      "name": "Closing cue",
+      "spec": "Place vertical Juicy text and the small signature at the right edge."
+    },
+    {
+      "name": "Street context",
+      "spec": "Retain the fence, road and buildings to show environmental scale."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The type progression is applied to an elongated outdoor billboard.",
+    "Expression": "Increasing letter size gives a visual crescendo to an appetite sound."
+  }
+}

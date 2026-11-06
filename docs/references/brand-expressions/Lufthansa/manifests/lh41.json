@@ -1,0 +1,29 @@
+{
+  "id": "LH41",
+  "title": "Typography on the A380",
+  "image": "lh41.png",
+  "source": "../sources/lh41.jpg",
+  "location": {
+    "series": "HvD Fonts / Lufthansa 2018",
+    "item": 20,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Evaluate type on a large curved surface because the viewing angle and distance change how a word is read.",
+  "strategic_value": "A strong fuselage wordmark can complement the tail symbol in recognizing Lufthansa at the gate.",
+  "demonstration": "An airport photograph shows an A380 with a large Lufthansa wordmark and crane tail beside ground vehicles.",
+  "category": "Application",
+  "practical_value": "Judge actual wordmark scale against the whole aircraft and service environment.",
+  "content_islands": [
+    {
+      "name": "Aircraft",
+      "spec": "Keep the wordmark and tail in one view."
+    },
+    {
+      "name": "Ground context",
+      "spec": "Retain equipment and neighboring airport structures to establish scale."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "An airport photograph shows an A380 with a large Lufthansa wordmark and crane tail beside ground vehicles."
+  }
+}

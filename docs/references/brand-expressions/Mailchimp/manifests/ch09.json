@@ -1,0 +1,32 @@
+{
+  "id": "CH09",
+  "title": "Feature messages and illustration pairs",
+  "image": "ch09.png",
+  "source": "../sources/ch09.gif",
+  "location": {
+    "series": "COLLINS / Mailchimp case study",
+    "item": 9,
+    "extent": "Complete published artwork",
+    "section": "Gallery"
+  },
+  "slide_intent": "Pair a benefit with a visual metaphor because a person should understand the offer and remember its tone.",
+  "strategic_value": "Unexpected drawings beside plain feature messages can make Mailchimp’s tools feel useful without losing personality.",
+  "demonstration": "Eleven held frames pair large serif messages with black drawings on white, including email, integration, testing and automation examples.",
+  "category": "Voice",
+  "practical_value": "Compare how literal product language and surreal imagery share a message.",
+  "content_islands": [
+    {
+      "name": "Message",
+      "spec": "Place each feature phrase in large black serif type with generous white space."
+    },
+    {
+      "name": "Metaphor",
+      "spec": "Pair the phrase with a drawing whose subject or action relates to that feature."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The sequence demonstrates different feature messages paired with illustrations.",
+    "Expression": "Black irregular drawings accompany consistent serif headlines."
+  },
+  "motion": "../sources/ch09.mp4"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "BK056",
+  "title": "Home of the Whopper® / Wall example",
+  "image": "bk056.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 56
+  },
+  "slide_intent": "Test a phrase on the material people encounter because texture and scale can change its readability and tone.",
+  "strategic_value": "The brown lockup on wood can connect Burger King’s product claim to a warm restaurant environment.",
+  "demonstration": "A large Home of the Whopper lockup runs across a wall of horizontal wooden boards.",
+  "category": "Application",
+  "practical_value": "Compare the lockup’s hierarchy and contrast on a textured interior surface.",
+  "content_islands": [
+    {
+      "name": "Wooden wall",
+      "spec": "Let horizontal boards fill the page and preserve their grain and joints."
+    },
+    {
+      "name": "Claim lettering",
+      "spec": "Place the brown lockup across the central wall, keeping the small stacked phrase beside the larger Whopper name."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Dark rounded lettering and warm wooden boards create a coherent material and typographic treatment.",
+    "Application": "The signature claim is applied as interior wall lettering."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "HI07",
+  "title": "Construction and movement",
+  "image": "hi07.png",
+  "source": "../sources/illustration-examples.pdf",
+  "location": {
+    "page": 7,
+    "series": "Helsinki illustration examples — PDF derived from the official PowerPoint deck with LibreOffice",
+    "order": 197
+  },
+  "slide_intent": "Connect infrastructure to daily movement so city development is represented as part of lived experience.",
+  "strategic_value": "Buildings, a cyclist, rail transport and water can link Helsinki’s growing city to familiar routines.",
+  "demonstration": "A cyclist, crane and tall buildings occupy the left and center; a white bridge sits above blue water at right, with an orange train and smaller structures below.",
+  "category": "Imagery",
+  "practical_value": "Choose infrastructure and movement motifs that fit the subject instead of treating architecture as a generic backdrop.",
+  "content_islands": [
+    {
+      "name": "Development cluster",
+      "spec": "Group cyclist, crane and tall outlined buildings across the left and center."
+    },
+    {
+      "name": "Transport and water",
+      "spec": "Place the bridge on blue water at upper right and the orange train along the lower line."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A cyclist, crane and tall buildings occupy the left and center; a white bridge sits above blue water at right, with an orange train and smaller structures below."
+  }
+}

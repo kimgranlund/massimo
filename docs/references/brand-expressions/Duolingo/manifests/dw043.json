@@ -1,0 +1,39 @@
+{
+  "id": "DW043",
+  "title": "Brand family / Sub-brands",
+  "image": "dw043.png",
+  "source": "../sources/pages/identity-brand-family.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/identity/brand-family",
+    "section": "Sub-brands",
+    "item": 43,
+    "order": 430
+  },
+  "slide_intent": "Provide a default architecture because every initiative does not need an independently invented identity.",
+  "strategic_value": "A generic lockup can let Duolingo’s smaller services remain connected to the master brand.",
+  "demonstration": "A sub-brand specimen accompanies an explanation that uniquely branded products have their own rules while other initiatives use a generic layout.",
+  "category": "Brand",
+  "practical_value": "Use the generic structure only after checking whether the product has its own guidance.",
+  "content_islands": [
+    {
+      "name": "Generic specimen",
+      "spec": "Show the supplied sub-brand arrangement and display controls in the left area."
+    },
+    {
+      "name": "Scope distinction",
+      "spec": "Place the heading and distinction between uniquely governed products and other initiatives in the right column."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text says the generic layout helps keep the family consistent.",
+    "Application": "The generic layout is assigned to sub-brands and initiatives without their own rules.",
+    "Constraint": "The source distinguishes products with specific branding rules from those using the generic layout."
+  },
+  "ingredient": {
+    "name": "Generic sub-brand lockup",
+    "role": "Keep initiatives attached to the master identity.",
+    "application": "Use the generic layout for initiatives that lack dedicated branding rules.",
+    "scope": "Historical archived guidelines. Historical default architecture; uniquely branded offerings such as the source’s Plus example have separate guidance."
+  }
+}

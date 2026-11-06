@@ -1,0 +1,28 @@
+{
+  "id": "HT07",
+  "title": "Helsinki Grotesk Pro / Extra Light and Extra Light Italic",
+  "image": "ht07.png",
+  "source": "../sources/helsinki-grotesk-pro-2025.pdf",
+  "location": {
+    "page": 7,
+    "order": 185
+  },
+  "slide_intent": "Judge extra light and extra light italic in real words and paragraphs so weight and slant can be chosen for both voice and reading.",
+  "strategic_value": "The extra light and extra light italic specimens can help Helsinki retain a consistent family while selecting an appropriate degree of emphasis.",
+  "demonstration": "A two-column specimen combines Latin words, italic phrases, a small English paragraph and oversized ExLi It 18325.",
+  "category": "Typography",
+  "practical_value": "Compare the extra light and extra light italic cuts at display and paragraph scale before assigning them to a communication.",
+  "content_islands": [
+    {
+      "name": "Word specimens",
+      "spec": "Large words demonstrate the selected upright and italic cuts."
+    },
+    {
+      "name": "Paragraph and large forms",
+      "spec": "A smaller paragraph and oversized letter or numeral forms provide contrasting reading scales."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A two-column specimen combines Latin words, italic phrases, a small English paragraph and oversized ExLi It 18325."
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "BK033",
+  "title": "Primary Logo / Primary Logo for Small Use",
+  "image": "bk033.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 33
+  },
+  "slide_intent": "Provide a simplified signature for small formats so recognition survives reproduction limits.",
+  "strategic_value": "A small-use variant can keep Burger King’s burger-shaped mark readable across touchpoints.",
+  "demonstration": "Two left text blocks explain primary and small-use logos; a large signature and a tiny annotated version occupy the right.",
+  "category": "Brand",
+  "practical_value": "Choose the small-use logo when the required width is .75 inch or less; consult minimum-size guidance separately.",
+  "content_islands": [
+    {
+      "name": "Logo guidance",
+      "spec": "Place the primary and small-use explanations at left."
+    },
+    {
+      "name": "Primary specimen",
+      "spec": "Show the large orange-bun and red-letter signature at center."
+    },
+    {
+      "name": "Small-use specimen",
+      "spec": "Place the small logo at lower right with its .75 inch annotation."
+    },
+    {
+      "name": "Usage qualification",
+      "spec": "Retain the bottom country and approval qualification."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The copy links the main logo with heritage and the small-use version with easier reproduction.",
+    "Expression": "Large and small burger-shaped signatures are shown side by side.",
+    "Constraint": "The source assigns the simplified version to .75 inch wide or less and requires market-specific approval for logo use."
+  },
+  "ingredient": {
+    "name": "Small-use logo",
+    "role": "Retain recognition in small reproduction.",
+    "application": "Use the simplified variant at .75 inch width or less; check the separate minimum-size standards.",
+    "scope": "Historical partner guide. The printed cross-reference says page44, while minimum sizes appear on physical page45; preserve this source discrepancy."
+  }
+}

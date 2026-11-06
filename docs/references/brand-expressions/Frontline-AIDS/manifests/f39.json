@@ -1,0 +1,28 @@
+{
+  "id": "F39",
+  "title": "Body copy typeface",
+  "image": "f39.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 39
+  },
+  "slide_intent": "Select a text face that can carry longer reading while a display face draws attention to the heading. A change in weight can signal role without changing families again.",
+  "strategic_value": "Frontline AIDS can give publications and digital communications a consistent, legible reading voice through Raleway Regular and Bold.",
+  "demonstration": "A large Raleway sentence combines bold and regular weight, with its first word underlined in pink. Regular and Bold character sets sit beneath the specimen.",
+  "category": "Typography",
+  "practical_value": "Set body copy in Raleway Regular and use Raleway Bold for emphasis. Use Arial Regular and Bold where system fonts are required.",
+  "content_islands": [
+    {
+      "name": "Face and fallback",
+      "spec": "Describe the body face in the left column and show its two Arial alternatives beneath."
+    },
+    {
+      "name": "Weight specimen",
+      "spec": "Set a large mixed-weight sentence in the right field and underline the face name with a loose pink stroke."
+    },
+    {
+      "name": "Character sets",
+      "spec": "Align smaller Regular and Bold specimens beneath the sentence to show the available weights in running text."
+    }
+  ]
+}

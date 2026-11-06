@@ -1,0 +1,28 @@
+{
+  "id": "F23",
+  "title": "Strapline in action",
+  "image": "f23.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 23
+  },
+  "slide_intent": "Judge the relationship between logo and invitation across the surfaces a reader actually sees. A brochure offers a separate sign-off surface, while a poster has to carry both elements at once.",
+  "strategic_value": "Frontline AIDS can retain a recognizable sign-off across printed, digital and small physical applications.",
+  "demonstration": "A brochure mockup, web example and pair of pens share the middle field. A separate portrait poster at right places the mark and strapline on the same surface.",
+  "category": "Application",
+  "practical_value": "Use the back cover when a brochure benefits from a closing sign-off. On a single-surface poster, keep the invitation visible with the logo.",
+  "content_islands": [
+    {
+      "name": "Introduction",
+      "spec": "Place the section rail and guidance on communication format in the left column."
+    },
+    {
+      "name": "Multisurface examples",
+      "spec": "Arrange the brochure front and back together above the web and pen examples. Keep visible the dimensions that carry the wordmark-to-strapline relationship."
+    },
+    {
+      "name": "Poster",
+      "spec": "Use the right field for the single-surface instruction and tall poster. Keep the lower-edge signature and strapline in the displayed artwork."
+    }
+  ]
+}

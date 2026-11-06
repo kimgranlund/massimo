@@ -1,0 +1,40 @@
+{
+  "id": "DW056",
+  "title": "Writing / Voice / Expressive",
+  "image": "dw056.png",
+  "source": "../sources/pages/writing-voice.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/voice",
+    "section": "Expressive",
+    "item": 56,
+    "order": 560
+  },
+  "slide_intent": "Express enthusiasm with clarity and restraint so encouragement does not become pressure or confusion.",
+  "strategic_value": "Contrasts between brief, active examples and weaker alternatives can help Duolingo make energy useful to learners.",
+  "demonstration": "The left column defines Expressive through positive and negative traits; five right-hand comparisons cover brevity, active voice, directness, excitement and notifications.",
+  "category": "Voice",
+  "practical_value": "Edit a message toward clear action and measured excitement using the paired alternatives.",
+  "content_islands": [
+    {
+      "name": "Guidance column",
+      "spec": "Place the Expressive heading, rationale and two trait lists at left."
+    },
+    {
+      "name": "Worked examples",
+      "spec": "Stack five comparison rows at right, marking preferred examples with green checks and placing the alternatives underneath."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The explanation links expressive writing to excitement about helping people learn.",
+    "Expression": "Brief celebratory and instructional examples demonstrate the voice.",
+    "Application": "Five paired comparisons show how to change wording.",
+    "Constraint": "The page rejects unclear, indifferent, long-winded and intrusive language."
+  },
+  "ingredient": {
+    "name": "Expressive voice",
+    "role": "Make enthusiasm easy to understand.",
+    "application": "Favor brief, active, direct encouragement; avoid pressure in notifications.",
+    "scope": "Historical official guidelines from the 2024–2025 archived snapshot; this records the displayed guidance, not current Duolingo product behavior."
+  }
+}

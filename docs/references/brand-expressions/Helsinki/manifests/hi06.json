@@ -1,0 +1,25 @@
+{
+  "id": "HI06",
+  "title": "Kuvituselementit",
+  "image": "hi06.png",
+  "source": "../sources/illustration-examples.pdf",
+  "location": {
+    "page": 6,
+    "series": "Helsinki illustration examples — PDF derived from the official PowerPoint deck with LibreOffice",
+    "order": 196
+  },
+  "slide_intent": "Separate components from complete artwork so designers understand that the next pages offer parts for composition.",
+  "strategic_value": "A clear asset-section boundary can help Helsinki teams reuse illustrations deliberately.",
+  "demonstration": "White two-line section text is centered on the same solid blue field used for the earlier divider.",
+  "category": "Brand",
+  "practical_value": "Treat the following pages as an inventory of illustration elements rather than finished layouts.",
+  "content_islands": [
+    {
+      "name": "Element-section label",
+      "spec": "Center the two-line Finnish title on the blue background."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The divider introduces the illustration-element section."
+  }
+}

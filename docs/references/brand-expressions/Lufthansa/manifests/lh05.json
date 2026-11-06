@@ -1,0 +1,29 @@
+{
+  "id": "LH05",
+  "title": "Reversed crane on blue",
+  "image": "lh05.png",
+  "source": "../sources/lh05.jpg",
+  "location": {
+    "series": "Mona Franz / Lufthansa 2018",
+    "item": 5,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Test a mark in reverse because its perceived weight changes against a dark field.",
+  "strategic_value": "A white crane on deep blue can retain recognition while giving the refreshed identity a restrained tone.",
+  "demonstration": "A thin white crane and enclosing ring sit on a dark blue gradient.",
+  "category": "Color",
+  "practical_value": "Assess whether a refined symbol remains distinct on a dark ground.",
+  "content_islands": [
+    {
+      "name": "Reversed mark",
+      "spec": "Center the white crane and circle."
+    },
+    {
+      "name": "Blue field",
+      "spec": "Fill the complete background with the dark-to-lighter blue gradient."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A thin white crane and enclosing ring sit on a dark blue gradient."
+  }
+}

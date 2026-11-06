@@ -1,0 +1,34 @@
+{
+  "id": "AU06",
+  "title": "Once the sun sets, the real light show begins",
+  "image": "au06.png",
+  "source": "../sources/05-kms-team-audi-CD02_16-9.jpg",
+  "location": {
+    "series": "KMS TEAM / Audi and Audi Sport identity case study",
+    "item": 6,
+    "extent": "Complete source media"
+  },
+  "slide_intent": "Place a substantial headline where it stays readable while the photograph supplies the experience, because a product claim needs both comprehension and context.",
+  "strategic_value": "White Audi lettering and rings can identify the Q5 advertisement while the illuminated rear light makes its subject concrete.",
+  "demonstration": "A large white multiline headline fills the upper left of a dusk photograph; white rings sit below, with a red rear light and a man at the car across the lower field.",
+  "category": "Typography",
+  "practical_value": "Judge how line breaks, contrast and image placement accommodate a long product headline.",
+  "content_islands": [
+    {
+      "name": "Headline",
+      "spec": "Align the white LED-technology headline at upper left, spanning several lines."
+    },
+    {
+      "name": "Signature",
+      "spec": "Place white rings below the headline on the dark vehicle area."
+    },
+    {
+      "name": "Photographic evidence",
+      "spec": "Keep the glowing red rear light low left and the person at lower right within the full-bleed dusk image."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Large white typography and rings contrast with a dark photograph and red rear light.",
+    "Application": "The artwork applies the identity to an Audi Q5 rear-light advertisement."
+  }
+}

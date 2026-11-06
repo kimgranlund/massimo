@@ -1,0 +1,31 @@
+{
+  "id": "HE106",
+  "title": "FAQ – Frequently Asked Questions",
+  "image": "he106.png",
+  "source": "../sources/design-and-create.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "FAQ – Frequently Asked Questions",
+    "order": 141,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/design-and-create#faq---frequently-asked-questions",
+    "original_html": "../sources/design-and-create.html"
+  },
+  "slide_intent": "Explain recovery and detail controls so chart maintenance preserves both meaning and visual consistency.",
+  "strategic_value": "A practical FAQ can help Helsinki authors fix chart drift without inventing new styles.",
+  "demonstration": "Expanded webpage section: a long question-and-answer section combines procedural lists with annotated Excel screenshots for formatting, separators, series, labels and chart elements.",
+  "category": "Application",
+  "practical_value": "Consult the issue-specific steps when data edits change styling or when labels and scales need adjustment.",
+  "content_islands": [
+    {
+      "name": "Troubleshooting questions",
+      "spec": "Bold questions divide the long column into independent tasks."
+    },
+    {
+      "name": "Steps and screenshots",
+      "spec": "Numbered instructions and annotated menus sit beneath the relevant questions."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The FAQ provides concrete menu sequences for resetting templates, number separators, series order and chart labels."
+  }
+}

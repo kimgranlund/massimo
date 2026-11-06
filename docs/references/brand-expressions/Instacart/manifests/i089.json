@@ -1,0 +1,25 @@
+{
+  "id": "I089",
+  "title": "Applications: Intro",
+  "image": "i089.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 89,
+    "printed_page": 95
+  },
+  "slide_intent": "Orient readers to the examples as mockups so they can study how the ingredients combine and understand the limits of the material.",
+  "strategic_value": "The chapter can show a coherent system across touchpoints while identifying the status of the examples.",
+  "demonstration": "A large statement introduces the brand ingredients in use. A small orange note at the lower left states that the section’s mockups are not licensed for external use.",
+  "category": "Application",
+  "practical_value": "Treat the following compositions as design references when planning new work. Keep the use qualification attached to the series.",
+  "content_islands": [
+    {
+      "name": "Orientation",
+      "spec": "Set the Applications: Intro label at top and the large overview sentence below on cream."
+    },
+    {
+      "name": "Use qualification",
+      "spec": "Separate the small orange note at the lower left so it remains visible without competing with the introduction."
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "id": "IBS21",
+  "title": "Examples / Misuse — Mastheads and banners",
+  "image": "ibs21.png",
+  "source": "../sources/ibm-logo-strategic-partners.pdf",
+  "location": {
+    "page": 21,
+    "series": "IBM Logo Guidelines for Strategic Partners / Version 1.2 / copyright 2023",
+    "order": 200021
+  },
+  "slide_intent": "Expose placements that imply false ownership so a partner can recognize ambiguity before publishing.",
+  "strategic_value": "Rejected masthead and banner treatments can protect the distinction between IBM support and partner authorship.",
+  "demonstration": "Three red-crossed examples show IBM beside the partner in a website masthead, an unapproved combined mark in a phone layout, and IBM leading a banner.",
+  "category": "Application",
+  "practical_value": "Check masthead, logo-artwork and banner decisions for unintended co-branding or lost clear space.",
+  "content_islands": [
+    {
+      "name": "Website masthead",
+      "spec": "Place the crossed laptop example at upper center with the red prohibition below."
+    },
+    {
+      "name": "Unapproved combination",
+      "spec": "Place the crossed phone layout at right with the combined partner-and-IBM treatment."
+    },
+    {
+      "name": "Banner hierarchy",
+      "spec": "Place the crossed wide banner below the laptop, where IBM leads instead of the partner."
+    }
+  ],
+  "reference_purposes": {
+    "Constraint": "The page prohibits IBM next to the partner mark in website masthead/navigation, requires approved artwork, and rejects IBM-led banners or loss of clear space."
+  }
+}

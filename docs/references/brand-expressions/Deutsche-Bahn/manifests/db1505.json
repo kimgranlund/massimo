@@ -1,0 +1,50 @@
+{
+  "id": "DB1505",
+  "title": "Animation",
+  "image": "db1505.png",
+  "source": "../sources/page-15.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 15,
+    "section": 5,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Motion-Branding"
+  },
+  "slide_intent": "Preserve reading order while animating different ingredients because motion should reveal relationships without obscuring the message.",
+  "strategic_value": "Applying one movement logic to the Schwelle, type, layouts and interface feedback can make DB communications coherent.",
+  "demonstration": "The section groups Schwelle, typography, layout, Ken Burns and UI demonstrations with explanatory text. Embedded players remain consent placeholders in the PNG; their complete clips are separately preserved.",
+  "category": "Motion",
+  "practical_value": "Use the relevant ingredient examples, while checking the films where source captions conflict with their visible alignment or subject.",
+  "content_islands": [
+    {
+      "name": "Schwelle",
+      "spec": "Begin with build/disassembly and loop examples."
+    },
+    {
+      "name": "Typography",
+      "spec": "Group headline, body-text and expressive-word examples beneath their role explanations."
+    },
+    {
+      "name": "Layout",
+      "spec": "Compare five compositions and their staged entrances."
+    },
+    {
+      "name": "Photography",
+      "spec": "Keep zoom and pan examples beside the linear, subtle-motion instruction."
+    },
+    {
+      "name": "Interface",
+      "spec": "End with attention, transition, live feedback and visible-status examples."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text prioritizes readability, understandable relationships and movement that is never disturbing or complex.",
+    "Application": "The Ken Burns instruction specifies subtle, fluid motion with linear easing.",
+    "Constraint": "Expressive type animation is suitable for individual keywords, not whole sentences or text blocks."
+  },
+  "ingredient": {
+    "name": "Animation",
+    "role": "Preserve reading order while animating different ingredients because motion should reveal relationships without obscuring the message.",
+    "application": "Use the relevant ingredient examples, while checking the films where source captions conflict with their visible alignment or subject.",
+    "scope": "Official DB new-design website captured 2026-11-05; edition undated. Instructions are local to this motion section. Source caption inconsistencies are documented separately."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "HE091",
+  "title": "Hel.fi – a trendsetter for websites",
+  "image": "he091.png",
+  "source": "../sources/design-and-create.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Hel.fi – a trendsetter for websites",
+    "order": 123,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/design-and-create#hel-fi---a-trendsetter-for-websites",
+    "original_html": "../sources/design-and-create.html"
+  },
+  "slide_intent": "Provide recognizable site foundations so different city communications feel connected.",
+  "strategic_value": "Shared Drupal and WordPress approaches can help Helsinki avoid fragmented web identities.",
+  "demonstration": "Expanded webpage section: text describes harmonization since 2020 and bullets distinguish the main Drupal site, special Drupal installations and WordPress campaign themes.",
+  "category": "Application",
+  "practical_value": "Choose the applicable city web platform or theme before designing a separate site.",
+  "content_islands": [
+    {
+      "name": "Harmonization context",
+      "spec": "Opening text explains the two platforms."
+    },
+    {
+      "name": "Platform roles",
+      "spec": "Three bullets distinguish the main site and special cases."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The page identifies Drupal for the main site and a Helsinki WordPress theme for campaigns and special cases."
+  }
+}

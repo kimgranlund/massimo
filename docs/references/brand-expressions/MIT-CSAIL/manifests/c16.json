@@ -1,0 +1,24 @@
+{
+  "id": "C16",
+  "title": "Maintaining Integrity (Do/don’t)",
+  "image": "c16.png",
+  "source": "../csail-branding-short-guide.pdf",
+  "location": {
+    "page": 16
+  },
+  "slide_intent": "Help designers recognize alterations that compromise the signature. A grid of counterexamples makes different failure modes easy to distinguish.",
+  "strategic_value": "The lab can preserve a consistent silhouette and readable lettering by supplying a visual reference for common reproduction errors.",
+  "demonstration": "Twelve examples vary the mark through stretching, repositioning, rotation, altered colors, decoration, images and poor contrast. Each has a short warning.",
+  "category": "Brand",
+  "practical_value": "Compare a draft mark with the specific error examples before releasing a slide, poster or other asset.",
+  "content_islands": [
+    {
+      "name": "Integrity rule",
+      "spec": "Set the reproduction guidance at upper left and the proportional-scaling note in orange below it."
+    },
+    {
+      "name": "Error grid",
+      "spec": "Arrange twelve altered marks in three columns and four rows on a pale field. Keep each warning attached to its example so the prohibited alteration is identifiable."
+    }
+  ]
+}

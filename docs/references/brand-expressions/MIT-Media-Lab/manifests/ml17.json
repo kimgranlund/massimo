@@ -1,0 +1,36 @@
+{
+  "id": "ML17",
+  "title": "Business-card family",
+  "image": "ml17.png",
+  "source": "../sources/ml17.jpg",
+  "location": {
+    "series": "Pentagram / MIT Media Lab / 2014 identity",
+    "item": 17,
+    "extent": "Published lightbox artwork"
+  },
+  "slide_intent": "Make individual contact details belong to one institution so personal exchanges reinforce collective recognition.",
+  "strategic_value": "A repeated angular signature can link cards from different people.",
+  "demonstration": "A scattered array of white business cards combines oversized black geometry and small contact text.",
+  "category": "Application",
+  "practical_value": "Inspect how identity and practical information coexist at card scale.",
+  "content_islands": [
+    {
+      "name": "Card array",
+      "spec": "Overlapping cards show multiple orientations."
+    },
+    {
+      "name": "Identity and contact zones",
+      "spec": "Large black strokes contrast with compact text blocks."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A scattered array of white business cards combines oversized black geometry and small contact text.",
+    "Application": "A scattered array of white business cards combines oversized black geometry and small contact text."
+  },
+  "ingredient": {
+    "name": "Business-card family",
+    "role": "Make individual contact details belong to one institution so personal exchanges reinforce collective recognition.",
+    "application": "Inspect how identity and practical information coexist at card scale.",
+    "scope": "Observed in this historical case-study artwork; not a mandatory usage rule or a current brand standard."
+  }
+}

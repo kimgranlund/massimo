@@ -1,0 +1,31 @@
+{
+  "id": "CH04",
+  "title": "Language Bridge / From app to stage",
+  "image": "ch04.png",
+  "source": "../sources/ch04.jpg",
+  "location": {
+    "series": "COLLINS / Mailchimp case study",
+    "item": 4,
+    "extent": "Complete published artwork",
+    "section": "Language Bridge"
+  },
+  "slide_intent": "Test whether an illustration remains recognizable in space because a brand is encountered beyond a screen.",
+  "strategic_value": "Yellow surfaces and enlarged line drawings can connect Mailchimp’s exhibition presence with its digital communications.",
+  "demonstration": "A trade-show wall carries oversized black illustrations on yellow, with physical suspended objects and visitors nearby.",
+  "category": "Application",
+  "practical_value": "Compare an illustration’s digital role with its enlarged environmental use.",
+  "content_islands": [
+    {
+      "name": "Exhibition wall",
+      "spec": "Keep the yellow illustrated wall at left and the visitors at right to reveal scale."
+    },
+    {
+      "name": "Translation note",
+      "spec": "Retain the orange handwritten note above the photo linking app and stage."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The accompanying Language Bridge text describes translating marketing identity into interfaces or physical environments.",
+    "Application": "The photograph shows branded illustration and color applied to an exhibition wall."
+  }
+}

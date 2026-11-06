@@ -1,0 +1,24 @@
+{
+  "id": "N13",
+  "title": "The NASA Seal",
+  "image": "n13.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 13
+  },
+  "slide_intent": "Teach designers to choose an identifier that suits the occasion. A ceremonial setting calls for a different signal from an everyday communication.",
+  "strategic_value": "NASA can preserve the seal’s associations with history and ceremony by reserving it for formal uses.",
+  "demonstration": "The upper text assigns the seal to formal events and awards and distinguishes it from the logotype used in day-to-day communications. The seal appears by itself below.",
+  "category": "Brand",
+  "practical_value": "Choose the seal for the ceremonial uses identified here and give it a separate visual role from the everyday logotype.",
+  "content_islands": [
+    {
+      "name": "Occasion and use notes",
+      "spec": "Place the heading and guidance in columns at the top. Keep the instruction on combining the two identifiers with the rationale."
+    },
+    {
+      "name": "Seal specimen",
+      "spec": "Center the circular black seal below the horizontal rule and preserve the large field around it."
+    }
+  ]
+}

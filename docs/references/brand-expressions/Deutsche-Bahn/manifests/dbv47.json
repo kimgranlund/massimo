@@ -1,0 +1,36 @@
+{
+  "id": "DBV47",
+  "title": "Do_Layout",
+  "image": "dbv47.png",
+  "source": "../sources/media/dbv47.mp4",
+  "location": {
+    "series": "DB new design / motion demonstrations",
+    "source_page": 15,
+    "section": "Do-s-und-Don-ts-14021640",
+    "source_url": "https://ecm-mediathek-cdn.deutschebahn.com/cdnenhancedecmvidhls/db306515/2881221/video_config.json",
+    "capture_date": "2026-11-05",
+    "note": "Repeats the card composition in DBV22 as the positive half of an explicit sequence comparison with DBV48."
+  },
+  "slide_intent": "Sequence a layout’s parts so a person can follow the hierarchy as it forms.",
+  "strategic_value": "The staged white card can give DB communication an ordered entrance while retaining the photographic setting.",
+  "demonstration": "A white card expands over an employee image, then presents the logo, headline, copy, and Schwelle in an ordered sequence.",
+  "category": "Motion",
+  "practical_value": "Use this positive sequence to assess the order of a card’s entrance against DBV48.",
+  "content_islands": [
+    {
+      "name": "Card construction",
+      "spec": "Expand the narrow white strip at the left of the employee photograph."
+    },
+    {
+      "name": "Reading sequence",
+      "spec": "Introduce the logo, headline, copy, and red bars before retracting the card."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A white card expands over an employee image, then presents the logo, headline, copy, and Schwelle in an ordered sequence.",
+    "Application": "The source provides a playable demonstration of this repeatable sequence: A white card expands over an employee image, then presents the logo, headline, copy, and Schwelle in an ordered sequence.",
+    "Intent": "The positive caption says structured animation sequences create orientation; the negative caption identifies an incomprehensible sequence and overloaded composition.",
+    "Constraint": "The source rejects the sequence without comprehensible order shown in the negative example."
+  },
+  "motion": "../sources/media/dbv47.mp4"
+}

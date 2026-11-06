@@ -1,0 +1,25 @@
+{
+  "id": "I081",
+  "title": "Logo Proportions",
+  "image": "i081.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 81,
+    "printed_page": 81
+  },
+  "slide_intent": "Use a controlled comparison to judge when a mark draws attention away from an intentionally oversized headline.",
+  "strategic_value": "Keeping the signature secondary can preserve the rhythm of a short, expressive line while still identifying its source.",
+  "demonstration": "Two copies of a food banner retain the same photo and the same two-line headline. The upper example uses the smaller logo and a check. The lower one enlarges it to half headline height and receives a cross.",
+  "category": "Geometry",
+  "practical_value": "For a composition dominated by very large type, trial the one-third ratio and compare both lockups at the intended viewing size.",
+  "content_islands": [
+    {
+      "name": "Guidance",
+      "spec": "Set the one-third height rule in the left rail."
+    },
+    {
+      "name": "Banner pair",
+      "spec": "Stack the two cream-and-orange advertisements. Keep the headline and photo fixed, change the signature at lower left, and attach the pass or fail caption directly above each banner."
+    }
+  ]
+}

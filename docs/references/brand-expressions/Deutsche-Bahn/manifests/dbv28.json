@@ -1,0 +1,35 @@
+{
+  "id": "DBV28",
+  "title": "UI_Icon",
+  "image": "dbv28.png",
+  "source": "../sources/media/dbv28.mp4",
+  "location": {
+    "series": "DB new design / motion demonstrations",
+    "source_page": 15,
+    "section": "Animation-14021536",
+    "source_url": "https://ecm-mediathek-cdn.deutschebahn.com/cdnenhancedecmvidhls/db306428/2880999/video_config.json",
+    "capture_date": "2026-11-05"
+  },
+  "slide_intent": "Use a brief icon gesture for attention so an interface can signal activity without adding explanatory text.",
+  "strategic_value": "The receiver wobble can give DB interface feedback a familiar, expressive cue.",
+  "demonstration": "A dark telephone receiver wobbles and returns to rest against a pale background.",
+  "category": "Motion",
+  "practical_value": "Use the attention gesture for a momentary UI signal, rather than treating it as a change of control state.",
+  "content_islands": [
+    {
+      "name": "Attention gesture",
+      "spec": "Animate the centered receiver around its resting orientation."
+    },
+    {
+      "name": "Resting state",
+      "spec": "Return it to the stable telephone silhouette."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A dark telephone receiver wobbles and returns to rest against a pale background.",
+    "Application": "The source provides a playable demonstration of this repeatable sequence: A dark telephone receiver wobbles and returns to rest against a pale background.",
+    "Intent": "Accompanying Icons, Signature Graphics, or Animation im UI prose explains that animation directs focus, makes relationships understandable, and adds expression.",
+    "Constraint": "The accompanying guidance says animation is deliberate and never disturbing or complex."
+  },
+  "motion": "../sources/media/dbv28.mp4"
+}

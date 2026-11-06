@@ -1,0 +1,40 @@
+{
+  "id": "IG02",
+  "title": "Large glyph / centered scale",
+  "image": "ig02.png",
+  "source": "../sources/ig02.gif",
+  "location": {
+    "series": "Elvis Dinh / Instagram brand design system / project year 2022",
+    "item": 2,
+    "extent": "whole source artwork",
+    "poster_frame": 72,
+    "poster_seconds": 2.88,
+    "duration_seconds": 2.92
+  },
+  "slide_intent": "Relate symbol size to its field so the mark has intentional visual presence.",
+  "strategic_value": "A consistent large-glyph relationship can make Instagram signatures recognizable across formats.",
+  "demonstration": "The animation centers the gradient glyph, overlays axes, then diagrams its height as one third of the field height X.",
+  "category": "Geometry",
+  "practical_value": "Use the displayed one-third relationship when studying this large centered-glyph treatment.",
+  "content_islands": [
+    {
+      "name": "Centered glyph",
+      "spec": "Place the gradient glyph at the intersection of the horizontal and vertical axes."
+    },
+    {
+      "name": "Scale demonstration",
+      "spec": "Stack pale comparison glyphs above and below and label the active glyph 1/3 X beside the field height."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The sequence demonstrates a centered large glyph and its scale relation.",
+    "Constraint": "The diagram labels the glyph height 1/3 X for this treatment."
+  },
+  "ingredient": {
+    "name": "Large centered glyph",
+    "role": "Make the mark the dominant identifier in an otherwise empty field.",
+    "application": "The demonstrated glyph height is one third of field height X.",
+    "scope": "This large-glyph diagram; it is not a universal size for every Instagram placement."
+  },
+  "motion": "../sources/ig02.mp4"
+}

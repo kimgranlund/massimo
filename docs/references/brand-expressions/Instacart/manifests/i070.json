@@ -1,0 +1,24 @@
+{
+  "id": "I070",
+  "title": "Iconography Intro",
+  "image": "i070.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 70
+  },
+  "slide_intent": "Judge an icon by whether someone can recognize its function at the small size where it will be used.",
+  "strategic_value": "Instacart can give interface symbols a clear functional standard alongside its more expressive illustration system.",
+  "demonstration": "A large statement about functionality and small-size legibility appears on a pale field. The page uses only text to introduce the criterion.",
+  "category": "Geometry",
+  "practical_value": "Before approving an icon, inspect it at its intended display size and ask whether the feature it represents remains identifiable.",
+  "content_islands": [
+    {
+      "name": "Section label",
+      "spec": "Place Iconography Intro at upper left beneath the running identifiers."
+    },
+    {
+      "name": "Functional principle",
+      "spec": "Set the statement in large dark green type across three lines, leaving ample space below."
+    }
+  ]
+}

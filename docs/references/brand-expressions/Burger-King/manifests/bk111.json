@@ -1,0 +1,43 @@
+{
+  "id": "BK111",
+  "title": "Creating Illustrated Typography",
+  "image": "bk111.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 111
+  },
+  "slide_intent": "Balance expressive distortion with legibility so a reader can enjoy the food character without losing the words.",
+  "strategic_value": "A shared construction method and limited flourishes can keep locally produced Burger King lettering coherent.",
+  "demonstration": "A left rule column accompanies three Round, Square and Rectangular workflow columns, combining effect-dialog screenshots with numbered before/after lettering examples.",
+  "category": "Typography",
+  "practical_value": "Choose the workflow for the package shape, then adjust the letterforms by hand while respecting the word, color and flourish limits.",
+  "content_islands": [
+    {
+      "name": "Construction rules",
+      "spec": "Place the explanation, five limits and three numbered hand-adjustment goals at left."
+    },
+    {
+      "name": "Round workflow",
+      "spec": "Show Arc Upper/Lower and Inflate examples followed by a hand-adjusted circular result."
+    },
+    {
+      "name": "Square workflow",
+      "spec": "Show Free Distort and slight Twist examples leading to the square lettering result."
+    },
+    {
+      "name": "Rectangular workflow",
+      "spec": "Show Free Distort and slight Wave examples leading to the wide result; retain the local-approval note below."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The copy says the lettering should illustrate its descriptive words and warns that excessive movement causes legibility issues.",
+    "Application": "The three columns teach Illustrator effects followed by hand adjustment for round, square and rectangular formats.",
+    "Constraint": "The page limits each format to two words and one flourish or ligature, requires legible forms and one color per word, and requires Global Design Team approval for local versions."
+  },
+  "ingredient": {
+    "name": "Illustrated-type construction",
+    "role": "Shape readable words to express food qualities and fill packaging.",
+    "application": "Use no more than two words per format, one color per word and one flourish or ligature per format. Keep every letter legible, fit the space, and refine effect-generated forms by hand.",
+    "scope": "Historical partner guide. Round uses Arc Upper/Lower then Inflate; square uses Free Distort then slight Twist; rectangular uses Free Distort then slight Wave. Local versions require BK Global Design Team approval."
+  }
+}

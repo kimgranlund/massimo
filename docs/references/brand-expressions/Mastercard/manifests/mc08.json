@@ -1,0 +1,29 @@
+{
+  "id": "MC08",
+  "title": "Conference identity suite",
+  "image": "mc08.png",
+  "source": "../sources/mc08.jpg",
+  "location": {
+    "series": "Pentagram / Mastercard / 2016 identity case study",
+    "item": 8,
+    "extent": "Full published artwork"
+  },
+  "slide_intent": "Show a coordinated event family because a brand must work across objects with different sizes and uses.",
+  "strategic_value": "Repeated circles, restrained tones and consistent naming can connect physical and digital event materials.",
+  "demonstration": "A dark flat lay groups a bag, phone, badge, envelope and spiral booklet with circular graphics.",
+  "category": "Application",
+  "practical_value": "Compare the same visual vocabulary across an event suite.",
+  "content_islands": [
+    {
+      "name": "Suite",
+      "spec": "Arrange the five event objects on the dark ground with the bag at left and phone and badge above."
+    },
+    {
+      "name": "Graphic treatment",
+      "spec": "Preserve the dark circles, outlined arcs, white conference text and small colored signatures."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The artwork applies one conference identity to a bag, smartphone, badge, envelope and booklet."
+  }
+}

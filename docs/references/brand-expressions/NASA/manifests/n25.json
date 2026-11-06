@@ -1,0 +1,28 @@
+{
+  "id": "N25",
+  "title": "NASA Publications",
+  "image": "n25.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 25
+  },
+  "slide_intent": "Teach editors to identify the origin of a publication and choose pictures according to what the reader must learn from them.",
+  "strategic_value": "NASA can give very different publications a common origin while allowing technical diagrams and cover illustrations to serve different purposes.",
+  "demonstration": "Three columns introduce the publications program, identification, use of the logotype inside a recurring title, image selection and typography. This opening page teaches through text.",
+  "category": "Brand",
+  "practical_value": "Decide where to credit NASA and whether a publication calls for an evocative cover image or a precise technical illustration.",
+  "content_islands": [
+    {
+      "name": "Program and identification",
+      "spec": "Begin the three-column text with the section heading. Follow the program rationale with the logotype requirements, carrying the text into the next column."
+    },
+    {
+      "name": "Recurring titles",
+      "spec": "Give the stem-word convention its own subheading. Explain the limits on using NASA as part of a recurring publication title."
+    },
+    {
+      "name": "Image and type guidance",
+      "spec": "Use short subheads for illustration and photography, then typography. Keep the running column order when the image guidance continues into the last column."
+    }
+  ]
+}

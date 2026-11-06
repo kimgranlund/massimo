@@ -1,0 +1,39 @@
+{
+  "id": "DW007",
+  "title": "Logotype / Rotation",
+  "image": "dw007.png",
+  "source": "../sources/pages/identity-logos.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/identity/logos",
+    "section": "Rotation",
+    "item": 7,
+    "order": 70
+  },
+  "slide_intent": "Adapt orientation to the available space because a rigid horizontal treatment can waste a narrow format.",
+  "strategic_value": "A controlled vertical option can let Duolingo maintain a large signature on unusual placements.",
+  "demonstration": "Horizontal and vertical specimens distinguish the default 0° orientation from an occasional 90° treatment.",
+  "category": "Layout",
+  "practical_value": "Use the horizontal default, or the vertical option when it increases useful scale in a narrow format.",
+  "content_islands": [
+    {
+      "name": "Orientation pair",
+      "spec": "Place labeled horizontal and vertical examples side by side in the left panel."
+    },
+    {
+      "name": "Default and exception",
+      "spec": "Explain ordinary 0° use and the formats that justify 90° in the right column."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The copy says vertical rotation makes better use of unusual formats and permits larger display.",
+    "Application": "The examples include skyscraper ads, banners, flags, merchandise and stationery.",
+    "Constraint": "The section identifies 0° as default and 90° as an occasional alternative."
+  },
+  "ingredient": {
+    "name": "Logotype rotation",
+    "role": "Fit identification to the format while preserving its drawing.",
+    "application": "Use 0° by default and 90° when an unusual format benefits from a larger vertical mark.",
+    "scope": "Historical archived guidelines. The source describes selected narrow or playful applications; it does not permit arbitrary angles."
+  }
+}

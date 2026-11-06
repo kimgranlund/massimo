@@ -1,0 +1,34 @@
+{
+  "id": "IBS20",
+  "title": "Examples / Video",
+  "image": "ibs20.png",
+  "source": "../sources/ibm-logo-strategic-partners.pdf",
+  "location": {
+    "page": 20,
+    "series": "IBM Logo Guidelines for Strategic Partners / Version 1.2 / copyright 2023",
+    "order": 200020
+  },
+  "slide_intent": "Distinguish a contributor’s affiliation from the video’s authorship so viewers understand who appears and who is speaking as a brand.",
+  "strategic_value": "A partner-branded end card with limited IBM affiliation can acknowledge expertise without implying IBM produced the film.",
+  "demonstration": "Two contributor-frame schematics compare IBM text and logo attribution; a separate end card shows only the partner logo.",
+  "category": "Application",
+  "practical_value": "Choose text or logo for contributor affiliation, then retain the partner as the closing signature.",
+  "content_islands": [
+    {
+      "name": "Individual contributors",
+      "spec": "Stack two frames at left, pairing the person icon, name and role with either IBM text or a small 8-bar mark."
+    },
+    {
+      "name": "End card",
+      "spec": "Place a large partner logo centered on the right-hand card."
+    },
+    {
+      "name": "Example qualification",
+      "spec": "Retain the note that the illustrated options are not exclusive."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The page shows alternative IBM affiliation treatments for an individual and a partner-owned end card.",
+    "Constraint": "The source explicitly treats the shown layouts as examples rather than the only allowed arrangements."
+  }
+}

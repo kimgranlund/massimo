@@ -1,0 +1,25 @@
+{
+  "id": "I088",
+  "title": "Applications",
+  "image": "i088.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 88,
+    "printed_page": 94
+  },
+  "slide_intent": "Mark the shift from individual design rules to complete uses so the reader starts looking for relationships among elements.",
+  "strategic_value": "A separate application chapter can help designers find examples in the medium they are working on.",
+  "demonstration": "Applications appears in large cream type on the familiar dark green divider. This physical page begins the deck’s jump to printed folio 94.",
+  "category": "Application",
+  "practical_value": "Use this divider to locate the examples and read the scope note on the next page.",
+  "content_islands": [
+    {
+      "name": "Running header",
+      "spec": "Keep the book identifier, version and printed folio 94 small at the top edge."
+    },
+    {
+      "name": "Chapter title",
+      "spec": "Set Applications large and left aligned on an uninterrupted dark green field."
+    }
+  ]
+}

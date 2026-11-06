@@ -1,0 +1,31 @@
+{
+  "id": "IT23",
+  "title": "ITVX / Where narratives unfold",
+  "image": "it23.png",
+  "source": "../sources/1782130941-butyosgkrje6cgjvdnacbg-itv-x-202627.jpg",
+  "location": {
+    "series": "DixonBaxi / ITV case-study artwork series",
+    "item": 23,
+    "extent": "Whole source artwork",
+    "source_asset_index": 23
+  },
+  "slide_intent": "Let a simple type hierarchy express the promise of a story without masking the cast, because letterforms shape the tone and reading emphasis of a message.",
+  "strategic_value": "This approach can strengthen a recognizable voice across different programme moods.",
+  "demonstration": "A programme still of two people outside a doorway carries the stacked message WHERE NARRATIVES UNFOLD, with UNFOLD enlarged and widely spaced.",
+  "category": "Typography",
+  "practical_value": "Let a simple type hierarchy express the promise of a story without masking the cast.",
+  "content_islands": [
+    {
+      "name": "Scene",
+      "spec": "Two characters fill the image."
+    },
+    {
+      "name": "Message",
+      "spec": "Small upper lines lead to the large lower word UNFOLD."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A programme still of two people outside a doorway carries the stacked message WHERE NARRATIVES UNFOLD, with UNFOLD enlarged and widely spaced.",
+    "Intent": "The case-study section Type That Speaks Every Voice says the custom serif and sans families express ITV’s range of voices and scale from billboards to on-screen detail."
+  }
+}

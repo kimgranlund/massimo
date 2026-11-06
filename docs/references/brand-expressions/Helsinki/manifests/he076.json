@@ -1,0 +1,33 @@
+{
+  "id": "HE076",
+  "title": "Think creatively",
+  "image": "he076.png",
+  "source": "../sources/design-and-create.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Think creatively",
+    "order": 104,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/design-and-create#think-creatively",
+    "original_html": "../sources/design-and-create.html"
+  },
+  "slide_intent": "Translate identity into spatial experiences so people can encounter and use it rather than only see a printed logo.",
+  "strategic_value": "Wave-inspired furniture, surface graphics and material-aware signs can connect Helsinki’s visual language to lived places.",
+  "demonstration": "This expanded webpage-section capture places creative prompts above six photographs of furniture, decals, existing surfaces, trail markers, material-based signs and fixtures.",
+  "category": "Application",
+  "practical_value": "Use existing surfaces and materials inventively, and consider a functional spatial interpretation of a brand shape.",
+  "content_islands": [
+    {
+      "name": "Creative prompts",
+      "spec": "Start with the invitation to avoid generic structures and favor sustainable choices."
+    },
+    {
+      "name": "Six spatial applications",
+      "spec": "Keep each photograph with its caption, from wave-like seating through facade fixtures."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text encourages designs that activate residents and build a future Helsinki rather than merely decorate stock structures.",
+    "Application": "Photographs show furniture, decals, trail identifiers and signs made with site materials.",
+    "Expression": "The examples turn wave shapes, color and typography into physical details."
+  }
+}

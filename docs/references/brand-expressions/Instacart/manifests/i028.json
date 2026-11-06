@@ -1,0 +1,25 @@
+{
+  "id": "I028",
+  "title": "Shopper recruitment cards",
+  "image": "i028.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 28,
+    "printed_page": 28
+  },
+  "slide_intent": "Show how to repeat a campaign structure while varying its invitation. A returning viewer can recognize the series and still encounter a different reason to become a shopper.",
+  "strategic_value": "A recurring card format can connect several appeals to one recruitment action, leaving the illustrations to give each a distinct mood.",
+  "demonstration": "Three pale portrait cards sit on a dark green ground. Each pairs a short headline and the same shopper prompt with a different colorful illustration and a signature below.",
+  "category": "Application",
+  "practical_value": "Keep the prompt and signature in place while varying the headline, subject and illustration field for the next card in the series.",
+  "content_islands": [
+    {
+      "name": "Recruitment series",
+      "spec": "Center three cards of equal size. Align headlines, prompts and small circular arrows at the top."
+    },
+    {
+      "name": "Illustrations and signatures",
+      "spec": "Within each card place a large rounded illustration beneath the prompt and a small wordmark at the bottom. Compare the fruit, shopper and coin subjects in sequence."
+    }
+  ]
+}

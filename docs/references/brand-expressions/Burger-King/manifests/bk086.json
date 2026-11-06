@@ -1,0 +1,39 @@
+{
+  "id": "BK086",
+  "title": "Applying Our Logo",
+  "image": "bk086.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 86
+  },
+  "slide_intent": "Relate the signature to the composition’s scale because recognition should remain stable as the format changes.",
+  "strategic_value": "A margin-based logo size can give Burger King a consistent signature while allowing extra visibility on billboards.",
+  "demonstration": "Three layouts place logos at bottom right and label logo widths 54 px for 27 px margins and 60 px for 30 px margins.",
+  "category": "Layout",
+  "practical_value": "Start with a logo width twice the margin and use the billboard exception when viewing distance requires it.",
+  "content_islands": [
+    {
+      "name": "Logo placement rule",
+      "spec": "Place the general location, scale rule and billboard exception at upper left."
+    },
+    {
+      "name": "Signature diagrams",
+      "spec": "Show logos within all three numbered layouts, with edge and width measurements."
+    },
+    {
+      "name": "Size calculations",
+      "spec": "List the three twice-margin calculations below the guidance."
+    }
+  ],
+  "ingredient": {
+    "name": "Margin-scaled logo",
+    "role": "Keep identification proportional and visible.",
+    "application": "Generally place the logo bottom right with width twice the margin. For billboards, increase size for visibility at designer discretion using the examples as optical reference.",
+    "scope": "Historical 2020 partner guidelines, PDF produced January 2021. Bottom-right is a general placement, not an absolute prohibition on alternatives."
+  },
+  "reference_purposes": {
+    "Intent": "The text says the rule ensures proportional logo scaling and allows billboard enlargement for visibility.",
+    "Application": "The diagrams place the signature and show 27×2=54 px and 30×2=60 px.",
+    "Constraint": "Logo width should be 2× margin; bottom-right placement is described as general, with billboard enlargement at designer discretion."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "F60",
+  "title": "Infographics",
+  "image": "f60.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 60
+  },
+  "slide_intent": "Show designers how to give evidence enough structure to read. Charts, labels and illustrations have distinct jobs when a reader needs to compare quantities.",
+  "strategic_value": "Frontline AIDS can carry its illustrated language into reporting while retaining conventional charts for quantitative comparisons.",
+  "demonstration": "The upper example combines pictograms, a globe, bars and circular indicators. The lower row isolates charts and percentage devices without the full illustrative setting.",
+  "category": "Application",
+  "practical_value": "Use the simpler treatment for data that needs context or close comparison. Keep illustrations sparse where competing shapes would distract from quantities.",
+  "content_islands": [
+    {
+      "name": "Data principle",
+      "spec": "Place the introductory copy in the white column alongside the rail."
+    },
+    {
+      "name": "Illustrated data sample",
+      "spec": "Group icons, labels, chart marks and explanatory text in the upper gray panel."
+    },
+    {
+      "name": "Chart examples",
+      "spec": "Place the circular indicators, dot chart, ring chart and grouped bars on white below. Align legends and captions with their own data displays."
+    }
+  ]
+}

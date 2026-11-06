@@ -1,0 +1,28 @@
+{
+  "id": "B10",
+  "title": "Our logo is our most sacred asset.",
+  "image": "b10.png",
+  "source": "../bolt-brand-guidelines-2025-12.pdf",
+  "location": {
+    "page": 10
+  },
+  "slide_intent": "Show how small alterations change a familiar mark. Comparing examples helps designers recognize which details must remain stable across reproductions.",
+  "strategic_value": "Consistent use can preserve the lightning cut and silhouette that connect the Bolt name with its visual identity.",
+  "demonstration": "A dark headline panel precedes eight disallowed alterations. Each example has a short caption and a red diagonal across the specimen.",
+  "category": "Brand",
+  "practical_value": "Review supplied artwork for rotation, gradient, depth, distortion, extraction or filling of the bolt, multiple colors and outlines.",
+  "content_islands": [
+    {
+      "name": "Section rail",
+      "spec": "Place the wordmark at the top of the dark rail, highlight the current topic in the navigation and set the small folio at the foot."
+    },
+    {
+      "name": "Usage principle",
+      "spec": "Use a broad dark panel for the white statement and short follow-up copy."
+    },
+    {
+      "name": "Alteration examples",
+      "spec": "Arrange eight light cards in two rows of four. Put one modified wordmark and its caption on each card, then overlay the red diagonal in the same direction throughout."
+    }
+  ]
+}

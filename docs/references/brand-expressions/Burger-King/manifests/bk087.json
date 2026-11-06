@@ -1,0 +1,38 @@
+{
+  "id": "BK087",
+  "title": "Applying Half-Frame Photography",
+  "image": "bk087.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 87
+  },
+  "slide_intent": "Give image and words separate room because an appetizing photograph should not undermine the clarity of the message.",
+  "strategic_value": "An edge-to-edge food photograph paired with a stable type panel can combine appetite and consistent information hierarchy for Burger King.",
+  "demonstration": "A cropped photograph of hands holding a burger occupies the left half of a landscape composition; the gridded cream text panel sits at right.",
+  "category": "Layout",
+  "practical_value": "Use a half-frame image when dimensions allow and retain the proper separation from the text frame.",
+  "content_islands": [
+    {
+      "name": "Half-frame instruction",
+      "spec": "Place the guidance in the left page column."
+    },
+    {
+      "name": "Photographic half",
+      "spec": "Fill the left side of the large example with the person holding a burger."
+    },
+    {
+      "name": "Type half",
+      "spec": "Retain headline, subhead, body and bottom-right logo within the cream grid at right."
+    }
+  ],
+  "ingredient": {
+    "name": "Half-frame photography",
+    "role": "Combine visual appetite with a readable information area.",
+    "application": "Add edge-to-edge photography where the application dimensions permit; preserve the proper margin between photo and text frame.",
+    "scope": "Historical 2020 partner guidelines, PDF produced January 2021. This example uses a left/right division rather than requiring that orientation universally."
+  },
+  "reference_purposes": {
+    "Application": "The example pairs edge-to-edge photography with the established type layout.",
+    "Constraint": "The text makes image use conditional on dimensions and requires the proper margin between photograph and text frame."
+  }
+}

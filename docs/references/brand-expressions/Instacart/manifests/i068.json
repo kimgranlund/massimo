@@ -1,0 +1,28 @@
+{
+  "id": "I068",
+  "title": "Marquee Illustrations",
+  "image": "i068.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 68
+  },
+  "slide_intent": "Use a larger canvas to stage a fuller story. A heading and action still need a clear place around a scene with several objects and characters.",
+  "strategic_value": "Instacart can connect groceries with anticipation through a playful email scene while keeping the route to shopping visible.",
+  "demonstration": "An email example layers a headline, a pink scene containing sweet goods and a figure, supporting copy and a Shop Now button. The explanation places marquee illustrations at the detailed end of the range.",
+  "category": "Imagery",
+  "practical_value": "Use a marquee when the placement offers enough room for a foreground, a simple setting and a clear reading path to the call to action.",
+  "content_islands": [
+    {
+      "name": "Marquee guidance",
+      "spec": "Set the section title and criteria for larger scenes on the left side of the dark field."
+    },
+    {
+      "name": "Email masthead and hero",
+      "spec": "Center a tall pale email with a compact brand lockup at the top. Follow it with a pink field containing the headline above a layered illustration."
+    },
+    {
+      "name": "Email close",
+      "spec": "Place the short explanation and a dark rounded Shop Now button below the scene."
+    }
+  ]
+}

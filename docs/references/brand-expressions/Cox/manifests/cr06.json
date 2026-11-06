@@ -1,0 +1,26 @@
+{
+  "id": "CR06",
+  "title": "Brand impact walls",
+  "image": "cr06.png",
+  "source": "../sources/cr06.jpg",
+  "location": {
+    "series": "Cox Brand Collection — Lindsay Little / Periscope",
+    "item": 6,
+    "extent": "whole source image"
+  },
+  "slide_intent": "Give a retail space distinct visual anchors so visitors can orient themselves before approaching a demonstration.",
+  "strategic_value": "Large household scenes can make a Cox showroom feel connected to domestic use while product zones remain identifiable.",
+  "demonstration": "A panoramic store rendering places large lifestyle imagery on perimeter walls around low product fixtures and a central Contour station.",
+  "category": "Application",
+  "practical_value": "Compare the scale of distant wall imagery with nearby product signage to establish a useful hierarchy.",
+  "content_islands": [
+    {
+      "name": "Perimeter imagery",
+      "spec": "Use broad photographic panels along the left and right walls."
+    },
+    {
+      "name": "Product floor",
+      "spec": "Keep low display tables and the Contour station in the center, leaving sightlines to the wall graphics."
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "id": "HE070",
+  "title": "Signage icons",
+  "image": "he070.png",
+  "source": "../sources/design-and-create.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Signage icons",
+    "order": 97,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/design-and-create#signage-icons",
+    "original_html": "../sources/design-and-create.html"
+  },
+  "slide_intent": "Use familiar pictograms so people can interpret directions without relying entirely on language.",
+  "strategic_value": "Standard-based icons can help Helsinki wayfinding serve visitors with different language backgrounds.",
+  "demonstration": "This expanded webpage-section capture pairs a short rationale and standards requirement with a grid of familiar service, safety and access icons.",
+  "category": "Geometry",
+  "practical_value": "Use the supplied originals and international-standard meanings rather than inventing a new symbol for a familiar service.",
+  "content_islands": [
+    {
+      "name": "Icon rationale and links",
+      "spec": "Keep the language-access rationale with standards and source links."
+    },
+    {
+      "name": "Pictogram grid",
+      "spec": "Show the mixed service and safety symbols below, including their distinct shapes and colors."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text says visual information is easier to understand and works across language barriers.",
+    "Constraint": "Signage icons must be designed according to international standards.",
+    "Expression": "The grid shows service and safety symbols with familiar silhouettes."
+  }
+}

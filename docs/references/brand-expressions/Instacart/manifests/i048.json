@@ -1,0 +1,25 @@
+{
+  "id": "I048",
+  "title": "Photography Principles",
+  "image": "i048.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 48,
+    "printed_page": 48
+  },
+  "slide_intent": "Teach image selectors to recognize the intended photographic mood. Paired descriptors make it easier to discuss why a technically proficient picture may still be unsuitable.",
+  "strategic_value": "Instacart can maintain an approachable food voice by reviewing images against warmth, familiarity and sensory character.",
+  "demonstration": "A green preferred list and red contrasting list face one another. A narrow column points to the creative vision and asset library.",
+  "category": "Imagery",
+  "practical_value": "Use the two lists to evaluate a candidate image, then consult the referenced project and image library for approved direction.",
+  "content_islands": [
+    {
+      "name": "Resource notes",
+      "spec": "Place the small project and asset-library references in a narrow left column."
+    },
+    {
+      "name": "Comparison lists",
+      "spec": "Keep the two heading symbols and their four rows aligned. Pair warmth with its opposing tendency and use color to distinguish the preferred list."
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "DJ04",
+  "title": "Duolingo wordmark",
+  "image": "dj04.png",
+  "source": "../sources/johnson-banks/Duolingo_logo-by-Johnson-Banks.jpg",
+  "location": {
+    "series": "Johnson Banks / Everyone can Duolingo / 2019",
+    "item": 4,
+    "extent": "Whole published artwork",
+    "order": 2004
+  },
+  "slide_intent": "Test whether a signature can carry recognition alone because many encounters offer no room for a fuller brand story.",
+  "strategic_value": "The white custom wordmark on a green field can give Duolingo a clear and repeatable signature.",
+  "demonstration": "A single large white lowercase wordmark spans a solid green field.",
+  "category": "Brand",
+  "practical_value": "Judge the wordmark’s silhouette and contrast without supporting photography or illustration.",
+  "content_islands": [
+    {
+      "name": "Signature",
+      "spec": "Center the white wordmark horizontally on green, retaining the generous margins."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The isolated lowercase signature exposes its rounded forms and distinctive g."
+  }
+}

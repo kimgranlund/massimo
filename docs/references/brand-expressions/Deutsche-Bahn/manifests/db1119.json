@@ -1,0 +1,32 @@
+{
+  "id": "DB1119",
+  "title": "Innenflächen",
+  "image": "db1119.png",
+  "source": "../sources/page-11.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 11,
+    "section": 19,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Icons"
+  },
+  "slide_intent": "Fill a cavity when it becomes too small to remain distinct so a tiny icon keeps its shape.",
+  "strategic_value": "A controlled small-size exception can preserve DB location-symbol recognition.",
+  "demonstration": "Three location pins compare progressively smaller sizes with adjusted inner circles.",
+  "category": "Geometry",
+  "practical_value": "Fill circular interiors only when the defined minimum inner width would be undershot at very small sizes.",
+  "content_islands": [
+    {
+      "name": "Exception explanation",
+      "spec": "Place the small-interior rationale above the pins."
+    },
+    {
+      "name": "Size series",
+      "spec": "Align the three location-pin sizes to reveal their interior treatment."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source says filling undersized interiors keeps the form recognizable.",
+    "Application": "The pin series demonstrates the small-size adjustment.",
+    "Constraint": "The exception applies when a circular interior falls below its defined minimum width."
+  }
+}

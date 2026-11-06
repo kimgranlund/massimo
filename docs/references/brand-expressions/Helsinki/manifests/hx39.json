@@ -1,0 +1,30 @@
+{
+  "id": "HX39",
+  "title": "Wave motifs",
+  "image": "hx39.png",
+  "source": "../sources/download-elements.offline.html",
+  "location": {
+    "series": "Web guideline introduction/component",
+    "order": 151,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/download-elements",
+    "original_html": "../sources/download-elements.html"
+  },
+  "slide_intent": "Separate static and animated asset routes because production format determines which original a designer needs.",
+  "strategic_value": "Named wave variants can help Helsinki contributors select consistent assets across print and moving media.",
+  "demonstration": "This webpage component links SVG/InDesign vector originals and animated wave motifs, then lists six names: Basic, Calm, Pulse, Beat, Vibration and Wave.",
+  "category": "Geometry",
+  "practical_value": "Choose the appropriate asset route and use the names to identify the required variant.",
+  "content_islands": [
+    {
+      "name": "Download routes",
+      "spec": "Place the vector and animated links below the format description."
+    },
+    {
+      "name": "Variant key",
+      "spec": "Follow with the numbered six-name list."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The component provides separate vector-original and animation downloads and a six-variant key."
+  }
+}

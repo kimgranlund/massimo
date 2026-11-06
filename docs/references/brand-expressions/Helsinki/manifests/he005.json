@@ -1,0 +1,38 @@
+{
+  "id": "HE005",
+  "title": "Structure and minimum size",
+  "image": "he005.png",
+  "source": "../sources/use-basic-elements.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Structure and minimum size",
+    "order": 9,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/use-basic-elements#structure-and-minimum-size",
+    "original_html": "../sources/use-basic-elements.html"
+  },
+  "slide_intent": "Keep letter-to-frame proportions and minimum scale explicit so a familiar mark stays legible when reproduced.",
+  "strategic_value": "A fixed frame relationship can preserve Helsinki’s signature across print and screen sizes.",
+  "demonstration": "This expanded webpage section pairs two H-based construction drawings with written print/screen width guidance and a 25 mm print-width specimen.",
+  "category": "Geometry",
+  "practical_value": "Check both the mark’s fixed proportions and the reproduction medium before sizing it.",
+  "content_islands": [
+    {
+      "name": "Construction and rules",
+      "spec": "Place fixed-proportion and minimum-size text above two H-based drawings."
+    },
+    {
+      "name": "Print-width specimen",
+      "spec": "Finish with a framed logo dimensioned 25 mm; the 200-pixel screen recommendation appears in the text."
+    }
+  ],
+  "ingredient": {
+    "name": "Logo proportions and size",
+    "role": "Preserve the signature’s shape and legibility.",
+    "application": "Use original fixed proportions; keep print width at least 25 mm and follow the recommended 200-pixel screen minimum.",
+    "scope": "Print minimum is mandatory; screen minimum is a recommendation. H width controls internal text/frame distance."
+  },
+  "reference_purposes": {
+    "Application": "The drawings explain the fixed text/frame relationship and H-based distance.",
+    "Constraint": "Minimum print width is 25 mm; the screen minimum of 200 pixels is recommended."
+  }
+}

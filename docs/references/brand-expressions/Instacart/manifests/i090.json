@@ -1,0 +1,25 @@
+{
+  "id": "I090",
+  "title": "Interaction",
+  "image": "i090.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 90,
+    "printed_page": 96
+  },
+  "slide_intent": "Show which elements first orient a visitor to a shopping interface: who operates it, how to enter, and what service is available.",
+  "strategic_value": "The carrot symbol and a direct service headline can connect recognition with the choice to log in or sign up.",
+  "demonstration": "A cropped browser mockup shows the carrot at the upper left, account actions and the beginning of a grocery delivery or pickup headline. A cursor is visible within the page.",
+  "category": "Application",
+  "practical_value": "Use the composition to prioritize the service message and account controls. The PDF still supports layout analysis rather than timing a cursor interaction.",
+  "content_islands": [
+    {
+      "name": "Application label",
+      "spec": "Place Interaction on the dark green guide field."
+    },
+    {
+      "name": "Browser detail",
+      "spec": "Enlarge the browser until it extends beyond the guide edges. Preserve the top bar, carrot, account links and headline as one coordinated group."
+    }
+  ]
+}

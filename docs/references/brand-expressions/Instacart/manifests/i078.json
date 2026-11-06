@@ -1,0 +1,25 @@
+{
+  "id": "I078",
+  "title": "Content Frames",
+  "image": "i078.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 78,
+    "printed_page": 78
+  },
+  "slide_intent": "Teach designers to relate the curvature of an image frame to the button so a viewer sees a family resemblance between the two shapes.",
+  "strategic_value": "Using the button as a reference can keep the action and the imagery consistent as Instacart changes the featured food.",
+  "demonstration": "A radius diagram and a Lunar New Year promotion pair an orange pill button with a food photograph in a gently rounded frame. The prose specifies a frame radius of approximately one quarter of the button radius.",
+  "category": "Geometry",
+  "practical_value": "Use the stated proportion as a starting point for rounding a photograph or illustration frame in a promotion.",
+  "content_islands": [
+    {
+      "name": "Radius guidance",
+      "spec": "Set the rule and the annotated button and corner details in the narrow left column on dark green."
+    },
+    {
+      "name": "Featured cart example",
+      "spec": "Place the logo, featured-cart label, headline and orange action in the left half of the cream card. Crop the meal photograph into a rounded rectangle at right."
+    }
+  ]
+}

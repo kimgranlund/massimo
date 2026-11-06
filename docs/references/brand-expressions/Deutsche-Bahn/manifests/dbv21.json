@@ -1,0 +1,34 @@
+{
+  "id": "DBV21",
+  "title": "Layout_01",
+  "image": "dbv21.png",
+  "source": "../sources/media/dbv21.mp4",
+  "location": {
+    "series": "DB new design / motion demonstrations",
+    "source_page": 15,
+    "section": "Animation-14021536",
+    "source_url": "https://ecm-mediathek-cdn.deutschebahn.com/cdnenhancedecmvidhls/db306416/2880925/video_config.json",
+    "capture_date": "2026-11-05"
+  },
+  "slide_intent": "Sequence image and type so viewers can recognize the message without needing an additional container.",
+  "strategic_value": "White text and the red Schwelle can create a recognizable DB communication directly over a photograph.",
+  "demonstration": "A rail employee photograph carries a white DB logo, two-line headline, small copy, bahn.de, and a red Schwelle near the lower right.",
+  "category": "Motion",
+  "practical_value": "Choose the layout without a panel when the image supports legible direct typography.",
+  "content_islands": [
+    {
+      "name": "Photographic field",
+      "spec": "Fill the frame with the employee image and place the white logo near the upper left."
+    },
+    {
+      "name": "Message and motif",
+      "spec": "Stage the left-aligned headline and copy while the red Schwelle builds near the lower right."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A rail employee photograph carries a white DB logo, two-line headline, small copy, bahn.de, and a red Schwelle near the lower right.",
+    "Application": "The source provides a playable demonstration of this repeatable sequence: A rail employee photograph carries a white DB logo, two-line headline, small copy, bahn.de, and a red Schwelle near the lower right.",
+    "Intent": "Accompanying Layout prose says animation can direct focus and clarify structure through clear, precise, comprehensible movements."
+  },
+  "motion": "../sources/media/dbv21.mp4"
+}

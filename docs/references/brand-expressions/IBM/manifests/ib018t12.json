@@ -1,0 +1,45 @@
+{
+  "id": "IB018T12",
+  "title": "People illustration / Isometric character construction",
+  "image": "ib018t12.png",
+  "source": "../sources/alternate-tabs.json",
+  "location": {
+    "series": "IBM Design Language / alternate tab states",
+    "parent": "IB018",
+    "group": 1,
+    "tab": 2,
+    "label": "Isometric",
+    "url": "https://www.ibm.com/design/language/illustration/people/",
+    "order": 18112
+  },
+  "slide_intent": "Build a human figure from a stable structure before adding personality, because consistent proportions help viewers recognize a plausible person beneath stylization.",
+  "strategic_value": "A repeatable progression from joints to clothing can keep IBM’s isometric people coherent without making every character identical.",
+  "demonstration": "Four stages show one standing figure progressing from joint-and-line skeleton through volumetric construction and clothing outlines to a finished woman in a dark jacket and blue trousers.",
+  "category": "Geometry",
+  "practical_value": "Use the construction stages to separate anatomy decisions from clothing, hair and color decisions.",
+  "content_islands": [
+    {
+      "name": "Style selector",
+      "spec": "Show Isometric selected beside Line and flat."
+    },
+    {
+      "name": "Structural stages",
+      "spec": "Place the joint skeleton and developed body construction on the left."
+    },
+    {
+      "name": "Character stages",
+      "spec": "Follow with the clothed outline and fully colored figure on the right."
+    }
+  ],
+  "ingredient": {
+    "name": "Isometric human construction",
+    "role": "Keep a stylized character proportionate while allowing individual identity.",
+    "application": "Start from the source’s eight-head-high skeleton and grid, then add organic curves, clothing and character details appropriate to the story.",
+    "scope": "People-illustration guidance. The shown figure is one example; the parent explicitly calls for diversity of bodies, ages, cultures and abilities."
+  },
+  "reference_purposes": {
+    "Intent": "The accompanying People guidance says realistic proportions help audiences see themselves represented with respect.",
+    "Application": "The four stages demonstrate a reusable route from geometric skeleton to completed isometric character.",
+    "Constraint": "The parent anatomy guidance rejects caricature and unnecessary decoration while allowing slight grid deviations for organic features."
+  }
+}

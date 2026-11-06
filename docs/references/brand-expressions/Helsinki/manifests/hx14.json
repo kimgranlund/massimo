@@ -1,0 +1,27 @@
+{
+  "id": "HX14",
+  "title": "Range of Helsinki illustration styles",
+  "image": "hx14.png",
+  "source": "../sources/visual-storytelling.offline.html",
+  "location": {
+    "series": "Web guideline introduction/component",
+    "order": 51,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/visual-storytelling",
+    "original_html": "../sources/visual-storytelling.html"
+  },
+  "slide_intent": "Compare expressive ranges because illustration style changes how a message feels before its details are read.",
+  "strategic_value": "Helsinki can carry varied subjects through a recognizable commitment to illustrated storytelling.",
+  "demonstration": "This webpage strip pairs a bus scene, fashion-like figures, a patterned New Year poster, a line-drawn urban crane and illustrated cards, with creator credits.",
+  "category": "Imagery",
+  "practical_value": "Compare how density, line and character treatment suit a proposed communication.",
+  "content_islands": [
+    {
+      "name": "Illustration strip",
+      "spec": "Keep the five contrasting examples together with the shared credit line."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The examples display several illustration treatments and their graphic character.",
+    "Application": "The poster and held cards place illustration in communication artifacts."
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "C13",
+  "title": "CSAIL Primary Logo and MIT Schwarzman College of Computing Logo",
+  "image": "c13.png",
+  "source": "../csail-branding-short-guide.pdf",
+  "location": {
+    "page": 13
+  },
+  "slide_intent": "Teach a designer to balance two institutional marks by their visible features. Aligning letter and symbol baselines gives each affiliation a stable place.",
+  "strategic_value": "CSAIL can acknowledge its relationship with the college while preserving the clear space of both marks.",
+  "demonstration": "Three diagrams compare side-by-side orders and a vertical arrangement. Cyan and magenta guides mark symbol height, baseline and minimum gaps.",
+  "category": "Geometry",
+  "practical_value": "Match the CSAIL mark height to the college symbol as closely as possible and use the larger CSAIL clearance when the safety areas meet.",
+  "content_islands": [
+    {
+      "name": "Measurement guidance",
+      "spec": "Explain relative height, initial baseline and minimum separation in the left column."
+    },
+    {
+      "name": "Lockup construction",
+      "spec": "Stack three diagrams in ruled bands. Use separate guide colors for the lab and college artwork and label coinciding heights or minimum spaces."
+    }
+  ]
+}

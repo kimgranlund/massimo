@@ -1,0 +1,32 @@
+{
+  "id": "DW134",
+  "title": "Marketing / Assets / Introduction",
+  "image": "dw134.png",
+  "source": "../sources/pages/marketing-assets.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/marketing/assets",
+    "section": "Assets",
+    "item": 134,
+    "order": 1340
+  },
+  "slide_intent": "Introduce a focused asset repertoire because a few repeatable elements can make varied campaigns recognizable.",
+  "strategic_value": "A playful cooking illustration can demonstrate how Duolingo’s character language extends into marketing.",
+  "demonstration": "White introductory type on orange sits beside a chef seasoning a pot.",
+  "category": "Brand",
+  "practical_value": "Present the purpose of an asset set before its application rules.",
+  "content_islands": [
+    {
+      "name": "Marketing introduction",
+      "spec": "Place the section label, lowercase assets heading and short description at left."
+    },
+    {
+      "name": "Chef illustration",
+      "spec": "Fill the right side with the chef, raised arm, falling herbs and pot."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The header combines rounded white typography, orange and a flat expressive character.",
+    "Application": "The introduction frames the following material as guidance for marketing assets."
+  }
+}

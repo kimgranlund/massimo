@@ -1,0 +1,31 @@
+{
+  "id": "DB05",
+  "title": "Validated Versatility",
+  "image": "db05.png",
+  "source": "../sources/db05.jpg",
+  "location": {
+    "series": "COLLINS / Dropbox / 2017 identity case study",
+    "item": 5,
+    "section": "Validated Versatility",
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Compare distant and intimate viewing contexts because an identity must remain understandable at different scales.",
+  "strategic_value": "A transit advertisement and product screen can link Dropbox’s public promise to everyday use.",
+  "demonstration": "An annotated board pairs a photographed street advertisement at left with a white phone on green at right.",
+  "category": "Application",
+  "practical_value": "Check what stays recognizable between a large advertisement and a small application screen.",
+  "content_islands": [
+    {
+      "name": "Street placement",
+      "spec": "Use the left photograph to show the campaign in its urban frame."
+    },
+    {
+      "name": "Product placement",
+      "spec": "Keep the phone on the green right field with the handwritten scale comparison beneath."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The Validated Versatility caption describes testing across contexts to preserve recognition.",
+    "Application": "An annotated board pairs a photographed street advertisement at left with a white phone on green at right."
+  }
+}

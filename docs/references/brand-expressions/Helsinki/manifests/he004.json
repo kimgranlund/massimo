@@ -1,0 +1,47 @@
+{
+  "id": "HE004",
+  "title": "Selecting language and logo version",
+  "image": "he004.png",
+  "source": "../sources/use-basic-elements.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Selecting language and logo version",
+    "order": 8,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/use-basic-elements#selecting-language-and-logo-version",
+    "original_html": "../sources/use-basic-elements.html"
+  },
+  "slide_intent": "Balance multilingual recognition with visual clarity so residents can identify a city service without competing signatures.",
+  "strategic_value": "A bilingual signature or deliberately separated versions can acknowledge Helsinki’s audiences while keeping each view clear.",
+  "demonstration": "This expanded webpage section explains language selection, defines one view–one logo and compares incorrect and correct A4, wall and fence arrangements.",
+  "category": "Brand",
+  "practical_value": "Select the language version and count visible signatures within the viewer’s actual field of view.",
+  "content_islands": [
+    {
+      "name": "Language rules",
+      "spec": "Open with audience and language guidance."
+    },
+    {
+      "name": "View definition",
+      "spec": "Define a view through sides, time and physical distance."
+    },
+    {
+      "name": "Arrangement examples",
+      "spec": "Place numbered A4, wall and fence diagrams with their explanatory key."
+    },
+    {
+      "name": "Support",
+      "spec": "End with contact guidance for uncertain cases."
+    }
+  ],
+  "ingredient": {
+    "name": "Language versions within one view",
+    "role": "Acknowledge audience language without multiplying competing marks.",
+    "application": "Use Helsinki for Finnish/English/international, Helsingfors for Swedish; use a bilingual mark or equal-height separated marks for multilingual resident communication.",
+    "scope": "One view normally contains one logo; approximately five metres is contextual separation guidance, not a universal minimum; interview logo backdrops are an exception."
+  },
+  "reference_purposes": {
+    "Intent": "The source introduces the one-view rule explicitly for clarity.",
+    "Application": "Numbered arrangements show bilingual signatures, different sides and sufficient separation.",
+    "Constraint": "Resident-facing bilingual or multilingual communications must include Swedish; normally one version per view, with interview backdrop exception."
+  }
+}

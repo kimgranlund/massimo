@@ -1,0 +1,26 @@
+{
+  "id": "HX48",
+  "title": "Event materials",
+  "image": "hx48.png",
+  "source": "../sources/download-elements.offline.html",
+  "location": {
+    "series": "Web guideline introduction/component",
+    "order": 169,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/download-elements",
+    "original_html": "../sources/download-elements.html"
+  },
+  "slide_intent": "Connect event materials to shared templates because a temporary setting still needs to be identifiable as the same city.",
+  "strategic_value": "The indoor/outdoor template route can help Helsinki maintain continuity across event settings.",
+  "demonstration": "This webpage component introduces indoor and outdoor event-material templates, links to Finnish event-material guidelines and includes an Open all control. No event-template specimen appears.",
+  "category": "Application",
+  "practical_value": "Follow the event-material route when designing for an indoor or outdoor occasion.",
+  "content_islands": [
+    {
+      "name": "Event template route",
+      "spec": "Place the indoor/outdoor description and Finnish guidelines link beneath the heading, above the expansion control."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The text identifies indoor/outdoor event templates and links to their guidelines."
+  }
+}

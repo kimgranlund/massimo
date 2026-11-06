@@ -1,0 +1,26 @@
+{
+  "id": "HX32",
+  "title": "Visual identity of digital services",
+  "image": "hx32.png",
+  "source": "../sources/design-and-create.offline.html",
+  "location": {
+    "series": "Web guideline introduction/component",
+    "order": 120,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/design-and-create",
+    "original_html": "../sources/design-and-create.html"
+  },
+  "slide_intent": "Maintain recognizable identity across digital services because users need confidence that separate interfaces belong to the same city.",
+  "strategic_value": "A shared Helsinki appearance can support trust and continuity between services.",
+  "demonstration": "This webpage introduction connects one shared city identity, recognition at first glance, user experience and trust in digital services.",
+  "category": "Application",
+  "practical_value": "Evaluate whether a digital service’s appearance signals the same Helsinki as other channels.",
+  "content_islands": [
+    {
+      "name": "Digital identity premise",
+      "spec": "Keep the recognition, experience and trust statements beneath the heading."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source explicitly connects recognizable digital services with user experience and trust."
+  }
+}

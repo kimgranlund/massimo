@@ -1,0 +1,33 @@
+{
+  "id": "HE040",
+  "title": "Using illustrations in campaigns",
+  "image": "he040.png",
+  "source": "../sources/visual-storytelling.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Using illustrations in campaigns",
+    "order": 54,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/visual-storytelling#using-illustrations-in-campaigns",
+    "original_html": "../sources/visual-storytelling.html"
+  },
+  "slide_intent": "Choose illustration when it expresses an idea more directly than photography because the medium should serve the campaign concept.",
+  "strategic_value": "Illustrative campaigns can give Helsinki room for invention while remaining part of its common identity.",
+  "demonstration": "This expanded webpage section states the role of illustration in campaigns and shows credited illustration-only and mixed-media campaign examples.",
+  "category": "Imagery",
+  "practical_value": "Choose the medium from the idea and check its relationship to Helsinki’s visual identity.",
+  "content_islands": [
+    {
+      "name": "Medium choice",
+      "spec": "Explain when illustration can express the idea more easily."
+    },
+    {
+      "name": "Campaign specimens",
+      "spec": "Show credited campaign applications combining illustration and photography."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source says illustration can express some campaign ideas more easily than a photo.",
+    "Application": "The campaign examples show illustration and photographic combinations.",
+    "Constraint": "Campaign illustration must take Helsinki’s visual identity into account."
+  }
+}

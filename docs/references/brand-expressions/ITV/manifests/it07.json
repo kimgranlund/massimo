@@ -1,0 +1,48 @@
+{
+  "id": "IT07",
+  "title": "ITV / Modern Britain research film",
+  "image": "it07.png",
+  "source": "../sources/1782130846-nhxzg8qjrzctuhntmnfm5a-itv_3.mp4",
+  "location": {
+    "series": "DixonBaxi / ITV case-study artwork series",
+    "item": 7,
+    "extent": "Whole original clip; PNG is one representative frame",
+    "source_asset_index": 6,
+    "duration_seconds": 44.01,
+    "representative_timestamp_seconds": 25.148571428571426,
+    "reviewed_timestamps_seconds": [
+      0.1,
+      6.2871428571428565,
+      12.574285714285713,
+      18.861428571428572,
+      25.148571428571426,
+      31.435714285714283,
+      37.722857142857144,
+      43.91
+    ]
+  },
+  "slide_intent": "Ground image selection in the people and places the service aims to reflect, because credible audience representation depends on understanding lived experience.",
+  "strategic_value": "This approach can strengthen cultural relevance through grounded representation.",
+  "demonstration": "The film cuts between coastal places, streets, a carnival, transport and research encounters. A phone held over printed images and a seated interviewee connect daily life to discovery work.",
+  "category": "Imagery",
+  "practical_value": "Ground image selection in the people and places the service aims to reflect.",
+  "content_islands": [
+    {
+      "name": "Places",
+      "spec": "Coastal and urban scenes establish varied settings."
+    },
+    {
+      "name": "People",
+      "spec": "Public celebration and everyday activity give human detail."
+    },
+    {
+      "name": "Research",
+      "spec": "Interview and image-sorting scenes show direct audience contact."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The film cuts between coastal places, streets, a carnival, transport and research encounters. A phone held over printed images and a seated interviewee connect daily life to discovery work.",
+    "Intent": "The case-study section Going in search of modern Britain says UK audience research shaped a bold, relatable and real brand that connects through resonant content."
+  },
+  "motion": "../sources/1782130846-nhxzg8qjrzctuhntmnfm5a-itv_3.mp4"
+}

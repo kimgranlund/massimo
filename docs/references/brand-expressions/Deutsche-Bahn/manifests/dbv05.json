@@ -1,0 +1,35 @@
+{
+  "id": "DBV05",
+  "title": "Signature graphic / build and removal",
+  "image": "dbv05.png",
+  "source": "../sources/media/dbv05.mp4",
+  "location": {
+    "series": "DB new design / motion demonstrations",
+    "source_page": 12,
+    "section": "Animation-14020370",
+    "source_url": "https://ecm-mediathek-cdn.deutschebahn.com/cdnenhancedecmvidhls/db306166/2880293/video_config.json",
+    "capture_date": "2026-11-05"
+  },
+  "slide_intent": "Give a graphic a readable entrance and exit so the viewer can recognize its shape before it disappears.",
+  "strategic_value": "A striped heart built from DB red can connect an expressive motif to the wider identity.",
+  "demonstration": "A red rectangular form resolves into a striped heart on a dark field and later collapses.",
+  "category": "Motion",
+  "practical_value": "Use staged construction when a signature graphic must become recognizable within a short sequence.",
+  "content_islands": [
+    {
+      "name": "Construction",
+      "spec": "Build the red striped heart from the initial rectangular form."
+    },
+    {
+      "name": "Departure",
+      "spec": "Collapse the recognizable heart back toward an empty dark field."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A red rectangular form resolves into a striped heart on a dark field and later collapses.",
+    "Application": "The source provides a playable demonstration of this repeatable sequence: A red rectangular form resolves into a striped heart on a dark field and later collapses.",
+    "Intent": "Accompanying Icons, Signature Graphics, or Animation im UI prose explains that animation directs focus, makes relationships understandable, and adds expression.",
+    "Constraint": "The accompanying guidance says animation is deliberate and never disturbing or complex."
+  },
+  "motion": "../sources/media/dbv05.mp4"
+}

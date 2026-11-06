@@ -1,0 +1,34 @@
+{
+  "id": "IT28",
+  "title": "ITVX / Icon construction comparison",
+  "image": "it28.png",
+  "source": "../sources/1749146361-itv_17.png",
+  "location": {
+    "series": "DixonBaxi / ITV case-study artwork series",
+    "item": 28,
+    "extent": "Whole source artwork",
+    "source_asset_index": 28
+  },
+  "slide_intent": "Compare shape adjustments against a common construction framework, because consistent shapes help small symbols read as one family.",
+  "strategic_value": "This approach can strengthen coherence and legibility in small interface elements.",
+  "demonstration": "Two black person-like outline icons sit side by side over faint circular and diagonal construction guides. Both use a circular head; the lower contours differ.",
+  "category": "Geometry",
+  "practical_value": "Compare shape adjustments against a common construction framework.",
+  "content_islands": [
+    {
+      "name": "Left icon",
+      "spec": "A circular head sits above a more angular torso outline."
+    },
+    {
+      "name": "Right icon",
+      "spec": "A circular head sits above a curved upper torso contour."
+    },
+    {
+      "name": "Guides",
+      "spec": "Faint geometric lines expose the construction relationship."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Two black person-like outline icons sit side by side over faint circular and diagonal construction guides. Both use a circular head; the lower contours differ."
+  }
+}

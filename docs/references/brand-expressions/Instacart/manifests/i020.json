@@ -1,0 +1,24 @@
+{
+  "id": "I020",
+  "title": "App Launcher",
+  "image": "i020.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 20
+  },
+  "slide_intent": "Check whether the app can be found among other icons at launcher scale.",
+  "strategic_value": "The shopping symbol can function as an entry point when it remains recognizable among neighboring marks.",
+  "demonstration": "A complete phone sits on a pale canvas. Its dark green home screen shows the Instacart icon in a small group of app icons at the top.",
+  "category": "Application",
+  "practical_value": "Inspect the symbol at launcher size rather than judging the enlarged icon alone.",
+  "content_islands": [
+    {
+      "name": "Page identifier",
+      "spec": "Place App Launcher under the running labels at upper left."
+    },
+    {
+      "name": "Launcher specimen",
+      "spec": "Center the entire phone vertically; show the small icons at the top of its home screen with the rest of the field open."
+    }
+  ]
+}

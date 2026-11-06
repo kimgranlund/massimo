@@ -1,0 +1,29 @@
+{
+  "id": "C409",
+  "title": "Altogether Different T-shirt",
+  "image": "c409.png",
+  "source": "../sources/c409.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 masterbrand / 2023",
+    "item": 9,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Give a garment a readable identity without letting a slogan compete with its wearer.",
+  "strategic_value": "The small mark and compact positioning phrase can extend Channel 4’s voice into merchandise.",
+  "demonstration": "An overhead photograph shows a black T-shirt with a green 4 on one side and small white Altogether Different lettering on the other.",
+  "category": "Application",
+  "practical_value": "Compare the separation of symbol and phrase on a wearable surface.",
+  "content_islands": [
+    {
+      "name": "Garment graphics",
+      "spec": "Keep the small green symbol and white phrase on opposite chest areas."
+    },
+    {
+      "name": "Handling context",
+      "spec": "Retain the hand and paving around the garment to establish physical scale."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The logo and positioning phrase are applied to a black T-shirt."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "DB0605",
+  "title": "Expressive Anwendung",
+  "image": "db0605.png",
+  "source": "../sources/page-06.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 6,
+    "section": 5,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Designprinzipien"
+  },
+  "slide_intent": "Allow stronger expression where attention and emotion serve the message.",
+  "strategic_value": "More active combinations can help DB’s marketing feel engaging without replacing its visual vocabulary.",
+  "demonstration": "A short text section describes expressive use of color, imagery, sleepers and extended DB Neo styles in marketing, advertising and social media.",
+  "category": "Application",
+  "practical_value": "Use the expressive range for an emotional communication task rather than treating it as the default everywhere.",
+  "content_islands": [
+    {
+      "name": "Expressive-use guidance",
+      "spec": "Place the heading above the paragraph that defines contexts and permitted type expansion."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text explicitly prioritizes visual impact, attention and emotional effect.",
+    "Application": "It allows expressive combinations, extended DB Neo styles and uppercase setting in the named contexts."
+  }
+}

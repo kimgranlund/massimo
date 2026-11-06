@@ -1,0 +1,38 @@
+{
+  "id": "HE007",
+  "title": "Margins and alternative locations",
+  "image": "he007.png",
+  "source": "../sources/use-basic-elements.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Margins and alternative locations",
+    "order": 11,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/use-basic-elements#margins-and-alternative-locations",
+    "original_html": "../sources/use-basic-elements.html"
+  },
+  "slide_intent": "Turn clear-space logic into placement options so a logo can remain consistent across different compositions.",
+  "strategic_value": "Six defined positions can let Helsinki layouts vary while preserving a recognizable relationship to their edges.",
+  "demonstration": "This expanded webpage section introduces the two-H-height margin and shows top and bottom positions at left, center and right.",
+  "category": "Layout",
+  "practical_value": "Select one of the six placements while preserving the specified edge margin.",
+  "content_islands": [
+    {
+      "name": "Margin explanation",
+      "spec": "Place the two-H-height rule above the drawing."
+    },
+    {
+      "name": "Position matrix",
+      "spec": "Show the six logo positions within the rectangular format."
+    }
+  ],
+  "ingredient": {
+    "name": "Logo position and margins",
+    "role": "Anchor the signature consistently within a format.",
+    "application": "Use the illustrated top/bottom and left/center/right positions with margins of two H heights.",
+    "scope": "Applies to the framed-logo placement examples on this section."
+  },
+  "reference_purposes": {
+    "Application": "The diagram demonstrates six edge placements.",
+    "Constraint": "The text specifies margins of twice the H height on each side."
+  }
+}

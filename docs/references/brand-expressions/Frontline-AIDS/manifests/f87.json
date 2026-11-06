@@ -1,0 +1,24 @@
+{
+  "id": "F87",
+  "title": "Stationery & email",
+  "image": "f87.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 87
+  },
+  "slide_intent": "Teach how to identify routine correspondence while keeping its message easy to read. Addresses, names and next actions have to remain findable.",
+  "strategic_value": "The organization can carry its identity into a letter or email through a small mark, accent or signature while leaving most of the reading surface quiet.",
+  "demonstration": "A formal letter and two-sided card sit on pink. An enlarged email on cyan shows the signature details, black wordmark, address and a small illustrated support prompt.",
+  "category": "Application",
+  "practical_value": "Keep the letter body spacious and concentrate the identifying information in the header or signature. Check contact details independently of decorative graphics.",
+  "content_islands": [
+    {
+      "name": "Stationery",
+      "spec": "Place a white letter sheet and card faces on the pink half. Keep the right-aligned letterhead mark and compact card information visible."
+    },
+    {
+      "name": "Email signature",
+      "spec": "Crop the email into the right field at a larger scale, showing the sign-off, name, details, mark, address and support link treatment."
+    }
+  ]
+}

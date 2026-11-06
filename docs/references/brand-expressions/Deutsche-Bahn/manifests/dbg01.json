@@ -1,0 +1,27 @@
+{
+  "id": "DBG01",
+  "title": "Immer unterwegs / Campaign build",
+  "image": "dbg01.png",
+  "source": "../sources/media/aac12f5fd24f-Bild_01-data.gif",
+  "location": {
+    "series": "DB new design / original GIF demonstrations",
+    "source_page": 15,
+    "section": 2,
+    "url": "https://marketingportal.extranet.deutschebahn.com/resource/blob/14025262/95b55f634719038ffc4fec95efbcf4cf/Bild_01-data.gif"
+  },
+  "slide_intent": "Sequence a campaign message so the reader can identify the sender, read the offer and retain the image.",
+  "strategic_value": "A staged white headline and red Schwelle can make a human travel scene feel unmistakably DB.",
+  "demonstration": "The DB logo, two-line IMMER UNTERWEGS headline, small copy and red Schwelle build over a woman holding a phone beside a train, then withdraw.",
+  "category": "Motion",
+  "practical_value": "Compare the order of logo, headline, copy and Schwelle rather than animating every element at once.",
+  "content_islands": [
+    {
+      "name": "Photographic stage",
+      "spec": "Keep the woman and train full-frame, with message elements at left and the Schwelle along the bottom."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The animation applies a staged identity and message sequence to a photographic campaign composition."
+  },
+  "motion": "../sources/media/dbg01.mp4"
+}

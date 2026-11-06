@@ -1,0 +1,27 @@
+{
+  "id": "BK080",
+  "title": "Grid System & Layouts",
+  "image": "bk080.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 80
+  },
+  "slide_intent": "Signal the move from individual ingredients to composition because readers need to know when rules concern relationships between elements.",
+  "strategic_value": "The familiar orange divider can connect Burger King’s structural guidance to the same expressive identity it organizes.",
+  "demonstration": "Large brown GRID SYSTEM & LAYOUTS lettering sits on two lines near the top of an orange page.",
+  "category": "Layout",
+  "practical_value": "Recognize this as a section boundary before the margin and placement instructions.",
+  "content_islands": [
+    {
+      "name": "Section heading",
+      "spec": "Place the large two-line title at upper left."
+    },
+    {
+      "name": "Navigation and rights",
+      "spec": "Keep small running labels above and the rights notice at bottom left."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The divider applies the established large brown Flame lettering on orange."
+  }
+}

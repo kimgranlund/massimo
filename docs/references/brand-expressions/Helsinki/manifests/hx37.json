@@ -1,0 +1,24 @@
+{
+  "id": "HX37",
+  "title": "Helsinki framed logos (Helsinki logos)",
+  "image": "hx37.png",
+  "source": "../sources/download-elements.offline.html",
+  "location": {
+    "series": "Web guideline introduction/component",
+    "order": 143,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/download-elements",
+    "original_html": "../sources/download-elements.html"
+  },
+  "slide_intent": "Provide a clear entry to helsinki framed logos (helsinki logos) because contributors need to locate the correct source assets.",
+  "strategic_value": "The named section can help Helsinki contributors find the appropriate asset family.",
+  "demonstration": "This webpage component contains only the Helsinki framed logos (Helsinki logos) heading and an Open all control. No asset specimen or detailed rule is visible.",
+  "category": "Brand",
+  "practical_value": "Use the Helsinki framed logos (Helsinki logos) heading to locate its download group; the heading itself supplies no asset-use rules.",
+  "content_islands": [
+    {
+      "name": "Section header",
+      "spec": "Retain the heading and expansion control together."
+    }
+  ],
+  "reference_purposes": {}
+}

@@ -1,0 +1,32 @@
+{
+  "id": "BK058",
+  "title": "Flame Grilling Since 1954 / Restaurant example",
+  "image": "bk058.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 58
+  },
+  "slide_intent": "Coordinate a heritage claim with identification so a storefront communicates both who it is and what it stands for.",
+  "strategic_value": "The lit cooking-method statement can reinforce Burger King’s differentiation alongside its familiar burger logo.",
+  "demonstration": "A dusk restaurant facade places the glowing heritage phrase above the windows and the backed burger logo beside the entrance.",
+  "category": "Application",
+  "practical_value": "Compare the roles of the long roofline claim and compact entrance logo at building scale.",
+  "content_islands": [
+    {
+      "name": "Roofline claim",
+      "spec": "Place the pale illuminated phrase across the upper facade."
+    },
+    {
+      "name": "Entrance logo",
+      "spec": "Keep the orange-and-red backed logo on the dark wall to the right of the doorway."
+    },
+    {
+      "name": "Restaurant context",
+      "spec": "Retain the glazing, illuminated food graphics, planting and pavement to show the signage in its setting."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The warm lit typography and burger logo contrast with the dark facade and evening sky.",
+    "Application": "The heritage lockup and primary logo are shown together on restaurant signage."
+  }
+}

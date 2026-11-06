@@ -1,0 +1,37 @@
+{
+  "id": "CH02",
+  "title": "Memory Marker / Icon and color",
+  "image": "ch02.png",
+  "source": "../sources/ch02.jpg",
+  "location": {
+    "series": "COLLINS / Mailchimp case study",
+    "item": 2,
+    "extent": "Complete published artwork",
+    "section": "Memory Marker"
+  },
+  "slide_intent": "Separate the cues people remember so a designer can evaluate each cue and their combination.",
+  "strategic_value": "Freddie and yellow can reinforce recognition together while remaining individually identifiable.",
+  "demonstration": "Two circles compare Freddie on pale gray with a solid yellow disc, accompanied by orange handwritten notes.",
+  "category": "Color",
+  "practical_value": "Compare the contribution of a mascot with that of a repeated color.",
+  "content_islands": [
+    {
+      "name": "Icon specimen",
+      "spec": "Place Freddie inside the left gray circle with the handwritten icon note below."
+    },
+    {
+      "name": "Color specimen",
+      "spec": "Place a yellow circle at right with its handwritten color note."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The board isolates an icon and a yellow swatch.",
+    "Intent": "The accompanying Memory Marker description identifies memorable cues as aids to recognition."
+  },
+  "ingredient": {
+    "name": "Freddie and yellow",
+    "role": "Provide a character cue and a color cue.",
+    "application": "Compare the two cues separately before judging their combined effect.",
+    "scope": "Observed case-study comparison; no color proportion is prescribed."
+  }
+}

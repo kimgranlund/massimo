@@ -1,0 +1,41 @@
+{
+  "id": "BKE13",
+  "title": "Ingredients become the signature",
+  "image": "bke13.png",
+  "source": "../sources/bke13.mp4",
+  "location": {
+    "series": "JKR / Burger King identity case study",
+    "item": 13,
+    "extent": "Complete clip; PNG is a poster frame",
+    "duration_seconds": 12.1
+  },
+  "slide_intent": "Connect the mark with the product through transformation so viewers understand the food idea embedded in its form.",
+  "strategic_value": "An ingredient assembly that resolves into the logo can strengthen Burger King’s food-shaped recognition.",
+  "demonstration": "Wavy horizontal color bands become floating illustrated ingredients, assemble into a burger, then resolve into the primary signature.",
+  "category": "Motion",
+  "practical_value": "Study a transition whose final symbol retains the shape and color logic of the preceding food.",
+  "content_islands": [
+    {
+      "name": "Color bands",
+      "spec": "Begin with full-frame undulating food-colored layers."
+    },
+    {
+      "name": "Ingredient assembly",
+      "spec": "Separate and rotate the illustrated components before stacking them around the emerging lettering."
+    },
+    {
+      "name": "Logo resolution",
+      "spec": "Remove ingredient detail to leave the orange-bun and red-letter signature on cream."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The sequence visibly transforms ingredient layers into the primary logo."
+  },
+  "motion": "../sources/bke13.mp4",
+  "ingredient": {
+    "name": "Ingredient-to-logo transformation",
+    "role": "Link brand recognition directly to the food.",
+    "application": "Observe the sequence from color layers to floating ingredients to a simplified signature.",
+    "scope": "Complete JKR demonstration clip; no timing or easing requirements are stated."
+  }
+}

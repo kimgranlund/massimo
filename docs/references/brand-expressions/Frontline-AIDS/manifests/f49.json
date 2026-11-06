@@ -1,0 +1,24 @@
+{
+  "id": "F49",
+  "title": "Photography style",
+  "image": "f49.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 49
+  },
+  "slide_intent": "Teach photographers to combine proximity, natural light and a focal point so a reader can follow what is happening in a busy moment.",
+  "strategic_value": "Frontline AIDS can establish a recognizable reportage approach across work made in different places.",
+  "demonstration": "A six-image grid assigns one production choice to each photograph, including ambient light, focus, activity, viewpoint and proximity.",
+  "category": "Imagery",
+  "practical_value": "Use the six captions as a brief for a shoot. Select a viewpoint close enough to the action and check where the eye lands inside the frame.",
+  "content_islands": [
+    {
+      "name": "Section introduction",
+      "spec": "Set the title beside the navigation and summarize the reportage approach beneath it."
+    },
+    {
+      "name": "Six style specimens",
+      "spec": "Arrange two rows of three photographs on the right. Place the bold technique name and its explanation directly under each photograph so a reader can compare the choice with the image."
+    }
+  ]
+}

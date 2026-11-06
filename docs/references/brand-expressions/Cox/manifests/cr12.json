@@ -1,0 +1,36 @@
+{
+  "id": "CR12",
+  "title": "Homelife product brochure",
+  "image": "cr12.png",
+  "source": "../sources/cr12.png",
+  "location": {
+    "series": "Cox Brand Collection — Lindsay Little / Periscope",
+    "item": 12,
+    "extent": "whole source image"
+  },
+  "slide_intent": "Carry a welcoming identity into instructions so readers can move from interest to confident use.",
+  "strategic_value": "The house outline and friendly opening can connect Cox Homelife’s promise to concrete setup and alarm guidance.",
+  "demonstration": "A three-view brochure board shows an orange house outline on the cover, a control-panel explanation, and alarm and emergency-contact spreads.",
+  "category": "Application",
+  "practical_value": "Use the cover to establish the service and the interior hierarchy to distinguish diagrams, steps and urgent information.",
+  "content_islands": [
+    {
+      "name": "Cover and back",
+      "spec": "Place the large opened cover at left, joining family photography and fine line icons with an orange house outline."
+    },
+    {
+      "name": "System spread",
+      "spec": "Place the smaller upper-right spread with control-panel annotations and connected-device icons."
+    },
+    {
+      "name": "Alarm spread",
+      "spec": "Place the lower-right spread with numbered alarm stages, phone example and colored emergency-contact bands."
+    }
+  ],
+  "ingredient": {
+    "name": "Orange house outline",
+    "role": "Identify the domestic purpose of the Homelife system and connect the brochure’s front and back.",
+    "application": "Run the house contour across the opened cover, enclosing the family photograph and continuing below the title.",
+    "scope": "This Homelife brochure cover. Interior diagrams use a separate instructional hierarchy."
+  }
+}

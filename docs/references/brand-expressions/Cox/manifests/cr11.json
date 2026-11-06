@@ -1,0 +1,26 @@
+{
+  "id": "CR11",
+  "title": "Content Library Still — listening on the go",
+  "image": "cr11.png",
+  "source": "../sources/cr11.jpg",
+  "location": {
+    "series": "Cox Brand Collection — Lindsay Little / Periscope",
+    "item": 11,
+    "extent": "whole source image"
+  },
+  "slide_intent": "Show a device within an understandable activity so viewers can relate connectivity to their own routines.",
+  "strategic_value": "The headphones and phone can extend Cox’s visual story beyond the home.",
+  "demonstration": "A man wearing green headphones looks at his phone while standing beside a pale brick wall.",
+  "category": "Imagery",
+  "practical_value": "Choose wardrobe and background contrast that keep the device and activity easy to read.",
+  "content_islands": [
+    {
+      "name": "Mobile listener",
+      "spec": "Place the person in profile through the center-right, keeping the phone and cable visible."
+    },
+    {
+      "name": "Quiet background",
+      "spec": "Use the pale brick wall as a simple textured field around the figure."
+    }
+  ]
+}

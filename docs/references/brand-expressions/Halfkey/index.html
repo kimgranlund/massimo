@@ -42,10 +42,13 @@ function gallery(slides) {
   const categories = ['All', ...new Set(slides.map(s => s.category).sort())];
   function showSlide(slide) {
     selected = slide;
+    if (location.hash && location.hash !== '#' + slide.id) {
+      history.replaceState(null, '', '#' + slide.id);
+    }
     for (const button of strip.children) button.setAttribute('aria-current', String(button.dataset.id === slide.id));
     const heading = el('div', null, 'titlebar');
     heading.append(el('span', slide.id + ' / ' + slide.category, 'label'));
-    const title = el('h2', slide.title);
+    const title = el('h2', slide.title); title.id = slide.id;
     const columns = el('div', null, 'columns'), figure = el('figure'), stage = link('', base + slide.image);
     stage.className = 'stage';
     const image = el('img'); image.src = base + slide.image; image.alt = slide.id + ' · ' + slide.title + ' (open full-size image)';
@@ -57,11 +60,28 @@ function gallery(slides) {
     for (const [key, label] of [['slide_intent','Slide intent'],['strategic_value','Strategic value'],['demonstration','Demonstration'],['category','Category'],['practical_value','Practical value']]) {
       fields.append(el('dt', label), el('dd', slide[key]));
     }
+    if (slide.reference_purposes !== undefined) {
+      const body = el('dd'), evidence = el('ul');
+      for (const [purpose, note] of Object.entries(slide.reference_purposes)) {
+        const item = el('li'); item.append(el('strong', purpose + ' '), note); evidence.append(item);
+      }
+      body.append(evidence.children.length ? evidence : 'Reviewed; no purpose assigned.');
+      fields.append(el('dt', 'Reference purpose'), body);
+    }
     const list = el('ol');
     for (const island of slide.content_islands) {
       const item = el('li'); item.append(el('strong', island.name), island.spec); list.append(item);
     }
     const islands = el('dd'); islands.append(list); fields.append(el('dt','Content islands'), islands);
+    if (slide.ingredient) {
+      const ingredient = slide.ingredient;
+      const body = el('dd'), rules = el('dl');
+      for (const [key, label] of [['role','Role'], ['application','Application'], ['scope','Scope']]) {
+        rules.append(el('dt', label), el('dd', ingredient[key]));
+      }
+      body.append(el('strong', ingredient.name), rules);
+      fields.append(el('dt', 'Brand ingredient'), body);
+    }
     columns.append(figure, fields); detail.replaceChildren(heading, title, columns);
   }
   function filter(next) {
@@ -84,7 +104,13 @@ function gallery(slides) {
   for (const label of categories) {
     const button = el('button', label, 'chip'); button.dataset.category = label; button.onclick = () => filter(label); filters.append(button);
   }
-  filter('All');
+  function openLinkedSlide() {
+    selected = slides.find(slide => '#' + slide.id === location.hash) || slides[0];
+    filter('All');
+    if (location.hash === '#' + selected.id) document.getElementById(selected.id).scrollIntoView();
+  }
+  openLinkedSlide();
+  window.addEventListener('hashchange', openLinkedSlide);
 }
 gallery(halfkeySlides);
 </script></body></html>

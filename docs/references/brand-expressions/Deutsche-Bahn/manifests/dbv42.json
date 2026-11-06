@@ -1,0 +1,35 @@
+{
+  "id": "DBV42",
+  "title": "Don_t_Timing",
+  "image": "dbv42.png",
+  "source": "../sources/media/dbv42.mp4",
+  "location": {
+    "series": "DB new design / motion demonstrations",
+    "source_page": 15,
+    "section": "Do-s-und-Don-ts-14021640",
+    "source_url": "https://ecm-mediathek-cdn.deutschebahn.com/cdnenhancedecmvidhls/db306517/2881251/video_config.json",
+    "capture_date": "2026-11-05"
+  },
+  "slide_intent": "Recognize unsuitable timing because speed can distract from the content even when the graphic is correct.",
+  "strategic_value": "The rejected timing example can help DB teams diagnose a motion problem that a still frame conceals.",
+  "demonstration": "The same train interior and white DB logo use a different reveal cadence; a cyan diagonal line marks the sequence as rejected.",
+  "category": "Motion",
+  "practical_value": "Compare the temporal behavior with DBV41 rather than treating the shared final logo as sufficient approval.",
+  "content_islands": [
+    {
+      "name": "Logo sequence",
+      "spec": "Observe the altered arrival and departure over the train interior."
+    },
+    {
+      "name": "Rejection mark",
+      "spec": "Keep the cyan diagonal line visible as the source’s negative-example annotation."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The same train interior and white DB logo use a different reveal cadence; a cyan diagonal line marks the sequence as rejected.",
+    "Application": "The source provides a playable rejected counterexample of this repeatable sequence: The same train interior and white DB logo use a different reveal cadence; a cyan diagonal line marks the sequence as rejected.",
+    "Intent": "The paired source captions connect suitable timing and the defined curves to decisiveness; excessively fast or slow movement distracts from content.",
+    "Constraint": "The negative caption rejects movement that is too fast or too slow; it supplies no universal numeric duration."
+  },
+  "motion": "../sources/media/dbv42.mp4"
+}

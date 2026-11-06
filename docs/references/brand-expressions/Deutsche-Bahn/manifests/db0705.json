@@ -1,0 +1,37 @@
+{
+  "id": "DB0705",
+  "title": "Weitere Logovarianten",
+  "image": "db0705.png",
+  "source": "../sources/page-07.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 7,
+    "section": 5,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Logo_neu"
+  },
+  "slide_intent": "Define exceptional identity forms so practical production needs do not become unrestricted variation.",
+  "strategic_value": "A limited white-interior option can preserve DB recognition when the standard mark cannot be produced.",
+  "demonstration": "Two columns distinguish the white-interior red logo from the soundlogo and explain their roles.",
+  "category": "Brand",
+  "practical_value": "Use the white-interior version only for the stated construction or production limitation; consult sound guidance for audio endings.",
+  "content_islands": [
+    {
+      "name": "Production exception",
+      "spec": "Pair the white-interior logo example with the restricted-use explanation at left."
+    },
+    {
+      "name": "Soundlogo role",
+      "spec": "Place the soundlogo description at right; the capture itself is a static reference."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text identifies the soundlogo as the acoustic closing identifier.",
+    "Constraint": "The white-interior mark is limited to cases where the standard variant cannot be implemented structurally or in production, such as clothing or architecture."
+  },
+  "ingredient": {
+    "name": "White-interior DB logo",
+    "role": "Retain a recognizable mark under production limitations.",
+    "application": "Use only when the standard version is structurally or technically unworkable.",
+    "scope": "The listed examples are corporate clothing and architecture; this is not a general permission for busy photographs."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "C419",
+  "title": "Leading layout / Live sport",
+  "image": "c419.png",
+  "source": "../sources/c419.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 masterbrand / 2023",
+    "item": 19,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Pair a clear viewing instruction with energetic imagery so excitement does not hide when and where to watch.",
+  "strategic_value": "A stable upper-left identity and schedule can make Channel 4 sport promotions useful as well as recognizable.",
+  "demonstration": "A cropped racing poster places the green 4 beside Stream or watch live and Next Saturday 2pm, above oversized pink lettering.",
+  "category": "Layout",
+  "practical_value": "Compare the small functional information with the high-energy image and headline.",
+  "content_islands": [
+    {
+      "name": "Viewing information",
+      "spec": "Keep the logo and two-line live-viewing instruction at the upper left."
+    },
+    {
+      "name": "Racing image and headline",
+      "spec": "Use the racing car as the field behind widely spaced large lettering."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The identity and viewing time are applied to a racing promotion."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "DB0401",
+  "title": "Powerpoint",
+  "image": "db0401.png",
+  "source": "../sources/page-04.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 4,
+    "section": 1,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Teams-Hintergruende/Powerpoint"
+  },
+  "slide_intent": "Keep reusable templates current so repeated presentations do not fragment the identity.",
+  "strategic_value": "A common, updated master can maintain DB consistency across employees and external collaborators.",
+  "demonstration": "The section explains current PowerPoint masters, brand-specific versions, easySlides access and a download alternative, followed by a growing-library note.",
+  "category": "Application",
+  "practical_value": "Use the latest master for the sending brand and choose the download route if easySlides is unavailable.",
+  "content_islands": [
+    {
+      "name": "Master guidance",
+      "spec": "Place the heading above the current-template instruction and access explanation."
+    },
+    {
+      "name": "Library status",
+      "spec": "Separate the note that additional designs and use cases are still being developed from the download link."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The prose identifies easySlides and a download alternative for accessing masters.",
+    "Constraint": "The section asks users always to use the current master appropriate to the sending brand."
+  }
+}

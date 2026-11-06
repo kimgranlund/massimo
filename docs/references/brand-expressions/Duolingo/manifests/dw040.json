@@ -1,0 +1,39 @@
+{
+  "id": "DW040",
+  "title": "Brand family / Duolingo Plus",
+  "image": "dw040.png",
+  "source": "../sources/pages/identity-brand-family.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/identity/brand-family",
+    "section": "Duolingo Plus",
+    "item": 40,
+    "order": 400
+  },
+  "slide_intent": "Differentiate a related offering while retaining family recognition because people need to understand both connection and change.",
+  "strategic_value": "A specific Plus wordmark and distinct color treatment can signal Duolingo’s enhanced service within the same family.",
+  "demonstration": "The Plus signature is presented with copy explaining its own logotype and dramatic colorway change.",
+  "category": "Brand",
+  "practical_value": "Use a distinct treatment when the product difference needs to be communicated while retaining the core name.",
+  "content_islands": [
+    {
+      "name": "Plus specimen",
+      "spec": "Show the supplied Plus signature in the left panel and retain its display controls beneath."
+    },
+    {
+      "name": "Product distinction",
+      "spec": "Place the heading and explanation of premium service and changed colorway in the right column."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source says the changed colorway signals an enhanced version of the app.",
+    "Expression": "The specific Plus signature demonstrates a related but differentiated identity.",
+    "Application": "The section assigns this treatment to the historical premium service."
+  },
+  "ingredient": {
+    "name": "Duolingo Plus identity",
+    "role": "Signal an enhanced offering within the brand family.",
+    "application": "Use the specific historical Plus signature and its distinct colorway.",
+    "scope": "Historical archived guidelines. Archived product identity; this does not claim Plus is the current service name or prescribe treatment for other products."
+  }
+}

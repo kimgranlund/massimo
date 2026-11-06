@@ -1,0 +1,31 @@
+{
+  "id": "DB1210",
+  "title": "Extremformen / vertical extension",
+  "image": "db1210.png",
+  "source": "../sources/page-12.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 12,
+    "section": 10,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Signature-Graphics"
+  },
+  "slide_intent": "Extend the drawing area for unusual proportions so recognizable objects are not forced into a square.",
+  "strategic_value": "Controlled format extension can preserve DB’s line language across tall and wide subjects.",
+  "demonstration": "The vertical tab shows a red tower within an extended construction frame and vertical arrow.",
+  "category": "Geometry",
+  "practical_value": "Extend the base vertically for tall objects while maintaining harmonious proportions with other graphics.",
+  "content_islands": [
+    {
+      "name": "Extension rule",
+      "spec": "Place the explanation above the orientation tabs."
+    },
+    {
+      "name": "Tall-object diagram",
+      "spec": "Show the tower within the vertically extended frame."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The selected vertical tab demonstrates a tall object on an extended base.",
+    "Constraint": "The text permits horizontal or vertical extension but requires harmonious size relationships with other signature graphics."
+  }
+}

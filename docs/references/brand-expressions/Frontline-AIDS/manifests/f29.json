@@ -1,0 +1,24 @@
+{
+  "id": "F29",
+  "title": "Make a mark",
+  "image": "f29.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 29
+  },
+  "slide_intent": "Show how a single shape can organize a long run of visual messages. Repetition can connect panels while changes of scale and color keep them distinguishable.",
+  "strategic_value": "Frontline AIDS can carry one campaign voice across a street-facing installation using alternating portraits, color fields and a single name panel.",
+  "demonstration": "A photograph fills the page. Six adjacent billboard panels alternate figure-shaped photo windows and a dark panel carrying the blue wordmark.",
+  "category": "Application",
+  "practical_value": "Use a wide contextual view to check recognition and pacing across the whole run of posters.",
+  "content_islands": [
+    {
+      "name": "Overlay header",
+      "spec": "Set the short title and navigation directly over the darker upper-left foliage in light type."
+    },
+    {
+      "name": "Billboard sequence",
+      "spec": "Show the complete billboard against the trees and pavement. Retain the border, successive color fields and central name panel so scale and order can be read together."
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "id": "IT03",
+  "title": "ITVX / Drama at the bus shelter",
+  "image": "it03.png",
+  "source": "../sources/1782130824-sxzjvmjnrzi7z2wfwip4lw-itv_2-1.webp",
+  "location": {
+    "series": "DixonBaxi / ITV case-study artwork series",
+    "item": 3,
+    "extent": "Whole source artwork",
+    "source_asset_index": 3
+  },
+  "slide_intent": "Anchor programme imagery with a repeated framing cue and service signature, because viewers need to recognize the same service across different situations.",
+  "strategic_value": "This approach can strengthen continuity between campaign recognition and service use.",
+  "demonstration": "A woman in a red dress fills a portrait bus-shelter display. Yellow arrows frame the programme title and ITVX sits near the bottom.",
+  "category": "Application",
+  "practical_value": "Anchor programme imagery with a repeated framing cue and service signature.",
+  "content_islands": [
+    {
+      "name": "Shelter",
+      "spec": "The surrounding dark street gives the lit poster contrast."
+    },
+    {
+      "name": "Portrait",
+      "spec": "The actor occupies most of the display."
+    },
+    {
+      "name": "Signatures",
+      "spec": "Title, arrows and service logo provide layered identification."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A woman in a red dress fills a portrait bus-shelter display. Yellow arrows frame the programme title and ITVX sits near the bottom.",
+    "Application": "Anchor programme imagery with a repeated framing cue and service signature. Evidence is the shown application, not a mandatory layout rule."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "HE103",
+  "title": "How to copy a chart style from one chart to another",
+  "image": "he103.png",
+  "source": "../sources/design-and-create.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "How to copy a chart style from one chart to another",
+    "order": 138,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/design-and-create#how-to-copy-a-chart-style-from-one-chart-to-another",
+    "original_html": "../sources/design-and-create.html"
+  },
+  "slide_intent": "Copy formatting separately from data so a proven visual treatment can be reused without replacing content.",
+  "strategic_value": "Formatting reuse can keep related Helsinki charts visually coordinated.",
+  "demonstration": "Expanded webpage section: four numbered steps appear above an Excel chart with the Paste Special menu circled.",
+  "category": "Application",
+  "practical_value": "Copy the source chart and paste Formatting onto the target chart.",
+  "content_islands": [
+    {
+      "name": "Procedure",
+      "spec": "Four steps distinguish selecting the source and destination charts."
+    },
+    {
+      "name": "Interface example",
+      "spec": "A horizontal stacked chart anchors the annotated Paste Special menu."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The page explicitly demonstrates Copy followed by Paste Special > Formatting."
+  }
+}

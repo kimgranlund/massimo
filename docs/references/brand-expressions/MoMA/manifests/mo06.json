@@ -1,0 +1,40 @@
+{
+  "id": "MO06",
+  "title": "Six poster variations",
+  "image": "mo06.png",
+  "source": "../sources/mo06.jpg",
+  "location": {
+    "series": "Pentagram / MoMA / 2009 identity case study",
+    "item": 6,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Demonstrate flexibility within a recognizable structure, because consistency should support different artworks rather than force identical compositions.",
+  "strategic_value": "Repeated vertical logos and heading zones can connect MoMA posters while allowing varied artwork scales and placements.",
+  "demonstration": "Six posters form a grid of three columns and two rows. Their artwork colors, image extents, logo sides and programme-block positions vary within a related composition.",
+  "category": "Layout",
+  "practical_value": "Compare which structural relationships remain stable when image scale and column placement change.",
+  "content_islands": [
+    {
+      "name": "Upper comparison row",
+      "spec": "Arrange blue, multicolored and yellow/red artwork posters across the top; preserve their different image sizes and signature positions."
+    },
+    {
+      "name": "Lower comparison row",
+      "spec": "Arrange yellow/blue, dark and red artwork posters beneath; retain the left/right alternation of the logo columns."
+    },
+    {
+      "name": "Shared structure",
+      "spec": "Keep the white title zones and narrow programme/signature columns visible across all six examples."
+    }
+  ],
+  "ingredient": {
+    "name": "Vertical MoMA signature column",
+    "role": "Provide a repeated institutional reference beside changing artwork.",
+    "application": "Compare left- and right-side placement and different programme-block heights in the six examples.",
+    "scope": "Observed historical poster variations; no universal side, size ratio or fixed image percentage is specified by this board."
+  },
+  "reference_purposes": {
+    "Expression": "Six color and image treatments share heavy vertical signatures and white heading areas.",
+    "Application": "The comparison shows several institutional poster compositions rather than one mandatory arrangement."
+  }
+}

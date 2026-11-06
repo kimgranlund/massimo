@@ -1,0 +1,38 @@
+{
+  "id": "DW084",
+  "title": "Writing / Style / URLs and email addresses",
+  "image": "dw084.png",
+  "source": "../sources/pages/writing-style.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/style",
+    "section": "URLs and email addresses",
+    "item": 84,
+    "order": 840
+  },
+  "slide_intent": "Simplify displayed addresses so people can recognize and reproduce them without unnecessary visual clutter.",
+  "strategic_value": "Consistent lowercase addresses can help Duolingo keep contact and destination references visually quiet.",
+  "demonstration": "Three preferred web/email forms appear above versions with protocol prefixes, www or mixed capitalization.",
+  "category": "Voice",
+  "practical_value": "Remove the protocol and www from displayed URLs and use lowercase display text for addresses.",
+  "content_islands": [
+    {
+      "name": "Guidance column",
+      "spec": "Place the topic heading, its parent label and the written convention in the narrow left column."
+    },
+    {
+      "name": "Worked examples",
+      "spec": "Place the worked copy in the pale right panel, keeping preference labels and green checks with their examples."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The comparisons cover a root domain, a social-profile path and an email address.",
+    "Constraint": "Omit http:// and www. in displayed URLs; use lowercase for the remaining URL and for email addresses."
+  },
+  "ingredient": {
+    "name": "URLs and email addresses convention",
+    "role": "People can recognize and reproduce them without unnecessary visual clutter.",
+    "application": "Omit http:// and www. in displayed URLs; use lowercase for the remaining URL and for email addresses.",
+    "scope": "Historical official guidelines from the 2024–2025 archived snapshot; this records the displayed guidance, not current Duolingo product behavior."
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "DB0606",
+  "title": "Expressive applications / discount and station poster",
+  "image": "db0606.png",
+  "source": "../sources/page-06.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 6,
+    "section": 6,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Designprinzipien"
+  },
+  "slide_intent": "Test expressive choices across formats so attention does not depend on one layout.",
+  "strategic_value": "Shared type, red accents and geometric illustration can connect DB offers and destination messages.",
+  "demonstration": "Two light/dark BahnCard discount layouts sit beside a large Berlin welcome poster in a station.",
+  "category": "Application",
+  "practical_value": "Compare a compact price-led offer with a wide environmental message.",
+  "content_islands": [
+    {
+      "name": "Discount pair",
+      "spec": "Place the two 50% discount cards side by side at left."
+    },
+    {
+      "name": "Station poster",
+      "spec": "Use the right half for the Berlin poster with large type and geometric character illustration."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The artworks apply the identity to discount advertising and a station poster."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "HE061",
+  "title": "Checklist of accessible visual storytelling",
+  "image": "he061.png",
+  "source": "../sources/visual-storytelling.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Checklist of accessible visual storytelling",
+    "order": 84,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/visual-storytelling#checklist-of-accessible-visual-storytelling",
+    "original_html": "../sources/visual-storytelling.html"
+  },
+  "slide_intent": "Judge imagery by comprehension as well as appearance so viewers can understand the intended message.",
+  "strategic_value": "Purpose, reading order and alternative text can help Helsinki visual communications serve more residents.",
+  "demonstration": "This expanded webpage-section capture presents a checklist connecting image purpose, emotional tone, visual literacy, detail, symbols, layout and alternative text.",
+  "category": "Imagery",
+  "practical_value": "Check whether an image conveys its intended meaning at the actual size and whether explanatory text is needed.",
+  "content_islands": [
+    {
+      "name": "Accessibility checklist",
+      "spec": "Keep the ten checks together in their reading order, ending with the alternative-text condition."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The checklist links choices to understanding, emotional support and avoiding distracting detail.",
+    "Application": "It asks designers to check image purpose, reading order, symbols and final size.",
+    "Constraint": "Alternative text is required unless the image or graphic is purely decorative."
+  }
+}

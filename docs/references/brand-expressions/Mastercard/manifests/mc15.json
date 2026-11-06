@@ -1,0 +1,36 @@
+{
+  "id": "MC15",
+  "title": "FF Mark weight and letterform specimen",
+  "image": "mc15.png",
+  "source": "../sources/mc15.jpg",
+  "location": {
+    "series": "Pentagram / Mastercard / 2016 identity case study",
+    "item": 15,
+    "extent": "Full published artwork"
+  },
+  "slide_intent": "Expose the letterforms because a typeface should extend the visual character of the symbol while supporting a range of emphasis.",
+  "strategic_value": "Circular letter structures can reinforce identity across text that carries no logo.",
+  "demonstration": "A white FF Mark heading and repeated lowercase letter groups show thin-to-heavy weights on black.",
+  "category": "Typography",
+  "practical_value": "Compare rounded forms and weight changes without treating the specimen as a complete typographic scale.",
+  "content_islands": [
+    {
+      "name": "Family name",
+      "spec": "Set the white FF Mark title above the specimen."
+    },
+    {
+      "name": "Letter groups",
+      "spec": "Arrange repeated a, m, r, t, s, e, d and c forms in staggered rows, progressing through weights."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The specimen exposes rounded lowercase forms across a visible range of weights.",
+    "Intent": "Pentagram explains that FF Mark echoes the circular structure of the logo and references the 1979 typography."
+  },
+  "ingredient": {
+    "name": "FF Mark",
+    "role": "Extend the circular identity into written messages.",
+    "application": "Use the published rounded letterforms and weight range as evidence of type character; this specimen supplies no size or spacing rules.",
+    "scope": "Historical 2016 Pentagram case study; not a current master guideline or numeric production specification."
+  }
+}

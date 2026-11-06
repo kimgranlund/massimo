@@ -1,0 +1,36 @@
+{
+  "id": "DBV16",
+  "title": "Type_Primary-centered",
+  "image": "dbv16.png",
+  "source": "../sources/media/dbv16.mp4",
+  "location": {
+    "series": "DB new design / motion demonstrations",
+    "source_page": 15,
+    "section": "Animation-14021536",
+    "source_url": "https://ecm-mediathek-cdn.deutschebahn.com/cdnenhancedecmvidhls/db306408/2880867/video_config.json",
+    "capture_date": "2026-11-05",
+    "note": "The adjacent page caption does not reliably describe this embedded file. This manifest follows the inspected video and its file title; broader typography rules come from the surrounding prose. Adjacent caption: Klicken, um das folgende Video zu überspringen Ende des oberhalb befindlichen Videos Gesamter Textblock linksbündig"
+  },
+  "slide_intent": "Keep an animated headline’s alignment stable so the viewer can read the phrase as one unit.",
+  "strategic_value": "The centered two-line treatment can preserve a clear DB headline hierarchy in symmetrical compositions.",
+  "demonstration": "A bold centered two-line headline enters, holds, and leaves a pale field.",
+  "category": "Motion",
+  "practical_value": "Choose a centered headline sequence when the composition is organized around a middle axis.",
+  "content_islands": [
+    {
+      "name": "Headline block",
+      "spec": "Center the two lines around a shared vertical axis."
+    },
+    {
+      "name": "Reading interval",
+      "spec": "Let the complete phrase remain visible before removal."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A bold centered two-line headline enters, holds, and leaves a pale field.",
+    "Application": "The source provides a playable demonstration of this repeatable sequence: A bold centered two-line headline enters, holds, and leaves a pale field.",
+    "Intent": "Accompanying Typografie prose prioritizes legibility and uses simple staggered line movement to keep text lively and clear.",
+    "Constraint": "The source prioritizes legibility when animating typography."
+  },
+  "motion": "../sources/media/dbv16.mp4"
+}

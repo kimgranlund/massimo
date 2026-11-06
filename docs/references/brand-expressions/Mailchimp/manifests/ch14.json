@@ -1,0 +1,35 @@
+{
+  "id": "CH14",
+  "title": "Suspended illustration mobile",
+  "image": "ch14.png",
+  "source": "../sources/ch14.gif",
+  "location": {
+    "series": "COLLINS / Mailchimp case study",
+    "item": 14,
+    "extent": "Complete published artwork",
+    "section": "Gallery"
+  },
+  "slide_intent": "Give separate symbols a shared movement because related parts can feel connected without becoming identical.",
+  "strategic_value": "The irregular hanging objects can express Mailchimp’s playful range while one yellow accent concentrates attention.",
+  "demonstration": "A thin-line suspended mobile gently shifts its branches and hanging objects; a light-bulb shape flashes yellow.",
+  "category": "Motion",
+  "practical_value": "Compare subtle grouped motion with a localized color accent.",
+  "content_islands": [
+    {
+      "name": "Framework",
+      "spec": "Center the angular suspended structure on white."
+    },
+    {
+      "name": "Objects",
+      "spec": "Hang varied objects at different heights and retain their small oscillations."
+    },
+    {
+      "name": "Accent",
+      "spec": "Use the changing yellow bulb as the only strong color in the drawing."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The loop combines lightly moving drawn objects with an intermittent yellow highlight."
+  },
+  "motion": "../sources/ch14.mp4"
+}

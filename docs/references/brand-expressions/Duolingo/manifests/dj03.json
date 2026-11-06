@@ -1,0 +1,41 @@
+{
+  "id": "DJ03",
+  "title": "Wing form and letter construction",
+  "image": "dj03.png",
+  "source": "../sources/johnson-banks/Duolingo_typography2-by-Johnson-Banks.jpg",
+  "location": {
+    "series": "Johnson Banks / Everyone can Duolingo / 2019",
+    "item": 3,
+    "extent": "Whole published artwork",
+    "order": 2003
+  },
+  "slide_intent": "Show the formal connection between mascot and type so a designer can understand where a distinctive contour comes from.",
+  "strategic_value": "A shared wing shape can make Duolingo’s illustrated and typographic elements feel like parts of one identity.",
+  "demonstration": "Duo raises a wing at left, a dotted contour isolates the shape in the middle, and a large green lowercase a receives the same contour at right.",
+  "category": "Geometry",
+  "practical_value": "Compare a source shape with its typographic adaptation before extending a visual motif.",
+  "content_islands": [
+    {
+      "name": "Source pose",
+      "spec": "Place the raised-wing Duo at left with the wing outlined."
+    },
+    {
+      "name": "Shape transfer",
+      "spec": "Use arrows around the isolated dotted contour in the center."
+    },
+    {
+      "name": "Letter result",
+      "spec": "Outline the terminal on the large a at right."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The agency narrative says the redrawn logotype draws inspiration from Duo’s feathery form.",
+    "Expression": "The diagram traces a wing-like contour into a letter terminal."
+  },
+  "ingredient": {
+    "name": "Feather Bold and the Duolingo wordmark",
+    "role": "Carry mascot-derived character into typography.",
+    "application": "Use the depicted wing-to-letter comparison to understand the design relationship.",
+    "scope": "Historical 2019 case-study evidence. These are observed design relationships, not a license to redraw the mark or a complete type-usage specification."
+  }
+}

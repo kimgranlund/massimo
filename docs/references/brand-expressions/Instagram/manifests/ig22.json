@@ -1,0 +1,30 @@
+{
+  "id": "IG22",
+  "title": "UI / Be true to the product",
+  "image": "ig22.png",
+  "source": "../sources/ig22.png",
+  "location": {
+    "series": "Elvis Dinh / Instagram brand design system / project year 2022",
+    "item": 22,
+    "extent": "whole source artwork"
+  },
+  "slide_intent": "Show the product in recognizable form so advertising does not obscure what people will actually use.",
+  "strategic_value": "Consistent Reels controls can connect Instagram marketing with the familiar in-app experience.",
+  "demonstration": "Three phone screens show different Reels within the same visible product interface against a full gradient background.",
+  "category": "Application",
+  "practical_value": "Keep product chrome consistent when comparing varied creator content.",
+  "content_islands": [
+    {
+      "name": "Three phone comparison",
+      "spec": "Align three equally scaled phones across the gradient field."
+    },
+    {
+      "name": "Reels contents",
+      "spec": "Preserve each screen’s video, interaction controls and bottom navigation together."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "Three Reels screens demonstrate the product interface across different content.",
+    "Expression": "The shared gradient field connects the product examples to the brand palette."
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "id": "DW122",
+  "title": "Illustration / Characters / Eyes / Emotions",
+  "image": "dw122.png",
+  "source": "../sources/pages/illustration-characters.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/illustration/characters",
+    "section": "Emotions",
+    "item": 122,
+    "order": 1220
+  },
+  "slide_intent": "Use eye details to communicate state of mind so simple faces can carry distinct emotional readings.",
+  "strategic_value": "Changes to pupils, eyelids and highlights can help Duolingo’s characters feel playful and relatable without adding complex facial structure.",
+  "demonstration": "A multirow grid repeats a simple head while varying pupil position and size, eyelids, highlights and other eye marks; the rationale appears at right.",
+  "category": "Imagery",
+  "practical_value": "Compare how a small eye change alters the apparent expression before changing the whole character.",
+  "content_islands": [
+    {
+      "name": "Expression grid",
+      "spec": "Arrange repeated peach head shapes in a three-column grid at left, using varied eye constructions to invite comparison."
+    },
+    {
+      "name": "Expression methods",
+      "spec": "Place the Emotions heading and paragraph at right, naming pupil size, shiny-eye effects and eyelid changes."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text connects eye changes with personality, state of mind, playfulness and relatability.",
+    "Expression": "Repeated heads demonstrate a range of emotional eye treatments.",
+    "Application": "The source names pupil scaling, highlights suggesting tears and lowered eyelids as available techniques."
+  },
+  "ingredient": {
+    "name": "Expressive eyes",
+    "role": "Make a character’s emotional state visible.",
+    "application": "Vary pupil size, highlights and eyelid position to suit the intended expression.",
+    "scope": "Historical official Duolingo illustration guidance from the 2024–2025 archived snapshot. The examples are available techniques, not a required expression inventory or an emotion-labeling standard."
+  }
+}

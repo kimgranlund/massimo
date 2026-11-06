@@ -1,0 +1,29 @@
+{
+  "id": "HC02",
+  "title": "Vaakunan värit ja käytännön sovellukset",
+  "image": "hc02.png",
+  "source": "../sources/coat-of-arms-2019.pdf",
+  "location": {
+    "page": 2,
+    "order": 177
+  },
+  "slide_intent": "Adapt heraldic colors to production methods so a symbolic color remains recognizable when metallic effects cannot be reproduced.",
+  "strategic_value": "Explicit substitutions can keep Helsinki’s coat of arms consistent between print, office documents and screens.",
+  "demonstration": "Finnish prose precedes tables of one-color and four-color specifications, including Pantone, CMYK, RGB and HTML values.",
+  "category": "Color",
+  "practical_value": "Distinguish metallic gold and silver from yellow and white substitutes in routine reproduction.",
+  "content_islands": [
+    {
+      "name": "Application explanation",
+      "spec": "Upper text describes digital, office and print limitations and substitutions."
+    },
+    {
+      "name": "Color tables",
+      "spec": "Lower ruled tables align color names with production values."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The prose explains metallic-color substitutions; the tables give production-specific values for one-color and four-color reproduction.",
+    "Constraint": "The text replaces gold with yellow and silver with white in four-color versions and distinguishes metallic production from screen reproduction."
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "id": "IG09",
+  "title": "Expressive range / Dialed down",
+  "image": "ig09.png",
+  "source": "../sources/ig09.png",
+  "location": {
+    "series": "Elvis Dinh / Instagram brand design system / project year 2022",
+    "item": 9,
+    "extent": "whole source artwork"
+  },
+  "slide_intent": "Reduce visual intensity when people need to read information or recognize a partner’s contribution.",
+  "strategic_value": "A restrained mode can make Instagram useful in information-heavy and partnership communications.",
+  "demonstration": "Four examples combine white grounds, sparse gradient accents, photographs, illustration and text-led messages.",
+  "category": "Color",
+  "practical_value": "Choose the quieter end of the system when information density needs more room.",
+  "content_islands": [
+    {
+      "name": "Information example",
+      "spec": "Place the larger statistics-and-phones composition above the smaller examples."
+    },
+    {
+      "name": "Restrained examples",
+      "spec": "Compare the white illustration card, photo card and typographic tips card below."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The case-study text says dialing down helps information-heavy assets communicate and avoids outshining partners.",
+    "Expression": "The examples use broad white fields and limited color.",
+    "Application": "The range demonstrates a lower-intensity mode for informational or partnership contexts."
+  },
+  "ingredient": {
+    "name": "Dialed-down color",
+    "role": "Leave attention available for information and partners.",
+    "application": "Use fewer colors, emphasizing the gradient and white as the source describes.",
+    "scope": "The dialed-down end of this expressive range; no numerical color-area ratio is specified."
+  }
+}

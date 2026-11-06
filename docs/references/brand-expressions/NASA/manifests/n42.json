@@ -1,0 +1,24 @@
+{
+  "id": "N42",
+  "title": "Interior Grid Formats: News Publications",
+  "image": "n42.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 42
+  },
+  "slide_intent": "Show editors how to distinguish an independent picture story from a picture that belongs to an article. The grid and framing tell readers which words and pictures to read together.",
+  "strategic_value": "NASA can use an underlying publication grid to accommodate short news items, longer articles and photo essays in one issue.",
+  "demonstration": "Three sets of news spreads progress from two columns with a bracket around independent picture material to three-column examples with ruled photo essays and large pictures in looser groupings.",
+  "category": "Layout",
+  "practical_value": "Choose a two-column bracket for a self-contained image and caption, or a three-column scheme for a story that relies on several images.",
+  "content_islands": [
+    {
+      "name": "Editorial brief",
+      "spec": "Place the title at upper left and the guidance on article, photograph and caption relationships beside it. Key each example to its letter."
+    },
+    {
+      "name": "News grid studies",
+      "spec": "Stack three rows of spread pairs at a common scale. Preserve the guides beneath text lines and image blocks. In b, align photographs to the top or bottom. In c, vary the scale and grouping of photographs."
+    }
+  ]
+}

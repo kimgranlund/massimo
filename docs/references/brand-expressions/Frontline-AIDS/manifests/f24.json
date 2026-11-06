@@ -1,0 +1,28 @@
+{
+  "id": "F24",
+  "title": "Watchouts",
+  "image": "f24.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 24
+  },
+  "slide_intent": "Teach designers to recognize alterations that make a signature harder to read or identify. Comparing each treatment against the same mark isolates what has changed.",
+  "strategic_value": "Frontline AIDS can preserve the close relationship between its name and the striding figure even when different partners reproduce them.",
+  "demonstration": "Nine crossed examples change the lockup, outline, color, proportions, effects or relationship to a photograph or added text.",
+  "category": "Brand",
+  "practical_value": "Check a finished layout for added effects, competing imagery and unauthorized changes to the supplied lockup.",
+  "content_islands": [
+    {
+      "name": "Navigation and caution",
+      "spec": "Mark Watchouts in the Our logo chapter of the left rail. Place the short caution beside it and leave the remainder of the page for comparisons."
+    },
+    {
+      "name": "Misuse grid",
+      "spec": "Arrange nine examples in three columns. Place a pink cross and a brief diagnosis beneath each mark so that the reader can locate the exact change."
+    },
+    {
+      "name": "Image treatments",
+      "spec": "Use the last row to distinguish attached event text, a busy image behind the logo and photography filling the letterforms."
+    }
+  ]
+}

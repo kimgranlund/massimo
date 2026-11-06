@@ -1,0 +1,73 @@
+{
+  "id": "IB028",
+  "title": "Animation / Overview",
+  "image": "ib028.png",
+  "source": "../sources/animation-overview.txt",
+  "location": {
+    "series": "IBM Design Language / public web guidelines",
+    "item": 28,
+    "extent": "Complete webpage content-area capture; visible default tab states",
+    "url": "https://www.ibm.com/design/language/animation/overview/",
+    "order": 28000
+  },
+  "slide_intent": "Choose motion for its communicative job so viewers can follow progress and meaning without unnecessary distraction.",
+  "strategic_value": "A deliberate balance of efficient and expressive movement can make IBM animation feel both precise and human.",
+  "demonstration": "The webpage combines an introductory film frame, a four-part approach table, a productive/expressive diagram poster and links to illustration and interface applications. The PNG records still states.",
+  "category": "Motion",
+  "practical_value": "Decide whether a moment should prioritize efficient response or expressive emphasis, then judge the animation against clarity, brevity and restraint.",
+  "content_islands": [
+    {
+      "name": "Introduction and film",
+      "spec": "Place the communication rationale above the wide dark introductory film frame."
+    },
+    {
+      "name": "Approach",
+      "spec": "Follow with Effective, Concise, Simple and Engineered rows, each explaining the intended behavior."
+    },
+    {
+      "name": "Productive and expressive",
+      "spec": "Pair the blue geometric diagram poster with Types, Harmony and Tone text distinguishing the two motion roles."
+    },
+    {
+      "name": "Applications",
+      "spec": "Finish with a server illustration and links to line, flat and isometric styles, then a laptop-interface example and the Motion in UI resource card."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The opening and approach table explain that animation should guide understanding, respect attention and amplify meaning.",
+    "Application": "The source distinguishes productive efficiency from expressive energy and gives task-confirmation and process-beginning examples.",
+    "Constraint": "The source excludes needless flourishes and overcomplicated action without clear reason, and explicitly says there is no single formula for motion."
+  },
+  "ingredient": {
+    "name": "Productive and expressive motion",
+    "role": "Balance efficient response with meaningful emphasis.",
+    "application": "Choose the motion role for the message, then combine the roles where their contrast helps; animate only what serves understanding.",
+    "scope": "IBM animation guidance across formats. The PNG is a still capture; the source text, rather than a single frame, establishes behavioral guidance."
+  },
+  "motion_assets": [
+    {
+      "title": "Animation approach film",
+      "file": "../sources/media/9a4adb462ce4.mp4",
+      "poster": "../sources/media/9a4adb462ce4-poster.png",
+      "duration_seconds": 76.54,
+      "source_url": "https://www.ibm.com/design/language/static/425895830-9b72bb390c874d7e0d1a0d71cc1cf8eb.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Productive and expressive motion",
+      "file": "../sources/media/b4e420904c56.mp4",
+      "poster": "../sources/media/b4e420904c56-poster.png",
+      "duration_seconds": 8.33,
+      "source_url": "https://www.ibm.com/design/language/videos/animation/animation-overview-pe.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    }
+  ]
+}

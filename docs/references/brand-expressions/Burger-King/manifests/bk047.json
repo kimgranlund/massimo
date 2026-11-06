@@ -1,0 +1,39 @@
+{
+  "id": "BK047",
+  "title": "Logo Color Usage / Primary Colorway",
+  "image": "bk047.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 47
+  },
+  "slide_intent": "Choose the normal color treatment first so exceptional versions do not become the everyday identity.",
+  "strategic_value": "Frequent orange-and-red signatures can preserve Burger King’s central color equity while adapting to imagery.",
+  "demonstration": "Three tiles compare the primary logo on Mayo Egg White, on BBQ Brown and backed over a burger photograph.",
+  "category": "Color",
+  "practical_value": "Use the primary colorway for most applications and select its backed version over a full-color photograph.",
+  "content_islands": [
+    {
+      "name": "Color hierarchy",
+      "spec": "Place the three-group explanation at left."
+    },
+    {
+      "name": "Primary-colorway guidance",
+      "spec": "Set the explanatory caption above the specimen row."
+    },
+    {
+      "name": "Three background comparisons",
+      "spec": "Align the pale, brown and photographic tiles horizontally, retaining the backing only in the photograph example."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source connects regulated pairings with consistent brand impression.",
+    "Expression": "The primary orange-and-red mark is compared on two solid fields and a photograph.",
+    "Application": "The primary colorway appears on most applications using Mayo Egg White or BBQ Brown backgrounds; a four-color photograph can use the backed logo."
+  },
+  "ingredient": {
+    "name": "Primary logo colorway",
+    "role": "Make the most common signature recognizable across solid and photographic fields.",
+    "application": "Use the primary colorway most often on Mayo Egg White or BBQ Brown; use its background asset over a four-color photo.",
+    "scope": "Historical partner guide; this frequency guidance does not prescribe a numerical usage percentage."
+  }
+}

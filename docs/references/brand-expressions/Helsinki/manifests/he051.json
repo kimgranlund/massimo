@@ -1,0 +1,39 @@
+{
+  "id": "HE051",
+  "title": "Half-screen overlays",
+  "image": "he051.png",
+  "source": "../sources/visual-storytelling.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Half-screen overlays",
+    "order": 71,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/visual-storytelling#half-screen-overlays",
+    "original_html": "../sources/visual-storytelling.html"
+  },
+  "slide_intent": "Balance image and explanation so viewers can follow the subject while reading supporting information.",
+  "strategic_value": "A consistent half-screen panel can let Helsinki explain footage without replacing it entirely.",
+  "demonstration": "This expanded webpage-section capture shows left and right half-screen color panels, including centered text, a wave edge and an inset panel with a margin.",
+  "category": "Layout",
+  "practical_value": "Choose a full-height or inset half-screen panel and apply the corresponding edge rule.",
+  "content_islands": [
+    {
+      "name": "Panel conditions",
+      "spec": "Keep the positioning and wave-edge conditions together at the top."
+    },
+    {
+      "name": "Four compositions",
+      "spec": "Stack left and right panels, including a right wave-edged panel and an inset right panel, with their captions."
+    }
+  ],
+  "ingredient": {
+    "name": "Half-screen text panel",
+    "role": "Allow image and explanation to share the frame.",
+    "application": "Use centered or upper-left text on a left or right panel. A full panel may have a wave edge; an inset title-safe panel must not.",
+    "scope": "Half-screen overlays; the examples use 100 px text and 120 px leading. The source’s introductory sentence says full-screen despite this section’s half-screen title."
+  },
+  "reference_purposes": {
+    "Application": "The specimens compare left, right and inset half-screen panels.",
+    "Constraint": "When a title-safe margin surrounds the color background, wave motifs must not be used on its edge.",
+    "Expression": "Green and orange panels divide the photographic scenes."
+  }
+}

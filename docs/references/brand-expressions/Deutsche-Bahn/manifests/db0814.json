@@ -1,0 +1,27 @@
+{
+  "id": "DB0814",
+  "title": "Dos and Don’ts / approved palette",
+  "image": "db0814.png",
+  "source": "../sources/page-08.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 8,
+    "section": 14,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Markenfarben"
+  },
+  "slide_intent": "Limit additional colors so a composition does not lose its connection to the shared identity.",
+  "strategic_value": "A consistent palette can keep DB campaign examples recognizable despite different content.",
+  "demonstration": "A Paris-offer example using brand colors is paired with a crossed-out version using additional hues.",
+  "category": "Color",
+  "practical_value": "Check every added color against the palette and its assigned element role.",
+  "content_islands": [
+    {
+      "name": "Palette comparison",
+      "spec": "Place the approved Paris composition left and the crossed-out off-palette version right."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The example compares palette-conforming and off-palette campaign treatments.",
+    "Constraint": "The source permits only brand colors according to their intended element roles and prohibits new colors outside them."
+  }
+}

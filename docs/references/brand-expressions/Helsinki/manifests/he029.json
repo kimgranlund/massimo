@@ -1,0 +1,36 @@
+{
+  "id": "HE029",
+  "title": "Use bold layouts",
+  "image": "he029.png",
+  "source": "../sources/use-basic-elements.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Use bold layouts",
+    "order": 37,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/use-basic-elements#use-bold-layouts",
+    "original_html": "../sources/use-basic-elements.html"
+  },
+  "slide_intent": "Use scale and contrast to establish a clear entry point because a message must compete with its surroundings.",
+  "strategic_value": "Large type against strong color or photography can give Helsinki communications a recognizable graphic presence.",
+  "demonstration": "This expanded webpage section pairs guidance on clear, graphic layouts with large-text and pull-quote examples on color and photographs.",
+  "category": "Layout",
+  "practical_value": "Choose a strong headline or pull quote and test it against a field that gives it contrast.",
+  "content_islands": [
+    {
+      "name": "Graphic emphasis",
+      "spec": "Introduce large text and strong backgrounds."
+    },
+    {
+      "name": "Cover examples",
+      "spec": "Compare bilingual early-education covers on colored fields with photograph-led city publication covers."
+    },
+    {
+      "name": "Pull-quote structure",
+      "spec": "Finish with oversized white text on an orange field and its caption about structural emphasis."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source connects large type/background contrast to visual impact and pull quotes to structure.",
+    "Application": "The examples demonstrate large text and quotations against color and images."
+  }
+}

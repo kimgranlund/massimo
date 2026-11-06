@@ -1,0 +1,29 @@
+{
+  "id": "LH44",
+  "title": "Editorial application",
+  "image": "lh44.png",
+  "source": "../sources/lh44.jpg",
+  "location": {
+    "series": "HvD Fonts / Lufthansa 2018",
+    "item": 23,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Balance display type with sustained reading because a brand voice must work beyond short headlines.",
+  "strategic_value": "A coherent headline and body system can make Lufthansa editorial material feel related to its service graphics.",
+  "demonstration": "An open magazine shows a large aircraft image and bold headline beside a page of photos and small text.",
+  "category": "Application",
+  "practical_value": "Evaluate how headline emphasis, imagery and body copy divide the editorial page.",
+  "content_islands": [
+    {
+      "name": "Lead spread",
+      "spec": "Keep the aircraft image and large German headline on the left."
+    },
+    {
+      "name": "Supporting page",
+      "spec": "Retain the smaller images and text blocks on the right."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "An open magazine shows a large aircraft image and bold headline beside a page of photos and small text."
+  }
+}

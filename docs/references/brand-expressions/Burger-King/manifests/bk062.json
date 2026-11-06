@@ -1,0 +1,39 @@
+{
+  "id": "BK062",
+  "title": "Color Overview",
+  "image": "bk062.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 62
+  },
+  "slide_intent": "Show palette hierarchy alongside color definitions because recognition depends on both consistent hues and their relative roles.",
+  "strategic_value": "Food-derived colors can connect Burger King packaging, marketing and interiors to ingredients and flame grilling.",
+  "demonstration": "Six named color fields have different areas: red, orange and brown dominate, followed by Mayo Egg White and smaller stacked green/yellow blocks, all with printed production values.",
+  "category": "Color",
+  "practical_value": "Read the fields as a qualitative order of importance and use the supplied specifications without inventing usage percentages.",
+  "content_islands": [
+    {
+      "name": "Palette rationale",
+      "spec": "Place the hierarchy and food-origin explanation inside the red field at left."
+    },
+    {
+      "name": "Primary fields",
+      "spec": "Run red, orange and brown as three broad vertical fields, each with its specification near the bottom."
+    },
+    {
+      "name": "Supporting fields",
+      "spec": "Place a narrower pale field then stacked green and yellow blocks at right, retaining each color name and values."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source explicitly connects the palette to fresh Whopper ingredients and flame grilling.",
+    "Expression": "Unequal color areas communicate a warm palette with smaller green and yellow accents.",
+    "Application": "The page supplies Pantone coated/uncoated, HEX, RGB and CMYK values and states that the palette is weighted by importance."
+  },
+  "ingredient": {
+    "name": "Weighted color palette",
+    "role": "Connect the identity to food while keeping primary hues prominent.",
+    "application": "Use the stated palette and its qualitative order of importance; do not infer numeric proportions from field widths.",
+    "scope": "Historical guide. Fiery Red prints HEX #D62300 but R215 G35 B0; the red-channel values disagree by one. Preserve the source discrepancy rather than silently correcting it."
+  }
+}

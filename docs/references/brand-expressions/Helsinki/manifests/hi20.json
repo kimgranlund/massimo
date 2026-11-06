@@ -1,0 +1,29 @@
+{
+  "id": "HI20",
+  "title": "Night travel and meeting places",
+  "image": "hi20.png",
+  "source": "../sources/illustration-examples.pdf",
+  "location": {
+    "page": 20,
+    "series": "Helsinki illustration examples — PDF derived from the official PowerPoint deck with LibreOffice",
+    "order": 210
+  },
+  "slide_intent": "Connect nightlife with movement and social encounters so an evening scene feels like part of the city.",
+  "strategic_value": "A bus, venue, kiosk and taxi can broaden Helsinki’s night imagery beyond entertainment alone.",
+  "demonstration": "Blue and orange transport and buildings sit on a dark-blue field, with figures near a kiosk and taxi sign below.",
+  "category": "Imagery",
+  "practical_value": "Use transport and meeting-point motifs to establish an evening city context.",
+  "content_islands": [
+    {
+      "name": "Night infrastructure",
+      "spec": "Place the bus and orange building across the top."
+    },
+    {
+      "name": "Street encounters",
+      "spec": "Arrange the walking figure, kiosk, paired figures and taxi sign below."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Blue and orange transport and buildings sit on a dark-blue field, with figures near a kiosk and taxi sign below."
+  }
+}

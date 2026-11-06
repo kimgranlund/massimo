@@ -1,0 +1,36 @@
+{
+  "id": "BKE04",
+  "title": "Illustrated typography / Wrapped food",
+  "image": "bke04.png",
+  "source": "../sources/bke04.webp",
+  "location": {
+    "series": "JKR / Burger King identity case study",
+    "item": 4,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Make packaging copy respond to the object so identification and appetite can be communicated together.",
+  "strategic_value": "Food-shaped lettering and distinct colors can give Burger King wrappers character without relying on photographs.",
+  "demonstration": "Seven wrapped items lie on brown; large colored phrases follow round or elongated food forms.",
+  "category": "Application",
+  "practical_value": "Compare how the same lettering approach adapts to different wrapped shapes.",
+  "content_islands": [
+    {
+      "name": "Round packs",
+      "spec": "Distribute circular wrapped items with curved lettering across the composition."
+    },
+    {
+      "name": "Elongated packs",
+      "spec": "Place longer wrappers near the edges, using stretched phrase arrangements to suit their forms."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The image applies shaped typography to a family of food wrappers.",
+    "Expression": "Large warm-colored phrases dominate the white packaging."
+  },
+  "ingredient": {
+    "name": "Shaped packaging lettering",
+    "role": "Identify food while expressing its sensory character.",
+    "application": "Observe phrase shapes fitted to round and elongated wrappers.",
+    "scope": "Case-study application example; individual phrases and color assignments are not generalized as universal rules."
+  }
+}

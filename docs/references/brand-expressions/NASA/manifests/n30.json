@@ -1,0 +1,28 @@
+{
+  "id": "N30",
+  "title": "Typography—Serif: Times Roman",
+  "image": "n30.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 30
+  },
+  "slide_intent": "Teach designers to choose a face that remains readable in small news text and still supports clear changes of emphasis.",
+  "strategic_value": "NASA can give newsletters a familiar sustained reading texture and retain flexibility in their headings.",
+  "demonstration": "Times Roman and Times Roman Bold specimens sit above two paragraph settings. One uses Helvetica Medium headings and one uses Times Roman Bold.",
+  "category": "Typography",
+  "practical_value": "Compare the two heading options at the intended column width before setting a newsletter or other text-heavy publication.",
+  "content_islands": [
+    {
+      "name": "Family rationale",
+      "spec": "Use the top columns to relate the face’s large x-height and available styles to news and long-volume settings."
+    },
+    {
+      "name": "Character comparison",
+      "spec": "Stack regular and bold alphabets, figures and symbols at a common left edge. Label the weights."
+    },
+    {
+      "name": "News text settings",
+      "spec": "Show broad and narrow reading measures beneath the specimen rule. Pair each with its heading and point-size annotation."
+    }
+  ]
+}

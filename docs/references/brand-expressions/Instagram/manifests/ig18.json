@@ -1,0 +1,30 @@
+{
+  "id": "IG18",
+  "title": "Layout expressive range / vertical stories composition",
+  "image": "ig18.png",
+  "source": "../sources/ig18.png",
+  "location": {
+    "series": "Elvis Dinh / Instagram brand design system / project year 2022",
+    "item": 18,
+    "extent": "whole source artwork"
+  },
+  "slide_intent": "Adapt a campaign idea to a tall field while preserving the relationship between people and message.",
+  "strategic_value": "Shared words, stickers and glyph can connect Instagram’s vertical and landscape communications.",
+  "demonstration": "Two offset photographs, a white glyph panel and a sticker sit above the Some stories start small headline and signatures.",
+  "category": "Layout",
+  "practical_value": "Recompose the ingredients for the tall format instead of shrinking the landscape arrangement.",
+  "content_islands": [
+    {
+      "name": "Offset picture arrangement",
+      "spec": "Stack two photos diagonally and reserve the upper-right white area for the gradient glyph."
+    },
+    {
+      "name": "Message and attribution",
+      "spec": "Place the headline below the collage, with the account and Meta signature at the foot."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The irregular collage retains the campaign’s playful character.",
+    "Application": "The same campaign phrase appears in a distinct vertical composition."
+  }
+}

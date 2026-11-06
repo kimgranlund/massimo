@@ -1,0 +1,40 @@
+{
+  "id": "DV08",
+  "title": "Brand family / Duolingo Plus / White variant",
+  "image": "dv08.png",
+  "source": "../sources/pages/dv08.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/identity/brand-family",
+    "section": "Duolingo Plus",
+    "selected_control_index": 1,
+    "related_default": "DW040",
+    "order": 401
+  },
+  "slide_intent": "Distinguish a service while retaining family recognition because users need to understand both its relationship and its difference.",
+  "strategic_value": "A white signature and Plus badge on blue can mark the historical premium service as an enhanced Duolingo experience.",
+  "demonstration": "The Duolingo wordmark reverses to white beside a white badge with blue PLUS lettering on a blue field.",
+  "category": "Brand",
+  "practical_value": "Keep the shared signature and service-specific color treatment together.",
+  "content_islands": [
+    {
+      "name": "Alternate color specimen",
+      "spec": "Center the white wordmark and white Plus badge on blue, with the download symbol and selected white control below."
+    },
+    {
+      "name": "Product distinction",
+      "spec": "Place the heading and explanation of premium service and changed colorway in the right column."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source says the changed colorway signals an enhanced version of the app.",
+    "Expression": "The Duolingo wordmark reverses to white beside a white badge with blue PLUS lettering on a blue field.",
+    "Application": "The section assigns this treatment to the historical premium service."
+  },
+  "ingredient": {
+    "name": "Duolingo Plus identity",
+    "role": "Signal an enhanced offering within the brand family.",
+    "application": "Use the specific historical Plus signature and its distinct colorway.",
+    "scope": "Historical archived guidelines. Archived product identity; this does not claim Plus is the current service name or prescribe treatment for other products."
+  }
+}

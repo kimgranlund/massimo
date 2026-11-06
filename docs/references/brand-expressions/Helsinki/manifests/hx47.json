@@ -1,0 +1,26 @@
+{
+  "id": "HX47",
+  "title": "Microsoft Office templates",
+  "image": "hx47.png",
+  "source": "../sources/download-elements.offline.html",
+  "location": {
+    "series": "Web guideline introduction/component",
+    "order": 166,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/download-elements",
+    "original_html": "../sources/download-elements.html"
+  },
+  "slide_intent": "Make office templates easy to locate because everyday documents are repeated encounters with a city’s identity.",
+  "strategic_value": "Named Word and PowerPoint resources can help Helsinki employees reuse shared document structures.",
+  "demonstration": "This webpage component introduces Microsoft 365 document templates for Word and PowerPoint beneath a Microsoft Office templates heading and ends with an Open all control.",
+  "category": "Application",
+  "practical_value": "Locate the appropriate office template family before making a document.",
+  "content_islands": [
+    {
+      "name": "Office template header",
+      "spec": "Keep the heading, Word/PowerPoint description and expansion control together."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The component identifies Word and PowerPoint as the Microsoft 365 template contexts."
+  }
+}

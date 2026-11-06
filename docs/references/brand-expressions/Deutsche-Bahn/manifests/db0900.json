@@ -1,0 +1,30 @@
+{
+  "id": "DB0900",
+  "title": "DB Neo / typographic header",
+  "image": "db0900.png",
+  "source": "../sources/page-09.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 9,
+    "section": 0,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Typografie_neu"
+  },
+  "slide_intent": "Make a typeface recognizable through repeated shape so readers can identify its voice before reading a sentence.",
+  "strategic_value": "The oversized DB Neo letterforms can make typography a visible brand asset.",
+  "demonstration": "Three cropped rows of DB Neo lettering fill a dark field above a red Schwelle at the bottom.",
+  "category": "Typography",
+  "practical_value": "Compare typographic texture with the smaller information-oriented type specimens later in the chapter.",
+  "content_islands": [
+    {
+      "name": "Letter field",
+      "spec": "Fill the dark header with repeated oversized lettering."
+    },
+    {
+      "name": "Brand accent",
+      "spec": "Anchor the lower edge with red bars that increase in width."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The header uses repeating heavy letterforms and a red Schwelle."
+  }
+}

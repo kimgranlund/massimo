@@ -1,0 +1,46 @@
+{
+  "id": "DW106",
+  "title": "Illustration / Shadows and shading",
+  "image": "dw106.png",
+  "source": "../sources/pages/illustration-shape-language.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/illustration/shape-language",
+    "section": "Shadows and shading",
+    "item": 106,
+    "order": 1060
+  },
+  "slide_intent": "Keep depth cues consistent because a shadow can contradict an otherwise flat drawing.",
+  "strategic_value": "Pill shadows and restrained shading can preserve Duolingo’s flat style while simplifying animation.",
+  "demonstration": "Three paired rows compare pill versus oval shadows, darker versus lighter ground shadows, and consistent versus altered rear-part colors.",
+  "category": "Geometry",
+  "practical_value": "Check shadow shape, relative darkness and unnecessary depth shading separately.",
+  "content_islands": [
+    {
+      "name": "Shadow shape",
+      "spec": "Compare fruit on a pill shadow with the crossed-out oval at upper left."
+    },
+    {
+      "name": "Shadow contrast",
+      "spec": "Compare darker and lighter shadows on purple in the middle row."
+    },
+    {
+      "name": "Rear-part shading",
+      "spec": "Compare two blue dogs below, rejecting extra colors on rear parts."
+    },
+    {
+      "name": "Rules and rationale",
+      "spec": "Place the three explanatory paragraphs at right."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text says ovals imply perspective and extra shading adds colors and limits animation flexibility.",
+    "Constraint": "Shadows appear below as pills, never ovals, and must be darker than their base; avoid recoloring parts merely to place them farther back."
+  },
+  "ingredient": {
+    "name": "Illustration shadows",
+    "role": "Ground flat objects without introducing conflicting perspective.",
+    "application": "Use a darker pill shadow below; avoid oval shadows and unnecessary rear-part color shifts.",
+    "scope": "Historical illustration guidance; darkness is relative to the base, with no numerical contrast ratio stated."
+  }
+}

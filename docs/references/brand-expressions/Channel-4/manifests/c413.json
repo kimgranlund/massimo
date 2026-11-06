@@ -1,0 +1,31 @@
+{
+  "id": "C413",
+  "title": "Gradient scrolling in a social feed",
+  "image": "c413.png",
+  "source": "../sources/c413.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 masterbrand / 2023",
+    "item": 13,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Make a repeated transition native to scrolling so viewers can recognize the source within a platform’s conventions.",
+  "strategic_value": "The green mark and moving gradients can retain Channel 4 attribution inside TikTok-style content.",
+  "demonstration": "A phone video scrolls from gradient rooms into two creator clips with logo reveals. Its published PNG instead places the phone on a checked table.",
+  "category": "Motion",
+  "practical_value": "Compare identity overlays with the platform controls and vertical viewing area.",
+  "content_islands": [
+    {
+      "name": "Published poster",
+      "spec": "Retain the checked tabletop, food and phone as the source’s contextual still."
+    },
+    {
+      "name": "Playable demonstration",
+      "spec": "Show the phone on a plain surface while vertical gradients reveal creator footage and the 4."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The video demonstrates branded transitions inside a vertical social feed.",
+    "Expression": "Green logo reveals and spatial gradients recur over different creator clips."
+  },
+  "motion": "../sources/c413.mp4"
+}

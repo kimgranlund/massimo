@@ -1,0 +1,35 @@
+{
+  "id": "IB039T22",
+  "title": "Pictograms / Expressive size progression",
+  "image": "ib039t22.png",
+  "source": "../sources/alternate-tabs.json",
+  "location": {
+    "series": "IBM Design Language / alternate tab states",
+    "parent": "IB039",
+    "group": 2,
+    "tab": 2,
+    "label": "Expressive",
+    "url": "https://www.ibm.com/design/language/iconography/pictograms/usage/",
+    "order": 39122
+  },
+  "slide_intent": "Check expressive detail across sizes, because a symbol’s fine lines and gradient relationships must remain readable as its footprint changes.",
+  "strategic_value": "A consistent size progression can help IBM’s expressive pictograms retain their character across applications.",
+  "demonstration": "The same currency-like expressive symbol appears five times from left to right, labeled 64px,80px,96px,128px and 160px.",
+  "category": "Geometry",
+  "practical_value": "Compare the five shown sizes when choosing a prominent pictogram for the available space.",
+  "content_islands": [
+    {
+      "name": "Type selector",
+      "spec": "Show Expressive selected in the tab row."
+    },
+    {
+      "name": "Size progression",
+      "spec": "Align five versions on a shared horizontal band, increasing from 64px to 160px and retaining each size label."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The repeated symbol preserves black detail and blue-cyan gradient strokes across the five sizes.",
+    "Application": "The labeled progression provides a direct size comparison.",
+    "Constraint": "The accompanying sizing guidance sets a general pictogram minimum of 48px and directs original sizes or accepted increments; this expressive example begins at 64px and does not independently establish a 64px minimum."
+  }
+}

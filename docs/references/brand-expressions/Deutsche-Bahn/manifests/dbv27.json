@@ -1,0 +1,41 @@
+{
+  "id": "DBV27",
+  "title": "Ken-Burns_Pan",
+  "image": "dbv27.png",
+  "source": "../sources/media/dbv27.mp4",
+  "location": {
+    "series": "DB new design / motion demonstrations",
+    "source_page": 15,
+    "section": "Animation-14021536",
+    "source_url": "https://ecm-mediathek-cdn.deutschebahn.com/cdnenhancedecmvidhls/db306424/2880985/video_config.json",
+    "capture_date": "2026-11-05"
+  },
+  "slide_intent": "Use a restrained pan to reveal a still image over time without breaking its continuity.",
+  "strategic_value": "A gentle horizontal shift can add life to DB photography while maintaining a calm viewing experience.",
+  "demonstration": "The employee photograph pans subtly from left to right, with a small rightward arrow at the lower left.",
+  "category": "Motion",
+  "practical_value": "Choose a pan when shifting the crop contributes more than changing its scale.",
+  "content_islands": [
+    {
+      "name": "Image movement",
+      "spec": "Translate the photographic crop slowly along the horizontal axis."
+    },
+    {
+      "name": "Direction cue",
+      "spec": "Keep the small rightward arrow at the lower left."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The employee photograph pans subtly from left to right, with a small rightward arrow at the lower left.",
+    "Application": "The source provides a playable demonstration of this repeatable sequence: The employee photograph pans subtly from left to right, with a small rightward arrow at the lower left.",
+    "Intent": "Accompanying Ken-Burns prose explains that slow zooms or pans give still images more dynamism and make content feel more alive.",
+    "Constraint": "The source specifies smooth, subtle movement with linear easing for the Ken-Burns effect."
+  },
+  "motion": "../sources/media/dbv27.mp4",
+  "ingredient": {
+    "name": "Ken-Burns pan",
+    "role": "Give a still photographic scene continuous movement.",
+    "application": "Use a slow, subtle left-to-right crop translation with linear easing.",
+    "scope": "Official DB new-design web guidance, undated live edition captured 2026-11-05; applies to the demonstrated motion context. This linear-easing instruction is specific to Ken-Burns image motion, not the general primary motion curve."
+  }
+}

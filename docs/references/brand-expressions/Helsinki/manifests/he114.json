@@ -1,0 +1,31 @@
+{
+  "id": "HE114",
+  "title": "Illustrated theme sheets (9)",
+  "image": "he114.png",
+  "source": "../sources/download-elements.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Illustrated theme sheets (9)",
+    "order": 157,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/download-elements#illustrated-theme-sheets--9-",
+    "original_html": "../sources/download-elements.html"
+  },
+  "slide_intent": "Organize illustration by recognizable city themes so authors can choose content relevant to a message.",
+  "strategic_value": "A thematic library can make Helsinki’s varied everyday life visible without abandoning a shared illustration style.",
+  "demonstration": "Expanded webpage section: nine vertically stacked groups pair theme names and PNG/AI links with colorful illustration sheets.",
+  "category": "Imagery",
+  "practical_value": "Select a theme and distinguish the raster preview from the Illustrator original.",
+  "content_islands": [
+    {
+      "name": "Theme list",
+      "spec": "Nine headings run from Diverse through Kivinokka-Kalasatama."
+    },
+    {
+      "name": "Illustrated sheets",
+      "spec": "Each heading and link group sits beside its corresponding artwork and credit."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Nine illustrated collages show people, food, neighborhoods, maritime seasons and city culture in a related visual style."
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "BK091",
+  "title": "Full-Frame Logo Photography",
+  "image": "bk091.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 91
+  },
+  "slide_intent": "Let the image carry the message while protecting identification because a logo-only composition still needs a clear visual anchor.",
+  "strategic_value": "Close-up ingredient textures can express Burger King’s food focus with minimal verbal content.",
+  "demonstration": "Four photographs of lettuce, onion, sesame bun and tomato each carry a contrasting centered Burger King logo.",
+  "category": "Layout",
+  "practical_value": "Choose an image region and logo color that preserve clearspace and sufficient contrast.",
+  "content_islands": [
+    {
+      "name": "Logo-only condition",
+      "spec": "Place the short explanation in the left column."
+    },
+    {
+      "name": "Ingredient compositions",
+      "spec": "Arrange a tall lettuce example beside smaller onion and bun examples above a wide tomato example, each with the logo overlaid."
+    }
+  ],
+  "ingredient": {
+    "name": "Logo-only photographic layout",
+    "role": "Identify the brand within an ingredient image.",
+    "application": "Overlay only the logo when sufficient clearspace and contrast can be retained.",
+    "scope": "Historical 2020 partner guidelines, PDF produced January 2021. No new numeric clearspace or contrast threshold is specified here."
+  },
+  "reference_purposes": {
+    "Expression": "The ingredient textures and contrasting marks demonstrate a minimal food-led treatment.",
+    "Application": "The examples apply only the logo over full-frame photography.",
+    "Constraint": "The copy requires sufficient logo clearspace and enough contrast against the photograph."
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "id": "GE10",
+  "title": "Broader Distribution / Low-Bandwidth Search Before",
+  "image": "ge10.png",
+  "source": "../sources/ge10.mp4",
+  "location": {
+    "series": "Evolving the Google Identity / 2015",
+    "item": 10,
+    "extent": "whole source",
+    "poster_seconds": 1.15,
+    "duration_seconds": 2.3
+  },
+  "slide_intent": "Inspect constrained delivery conditions because a brand can lose its intended appearance when assets cannot be served.",
+  "strategic_value": "A smaller logo asset can help Google retain consistent recognition on low-bandwidth connections, as the article explains.",
+  "demonstration": "The short clip labeled Before compares two phone screens: a standard old Google logo and a simpler text-like low-bandwidth version. The available clip does not show an After comparison.",
+  "category": "Application",
+  "practical_value": "Compare the actual fallback appearance with the intended mark before deciding an asset-size reduction is merely a technical change.",
+  "content_islands": [
+    {
+      "name": "Comparison heading",
+      "spec": "Place the low-bandwidth Before heading above both devices."
+    },
+    {
+      "name": "Matched phone views",
+      "spec": "Align Standard and Low bandwidth screens side by side with the differing logo treatments at comparable scale."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The article explains that reducing logo file size avoids serving a text-based approximation on low-bandwidth connections.",
+    "Application": "The paired screens demonstrate the previous fallback appearance in a specific delivery condition."
+  },
+  "motion": "../sources/ge10.mp4"
+}

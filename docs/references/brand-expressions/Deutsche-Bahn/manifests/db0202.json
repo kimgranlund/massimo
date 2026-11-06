@@ -1,0 +1,37 @@
+{
+  "id": "DB0202",
+  "title": "Teams-Hintergrund Generator",
+  "image": "db0202.png",
+  "source": "../sources/page-02.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 2,
+    "section": 2,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Teams-Hintergruende/Teams-Hintergruende"
+  },
+  "slide_intent": "Make personalization predictable so names and organizational identity remain readable across backgrounds.",
+  "strategic_value": "A controlled generator can give DB employees individual identification within a consistent template.",
+  "demonstration": "A large background preview sits left of controls for image, logo extension, name and designation; PNG and JPG export buttons appear below the preview.",
+  "category": "Application",
+  "practical_value": "Prepare a quiet left text area and a 16:9 image before adding employee details.",
+  "content_islands": [
+    {
+      "name": "Preview and export",
+      "spec": "Show the sample background with DB mark, name and designation at left, with two export options below."
+    },
+    {
+      "name": "Configuration controls",
+      "spec": "Arrange image upload, logo-extension choices and personal text fields in the right column."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The generator demonstrates a background populated with name and role and exposes PNG/JPG export.",
+    "Constraint": "The interface states a 16:9 crop, recommends at least 1920×1080 px and asks for a quiet left text area."
+  },
+  "ingredient": {
+    "name": "Teams background",
+    "role": "Identify the participant and organization without cluttering the camera view.",
+    "application": "Use a 16:9 background, ideally at least 1920×1080 px, with a calm area behind the left text.",
+    "scope": "This applies to the displayed Teams-background generator; the pixel size is an ideal, not a universal minimum."
+  }
+}

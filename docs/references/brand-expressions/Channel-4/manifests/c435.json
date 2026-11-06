@@ -1,0 +1,33 @@
+{
+  "id": "C435",
+  "title": "Drama billboard / Full composition",
+  "image": "c435.png",
+  "source": "../sources/c435.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 masterbrand / 2023",
+    "item": 35,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Use a series of programme images to substantiate a broad promise so the claim is visible rather than abstract.",
+  "strategic_value": "Channel 4’s drama message can gain credibility from several recognizable titles beside the green brand panel.",
+  "demonstration": "A wide outdoor billboard shows It’s just one drama after another beside three programme images, viewed within its street surroundings.",
+  "category": "Application",
+  "practical_value": "Compare the full billboard with C407’s close detail to judge hierarchy at a distance.",
+  "content_islands": [
+    {
+      "name": "Brand promise",
+      "spec": "Keep the green headline panel and leading mark at the left."
+    },
+    {
+      "name": "Programme range",
+      "spec": "Place three adjacent drama images to the right with small titles and colored lower regions."
+    },
+    {
+      "name": "Street context",
+      "spec": "Retain the fence and buildings to establish scale."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The wide billboard demonstrates the identity and multiple drama titles in an outdoor setting."
+  }
+}

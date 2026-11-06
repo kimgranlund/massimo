@@ -1,0 +1,32 @@
+{
+  "id": "DW048",
+  "title": "Writing / Brand Narrative / Principles",
+  "image": "dw048.png",
+  "source": "../sources/pages/writing-brand-narrative.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/brand-narrative",
+    "section": "Principles",
+    "item": 48,
+    "order": 480
+  },
+  "slide_intent": "Separate purpose, benefit and method so a reader understands both what the brand offers and why it exists.",
+  "strategic_value": "A universal-access mission supported by everyday learning stories can make Duolingo’s promise concrete.",
+  "demonstration": "The left column states the mission and universal invitation; the pale right panel organizes the explanation under Why, What and How.",
+  "category": "Brand",
+  "practical_value": "Check that a brand narrative connects its purpose to real situations and the way the service works.",
+  "content_islands": [
+    {
+      "name": "Guidance column",
+      "spec": "Place the Principles heading above the mission and short invitation at left."
+    },
+    {
+      "name": "Worked examples",
+      "spec": "Stack Why, What and How at right, with a paragraph explaining access, learner outcomes and playful learning respectively."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The Why section explains universal access; How explains using play to make learning enjoyable.",
+    "Application": "Three labeled narrative layers give writers a repeatable structure for explaining the offer."
+  }
+}

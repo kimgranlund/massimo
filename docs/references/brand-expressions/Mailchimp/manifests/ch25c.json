@@ -1,0 +1,43 @@
+{
+  "id": "CH25C",
+  "title": "Cooper Light / Horizontal spacing",
+  "image": "ch25c.png",
+  "source": "../sources/ch25.gif",
+  "location": {
+    "series": "COLLINS / Mailchimp case study",
+    "item": 25,
+    "extent": "Complete photographed spread from one GIF frame",
+    "section": "Gallery",
+    "frame": 3
+  },
+  "slide_intent": "Coordinate spacing measures because uneven relationships can break a sentence into disconnected fragments.",
+  "strategic_value": "Consistent spacing can make Mailchimp’s distinctive serif easier to read across messages.",
+  "demonstration": "The left page repeats a headline with yellow spacing highlights; the right page explains kerning, tracking and wordspacing.",
+  "category": "Typography",
+  "practical_value": "Evaluate letter and word spacing together and distinguish the source’s rule from its inconsistent example captions.",
+  "content_islands": [
+    {
+      "name": "Examples",
+      "spec": "Stack the two highlighted headline specimens on the left page."
+    },
+    {
+      "name": "Explanation",
+      "spec": "Place the rationale above numbered kerning, tracking and wordspacing notes at right."
+    },
+    {
+      "name": "Source caveat",
+      "spec": "Retain the source labels: the top example is captioned Wordspacing and the bottom Leading, although the highlighted gaps appear to illustrate the reverse."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text explains that conflicting letter and word spacing interrupts smooth reading.",
+    "Constraint": "The kerning note specifies Optical for Cooper and says never to set kerning to 0.",
+    "Application": "The spread compares highlighted spacing examples and explains three horizontal spacing measures."
+  },
+  "ingredient": {
+    "name": "Cooper spacing",
+    "role": "Keep a headline readable as a continuous phrase.",
+    "application": "Use Optical kerning for Cooper; do not set kerning to 0. Adjust wordspacing in relation to tracking and kerning.",
+    "scope": "Historical Version 1.0 folio 86. Captions appear swapped; preserve the discrepancy. Referenced settings table is not supplied in the case study."
+  }
+}

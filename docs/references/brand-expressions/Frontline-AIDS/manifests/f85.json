@@ -1,0 +1,24 @@
+{
+  "id": "F85",
+  "title": "Leaflets",
+  "image": "f85.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 85
+  },
+  "slide_intent": "Show how an attention-getting cover can lead into a readable folded piece. The reader needs a different hierarchy once the leaflet opens.",
+  "strategic_value": "Frontline AIDS can retain its expressive typography and illustration on a small printed format while giving explanations their own space.",
+  "demonstration": "An angled arrangement on green shows leaflet fronts with photography or illustration and an opened fold with numbered sections, images and text blocks.",
+  "category": "Application",
+  "practical_value": "Compare the impact of the closed leaflet with the space available for instructions inside. Use the numbered panels to plan the sequence.",
+  "content_islands": [
+    {
+      "name": "Leaflet covers",
+      "spec": "Set the varied portrait covers at an angle, retaining the separate type-led, image-led and illustrated treatments."
+    },
+    {
+      "name": "Opened fold",
+      "spec": "Place the unfolded blue piece prominently among the covers so its numbered reading order and text density can be inspected."
+    }
+  ]
+}

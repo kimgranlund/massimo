@@ -1,0 +1,26 @@
+{
+  "id": "DB0912",
+  "title": "Download / DB Type 3.1",
+  "image": "db0912.png",
+  "source": "../sources/page-09.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 9,
+    "section": 12,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Typografie_neu"
+  },
+  "slide_intent": "Direct designers to the maintained type resource so production uses the intended family.",
+  "strategic_value": "A single versioned resource can preserve DB letterform consistency across media.",
+  "demonstration": "A short Download section describes DB Type 3.1 and provides a Zum Kapitel link.",
+  "category": "Typography",
+  "practical_value": "Locate the font chapter before selecting production files.",
+  "content_islands": [
+    {
+      "name": "Resource note",
+      "spec": "Place the version description under Download and the chapter link below."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The section identifies DB Type 3.1 and links to its chapter."
+  }
+}

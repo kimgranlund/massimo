@@ -1,0 +1,28 @@
+{
+  "id": "HT06",
+  "title": "Helsinki Grotesk Pro / File Formats",
+  "image": "ht06.png",
+  "source": "../sources/helsinki-grotesk-pro-2025.pdf",
+  "location": {
+    "page": 6,
+    "order": 184
+  },
+  "slide_intent": "Separate delivery formats so the same typographic family can be implemented appropriately in desktop and web environments.",
+  "strategic_value": "Named font packages can reduce ambiguity when Helsinki hands work between designers and developers.",
+  "demonstration": "Two columns list desktop OTF and variable TTF files at left and web WOFF2 and variable files at right.",
+  "category": "Typography",
+  "practical_value": "Use the intended environment’s package and verify actual filenames; the printed static lists repeat Medium rather than listing a Regular upright file.",
+  "content_islands": [
+    {
+      "name": "Desktop formats",
+      "spec": "Upper-left static filenames sit above the desktop variable file."
+    },
+    {
+      "name": "Web formats",
+      "spec": "Right static filenames sit above the web variable TTF and WOFF2 files."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The page separates desktop and web delivery and lists static and variable filenames under each environment."
+  }
+}

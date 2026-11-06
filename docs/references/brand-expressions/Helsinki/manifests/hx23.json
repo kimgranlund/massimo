@@ -1,0 +1,32 @@
+{
+  "id": "HX23",
+  "title": "Awareness of social norms and accessibility",
+  "image": "hx23.png",
+  "source": "../sources/visual-storytelling.offline.html",
+  "location": {
+    "series": "Web guideline introduction/component",
+    "order": 83,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/visual-storytelling",
+    "original_html": "../sources/visual-storytelling.html"
+  },
+  "slide_intent": "Represent people as active individuals and align image with text because recognition and understanding depend on more than visual appeal.",
+  "strategic_value": "Helsinki can make its communications more inclusive by avoiding stereotypes and accounting for different levels of visual literacy.",
+  "demonstration": "This webpage introduction pairs nonstereotyped representation with accessibility, meaningful image/text agreement and a supporting resource link.",
+  "category": "Imagery",
+  "practical_value": "Check whose agency an image shows and whether it reinforces the accompanying message.",
+  "content_islands": [
+    {
+      "name": "Representation",
+      "spec": "Place the social-norm guidance first."
+    },
+    {
+      "name": "Understanding",
+      "spec": "Follow with visual-literacy, image/text agreement and accessibility guidance and its link."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text links imagery to interest, understanding and memory.",
+    "Application": "It asks for people shown as themselves rather than demographic representatives and for aligned image/text meanings.",
+    "Constraint": "The source states that communications must be widely understandable and accessible."
+  }
+}

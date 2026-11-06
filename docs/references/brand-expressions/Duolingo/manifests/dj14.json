@@ -1,0 +1,31 @@
+{
+  "id": "DJ14",
+  "title": "London Underground poster",
+  "image": "dj14.png",
+  "source": "../sources/johnson-banks/Duolingo_tube_ad-by-Johnson-Banks_and_And-Rising.jpg",
+  "location": {
+    "series": "Johnson Banks / Everyone can Duolingo / 2019",
+    "item": 14,
+    "extent": "Whole published artwork",
+    "order": 2014
+  },
+  "slide_intent": "Connect a message to its surroundings because a situational reference can make a brief encounter feel relevant.",
+  "strategic_value": "The Jubilee line wordplay and expressive Duo can bring Duolingo’s personality into a commuter’s immediate context.",
+  "demonstration": "A photographed station poster uses a purple headline area reading “Jubilee line in a jumble? Learn Japanese” above a large green Duo face and white signature.",
+  "category": "Application",
+  "practical_value": "Evaluate how a location-specific line and oversized mascot read in a real transit setting.",
+  "content_islands": [
+    {
+      "name": "Poster creative",
+      "spec": "Stack the place-specific headline, large Duo face and signature with app badges."
+    },
+    {
+      "name": "Station context",
+      "spec": "Retain the tiled wall and dark frame around the poster to show viewing context."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The source shows the campaign installed in a London Underground poster frame and credits And Rising.",
+    "Expression": "Duo’s narrowed eyes and the alliterative headline give the placement a distinct tone."
+  }
+}

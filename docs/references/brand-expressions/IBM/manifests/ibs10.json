@@ -1,0 +1,29 @@
+{
+  "id": "IBS10",
+  "title": "Usage",
+  "image": "ibs10.png",
+  "source": "../sources/ibm-logo-strategic-partners.pdf",
+  "location": {
+    "page": 10,
+    "series": "IBM Logo Guidelines for Strategic Partners / Version 1.2 / copyright 2023",
+    "order": 200010
+  },
+  "slide_intent": "Signal the move from logo fundamentals to contexts of use so readers can apply the rules to real communications.",
+  "strategic_value": "A separate application section can help partners translate IBM’s core requirements into their own materials.",
+  "demonstration": "A large Usage heading occupies the pale-blue divider field above the corporate footer.",
+  "category": "Brand",
+  "practical_value": "Locate the start of partner application guidance.",
+  "content_islands": [
+    {
+      "name": "Section heading",
+      "spec": "Place Usage high on the pale-blue field."
+    },
+    {
+      "name": "Corporate footer",
+      "spec": "Retain the corporate name and folio in the white lower strip."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The divider uses the same restrained pale-blue treatment as the cover and Fundamentals divider."
+  }
+}

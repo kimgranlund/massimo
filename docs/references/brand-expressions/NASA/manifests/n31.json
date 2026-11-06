@@ -1,0 +1,28 @@
+{
+  "id": "N31",
+  "title": "Cover Design: Leaflets & Folders",
+  "image": "n31.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 31
+  },
+  "slide_intent": "Teach designers to concentrate a small cover on one idea so it can command attention despite its limited area.",
+  "strategic_value": "NASA can give related brochures the coherence of a series while allowing each mission to have its own silhouette.",
+  "demonstration": "Six narrow covers form a three-by-two array. The upper row uses similar title positions and aircraft or spacecraft silhouettes for Space Shuttle, Apollo-Soyuz and Skylab. The lower row explores a photograph, large type and film imagery.",
+  "category": "Layout",
+  "practical_value": "When commissioning a leaflet series, settle the repeated title and identification positions before choosing the one image or typographic emphasis for each subject.",
+  "content_islands": [
+    {
+      "name": "Series guidance",
+      "spec": "Set a short heading and two columns of guidance above the examples. Explain why the small format rewards a simple cover."
+    },
+    {
+      "name": "Mission series",
+      "spec": "Line up three tall covers at the same size. Vary the silhouette while keeping the title near the top and agency identification near the foot."
+    },
+    {
+      "name": "Alternative small covers",
+      "spec": "Align a second row of three specimens. Retain each full cover boundary to show how its photograph, type or film strip fills the same narrow format."
+    }
+  ]
+}

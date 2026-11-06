@@ -1,0 +1,27 @@
+{
+  "id": "CH21",
+  "title": "Cooper Light character specimen",
+  "image": "ch21.png",
+  "source": "../sources/ch21.gif",
+  "location": {
+    "series": "COLLINS / Mailchimp case study",
+    "item": 21,
+    "extent": "Complete published artwork",
+    "section": "Gallery"
+  },
+  "slide_intent": "Compare a typeface across letters, numbers and punctuation because its voice must remain coherent beyond a headline.",
+  "strategic_value": "The rounded serif forms can give Mailchimp an editorial voice distinct from the heavy wordmark.",
+  "demonstration": "A dark-backed sequence displays large light-colored uppercase/lowercase pairs followed by figures and symbols.",
+  "category": "Typography",
+  "practical_value": "Inspect the face’s forms across different character classes.",
+  "content_islands": [
+    {
+      "name": "Character field",
+      "spec": "Center the changing light glyph specimens against the dark ground at a consistent large scale."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The loop demonstrates the serif face through letter pairs, numerals and punctuation."
+  },
+  "motion": "../sources/ch21.mp4"
+}

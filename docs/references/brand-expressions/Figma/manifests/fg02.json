@@ -1,0 +1,42 @@
+{
+  "id": "FG02",
+  "title": "Extensibility",
+  "image": "fg02.png",
+  "source": "../sources/fg02.jpg",
+  "location": {
+    "series": "COLLINS / Figma / Nothing Great Is Made Alone case study",
+    "item": 2,
+    "section": "Extensibility",
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Keep a central promise recognizable while changing its verb so different kinds of contributors can see themselves in the message.",
+  "strategic_value": "A replaceable action word can extend Figma’s teamwork story beyond a single creative discipline.",
+  "demonstration": "Orange annotations isolate MADE in the white sentence; a vertical column supplies colored alternative verbs above and below it.",
+  "category": "Voice",
+  "practical_value": "Identify which part of a campaign line can vary without losing its central idea.",
+  "content_islands": [
+    {
+      "name": "Sentence frame",
+      "spec": "Place the fixed white words across the black field and leave a wide slot for the verb."
+    },
+    {
+      "name": "Verb column",
+      "spec": "Stack actions through the slot, cropped at the upper and lower edges."
+    },
+    {
+      "name": "Annotations",
+      "spec": "Bracket MADE and mark vertical extension with orange arrows."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The adjacent Extensibility description explains adding future modules without losing coherence.",
+    "Application": "The orange bracket identifies a replaceable verb within the repeated sentence.",
+    "Expression": "Colored verbs interrupt a white campaign line on black."
+  },
+  "ingredient": {
+    "name": "Replaceable campaign verb",
+    "role": "Invite different creative roles into one promise.",
+    "application": "Keep the surrounding sentence stable while substituting a relevant action word.",
+    "scope": "Observed campaign mechanism; the board does not prescribe an exhaustive verb list or universal typography rule."
+  }
+}

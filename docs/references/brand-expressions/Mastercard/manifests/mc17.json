@@ -1,0 +1,31 @@
+{
+  "id": "MC17",
+  "title": "Animated circle-to-signature reveal",
+  "image": "mc17.png",
+  "source": "../sources/mc17.mp4",
+  "location": {
+    "series": "Pentagram / Mastercard / 2016 identity case study",
+    "item": 17,
+    "extent": "Full published artwork",
+    "poster_time_seconds": 2.5
+  },
+  "slide_intent": "Show the circle identity forming over time because motion can make the relationship between one primitive and the recognizable signature perceptible.",
+  "strategic_value": "A brief reveal can connect geometric simplicity with brand recognition.",
+  "demonstration": "A short black-ground animation moves from a small circular trace to a filled circle, resolves into the paired-color signature, then returns toward a single circle.",
+  "category": "Motion",
+  "practical_value": "Inspect the full local 5.2-second clip; use the PNG only as a representative still.",
+  "content_islands": [
+    {
+      "name": "Motion field",
+      "spec": "Retain the square black frame and centered activity."
+    },
+    {
+      "name": "Sequence",
+      "spec": "Preserve the source progression through circular trace, filled circle, two-circle symbol and wordmark, and collapsing circle."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The local animation shows circles assembling and collapsing around the Mastercard signature."
+  },
+  "motion": "../sources/mc17.mp4"
+}

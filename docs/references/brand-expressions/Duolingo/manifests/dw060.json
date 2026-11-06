@@ -1,0 +1,32 @@
+{
+  "id": "DW060",
+  "title": "Writing / Tone",
+  "image": "dw060.png",
+  "source": "../sources/pages/writing-tone.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/tone",
+    "section": "Tone",
+    "item": 60,
+    "order": 600
+  },
+  "slide_intent": "Adjust emotional delivery to the audience’s situation so a recognizable voice remains empathetic.",
+  "strategic_value": "A stable voice with flexible tone can help Duolingo handle celebration and difficulty without sounding inconsistent.",
+  "demonstration": "The blue header pairs tone guidance with an illustration of a violin, grand piano and flute.",
+  "category": "Voice",
+  "practical_value": "Assess the audience’s likely state of mind before choosing the degree of excitement or reassurance.",
+  "content_islands": [
+    {
+      "name": "Section introduction",
+      "spec": "Place the Writing label, lowercase section title and explanatory paragraph at left on the blue field."
+    },
+    {
+      "name": "Illustrated cue",
+      "spec": "Group the contrasting musical instruments on the right of the blue field."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The paragraph tells writers to consider audience feeling, adapt with empathy and remain clear, human and relaxed.",
+    "Expression": "The blue header pairs tone guidance with a violin, keyboard and flute-like instrument illustration."
+  }
+}

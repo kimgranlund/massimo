@@ -1,0 +1,43 @@
+{
+  "id": "DW130",
+  "title": "Illustration / Characters / Hair / Be careful",
+  "image": "dw130.png",
+  "source": "../sources/pages/illustration-characters.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/illustration/characters",
+    "section": "Be careful",
+    "item": 130,
+    "order": 1300
+  },
+  "slide_intent": "Control the connection between hair and facial color so small construction choices do not create an unintended appearance.",
+  "strategic_value": "A sideburn check and a nose-color exception can help Duolingo keep faces clear without adding distracting detail.",
+  "demonstration": "Two rows compare accepted and rejected faces: the upper pair changes hair above the ear, and the lower pair changes nose color with facial hair.",
+  "category": "Imagery",
+  "practical_value": "Check the hair above the ear and make the nose match the skin when facial hair is present.",
+  "content_islands": [
+    {
+      "name": "Hairline comparison",
+      "spec": "Place the accepted face above left and its rejected counterpart in a crossed frame beside it, exposing the missing hair near the ear."
+    },
+    {
+      "name": "Facial-color comparison",
+      "spec": "Place the second accepted/rejected pair below, comparing skin-colored and contrasting noses on a face with facial hair."
+    },
+    {
+      "name": "Two cautions",
+      "spec": "Place the Be Careful heading and explanatory paragraphs at right."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text explains that the hairline gap can resemble a bad haircut and that extra facial colors can create noisy or muddy features.",
+    "Application": "Two paired comparisons isolate the hairline and nose-color changes.",
+    "Constraint": "The source requires some hair above the ear/sideburn and a skin-colored nose when adding facial hair."
+  },
+  "ingredient": {
+    "name": "Hairline and facial-hair color rules",
+    "role": "Prevent distracting gaps and color noise in the face.",
+    "application": "Include hair above the ear or sideburn; when facial hair is present, keep the nose the same color as the skin.",
+    "scope": "Historical official Duolingo illustration guidance from the 2024–2025 archived snapshot. The skin-colored nose condition applies when facial hair is added, alongside the separate profile-view rule elsewhere."
+  }
+}

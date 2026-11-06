@@ -1,0 +1,30 @@
+{
+  "id": "DB1303",
+  "title": "Layout / portrait and landscape formats",
+  "image": "db1303.png",
+  "source": "../sources/page-13.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 13,
+    "section": 3,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Layout"
+  },
+  "slide_intent": "Adapt the arrangement to format while keeping stable roles so the brand remains recognizable.",
+  "strategic_value": "DB’s mark, headline and bar sequence can connect a narrow poster with a wide image-and-text layout.",
+  "demonstration": "A portrait worker poster is paired with a landscape train image adjoining a white IMMER BESSER panel.",
+  "category": "Layout",
+  "practical_value": "Compare a compact vertical composition with a split landscape composition.",
+  "content_islands": [
+    {
+      "name": "Portrait application",
+      "spec": "Place the worker photograph beside a dark text panel within the tall poster."
+    },
+    {
+      "name": "Landscape application",
+      "spec": "Pair a train close-up with the white headline panel and red Schwelle."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The two examples show the layout system across portrait and landscape formats."
+  }
+}

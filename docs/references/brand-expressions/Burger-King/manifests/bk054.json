@@ -1,0 +1,32 @@
+{
+  "id": "BK054",
+  "title": "Whopper® / Wrapper example",
+  "image": "bk054.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 54
+  },
+  "slide_intent": "Connect a product name to its package clearly so the customer can identify the item before opening it.",
+  "strategic_value": "The Whopper wordmark can anchor ingredient illustration and operational marks without losing product recognition.",
+  "demonstration": "A wrapped burger sits on brown, with the Whopper name centered above small food icons and service-marking boxes; colorful vegetable illustrations wrap around the edges.",
+  "category": "Application",
+  "practical_value": "Compare product-name prominence against illustration and functional markings on a crumpled wrapper.",
+  "content_islands": [
+    {
+      "name": "Wrapper form",
+      "spec": "Center the wrapped burger on brown, retaining its folds and shadow."
+    },
+    {
+      "name": "Product and operational information",
+      "spec": "Keep the Flame-Grilled line, large Whopper name, icon row and small marking boxes grouped at the center."
+    },
+    {
+      "name": "Ingredient illustration",
+      "spec": "Retain the colored vegetable fragments around the wrapper perimeter."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Warm paper, brown lettering and vegetable illustrations carry the food-led identity.",
+    "Application": "The Whopper signature appears on a complete burger wrapper."
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "ML10",
+  "title": "Welcome screen with enlarged monogram",
+  "image": "ml10.png",
+  "source": "../sources/ml10.jpg",
+  "location": {
+    "series": "Pentagram / MIT Media Lab / 2014 identity",
+    "item": 10,
+    "extent": "Published lightbox artwork"
+  },
+  "slide_intent": "Use a large identity element to frame an arrival message because greeting and recognition can share one surface.",
+  "strategic_value": "An oversized monogram can turn a utilitarian display into a recognizable welcome point.",
+  "demonstration": "A vertical black screen carries a white cropped angular mark around a short welcome message.",
+  "category": "Layout",
+  "practical_value": "Study the hierarchy between a large graphic frame and a compact message.",
+  "content_islands": [
+    {
+      "name": "Graphic frame",
+      "spec": "White angular strokes occupy the upper and lower display."
+    },
+    {
+      "name": "Welcome message",
+      "spec": "A small stacked greeting sits within the black interior."
+    },
+    {
+      "name": "Screen housing",
+      "spec": "The freestanding display locates the design in the lobby."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A vertical black screen carries a white cropped angular mark around a short welcome message.",
+    "Application": "A vertical black screen carries a white cropped angular mark around a short welcome message."
+  },
+  "ingredient": {
+    "name": "Welcome screen with enlarged monogram",
+    "role": "Use a large identity element to frame an arrival message because greeting and recognition can share one surface.",
+    "application": "Study the hierarchy between a large graphic frame and a compact message.",
+    "scope": "Observed in this historical case-study artwork; not a mandatory usage rule or a current brand standard."
+  }
+}

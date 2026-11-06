@@ -1,0 +1,28 @@
+{
+  "id": "I075",
+  "title": "Graphic Approach",
+  "image": "i075.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 75
+  },
+  "slide_intent": "Translate the geometry of a symbol into rules for framing information. The repetition can make a button, a search field and a content card feel related.",
+  "strategic_value": "Instacart can carry the carrot’s sharp and round corners into useful interface parts even where the complete mark does not appear.",
+  "demonstration": "An annotated carrot at left leads to three UI examples at right: a rounded Claim Offer control, a rectangular search field and an Order Complete card. Blue guides pick out the corners and curves.",
+  "category": "Layout",
+  "practical_value": "Choose a frame treatment by comparing a UI element’s corners with the annotated symbol. Apply the relationship to the container as well as to the control.",
+  "content_islands": [
+    {
+      "name": "Shape origin",
+      "spec": "Place the brief at left and enlarge the carrot near the middle. Use thin blue guides to mark round and straight features."
+    },
+    {
+      "name": "Control examples",
+      "spec": "Draw an arrow toward the right-hand examples. Stack the pill and search field with their construction marks visible."
+    },
+    {
+      "name": "Content frame",
+      "spec": "Place the larger order card beneath the controls. Show its heading and gray image area, and circle the upper-right corner treatment."
+    }
+  ]
+}

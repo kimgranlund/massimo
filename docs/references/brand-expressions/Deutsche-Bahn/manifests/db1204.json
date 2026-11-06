@@ -1,0 +1,38 @@
+{
+  "id": "DB1204",
+  "title": "Die illustrative Schwelle",
+  "image": "db1204.png",
+  "source": "../sources/page-12.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 12,
+    "section": 4,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Signature-Graphics"
+  },
+  "slide_intent": "Explain the relationship between abstract mark and illustration so extensions remain recognizably related.",
+  "strategic_value": "A shared construction can connect DB’s bar signature with destination imagery.",
+  "demonstration": "A red Schwelle points by an arrow to a red gate graphic beneath the explanatory paragraph.",
+  "category": "Geometry",
+  "practical_value": "Use this as evidence of derivation, while checking the chapter’s inconsistent guidance on co-placement.",
+  "content_islands": [
+    {
+      "name": "Derivation explanation",
+      "spec": "Place the illustrative role and layout guidance above the diagram."
+    },
+    {
+      "name": "Transformation diagram",
+      "spec": "Align the bar sequence, arrow and gate illustration from left to right."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The copy connects the shared style to high recognition.",
+    "Application": "The diagram shows the bar system translated into an illustrative subject.",
+    "Constraint": "This paragraph permits co-placement if contrast or distance is sufficient; later Dos and Don’ts restrict it except for a subtle-background Schwelle. The source is inconsistent."
+  },
+  "ingredient": {
+    "name": "Signature Graphic as Schwelle derivative",
+    "role": "Carry the identity construction into an illustrative subject.",
+    "application": "Use the same bar language and avoid overloaded compositions.",
+    "scope": "Official DB new-design website captured 2026-11-05; edition date unstated. Co-placement guidance conflicts within the source: this section permits sufficient separation; the later checklist permits only the subtle-background exception."
+  }
+}

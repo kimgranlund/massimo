@@ -1,0 +1,35 @@
+{
+  "id": "LH43",
+  "title": "Digital and ticketing family",
+  "image": "lh43.png",
+  "source": "../sources/lh43.jpg",
+  "location": {
+    "series": "HvD Fonts / Lufthansa 2018",
+    "item": 22,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Compare information across devices and paper because a traveler may switch formats during one task.",
+  "strategic_value": "Related blue and yellow treatments can connect Lufthansa booking, boarding and identification experiences.",
+  "demonstration": "A watch, phone, laptop, tablet and printed boarding pass form a white-background composition.",
+  "category": "Application",
+  "practical_value": "Check which identity cues remain stable when format and information density change.",
+  "content_islands": [
+    {
+      "name": "Device group",
+      "spec": "Arrange the watch and phone beside laptop and tablet screens."
+    },
+    {
+      "name": "Paper counterpart",
+      "spec": "Place the yellow boarding pass beneath the digital examples."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "A watch, phone, laptop, tablet and printed boarding pass form a white-background composition."
+  },
+  "ingredient": {
+    "name": "Digital and ticketing family",
+    "role": "Connect booking and boarding information across digital and paper formats.",
+    "application": "Check which identity cues remain stable when format and information density change.",
+    "scope": "Historical 2018 Lufthansa airline refresh case study; observed example, not a complete brand manual or a current Lufthansa Group rule."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "BK007",
+  "title": "Our Story / Two enduring commitments",
+  "image": "bk007.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 7
+  },
+  "slide_intent": "Connect current expression to enduring commitments so audiences can recognize continuity through change.",
+  "strategic_value": "Pairing flame-grilled food with personal choice can keep Burger King’s new identity grounded in its founding story.",
+  "demonstration": "An opening statement dates the story to 1954, followed by two numbered commitments and supporting paragraphs about food and experience.",
+  "category": "Brand",
+  "practical_value": "Identify which historical promises a new identity should continue to express.",
+  "content_islands": [
+    {
+      "name": "Premise and commitments",
+      "spec": "Place the 1954 introduction above two numbered statements in the right column."
+    },
+    {
+      "name": "Current commitment",
+      "spec": "Set smaller paragraphs below connecting improved food to visual, restaurant and digital experience."
+    },
+    {
+      "name": "Section label",
+      "spec": "Keep Our Story at left."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The page connects its renewed food commitment with visual, restaurant and digital design."
+  }
+}

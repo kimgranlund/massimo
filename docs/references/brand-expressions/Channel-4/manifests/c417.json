@@ -1,0 +1,31 @@
+{
+  "id": "C417",
+  "title": "4 logo moving ahead of viewer POV camera",
+  "image": "c417.png",
+  "source": "../sources/c417.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 masterbrand / 2023",
+    "item": 17,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Explain movement from the viewer’s position so a designer can coordinate logo travel with camera travel.",
+  "strategic_value": "A logo that leads the camera between rooms can make Channel 4’s traveller narrative operational.",
+  "demonstration": "An isometric two-room diagram shows a camera, its viewing cone and the green 4 moving between blue and pink spaces.",
+  "category": "Motion",
+  "practical_value": "Plan the relationship between a moving mark and the camera rather than animating them independently.",
+  "content_islands": [
+    {
+      "name": "Connected rooms",
+      "spec": "Place the blue and pink cubes side by side."
+    },
+    {
+      "name": "Camera and traveller",
+      "spec": "Show the camera’s outlined view cone following the green 4 between rooms."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The diagram demonstrates the logo moving ahead of the viewer’s camera.",
+    "Intent": "The source explicitly frames 4 as a guide through the content universe."
+  },
+  "motion": "../sources/c417.mp4"
+}

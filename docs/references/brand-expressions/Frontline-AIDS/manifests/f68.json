@@ -1,0 +1,24 @@
+{
+  "id": "F68",
+  "title": "When to use the partner stamp",
+  "image": "f68.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 68
+  },
+  "slide_intent": "Distinguish affiliation from collaboration so a viewer can tell who produced a communication and what relationship it represents.",
+  "strategic_value": "Frontline AIDS can acknowledge partner-led work while giving co-produced projects a different, identifiable signature.",
+  "demonstration": "Two versions of an event poster use the same hands, title and partner identifier. Arrows point to the affiliation stamp at the bottom of one and the Frontline AIDS masterbrand near the top of the other.",
+  "category": "Brand",
+  "practical_value": "Use the partner’s brand and add the stamp for affiliation. Use the masterbrand when Frontline AIDS collaborated on the project.",
+  "content_islands": [
+    {
+      "name": "Relationship rule",
+      "spec": "Explain the two situations in the white column beside the rail."
+    },
+    {
+      "name": "Matched event posters",
+      "spec": "Place the two designs side by side on cyan. Preserve their shared image, title and partner logo, then point out the different position and type of Frontline AIDS identifier with arrows and captions."
+    }
+  ]
+}

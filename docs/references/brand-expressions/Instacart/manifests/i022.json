@@ -1,0 +1,24 @@
+{
+  "id": "I022",
+  "title": "Social icons in use",
+  "image": "i022.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 22
+  },
+  "slide_intent": "Show how much work the avatar and the post each need to do in a social setting.",
+  "strategic_value": "A recognizable profile image can identify the account while a separate story carries a food-led message.",
+  "demonstration": "The left side enlarges a social profile with the carrot avatar. The right side shows a story with food preparation over the headline Get Saucey.",
+  "category": "Application",
+  "practical_value": "Use the pair to distinguish an account identifier from the content published by that account.",
+  "content_islands": [
+    {
+      "name": "Profile crop",
+      "spec": "Place the enlarged phone profile against a light field. Keep the primary avatar and account name visible."
+    },
+    {
+      "name": "Story specimen",
+      "spec": "Center the portrait story on a dark green field. Pair a food photograph with its headline in a separate light panel."
+    }
+  ]
+}

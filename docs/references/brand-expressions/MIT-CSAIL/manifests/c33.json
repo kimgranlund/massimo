@@ -1,0 +1,24 @@
+{
+  "id": "C33",
+  "title": "Headers",
+  "image": "c33.png",
+  "source": "../csail-branding-short-guide.pdf",
+  "location": {
+    "page": 33
+  },
+  "slide_intent": "Show how a header can identify both its institutional source and its specific project. A changing research image gives each topic an entry point.",
+  "strategic_value": "CSAIL can distinguish seminars and initiatives while the common logo and title placement link them to the lab.",
+  "demonstration": "Three landscape headers stack a customized image above a white identifier strip. The examples cover CSAIL Rising, an artificial intelligence program and an annual meeting.",
+  "category": "Application",
+  "practical_value": "Choose the image and title for the event, then check how the project-specific content sits beside the lab or group identifier.",
+  "content_islands": [
+    {
+      "name": "Header guidance",
+      "spec": "Set the short explanation in the left column."
+    },
+    {
+      "name": "Stacked header specimens",
+      "spec": "Arrange three headers of equal width on a pale field. Change the architectural or research imagery across the top and preserve the logo and title relationship in each lower band."
+    }
+  ]
+}

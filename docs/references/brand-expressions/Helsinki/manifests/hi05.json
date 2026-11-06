@@ -1,0 +1,25 @@
+{
+  "id": "HI05",
+  "title": "Original collages / Night, culture and neighbourhood",
+  "image": "hi05.png",
+  "source": "../sources/illustration-examples.pdf",
+  "location": {
+    "page": 5,
+    "series": "Helsinki illustration examples — PDF derived from the official PowerPoint deck with LibreOffice",
+    "order": 195
+  },
+  "slide_intent": "Let palette and subject distinguish themes so viewers can read a scene’s atmosphere before examining every detail.",
+  "strategic_value": "Dark nightlife, yellow cultural activity and pink neighbourhood scenes can give Helsinki a broad but connected illustration repertoire.",
+  "demonstration": "Three portrait collages use dark blue/orange, yellow/gray and pink/orange treatments for different groups of city scenes.",
+  "category": "Imagery",
+  "practical_value": "Compare the atmospheric role of background color across three complete illustrations.",
+  "content_islands": [
+    {
+      "name": "Thematic trio",
+      "spec": "Align the nightlife, cultural activity and neighbourhood collages against the pale-blue field."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Three densely populated compositions vary their dominant colors while preserving the illustration family."
+  }
+}

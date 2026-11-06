@@ -1,0 +1,25 @@
+{
+  "id": "LH23",
+  "title": "Aircraft cutout — side profile",
+  "image": "lh23.png",
+  "source": "../sources/lh23.png",
+  "location": {
+    "series": "HvD Fonts / Lufthansa 2018",
+    "item": 2,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Read the identity along the complete vehicle because proportions change when a brand spans a long surface.",
+  "strategic_value": "The horizontal wordmark and dark fin can give Lufthansa recognition at different parts of the aircraft.",
+  "demonstration": "A transparent-background side profile shows an A350-family aircraft with Lufthansa text near the front and a white crane on the tail.",
+  "category": "Application",
+  "practical_value": "Compare naming and symbol scale along a long vehicle surface.",
+  "content_islands": [
+    {
+      "name": "Side profile",
+      "spec": "Preserve the complete aircraft silhouette, its markings and transparent surround."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "A transparent-background side profile shows an A350-family aircraft with Lufthansa text near the front and a white crane on the tail."
+  }
+}

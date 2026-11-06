@@ -1,0 +1,35 @@
+{
+  "id": "FG19",
+  "title": "Street poster series",
+  "image": "fg19.png",
+  "source": "../sources/fg19.jpg",
+  "location": {
+    "series": "COLLINS / Figma / Nothing Great Is Made Alone case study",
+    "item": 19,
+    "section": "Gallery",
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Vary the story while maintaining shared structure because viewers should recognize a campaign across repeated encounters.",
+  "strategic_value": "Alternating illustrated stories and a text-only statement can give Figma’s public campaign variety without losing its central teamwork argument.",
+  "demonstration": "A wall carries orange, lavender, white and partly visible green posters with large headlines, contributor illustrations and small Figma marks.",
+  "category": "Application",
+  "practical_value": "Balance illustrated examples with a concise typographic poster within one campaign run.",
+  "content_islands": [
+    {
+      "name": "Illustrated posters",
+      "spec": "Place architecture and Frankenstein stories at left, with the partially visible relativity treatment at right."
+    },
+    {
+      "name": "Typographic pause",
+      "spec": "Place the white GENIUS / US statement between the illustrated posters."
+    },
+    {
+      "name": "Street context",
+      "spec": "Retain wall, pavement and curled poster corner to show scale and placement."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The photograph demonstrates the campaign as a repeated street-poster installation.",
+    "Intent": "Printed captions connect the illustrated subjects to contributions from multiple people."
+  }
+}

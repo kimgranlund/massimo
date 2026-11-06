@@ -1,0 +1,24 @@
+{
+  "id": "N24",
+  "title": "Forms",
+  "image": "n24.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 24
+  },
+  "slide_intent": "Show how to introduce a new identity to a working form while preserving the familiar fields people use to complete it.",
+  "strategic_value": "NASA can identify the issuer during the transition before the form itself is redesigned.",
+  "demonstration": "A shipping receipt carries the NASA mark and agency identification above its existing ruled fields, item table and signature area.",
+  "category": "Application",
+  "practical_value": "Use the example to place the identification on an existing form and preserve the field order during the interim rollout.",
+  "content_islands": [
+    {
+      "name": "Transition note",
+      "spec": "Place the title and two brief notes across the top explaining the interim treatment and later redesign."
+    },
+    {
+      "name": "Shipping receipt",
+      "spec": "Below the note, show the complete form with its mark at upper left, a heavy rule above the fields, ample item-entry space and receipt instructions at the foot."
+    }
+  ]
+}

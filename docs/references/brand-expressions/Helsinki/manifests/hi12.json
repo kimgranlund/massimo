@@ -1,0 +1,29 @@
+{
+  "id": "HI12",
+  "title": "Gardening, cooking and playgrounds",
+  "image": "hi12.png",
+  "source": "../sources/illustration-examples.pdf",
+  "location": {
+    "page": 12,
+    "series": "Helsinki illustration examples — PDF derived from the official PowerPoint deck with LibreOffice",
+    "order": 202
+  },
+  "slide_intent": "Show shared outdoor activity so the illustration vocabulary can support messages about participation and local life.",
+  "strategic_value": "Gardening and play scenes can make Helsinki’s neighbourhood services feel approachable.",
+  "demonstration": "Watering cans and planters sit at upper left, a chef with a grill at upper right, and playground structures with figures below on gray.",
+  "category": "Imagery",
+  "practical_value": "Choose an activity group according to whether the message concerns gardening, food or play.",
+  "content_islands": [
+    {
+      "name": "Gardening and cooking",
+      "spec": "Pair the watering figure and planters with the chef and grill across the top."
+    },
+    {
+      "name": "Play structures",
+      "spec": "Arrange green and ochre playground elements and figures below."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Watering cans and planters sit at upper left, a chef with a grill at upper right, and playground structures with figures below on gray."
+  }
+}

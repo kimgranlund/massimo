@@ -1,0 +1,28 @@
+{
+  "id": "F73",
+  "title": "Confident",
+  "image": "f73.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 73
+  },
+  "slide_intent": "Teach writers to support an assured tone with specific evidence. Readers need to understand what the organization knows and why that knowledge matters to people.",
+  "strategic_value": "Relevant facts, results and stories can establish Frontline AIDS’ experience while respecting the expertise of others.",
+  "demonstration": "The second principle pairs definitions of confidence with cautions about condescension and dismissiveness. The right-hand notes ask for relevant facts and a concise ending.",
+  "category": "Voice",
+  "practical_value": "Select a specific result or experience that supports the point. Remove padding after the claim and its evidence are clear.",
+  "content_islands": [
+    {
+      "name": "Principle identifier",
+      "spec": "Mark Confident in the chapter rail. Pair the large pale numeral 2 with its pink nameplate and the cyan underline."
+    },
+    {
+      "name": "Definition and limits",
+      "spec": "Set the definition and explanation above the contrasts between pride and condescension, authority and coercion, and assertion and dismissal."
+    },
+    {
+      "name": "Writing guidance",
+      "spec": "Use the cyan list for experience, relevant evidence and the instruction to stop once the message is complete."
+    }
+  ]
+}

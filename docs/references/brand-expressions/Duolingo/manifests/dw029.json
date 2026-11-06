@@ -1,0 +1,39 @@
+{
+  "id": "DW029",
+  "title": "Typography / Substitute font Nunito",
+  "image": "dw029.png",
+  "source": "../sources/pages/identity-typography.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/identity/typography",
+    "section": "Substitute font, Nunito",
+    "item": 29,
+    "order": 290
+  },
+  "slide_intent": "Provide an intentional fallback because teams need a coherent option when primary fonts are unavailable.",
+  "strategic_value": "A rounded substitute can reduce arbitrary typographic variation in Duolingo documents.",
+  "demonstration": "Four Nunito specimen blocks accompany the conditional fallback instruction and a Google Fonts link.",
+  "category": "Typography",
+  "practical_value": "Use the approved substitute when access to brand fonts is unavailable.",
+  "content_islands": [
+    {
+      "name": "Nunito specimens",
+      "spec": "Stack the four green weight samples in the left panel with color controls below."
+    },
+    {
+      "name": "Fallback condition",
+      "spec": "Place the heading, access condition, visual rationale and font link in the right column."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source explains the choice through rounded caps and visual similarities to DIN Next Rounded.",
+    "Application": "Nunito is specified when the brand fonts are inaccessible.",
+    "Constraint": "The fallback is conditional on lack of access to the brand fonts."
+  },
+  "ingredient": {
+    "name": "Nunito fallback",
+    "role": "Preserve a related voice when primary fonts are unavailable.",
+    "application": "Use Nunito when the brand fonts cannot be accessed.",
+    "scope": "Historical archived guidelines. Historical fallback guidance; it is not an interchangeable primary font choice."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "id": "DW054",
+  "title": "Writing / Voice",
+  "image": "dw054.png",
+  "source": "../sources/pages/writing-voice.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/voice",
+    "section": "Voice",
+    "item": 54,
+    "order": 540
+  },
+  "slide_intent": "Keep voice recognizable while allowing tone to change so people retain familiarity across different situations.",
+  "strategic_value": "Explicitly separating voice from tone can help Duolingo remain identifiable without sounding emotionally inflexible.",
+  "demonstration": "The blue header pairs a voice definition with a singing guitarist and musical-note accents.",
+  "category": "Voice",
+  "practical_value": "Set stable voice qualities before adjusting a message for its immediate situation.",
+  "content_islands": [
+    {
+      "name": "Section introduction",
+      "spec": "Place the Writing label, lowercase section title and explanatory paragraph at left on the blue field."
+    },
+    {
+      "name": "Illustrated cue",
+      "spec": "Place the singing guitarist and floating notes on the right of the blue field."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The paragraph directly connects consistent voice with trust and familiarity and distinguishes it from situational tone.",
+    "Expression": "The blue header pairs a voice definition with a singing guitarist and musical-note accents."
+  }
+}

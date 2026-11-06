@@ -1,0 +1,31 @@
+{
+  "id": "DB1108",
+  "title": "Outline als Standard",
+  "image": "db1108.png",
+  "source": "../sources/page-11.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 11,
+    "section": 8,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Icons"
+  },
+  "slide_intent": "Use fill as a meaningful distinction so state or small-size clarity does not depend on arbitrary styling.",
+  "strategic_value": "A consistent outline default can make filled DB icons carry an intelligible exception.",
+  "demonstration": "Hearts compare outline and filled versions at three sizes; stars show off and on states.",
+  "category": "Geometry",
+  "practical_value": "Default to outlines; use fill for restricted visibility at the smallest size or active/inactive state.",
+  "content_islands": [
+    {
+      "name": "Size comparison",
+      "spec": "Arrange outline hearts above filled hearts in three sizes."
+    },
+    {
+      "name": "State comparison",
+      "spec": "Pair outlined off and filled on stars at right."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The examples show fill used for small-size visibility and state.",
+    "Constraint": "Outline is the default; fill is permitted when the smallest icon is hard to see and for active/inactive states."
+  }
+}

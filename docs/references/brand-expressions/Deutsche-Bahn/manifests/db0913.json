@@ -1,0 +1,36 @@
+{
+  "id": "DB0913",
+  "title": "Dos & Don'ts / Typography",
+  "image": "db0913.png",
+  "source": "../sources/page-09.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 9,
+    "section": 13,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Typografie_neu"
+  },
+  "slide_intent": "Limit typographic variation so headline hierarchy remains clear rather than competing with itself.",
+  "strategic_value": "Restrained case, weight mixing and color can keep DB headlines coherent.",
+  "demonstration": "Three paired examples contrast short capitals with long uppercase text, two weights with excessive mixing, and standard colors with colored type.",
+  "category": "Typography",
+  "practical_value": "Check headline length, number of weights and color before approving a composition.",
+  "content_islands": [
+    {
+      "name": "Case comparison",
+      "spec": "Pair short uppercase lettering with the crossed-out long uppercase example."
+    },
+    {
+      "name": "Weight comparison",
+      "spec": "Contrast limited weight pairing with excessive variation."
+    },
+    {
+      "name": "Color comparison",
+      "spec": "Pair Black and White with a crossed-out colored-text example."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The copy says too many weights undermine hierarchy and make a composition unsettled.",
+    "Constraint": "At most two weights may be combined in one headline; long or multiline headlines are not entirely uppercase; standard type is Black or White with Cold Black only for expressive headlines.",
+    "Application": "Positive and negative specimens make the three checks visible."
+  }
+}

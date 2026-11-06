@@ -1,0 +1,33 @@
+{
+  "id": "DW036",
+  "title": "Imagery / Connection",
+  "image": "dw036.png",
+  "source": "../sources/pages/identity-imagery.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/identity/imagery",
+    "section": "Connection",
+    "item": 36,
+    "order": 360
+  },
+  "slide_intent": "Show the result of communication because a scene of people connecting can make the value of learning concrete.",
+  "strategic_value": "Connection scenes can translate Duolingo’s promise of breaking barriers into recognizable human encounters.",
+  "demonstration": "A wide illustration and two smaller examples accompany a statement about bringing people together, including unexpected situations.",
+  "category": "Imagery",
+  "practical_value": "Use a relationship scene when the communication needs to show what language makes possible.",
+  "content_islands": [
+    {
+      "name": "Scene comparisons",
+      "spec": "Keep the wide example above the two smaller scenes in the left panel."
+    },
+    {
+      "name": "Connection rationale",
+      "spec": "Place the heading and explanation of barrier-breaking relationships at right."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source says these examples show how language breaks barriers and creates connections.",
+    "Expression": "The scenes express interpersonal connection through the illustrated style.",
+    "Application": "The examples offer several ways to depict that benefit."
+  }
+}

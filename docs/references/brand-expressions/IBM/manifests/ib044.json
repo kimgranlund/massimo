@@ -1,0 +1,47 @@
+{
+  "id": "IB044",
+  "title": "Isometric illustration / Production",
+  "image": "ib044.png",
+  "source": "../sources/illustration-isometric-style-production.txt",
+  "location": {
+    "series": "IBM Design Language / public web guidelines",
+    "item": 44,
+    "extent": "Complete webpage content area, default interactive state",
+    "url": "https://www.ibm.com/design/language/illustration/isometric-style/production/",
+    "order": 44000
+  },
+  "slide_intent": "Translate a spatial style into repeatable construction steps so different makers can produce compatible perspective.",
+  "strategic_value": "Explicit transforms and workspace settings can keep IBM isometric artwork aligned across illustration and animation tools.",
+  "demonstration": "Illustrator settings, transformation tables, before-and-after geometry and cylinder steps lead into After Effects setup.",
+  "category": "Geometry",
+  "practical_value": "Select the correct transform for a face direction and build rounded depth from grid-aligned cylinders.",
+  "content_islands": [
+    {
+      "name": "Workspace setup",
+      "spec": "Place the Illustrator preferences image below snapping instructions."
+    },
+    {
+      "name": "Perspective transforms",
+      "spec": "Follow with automated and manual procedures, the 86.6% scaling table and before-and-after objects."
+    },
+    {
+      "name": "Rounded depth",
+      "spec": "Use the rounded solid and numbered cylinder diagrams to explain construction."
+    },
+    {
+      "name": "Animation setup",
+      "spec": "Finish with camera/null-object specifications, the After Effects screenshot and a lighting reminder."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The introduction identifies technical construction difficulties and offers repeatable production guidance.",
+    "Application": "Step sequences and settings tables explain face transformations, cylinders and flattened camera perspective.",
+    "Constraint": "The source calls for 8px-multiple bounding shapes, 86.6% vertical scale with direction-specific shear/rotation, and generally recommends against Illustrator 3D effects while naming exceptions."
+  },
+  "ingredient": {
+    "name": "Isometric transforms",
+    "role": "Keep constructed faces and rounded depth on a shared projection.",
+    "application": "Use the face-specific scale, shear and rotation table; construct rounded depth from cylinders and retain the grid.",
+    "scope": "Production instructions for the documented Illustrator/After Effects workflow. Do not generalize these settings to every 3D rendering system."
+  }
+}

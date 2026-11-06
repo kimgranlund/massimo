@@ -1,0 +1,32 @@
+{
+  "id": "HE059",
+  "title": "Presentations",
+  "image": "he059.png",
+  "source": "../sources/visual-storytelling.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Presentations",
+    "order": 81,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/visual-storytelling#presentations",
+    "original_html": "../sources/visual-storytelling.html"
+  },
+  "slide_intent": "Choose a capture or editable map according to the work needed so presentation quality does not depend on an unsuitable source.",
+  "strategic_value": "Using the appropriate map output can improve the clarity of Helsinki presentations.",
+  "demonstration": "This expanded webpage-section capture lists screenshot, designer-layer and print-command options, followed by a custom-order note.",
+  "category": "Imagery",
+  "practical_value": "Use a screenshot for unedited content, designer layers for editing or the Print command for higher-resolution raster output.",
+  "content_islands": [
+    {
+      "name": "Acquisition options",
+      "spec": "Keep the three output routes in the bullet list."
+    },
+    {
+      "name": "Custom map note",
+      "spec": "Place the custom-order option after the list."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The bullets distinguish screenshots, designer layers and raster output through the Print command.",
+    "Intent": "The text explains that Print produces raster output more accurate than screen resolution."
+  }
+}

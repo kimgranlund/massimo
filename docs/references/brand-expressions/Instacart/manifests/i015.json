@@ -1,0 +1,24 @@
+{
+  "id": "I015",
+  "title": "Minimum Size & Clearspace",
+  "image": "i015.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 15
+  },
+  "slide_intent": "Protect legibility by specifying both the smallest usable mark and the space it needs around it.",
+  "strategic_value": "A common rule can help the lockup survive scale changes and avoid crowding.",
+  "demonstration": "Two small logo specimens specify 14 px on screen and 0.25 in in print. A larger diagram repeats the width of the letter c around the signature.",
+  "category": "Geometry",
+  "practical_value": "Check the minimum size for the output medium and reserve the indicated c-based clearance on every side.",
+  "content_islands": [
+    {
+      "name": "Minimum specimens",
+      "spec": "Place screen and print examples beside each other in the upper half with their dimensions."
+    },
+    {
+      "name": "Clear-space diagram",
+      "spec": "Place the larger lockup below in a pale bounding rectangle with c markers at the four edges."
+    }
+  ]
+}

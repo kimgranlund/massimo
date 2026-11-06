@@ -1,0 +1,24 @@
+{
+  "id": "C17",
+  "title": "Typography: CSAIL Ebony",
+  "image": "c17.png",
+  "source": "../csail-branding-short-guide.pdf",
+  "location": {
+    "page": 17
+  },
+  "slide_intent": "Introduce a type family through changes of voice. A reader can see which weights carry force in headlines and which feel more open across a line of text.",
+  "strategic_value": "CSAIL can use a single family to express several qualities of research, from openness to confidence, while keeping a common typographic voice.",
+  "demonstration": "A yellow specimen field juxtaposes very large bold and thin phrases with small italics and stacked words. The copy names the type designers and identifies Arial as a fallback.",
+  "category": "Typography",
+  "practical_value": "Choose a weight by the emphasis and length of the message, using the specimen to compare contrasting voices.",
+  "content_islands": [
+    {
+      "name": "Typeface description",
+      "spec": "Place the family’s origin, qualities and intended roles in a narrow left rail, with the fallback note in orange at the bottom."
+    },
+    {
+      "name": "Expressive specimen",
+      "spec": "Fill the yellow panel with sample phrases in white and dark type. Use a dominant bold word, a long thin line, smaller italics and a stacked tagline at different scales."
+    }
+  ]
+}

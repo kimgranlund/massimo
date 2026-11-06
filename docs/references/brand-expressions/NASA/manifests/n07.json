@@ -1,0 +1,36 @@
+{
+  "id": "N07",
+  "title": "The NASA Color",
+  "image": "n07.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 7
+  },
+  "slide_intent": "Teach designers when a signature color can carry the identity. The ground and surrounding colors influence whether the hue receives attention.",
+  "strategic_value": "NASA can associate its red with the motion of its letterforms. The manual presents the warm color as an expression of the agency’s forward-looking character.",
+  "demonstration": "A red logotype stands alone on white. The text specifies a white or light neutral ground and describes when a second color is appropriate.",
+  "category": "Color",
+  "practical_value": "Use this example to decide whether a reproduction has the light ground and color capacity to support NASA red.",
+  "content_islands": [
+    {
+      "name": "Color guidance",
+      "spec": "Set the title and short guidance in the upper columns. Describe the hue, its intended character and the conditions for using it."
+    },
+    {
+      "name": "Red logotype",
+      "spec": "Place one large red master on an uninterrupted white field across the lower portion of the page."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text connects the warm red to kinetic letterforms and NASA’s lively, future-oriented character.",
+    "Expression": "A large red logotype on white presents the signature hue without competing elements.",
+    "Application": "The guidance places NASA red on white or a light neutral when a second color is available and appropriate.",
+    "Constraint": "The text rules out competing bright saturated colors and medium- or dark-value colors that dilute red’s impact."
+  },
+  "ingredient": {
+    "name": "NASA red logotype",
+    "role": "Give the letterforms the active, future-oriented character described by the manual.",
+    "application": "Use NASA red when a second color is available and appropriate, on white or a light-value neutral. Avoid the competing saturated and medium-to-dark colors named in the guidance.",
+    "scope": "The 1976 manual’s logotype guidance in section 1.3. Section 1.4 gives specific background cases; this scan is not a calibrated color specification."
+  }
+}

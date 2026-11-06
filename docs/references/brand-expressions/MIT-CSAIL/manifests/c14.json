@@ -1,0 +1,24 @@
+{
+  "id": "C14",
+  "title": "CSAIL Primary Logo and MIT Schwarzman College of Computing Logo",
+  "image": "c14.png",
+  "source": "../csail-branding-short-guide.pdf",
+  "location": {
+    "page": 14
+  },
+  "slide_intent": "Show which arrangements preserve the institutional relationship when the available space changes shape.",
+  "strategic_value": "The lab can keep its primary signature distinct while presenting the college consistently in black.",
+  "demonstration": "Four examples pair the college’s horizontal or vertical lockup with black, orange, yellow or gray lab artwork. The lab sits beside or below the college.",
+  "category": "Brand",
+  "practical_value": "Select a horizontal or vertical pairing for the format and check the order, color and legibility of both signatures.",
+  "content_islands": [
+    {
+      "name": "Placement guidance",
+      "spec": "Place the rules for choosing orientation and color at left. Add the referral to the college guidelines near the foot."
+    },
+    {
+      "name": "Pairing examples",
+      "spec": "Divide the right panel into four horizontal bands. Show both side-by-side orders, a vertical college signature beside the lab, and the lab positioned below the college."
+    }
+  ]
+}

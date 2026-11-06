@@ -1,0 +1,40 @@
+{
+  "id": "DBV40",
+  "title": "Bauchbinde_simple",
+  "image": "dbv40.png",
+  "source": "../sources/media/dbv40.mp4",
+  "location": {
+    "series": "DB new design / motion demonstrations",
+    "source_page": 15,
+    "section": "Bewegtbild-14021636",
+    "source_url": "https://ecm-mediathek-cdn.deutschebahn.com/cdnenhancedecmvidhls/db306446/2881145/video_config.json",
+    "capture_date": "2026-11-05"
+  },
+  "slide_intent": "Simplify a speaker label when the background is busy so identifying information remains easy to find.",
+  "strategic_value": "A restrained white nameplate with a red edge can identify speakers while leaving complex DB footage room to read.",
+  "demonstration": "A white lower-left nameplate enters and exits with a red wipe or edge, holding a bold name above a smaller description.",
+  "category": "Motion",
+  "practical_value": "Choose the simple lower third for complex content or a visually busy background.",
+  "content_islands": [
+    {
+      "name": "Nameplate reveal",
+      "spec": "Use the red edge to uncover the white plate at the lower left."
+    },
+    {
+      "name": "Reading hold",
+      "spec": "Keep the bold name and smaller role visible before the simple exit."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A white lower-left nameplate enters and exits with a red wipe or edge, holding a bold name above a smaller description.",
+    "Application": "The source provides a playable demonstration of this repeatable sequence: A white lower-left nameplate enters and exits with a red wipe or edge, holding a bold name above a smaller description.",
+    "Constraint": "The source prefers the dynamic lower third and uses the simple variant for complex content or a busy background image."
+  },
+  "motion": "../sources/media/dbv40.mp4",
+  "ingredient": {
+    "name": "Lower third",
+    "role": "Identify a speaker with a name and description.",
+    "application": "Prefer the dynamic variant; select the simple variant for complex content or a busy background.",
+    "scope": "Official DB new-design web guidance, undated live edition captured 2026-11-05; applies to the demonstrated motion context. No exact display duration is prescribed by this example."
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "IT01",
+  "title": "ITVX / Street billboard",
+  "image": "it01.png",
+  "source": "../sources/1782130975-j6dwmfwetqmyjiffsqfqig-itv_1-hero.webp",
+  "location": {
+    "series": "DixonBaxi / ITV case-study artwork series",
+    "item": 1,
+    "extent": "Whole source artwork",
+    "source_asset_index": 1
+  },
+  "slide_intent": "Use repeated content panels around one clear service identifier for a multi-title outdoor campaign, because viewers need to recognize the same service across different situations.",
+  "strategic_value": "This approach can strengthen continuity between campaign recognition and service use.",
+  "demonstration": "A roadside billboard combines vertical talent portraits, yellow inward arrows and the ITVX mark over the centre. The photographed street supplies a real viewing context.",
+  "category": "Application",
+  "practical_value": "Use repeated content panels around one clear service identifier for a multi-title outdoor campaign.",
+  "content_islands": [
+    {
+      "name": "Street context",
+      "spec": "Traffic and houses surround the wide billboard."
+    },
+    {
+      "name": "Talent panels",
+      "spec": "Portrait strips fill the billboard."
+    },
+    {
+      "name": "Brand centre",
+      "spec": "Yellow arrows and ITVX connect the strips."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A roadside billboard combines vertical talent portraits, yellow inward arrows and the ITVX mark over the centre. The photographed street supplies a real viewing context.",
+    "Application": "Use repeated content panels around one clear service identifier for a multi-title outdoor campaign. Evidence is the shown application, not a mandatory layout rule."
+  }
+}

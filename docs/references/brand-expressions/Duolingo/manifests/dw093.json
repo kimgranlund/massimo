@@ -1,0 +1,38 @@
+{
+  "id": "DW093",
+  "title": "Writing / Style / Time",
+  "image": "dw093.png",
+  "source": "../sources/pages/writing-style.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/style",
+    "section": "Time",
+    "item": 93,
+    "order": 930
+  },
+  "slide_intent": "Write times consistently and name ambiguous boundary hours so readers can interpret the intended moment.",
+  "strategic_value": "A clear distinction between ordinary times and noon or midnight can help Duolingo reduce avoidable ambiguity.",
+  "demonstration": "Preferred examples show a full hour with lowercase pm and the words noon and midnight; alternatives omit minutes or use numeric boundary times.",
+  "category": "Voice",
+  "practical_value": "Include minutes and spaced lowercase am/pm for ordinary times, and write noon or midnight as words.",
+  "content_islands": [
+    {
+      "name": "Guidance column",
+      "spec": "Place the topic heading, its parent label and the written convention in the narrow left column."
+    },
+    {
+      "name": "Worked examples",
+      "spec": "Place the worked copy in the pale right panel, keeping preference labels and green checks with their examples."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The examples contrast 3:00 pm with shorter or differently cased forms, and words with numeric noon/midnight alternatives.",
+    "Constraint": "Write the numeral with :00 on whole hours, followed by a space and am or pm; write noon and midnight on their own."
+  },
+  "ingredient": {
+    "name": "Time convention",
+    "role": "Readers can interpret the intended moment.",
+    "application": "Write the numeral with :00 on whole hours, followed by a space and am or pm; write noon and midnight on their own.",
+    "scope": "Historical official guidelines from the 2024–2025 archived snapshot; this records the displayed guidance, not current Duolingo product behavior."
+  }
+}

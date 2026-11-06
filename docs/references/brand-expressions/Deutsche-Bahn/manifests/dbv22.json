@@ -1,0 +1,34 @@
+{
+  "id": "DBV22",
+  "title": "Layout_02",
+  "image": "dbv22.png",
+  "source": "../sources/media/dbv22.mp4",
+  "location": {
+    "series": "DB new design / motion demonstrations",
+    "source_page": 15,
+    "section": "Animation-14021536",
+    "source_url": "https://ecm-mediathek-cdn.deutschebahn.com/cdnenhancedecmvidhls/db306417/2880935/video_config.json",
+    "capture_date": "2026-11-05"
+  },
+  "slide_intent": "Reveal a content panel in sequence so a viewer can distinguish the message from the image behind it.",
+  "strategic_value": "A white card with red DB marks can preserve message clarity over active imagery.",
+  "demonstration": "A narrow white strip expands into a left-hand card containing the DB logo, headline, copy, and bottom Schwelle, then retracts.",
+  "category": "Motion",
+  "practical_value": "Choose a panel over imagery when the message needs an independent reading surface.",
+  "content_islands": [
+    {
+      "name": "Panel entrance",
+      "spec": "Expand the narrow white strip into a card on the left of the employee image."
+    },
+    {
+      "name": "Content and exit",
+      "spec": "Introduce logo, headline, copy, and red bars within the card, then retract it."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A narrow white strip expands into a left-hand card containing the DB logo, headline, copy, and bottom Schwelle, then retracts.",
+    "Application": "The source provides a playable demonstration of this repeatable sequence: A narrow white strip expands into a left-hand card containing the DB logo, headline, copy, and bottom Schwelle, then retracts.",
+    "Intent": "Accompanying Layout prose says animation can direct focus and clarify structure through clear, precise, comprehensible movements."
+  },
+  "motion": "../sources/media/dbv22.mp4"
+}

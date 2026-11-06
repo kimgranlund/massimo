@@ -1,0 +1,28 @@
+{
+  "id": "C29",
+  "title": "Letterhead",
+  "image": "c29.png",
+  "source": "../csail-branding-short-guide.pdf",
+  "location": {
+    "page": 29
+  },
+  "slide_intent": "Teach how first and continuation pages carry different amounts of identity. A reader needs a clear sender on arrival and an unobstructed text area as the letter continues.",
+  "strategic_value": "CSAIL can offer individual senders a choice of templates while keeping multi-page correspondence visibly related.",
+  "demonstration": "Two overlapping page pairs compare a generic and a personalized first page with continuation pages. The lower samples distinguish horizontal footer and vertical edge treatments.",
+  "category": "Application",
+  "practical_value": "Choose a first-page variant and its continuation treatment by comparing sender detail, text margins and accent placement.",
+  "content_islands": [
+    {
+      "name": "Template key",
+      "spec": "Explain the left and right pairs in the narrow text column."
+    },
+    {
+      "name": "Generic pair",
+      "spec": "Overlap a generic first page with a continuation beneath it; keep the colored horizontal accent at the foot."
+    },
+    {
+      "name": "Personalized pair",
+      "spec": "Show a filled first-page example and continuation with a vertical accent; retain a clear body-text margin."
+    }
+  ]
+}

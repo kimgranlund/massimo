@@ -1,0 +1,36 @@
+{
+  "id": "IT11",
+  "title": "ITVX / Cross-channel campaign composite",
+  "image": "it11.png",
+  "source": "../sources/1782130869-ph146mvmtzo55zqh22-dyw-itvx-grid-1.jpg",
+  "location": {
+    "series": "DixonBaxi / ITV case-study artwork series",
+    "item": 11,
+    "extent": "Whole source artwork",
+    "source_asset_index": 10
+  },
+  "slide_intent": "Compare which elements stay recognizable across campaign formats, because stable relationships help viewers recognize changing content as one service.",
+  "strategic_value": "This approach can strengthen recognition across a varied campaign.",
+  "demonstration": "A supplied composite brings together a Des poster, a phone with audience copy, a typographic placement and a wide talent billboard. Yellow, dark grounds and arrow forms recur.",
+  "category": "Layout",
+  "practical_value": "Compare which elements stay recognizable across campaign formats.",
+  "content_islands": [
+    {
+      "name": "Poster",
+      "spec": "The left panel stacks programme portraits with ITVX."
+    },
+    {
+      "name": "Phone and type",
+      "spec": "Upper-right panels show narrow digital copy and a dark typographic placement."
+    },
+    {
+      "name": "Billboard",
+      "spec": "The lower-right panel returns to a wide talent lineup."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A supplied composite brings together a Des poster, a phone with audience copy, a typographic placement and a wide talent billboard. Yellow, dark grounds and arrow forms recur.",
+    "Application": "Compare which elements stay recognizable across campaign formats. Evidence is the shown application, not a mandatory layout rule.",
+    "Intent": "The ITVX section says amplification focuses attention and celebrates talent across platforms."
+  }
+}

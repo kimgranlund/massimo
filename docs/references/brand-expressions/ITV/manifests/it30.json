@@ -1,0 +1,30 @@
+{
+  "id": "IT30",
+  "title": "ITVX / Direct national address",
+  "image": "it30.png",
+  "source": "../sources/1782130968-bzaeb-d-r4osrabfze0d0a-itv_19.webp",
+  "location": {
+    "series": "DixonBaxi / ITV case-study artwork series",
+    "item": 30,
+    "extent": "Whole source artwork",
+    "source_asset_index": 30
+  },
+  "slide_intent": "Use direct address and short sentences to turn a launch message into an invitation, because language tells audiences whether a service speaks to them.",
+  "strategic_value": "This approach can strengthen audience identification with the service.",
+  "demonstration": "Oversized dark sans text on yellow reads Okay Britain. Let’s do this. The tight composition crops parts of the lettering at the image edges.",
+  "category": "Voice",
+  "practical_value": "Use direct address and short sentences to turn a launch message into an invitation.",
+  "content_islands": [
+    {
+      "name": "Colour field",
+      "spec": "Yellow fills the page."
+    },
+    {
+      "name": "Message",
+      "spec": "Four dense lines of large dark copy dominate the composition."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Oversized dark sans text on yellow reads Okay Britain. Let’s do this. The tight composition crops parts of the lettering at the image edges."
+  }
+}

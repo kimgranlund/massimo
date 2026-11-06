@@ -1,0 +1,42 @@
+{
+  "id": "DB1408",
+  "title": "Licht und Farbe",
+  "image": "db1408.png",
+  "source": "../sources/page-14.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 14,
+    "section": 8,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Bildwelt"
+  },
+  "slide_intent": "Use available directional light without turning effects into the subject so images retain credibility.",
+  "strategic_value": "Natural contrast and controlled signal colors can give DB scenes depth while preserving realism.",
+  "demonstration": "A preferred collage shows directed light on interiors and people; two crossed-out images illustrate dramatic backlight and cinematic effects.",
+  "category": "Imagery",
+  "practical_value": "Use light edges, natural shadows and neutral base tones; avoid extreme backlighting and artificial color amplification.",
+  "content_islands": [
+    {
+      "name": "Lighting and color guidance",
+      "spec": "Place the neutral-base and warm-accent explanation above the preferred collage."
+    },
+    {
+      "name": "Preferred scenes",
+      "spec": "Show natural directed light in seating, portrait and doorway images."
+    },
+    {
+      "name": "Rejected effects",
+      "spec": "Place the Don’t explanation above two crossed-out dramatic-light examples."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source says directional light reveals structure and gives depth.",
+    "Application": "Preferred and rejected examples distinguish natural contrast from cinematic staging.",
+    "Constraint": "No extreme backlight, artificial strip lighting or overdramatic light; DB Red and safety orange are controlled rather than artificially intensified."
+  },
+  "ingredient": {
+    "name": "DB photographic light and color",
+    "role": "Reveal structure and preserve believable atmosphere.",
+    "application": "Use directed natural light, differentiated neutral color and controlled warm or signal accents.",
+    "scope": "Official DB new-design website captured 2026-11-05; edition date unstated. Avoid cinematic light effects and artificially intensified signal colors."
+  }
+}

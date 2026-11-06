@@ -1,0 +1,36 @@
+{
+  "id": "ML04",
+  "title": "Program in media arts and sciences",
+  "image": "ml04.png",
+  "source": "../sources/ml04.jpg",
+  "location": {
+    "series": "Pentagram / MIT Media Lab / 2014 identity",
+    "item": 4,
+    "extent": "Published lightbox artwork"
+  },
+  "slide_intent": "Adapt a signature to a longer name so institutional relationships remain legible without forcing one word count.",
+  "strategic_value": "A flexible relationship between lettering and geometry can accommodate the academic program.",
+  "demonstration": "Bold lowercase program text nests between two large angular forms.",
+  "category": "Typography",
+  "practical_value": "Study how a long name can occupy the interior of a related mark.",
+  "content_islands": [
+    {
+      "name": "Program name",
+      "spec": "Four bold lines create the central text block."
+    },
+    {
+      "name": "Angular frame",
+      "spec": "Separate black strokes bracket the text at upper right and lower left."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Bold lowercase program text nests between two large angular forms.",
+    "Application": "Bold lowercase program text nests between two large angular forms."
+  },
+  "ingredient": {
+    "name": "Program in media arts and sciences",
+    "role": "Adapt a signature to a longer name so institutional relationships remain legible without forcing one word count.",
+    "application": "Study how a long name can occupy the interior of a related mark.",
+    "scope": "Observed in this historical case-study artwork; not a mandatory usage rule or a current brand standard."
+  }
+}

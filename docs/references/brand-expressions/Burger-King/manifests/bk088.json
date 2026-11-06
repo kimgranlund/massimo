@@ -1,0 +1,38 @@
+{
+  "id": "BK088",
+  "title": "Applying Half-Frame Photography",
+  "image": "bk088.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 88
+  },
+  "slide_intent": "Change the image-text arrangement with the format because the same hierarchy must survive a vertical composition.",
+  "strategic_value": "The two stacked examples can extend Burger King’s photographic layout system without changing its headline and signature relationships.",
+  "demonstration": "Two vertical examples place burger photographs above cream typography panels; one has a large headline, and the other accommodates smaller text and body copy.",
+  "category": "Layout",
+  "practical_value": "Move the photograph above the type panel while retaining the preceding page’s spacing rules.",
+  "content_islands": [
+    {
+      "name": "Orientation guidance",
+      "spec": "Place the short note at left; it calls the upper image full-frame while the title remains Half-Frame Photography."
+    },
+    {
+      "name": "Large-headline example",
+      "spec": "Place the burger close-up above the larger headline and small subhead."
+    },
+    {
+      "name": "Detailed example",
+      "spec": "Place the hands-and-burger photograph above a smaller headline, subhead and body line."
+    }
+  ],
+  "ingredient": {
+    "name": "Stacked photo and type",
+    "role": "Adapt the image-text relationship to a vertical format.",
+    "application": "Place the photographic panel above typography and retain the separation rules from page 87.",
+    "scope": "Historical 2020 partner guidelines, PDF produced January 2021. The body says full-frame photography, but the displayed applications retain a separate type panel; do not interpret it as a full-background overlay."
+  },
+  "reference_purposes": {
+    "Application": "Two vertical layouts show photography above the text rather than beside it.",
+    "Constraint": "The text explicitly carries forward the previous page’s rules."
+  }
+}

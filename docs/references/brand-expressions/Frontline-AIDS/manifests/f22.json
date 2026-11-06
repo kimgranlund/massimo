@@ -1,0 +1,28 @@
+{
+  "id": "F22",
+  "title": "Using our strapline",
+  "image": "f22.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 22
+  },
+  "slide_intent": "Relate a signature and a strapline even when they occupy separate corners. Common scale and alignment let a reader associate the two elements across a page.",
+  "strategic_value": "Frontline AIDS can establish a consistent visual relationship between its name and invitation across several layout compositions.",
+  "demonstration": "A dimensioned logo determines the strapline width from the A in the wordmark to the far edge of the symbol’s face. Four page diagrams compare placements in adjacent corners.",
+  "category": "Layout",
+  "practical_value": "Size the supplied strapline artwork from the indicated logo span. Choose its alignment relative to the side where the logo appears.",
+  "content_islands": [
+    {
+      "name": "Strapline artwork",
+      "spec": "Place the explanation and a labeled specimen in the left text column."
+    },
+    {
+      "name": "Size reference",
+      "spec": "Place the logo over a measured strapline at upper right. Mark the shared span with the dimension X."
+    },
+    {
+      "name": "Corner diagrams",
+      "spec": "Arrange four page frames in a two-by-two grid. Mark the possible logo and strapline positions with consistent insets and light guidance lines."
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "DJ11",
+  "title": "Multilingual illustrated posters",
+  "image": "dj11.png",
+  "source": "../sources/johnson-banks/Duolingo_poster-by-Johnson-Banks.jpg",
+  "location": {
+    "series": "Johnson Banks / Everyone can Duolingo / 2019",
+    "item": 11,
+    "extent": "Whole published artwork",
+    "order": 2011
+  },
+  "slide_intent": "Let language variety become visible in the composition because the service’s breadth should be understood before reading detailed copy.",
+  "strategic_value": "Repeated foreign-language words and expressive figures can connect Duolingo’s language offer with an energetic visual identity.",
+  "demonstration": "Two portrait posters place stacked multilingual words beside illustrated characters, one on blue and one on green; each ends in a branded footer.",
+  "category": "Application",
+  "practical_value": "Compare how one poster structure accommodates different word lengths, colors and character poses.",
+  "content_islands": [
+    {
+      "name": "Blue poster",
+      "spec": "Stack the multilingual go words at left beside a running figure; retain the blue footer with signature and app badges."
+    },
+    {
+      "name": "Green poster",
+      "spec": "Stack cheers translations beside the figure holding a glass; retain the white footer."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The two finished poster compositions show the identity applied to multilingual campaigns.",
+    "Expression": "Stacked words, colorful figures and alternating blue and green fields create a recognizable campaign family."
+  }
+}

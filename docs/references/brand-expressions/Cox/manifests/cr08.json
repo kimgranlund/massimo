@@ -1,0 +1,26 @@
+{
+  "id": "CR08",
+  "title": "Content Library Still — children in the kitchen",
+  "image": "cr08.png",
+  "source": "../sources/cr08.jpg",
+  "location": {
+    "series": "Cox Brand Collection — Lindsay Little / Periscope",
+    "item": 8,
+    "extent": "whole source image"
+  },
+  "slide_intent": "Capture a shared reaction so a viewer can recognize connection through behavior rather than a slogan.",
+  "strategic_value": "The children’s matching gaze can give Cox’s household imagery an optimistic and social character.",
+  "demonstration": "Two smiling children lean together over a kitchen counter and look beyond the right edge.",
+  "category": "Imagery",
+  "practical_value": "Choose a frame that preserves both faces and a clear common direction of attention.",
+  "content_islands": [
+    {
+      "name": "Shared reaction",
+      "spec": "Group the two children at the center, with their faces near one another and their gaze aligned."
+    },
+    {
+      "name": "Domestic setting",
+      "spec": "Keep the kitchen bright and unobtrusive, with small toys on the counter foreground."
+    }
+  ]
+}

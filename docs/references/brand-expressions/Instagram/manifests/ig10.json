@@ -1,0 +1,37 @@
+{
+  "id": "IG10",
+  "title": "Expressive range / Core",
+  "image": "ig10.png",
+  "source": "../sources/ig10.png",
+  "location": {
+    "series": "Elvis Dinh / Instagram brand design system / project year 2022",
+    "item": 10,
+    "extent": "whole source artwork"
+  },
+  "slide_intent": "Establish a recognizable default so routine communications have a shared visual starting point.",
+  "strategic_value": "A core palette can connect Instagram campaigns despite changes in imagery and message.",
+  "demonstration": "Four vertical examples use the gradient, orange and pink alongside photography and illustration.",
+  "category": "Color",
+  "practical_value": "Start ordinary consumer marketing with the core mode before choosing a quieter or more expressive variant.",
+  "content_islands": [
+    {
+      "name": "Top pair",
+      "spec": "Compare a gradient commerce panel with a photographic stories panel."
+    },
+    {
+      "name": "Bottom pair",
+      "spec": "Compare an orange tips illustration with a pink Creator Week composition."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The surrounding text defines Core as the starting point for core consumer marketing.",
+    "Expression": "The four examples share vivid core colors while changing content.",
+    "Application": "The examples apply the core palette to commerce, stories, tips and an event."
+  },
+  "ingredient": {
+    "name": "Core palette mode",
+    "role": "Give routine marketing a consistent color reference.",
+    "application": "Use the five core colors and core gradient described beside the examples.",
+    "scope": "The source’s core consumer-marketing mode, not a requirement to use every color in each asset."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "HE101",
+  "title": "How to create a new chart by using a chart template",
+  "image": "he101.png",
+  "source": "../sources/design-and-create.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "How to create a new chart by using a chart template",
+    "order": 136,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/design-and-create#how-to-create-a-new-chart-by-using-a-chart-template",
+    "original_html": "../sources/design-and-create.html"
+  },
+  "slide_intent": "Use a chart template as a starting structure so attention can go to the data’s message.",
+  "strategic_value": "Shared templates with selective labels can keep Helsinki data displays consistent and intelligible.",
+  "demonstration": "Expanded webpage section: three numbered steps sit above an annotated Excel template chooser; a paragraph discusses optional chart elements.",
+  "category": "Application",
+  "practical_value": "Choose a template from All Charts, then remove redundant legends or add necessary units and labels.",
+  "content_islands": [
+    {
+      "name": "Template selection",
+      "spec": "The steps and screenshot locate the Templates option."
+    },
+    {
+      "name": "Contextual edits",
+      "spec": "Lower text explains when legends may be removed and labels added."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The source shows selecting cells, opening Recommended Charts and choosing a template, then adapting legends and labels."
+  }
+}

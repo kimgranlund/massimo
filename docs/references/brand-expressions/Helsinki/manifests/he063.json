@@ -1,0 +1,27 @@
+{
+  "id": "HE063",
+  "title": "Ordering photographs or illustrations",
+  "image": "he063.png",
+  "source": "../sources/visual-storytelling.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Ordering photographs or illustrations",
+    "order": 88,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/visual-storytelling#ordering-photographs-or-illustrations",
+    "original_html": "../sources/visual-storytelling.html"
+  },
+  "slide_intent": "Make commissioning guidance easy to locate so an image request starts with a shared process.",
+  "strategic_value": "A direct ordering reference can help Helsinki staff brief visual work consistently.",
+  "demonstration": "This expanded webpage-section capture contains a short explanation and a link to Finnish instructions for ordering photographs or illustrations.",
+  "category": "Application",
+  "practical_value": "Use this section to locate the ordering guide; it does not itself show the detailed workflow.",
+  "content_islands": [
+    {
+      "name": "Ordering resource",
+      "spec": "Keep the purpose sentence and PDF link together beneath the section title."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The section directs staff to a Finnish workflow and ordering-advice PDF."
+  }
+}

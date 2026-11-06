@@ -1,0 +1,51 @@
+{
+  "id": "IB034C01",
+  "title": "UI icons / Alignment — Optical balance",
+  "image": "ib034c01.png",
+  "source": "../sources/iconography-ui-icons-usage.txt",
+  "location": {
+    "series": "IBM Design Language / public web guidelines",
+    "item": 34,
+    "parent": "IB034",
+    "carousel": "Alignment",
+    "slide": 2,
+    "total_slides": 2,
+    "extent": "Complete carousel wrapper capture, including source navigation",
+    "url": "https://www.ibm.com/design/language/iconography/ui-icons/usage/",
+    "order": 34201
+  },
+  "slide_intent": "Judge an icon by its visual weight so neighboring symbols appear aligned even when their shapes have unequal mass.",
+  "strategic_value": "Optically balanced IBM icons can form a steadier visual rhythm across interface rows without changing their recognizable shapes.",
+  "demonstration": "Two thumbs-up icons flank a circular face icon. Blue bounding areas, crosshairs and center markers expose placement; a green check marks the left treatment and a pink cross rejects the right. The source carousel reads 2/2.",
+  "category": "Geometry",
+  "practical_value": "Compare optical balance against mechanical centering before positioning an asymmetric icon beside a more symmetrical one.",
+  "content_islands": [
+    {
+      "name": "Accepted optical alignment",
+      "spec": "Place the left thumbs-up on its blue square and crosshair, with the green check beneath."
+    },
+    {
+      "name": "Symmetric reference",
+      "spec": "Center the circular face icon on the middle crosshair to establish the shared row alignment."
+    },
+    {
+      "name": "Rejected alignment",
+      "spec": "Place the right thumbs-up against the same horizontal guide, retaining its differing vertical placement and pink cross below."
+    },
+    {
+      "name": "Source navigation",
+      "spec": "Retain the previous control, 2/2 counter and disabled next control in the gray strip below the artwork."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The accompanying Alignment text explains that optical centering makes icons align correctly when exported and used side by side, and that mechanical centering sometimes fails.",
+    "Application": "The image compares a visually balanced and rejected placement of the same asymmetric icon against a symmetrical reference.",
+    "Constraint": "The green-check and pink-cross examples distinguish the accepted and rejected alignment in this specific comparison; the source does not prescribe a universal pixel offset."
+  },
+  "ingredient": {
+    "name": "Optical icon alignment",
+    "role": "Create consistent perceived alignment among differently shaped symbols.",
+    "application": "Visually center the icon where its weight is heaviest and check it beside neighboring symbols rather than relying only on bounding-box center.",
+    "scope": "IBM UI-icon usage guidance. The displayed adjustment is an example, not a fixed offset for all asymmetric icons."
+  }
+}

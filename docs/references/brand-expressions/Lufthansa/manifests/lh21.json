@@ -1,0 +1,27 @@
+{
+  "id": "LH21",
+  "title": "Livery alternatives under review",
+  "image": "lh21.png",
+  "source": "../sources/lh21.jpg",
+  "location": {
+    "series": "Mona Franz / Lufthansa 2018",
+    "item": 21,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Make alternatives visible together because comparison reveals how small placement changes alter the whole identity.",
+  "strategic_value": "A wall of livery proposals can help Lufthansa assess consistency before choosing a long-lived application.",
+  "demonstration": "A designer stands before rows of printed aircraft side-view alternatives.",
+  "category": "Brand",
+  "practical_value": "Review repeated full-object alternatives at one scale before selecting a treatment.",
+  "content_islands": [
+    {
+      "name": "Proposal wall",
+      "spec": "Arrange small aircraft drawings in rows."
+    },
+    {
+      "name": "Review context",
+      "spec": "Retain the person in the foreground to show the scale of the working display."
+    }
+  ],
+  "reference_purposes": {}
+}

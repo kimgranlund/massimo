@@ -1,0 +1,39 @@
+{
+  "id": "DW078",
+  "title": "Writing / Style / Ampersands",
+  "image": "dw078.png",
+  "source": "../sources/pages/writing-style.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/style",
+    "section": "Ampersands",
+    "item": 78,
+    "order": 780
+  },
+  "slide_intent": "Prefer a familiar word to a compressed symbol so ordinary copy remains easy to read.",
+  "strategic_value": "The comparison can help Duolingo keep its language approachable while allowing a practical exception for tight ads.",
+  "demonstration": "Two preferred phrases spell out and; the rejected versions substitute an ampersand.",
+  "category": "Voice",
+  "practical_value": "Write out and unless an advertisement’s low character limit makes the symbol necessary.",
+  "content_islands": [
+    {
+      "name": "Guidance column",
+      "spec": "Place the topic heading, its parent label and the written convention in the narrow left column."
+    },
+    {
+      "name": "Worked examples",
+      "spec": "Place the worked copy in the pale right panel, keeping preference labels and green checks with their examples."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "Two sentence and heading examples compare and with an ampersand.",
+    "Constraint": "Avoid ampersands in copy; low-character-count ads are an exception when space is insufficient to write and.",
+    "Intent": "The source explicitly calls the spelled-out form more user-friendly when space permits."
+  },
+  "ingredient": {
+    "name": "Ampersands convention",
+    "role": "Ordinary copy remains easy to read.",
+    "application": "Avoid ampersands in copy; low-character-count ads are an exception when space is insufficient to write and.",
+    "scope": "Historical official guidelines from the 2024–2025 archived snapshot; this records the displayed guidance, not current Duolingo product behavior."
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "CH13",
+  "title": "Mobile page among cacti",
+  "image": "ch13.png",
+  "source": "../sources/ch13.jpg",
+  "location": {
+    "series": "COLLINS / Mailchimp case study",
+    "item": 13,
+    "extent": "Complete published artwork",
+    "section": "Gallery"
+  },
+  "slide_intent": "Keep the message readable within a vivid setting because photography should support rather than obscure an interface.",
+  "strategic_value": "The pale green page and black illustration can connect Mailchimp’s digital offer to an organic photographic world.",
+  "demonstration": "A white phone stands among cacti, displaying a customer-conversation headline, illustration and compact navigation.",
+  "category": "Application",
+  "practical_value": "Compare interface contrast against a detailed photographic background.",
+  "content_islands": [
+    {
+      "name": "Phone",
+      "spec": "Place the readable vertical phone near center among the cactus stems."
+    },
+    {
+      "name": "Page",
+      "spec": "Retain the green headline region, small controls and line illustration inside the phone."
+    },
+    {
+      "name": "Setting",
+      "spec": "Use the surrounding plants and blue sky as context rather than page content."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The source places a branded mobile page in a photographic scene."
+  }
+}

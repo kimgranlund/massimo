@@ -1,0 +1,27 @@
+{
+  "id": "HE064",
+  "title": "Uploading images to the materials bank",
+  "image": "he064.png",
+  "source": "../sources/visual-storytelling.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Uploading images to the materials bank",
+    "order": 89,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/visual-storytelling#uploading-images-to-the-materials-bank",
+    "original_html": "../sources/visual-storytelling.html"
+  },
+  "slide_intent": "Connect image storage to its descriptive information so others can find and reuse an asset.",
+  "strategic_value": "A shared upload route can help Helsinki preserve images and metadata together.",
+  "demonstration": "This expanded webpage-section capture provides a short link description for Finnish image-and-metadata upload instructions for the Gredi databank.",
+  "category": "Application",
+  "practical_value": "Locate the upload guide before adding assets to Gredi; the detailed steps are not reproduced in this section.",
+  "content_islands": [
+    {
+      "name": "Upload resource",
+      "spec": "Place the Gredi image-and-metadata description beside its PDF link."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The section points to instructions for uploading images and metadata to Gredi."
+  }
+}

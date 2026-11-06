@@ -1,0 +1,104 @@
+{
+  "id": "IB021",
+  "title": "Data visualization / Overview",
+  "image": "ib021.png",
+  "source": "../sources/data-visualization-overview.txt",
+  "location": {
+    "series": "IBM Design Language / public web guidelines",
+    "item": 21,
+    "extent": "Complete webpage content-area capture; visible default tab states",
+    "url": "https://www.ibm.com/design/language/data-visualization/overview/",
+    "order": 21000
+  },
+  "slide_intent": "Make visual form serve accurate understanding so viewers can find a message without losing the integrity of the data.",
+  "strategic_value": "A consistent IBM treatment that preserves quantity and context can support trust while making complex information approachable.",
+  "demonstration": "The webpage presents a montage of dashboards and charts, followed by five criteria—Understandable, Essential, Impactful, Consistent and Contextual—each with explanatory copy and a video poster.",
+  "category": "Application",
+  "practical_value": "Evaluate a proposed visualization for clarity, relevance, exploration, numerical integrity and audience context before choosing its styling.",
+  "content_islands": [
+    {
+      "name": "Introduction and examples",
+      "spec": "Place the purpose statement above a montage of analytical screens, charts and a dimensional data illustration."
+    },
+    {
+      "name": "Understandable and Essential",
+      "spec": "Follow with two sections pairing rationale with black video posters of white circles; these are captured frames, not motion sequences."
+    },
+    {
+      "name": "Impactful and Consistent",
+      "spec": "Continue with posters using small rectangular marks and numerical rows beside copy about exploration and proportional accuracy."
+    },
+    {
+      "name": "Contextual",
+      "spec": "End with audience/context guidance and a poster of white blocks before ancillary navigation."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The opening explains that visualization reveals stories in information; each criterion states why clarity, utility, exploration, numerical integrity or context matters.",
+    "Expression": "The montage shows IBM charts across light and dark interfaces, while the principle posters use spare geometric forms.",
+    "Application": "The criteria ask designers to choose an appropriate model, support exploration and adapt complexity to the audience and environment.",
+    "Constraint": "The Consistent section requires visual representations to correspond to numerical quantities and preserve proportions and scale."
+  },
+  "motion_assets": [
+    {
+      "title": "Data visualization: understandable",
+      "file": "../sources/media/51eaae025c37.mp4",
+      "poster": "../sources/media/51eaae025c37-poster.png",
+      "duration_seconds": 5.0,
+      "source_url": "https://www.ibm.com/design/language/videos/dataviz/understandable_video.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Data visualization: essential",
+      "file": "../sources/media/da497fa1854c.mp4",
+      "poster": "../sources/media/da497fa1854c-poster.png",
+      "duration_seconds": 5.0,
+      "source_url": "https://www.ibm.com/design/language/videos/dataviz/essential.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Data visualization: impactful",
+      "file": "../sources/media/b59ed172e6cd.mp4",
+      "poster": "../sources/media/b59ed172e6cd-poster.png",
+      "duration_seconds": 5.0,
+      "source_url": "https://www.ibm.com/design/language/videos/dataviz/impactfulVideo.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Data visualization: consistent",
+      "file": "../sources/media/c9855f7aa6b2.mp4",
+      "poster": "../sources/media/c9855f7aa6b2-poster.png",
+      "duration_seconds": 5.0,
+      "source_url": "https://www.ibm.com/design/language/videos/dataviz/consistentVideo.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Data visualization: contextual",
+      "file": "../sources/media/f589d8d45d71.mp4",
+      "poster": "../sources/media/f589d8d45d71-poster.png",
+      "duration_seconds": 5.0,
+      "source_url": "https://www.ibm.com/design/language/videos/dataviz/contextualvideo.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    }
+  ]
+}

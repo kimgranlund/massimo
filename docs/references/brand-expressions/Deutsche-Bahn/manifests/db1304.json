@@ -1,0 +1,31 @@
+{
+  "id": "DB1304",
+  "title": "Formensprache / layout edges",
+  "image": "db1304.png",
+  "source": "../sources/page-13.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 13,
+    "section": 4,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Layout"
+  },
+  "slide_intent": "Make edge treatment consistent so the underlying structure feels precise rather than arbitrary.",
+  "strategic_value": "Square modules can give DB layouts a clear common construction.",
+  "demonstration": "A diagram highlights a square 90° corner beneath a statement about moving from rounded to angular forms.",
+  "category": "Geometry",
+  "practical_value": "Use square edges for layout surfaces.",
+  "content_islands": [
+    {
+      "name": "Shape principle",
+      "spec": "Place the clarity-and-precision statement above the example."
+    },
+    {
+      "name": "Corner diagram",
+      "spec": "Enlarge the right-angle corner and mark 90°."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text connects angular forms with clarity and precision.",
+    "Application": "The corner diagram illustrates the intended shape language."
+  }
+}

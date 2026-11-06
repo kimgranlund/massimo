@@ -1,0 +1,35 @@
+{
+  "id": "DBV02",
+  "title": "Transformation",
+  "image": "dbv02.png",
+  "source": "../sources/media/dbv02.mp4",
+  "location": {
+    "series": "DB new design / motion demonstrations",
+    "source_page": 11,
+    "section": "Animation-14019334",
+    "source_url": "https://ecm-mediathek-cdn.deutschebahn.com/cdnenhancedecmvidhls/db306183/2880455/video_config.json",
+    "capture_date": "2026-11-05"
+  },
+  "slide_intent": "Connect related icon states so a person can understand a control changing function.",
+  "strategic_value": "The continuous menu-to-cross transformation can keep DB interactions recognizable during state changes.",
+  "demonstration": "Dark horizontal strokes transform into a cross and return to a three-line menu.",
+  "category": "Motion",
+  "practical_value": "Compare a geometric transformation with replacing one icon abruptly.",
+  "content_islands": [
+    {
+      "name": "State transformation",
+      "spec": "Keep the strokes around one center as the menu becomes a cross."
+    },
+    {
+      "name": "Resting menu",
+      "spec": "Resolve the movement into three parallel horizontal lines."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Dark horizontal strokes transform into a cross and return to a three-line menu.",
+    "Application": "The source provides a playable demonstration of this repeatable sequence: Dark horizontal strokes transform into a cross and return to a three-line menu.",
+    "Intent": "Accompanying Icons, Signature Graphics, or Animation im UI prose explains that animation directs focus, makes relationships understandable, and adds expression.",
+    "Constraint": "The accompanying guidance says animation is deliberate and never disturbing or complex."
+  },
+  "motion": "../sources/media/dbv02.mp4"
+}

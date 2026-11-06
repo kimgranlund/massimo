@@ -1,0 +1,30 @@
+{
+  "id": "C426",
+  "title": "Married at First Sight promotion",
+  "image": "c426.png",
+  "source": "../sources/c426.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 masterbrand / 2023",
+    "item": 26,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Preserve the programme’s tone while making the viewing action clear at the end.",
+  "strategic_value": "A consistent Channel 4 transition can connect provocative programme footage to the same service identity.",
+  "demonstration": "The clip places a rotating green 4 over programme footage, slides to a Married at First Sight title room, and ends with streaming and live-schedule text.",
+  "category": "Application",
+  "practical_value": "Compare the title interval and endboard with the programme’s footage.",
+  "content_islands": [
+    {
+      "name": "Programme footage",
+      "spec": "Open with the show’s scenes and add the animated mark."
+    },
+    {
+      "name": "Title and action",
+      "spec": "Move to the title room, then separate the logo from the viewing text in adjacent panels."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The masterbrand sequence is applied to Married at First Sight footage and viewing information."
+  },
+  "motion": "../sources/c426.mp4"
+}

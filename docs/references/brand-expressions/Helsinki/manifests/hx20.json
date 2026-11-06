@@ -1,0 +1,27 @@
+{
+  "id": "HX20",
+  "title": "Helsinki Freedom trailer still",
+  "image": "hx20.png",
+  "source": "../sources/visual-storytelling.offline.html",
+  "location": {
+    "series": "Web guideline introduction/component",
+    "order": 64,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/visual-storytelling",
+    "original_html": "../sources/visual-storytelling.html"
+  },
+  "slide_intent": "Use a close human encounter to carry a city story because intimacy can make an abstract theme emotionally accessible.",
+  "strategic_value": "The warm adult-and-child image can give Helsinki’s freedom narrative a personal scale.",
+  "demonstration": "This webpage component shows one warm-toned trailer still with an adult, a child and a white subtitle; the caption identifies the Helsinki Freedom trailer.",
+  "category": "Imagery",
+  "practical_value": "Evaluate the emotional role of a film still without inferring its editing or timing.",
+  "content_islands": [
+    {
+      "name": "Trailer still",
+      "spec": "Keep the close-up, subtitle and identifying caption together."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The still displays the trailer’s warm human imagery and subtitle treatment.",
+    "Application": "The caption identifies this image as a screenshot from the Helsinki Freedom trailer."
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "I032",
+  "title": "Color in layout examples",
+  "image": "i032.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 32,
+    "printed_page": 32
+  },
+  "slide_intent": "Show how to adapt campaign layouts to different merchandise and occasions without losing the structure a shopper uses to find the offer and its action.",
+  "strategic_value": "A repeatable hierarchy lets Instacart present groceries, beauty and a Diwali celebration as distinct stories within one service.",
+  "demonstration": "Three vertical digital layouts sit together on Kale. Their headline grounds, photographs and messages change while pale surrounds, wordmark positions and green actions recur.",
+  "category": "Application",
+  "practical_value": "Use the grocery, beauty or Diwali example to judge which colors can follow the subject and which elements should remain identifiable.",
+  "content_islands": [
+    {
+      "name": "Three communications",
+      "spec": "Align the tall samples by their top edge, with a broad dark ground around them. Use a compact wordmark at the head of each."
+    },
+    {
+      "name": "Offer hierarchy",
+      "spec": "Within the three samples, group headline and photograph above supporting copy and a green action. Keep each campaign’s imagery and secondary field distinct."
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "id": "IB015",
+  "title": "Illustration / Flat style — Design",
+  "image": "ib015.png",
+  "source": "../sources/illustration-flat-style-design.txt",
+  "location": {
+    "series": "IBM Design Language / public web guidelines",
+    "item": 15,
+    "extent": "Complete webpage content-area capture; interactive elements retain their captured state",
+    "url": "https://www.ibm.com/design/language/illustration/flat-style/design/",
+    "order": 15000
+  },
+  "slide_intent": "Preserve the distinction between shapes and lines, because minimum size and separation determine whether a flat illustration reads as bold geometry or fine detail.",
+  "strategic_value": "Consistent geometric construction can make IBM’s colorful flat images feel related even when their subjects vary.",
+  "demonstration": "Bold examples lead into primitive-shape combinations, 8px size and spacing diagrams, grid snapping, layering, curves, radii and shading.",
+  "category": "Geometry",
+  "practical_value": "Construct the subject from basic shapes and inspect minimum dimensions and intersections before refining its color.",
+  "content_islands": [
+    {
+      "name": "Flat-style family",
+      "spec": "Open with a purple technical scene, finger and eye graphics, a face and smaller geometric illustrations."
+    },
+    {
+      "name": "Shape foundations",
+      "spec": "Show primitive variations and how squares and circles form an eye and a heart."
+    },
+    {
+      "name": "Size, grid and layering",
+      "spec": "Compare spacing, show an 8px overlay, and pair correct and incorrect snapped and overlapping shapes."
+    },
+    {
+      "name": "Drawing geometry",
+      "spec": "Reveal the face’s underlying circles, then standard angles, circular and organic curves, and nested rounded corners."
+    },
+    {
+      "name": "Color and definition",
+      "spec": "Close with gradient/shading examples and an opaque-color treatment that implies overlap."
+    }
+  ],
+  "ingredient": {
+    "name": "Flat-style minimum geometry",
+    "role": "Keep shapes distinct and retain bold graphic character.",
+    "application": "Build on the 8px grid; keep objects and negative spaces at least 8px; preserve at least an 8px safe area when layering shapes.",
+    "scope": "IBM flat-style illustration construction. The page separately recommends standard angles while allowing intentional organic curves."
+  },
+  "reference_purposes": {
+    "Intent": "The source explains that elements smaller than 8px read as lines and change the character of flat illustration.",
+    "Expression": "The bold face, hand and technology images demonstrate IBM’s flat geometric treatment.",
+    "Application": "Primitive diagrams and paired construction examples show how to build and layer objects.",
+    "Constraint": "Flat-style objects and negative spaces have an 8px minimum; the grid and overlap safe area are also specified at 8px."
+  }
+}

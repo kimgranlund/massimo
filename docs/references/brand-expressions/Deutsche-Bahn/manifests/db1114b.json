@@ -1,0 +1,32 @@
+{
+  "id": "DB1114B",
+  "title": "Geometrische Grundformen / Medium",
+  "image": "db1114b.png",
+  "source": "../sources/db1114b-page.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 11,
+    "section": 14,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Icons",
+    "tab": "Medium 24 × 24 dp"
+  },
+  "slide_intent": "Scale key shapes by purpose rather than impression so medium icons retain comparable visual weight.",
+  "strategic_value": "Explicit medium templates can support a consistent DB icon family.",
+  "demonstration": "The Medium tab shows a 20×20 dp circle, 18×18 dp square, 16×20 dp vertical rectangle and 20×16 dp horizontal rectangle.",
+  "category": "Geometry",
+  "practical_value": "Select the medium key shape that fits the subject, then refine the icon optically.",
+  "content_islands": [
+    {
+      "name": "Selected scale",
+      "spec": "Place the Medium tab above the grid specimens."
+    },
+    {
+      "name": "Medium key shapes",
+      "spec": "Align four labeled geometry templates on one light field."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text links shared base forms to consistency and visual balance.",
+    "Application": "Four dimensioned templates provide starting points for medium icon construction."
+  }
+}

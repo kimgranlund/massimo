@@ -1,0 +1,29 @@
+{
+  "id": "BKE02",
+  "title": "Uniforms / Front and back",
+  "image": "bke02.png",
+  "source": "../sources/bke02.webp",
+  "location": {
+    "series": "JKR / Burger King identity case study",
+    "item": 2,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Make staff clothing part of the identity so people encounter the brand through service as well as signage.",
+  "strategic_value": "Brown uniforms, warm stripes and a heritage phrase can connect Burger King staff with the food story.",
+  "demonstration": "Two people model front and back views of brown uniforms against orange; the apron carries a stacked flame-grilling phrase.",
+  "category": "Application",
+  "practical_value": "Compare how a garment uses a large message on the front and restrained stripes across the back.",
+  "content_islands": [
+    {
+      "name": "Front view",
+      "spec": "Place the apron-wearing figure at left with the large yellow heritage phrase."
+    },
+    {
+      "name": "Back view",
+      "spec": "Place the second figure facing away at right, showing shoulder stripes and tied apron straps."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The identity appears on staff uniforms with front and back treatments."
+  }
+}

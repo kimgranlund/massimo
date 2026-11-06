@@ -1,0 +1,25 @@
+{
+  "id": "HI02",
+  "title": "Originaali-kollaasit",
+  "image": "hi02.png",
+  "source": "../sources/illustration-examples.pdf",
+  "location": {
+    "page": 2,
+    "series": "Helsinki illustration examples — PDF derived from the official PowerPoint deck with LibreOffice",
+    "order": 192
+  },
+  "slide_intent": "Mark the start of the original compositions so viewers understand the complete scenes before looking at isolated parts.",
+  "strategic_value": "A clear section boundary can help Helsinki teams distinguish source collages from reusable elements.",
+  "demonstration": "A two-line white heading sits centered on a solid blue field.",
+  "category": "Brand",
+  "practical_value": "Present the original-collage section as a separate stage of the asset review.",
+  "content_islands": [
+    {
+      "name": "Section label",
+      "spec": "Center the white two-line Finnish title on the blue background."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The slide introduces the original-collage section."
+  }
+}

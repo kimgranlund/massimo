@@ -1,0 +1,25 @@
+{
+  "id": "I027",
+  "title": "Lunch in a pinch. / Sweet & Savory",
+  "image": "i027.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 27,
+    "printed_page": 27
+  },
+  "slide_intent": "Show how the ground can change the appetite appeal of a poster while a shared color system keeps the campaign recognizable in public.",
+  "strategic_value": "Instacart can vary pace between a practical lunch message and a more indulgent food story without inventing a separate poster identity.",
+  "demonstration": "Two photographed placements fill the spread. The narrow green poster places its headline above a food photograph. The wide pale poster puts the headline beside a dessert photograph.",
+  "category": "Application",
+  "practical_value": "Compare a stacked vertical layout with a split horizontal one when choosing where to place an image and how strongly the background should register.",
+  "content_islands": [
+    {
+      "name": "Vertical placement",
+      "spec": "Fill the left portion with the transit setting. Stack light type, a rounded photograph and the small signature on a Kale field."
+    },
+    {
+      "name": "Horizontal placement",
+      "spec": "Give the right portion to the wall-mounted poster. Put the dark headline and signature on the pale left half and crop the photograph tightly at right."
+    }
+  ]
+}

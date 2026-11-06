@@ -1,0 +1,38 @@
+{
+  "id": "DB0707",
+  "title": "Download / Weitere Logos",
+  "image": "db0707.png",
+  "source": "../sources/page-07.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 7,
+    "section": 7,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Logo_neu"
+  },
+  "slide_intent": "Clarify identity ownership so organizational labels do not become competing brands.",
+  "strategic_value": "Official files and consistent extensions can help DB maintain a connected brand architecture.",
+  "demonstration": "Download guidance precedes DB InfraGO and logo-extension examples, each with an explanation of its role.",
+  "category": "Brand",
+  "practical_value": "Use unmodified official assets and treat an extension as identification within the group.",
+  "content_islands": [
+    {
+      "name": "Asset authority",
+      "spec": "Place the official-template restriction and download link above the architecture discussion."
+    },
+    {
+      "name": "Architecture comparison",
+      "spec": "Compare DB InfraGO with generic logo extensions in two labeled columns."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text explains that the DB mark connects market areas and extensions identify who is speaking.",
+    "Application": "The section supplies an official download route and identifies the extension generator.",
+    "Constraint": "Only official unmodified templates are permitted; extensions are explicitly not independent logos or brands."
+  },
+  "ingredient": {
+    "name": "DB logo extension",
+    "role": "Identify the speaking unit while retaining the parent brand.",
+    "application": "Use official assets and the extension generator, preserving spacing and balance with the sleeper.",
+    "scope": "Extensions identify business units, service locations or products; they are not independent brands."
+  }
+}

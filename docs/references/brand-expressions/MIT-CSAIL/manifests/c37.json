@@ -1,0 +1,24 @@
+{
+  "id": "C37",
+  "title": "Contact Us",
+  "image": "c37.png",
+  "source": "../csail-branding-short-guide.pdf",
+  "location": {
+    "page": 37
+  },
+  "slide_intent": "Give readers a clear route for questions the guide cannot settle. A visible contact can help a group resolve a new identity decision consistently.",
+  "strategic_value": "CSAIL can direct requests for help with group or department identities to its Logo Committee.",
+  "demonstration": "A short invitation and the committee email occupy the upper-left area of an otherwise open page. A turquoise geometric tab labels the section at right.",
+  "category": "Brand",
+  "practical_value": "Use the named committee as the guide’s point of contact when an application calls for further direction.",
+  "content_islands": [
+    {
+      "name": "Contact block",
+      "spec": "Place the heading, invitation and committee address together near the upper left."
+    },
+    {
+      "name": "Section marker",
+      "spec": "Set a rotated Contact Us label inside a turquoise shape entering from the right edge. Leave the central field open."
+    }
+  ]
+}

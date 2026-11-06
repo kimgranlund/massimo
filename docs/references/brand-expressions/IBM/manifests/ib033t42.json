@@ -1,0 +1,41 @@
+{
+  "id": "IB033T42",
+  "title": "Pictograms / Expressive strokes — Dark background",
+  "image": "ib033t42.png",
+  "source": "../sources/alternate-tabs.json",
+  "location": {
+    "series": "IBM Design Language / alternate tab states",
+    "parent": "IB033",
+    "group": 4,
+    "tab": 2,
+    "label": "Dark background",
+    "url": "https://www.ibm.com/design/language/iconography/pictograms/design/",
+    "order": 33142
+  },
+  "slide_intent": "Separate the readable core from expressive color, because decorative depth should reinforce rather than obscure the symbol.",
+  "strategic_value": "White productive strokes combined with controlled gradients can make IBM’s expressive pictograms distinct on black.",
+  "demonstration": "Four pictograms on black combine white lines and circular points with broader colored gradient strokes; examples include a currency mark, connected circles, offset squares and nested curves.",
+  "category": "Color",
+  "practical_value": "Use the dark-background expressive artwork rather than recoloring a light-background pictogram.",
+  "content_islands": [
+    {
+      "name": "Background selector",
+      "spec": "Show Dark background selected above the specimen."
+    },
+    {
+      "name": "Expressive quartet",
+      "spec": "Align four contrasting pictograms horizontally on the black field, retaining white productive strokes and colored gradient strokes."
+    }
+  ],
+  "ingredient": {
+    "name": "Dark expressive pictogram layers",
+    "role": "Keep essential details legible while giving the symbol stronger visual presence.",
+    "application": "Use White productive strokes with the supplied dark-mode gradient artwork; keep the gradient layer fixed at 45° and masked by the expressive strokes.",
+    "scope": "IBM expressive pictograms. Do not change productive-stroke color or the supplied gradient’s angle and scale."
+  },
+  "reference_purposes": {
+    "Expression": "White detail and luminous gradient paths demonstrate the expressive pictogram style on black.",
+    "Application": "The specimen shows the dark-background rendering of expressive pictograms.",
+    "Constraint": "The accompanying guidance requires White productive strokes on dark backgrounds, a stationary 45° gradient layer and approved two-color families; it prohibits altering the gradient angle or scale."
+  }
+}

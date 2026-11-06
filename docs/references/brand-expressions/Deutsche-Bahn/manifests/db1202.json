@@ -1,0 +1,30 @@
+{
+  "id": "DB1202",
+  "title": "Signature Graphics / travel and welcome",
+  "image": "db1202.png",
+  "source": "../sources/page-12.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 12,
+    "section": 2,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Signature-Graphics"
+  },
+  "slide_intent": "Use recognizable landmarks to connect a message with a destination before detailed reading.",
+  "strategic_value": "DB’s line-built landmarks can support route and welcome messages in a common visual language.",
+  "demonstration": "A HAM-to-BER graphic pairs two colored landmarks; a framed Frankfurt welcome poster uses a pale skyline with a red focal building.",
+  "category": "Application",
+  "practical_value": "Compare paired destination symbols with a wider city panorama.",
+  "content_islands": [
+    {
+      "name": "Route pair",
+      "spec": "Place two landmark graphics above the abbreviated city labels and directional arrow."
+    },
+    {
+      "name": "Welcome poster",
+      "spec": "Place the headline above a pale skyline with one red focus."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The two compositions apply signature graphics to a route message and city welcome poster."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "C403",
+  "title": "Streaming app opening and browsing",
+  "image": "c403.png",
+  "source": "../sources/c403.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 masterbrand / 2023",
+    "item": 3,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Carry identity from loading into content so a viewer does not lose orientation when an interface becomes useful.",
+  "strategic_value": "The same green 4 at launch and in the browsing header can connect streaming to the broadcaster.",
+  "demonstration": "A phone mockup opens with a rotating green mark, reveals an It’s a Sin feature and changes to Taskmaster above a trending row.",
+  "category": "Application",
+  "practical_value": "Compare the launch signature with its quieter role after programme content appears.",
+  "content_islands": [
+    {
+      "name": "Phone",
+      "spec": "Keep the diagonal handset on its pale surface throughout."
+    },
+    {
+      "name": "Launch and browse sequence",
+      "spec": "Replace the centered logo with the content interface, preserving a smaller 4 near the top."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The video demonstrates a branded app launch followed by programme browsing.",
+    "Intent": "The accompanying case study explains that renaming the player Channel 4 connects streaming clearly to the masterbrand."
+  },
+  "motion": "../sources/c403.mp4"
+}

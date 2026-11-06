@@ -1,0 +1,36 @@
+{
+  "id": "DB1118",
+  "title": "Darstellung von Details",
+  "image": "db1118.png",
+  "source": "../sources/page-11.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 11,
+    "section": 18,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Icons"
+  },
+  "slide_intent": "Adjust tiny features so the subject remains understandable when space is limited.",
+  "strategic_value": "Specific small-detail exceptions can keep DB icons legible without abandoning the base system.",
+  "demonstration": "Square and circular details are enlarged above small vehicle examples that vary stroke thickness for recognition.",
+  "category": "Geometry",
+  "practical_value": "Prefer square details; use circles or local stroke adjustments when they improve recognition at small sizes.",
+  "content_islands": [
+    {
+      "name": "Detail rules",
+      "spec": "Place the dimensions and preference above the diagrams."
+    },
+    {
+      "name": "Detail-shape comparison",
+      "spec": "Compare square calendar detail with circular vehicle detail in enlarged views."
+    },
+    {
+      "name": "Small-size adjustments",
+      "spec": "Show vehicle details with reduced or increased strokes below."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text bases detail choices on the best recognition of the icon.",
+    "Constraint": "Square details are 2×2 dp; circles are 2×2 dp or 2.5×2.5 dp in large icons. Enlarged detail strokes are 3 dp and reduced ones 1 dp.",
+    "Application": "Close-ups and small vehicle examples show how exceptions preserve clarity."
+  }
+}

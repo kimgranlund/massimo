@@ -1,0 +1,94 @@
+{
+  "id": "IB007",
+  "title": "Color / Palette, combination and accessibility",
+  "image": "ib007.png",
+  "source": "../sources/color.txt",
+  "location": {
+    "series": "IBM Design Language / public web guidelines",
+    "item": 7,
+    "extent": "Complete webpage content-area capture; interactive elements retain their captured state",
+    "url": "https://www.ibm.com/design/language/color/",
+    "order": 7000
+  },
+  "slide_intent": "Give color a clear role and readable contrast, because recognition and information fail when every hue competes or meaning depends on hue alone.",
+  "strategic_value": "A blue-and-neutral foundation with controlled additional families can keep IBM recognizable while supporting variety across products and communications.",
+  "demonstration": "The webpage combines core blue and neutral examples, full swatch tables, family combinations, gradient comparisons, UI palettes, contrast guidance and applied examples. The specification controls are captured in their visible state.",
+  "category": "Color",
+  "practical_value": "Select colors by role and approved family, then check contrast and the meaning carried by non-color cues.",
+  "content_islands": [
+    {
+      "name": "Core identity",
+      "spec": "Place the introductory text and resources above blue logo/rebus panels, the full palette and neutral-gray strip."
+    },
+    {
+      "name": "Specifications",
+      "spec": "Arrange named swatches and visible HEX values in hue-family tables followed by gray families."
+    },
+    {
+      "name": "Family combinations",
+      "spec": "Show permissible four-, three-, two- and one-color groupings before rejected combinations."
+    },
+    {
+      "name": "Gradients and UI",
+      "spec": "Compare gradient approaches, then show a product interface and the neutral, blue and alert palette used in UI."
+    },
+    {
+      "name": "Accessibility",
+      "spec": "Follow with contrast steps, gradient contrast examples and simulated color-vision differences."
+    },
+    {
+      "name": "Color in action",
+      "spec": "End with a varied collage of digital, illustration, campaign and spatial applications."
+    }
+  ],
+  "ingredient": {
+    "name": "IBM blue and neutral foundation",
+    "role": "Provide recognition and leave additional hues available for purposeful emphasis.",
+    "application": "Let grays, black, white and the blue family dominate; select additional colors within the shown families. In UI, use core blue for primary action and neutral gray to organize zones.",
+    "scope": "IBM Design Language guidance as captured. Family exclusions retain the stated exception for specific applications such as data visualization; no universal area percentage is specified."
+  },
+  "reference_purposes": {
+    "Intent": "The source explains core blue recognition, neutral dominance and why insufficient color distinction impairs legibility.",
+    "Expression": "The swatches, blue identity examples and application collage demonstrate IBM’s color character.",
+    "Application": "Family diagrams and contrast examples show how to select combinations and evaluate text over gradients.",
+    "Constraint": "The source prohibits color-only meaning, limits gradients to accepted two-color families, and says additional UI colors are used sparingly and purposefully."
+  },
+  "motion_assets": [
+    {
+      "title": "Hybrid cloud color application",
+      "file": "../sources/media/2f1d835279fe.mp4",
+      "poster": "../sources/media/2f1d835279fe-poster.png",
+      "duration_seconds": 15.0,
+      "source_url": "https://www.ibm.com/design/language/6d1b332be595cfb25b5d687ecc16a802/bc-initiatives-hybrid-cloud-20.mov",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Gradient palette across backgrounds",
+      "file": "../sources/media/37787e4bf503.mp4",
+      "poster": "../sources/media/37787e4bf503-poster.png",
+      "duration_seconds": 27.0,
+      "source_url": "https://www.ibm.com/design/language/e3f9b4d792ba367bd84052c9070325c9/10-idl-color-gradients.gif",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Color in product interfaces",
+      "file": "../sources/media/336c5d2aed59.mp4",
+      "poster": "../sources/media/336c5d2aed59-poster.png",
+      "duration_seconds": 24.0,
+      "source_url": "https://www.ibm.com/design/language/c97de21cb79d2dedc0fc25f918adfa49/14-idl-color-color-in-ui-v2.gif",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "ML06",
+  "title": "Reception and architectural context",
+  "image": "ml06.png",
+  "source": "../sources/ml06.jpg",
+  "location": {
+    "series": "Pentagram / MIT Media Lab / 2014 identity",
+    "item": 6,
+    "extent": "Published lightbox artwork"
+  },
+  "slide_intent": "Place the identity in the arrival experience because a research institution is encountered as a physical place.",
+  "strategic_value": "A coordinated reception environment can connect visitors’ first impressions to the lab.",
+  "demonstration": "A wide lobby photograph shows reception, glass walls, hanging displays and visitors.",
+  "category": "Application",
+  "practical_value": "Assess identity scale within a bright, visually complex arrival space.",
+  "content_islands": [
+    {
+      "name": "Reception",
+      "spec": "A long desk spans the lower center."
+    },
+    {
+      "name": "Architectural field",
+      "spec": "Tall glazing and a grid of displays frame the arrival point."
+    },
+    {
+      "name": "Visitors",
+      "spec": "People establish the human scale of the interior."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A wide lobby photograph shows reception, glass walls, hanging displays and visitors.",
+    "Application": "A wide lobby photograph shows reception, glass walls, hanging displays and visitors."
+  },
+  "ingredient": {
+    "name": "Reception and architectural context",
+    "role": "Place the identity in the arrival experience because a research institution is encountered as a physical place.",
+    "application": "Assess identity scale within a bright, visually complex arrival space.",
+    "scope": "Observed in this historical case-study artwork; not a mandatory usage rule or a current brand standard."
+  }
+}

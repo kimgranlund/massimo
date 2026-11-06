@@ -1,0 +1,31 @@
+{
+  "id": "DB1213",
+  "title": "Signature Graphics / consistent scaling",
+  "image": "db1213.png",
+  "source": "../sources/page-12.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 12,
+    "section": 13,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Signature-Graphics"
+  },
+  "slide_intent": "Keep related graphics at a common scale so a collection reads as one coherent scene.",
+  "strategic_value": "Consistent scale and detail can make DB landmark combinations feel intentional.",
+  "demonstration": "A consistent pale skyline is compared with a crossed-out set of mismatched landmark sizes.",
+  "category": "Geometry",
+  "practical_value": "Combine graphics at the same scale and detail level.",
+  "content_islands": [
+    {
+      "name": "Consistent set",
+      "spec": "Place matching-scale pale landmarks at left."
+    },
+    {
+      "name": "Mismatched set",
+      "spec": "Cross out the differently scaled combination at right."
+    }
+  ],
+  "reference_purposes": {
+    "Constraint": "Signature graphics may be combined at the same size and detail level, not at different scales.",
+    "Application": "The positive/negative pair demonstrates the distinction."
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "I046",
+  "title": "Photography: Intro",
+  "image": "i046.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 46,
+    "printed_page": 46
+  },
+  "slide_intent": "Teach designers to choose photographs for the sensory detail they communicate. A visible glisten or stretch can give the viewer a reason to imagine eating the food.",
+  "strategic_value": "Instacart can make photography carry appetite in communications that also have to do the practical work of selling groceries.",
+  "demonstration": "A large multiline statement gives examples of food textures. A smaller orange note identifies some images as reference material and calls for studio approval before use.",
+  "category": "Imagery",
+  "practical_value": "Use a concrete texture or food action in an image brief. Check the status of a reference photograph before including it in published work.",
+  "content_islands": [
+    {
+      "name": "Sensory premise",
+      "spec": "Place the dark headline in a large left-aligned block on Cashew beneath the chapter label."
+    },
+    {
+      "name": "Reference note",
+      "spec": "Separate the smaller orange approval note near the lower-left edge. Keep it visible without competing with the main statement."
+    }
+  ]
+}

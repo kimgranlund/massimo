@@ -1,0 +1,24 @@
+{
+  "id": "I074",
+  "title": "Layout Intro",
+  "image": "i074.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 74
+  },
+  "slide_intent": "Think of composition as putting prepared elements to work together. The cooking analogy gives the reader a familiar way into that task.",
+  "strategic_value": "Instacart can explain a design process in the language of meals, connecting the book’s instruction to the brand’s subject.",
+  "demonstration": "A large two-line cooking metaphor follows a small Layout Intro label on a pale field. The specific composition diagrams begin on the following page.",
+  "category": "Layout",
+  "practical_value": "Use the page to frame a layout review: identify which established elements are available before deciding how to combine them.",
+  "content_islands": [
+    {
+      "name": "Context",
+      "spec": "Set the section label beneath the small running header."
+    },
+    {
+      "name": "Transition statement",
+      "spec": "Set the short ingredients-and-cooking line in large dark type and leave clear space beneath it."
+    }
+  ]
+}

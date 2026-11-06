@@ -1,0 +1,38 @@
+{
+  "id": "DW071",
+  "title": "Writing / Style / Dashes",
+  "image": "dw071.png",
+  "source": "../sources/pages/writing-style.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/style",
+    "section": "Dashes",
+    "item": 71,
+    "order": 710
+  },
+  "slide_intent": "Use different dash marks for different jobs so compounds, ranges and conversational pauses remain distinguishable.",
+  "strategic_value": "Explicit streak and adverb exceptions can help Duolingo avoid mechanical punctuation edits that change its established style.",
+  "demonstration": "Three groups explain hyphens, en dashes and em dashes with approved and rejected examples.",
+  "category": "Voice",
+  "practical_value": "Identify the mark’s purpose and check the local exceptions before replacing it.",
+  "content_islands": [
+    {
+      "name": "Guidance column",
+      "spec": "Place the Dashes heading and brief introduction to three marks at left."
+    },
+    {
+      "name": "Worked examples",
+      "spec": "Stack compound-word guidance, range guidance and sentence-break guidance at right with paired examples below each."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "Examples contrast compound words, date/time ranges and a sentence split.",
+    "Constraint": "The guide excludes hyphens in x day streak and after -ly modifiers, uses unspaced en dashes for ranges, and prefers two sentences to em dashes; unavoidable em dashes have spaces on both sides."
+  },
+  "ingredient": {
+    "name": "Dash selection",
+    "role": "Make compounds, ranges and pauses distinguishable.",
+    "application": "Use hyphens for compound adjectives except -ly modifiers and x day streak; use unspaced en dashes for ranges; prefer two sentences to an em dash, spacing an unavoidable em dash on both sides.",
+    "scope": "Historical official guidelines from the 2024–2025 archived snapshot; this records the displayed guidance, not current Duolingo product behavior."
+  }
+}

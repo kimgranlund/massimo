@@ -1,0 +1,36 @@
+{
+  "id": "LH39",
+  "title": "Welcome panel close-up",
+  "image": "lh39.png",
+  "source": "../sources/lh39.jpg",
+  "location": {
+    "series": "HvD Fonts / Lufthansa 2018",
+    "item": 18,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Place identity at a useful threshold because recognition can also guide a passenger’s next action.",
+  "strategic_value": "The yellow panel can connect Lufthansa’s accent color with a clear arrival moment.",
+  "demonstration": "A close photograph shows an aircraft door and adjacent yellow panel bearing the crane and bilingual welcome.",
+  "category": "Application",
+  "practical_value": "Check how a small color panel relates to the door hardware and passenger approach.",
+  "content_islands": [
+    {
+      "name": "Door context",
+      "spec": "Keep the handle markings and window visible at left."
+    },
+    {
+      "name": "Welcome panel",
+      "spec": "Place the yellow crane and bilingual words beside the door."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "A close photograph shows an aircraft door and adjacent yellow panel bearing the crane and bilingual welcome.",
+    "Intent": "HvD identifies this photograph as the yellow welcome panel; Mona Franz explains yellow’s orientation role."
+  },
+  "ingredient": {
+    "name": "Welcome panel close-up",
+    "role": "Identify the entrance through a conspicuous color and welcome message.",
+    "application": "Check how a small color panel relates to the door hardware and passenger approach.",
+    "scope": "Historical 2018 Lufthansa airline refresh case study; observed example, not a complete brand manual or a current Lufthansa Group rule."
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "ML01",
+  "title": "Lab monogram and name",
+  "image": "ml01.png",
+  "source": "../sources/ml01.jpg",
+  "location": {
+    "series": "Pentagram / MIT Media Lab / 2014 identity",
+    "item": 1,
+    "extent": "Published lightbox artwork"
+  },
+  "slide_intent": "Give the institution a stable signature so audiences can recognize the whole laboratory across diverse research.",
+  "strategic_value": "A fixed lab mark can accumulate recognition while related group marks express differences.",
+  "demonstration": "A black angular ML monogram sits beside a three-line lowercase name on white.",
+  "category": "Brand",
+  "practical_value": "Evaluate the relationship between a compact symbol and a readable institutional name.",
+  "content_islands": [
+    {
+      "name": "Monogram",
+      "spec": "Thick orthogonal strokes form the left symbol."
+    },
+    {
+      "name": "Name",
+      "spec": "The lowercase name stacks to the right, aligned near the symbol’s lower half."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A black angular ML monogram sits beside a three-line lowercase name on white.",
+    "Intent": "The accompanying Pentagram project text explains that the related glyphs give the institution a stable identity while representing the distinct research groups."
+  },
+  "ingredient": {
+    "name": "Lab monogram and name",
+    "role": "Give the institution a stable signature so audiences can recognize the whole laboratory across diverse research.",
+    "application": "Evaluate the relationship between a compact symbol and a readable institutional name.",
+    "scope": "Observed in this historical case-study artwork; not a mandatory usage rule or a current brand standard."
+  }
+}

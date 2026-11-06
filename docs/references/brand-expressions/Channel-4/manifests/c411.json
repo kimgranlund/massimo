@@ -1,0 +1,30 @@
+{
+  "id": "C411",
+  "title": "Walter Presents transition",
+  "image": "c411.png",
+  "source": "../sources/c411.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 masterbrand / 2023",
+    "item": 11,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Connect a collection to its parent brand through an ordered handoff so the viewer understands both identities.",
+  "strategic_value": "A Channel 4 world between footage and the Walter Presents signature can preserve collection character within the masterbrand.",
+  "demonstration": "The film moves from forest footage and a green 4 into a gradient room, then a Walter Presents panel and a drama shot reflected in a car mirror.",
+  "category": "Motion",
+  "practical_value": "Compare the parent-logo interval with the collection-signature interval.",
+  "content_islands": [
+    {
+      "name": "Programme footage",
+      "spec": "Begin with the forest image, then return to a dramatic scene at the end."
+    },
+    {
+      "name": "Identity handoff",
+      "spec": "Move vertically through the Channel 4 room and Walter Presents panel between those scenes."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The transition connects programme footage, Channel 4 and the Walter Presents collection."
+  },
+  "motion": "../sources/c411.mp4"
+}

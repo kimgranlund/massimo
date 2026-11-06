@@ -1,0 +1,31 @@
+{
+  "id": "DB0508",
+  "title": "Volle Transparenz",
+  "image": "db0508.png",
+  "source": "../sources/page-05.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 5,
+    "section": 8,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Unsere-Markenpersoenlichkeit"
+  },
+  "slide_intent": "Expose status and causes so people can understand problems as well as improvements.",
+  "strategic_value": "A clear account of delays and disruption can support DB’s stated commitment to honesty.",
+  "demonstration": "A dark text panel introduces transparency beside a route-status dashboard and two explanatory web-page examples.",
+  "category": "Application",
+  "practical_value": "Choose a dashboard or explanatory story when users need causes and current conditions.",
+  "content_islands": [
+    {
+      "name": "Transparency statement",
+      "spec": "Place the direct-communication rationale in the dark left panel."
+    },
+    {
+      "name": "Status and stories",
+      "spec": "Group the route map, weather-impact page and weather-development page to its right."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text explicitly includes problems and setbacks and calls for explaining causes and relationships.",
+    "Application": "The examples show a status dashboard and explanatory digital stories."
+  }
+}

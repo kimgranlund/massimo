@@ -1,0 +1,39 @@
+{
+  "id": "HE054",
+  "title": "Closing credits",
+  "image": "he054.png",
+  "source": "../sources/visual-storytelling.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Closing credits",
+    "order": 74,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/visual-storytelling#closing-credits",
+    "original_html": "../sources/visual-storytelling.html"
+  },
+  "slide_intent": "Make credits readable as a separate closing unit so contributors can be identified without competing imagery.",
+  "strategic_value": "A consistent color-backed credits treatment can give Helsinki productions a clear and orderly ending.",
+  "demonstration": "This expanded webpage-section capture places a centered blue credits specimen beside guidance on background, alignment and Regular/Bold role separation.",
+  "category": "Typography",
+  "practical_value": "Separate titles and names by font weight and use a color background for the credits.",
+  "content_islands": [
+    {
+      "name": "Credits specimen",
+      "spec": "Place the blue field with centered white lines at left."
+    },
+    {
+      "name": "Role and spacing notes",
+      "spec": "Place the legibility reason, weight separation and template dimensions alongside."
+    }
+  ],
+  "ingredient": {
+    "name": "Closing credits",
+    "role": "Identify contributors legibly.",
+    "application": "Use a color background and centered text with Regular/Bold role separation.",
+    "scope": "Closing credits; adjacent template uses 100 px text and 120 px line spacing, centered in both directions."
+  },
+  "reference_purposes": {
+    "Intent": "The text explicitly requires a color background for legibility.",
+    "Application": "It separates titles and names with Helsinki Grotesk Regular and Bold.",
+    "Constraint": "Closing credits are always placed on a color background and centered horizontally."
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "BK045",
+  "title": "Logo Minimum Sizes",
+  "image": "bk045.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 45
+  },
+  "slide_intent": "Set size thresholds per asset because a complete logo, a wordmark and an abbreviation lose legibility at different scales.",
+  "strategic_value": "Separate thresholds can keep Burger King recognizable without asking one asset to work below its useful size.",
+  "demonstration": "Three small specimens compare the small-use logo, wordmark and favicon, each with print-width and digital-width recommendations.",
+  "category": "Geometry",
+  "practical_value": "Choose the appropriate asset and retain its stated minimum width; remove registration from the primary logo or wordmark at minimum size.",
+  "content_islands": [
+    {
+      "name": "Minimum-size rationale",
+      "spec": "Place the legibility explanation and registration exception at left."
+    },
+    {
+      "name": "Asset comparison",
+      "spec": "Arrange the small-use primary logo, wordmark and favicon across the right, each directly above its dimensional caption."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source says minimum sizes protect impact and legibility; registration becomes too small to read at the minimum logo or wordmark size.",
+    "Application": "Recommended widths are logo 0.5 inch/40 pixels, wordmark 1.25 inch/90 pixels, and favicon 0.1875 inch/17.5 pixels.",
+    "Constraint": "Remove the registration mark from the primary logo and wordmark when used at minimum size."
+  },
+  "ingredient": {
+    "name": "Minimum identity sizes",
+    "role": "Preserve recognition and readable detail at small scales.",
+    "application": "Use recommended widths of 0.5 inch or 40 pixels for the small-use logo, 1.25 inch or 90 pixels for the wordmark, and 0.1875 inch or 17.5 pixels for the favicon.",
+    "scope": "Historical guide; these are width recommendations, not heights. Registration removal applies to primary logo and wordmark at minimum size; approval requirements remain."
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "BK073",
+  "title": "Flame Bold Caps Usage",
+  "image": "bk073.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 73
+  },
+  "slide_intent": "Limit emphatic uppercase treatments to short messages so their visual force does not make longer reading tiring.",
+  "strategic_value": "The large two-line all-caps example can give Burger King a strong announcement voice within a controlled exception to ordinary setting.",
+  "demonstration": "ALL CAPS HEADLINE appears in two large cream lines on red beside the three-word limit and 75% leading rule.",
+  "category": "Typography",
+  "practical_value": "Use the uppercase exception only for an eligible short headline and set its leading from the stated percentage.",
+  "content_islands": [
+    {
+      "name": "Caps rule",
+      "spec": "Place the compact usage guidance at upper left."
+    },
+    {
+      "name": "Headline specimen",
+      "spec": "Fill the lower-right area with the two-line uppercase example."
+    }
+  ],
+  "ingredient": {
+    "name": "Flame Bold all-caps headline",
+    "role": "Create concentrated emphasis for a short message.",
+    "application": "Use for specific layouts of three words or fewer; set headline leading to 75% of point size.",
+    "scope": "Historical 2020 partner guidelines, PDF produced January 2021. An optional short-message treatment, not the default for all copy."
+  },
+  "reference_purposes": {
+    "Expression": "The enlarged all-caps specimen shows the emphatic Flame Bold treatment.",
+    "Application": "The specimen demonstrates a three-word all-caps headline.",
+    "Constraint": "The page permits all-caps Flame Bold for specific layouts with three words or fewer and sets leading at 75% of point size."
+  }
+}

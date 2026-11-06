@@ -1,0 +1,36 @@
+{
+  "id": "ML20",
+  "title": "Group glyph print pieces",
+  "image": "ml20.png",
+  "source": "../sources/ml20.jpg",
+  "location": {
+    "series": "Pentagram / MIT Media Lab / 2014 identity",
+    "item": 20,
+    "extent": "Published lightbox artwork"
+  },
+  "slide_intent": "Allow a group symbol to lead a compact object because family identity can survive a shift in the specific mark.",
+  "strategic_value": "A common black-and-white treatment can link different group identities.",
+  "demonstration": "Overlapping black printed rectangles carry large white angular glyphs and small labels.",
+  "category": "Brand",
+  "practical_value": "Compare symbol dominance with the minimum space needed for a group name.",
+  "content_islands": [
+    {
+      "name": "Glyph faces",
+      "spec": "Large white geometric marks occupy the black pieces."
+    },
+    {
+      "name": "Small labels",
+      "spec": "Fine white type identifies the groups near the edges."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Overlapping black printed rectangles carry large white angular glyphs and small labels.",
+    "Application": "Overlapping black printed rectangles carry large white angular glyphs and small labels."
+  },
+  "ingredient": {
+    "name": "Group glyph print pieces",
+    "role": "Allow a group symbol to lead a compact object because family identity can survive a shift in the specific mark.",
+    "application": "Compare symbol dominance with the minimum space needed for a group name.",
+    "scope": "Observed in this historical case-study artwork; not a mandatory usage rule or a current brand standard."
+  }
+}

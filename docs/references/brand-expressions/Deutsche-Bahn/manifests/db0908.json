@@ -1,0 +1,38 @@
+{
+  "id": "DB0908",
+  "title": "Werbliche Kommunikation",
+  "image": "db0908.png",
+  "source": "../sources/page-09.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 9,
+    "section": 8,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Typografie_neu"
+  },
+  "slide_intent": "Reserve the most forceful typography for brief messages so emphasis remains readable.",
+  "strategic_value": "Head Extra Wide can give DB campaigns presence while Sans supports longer reading.",
+  "demonstration": "Explanatory copy precedes Head Extra Wide, Head Black and Sans specimens, with qualifications for uppercase text and color.",
+  "category": "Typography",
+  "practical_value": "Use Extra Wide only for very short marketing headlines; use Sans Regular for body text and Bold for emphasis.",
+  "content_islands": [
+    {
+      "name": "Advertising guidance",
+      "spec": "Place the scope and color qualifications above the specimens."
+    },
+    {
+      "name": "Type pairing",
+      "spec": "Pair headline weights at left with Sans reading weights at right."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The copy links Extra Wide to maximum presence and attention.",
+    "Application": "It assigns Sans Regular to body copy and Bold to highlights.",
+    "Constraint": "Extra Wide and all capitals are limited to short marketing headlines; departures from black require coordination with the Brand Service Desk."
+  },
+  "ingredient": {
+    "name": "DB Neo Head Extra Wide",
+    "role": "Give short promotional statements strong presence.",
+    "application": "Reserve it for very short advertising headlines; use standard body families for reading.",
+    "scope": "Official DB new-design website captured 2026-11-05; edition date unstated. Large expressive headlines may use Cold Black; gray is restricted to graphical type use and color departures require coordination."
+  }
+}

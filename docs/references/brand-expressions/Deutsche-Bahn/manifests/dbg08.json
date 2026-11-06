@@ -1,0 +1,32 @@
+{
+  "id": "DBG08",
+  "title": "Logozusatz / Horizontal centered",
+  "image": "dbg08.png",
+  "source": "../sources/media/8fc9b62583d0-Bild_08-data.gif",
+  "location": {
+    "series": "DB new design / original GIF demonstrations",
+    "source_page": 15,
+    "section": 6,
+    "url": "https://marketingportal.extranet.deutschebahn.com/resource/blob/14025288/c4c769ecb4510c6e470521640b9227ae/Bild_08-data.gif"
+  },
+  "slide_intent": "Sequence the parent mark before the business descriptor so viewers understand who speaks and which part of the organization is involved.",
+  "strategic_value": "A stable DB signature followed by a suffix can preserve masterbrand recognition in a specific business context.",
+  "demonstration": "The red DB logo resolves, then the black Zusatz descriptor appears to its right in a centered horizontal lockup.",
+  "category": "Motion",
+  "practical_value": "Compare this centered lockup with the left-aligned and vertical variants for the available composition.",
+  "content_islands": [
+    {
+      "name": "Parent mark",
+      "spec": "Reveal the red DB mark first."
+    },
+    {
+      "name": "Business descriptor",
+      "spec": "Keep the black Zusatz text subordinate to the DB mark and reveal it after the mark."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The source presents this arrangement as a business/product suffix variant.",
+    "Constraint": "The accompanying text permits the suffix when communication relates exclusively to a particular business or product area."
+  },
+  "motion": "../sources/media/dbg08.mp4"
+}

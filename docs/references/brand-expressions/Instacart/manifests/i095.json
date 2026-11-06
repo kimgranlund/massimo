@@ -1,0 +1,25 @@
+{
+  "id": "I095",
+  "title": "Add to Cart",
+  "image": "i095.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 95,
+    "printed_page": 101
+  },
+  "slide_intent": "Show how a small brand device can mark a control while the product image holds the buyer’s attention.",
+  "strategic_value": "The carrot silhouette can make an Instacart interaction recognizable within a product-led screen.",
+  "demonstration": "A cropped phone mockup pairs an avatar and a dark pill-shaped carrot control with a large beverage can on a cream field. The printed title identifies this as an add-to-cart example.",
+  "category": "Application",
+  "practical_value": "Use the still to judge control placement and emphasis. An add transition or its duration would require a moving source.",
+  "content_islands": [
+    {
+      "name": "Guide label",
+      "spec": "Place Add to Cart in the upper-left margin above the screen crop."
+    },
+    {
+      "name": "Product screen",
+      "spec": "Crop into the top of the phone. Keep the avatar left, the dark control right and the large product image beneath them."
+    }
+  ]
+}

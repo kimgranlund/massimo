@@ -1,0 +1,27 @@
+{
+  "id": "HX22",
+  "title": "Waterfront trail information board",
+  "image": "hx22.png",
+  "source": "../sources/visual-storytelling.offline.html",
+  "location": {
+    "series": "Web guideline introduction/component",
+    "order": 78,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/visual-storytelling",
+    "original_html": "../sources/visual-storytelling.html"
+  },
+  "slide_intent": "Place geographic guidance in the environment because people need orientation at the point of travel.",
+  "strategic_value": "The yellow wave header and map arrangement can connect Helsinki waterfront guidance to the city identity.",
+  "demonstration": "This webpage photograph shows a long waterfront information board with multilingual text, a yellow wave-edged header and two blue maps, set against a harbor.",
+  "category": "Application",
+  "practical_value": "Compare map prominence and multilingual explanation at a real outdoor information point.",
+  "content_islands": [
+    {
+      "name": "Waterfront board",
+      "spec": "Retain the full board, harbor context and caption identifying trail use."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The caption places the maps on information boards along the waterfront trail.",
+    "Expression": "The board combines a yellow wave boundary, typography and blue map graphics."
+  }
+}

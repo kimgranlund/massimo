@@ -1,0 +1,41 @@
+{
+  "id": "CH24",
+  "title": "Consistent and grounded / Playful and expressive",
+  "image": "ch24.png",
+  "source": "../sources/ch24.jpg",
+  "location": {
+    "series": "COLLINS / Mailchimp case study",
+    "item": 24,
+    "extent": "Complete published artwork",
+    "section": "Gallery"
+  },
+  "slide_intent": "Distinguish stable identifiers from flexible expression because recognition and variety require different kinds of control.",
+  "strategic_value": "Stable logo, palette and type can let Mailchimp vary illustration and photography without losing its identity.",
+  "demonstration": "Two alternating text-and-image groups contrast regular geometric faces with irregular faces; the copy distinguishes structural and flexible brand elements.",
+  "category": "Brand",
+  "practical_value": "Decide which elements provide continuity and which can carry variation.",
+  "content_islands": [
+    {
+      "name": "Structural group",
+      "spec": "Place the upper-left explanation opposite the regular shape faces."
+    },
+    {
+      "name": "Expressive group",
+      "spec": "Place the irregular faces at lower left opposite the second explanation."
+    },
+    {
+      "name": "Navigation",
+      "spec": "Retain the website header as the applied context."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The visible text explains that structural elements support recognition while flexible media broaden expression.",
+    "Application": "The page assigns logo, palette and typography a different role from illustration, animation and photography."
+  },
+  "ingredient": {
+    "name": "Stable and flexible elements",
+    "role": "Maintain recognition while allowing emotional range.",
+    "application": "Use the source’s distinction between structural identifiers and flexible image media when planning variation.",
+    "scope": "Role distinction stated in this historical website example; no mandatory proportions or numerical limits."
+  }
+}

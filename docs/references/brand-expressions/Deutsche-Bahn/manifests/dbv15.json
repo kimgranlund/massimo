@@ -1,0 +1,36 @@
+{
+  "id": "DBV15",
+  "title": "Type_Primary-left",
+  "image": "dbv15.png",
+  "source": "../sources/media/dbv15.mp4",
+  "location": {
+    "series": "DB new design / motion demonstrations",
+    "source_page": 15,
+    "section": "Animation-14021536",
+    "source_url": "https://ecm-mediathek-cdn.deutschebahn.com/cdnenhancedecmvidhls/db306409/2880877/video_config.json",
+    "capture_date": "2026-11-05",
+    "note": "The adjacent page caption does not reliably describe this embedded file. This manifest follows the inspected video and its file title; broader typography rules come from the surrounding prose. Adjacent caption: Klicken, um das folgende Video zu überspringen Ende des oberhalb befindlichen Videos Gesamter Textblock zentriert"
+  },
+  "slide_intent": "Stage a headline without sacrificing reading order so people can grasp it while it moves.",
+  "strategic_value": "The restrained two-line entrance can give DB headlines energy while preserving their strong typographic hierarchy.",
+  "demonstration": "A bold left-aligned two-line headline appears, holds, and departs on a pale field.",
+  "category": "Motion",
+  "practical_value": "Choose a left-aligned headline sequence when a stable left edge anchors the layout.",
+  "content_islands": [
+    {
+      "name": "Headline entrance",
+      "spec": "Reveal the two lines from their shared left edge."
+    },
+    {
+      "name": "Reading interval",
+      "spec": "Hold the full headline before its departure."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A bold left-aligned two-line headline appears, holds, and departs on a pale field.",
+    "Application": "The source provides a playable demonstration of this repeatable sequence: A bold left-aligned two-line headline appears, holds, and departs on a pale field.",
+    "Intent": "Accompanying Typografie prose prioritizes legibility and uses simple staggered line movement to keep text lively and clear.",
+    "Constraint": "The source prioritizes legibility when animating typography."
+  },
+  "motion": "../sources/media/dbv15.mp4"
+}

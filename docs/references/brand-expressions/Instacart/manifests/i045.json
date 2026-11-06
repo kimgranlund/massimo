@@ -1,0 +1,25 @@
+{
+  "id": "I045",
+  "title": "Photography",
+  "image": "i045.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 45,
+    "printed_page": 45
+  },
+  "slide_intent": "Signal the shift from letterforms to photographs so readers can approach the next pages as a distinct set of image-making decisions.",
+  "strategic_value": "The recurring green chapter opener can keep the photography chapter visibly connected to the rest of the identity book.",
+  "demonstration": "A large pale Photography title sits on a dark green field with small running metadata.",
+  "category": "Imagery",
+  "practical_value": "Use this divider when organizing photography guidance as a chapter; the next page introduces the actual criteria for selecting pictures.",
+  "content_islands": [
+    {
+      "name": "Chapter heading",
+      "spec": "Set Photography in large light display type at upper left on a full green canvas."
+    },
+    {
+      "name": "Running metadata",
+      "spec": "Leave the book identifier, version and folio small along the top edge and preserve the open lower field."
+    }
+  ]
+}

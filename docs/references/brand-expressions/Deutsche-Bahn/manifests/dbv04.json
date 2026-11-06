@@ -1,0 +1,35 @@
+{
+  "id": "DBV04",
+  "title": "Filled",
+  "image": "dbv04.png",
+  "source": "../sources/media/dbv04.mp4",
+  "location": {
+    "series": "DB new design / motion demonstrations",
+    "source_page": 11,
+    "section": "Animation-14019334",
+    "source_url": "https://ecm-mediathek-cdn.deutschebahn.com/cdnenhancedecmvidhls/db306182/2880475/video_config.json",
+    "capture_date": "2026-11-05"
+  },
+  "slide_intent": "Make a selection visible through a change in fill so a person can recognize a persistent state.",
+  "strategic_value": "The outline-to-solid heart can make DB interaction feedback visible without adding another symbol.",
+  "demonstration": "A heart outline fills dark, holds, and returns to an outline.",
+  "category": "Motion",
+  "practical_value": "Compare filled and outline treatments for a binary state transition.",
+  "content_islands": [
+    {
+      "name": "Outline heart",
+      "spec": "Center a dark contour on the pale field."
+    },
+    {
+      "name": "Filled state",
+      "spec": "Fill the same silhouette, then restore the contour."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A heart outline fills dark, holds, and returns to an outline.",
+    "Application": "The source provides a playable demonstration of this repeatable sequence: A heart outline fills dark, holds, and returns to an outline.",
+    "Intent": "Accompanying Icons, Signature Graphics, or Animation im UI prose explains that animation directs focus, makes relationships understandable, and adds expression.",
+    "Constraint": "The accompanying guidance says animation is deliberate and never disturbing or complex."
+  },
+  "motion": "../sources/media/dbv04.mp4"
+}

@@ -1,0 +1,39 @@
+{
+  "id": "DW121",
+  "title": "Illustration / Characters / Eyes",
+  "image": "dw121.png",
+  "source": "../sources/pages/illustration-characters.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/illustration/characters",
+    "section": "Eyes",
+    "item": 121,
+    "order": 1210
+  },
+  "slide_intent": "Choose a clear geometric eye style that suits the character’s viewing scale so expression remains readable.",
+  "strategic_value": "A small family of eye treatments can give Duolingo’s cast visual variety while maintaining a common illustration language.",
+  "demonstration": "Five labeled heads show Round, Glasses, Almond, Linear and Dots eye styles, with an asterisk on Dots and guidance at right.",
+  "category": "Imagery",
+  "practical_value": "Select an eye treatment by character and intended scale; reserve dot eyes for characters that always appear small.",
+  "content_islands": [
+    {
+      "name": "Eye-style family",
+      "spec": "Arrange three labeled heads in the top row and two below at left; retain the Dots asterisk."
+    },
+    {
+      "name": "Style and scale conditions",
+      "spec": "Place the Eyes heading, geometric-style instruction and dot-eye footnote at right."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Five distinct eye treatments show a consistent geometric family.",
+    "Application": "The labeled specimens provide a choice of treatments for character design.",
+    "Constraint": "The source permits other geometric styles but excludes ovals; dot eyes are only recommended for a character that always appears at small scale."
+  },
+  "ingredient": {
+    "name": "Geometric eye styles",
+    "role": "Keep facial expression recognizable at the intended scale.",
+    "application": "Choose among the displayed eye families or explore other geometric styles; avoid ovals and use dot eyes only when the character always appears small.",
+    "scope": "Historical official Duolingo illustration guidance from the 2024–2025 archived snapshot. The five styles are the main families, not an exhaustive permitted list. Dot eyes carry a recommendation tied to persistent small-scale use."
+  }
+}

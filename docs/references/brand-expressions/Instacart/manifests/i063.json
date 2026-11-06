@@ -1,0 +1,24 @@
+{
+  "id": "I063",
+  "title": "Illustration Anatomy",
+  "image": "i063.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 63
+  },
+  "slide_intent": "Derive curves and corners from an existing symbol so a new figure feels related even when the subject changes.",
+  "strategic_value": "Instacart can extend the geometry of the carrot into figures, clothing and objects without repeating the entire mark.",
+  "demonstration": "The green and orange symbol stands beside an illustrated figure carrying groceries. Fine callouts identify round geometry and sharp corners on the illustration.",
+  "category": "Geometry",
+  "practical_value": "Compare the silhouette of a new figure with the symbol, then choose where a rounded contour or a sharp turn should articulate the pose.",
+  "content_islands": [
+    {
+      "name": "Geometric reference",
+      "spec": "Set the brief at left and isolate the Instacart symbol below it with room around the outline."
+    },
+    {
+      "name": "Annotated figure",
+      "spec": "Give the right side to the person carrying goods. Attach fine blue leaders to the round detail near the hand and to a sharp detail near the foot."
+    }
+  ]
+}

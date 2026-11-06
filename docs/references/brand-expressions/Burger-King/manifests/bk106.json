@@ -1,0 +1,38 @@
+{
+  "id": "BK106",
+  "title": "Applying the Primary Stripes",
+  "image": "bk106.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 106
+  },
+  "slide_intent": "Use a distinctive graphic selectively so it remains meaningful when people encounter it in different media.",
+  "strategic_value": "The same stripe artwork on a social post and a poster can connect Burger King communications without making every surface identical.",
+  "demonstration": "A brief warning against overuse sits beside an angled Instagram phone mockup and a portrait poster, both using the ingredient stripes.",
+  "category": "Application",
+  "practical_value": "Compare a message-bearing social post with a nearly image-only poster when deciding where the primary stripes contribute.",
+  "content_islands": [
+    {
+      "name": "Application note",
+      "spec": "Place the short instruction to avoid overuse at left."
+    },
+    {
+      "name": "Social example",
+      "spec": "Show the angled phone with stripes behind a food-related headline."
+    },
+    {
+      "name": "Poster example",
+      "spec": "Place the stripe-only portrait poster beside the phone, with a small mark near its lower edge."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The page applies the primary stripes to a social post and poster.",
+    "Constraint": "The copy asks designers to be thoughtful about applications and avoid overuse; it gives no frequency quota."
+  },
+  "ingredient": {
+    "name": "Primary stripes in communications",
+    "role": "Connect selected messages through an ingredient-derived motif.",
+    "application": "Choose applications thoughtfully and avoid overuse.",
+    "scope": "Historical guide; social and poster examples illustrate use, not an exhaustive list of permitted media."
+  }
+}

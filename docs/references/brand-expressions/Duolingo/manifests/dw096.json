@@ -1,0 +1,39 @@
+{
+  "id": "DW096",
+  "title": "Writing / Style / Don't capitalize",
+  "image": "dw096.png",
+  "source": "../sources/pages/writing-style.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/style",
+    "section": "Don't capitalize",
+    "item": 96,
+    "order": 960
+  },
+  "slide_intent": "Leave ordinary product vocabulary in lowercase so common activities do not acquire unnecessary formality.",
+  "strategic_value": "Contrasting generic terms with the preceding naming chart can help Duolingo keep its language approachable.",
+  "demonstration": "Four groups list earned items, non-specific course parts, UI/UX terms and content items, with lowercase examples.",
+  "category": "Voice",
+  "practical_value": "Determine whether the word is a generic reference rather than the proper name of a feature.",
+  "content_islands": [
+    {
+      "name": "Guidance column",
+      "spec": "Place the Don’t Capitalize heading and approachability rationale at left."
+    },
+    {
+      "name": "Worked examples",
+      "spec": "Arrange four category groups at right; retain the examples that use lowercase stories and achievements generically."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source explicitly links lowercase treatment with approachability.",
+    "Application": "The chart demonstrates lowercase terms in example sentences.",
+    "Constraint": "Earned items, non-specific course parts, generic UI/UX references and individual content items remain lowercase in the displayed contexts."
+  },
+  "ingredient": {
+    "name": "Lowercase generic product terms",
+    "role": "Keep everyday activities and objects approachable.",
+    "application": "Use lowercase for generic earned items, course parts, UI/UX references and content items.",
+    "scope": "Historical official guidelines from the 2024–2025 archived snapshot; this records the displayed guidance, not current Duolingo product behavior. The same word can be capitalized as a feature name elsewhere; preserve the chart’s generic-versus-named distinction."
+  }
+}

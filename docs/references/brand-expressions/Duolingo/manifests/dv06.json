@@ -1,0 +1,41 @@
+{
+  "id": "DV06",
+  "title": "Typography / Nunito / Gray variant",
+  "image": "dv06.png",
+  "source": "../sources/pages/dv06.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/identity/typography",
+    "section": "Substitute font, Nunito",
+    "selected_control_index": 6,
+    "related_default": "DW029",
+    "order": 291
+  },
+  "slide_intent": "Provide a related fallback voice because brand communication still needs coherence when proprietary fonts are unavailable.",
+  "strategic_value": "Gray Nunito specimens can help Duolingo contributors choose a practical rounded substitute in ordinary documents.",
+  "demonstration": "Four neutral Nunito weights sit beside the conditional substitution rationale and Google Fonts link.",
+  "category": "Typography",
+  "practical_value": "Use the substitute under the stated font-access condition and compare its weights for the document.",
+  "content_islands": [
+    {
+      "name": "Alternate color specimen",
+      "spec": "Stack the four gray specimens on the pale field and keep the selected gray control below."
+    },
+    {
+      "name": "Fallback condition",
+      "spec": "Place the heading, access condition, visual rationale and font link in the right column."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source explains the choice through rounded caps and visual similarities to DIN Next Rounded.",
+    "Application": "Nunito is specified when the brand fonts are inaccessible.",
+    "Constraint": "The fallback is conditional on lack of access to the brand fonts.",
+    "Expression": "Four neutral Nunito weights sit beside the conditional substitution rationale and Google Fonts link."
+  },
+  "ingredient": {
+    "name": "Nunito fallback",
+    "role": "Preserve a related voice when primary fonts are unavailable.",
+    "application": "Use Nunito when the brand fonts cannot be accessed.",
+    "scope": "Historical archived guidelines. Historical fallback guidance; it is not an interchangeable primary font choice."
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "BK057",
+  "title": "Flame Grilling Since 1954",
+  "image": "bk057.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 57
+  },
+  "slide_intent": "Give a heritage statement a stable form so its repeated use becomes recognizable rather than incidental copy.",
+  "strategic_value": "The fixed line can connect Burger King’s cooking method with its long-standing identity.",
+  "demonstration": "One pale horizontal Flame Grilling Since 1954 lockup appears on brown beside usage guidance.",
+  "category": "Typography",
+  "practical_value": "Use the supplied configuration for restaurant signage while retaining the paragraph-copy exception.",
+  "content_islands": [
+    {
+      "name": "Heritage-lockup guidance",
+      "spec": "Place the configuration instruction and restaurant-signage example at left."
+    },
+    {
+      "name": "Signature specimen",
+      "spec": "Place the long pale phrase at right, labeled restaurant signage only with no registration."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The rounded heavy lettering gives the heritage phrase the same visual voice as other signatures.",
+    "Application": "The source identifies restaurant signage as an example use.",
+    "Constraint": "The phrase always uses this configuration except inside a paragraph of copy."
+  },
+  "ingredient": {
+    "name": "Flame Grilling Since 1954 lockup",
+    "role": "Connect the cooking-method statement with brand heritage.",
+    "application": "Keep the supplied horizontal configuration for signature use.",
+    "scope": "Historical guide; paragraph copy is excepted, and the shown asset is captioned for restaurant signage without registration."
+  }
+}

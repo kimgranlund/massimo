@@ -1,0 +1,30 @@
+{
+  "id": "DB11",
+  "title": "Illuminated architectural symbol",
+  "image": "db11.png",
+  "source": "../sources/db11.jpg",
+  "location": {
+    "series": "COLLINS / Dropbox / 2017 identity case study",
+    "item": 11,
+    "section": "Gallery",
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Test a flat mark as a physical object because material and lighting change how its edges are perceived.",
+  "strategic_value": "A glowing diamond assembly can extend Dropbox recognition into an interior space.",
+  "demonstration": "A dark diamond symbol glows against a deep green wall framed by pink architectural surfaces.",
+  "category": "Application",
+  "practical_value": "Judge the mark’s silhouette and separation when lighting supplies contrast.",
+  "content_islands": [
+    {
+      "name": "Wall sign",
+      "spec": "Center the illuminated symbol on the green wall."
+    },
+    {
+      "name": "Architectural setting",
+      "spec": "Retain pink surrounds, floor and light spill to show the physical installation."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "A dark diamond symbol glows against a deep green wall framed by pink architectural surfaces."
+  }
+}

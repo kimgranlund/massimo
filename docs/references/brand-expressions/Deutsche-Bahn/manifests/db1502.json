@@ -1,0 +1,30 @@
+{
+  "id": "DB1502",
+  "title": "Motion Branding / Campaign and logo overview",
+  "image": "db1502.png",
+  "source": "../sources/page-15.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 15,
+    "section": 2,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Motion-Branding"
+  },
+  "slide_intent": "Show how movement can link a person to the sender so an expressive scene remains identifiable.",
+  "strategic_value": "Pairing a traveler with the DB mark can connect human experience and institutional recognition.",
+  "demonstration": "Two adjacent animated artworks show an travel scene with the red Schwelle and the red DB logo on white. This PNG records their captured still states.",
+  "category": "Motion",
+  "practical_value": "Compare photographic brand expression with the simpler signature treatment; use the separately preserved GIF films to inspect timing.",
+  "content_islands": [
+    {
+      "name": "Travel scene",
+      "spec": "Place the person and station setting on the left with the red Schwelle along the lower edge."
+    },
+    {
+      "name": "Signature",
+      "spec": "Place the red DB mark on a white field at right."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The paired artwork combines traveler imagery, a red Schwelle and the red DB signature."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "id": "BK040",
+  "title": "Primary Logo with Background and Wordmark",
+  "image": "bk040.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 40
+  },
+  "slide_intent": "Coordinate signs with different shapes so people recognize the same destination from frontal and side views.",
+  "strategic_value": "The horizontal wordmark and projecting logo can reinforce Burger King identification across an urban storefront.",
+  "demonstration": "A night storefront combines a large pale horizontal wordmark over the entrance, red fascia lighting and backed burger-logo signs at the sides.",
+  "category": "Application",
+  "practical_value": "Compare how a fascia wordmark and projecting logo share identification duties.",
+  "content_islands": [
+    {
+      "name": "Fascia identity",
+      "spec": "Place the wide wordmark above the glass storefront with the red light strip beneath."
+    },
+    {
+      "name": "Projecting signs",
+      "spec": "Retain the backed logo at the left edge and the more distant sign at right to show side-facing identification."
+    },
+    {
+      "name": "Entrance context",
+      "spec": "Keep the windows, doorway and lit interior visible below the signs."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Light lettering, red illumination and the burger logo form a coordinated storefront identity.",
+    "Application": "The photograph combines a horizontal fascia wordmark with projecting backed logos."
+  }
+}

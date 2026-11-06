@@ -1,0 +1,42 @@
+{
+  "id": "CH25D",
+  "title": "Cavendish Yellow / Color Palette",
+  "image": "ch25d.png",
+  "source": "../sources/ch25.gif",
+  "location": {
+    "series": "COLLINS / Mailchimp case study",
+    "item": 25,
+    "extent": "Complete photographed spread from one GIF frame",
+    "section": "Gallery",
+    "frame": 4
+  },
+  "slide_intent": "Give a primary color a defined role because repeated use can create recognition while supporting colors allow variety.",
+  "strategic_value": "Cavendish Yellow can connect Mailchimp’s humor and optimism with a recognizable identity across applications.",
+  "demonstration": "A yellow left page explains the hero color and prints its values; a three-column, five-row palette of named swatches occupies the right page.",
+  "category": "Color",
+  "practical_value": "Distinguish hero-color intent from palette membership without inventing usage ratios.",
+  "content_islands": [
+    {
+      "name": "Rationale and values",
+      "spec": "Place the large rationale above the small Cavendish specifications on the yellow left page."
+    },
+    {
+      "name": "Palette",
+      "spec": "Arrange fifteen named swatches in three columns on the right page."
+    },
+    {
+      "name": "Folio",
+      "spec": "Retain printed folio 64 and Version 1.0 footer."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The visible copy connects yellow with optimism, humor, consistency and accumulated recognition.",
+    "Application": "The spread establishes yellow as the hero color and permits pairing it with a secondary system."
+  },
+  "ingredient": {
+    "name": "Cavendish Yellow",
+    "role": "Provide the primary point of color recognition.",
+    "application": "Use yellow where clear brand recognition matters, pairing it with secondary colors for flexibility as the source explains.",
+    "scope": "Historical Version 1.0 excerpt. No ratio is given. The photographed values read RGB 255/224/27, HEX #FFE01B, CMYK 2/8/96/0 and PMS 108 C / 108 U; other case-study assets use slightly different yellow pixels, so do not sample them as the printed specification."
+  }
+}

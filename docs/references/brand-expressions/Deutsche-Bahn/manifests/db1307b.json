@@ -1,0 +1,31 @@
+{
+  "id": "DB1307B",
+  "title": "Text auf Bild / tonal-support layers",
+  "image": "db1307b.png",
+  "source": "../sources/db1307b-page.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 13,
+    "section": 7,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Layout"
+  },
+  "slide_intent": "Inspect the tonal support separately so the designer understands what makes overlaid text readable.",
+  "strategic_value": "A restrained overlay can support DB headlines without introducing an unrelated panel style.",
+  "demonstration": "The three sliders are moved to expose the tonal-support artwork: local darkening, a dark gradient and a light gradient with text and identity elements.",
+  "category": "Layout",
+  "practical_value": "Compare the shape and strength of each support layer before evaluating it on a photograph.",
+  "content_islands": [
+    {
+      "name": "Reference images",
+      "spec": "Retain the introductory light/dark photo examples."
+    },
+    {
+      "name": "Support layers",
+      "spec": "Stack the three exposed overlay states beneath their option headings, preserving the text and brand marks."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The slider endpoint exposes the overlay artwork used for three text-on-image treatments.",
+    "Constraint": "The accompanying source retains its accessibility targets and calls the gradient support subtle."
+  }
+}

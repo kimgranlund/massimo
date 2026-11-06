@@ -1,0 +1,28 @@
+{
+  "id": "N45",
+  "title": "NASA Signs",
+  "image": "n45.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 45
+  },
+  "slide_intent": "Teach designers to plan exterior signs as a sequence of decisions along a visitor’s route. A driver approaching the site needs a different message and viewing distance from someone looking for a particular door.",
+  "strategic_value": "NASA can use consistent type and alignment across a facility while allowing the size, material and amount of information to follow each sign’s job.",
+  "demonstration": "A landscape sheet separates exterior identification from exterior information. Site and building signs share the page with arrows, a map, a parking sign and access warnings.",
+  "category": "Application",
+  "practical_value": "Map the trip from arrival to destination, then test a sign mockup at its intended viewing distance before specifying its material or mounting.",
+  "content_islands": [
+    {
+      "name": "Planning principles",
+      "spec": "Across the top, explain message brevity, viewing distance, site conditions and flush-left typography."
+    },
+    {
+      "name": "Exterior identification",
+      "spec": "Group a–d in a horizontal band. Compare the freestanding site sign, the wall-mounted identifier, the modular contractor sign and separate letters fixed to a building."
+    },
+    {
+      "name": "Exterior information",
+      "spec": "Below the dividing rule, align the numbered illustrations with their notes. Show arrows, map, parking and safety messages at sizes suited to their different uses."
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "id": "DW090",
+  "title": "Writing / Style / Phone numbers",
+  "image": "dw090.png",
+  "source": "../sources/pages/writing-style.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/style",
+    "section": "Phone numbers",
+    "item": 90,
+    "order": 900
+  },
+  "slide_intent": "Give phone numbers a consistent visible structure so readers can group and copy the digits easily.",
+  "strategic_value": "A single accepted pattern can help Duolingo avoid inconsistent punctuation in contact details.",
+  "demonstration": "A checked phone-number example uses three digit groups separated by hyphens.",
+  "category": "Voice",
+  "practical_value": "Use the displayed hyphenated pattern for the guide’s phone-number convention.",
+  "content_islands": [
+    {
+      "name": "Guidance column",
+      "spec": "Place the topic heading, its parent label and the written convention in the narrow left column."
+    },
+    {
+      "name": "Worked examples",
+      "spec": "Place the worked copy in the pale right panel, keeping preference labels and green checks with their examples."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The displayed example is 555-123-4567; it illustrates the stated punctuation convention without defining international numbering rules.",
+    "Constraint": "Use hyphens only, without parentheses."
+  },
+  "ingredient": {
+    "name": "Phone numbers convention",
+    "role": "Readers can group and copy the digits easily.",
+    "application": "Use hyphens only, without parentheses.",
+    "scope": "Historical official guidelines from the 2024–2025 archived snapshot; this records the displayed guidance, not current Duolingo product behavior."
+  }
+}

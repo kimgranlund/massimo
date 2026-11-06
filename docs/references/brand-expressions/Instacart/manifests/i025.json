@@ -1,0 +1,24 @@
+{
+  "id": "I025",
+  "title": "Core Color Palette",
+  "image": "i025.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 25
+  },
+  "slide_intent": "Distinguish a palette’s working grounds from the accent that interrupts them. Viewers can then see what deserves attention.",
+  "strategic_value": "Kale and Cashew can establish a recognizable everyday contrast, while Carrot provides a concentrated accent tied to the symbol.",
+  "demonstration": "Three overlapping color circles label Kale, Carrot and Cashew. They cross a background divided into pale and dark halves, with a usage explanation at left.",
+  "category": "Color",
+  "practical_value": "Choose Kale and Cashew for text and surfaces, then use Carrot to emphasize a detail against them.",
+  "content_islands": [
+    {
+      "name": "Role guidance",
+      "spec": "Set the heading and usage explanation at the upper left of the light field."
+    },
+    {
+      "name": "Palette specimens",
+      "spec": "Stack three large overlapping circles to the right across the two-tone background. Label their names and screen values inside each specimen."
+    }
+  ]
+}

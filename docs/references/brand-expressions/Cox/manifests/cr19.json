@@ -1,0 +1,26 @@
+{
+  "id": "CR19",
+  "title": "Cables, Cords & Power Packs — video poster",
+  "image": "cr19.png",
+  "source": "../sources/cr19.jpg",
+  "location": {
+    "series": "Cox Brand Collection — Lindsay Little / Periscope",
+    "item": 19,
+    "extent": "whole source image"
+  },
+  "slide_intent": "Use the product itself to organize a message so the viewer understands the subject before reading details.",
+  "strategic_value": "The playful cable arrangement can make a technical accessory topic feel less forbidding in Cox retail content.",
+  "demonstration": "The supplied video poster arranges multicolored cables in a circular border around a bold black title on white. No motion is observable in the saved still.",
+  "category": "Geometry",
+  "practical_value": "Leave a clear central reading area when arranging detailed objects into a framing shape.",
+  "content_islands": [
+    {
+      "name": "Cable ring",
+      "spec": "Arrange the visible cables and connectors around a large circular opening on a white field."
+    },
+    {
+      "name": "Central title",
+      "spec": "Center the two-line black title inside the ring without overlapping the connectors."
+    }
+  ]
+}

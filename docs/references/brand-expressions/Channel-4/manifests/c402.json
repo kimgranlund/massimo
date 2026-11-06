@@ -1,0 +1,29 @@
+{
+  "id": "C402",
+  "title": "App tile on a phone",
+  "image": "c402.png",
+  "source": "../sources/c402.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 masterbrand / 2023",
+    "item": 2,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Test recognition among neighboring brands because an app icon competes for a small and crowded space.",
+  "strategic_value": "The black 4 on bright green can distinguish Channel 4 in a familiar phone interface.",
+  "demonstration": "A close-up phone screen places the Channel 4 tile beside Instagram and above TikTok, with programme artwork below.",
+  "category": "Application",
+  "practical_value": "Evaluate the mark and color at app-tile scale rather than as a large isolated logo.",
+  "content_islands": [
+    {
+      "name": "App neighborhood",
+      "spec": "Place the Channel 4 tile among neighboring applications at the upper portion of the phone."
+    },
+    {
+      "name": "Device context",
+      "spec": "Retain the bezel, background and partial content widget to establish real scale."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The mark and green field are applied to a mobile app tile."
+  }
+}

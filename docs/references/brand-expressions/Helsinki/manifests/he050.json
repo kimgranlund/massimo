@@ -1,0 +1,39 @@
+{
+  "id": "HE050",
+  "title": "Full-screen overlays",
+  "image": "he050.png",
+  "source": "../sources/visual-storytelling.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Full-screen overlays",
+    "order": 70,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/visual-storytelling#full-screen-overlays",
+    "original_html": "../sources/visual-storytelling.html"
+  },
+  "slide_intent": "Separate heading and body roles so a viewer can scan a full-screen video message.",
+  "strategic_value": "Consistent Bold headings and Regular body text can give Helsinki informational video a stable hierarchy.",
+  "demonstration": "This expanded webpage-section capture compares centered and upper-left full-screen text treatments, with and without a separate heading.",
+  "category": "Layout",
+  "practical_value": "Choose a full-screen text template based on hierarchy and alignment, keeping text within the protected area.",
+  "content_islands": [
+    {
+      "name": "Type roles",
+      "spec": "State Bold headline and Regular body roles above the specimens."
+    },
+    {
+      "name": "Overlay alternatives",
+      "spec": "Stack four color-field examples with their alignment and spacing notes."
+    }
+  ],
+  "ingredient": {
+    "name": "Full-screen video text",
+    "role": "Present a readable hierarchy.",
+    "application": "Use Bold for the heading and Regular for body text, centered or upper-left in the protected area.",
+    "scope": "Full-screen overlays; specimen text is 150 px with 180 px line spacing."
+  },
+  "reference_purposes": {
+    "Application": "Four templates compare heading/body and text-only arrangements.",
+    "Constraint": "Text is positioned within the protected area; headline and body roles are assigned Bold and Regular.",
+    "Expression": "Green and blue fields carry white text in the static specimens."
+  }
+}

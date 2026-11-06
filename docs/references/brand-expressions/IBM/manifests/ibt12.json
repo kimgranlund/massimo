@@ -1,0 +1,34 @@
+{
+  "id": "IBT12",
+  "title": "Misuse",
+  "image": "ibt12.png",
+  "source": "../sources/ibm-logo-third-parties.pdf",
+  "location": {
+    "page": 12,
+    "series": "IBM Logo and Brand Guidelines for Third Parties / copyright 2022",
+    "order": 100012
+  },
+  "slide_intent": "Make source confusion visible through counterexamples, because problematic logo placement can be easier to recognize than a written prohibition.",
+  "strategic_value": "Explicit rejected layouts can help external teams preserve the boundary between IBM participation and authorship.",
+  "demonstration": "Four laptop mockups, crossed diagonally and captioned in red, show a combined identity, masthead/signature placement, entity-name use and a logo inserted into a sentence.",
+  "category": "Application",
+  "practical_value": "Compare a proposed event page with these rejected patterns before publication.",
+  "content_islands": [
+    {
+      "name": "Reference guidance",
+      "spec": "Place the Misuse heading and links to the 8-bar and sub-brand guidance in the left column."
+    },
+    {
+      "name": "Identity and masthead misuse",
+      "spec": "Show two crossed-out laptop layouts across the top of the right field."
+    },
+    {
+      "name": "Naming and sentence misuse",
+      "spec": "Place two more rejected layouts below, retaining the red explanatory captions."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The four mockups translate abstract misuse rules into recognizable webpage arrangements.",
+    "Constraint": "Red captions explicitly prohibit identity incorporation, masthead/signature placement, use in an entity name and visual-logo insertion into a sentence."
+  }
+}

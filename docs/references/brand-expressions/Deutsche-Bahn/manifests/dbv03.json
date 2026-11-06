@@ -1,0 +1,35 @@
+{
+  "id": "DBV03",
+  "title": "Aufmerksamkeit",
+  "image": "dbv03.png",
+  "source": "../sources/media/dbv03.mp4",
+  "location": {
+    "series": "DB new design / motion demonstrations",
+    "source_page": 11,
+    "section": "Animation-14019334",
+    "source_url": "https://ecm-mediathek-cdn.deutschebahn.com/cdnenhancedecmvidhls/db306180/2880465/video_config.json",
+    "capture_date": "2026-11-05"
+  },
+  "slide_intent": "Use a small gesture to attract attention without forcing someone to reread a symbol.",
+  "strategic_value": "A brief receiver wobble can give DB controls expression while retaining a familiar telephone silhouette.",
+  "demonstration": "A dark outline telephone receiver tilts and returns to rest against a pale field.",
+  "category": "Motion",
+  "practical_value": "Use a local rotational gesture for attention when the icon itself need not change meaning.",
+  "content_islands": [
+    {
+      "name": "Attention gesture",
+      "spec": "Place the receiver alone in the field and rotate it briefly."
+    },
+    {
+      "name": "Rest",
+      "spec": "Return the receiver to its original orientation."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A dark outline telephone receiver tilts and returns to rest against a pale field.",
+    "Application": "The source provides a playable demonstration of this repeatable sequence: A dark outline telephone receiver tilts and returns to rest against a pale field.",
+    "Intent": "Accompanying Icons, Signature Graphics, or Animation im UI prose explains that animation directs focus, makes relationships understandable, and adds expression.",
+    "Constraint": "The accompanying guidance says animation is deliberate and never disturbing or complex."
+  },
+  "motion": "../sources/media/dbv03.mp4"
+}

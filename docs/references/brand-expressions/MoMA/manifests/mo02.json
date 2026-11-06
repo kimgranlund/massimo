@@ -1,0 +1,44 @@
+{
+  "id": "MO02",
+  "title": "System",
+  "image": "mo02.png",
+  "source": "../sources/mo02.jpg",
+  "location": {
+    "series": "Pentagram / MoMA / 2009 identity case study",
+    "item": 2,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Separate a featured event from unrelated programmes, because readers need to distinguish the main invitation from other available activities.",
+  "strategic_value": "A stable division between image, title and programme list can let MoMA advertise varied content without losing institutional recognition.",
+  "demonstration": "Four arrows label a poster diagram: Title, Image, Unrelated Programs and Logo. The right column stacks programme text above a vertical MoMA signature.",
+  "category": "Layout",
+  "practical_value": "Assign distinct areas to the featured image, its title and secondary listings before composing a new institutional poster.",
+  "content_islands": [
+    {
+      "name": "Heading",
+      "spec": "Place System centrally above the diagram."
+    },
+    {
+      "name": "Main content column",
+      "spec": "Place the title and dates at the upper left of the diagram with the crossed image placeholder beneath."
+    },
+    {
+      "name": "Institutional column",
+      "spec": "Stack the unrelated-programme text and vertical logo in the narrow right column."
+    },
+    {
+      "name": "Annotation arrows",
+      "spec": "Place the four labels outside the diagram and point each arrow to its corresponding region."
+    }
+  ],
+  "ingredient": {
+    "name": "Institutional poster content regions",
+    "role": "Separate the featured event from secondary programmes while retaining museum recognition.",
+    "application": "Use the diagram to separate title, artwork, programme list and signature; compare MO06 for variations in placement.",
+    "scope": "Historical 2009 institutional identity. Pentagram distinguishes this system from individual exhibition identities; the diagram supplies no numeric grid dimensions."
+  },
+  "reference_purposes": {
+    "Application": "The labeled diagram assigns four content roles to separate regions.",
+    "Intent": "Pentagram’s accompanying account connects the layout system to a coherent institutional voice."
+  }
+}

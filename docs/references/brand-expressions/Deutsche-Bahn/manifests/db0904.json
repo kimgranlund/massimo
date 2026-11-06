@@ -1,0 +1,38 @@
+{
+  "id": "DB0904",
+  "title": "Einsatz der Schrift",
+  "image": "db0904.png",
+  "source": "../sources/page-09.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 9,
+    "section": 4,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Typografie_neu"
+  },
+  "slide_intent": "Match typographic intensity to the task so functional information and promotional messages remain distinguishable.",
+  "strategic_value": "Separating Head Black from Head Extra Wide can give DB a clear range from factual to expressive communication.",
+  "demonstration": "The section compares DB Neo Head Black for functional work with Head Extra Wide for advertising and explains case, size and placement.",
+  "category": "Typography",
+  "practical_value": "Use mixed case Head Black for functional headlines; reserve all-capital Extra Wide for short promotional statements.",
+  "content_islands": [
+    {
+      "name": "Rules",
+      "spec": "Place the factual-versus-expressive explanation and bullets above the specimens."
+    },
+    {
+      "name": "Comparison",
+      "spec": "Pair the two headline specimens with their application labels below."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source says size and weight create clear hierarchy and structure.",
+    "Application": "It assigns headline treatments to functional and advertising contexts.",
+    "Constraint": "All-capital writing is reserved for short, concise promotional messages."
+  },
+  "ingredient": {
+    "name": "DB Neo headline roles",
+    "role": "Distinguish factual information from promotional emphasis.",
+    "application": "Use Head Black and mixed case for functional headlines; use Head Extra Wide for short advertising headlines.",
+    "scope": "Official DB new-design website captured 2026-11-05; edition date unstated. Size and position remain flexible."
+  }
+}

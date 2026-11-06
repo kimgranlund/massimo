@@ -1,0 +1,31 @@
+{
+  "id": "C461",
+  "title": "Extended logo and gradient-world loop",
+  "image": "c461.png",
+  "source": "../sources/c461.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 masterbrand / 2023",
+    "item": 61,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Repeat a recognizable reveal through changing environments so identity is learned through recurrence.",
+  "strategic_value": "The green segmented 4 can remain the reference point while Channel 4’s gradient worlds vary.",
+  "demonstration": "The 20-second clip repeatedly reveals and dissolves the green 4 while moving through pink, blue, yellow and dark rooms; the PNG preserves the published mid-assembly poster.",
+  "category": "Motion",
+  "practical_value": "Compare repeated reveal cycles to see what remains stable as the world changes.",
+  "content_islands": [
+    {
+      "name": "Logo cycles",
+      "spec": "Show the pieces resolving into the 4 and separating again."
+    },
+    {
+      "name": "Changing room",
+      "spec": "Carry the mark through differently lit gradient environments before ending on the empty room."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The clip repeats the segmented-logo reveal within several gradient worlds.",
+    "Intent": "Pentagram describes the singular logo and masterbrand color as anchors within varied content worlds."
+  },
+  "motion": "../sources/c461.mp4"
+}

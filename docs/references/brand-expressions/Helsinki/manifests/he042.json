@@ -1,0 +1,51 @@
+{
+  "id": "HE042",
+  "title": "Signage icons",
+  "image": "he042.png",
+  "source": "../sources/visual-storytelling.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Signage icons",
+    "order": 60,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/visual-storytelling#signage-icons",
+    "original_html": "../sources/visual-storytelling.html"
+  },
+  "slide_intent": "Give signage icons consistent forms and recognizable meanings because people often need to understand them quickly without reading.",
+  "strategic_value": "A shared icon library can connect Helsinki’s buildings and parks while supporting accessible navigation.",
+  "demonstration": "This expanded webpage section presents signage uses and a dated library count, shows icon applications and states drawing and file-production rules.",
+  "category": "Geometry",
+  "practical_value": "Reuse existing signage symbols or brief a specialist with the supplied construction and delivery conventions.",
+  "content_islands": [
+    {
+      "name": "Signage specimens",
+      "spec": "Begin with eight large pictograms, including surveillance, assembly point, stroller, lift and a red prohibition sign."
+    },
+    {
+      "name": "Library and use",
+      "spec": "State building/park uses, formats and the October 2022 count."
+    },
+    {
+      "name": "Applied icons",
+      "spec": "Show signage examples and credits."
+    },
+    {
+      "name": "Construction principles",
+      "spec": "List line ends, waves, reused elements, red prohibition circles, type and filled/outlined forms."
+    },
+    {
+      "name": "File delivery",
+      "spec": "Specify naming examples, 120×120 mm paper size and 300 DPI."
+    }
+  ],
+  "ingredient": {
+    "name": "Signage icons",
+    "role": "Communicate places, services and restrictions quickly.",
+    "application": "Reuse the shared library; preserve consistent forms, square line ends, the common prohibition circle and Helsinki Grotesk Medium.",
+    "scope": "The stated 311-icon count is dated October 2022. Source delivery text says SCG once while earlier listing SVG; preserve that discrepancy rather than inventing a format."
+  },
+  "reference_purposes": {
+    "Intent": "The source connects globally familiar icons and filled pictograms to comprehension and accessibility.",
+    "Application": "Examples and production instructions show how signage icons are made and delivered.",
+    "Constraint": "Do not round line ends; use the same red prohibition circle and Helsinki Grotesk Medium; filename rules and delivery dimensions are stated."
+  }
+}

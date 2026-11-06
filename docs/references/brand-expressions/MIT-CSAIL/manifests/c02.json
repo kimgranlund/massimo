@@ -1,0 +1,20 @@
+{
+  "id": "C02",
+  "title": "Blank page",
+  "image": "c02.png",
+  "source": "../csail-branding-short-guide.pdf",
+  "location": {
+    "page": 2
+  },
+  "slide_intent": "Record the physical pause between the cover and the guide’s contents so the pagination is interpreted correctly.",
+  "strategic_value": "This page supplies no visible claim about the lab. Its position can separate the cover from the reader’s first encounter with the contents.",
+  "demonstration": "The complete PDF page renders white. It contains no visible title, folio, image or copy.",
+  "category": "Layout",
+  "practical_value": "Preserve this page when reproducing the original sequence or referring to subsequent PDF page numbers.",
+  "content_islands": [
+    {
+      "name": "Blank leaf",
+      "spec": "Leave the whole page white with no visible marks."
+    }
+  ]
+}

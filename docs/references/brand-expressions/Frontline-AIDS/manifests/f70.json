@@ -1,0 +1,24 @@
+{
+  "id": "F70",
+  "title": "Visual frame",
+  "image": "f70.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 70
+  },
+  "slide_intent": "Teach how to group many partner logos while preserving their individual forms. A shared boundary helps readers see the relationship among otherwise different marks.",
+  "strategic_value": "A frame derived from the Frontline AIDS symbol can identify the network as a whole while giving its members room to appear in their own colors and lettering.",
+  "demonstration": "The explanation at left describes a scalable holding device. At right a black outline extends from the Frontline AIDS identity around a four-column array of partner logos.",
+  "category": "Brand",
+  "practical_value": "Use the broad network frame for the full partnership and size a smaller version around the participating organizations on a project.",
+  "content_islands": [
+    {
+      "name": "Heading and guidance",
+      "spec": "Place Visual frame and two paragraphs in the open left column beside the partnerships navigation."
+    },
+    {
+      "name": "Network lockup",
+      "spec": "Attach the black Frontline AIDS signature at the upper left of a rectangular outline. Space the partner marks into rows and columns within it."
+    }
+  ]
+}

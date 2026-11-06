@@ -1,0 +1,30 @@
+{
+  "id": "MC04",
+  "title": "Logo evolution, 1966\u20132016",
+  "image": "mc04.png",
+  "source": "../sources/mc04.jpg",
+  "location": {
+    "series": "Pentagram / Mastercard / 2016 identity case study",
+    "item": 4,
+    "extent": "Full published artwork"
+  },
+  "slide_intent": "Demonstrate continuity through change because inherited recognition gives a redesign an asset to preserve.",
+  "strategic_value": "A historical comparison can distinguish persistent equity from period-specific styling.",
+  "demonstration": "A dated sequence compares Interbank and Mastercard marks, with a separate 2006 corporate branch rejoining the 2016 identity.",
+  "category": "Brand",
+  "practical_value": "Trace which forms endure across successive identity versions.",
+  "content_islands": [
+    {
+      "name": "Timeline",
+      "spec": "Arrange dated historical marks in a horizontal sequence on a pale field."
+    },
+    {
+      "name": "Corporate branch",
+      "spec": "Show the 2006 corporate mark below the main sequence and connect it to the 2016 endpoint."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "Pentagram explains that the new single brand system replaces the separate 2006 corporate identity while preserving heritage.",
+    "Expression": "The artwork labels successive historical marks through 2016."
+  }
+}

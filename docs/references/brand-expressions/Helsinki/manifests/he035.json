@@ -1,0 +1,42 @@
+{
+  "id": "HE035",
+  "title": "Dividing surfaces",
+  "image": "he035.png",
+  "source": "../sources/visual-storytelling.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Dividing surfaces",
+    "order": 47,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/visual-storytelling#dividing-surfaces",
+    "original_html": "../sources/visual-storytelling.html"
+  },
+  "slide_intent": "Combine images through a deliberate boundary because juxtaposition can communicate contrast that neither image conveys alone.",
+  "strategic_value": "Wave divisions can connect Helsinki’s graphic vocabulary to contrasts of nature, urban life, scale, history and color.",
+  "demonstration": "This expanded webpage section shows wave-divided examples combining two photographs, historical imagery with modern graphics, and photographs with color fields.",
+  "category": "Layout",
+  "practical_value": "Choose the contrast the pairing should reveal before selecting images and divider.",
+  "content_islands": [
+    {
+      "name": "Pairing premise",
+      "spec": "Introduce wave motifs as a way to combine photos and color surfaces."
+    },
+    {
+      "name": "Photo contrasts",
+      "spec": "Compare urban/natural and size/color pairings."
+    },
+    {
+      "name": "Graphic combinations",
+      "spec": "Follow with historical-image and color-field combinations."
+    }
+  ],
+  "ingredient": {
+    "name": "Wave-divided image pairing",
+    "role": "Reveal a relationship between contrasting visual materials.",
+    "application": "Use the wave boundary to combine photos or a photo and color field according to the intended contrast.",
+    "scope": "These are demonstrated combinations, not a requirement to divide every photograph."
+  },
+  "reference_purposes": {
+    "Intent": "The text explicitly presents the combinations as ways to add different kinds of contrast.",
+    "Application": "Four illustrated combinations show waves joining photos, color and graphics."
+  }
+}

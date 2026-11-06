@@ -1,0 +1,39 @@
+{
+  "id": "DW136",
+  "title": "Marketing / Duo / Background choices",
+  "image": "dw136.png",
+  "source": "../sources/pages/marketing-assets.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/marketing/assets",
+    "section": "On backgrounds",
+    "item": 136,
+    "order": 1360
+  },
+  "slide_intent": "Evaluate color relationships around a mascot because a recognizable hue can become visually harsh in the wrong surroundings.",
+  "strategic_value": "Selective backgrounds can keep Duo’s green distinctive and comfortable to view in marketing.",
+  "demonstration": "Two Duo examples appear on white and bright green fields beside a warning about harsh color vibration.",
+  "category": "Color",
+  "practical_value": "Test the mascot against the approved background set instead of assuming every palette color is interchangeable.",
+  "content_islands": [
+    {
+      "name": "Background comparison",
+      "spec": "Place two framed Duo poses side by side on the pale panel at left."
+    },
+    {
+      "name": "Selection rationale",
+      "spec": "Place the Duo label, On Backgrounds heading and explanation at right."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source explains that Duo’s vibrant green can vibrate and look harsh against other colors.",
+    "Application": "The examples show Duo on white and bright green backgrounds.",
+    "Constraint": "The source limits Duo to selected secondary background colors."
+  },
+  "ingredient": {
+    "name": "Duo background colors",
+    "role": "Support the mascot’s green without harsh color interaction.",
+    "application": "Use the selected backgrounds supplied for Duo and check their relationship to his green.",
+    "scope": "Historical marketing guidance; the two visible examples do not establish a complete exclusive two-color palette."
+  }
+}

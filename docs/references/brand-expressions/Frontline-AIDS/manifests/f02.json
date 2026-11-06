@@ -1,0 +1,24 @@
+{
+  "id": "F02",
+  "title": "Contents",
+  "image": "f02.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 2
+  },
+  "slide_intent": "Organize the reference by the kind of decision someone needs to make. A reader looking up a specific rule can skip directly to it.",
+  "strategic_value": "A shared contents page can give editors and designers a common route into strategy, production and voice.",
+  "demonstration": "A narrow introduction occupies the first column. Numbered sections and entries continue across three columns on white.",
+  "category": "Layout",
+  "practical_value": "Find a rule by its section and printed folio, or follow the book from brand foundations through applications.",
+  "content_islands": [
+    {
+      "name": "Introduction",
+      "spec": "Set the description under Contents at upper left."
+    },
+    {
+      "name": "Topic index",
+      "spec": "Across the rest of the page align section headings, individual topics and folios in compact columns. Use heavier type for the section headings."
+    }
+  ]
+}

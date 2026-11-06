@@ -1,0 +1,28 @@
+{
+  "id": "BK108",
+  "title": "Illustration: Typography",
+  "image": "bk108.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 108
+  },
+  "slide_intent": "Introduce lettering as an illustrative medium so readers recognize that words can carry both information and food character.",
+  "strategic_value": "The oversized rounded title can demonstrate Burger King’s expressive type while separating the packaging-lettering chapter.",
+  "demonstration": "Brown Illustration: Typography lettering fills two lines on yellow, with a small note requiring approval for local versions near the lower edge.",
+  "category": "Typography",
+  "practical_value": "Locate the illustrative-type section and note the approval requirement before creating a local version.",
+  "content_islands": [
+    {
+      "name": "Chapter title",
+      "spec": "Place oversized brown display lettering in the upper-left yellow field."
+    },
+    {
+      "name": "Local-version note",
+      "spec": "Keep the BK Global Design Team approval note near the bottom, separate from the copyright footer."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The title uses the rounded, irregular display face on yellow.",
+    "Constraint": "The footer note says local versions of illustrative typography should be approved by the BK Global Design Team."
+  }
+}

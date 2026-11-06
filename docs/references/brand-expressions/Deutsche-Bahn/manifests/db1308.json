@@ -1,0 +1,36 @@
+{
+  "id": "DB1308",
+  "title": "Dos & Dont´s / Layout",
+  "image": "db1308.png",
+  "source": "../sources/page-13.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 13,
+    "section": 8,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Layout"
+  },
+  "slide_intent": "Keep structure and contrast disciplined so flexible compositions remain clear.",
+  "strategic_value": "Square surfaces and natural tonal adjustments can give DB layouts consistency without decorative effects.",
+  "demonstration": "Three positive/negative pairs compare square and rounded modules, balanced and overly dark layouts, and partial darkening versus shadows.",
+  "category": "Layout",
+  "practical_value": "Check edge shape, tonal balance and text separation; avoid drop shadows on layout elements.",
+  "content_islands": [
+    {
+      "name": "Surface shape",
+      "spec": "Compare the square module with a crossed-out rounded treatment."
+    },
+    {
+      "name": "Balance",
+      "spec": "Compare a readable image layout with an excessively dark one."
+    },
+    {
+      "name": "Contrast method",
+      "spec": "Compare partial darkening with the crossed-out shadow treatment."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The copy says artificial shadows disturb the layout’s natural aesthetic.",
+    "Constraint": "Surfaces are square, contrast and readability remain sufficient, and drop shadows on layout elements are avoided.",
+    "Application": "The paired examples demonstrate the checks."
+  }
+}

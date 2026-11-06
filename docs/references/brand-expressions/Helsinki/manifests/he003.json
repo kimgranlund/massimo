@@ -1,0 +1,39 @@
+{
+  "id": "HE003",
+  "title": "Versions of Helsinki framed logo (Helsinki logo)",
+  "image": "he003.png",
+  "source": "../sources/use-basic-elements.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Versions of Helsinki framed logo (Helsinki logo)",
+    "order": 7,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/use-basic-elements#versions-of-helsinki-framed-logo--helsinki--logo-",
+    "original_html": "../sources/use-basic-elements.html"
+  },
+  "slide_intent": "Keep a recognizable signature stable while allowing language and event context to change what it says.",
+  "strategic_value": "Consistent framing can connect Helsinki, Helsingfors, international and Pride versions without requiring viewers to learn separate identities.",
+  "demonstration": "This expanded webpage section shows standard, Swedish, bilingual, Helsinki Finland and rainbow Pride framed logos alongside file-use instructions.",
+  "category": "Brand",
+  "practical_value": "Choose an existing logo variant for the context instead of redrawing the signature.",
+  "content_islands": [
+    {
+      "name": "Standard versions",
+      "spec": "Place black logo specimens beneath the original-file instructions."
+    },
+    {
+      "name": "Contextual versions",
+      "spec": "Follow the international-use note with Finland and Pride specimens."
+    }
+  ],
+  "ingredient": {
+    "name": "Framed-logo variants",
+    "role": "Identify Helsinki consistently across languages and contexts.",
+    "application": "Choose the supplied variant; primarily use black or white.",
+    "scope": "Official logo files; Finland wording is an optional global-marketing aid and Pride versions are supplied alternatives."
+  },
+  "reference_purposes": {
+    "Expression": "The specimens retain the framed wordmark across language and Pride variants.",
+    "Application": "The text offers Helsinki Finland for geographical identification in global marketing.",
+    "Constraint": "Use original files; do not recreate or modify the logo."
+  }
+}

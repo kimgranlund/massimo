@@ -1,0 +1,32 @@
+{
+  "id": "DB1208B",
+  "title": "Kombination und Erweiterung / dark background",
+  "image": "db1208b.png",
+  "source": "../sources/db1208b-page.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 12,
+    "section": 8,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Signature-Graphics",
+    "tab": "Dunkle Hintergründe"
+  },
+  "slide_intent": "Use a subdued scene and one focus so a dark graphic composition remains readable.",
+  "strategic_value": "A gray skyline with a red focal building can keep DB destination imagery distinct without competing accents.",
+  "demonstration": "The dark tab shows gray combined landmarks against Cold Black with one red tower.",
+  "category": "Layout",
+  "practical_value": "Build the combined background in the defined dark-ground grays and select one red or lilac focus.",
+  "content_islands": [
+    {
+      "name": "Composition conditions",
+      "spec": "State consistent detail, restraint and the single-focus rule above the tabs."
+    },
+    {
+      "name": "Dark skyline",
+      "spec": "Arrange gray landmarks around the red tower on the dark field."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The dark-background state demonstrates the combined scene and single focus.",
+    "Constraint": "The composition is a subtle gray background; only one focal element may use DB Red or Transitional Lilac."
+  }
+}

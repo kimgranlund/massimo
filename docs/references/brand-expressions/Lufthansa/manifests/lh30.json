@@ -1,0 +1,27 @@
+{
+  "id": "LH30",
+  "title": "Design review across applications",
+  "image": "lh30.png",
+  "source": "../sources/lh30.jpg",
+  "location": {
+    "series": "HvD Fonts / Lufthansa 2018",
+    "item": 9,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Evaluate type alongside physical applications because a corporate face must work across different reading conditions.",
+  "strategic_value": "Shared review of proofs, models and materials can expose inconsistencies before the Lufthansa system is rolled out.",
+  "demonstration": "A group reviews papers and material samples around a table with identity boards on the walls.",
+  "category": "Brand",
+  "practical_value": "Bring type proofs and application samples into the same review.",
+  "content_islands": [
+    {
+      "name": "Review table",
+      "spec": "Center papers and samples between the participants."
+    },
+    {
+      "name": "Background evidence",
+      "spec": "Retain the identity and application boards behind the group."
+    }
+  ],
+  "reference_purposes": {}
+}

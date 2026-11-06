@@ -1,0 +1,37 @@
+{
+  "id": "FG14",
+  "title": "Genius contains us",
+  "image": "fg14.png",
+  "source": "../sources/fg14.mp4",
+  "location": {
+    "series": "COLLINS / Figma / Nothing Great Is Made Alone case study",
+    "item": 14,
+    "section": "Gallery",
+    "extent": "Complete clip; PNG is midpoint poster",
+    "poster_seconds": 5.45
+  },
+  "slide_intent": "Expose a useful meaning inside a familiar word because a visual discovery can make a short message memorable.",
+  "strategic_value": "Pulling US out of GENIUS can give Figma’s collective-creativity argument a compact verbal signature.",
+  "demonstration": "Cursors manipulate the letters of GENIUS, select US and lift that pair away from the remaining letters.",
+  "category": "Motion",
+  "practical_value": "Use letter-level motion when the structure of a word supports the campaign idea.",
+  "content_islands": [
+    {
+      "name": "Whole word",
+      "spec": "Begin with black GENIUS centered on white."
+    },
+    {
+      "name": "Letter manipulation",
+      "spec": "Show multiple cursors and blue selection handles moving the I and then selecting US."
+    },
+    {
+      "name": "Collective emphasis",
+      "spec": "Lift US above the remaining GENI letters."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Selection-box animation isolates US inside GENIUS.",
+    "Intent": "The surrounding case-study narrative explains the campaign’s rejection of the solitary-genius myth."
+  },
+  "motion": "../sources/fg14.mp4"
+}

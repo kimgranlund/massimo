@@ -1,0 +1,25 @@
+{
+  "id": "I085",
+  "title": "Motion Principles",
+  "image": "i085.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 85,
+    "printed_page": 85
+  },
+  "slide_intent": "Help designers decide whether movement earns a viewer’s attention. Motion should make the communication easier to follow.",
+  "strategic_value": "Consistent direction across an interaction and an end card can make Instacart feel purposeful without asking every element to move.",
+  "demonstration": "A text rail asks whether the piece needs motion. Two lists compare desired qualities in green with undesirable qualities in red, including smooth versus frenetic.",
+  "category": "Motion",
+  "practical_value": "Start by deciding whether motion adds anything, then judge the proposed movement against the paired qualities.",
+  "content_islands": [
+    {
+      "name": "Editorial guidance",
+      "spec": "Stack short paragraphs in the left rail on when to use motion and how it should support the communication."
+    },
+    {
+      "name": "Contrasting qualities",
+      "spec": "Pair two aligned word lists, one with a green check and one with a red cross. Keep the four terms in each column easy to scan."
+    }
+  ]
+}

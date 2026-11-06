@@ -1,0 +1,34 @@
+{
+  "id": "MO03",
+  "title": "Marlene Dumas poster",
+  "image": "mo03.png",
+  "source": "../sources/mo03.jpg",
+  "location": {
+    "series": "Pentagram / MoMA / 2009 identity case study",
+    "item": 3,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Give the artwork room to attract attention while preserving identification, because an image-led invitation must still tell viewers what and where it is.",
+  "strategic_value": "The enlarged pale face beside the black MoMA signature can combine an emotional encounter with immediate museum recognition.",
+  "demonstration": "A large sideways portrait fills the lower-left field below an exhibition heading. A narrow right strip holds a programme listing, vertical MoMA logo and small institutional text.",
+  "category": "Imagery",
+  "practical_value": "Compare a dominant artwork crop with the small information zones needed to identify the exhibition.",
+  "content_islands": [
+    {
+      "name": "Exhibition heading",
+      "spec": "Place dates, Marlene Dumas and Measuring Your Own Grave across the upper-left white band."
+    },
+    {
+      "name": "Artwork field",
+      "spec": "Fill the large lower-left area with the pale sideways portrait, allowing the face to approach the edges."
+    },
+    {
+      "name": "Signature strip",
+      "spec": "Stack magenta secondary programme text, oversized black vertical MoMA lettering and small institutional details down the right edge."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The pale enlarged portrait contrasts with the heavy black vertical signature.",
+    "Application": "The poster combines exhibition identification, artwork and a separate programme listing."
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "I010",
+  "title": "Our Symbol",
+  "image": "i010.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 10
+  },
+  "slide_intent": "Teach the reader to see two meanings in one silhouette: adding an item and enjoying food.",
+  "strategic_value": "The downward arrow can refer to the shopping action while the root retains the identity’s association with produce.",
+  "demonstration": "Two captions point to a large green arrow above an orange semicircle. A baseline lets the root appear to emerge from the ground or a cart.",
+  "category": "Brand",
+  "practical_value": "Decide how to explain the symbol to a new reader using its two visible components.",
+  "content_islands": [
+    {
+      "name": "Symbol description",
+      "spec": "Place the descriptive note in a narrow column on the left."
+    },
+    {
+      "name": "Labeled carrot",
+      "spec": "Enlarge the mark to the right. Align Shop with its green top and Savor with the orange root; extend a horizontal line beneath the root."
+    }
+  ]
+}

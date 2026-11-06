@@ -1,0 +1,33 @@
+{
+  "id": "DB04",
+  "title": "Motion Signature / landscape sequence",
+  "image": "db04.png",
+  "source": "../sources/db04.mp4",
+  "location": {
+    "series": "COLLINS / Dropbox / 2017 identity case study",
+    "item": 4,
+    "section": "Motion Signature",
+    "extent": "Complete published clip; PNG is a frame at 0.5 seconds",
+    "duration_seconds": 16.13
+  },
+  "slide_intent": "Use recognizable transformations because repeated movement can connect changing color treatments.",
+  "strategic_value": "Collapsing and rebuilding the diamond mark can give Dropbox a consistent kinetic signature.",
+  "demonstration": "The landscape clip compresses, separates and rebuilds the mark while switching among gray, yellow, red and green backgrounds.",
+  "category": "Motion",
+  "practical_value": "Study the same assembly behavior under different foreground/background pairs.",
+  "content_islands": [
+    {
+      "name": "Mark sequence",
+      "spec": "Keep the changing diamond assembly near the center as it separates and rejoins."
+    },
+    {
+      "name": "Color changes",
+      "spec": "Let the full field change between episodes; preserve the entire published clip."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The Motion Signature caption explains movement as a means of recognition and recall; these are agency claims, not measured outcomes here.",
+    "Expression": "The landscape clip compresses, separates and rebuilds the mark while switching among gray, yellow, red and green backgrounds."
+  },
+  "motion": "../sources/db04.mp4"
+}

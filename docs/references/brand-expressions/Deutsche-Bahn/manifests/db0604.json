@@ -1,0 +1,31 @@
+{
+  "id": "DB0604",
+  "title": "Designelemente",
+  "image": "db0604.png",
+  "source": "../sources/page-06.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 6,
+    "section": 4,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Designprinzipien"
+  },
+  "slide_intent": "Identify the parts of a visual system so designers can combine them deliberately.",
+  "strategic_value": "A named inventory can keep DB’s components recognizable across different applications.",
+  "demonstration": "Eight labeled specimens appear in a two-column grid: logo, sleeper, colors, imagery, type, Signature Graphics, illustration and icons.",
+  "category": "Brand",
+  "practical_value": "Distinguish an ingredient family before consulting its detailed guidance.",
+  "content_islands": [
+    {
+      "name": "System introduction",
+      "spec": "Explain the elements’ combined role above the grid."
+    },
+    {
+      "name": "Element grid",
+      "spec": "Pair each visual specimen with its short label in four rows."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The introductory text says the elements interlock into a consistent flexible system.",
+    "Expression": "The grid exhibits eight distinct ingredient families."
+  }
+}

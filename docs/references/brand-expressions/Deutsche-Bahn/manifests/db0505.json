@@ -1,0 +1,31 @@
+{
+  "id": "DB0505",
+  "title": "Wie unsere Markenpersönlichkeit sichtbar wird",
+  "image": "db0505.png",
+  "source": "../sources/page-05.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 5,
+    "section": 5,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Unsere-Markenpersoenlichkeit"
+  },
+  "slide_intent": "Connect a strategic statement to its visual guidance so a designer can act on it.",
+  "strategic_value": "The sleeper specimen can bridge DB’s personality language and its design principles.",
+  "demonstration": "A red sleeper strip on a dark panel sits beside a heading and a link to design principles.",
+  "category": "Brand",
+  "practical_value": "Follow the personality discussion into the principles that guide its expression.",
+  "content_islands": [
+    {
+      "name": "Visual cue",
+      "spec": "Place the red sleeper on the dark left panel."
+    },
+    {
+      "name": "Guidance link",
+      "spec": "Align the heading and design-principles link on the right."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The sleeper provides the visual counterpart to the personality heading.",
+    "Application": "The link directs the reader from personality to design principles."
+  }
+}

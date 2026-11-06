@@ -1,0 +1,32 @@
+{
+  "id": "DB1210B",
+  "title": "Extremformen / horizontal extension",
+  "image": "db1210b.png",
+  "source": "../sources/db1210b-page.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 12,
+    "section": 10,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Signature-Graphics",
+    "tab": "Horizontale Ausrichtung"
+  },
+  "slide_intent": "Expand the base for wide subjects so their silhouette stays recognizable without distorting the construction.",
+  "strategic_value": "Controlled width extension can accommodate DB destination landmarks within the same graphic family.",
+  "demonstration": "The horizontal tab shows a wide red building across an extended frame with left and right arrows.",
+  "category": "Geometry",
+  "practical_value": "Extend the construction area horizontally for broad objects while maintaining its relationship to other graphics.",
+  "content_islands": [
+    {
+      "name": "Orientation selection",
+      "spec": "Show Horizontal selected below the extension rule."
+    },
+    {
+      "name": "Wide-object diagram",
+      "spec": "Place the broad building across the extended frame with outward arrows."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The selected state demonstrates horizontal extension of the base.",
+    "Constraint": "Even when extended, the source requires harmonious size relationships with other signature graphics."
+  }
+}

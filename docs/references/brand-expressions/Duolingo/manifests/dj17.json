@@ -1,0 +1,30 @@
+{
+  "id": "DJ17",
+  "title": "Green wordmark cap",
+  "image": "dj17.png",
+  "source": "../sources/johnson-banks/Duolingo_hat-by-Johnson-Banks.jpg",
+  "location": {
+    "series": "Johnson Banks / Everyone can Duolingo / 2019",
+    "item": 17,
+    "extent": "Whole published artwork",
+    "order": 2017
+  },
+  "slide_intent": "Test an identity with very few elements because some merchandise needs immediate recognition from one mark and one color.",
+  "strategic_value": "The white wordmark on a green cap can carry Duolingo’s signature beyond screens.",
+  "demonstration": "A green cap is shown front-on with the white wordmark across its front panel.",
+  "category": "Application",
+  "practical_value": "Evaluate wordmark contrast and placement on a curved fabric surface.",
+  "content_islands": [
+    {
+      "name": "Cap",
+      "spec": "Center the green cap against a pale background."
+    },
+    {
+      "name": "Front signature",
+      "spec": "Keep the white wordmark across the front panel above the brim."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The cap visualization demonstrates a single wordmark on a branded-color object."
+  }
+}

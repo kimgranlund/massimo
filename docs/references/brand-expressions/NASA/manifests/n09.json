@@ -1,0 +1,34 @@
+{
+  "id": "N09",
+  "title": "Color Standards",
+  "image": "n09.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 9
+  },
+  "slide_intent": "Establish a common reference for judging a color across production processes. A large sample gives printers and designers a physical target for comparison.",
+  "strategic_value": "NASA can give suppliers the same reference for its red and warm gray across media. The two large fields make mismatches easier to inspect.",
+  "demonstration": "The page places two broad horizontal swatches beneath a short reproduction note. The upper field is NASA red and the lower field is NASA warm gray.",
+  "category": "Color",
+  "practical_value": "Use the historical printed samples as the manual’s matching reference. The digitized page records the guidance but does not establish a calibrated color value.",
+  "content_islands": [
+    {
+      "name": "Production notes",
+      "spec": "Set the heading and two short explanations above the swatches, including the manual’s process-print guidance."
+    },
+    {
+      "name": "Paired swatches",
+      "spec": "Stack two large rectangles of equal width with a white gutter. Place red first and warm gray below it."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The two large fields show NASA red and NASA warm gray as the manual’s color specimens.",
+    "Application": "The note instructs producers to visually match the printed swatches and gives a four-color-process formula for NASA red."
+  },
+  "ingredient": {
+    "name": "NASA color matching swatches",
+    "role": "Supply a common physical target for reproducing the two named colors.",
+    "application": "Use the original printed swatches to achieve a visual match. For four-color printing, the manual states solid red plus solid yellow for NASA red.",
+    "scope": "Historical physical production references in section 1.5. The scanned image records the specimens and formula; its pixels do not establish calibrated modern color values."
+  }
+}

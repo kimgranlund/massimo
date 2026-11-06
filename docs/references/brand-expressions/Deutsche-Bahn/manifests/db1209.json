@@ -1,0 +1,42 @@
+{
+  "id": "DB1209",
+  "title": "Konstruktion / Signature Graphics",
+  "image": "db1209.png",
+  "source": "../sources/page-12.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 12,
+    "section": 9,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Signature-Graphics"
+  },
+  "slide_intent": "Define a construction grammar so new subjects remain consistent and readable at the intended distance.",
+  "strategic_value": "Shared grid, strokes and spacing can let DB expand its graphic family coherently.",
+  "demonstration": "A 96×96 dp landmark diagram and enlarged details specify margins, vertical strokes, minimum length and spacing.",
+  "category": "Geometry",
+  "practical_value": "Construct on the 96 dp base with 3 dp clear space, vertical 2 dp strokes and the stated spacing conditions.",
+  "content_islands": [
+    {
+      "name": "Base grid",
+      "spec": "Pair the actual-size landmark with its enlarged 96×96 dp construction and 3 dp margin."
+    },
+    {
+      "name": "Line rules",
+      "spec": "Place orientation and distance qualifications beside the construction."
+    },
+    {
+      "name": "Detail measurements",
+      "spec": "Arrange enlarged diagrams for stroke width, minimum length and horizontal/vertical gaps below."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source requires considering viewing distance so the subject remains identifiable.",
+    "Constraint": "Base 96×96 dp, clear space 3 dp, vertical strokes 2 dp, minimum length 4 dp, horizontal offset 2 dp; vertical gap ideally 1 dp or 4 dp for deliberate separation. Small elements may touch only when needed to read as one object; never horizontally flush side by side.",
+    "Application": "The diagrams show each measurement on a constructed landmark."
+  },
+  "ingredient": {
+    "name": "Signature Graphic construction",
+    "role": "Create recognizable subjects from a consistent vertical-line system.",
+    "application": "Use the 96×96 dp ideal base, 3 dp clear space and 2 dp vertical strokes of at least 4 dp.",
+    "scope": "Official DB new-design website captured 2026-11-05; edition date unstated. Horizontal offset 2 dp; vertical gap ideally 1 dp or recommended 4 dp for deliberate gaps. Preserve the stated small-construction exception and viewing-distance judgment."
+  }
+}

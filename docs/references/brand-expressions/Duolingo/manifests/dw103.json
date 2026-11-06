@@ -1,0 +1,42 @@
+{
+  "id": "DW103",
+  "title": "Illustration / Shape language / Rhythm",
+  "image": "dw103.png",
+  "source": "../sources/pages/illustration-shape-language.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/illustration/shape-language",
+    "section": "Rhythm",
+    "item": 103,
+    "order": 1030
+  },
+  "slide_intent": "Vary visual weight because a sequence of identical proportions gives the eye little to discover.",
+  "strategic_value": "Contrasting shape sizes can give Duolingo characters more individual stories while retaining simple construction.",
+  "demonstration": "Uniform pink block stacks contrast with varied blue stacks above two rows of character silhouettes and overlays.",
+  "category": "Geometry",
+  "practical_value": "Compare a character’s large and small masses before adding surface detail.",
+  "content_islands": [
+    {
+      "name": "Abstract rhythm",
+      "spec": "Place the repeated pink blocks beside three varied blue stacks across the top of the figure."
+    },
+    {
+      "name": "Character comparison",
+      "spec": "Arrange pink and blue silhouettes with translucent character overlays in two rows below."
+    },
+    {
+      "name": "Rhythm rationale",
+      "spec": "Explain visual weight and the melody analogy in the right column."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source compares variation in visual weight to varied musical notes and says rhythm can communicate a character’s story.",
+    "Application": "Abstract block arrangements and character overlays demonstrate how proportion changes the rhythm of a silhouette."
+  },
+  "ingredient": {
+    "name": "Variation in shape weight",
+    "role": "Give the viewer a changing rhythm within a simple silhouette.",
+    "application": "Vary the relative sizes and proportions of component shapes instead of repeating equally weighted blocks.",
+    "scope": "Historical character illustration examples; no numerical proportion or mandatory asymmetry is supplied."
+  }
+}

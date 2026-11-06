@@ -1,0 +1,35 @@
+{
+  "id": "CH26",
+  "title": "All-in-One Marketing Platform / Transit pair",
+  "image": "ch26.png",
+  "source": "../sources/ch26.jpg",
+  "location": {
+    "series": "COLLINS / Mailchimp case study",
+    "item": 26,
+    "extent": "Complete published artwork",
+    "section": "Gallery"
+  },
+  "slide_intent": "Let neighboring panels divide the work because an attention-getting image and a product explanation may need different spaces.",
+  "strategic_value": "The surreal portrait beside a direct growth message can broaden Mailchimp’s offer while retaining an unconventional personality.",
+  "demonstration": "Two adjacent transit posters pair a colorful photographic scene at left with large black copy and the signature on green at right.",
+  "category": "Application",
+  "practical_value": "Compare image-led attention with text-led explanation across a paired placement.",
+  "content_islands": [
+    {
+      "name": "Image panel",
+      "spec": "Keep the unusual portrait and colored set together on the left poster."
+    },
+    {
+      "name": "Message panel",
+      "spec": "Use the right green poster for the multiline marketing-platform message and lower-right signature."
+    },
+    {
+      "name": "Placement",
+      "spec": "Retain the wall and handrail to show the real viewing context."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The identity appears as adjacent transit advertising panels.",
+    "Expression": "Surreal photography is paired with a plain-language platform message and a green field."
+  }
+}

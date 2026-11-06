@@ -1,0 +1,39 @@
+{
+  "id": "DW086",
+  "title": "Writing / Style / Contractions",
+  "image": "dw086.png",
+  "source": "../sources/pages/writing-style.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/style",
+    "section": "Contractions",
+    "item": 86,
+    "order": 860
+  },
+  "slide_intent": "Use contractions when they sound natural while retaining full forms for emphasis so the reader hears the intended tone.",
+  "strategic_value": "A permitted exception can help Duolingo maintain conversational copy without weakening an important warning.",
+  "demonstration": "Three approved examples include two contractions and one emphatic full form, contrasted with mechanically expanded or contracted alternatives.",
+  "category": "Voice",
+  "practical_value": "Read the sentence aloud and decide whether a contraction improves naturalness or weakens the point.",
+  "content_islands": [
+    {
+      "name": "Guidance column",
+      "spec": "Place the topic heading, its parent label and the written convention in the narrow left column."
+    },
+    {
+      "name": "Worked examples",
+      "spec": "Place the worked copy in the pale right panel, keeping preference labels and green checks with their examples."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The examples contrast conversational praise with an important recommendation that keeps not written out.",
+    "Constraint": "Contractions are encouraged when natural; an uncontracted form may be used to emphasize something important.",
+    "Intent": "The source links contractions to natural reading and full forms to emphasis."
+  },
+  "ingredient": {
+    "name": "Contractions convention",
+    "role": "The reader hears the intended tone.",
+    "application": "Contractions are encouraged when natural; an uncontracted form may be used to emphasize something important.",
+    "scope": "Historical official guidelines from the 2024–2025 archived snapshot; this records the displayed guidance, not current Duolingo product behavior."
+  }
+}

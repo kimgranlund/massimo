@@ -1,0 +1,29 @@
+{
+  "id": "HI09",
+  "title": "Everyday encounters and access",
+  "image": "hi09.png",
+  "source": "../sources/illustration-examples.pdf",
+  "location": {
+    "page": 9,
+    "series": "Helsinki illustration examples — PDF derived from the official PowerPoint deck with LibreOffice",
+    "order": 199
+  },
+  "slide_intent": "Represent varied people and ordinary activities so viewers can see civic life beyond a single idealized user.",
+  "strategic_value": "A wheelchair user, seated people and pram can broaden the everyday experiences represented in Helsinki illustration.",
+  "demonstration": "On yellow, separate figures include a wheelchair user, a counter scene, seated people, a pram and plants.",
+  "category": "Imagery",
+  "practical_value": "Select figures according to the situation and retain room for different everyday experiences.",
+  "content_islands": [
+    {
+      "name": "Upper encounters",
+      "spec": "Distribute the wheelchair user, counter scene and seated figures across the upper area."
+    },
+    {
+      "name": "Lower everyday objects",
+      "spec": "Group the pram, standing figure, plants and cat below."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "On yellow, separate figures include a wheelchair user, a counter scene, seated people, a pram and plants."
+  }
+}

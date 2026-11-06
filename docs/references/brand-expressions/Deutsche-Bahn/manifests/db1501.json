@@ -1,0 +1,30 @@
+{
+  "id": "DB1501",
+  "title": "MOTION BRANDING",
+  "image": "db1501.png",
+  "source": "../sources/page-15.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 15,
+    "section": 1,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Motion-Branding"
+  },
+  "slide_intent": "Distinguish the jobs of movement because attention, orientation and emotion require different kinds of animation.",
+  "strategic_value": "Connecting communication and interface movement to the same personality can make DB feel consistent across encounters.",
+  "demonstration": "A large heading introduces motion as a way to create attention, orientation and emotion in communication and interfaces.",
+  "category": "Motion",
+  "practical_value": "Choose whether an animation should support storytelling, orientation or interaction before selecting its behavior.",
+  "content_islands": [
+    {
+      "name": "Heading",
+      "spec": "Lead with the large black MOTION BRANDING title."
+    },
+    {
+      "name": "Rationale",
+      "spec": "Keep the paragraph below the heading explaining communication and UI roles."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The paragraph explicitly says motion creates attention, orientation and emotion and can support UI usability."
+  }
+}

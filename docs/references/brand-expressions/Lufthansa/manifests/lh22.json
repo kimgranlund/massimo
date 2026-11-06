@@ -1,0 +1,25 @@
+{
+  "id": "LH22",
+  "title": "Aircraft cutout — rear perspective",
+  "image": "lh22.png",
+  "source": "../sources/lh22.png",
+  "location": {
+    "series": "HvD Fonts / Lufthansa 2018",
+    "item": 1,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Inspect markings without scenic context because the object itself must carry recognition.",
+  "strategic_value": "A crane tail and fuselage wordmark can remain legible as a connected identity from a rear perspective.",
+  "demonstration": "A transparent-background aircraft rendering shows the rear, upper fuselage and dark crane tail.",
+  "category": "Application",
+  "practical_value": "Assess logo and wordmark placement on the vehicle before adding a campaign background.",
+  "content_islands": [
+    {
+      "name": "Aircraft cutout",
+      "spec": "Preserve the full plane silhouette and original transparency."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "A transparent-background aircraft rendering shows the rear, upper fuselage and dark crane tail."
+  }
+}

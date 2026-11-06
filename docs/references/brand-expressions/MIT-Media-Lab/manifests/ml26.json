@@ -1,0 +1,36 @@
+{
+  "id": "ML26",
+  "title": "Monogram lapel pin",
+  "image": "ml26.png",
+  "source": "../sources/ml26.jpg",
+  "location": {
+    "series": "Pentagram / MIT Media Lab / 2014 identity",
+    "item": 26,
+    "extent": "Published lightbox artwork"
+  },
+  "slide_intent": "Let a person express affiliation with a small symbol because recognition can work at wearable scale.",
+  "strategic_value": "A compact pin can provide a discreet sign of institutional belonging.",
+  "demonstration": "A small light monogram pin appears on a dark jacket lapel.",
+  "category": "Application",
+  "practical_value": "Judge silhouette clarity against fabric texture and the wearer’s scale.",
+  "content_islands": [
+    {
+      "name": "Pin",
+      "spec": "The angular light mark is isolated on the lapel."
+    },
+    {
+      "name": "Clothing and wearer",
+      "spec": "Dark jacket and pale shirt supply real use context."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A small light monogram pin appears on a dark jacket lapel.",
+    "Application": "A small light monogram pin appears on a dark jacket lapel."
+  },
+  "ingredient": {
+    "name": "Monogram lapel pin",
+    "role": "Let a person express affiliation with a small symbol because recognition can work at wearable scale.",
+    "application": "Judge silhouette clarity against fabric texture and the wearer’s scale.",
+    "scope": "Observed in this historical case-study artwork; not a mandatory usage rule or a current brand standard."
+  }
+}

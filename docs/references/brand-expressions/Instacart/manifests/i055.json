@@ -1,0 +1,28 @@
+{
+  "id": "I055",
+  "title": "Where homemade is made.",
+  "image": "i055.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 55
+  },
+  "slide_intent": "Pair a broad promise with a scene that lets a passerby supply its meaning. Hands reaching across a table make a shared meal visible at a glance.",
+  "strategic_value": "Instacart can associate its service with the occasion groceries enable through a headline, a photograph and a modest signature.",
+  "demonstration": "A poster on a tiled wall pairs a dark three-line headline on cream with an overhead photograph of food and hands. The signature sits at the lower left.",
+  "category": "Application",
+  "practical_value": "Use this example to decide how much information an outdoor placement can carry. Leave the headline and shared meal as the two dominant reads.",
+  "content_islands": [
+    {
+      "name": "Placement",
+      "spec": "Show the wide framed poster against the tiled wall so its format and viewing context remain visible."
+    },
+    {
+      "name": "Message and signature",
+      "spec": "Align the three-line headline at the upper left of the cream field and place the small Instacart lockup well below on the same edge."
+    },
+    {
+      "name": "Meal photograph",
+      "spec": "Fill the right side with a rounded-corner overhead crop of dishes, hands and a drink, close enough for the viewer to read the food textures."
+    }
+  ]
+}

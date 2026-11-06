@@ -1,0 +1,36 @@
+{
+  "id": "DJ20",
+  "title": "Duolingo and Plus launch sequence",
+  "image": "dj20.png",
+  "source": "../sources/johnson-banks/Duolingo_Screens_Website.gif",
+  "location": {
+    "series": "Johnson Banks / Everyone can Duolingo / 2019",
+    "item": 20,
+    "extent": "First frame of complete animated source",
+    "order": 2020
+  },
+  "slide_intent": "Show related products changing within one visual family because motion can distinguish offerings while preserving recognition.",
+  "strategic_value": "The shared Duo face and signature can connect the green core app to the blue Plus identity through a short transition.",
+  "demonstration": "Two phones begin on green launch screens; the right screen changes to blue with a helmeted Duo and Plus signature, then both display lesson interfaces.",
+  "category": "Motion",
+  "practical_value": "Compare which elements remain constant while a related product changes color, character treatment and label.",
+  "content_islands": [
+    {
+      "name": "Left phone",
+      "spec": "Keep the core green launch treatment at left before the lesson screen appears."
+    },
+    {
+      "name": "Right phone",
+      "spec": "Animate the change from green to blue, add the helmet and Plus label, then show the lesson interface."
+    },
+    {
+      "name": "Presentation frame",
+      "spec": "Keep both phones stationary against the gray background throughout the 4.8-second source GIF."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The source GIF changes the right phone’s background, character treatment and product signature over time.",
+    "Application": "The side-by-side sequence applies the core and Plus identities to app launch screens."
+  },
+  "motion": "../sources/johnson-banks/dj20.mp4"
+}

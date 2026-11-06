@@ -1,0 +1,27 @@
+{
+  "id": "HX08",
+  "title": "Layout",
+  "image": "hx08.png",
+  "source": "../sources/use-basic-elements.offline.html",
+  "location": {
+    "series": "Web guideline introduction/component",
+    "order": 33,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/use-basic-elements",
+    "original_html": "../sources/use-basic-elements.html"
+  },
+  "slide_intent": "Compose elements deliberately because hierarchy and empty space determine what a reader notices first.",
+  "strategic_value": "Helsinki can combine its palette, images and type into a powerful unified appearance.",
+  "demonstration": "This webpage introduction describes layout through empty space, text hierarchy, font sizes and surfaces made from color, photographs or illustrations.",
+  "category": "Layout",
+  "practical_value": "Choose a hierarchy and surface structure before arranging individual assets.",
+  "content_islands": [
+    {
+      "name": "Layout premise",
+      "spec": "Place the integrated-composition explanation directly beneath the Layout heading."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The paragraph links layout decisions to a powerful visual appearance.",
+    "Application": "It identifies space, hierarchy, type size and surface treatments as composition tools."
+  }
+}

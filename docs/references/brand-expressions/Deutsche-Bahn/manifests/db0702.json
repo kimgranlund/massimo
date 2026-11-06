@@ -1,0 +1,30 @@
+{
+  "id": "DB0702",
+  "title": "Logo / operational photographs",
+  "image": "db0702.png",
+  "source": "../sources/page-07.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 7,
+    "section": 2,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Logo_neu"
+  },
+  "slide_intent": "Demonstrate how a mark remains visible on real imagery so recognition survives varied subjects.",
+  "strategic_value": "A suitable logo variant can link DB’s infrastructure and employee imagery.",
+  "demonstration": "The left photograph carries a large white mark over track detail; the right worker photograph uses a smaller red mark and white headline.",
+  "category": "Application",
+  "practical_value": "Compare contrasting logo variants and scales in photographic layouts.",
+  "content_islands": [
+    {
+      "name": "Track image",
+      "spec": "Overlay the white DB mark on the infrastructure photograph at left."
+    },
+    {
+      "name": "Worker communication",
+      "spec": "Place the red logo high and the white two-line headline lower on the employee image at right."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The paired photographs show white and red logo variants in different photographic contexts."
+  }
+}

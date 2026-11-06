@@ -1,0 +1,39 @@
+{
+  "id": "AU05",
+  "title": "Identity principles — landscape arrangement",
+  "image": "au05.png",
+  "source": "../sources/04-kms-team-audi-principles_16-9.mov",
+  "location": {
+    "series": "KMS TEAM / Audi and Audi Sport identity case study",
+    "item": 5,
+    "extent": "Complete source media",
+    "poster_time_seconds": 4.76
+  },
+  "slide_intent": "Let a reader compare independent ingredients together so flexibility remains anchored to recognizable common choices.",
+  "strategic_value": "A compact overview can explain how Audi keeps identity coherent without fixing every composition.",
+  "demonstration": "Eight animated tiles form two rows of four on black, comparing imagery, typography, moving presence, proportions, rings, icons, colors and logo ending.",
+  "category": "Brand",
+  "practical_value": "Use the overview to distinguish a shared ingredient from one particular layout.",
+  "content_islands": [
+    {
+      "name": "Upper row",
+      "spec": "Place imagery, flexible typography, moving presence and simple proportions left to right."
+    },
+    {
+      "name": "Lower row",
+      "spec": "Place ring placement, technical icons, equally weighted colors and logo ending below with their captions."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Eight tiles demonstrate the visual behavior of the identity ingredients.",
+    "Application": "The tiled arrangement compares alternate proportions, mark placements and typographic uses.",
+    "Intent": "KMS’s adjacent Principles instead of rules section explains why the identity uses simplified elements and flexible placement."
+  },
+  "motion": "../sources/au05.mp4",
+  "ingredient": {
+    "name": "Principle-based identity ingredients",
+    "role": "Keep varied expressions recognizable without one fixed composition.",
+    "application": "Compare ring placement, flexible type, color, imagery and proportions as coordinated choices. The source explicitly allows free logo placement and describes equally weighted brand colors; it does not mandate identical color area in every composition.",
+    "scope": "Historical KMS TEAM Audi case study; portrait and landscape overviews of the same system, not a complete current Audi manual."
+  }
+}

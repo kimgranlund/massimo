@@ -1,0 +1,25 @@
+{
+  "id": "I084",
+  "title": "Motion Intro",
+  "image": "i084.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 84,
+    "printed_page": 84
+  },
+  "slide_intent": "Teach designers to connect movement to the shopping and savoring experience before selecting a visual effect.",
+  "strategic_value": "Instacart can carry the same framework from the static toolkit into how its communications behave.",
+  "demonstration": "A large text statement on cream ties motion to the shop + savor framework. The page introduces an idea in words rather than showing a timed example.",
+  "category": "Motion",
+  "practical_value": "Use the statement to ask which part of the shopping or savoring experience a proposed movement supports.",
+  "content_islands": [
+    {
+      "name": "Introduction label",
+      "spec": "Set Motion Intro beneath the small running header."
+    },
+    {
+      "name": "Framework statement",
+      "spec": "Place the large dark green statement in the left half and let the cream field provide a pause around it."
+    }
+  ]
+}

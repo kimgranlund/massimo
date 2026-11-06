@@ -1,0 +1,32 @@
+{
+  "id": "DBG09",
+  "title": "Logozusatz / Horizontal left aligned",
+  "image": "dbg09.png",
+  "source": "../sources/media/92f7c7060e9a-Bild_09-data.gif",
+  "location": {
+    "series": "DB new design / original GIF demonstrations",
+    "source_page": 15,
+    "section": 6,
+    "url": "https://marketingportal.extranet.deutschebahn.com/resource/blob/14025290/348802523dc42db4b5468d001fb66146/Bild_09-data.gif"
+  },
+  "slide_intent": "Anchor a business lockup to the reading edge so a viewer can connect the sender and descriptor in a wider composition.",
+  "strategic_value": "A consistent left alignment can connect DB masterbrand recognition to accompanying content.",
+  "demonstration": "The red DB logo appears at left, followed by the black Zusatz descriptor in a horizontal lockup.",
+  "category": "Motion",
+  "practical_value": "Use the left-aligned example to evaluate how the lockup relates to a neighboring text column.",
+  "content_islands": [
+    {
+      "name": "Aligned lockup",
+      "spec": "Place the mark at the left and reveal the descriptor beside it."
+    },
+    {
+      "name": "Business descriptor",
+      "spec": "Keep the black Zusatz text subordinate to the DB mark and reveal it after the mark."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The source presents this arrangement as a business/product suffix variant.",
+    "Constraint": "The accompanying text permits the suffix when communication relates exclusively to a particular business or product area."
+  },
+  "motion": "../sources/media/dbg09.mp4"
+}

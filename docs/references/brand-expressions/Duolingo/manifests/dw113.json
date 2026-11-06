@@ -1,0 +1,43 @@
+{
+  "id": "DW113",
+  "title": "Illustration / Duo / Perspective",
+  "image": "dw113.png",
+  "source": "../sources/pages/illustration-duo.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/illustration/duo",
+    "section": "Perspective",
+    "item": 113,
+    "order": 1130
+  },
+  "slide_intent": "Preserve a mascot’s defining contour while turning it because identity must survive changes in viewpoint.",
+  "strategic_value": "Controlled adjustment of Duo’s ear contour can keep the owl recognizable from front, three-quarter and side views.",
+  "demonstration": "Three finished views sit above two blue contour constructions and a rejected red pinched contour.",
+  "category": "Geometry",
+  "practical_value": "Move the top middle anchor sideways to suggest a turn without pinching the head.",
+  "content_islands": [
+    {
+      "name": "Finished viewpoints",
+      "spec": "Align front, three-quarter and profile Duo figures above their pill shadows."
+    },
+    {
+      "name": "Contour construction",
+      "spec": "Align the anchor-point diagrams below, ending with the rejected red distortion."
+    },
+    {
+      "name": "Adjustment guidance",
+      "spec": "Explain the top middle anchor and its limit at right."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source identifies Duo’s ears as iconic and difficult to turn.",
+    "Application": "The diagrams show how lateral movement of the top middle anchor suggests a head turn.",
+    "Constraint": "Do not move the anchor so far that it creates an unnatural pinch."
+  },
+  "ingredient": {
+    "name": "Duo head contour",
+    "role": "Retain the mascot’s defining ear shape across viewpoints.",
+    "application": "Move the top middle anchor sideways for turns and avoid an unnatural pinch.",
+    "scope": "Historical Duo construction; no numerical displacement limit is specified."
+  }
+}

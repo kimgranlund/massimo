@@ -1,0 +1,40 @@
+{
+  "id": "ML15",
+  "title": "Research-group website",
+  "image": "ml15.png",
+  "source": "../sources/ml15.jpg",
+  "location": {
+    "series": "Pentagram / MIT Media Lab / 2014 identity",
+    "item": 15,
+    "extent": "Published lightbox artwork"
+  },
+  "slide_intent": "Give a group its own point of entry while retaining family resemblance so specialization does not erase affiliation.",
+  "strategic_value": "A related group glyph can support autonomy within the lab’s broader identity.",
+  "demonstration": "The Mediated Matter browser page places its glyph above a narrow menu and a large circular object image.",
+  "category": "Brand",
+  "practical_value": "Compare group ownership with a small parent-lab endorsement.",
+  "content_islands": [
+    {
+      "name": "Group identity and menu",
+      "spec": "The upper-left glyph and name lead into vertical navigation."
+    },
+    {
+      "name": "Research image",
+      "spec": "A large monochrome spherical object anchors the main area."
+    },
+    {
+      "name": "Lab endorsement",
+      "spec": "A pale lab mark appears below the menu."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The Mediated Matter browser page places its glyph above a narrow menu and a large circular object image.",
+    "Application": "The Mediated Matter browser page places its glyph above a narrow menu and a large circular object image."
+  },
+  "ingredient": {
+    "name": "Research-group website",
+    "role": "Give a group its own point of entry while retaining family resemblance so specialization does not erase affiliation.",
+    "application": "Compare group ownership with a small parent-lab endorsement.",
+    "scope": "Observed in this historical case-study artwork; not a mandatory usage rule or a current brand standard."
+  }
+}

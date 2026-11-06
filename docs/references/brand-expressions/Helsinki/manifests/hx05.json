@@ -1,0 +1,33 @@
+{
+  "id": "HX05",
+  "title": "Fonts",
+  "image": "hx05.png",
+  "source": "../sources/use-basic-elements.offline.html",
+  "location": {
+    "series": "Web guideline introduction/component",
+    "order": 17,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/use-basic-elements",
+    "original_html": "../sources/use-basic-elements.html"
+  },
+  "slide_intent": "Choose a consistent typographic voice because recurring letterforms make unrelated messages feel like one speaker.",
+  "strategic_value": "Helsinki Grotesk and the stated workstation alternative can keep city communications recognizable across production environments.",
+  "demonstration": "This webpage introduction names the custom paid Helsinki Grotesk face, Pro from 2025, and Arial as an alternative, then states an introductory restriction on other fonts and handwritten-text-like illustrations.",
+  "category": "Typography",
+  "practical_value": "Use the named faces while consulting the detailed language exceptions before applying the introductory restriction.",
+  "content_islands": [
+    {
+      "name": "Font introduction",
+      "spec": "Keep the custom-face description, Arial alternative and restriction beneath the Fonts heading."
+    }
+  ],
+  "ingredient": {
+    "name": "Helsinki typefaces",
+    "role": "Give city messages a consistent typographic voice.",
+    "application": "Use Helsinki Grotesk Pro or the stated Arial alternative; read the language-specific instructions for unsupported writing systems.",
+    "scope": "This introduction is not a complete language policy: the detailed section assigns Arial for Arabic and Noto Sans for other unsupported languages."
+  },
+  "reference_purposes": {
+    "Application": "The text assigns Helsinki Grotesk and Arial as the principal production choices.",
+    "Constraint": "The introduction prohibits other fonts and handwritten-text-like illustrations; the detailed language section separately permits language-specific alternatives."
+  }
+}

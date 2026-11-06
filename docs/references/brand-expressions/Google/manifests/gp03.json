@@ -1,0 +1,34 @@
+{
+  "id": "GP03",
+  "title": "Product Sans / Geometry",
+  "image": "gp03.png",
+  "source": "../product-sans-specimen.pdf",
+  "location": {
+    "page": 3,
+    "printed_page": "P–3"
+  },
+  "slide_intent": "Balance geometric consistency with optical correction so letters remain readable rather than mechanically uniform.",
+  "strategic_value": "Circular construction can connect Product Sans to Google’s logo while optical adjustments support use as a typeface.",
+  "demonstration": "A filled and outlined Google logo pair sits beside uppercase C G O Q and lowercase c g o q specimens on blue.",
+  "category": "Geometry",
+  "practical_value": "Compare the visible shape of round letters with the logo’s geometric basis before copying a perfect circle into every glyph.",
+  "content_islands": [
+    {
+      "name": "Logo comparison",
+      "spec": "Stack the filled logo and its thin outlined construction at left."
+    },
+    {
+      "name": "Round-letter specimens",
+      "spec": "Place uppercase and lowercase rows at right at a matching large scale."
+    },
+    {
+      "name": "Construction rationale",
+      "spec": "Set the short optical-correction explanation near the lower left."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The caption explicitly connects geometric circles to optical corrections for legibility.",
+    "Expression": "The letter rows show the family’s round forms.",
+    "Application": "The logo and glyph comparison demonstrates how a shared geometric basis can produce optically adjusted letters."
+  }
+}

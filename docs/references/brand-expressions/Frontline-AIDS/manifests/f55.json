@@ -1,0 +1,32 @@
+{
+  "id": "F55",
+  "title": "Illustration style",
+  "image": "f55.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 55
+  },
+  "slide_intent": "Teach designers to review both the drawing and what it implies about people. A symbol can match the visual style yet still suggest a stereotype or stigmatizing message.",
+  "strategic_value": "Frontline AIDS can use the familiarity of emoji-like pictures across a range of subjects while choosing imagery consistent with its account of HIV and the people it serves.",
+  "demonstration": "Eight example illustrations sit above a large annotated handshake in the shape of a heart. A separate six-item caution panel names choices the guide considers stereotyped, stigmatizing, combative, victimizing, overly playful or stylistically inconsistent.",
+  "category": "Imagery",
+  "practical_value": "Review a proposed picture twice. Check the rounded forms, palette and stroke against the positive specimens. Then examine what the subject and pose imply in the specific context of the message.",
+  "content_islands": [
+    {
+      "name": "Section rail and style guidance",
+      "spec": "Mark Illustration style in the left rail. Set the heading and short explanation of the relationship between headline, illustration and photography at the upper left of the content area. Keep the asset-bank note beneath it."
+    },
+    {
+      "name": "Family of specimens",
+      "spec": "Arrange eight compact multicolor pictures in two aligned rows. Use the variety of subjects to show which qualities persist, including curved edges and a thick black contour."
+    },
+    {
+      "name": "Caution panel",
+      "spec": "Below the guidance column, group six small examples beneath a pink cross and heading. Keep each explanation with its picture so the reader can distinguish problems of meaning from problems of drawing style."
+    },
+    {
+      "name": "Annotated specimen",
+      "spec": "Enlarge the handshake below the specimen rows. Use fine pink leaders to connect rounded corners, palette choices and stroke weight to the corresponding parts of the drawing."
+    }
+  ]
+}

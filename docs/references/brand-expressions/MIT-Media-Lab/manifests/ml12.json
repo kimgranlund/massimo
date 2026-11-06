@@ -1,0 +1,37 @@
+{
+  "id": "ML12",
+  "title": "Glyph wall as collective identity",
+  "image": "ml12.png",
+  "source": "../sources/ml12.jpg",
+  "location": {
+    "series": "Pentagram / MIT Media Lab / 2014 identity",
+    "item": 12,
+    "extent": "Published lightbox artwork"
+  },
+  "slide_intent": "Present many related marks together so research diversity reads as a coherent institutional community.",
+  "strategic_value": "A shared geometric vocabulary can make the number of groups visible without requiring one dominant specialty.",
+  "demonstration": "Dense white angular glyphs form a continuous pattern on a black wall.",
+  "category": "Geometry",
+  "practical_value": "Study repeated group symbols as environmental texture.",
+  "content_islands": [
+    {
+      "name": "Glyph field",
+      "spec": "Rows of interlocking angular forms fill the wall."
+    },
+    {
+      "name": "Public corridor",
+      "spec": "A person and adjacent doorway establish scale and passage."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Dense white angular glyphs form a continuous pattern on a black wall.",
+    "Application": "Dense white angular glyphs form a continuous pattern on a black wall.",
+    "Intent": "The accompanying Pentagram project text explains that the related glyphs give the institution a stable identity while representing the distinct research groups."
+  },
+  "ingredient": {
+    "name": "Glyph wall as collective identity",
+    "role": "Present many related marks together so research diversity reads as a coherent institutional community.",
+    "application": "Study repeated group symbols as environmental texture.",
+    "scope": "Observed in this historical case-study artwork; not a mandatory usage rule or a current brand standard."
+  }
+}

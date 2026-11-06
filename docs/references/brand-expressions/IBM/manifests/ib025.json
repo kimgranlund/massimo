@@ -1,0 +1,66 @@
+{
+  "id": "IB025",
+  "title": "Infographics / Infograms",
+  "image": "ib025.png",
+  "source": "../sources/infographics-infograms.txt",
+  "location": {
+    "series": "IBM Design Language / public web guidelines",
+    "item": 25,
+    "extent": "Complete webpage content-area capture; visible default tab states",
+    "url": "https://www.ibm.com/design/language/infographics/infograms/",
+    "order": 25000
+  },
+  "slide_intent": "Preserve numerical meaning in a compact graphic so a small supporting statistic remains useful rather than becoming a decorative icon.",
+  "strategic_value": "Infograms that share IBM pictogram construction while depicting real data can connect brand consistency with concise evidence.",
+  "demonstration": "The webpage compares six infogram types, standard and radial grids, measured strokes, rounded data positions, type alignment and decimal kerning, then color-emphasis rules.",
+  "category": "Geometry",
+  "practical_value": "Choose a compact chart type, preserve data accuracy at its scale and distinguish the highlighted value through both shape and color.",
+  "content_islands": [
+    {
+      "name": "Types and foundation",
+      "spec": "Place six compact chart specimens above standard and radial construction grids."
+    },
+    {
+      "name": "Construction",
+      "spec": "Follow a dimensioned stroke-and-point diagram with the numeric stroke table and standard-grid data approximation examples."
+    },
+    {
+      "name": "Density and radial accuracy",
+      "spec": "Compare readable and crowded point counts, then show percentage-marked radial grids for donut and gauge forms."
+    },
+    {
+      "name": "Typography",
+      "spec": "Place left, center and right value placements above the decimal-kerning do/don’t pair."
+    },
+    {
+      "name": "Color and emphasis",
+      "spec": "End with monochrome and two-color examples followed by pairs testing filled hero points, contrast and matching quantifier color."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The introduction distinguishes real-data infograms from pictograms that merely symbolize charts and explains their role in small spaces.",
+    "Expression": "Fine strokes, sparse data points and compact numeric values connect infograms visually to productive IBM pictograms.",
+    "Application": "The page uses a 32px master grid, a 28px standard-grid data height and a 1.5× highlighted-point stroke, with separate radial accuracy guidance.",
+    "Constraint": "Radial data accuracy takes priority over snapping to the grid. Do not rely on color alone; two-color infogram elements require at least 3:1 contrast."
+  },
+  "ingredient": {
+    "name": "Infogram data construction",
+    "role": "Keep a small statistic readable and quantitatively meaningful.",
+    "application": "Use the 32px master grid; constrain standard-grid data to 28px and round proportional positions to the nearest grid integer. On radial grids, prioritize accurate values over snapping.",
+    "scope": "IBM infograms representing real data. These are not generic pictogram rules; the source explicitly permits radial points between grid lines."
+  },
+  "motion_assets": [
+    {
+      "title": "Infogram standard-grid construction",
+      "file": "../sources/media/f4347254684d.mp4",
+      "poster": "../sources/media/f4347254684d-poster.png",
+      "duration_seconds": 4.5,
+      "source_url": "https://www.ibm.com/design/language/ac69452b6426f8c39f8bc9db0ac87640/standardgrid-do.gif",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    }
+  ]
+}

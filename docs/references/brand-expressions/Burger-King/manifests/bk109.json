@@ -1,0 +1,32 @@
+{
+  "id": "BK109",
+  "title": "Illustrated typography on wrappers",
+  "image": "bk109.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 109
+  },
+  "slide_intent": "Let descriptive words take the shape of packaging so people can sense a product’s character while identifying it.",
+  "strategic_value": "Color-separated food adjectives can give Burger King wrappers an expressive family resemblance across differently shaped products.",
+  "demonstration": "An overhead photograph arranges round and elongated wrapped products on brown, with large distorted phrases such as Golden Crunchy, Melty Juicy and Tender Crispy.",
+  "category": "Application",
+  "practical_value": "Compare circular and elongated lettering compositions on folded wrappers before adapting descriptive words to another package.",
+  "content_islands": [
+    {
+      "name": "Round wrappers",
+      "spec": "Arrange circular packages with tightly fitted two-word lettering across the center and upper right."
+    },
+    {
+      "name": "Elongated wrappers",
+      "spec": "Place long packages at the upper left and lower right, retaining typography that follows their rectangular format."
+    },
+    {
+      "name": "Photographic ground",
+      "spec": "Use the brown surface and cast shadows to separate the white wrappers."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Large irregular lettering, single-color phrases and brown staging create a distinct packaging family.",
+    "Application": "The photograph shows illustrated words printed on wrapped products of different shapes."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "DB1307C",
+  "title": "Text auf Bild / completed photo treatments",
+  "image": "db1307c.png",
+  "source": "../sources/db1307c-page.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 13,
+    "section": 7,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Layout"
+  },
+  "slide_intent": "Evaluate the combined result so contrast improvements can be judged in the actual image context.",
+  "strategic_value": "Readable text can coexist with DB’s natural photographs when tonal support follows the content.",
+  "demonstration": "The three sliders expose the completed photographic compositions: a worker portrait with partial darkening, a safety-worker portrait with dark support and a traveler with light support.",
+  "category": "Layout",
+  "practical_value": "Compare how each finished photograph accommodates black or white text and the DB elements.",
+  "content_islands": [
+    {
+      "name": "Contrast introduction",
+      "spec": "Retain the initial light/dark examples and accessibility guidance."
+    },
+    {
+      "name": "Completed treatments",
+      "spec": "Stack the three fully revealed photographic compositions under their named adjustment options."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The slider endpoint reveals all three completed photo-and-text treatments.",
+    "Intent": "The accompanying copy explains the adjustments as improving readability."
+  }
+}

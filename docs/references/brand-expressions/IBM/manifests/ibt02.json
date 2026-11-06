@@ -1,0 +1,30 @@
+{
+  "id": "IBT02",
+  "title": "Purpose and compliance",
+  "image": "ibt02.png",
+  "source": "../sources/ibm-logo-third-parties.pdf",
+  "location": {
+    "page": 2,
+    "series": "IBM Logo and Brand Guidelines for Third Parties / copyright 2022",
+    "order": 100002
+  },
+  "slide_intent": "State what collaboration branding must communicate, because recognition alone does not tell viewers which organization contributed what.",
+  "strategic_value": "A clear statement of IBM’s role can reduce ambiguity in third-party marketing collaborations.",
+  "demonstration": "A compact paragraph near the upper center-left explains the guide’s purpose and required compliance; the rest of the page remains open.",
+  "category": "Brand",
+  "practical_value": "Use accurate representation of IBM’s role as the standard for evaluating subsequent placement choices.",
+  "content_islands": [
+    {
+      "name": "Purpose statement",
+      "spec": "Place the paragraph in one narrow column near the top, describing trademarks, marketing collaboration and compliance."
+    },
+    {
+      "name": "Document locator",
+      "spec": "Keep the small guide name at bottom left and page number at bottom right."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The paragraph says the guidelines ensure accurate communication of IBM’s role and contribution.",
+    "Constraint": "The page requires authorized trademark users to comply with these guidelines."
+  }
+}

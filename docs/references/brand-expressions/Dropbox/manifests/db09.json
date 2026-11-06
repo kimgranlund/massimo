@@ -1,0 +1,30 @@
+{
+  "id": "DB09",
+  "title": "Horizontal signature",
+  "image": "db09.png",
+  "source": "../sources/db09.jpg",
+  "location": {
+    "series": "COLLINS / Dropbox / 2017 identity case study",
+    "item": 9,
+    "section": "Gallery",
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Pair symbol and name because recognition should serve both familiar and first-time audiences.",
+  "strategic_value": "The blue mark beside black lettering can identify Dropbox without relying on campaign imagery.",
+  "demonstration": "A blue symbol and black Dropbox wordmark form a centered horizontal signature on a pale ground.",
+  "category": "Brand",
+  "practical_value": "Evaluate the relationship between a compact symbol and a readable name.",
+  "content_islands": [
+    {
+      "name": "Signature",
+      "spec": "Place the mark left of the wordmark with both centered as one unit."
+    },
+    {
+      "name": "Clear surrounding field",
+      "spec": "Keep the unoccupied pale ground visible without deriving a numeric clearance rule."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A blue symbol and black Dropbox wordmark form a centered horizontal signature on a pale ground."
+  }
+}

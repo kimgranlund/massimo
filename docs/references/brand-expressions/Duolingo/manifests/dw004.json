@@ -1,0 +1,39 @@
+{
+  "id": "DW004",
+  "title": "Logotype / Clear space",
+  "image": "dw004.png",
+  "source": "../sources/pages/identity-logos.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/identity/logos",
+    "section": "Clear space",
+    "item": 4,
+    "order": 40
+  },
+  "slide_intent": "Protect the space around a signature because competing objects can weaken recognition.",
+  "strategic_value": "An uncluttered boundary can help Duolingo’s wordmark stand out in busy compositions.",
+  "demonstration": "A clearance diagram accompanies an instruction to keep graphics and text outside the marked area.",
+  "category": "Geometry",
+  "practical_value": "Use the illustrated boundary when placing nearby content.",
+  "content_islands": [
+    {
+      "name": "Clearance diagram",
+      "spec": "Place the logotype and its marked exclusion area in the large left panel."
+    },
+    {
+      "name": "Exclusion instruction",
+      "spec": "Place the heading and prohibition on graphics and text in the right column."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The copy explains that clear space lets the logotype stand out.",
+    "Application": "The diagram provides a boundary for placing nearby material.",
+    "Constraint": "Objects, graphics and text are prohibited within the shown clear space."
+  },
+  "ingredient": {
+    "name": "Logotype clear space",
+    "role": "Keep the signature visually distinct.",
+    "application": "Keep graphics and text outside the illustrated boundary.",
+    "scope": "Historical archived guidelines. Applies to the logotype diagram; do not invent a numerical clearance beyond what it shows."
+  }
+}

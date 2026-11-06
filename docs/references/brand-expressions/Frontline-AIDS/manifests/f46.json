@@ -1,0 +1,28 @@
+{
+  "id": "F46",
+  "title": "Eye catchers",
+  "image": "f46.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 46
+  },
+  "slide_intent": "Teach designers to establish one dominant reading distance for a poster, banner or flyer. Secondary information can sit at a much smaller scale once the main message attracts attention.",
+  "strategic_value": "Frontline AIDS can carry short campaign language across large banners and small handouts while retaining the order of message and action.",
+  "demonstration": "Three annotated formats compare a pink poster, a small flyer and a tall pull-up banner. Large boxed headlines dominate, with details and contact information in smaller roles.",
+  "category": "Typography",
+  "practical_value": "Identify the message someone should read from a distance and the action they can read up close. Check that the hierarchy still works when format changes.",
+  "content_islands": [
+    {
+      "name": "Scale guidance",
+      "spec": "Use the left paragraph to explain where high-impact formats can use dramatic changes in type scale."
+    },
+    {
+      "name": "Poster and flyer",
+      "spec": "Place the poster high in the field and the paired small-format flyer views along the lower left. Label the main heading, subhead and supporting roles."
+    },
+    {
+      "name": "Pull-up banner",
+      "spec": "Set the vertical banner at right. Preserve the large headline near the top, photograph and lower call to action. Use surrounding notes to identify each typographic setting."
+    }
+  ]
+}

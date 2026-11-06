@@ -1,0 +1,28 @@
+{
+  "id": "I003",
+  "title": "Our Ingredients",
+  "image": "i003.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 3
+  },
+  "slide_intent": "Help the reader find a topic and recognize when guidance is provisional.",
+  "strategic_value": "An inventory can connect individual disciplines to one system while keeping the status of a developing typeface visible.",
+  "demonstration": "Two columns pair topics with folios. Typography carries an asterisk that leads to a red footnote.",
+  "category": "Layout",
+  "practical_value": "Use the printed contents as a section map and the asterisk to identify a qualification on the type guidance.",
+  "content_islands": [
+    {
+      "name": "Contents label",
+      "spec": "Set the small running labels and Our Ingredients at upper left."
+    },
+    {
+      "name": "Section index",
+      "spec": "Group the ten topics in two columns. Set page numbers like superscripts beside the topic names."
+    },
+    {
+      "name": "Typeface qualification",
+      "spec": "Keep the asterisk and note together through the same red accent at the foot of the page."
+    }
+  ]
+}

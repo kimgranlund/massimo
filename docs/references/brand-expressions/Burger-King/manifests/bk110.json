@@ -1,0 +1,39 @@
+{
+  "id": "BK110",
+  "title": "Illustrated Typography",
+  "image": "bk110.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 110
+  },
+  "slide_intent": "Make lettering express the words it carries while fitting the available surface, so packaging communicates appetite and product difference at a glance.",
+  "strategic_value": "Flame Bold caps transformed into compact food descriptions can give Burger King packages a consistent voice without identical shapes.",
+  "demonstration": "The page pairs two stated packaging jobs with eight labeled lettering specimens: five small rounds, a larger round and two elongated formats, with selected inch dimensions.",
+  "category": "Typography",
+  "practical_value": "Start from Flame Bold caps, use descriptive words as visual cues and fit the lettering to the packaging shape.",
+  "content_islands": [
+    {
+      "name": "Lettering guidance",
+      "spec": "Place the Flame Bold caps basis and two packaging objectives in the left column."
+    },
+    {
+      "name": "Upper specimens",
+      "spec": "Line up five compact circular two-word compositions with product-wrap captions; retain the 3.5-inch bracket."
+    },
+    {
+      "name": "Lower specimens",
+      "spec": "Compare a 4-inch Hearty Melty round with Tasty Eggy and Tender Crispy elongated forms and their printed dimensions."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text states that packaging lettering should use descriptive words as visual cues and fill different packaging shapes.",
+    "Expression": "Eight examples distort the same base lettering into rounded and elongated compositions.",
+    "Application": "The page identifies Flame Bold caps as the base and labels the product-wrap examples and selected dimensions."
+  },
+  "ingredient": {
+    "name": "Illustrated packaging typography",
+    "role": "Make descriptive food words visible through shape.",
+    "application": "Begin with Flame Bold caps; derive visual cues from the words and fill the intended packaging shape.",
+    "scope": "Historical packaging examples; printed inch dimensions describe the shown wraps, not a universal type-size formula."
+  }
+}

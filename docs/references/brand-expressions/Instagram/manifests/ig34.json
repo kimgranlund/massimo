@@ -1,0 +1,30 @@
+{
+  "id": "IG34",
+  "title": "Experiential / players on the gradient",
+  "image": "ig34.png",
+  "source": "../sources/ig34.jpg",
+  "location": {
+    "series": "Elvis Dinh / Instagram brand design system / project year 2022",
+    "item": 34,
+    "extent": "whole source artwork"
+  },
+  "slide_intent": "Judge a large color field with real people in it so the palette’s impact is visible in use.",
+  "strategic_value": "The warm-to-purple field can make an Instagram activation identifiable even when no logo appears in the crop.",
+  "demonstration": "Two players and a ball occupy a court that transitions from orange through pink to purple.",
+  "category": "Color",
+  "practical_value": "Use a logo-free action crop to test how much identity the environmental palette carries.",
+  "content_islands": [
+    {
+      "name": "Gradient playing field",
+      "spec": "Let the continuous color transition fill the photograph."
+    },
+    {
+      "name": "Players and shadows",
+      "spec": "Retain the two players, ball and shadows as scale and activity cues."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The cropped scene shows the gradient carrying the visual character without a visible logo.",
+    "Application": "The color field is demonstrated beneath real sporting activity."
+  }
+}

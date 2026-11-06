@@ -1,0 +1,24 @@
+{
+  "id": "F48",
+  "title": "Overview",
+  "image": "f48.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 48
+  },
+  "slide_intent": "Ask editors to choose photographs that reveal a particular encounter. People can recognize context and individuality when a collection includes specific faces, settings and actions.",
+  "strategic_value": "The organization can build a photographic identity from its own documentary work by selecting images that contain details of the people and places photographed.",
+  "demonstration": "Four differently sized images sit on black: a person at night in a street, a smiling portrait, hands on a head, and a hand presenting a small white object.",
+  "category": "Imagery",
+  "practical_value": "Compare candidate images by identifying a detail or moment each contributes to the story. Use the referenced media library to look for complementary views.",
+  "content_islands": [
+    {
+      "name": "Editorial guidance",
+      "spec": "Keep the section rail and overview in white type on black. Place the media-library reference beneath the text."
+    },
+    {
+      "name": "Photo arrangement",
+      "spec": "Distribute four differently scaled photographs around the text. Keep the crop and proportions of each view distinct and use the black space to separate the moments."
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "id": "LH32",
+  "title": "Type family architecture",
+  "image": "lh32.png",
+  "source": "../sources/lh32.svg",
+  "location": {
+    "series": "HvD Fonts / Lufthansa 2018",
+    "item": 11,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Map a family by role because designers need to know which tools belong to which reading tasks.",
+  "strategic_value": "Distinct Head, Text and additional styles can make Lufthansa type selection more consistent.",
+  "demonstration": "Three columns list Head Bold, Light and Thin; Text Bold, Regular and Light; and Logotype plus Registration Mono.",
+  "category": "Typography",
+  "practical_value": "Choose the relevant branch of the family before selecting a weight.",
+  "content_islands": [
+    {
+      "name": "Role columns",
+      "spec": "Align Head, Text and Additional Styles headings."
+    },
+    {
+      "name": "Weight cells",
+      "spec": "Place available styles in comparable rows and leave absent roles empty."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Three columns list Head Bold, Light and Thin; Text Bold, Regular and Light; and Logotype plus Registration Mono."
+  },
+  "ingredient": {
+    "name": "Type family architecture",
+    "role": "Guide selection among display, reading, logotype and registration roles.",
+    "application": "Choose the relevant branch of the family before selecting a weight.",
+    "scope": "Historical 2018 Lufthansa airline refresh case study; observed example, not a complete brand manual or a current Lufthansa Group rule."
+  }
+}

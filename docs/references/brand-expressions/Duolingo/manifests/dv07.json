@@ -1,0 +1,41 @@
+{
+  "id": "DV07",
+  "title": "Typography / Nunito / White variant",
+  "image": "dv07.png",
+  "source": "../sources/pages/dv07.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/identity/typography",
+    "section": "Substitute font, Nunito",
+    "selected_control_index": 7,
+    "related_default": "DW029",
+    "order": 292
+  },
+  "slide_intent": "Check the fallback under brand color conditions because substitution should preserve a recognizable tone across surfaces.",
+  "strategic_value": "White Nunito on green can keep a rounded, friendly typographic character when Duolingo’s brand fonts are unavailable.",
+  "demonstration": "Four white Nunito weights reverse onto green beside the conditional substitute-font explanation.",
+  "category": "Typography",
+  "practical_value": "Evaluate the substitute in reversal while retaining the source’s access condition.",
+  "content_islands": [
+    {
+      "name": "Alternate color specimen",
+      "spec": "Stack the four white specimens on green and retain the selected white control below."
+    },
+    {
+      "name": "Fallback condition",
+      "spec": "Place the heading, access condition, visual rationale and font link in the right column."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source explains the choice through rounded caps and visual similarities to DIN Next Rounded.",
+    "Application": "Nunito is specified when the brand fonts are inaccessible.",
+    "Constraint": "The fallback is conditional on lack of access to the brand fonts.",
+    "Expression": "Four white Nunito weights reverse onto green beside the conditional substitute-font explanation."
+  },
+  "ingredient": {
+    "name": "Nunito fallback",
+    "role": "Preserve a related voice when primary fonts are unavailable.",
+    "application": "Use Nunito when the brand fonts cannot be accessed.",
+    "scope": "Historical archived guidelines. Historical fallback guidance; it is not an interchangeable primary font choice."
+  }
+}

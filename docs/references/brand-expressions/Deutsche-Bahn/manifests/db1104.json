@@ -1,0 +1,27 @@
+{
+  "id": "DB1104",
+  "title": "Icon Kit",
+  "image": "db1104.png",
+  "source": "../sources/page-11.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 11,
+    "section": 4,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Icons"
+  },
+  "slide_intent": "Use approved assets so small differences do not accumulate into an inconsistent interface.",
+  "strategic_value": "A shared library can keep DB icons uniform across teams.",
+  "demonstration": "A brief note supplies the starter-kit link and states that only official icons are used without modification.",
+  "category": "Geometry",
+  "practical_value": "Download the official kit or consult the library instead of redrawing symbols.",
+  "content_islands": [
+    {
+      "name": "Asset instruction",
+      "spec": "Place the library explanation above the starter-kit download link."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The section directs designers to the starter kit and icon library.",
+    "Constraint": "Only official icons are to be used and they must not be modified."
+  }
+}

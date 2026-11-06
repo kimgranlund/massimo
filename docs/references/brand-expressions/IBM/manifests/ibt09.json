@@ -1,0 +1,33 @@
+{
+  "id": "IBT09",
+  "title": "Usage examples",
+  "image": "ibt09.png",
+  "source": "../sources/ibm-logo-third-parties.pdf",
+  "location": {
+    "page": 9,
+    "series": "IBM Logo and Brand Guidelines for Third Parties / copyright 2022",
+    "order": 100009
+  },
+  "slide_intent": "Show the relationship rule in realistic layouts, because a correct explanation must remain readable alongside schedules, speakers and other sponsors.",
+  "strategic_value": "Secondary IBM placements tied to specific roles can keep event communication clear about who contributes what.",
+  "demonstration": "Three laptop mockups show an event schedule with dinner sponsorship, an IBM speaker listing and a row of multiple sponsors.",
+  "category": "Application",
+  "practical_value": "Choose a placement next to the relevant contribution rather than using a generic masthead endorsement.",
+  "content_islands": [
+    {
+      "name": "Heading",
+      "spec": "Keep Usage examples in the narrow left column."
+    },
+    {
+      "name": "Event schedule",
+      "spec": "Place the larger upper laptop example with Dinner sponsored by text and a small IBM mark in the content area."
+    },
+    {
+      "name": "Speaker and sponsors",
+      "spec": "Place two laptops below for an IBM speaker and an equal-weight sponsor row, each with a caption."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "Three event-page mockups demonstrate marks tied to a dinner sponsor, speaker and multiple sponsors."
+  }
+}

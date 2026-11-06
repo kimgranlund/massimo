@@ -1,0 +1,32 @@
+{
+  "id": "DB1114C",
+  "title": "Geometrische Grundformen / Small",
+  "image": "db1114c.png",
+  "source": "../sources/db1114c-page.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 11,
+    "section": 14,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Icons",
+    "tab": "Small 20 × 20 dp"
+  },
+  "slide_intent": "Use a small-size construction reference so a reduced symbol remains balanced rather than merely shrunken.",
+  "strategic_value": "Small key shapes can preserve DB’s family resemblance in compact controls.",
+  "demonstration": "The Small tab shows a 16×16 dp circle, 14×14 dp square, 12×16 dp vertical rectangle and 16×12 dp horizontal rectangle.",
+  "category": "Geometry",
+  "practical_value": "Use the small templates to compare silhouette weight before drawing details.",
+  "content_islands": [
+    {
+      "name": "Small selection",
+      "spec": "Show the Small tab selected above the specimens."
+    },
+    {
+      "name": "Small key shapes",
+      "spec": "Arrange four labeled templates with their dimensions."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source attributes consistency and visual balance to geometric base shapes.",
+    "Application": "The selected state supplies the small-size construction templates."
+  }
+}

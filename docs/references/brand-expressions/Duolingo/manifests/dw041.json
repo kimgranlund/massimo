@@ -1,0 +1,39 @@
+{
+  "id": "DW041",
+  "title": "Duolingo Plus / Construction",
+  "image": "dw041.png",
+  "source": "../sources/pages/identity-brand-family.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/identity/brand-family",
+    "section": "Construction",
+    "item": 41,
+    "order": 410
+  },
+  "slide_intent": "Specify relationships within a product lockup because small spacing changes can disrupt legibility and family consistency.",
+  "strategic_value": "Reusing a shape from the Duolingo wordmark can give the Plus token a coherent relationship to the master signature.",
+  "demonstration": "An annotated construction diagram uses the o counter as a reference for inter-element spacing, token padding, top alignment and baseline relationships.",
+  "category": "Geometry",
+  "practical_value": "Use the illustrated counter-based construction when checking the supplied Plus lockup.",
+  "content_islands": [
+    {
+      "name": "Construction diagram",
+      "spec": "Keep the wordmark, Plus token and counter-derived measurement shapes in the left panel."
+    },
+    {
+      "name": "Relationship rules",
+      "spec": "Place the heading, legibility rationale and reference-shape uses in the right column."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text states legibility and consistency as reasons to preserve the logo-element relationship.",
+    "Application": "The o counter provides a construction reference for gap, padding and alignment.",
+    "Constraint": "The source instructs users to keep the placement and relationship of the elements intact."
+  },
+  "ingredient": {
+    "name": "Plus lockup geometry",
+    "role": "Connect the product token to the master signature consistently.",
+    "application": "Preserve the supplied relationship; the gap equals the o-counter width, which also informs token padding, top alignment and character baselines in the diagram.",
+    "scope": "Historical archived guidelines. Historical Plus construction. Use the actual diagram for those relationships rather than assigning one universal numeric padding."
+  }
+}

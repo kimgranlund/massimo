@@ -1,0 +1,28 @@
+{
+  "id": "C32",
+  "title": "Research Posters",
+  "image": "c32.png",
+  "source": "../csail-branding-short-guide.pdf",
+  "location": {
+    "page": 32
+  },
+  "slide_intent": "Teach researchers to edit a poster for reading at a distance. A colleague needs an entry point, a route through the findings and figures they can interpret.",
+  "strategic_value": "CSAIL can give different research groups a recognizable presentation format while allowing their scientific content to determine the illustrations.",
+  "demonstration": "A compact checklist sits alongside a wide poster. The poster uses a title band and six content panels with charts, type examples and a diagram.",
+  "category": "Layout",
+  "practical_value": "Choose the main message first, then test the size of the text, the order of the panels and the clarity of every figure from the intended viewing distance.",
+  "content_islands": [
+    {
+      "name": "Poster checklist",
+      "spec": "Use the left column for concise guidance on the title, text volume, color, viewing distance and figures."
+    },
+    {
+      "name": "Title band",
+      "spec": "Place the sample headline and institutional marks above the poster body."
+    },
+    {
+      "name": "Six-panel body",
+      "spec": "Arrange two rows of three content groups. Contrast figures, large numbers and text so each group has a clear first read."
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "DB1300",
+  "title": "Layout / wall campaign",
+  "image": "db1300.png",
+  "source": "../sources/page-13.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 13,
+    "section": 0,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Layout"
+  },
+  "slide_intent": "Use repeated structure across adjacent messages so a viewer can connect separate claims as one campaign.",
+  "strategic_value": "Alternating image and text panels can give DB’s improvement messages a recognizable public presence.",
+  "demonstration": "A wall installation alternates photographs with light and dark message panels, arrows, DB marks and red Schwellen.",
+  "category": "Layout",
+  "practical_value": "Compare how image, headline and identity elements retain their roles across neighboring panels.",
+  "content_islands": [
+    {
+      "name": "Campaign sequence",
+      "spec": "Arrange photographs and message panels as one continuous wall composition."
+    },
+    {
+      "name": "Directional accents",
+      "spec": "Use arrows and vertical or horizontal Schwellen to connect the panel rhythm."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The image shows the layout system applied to an architectural-scale campaign."
+  }
+}

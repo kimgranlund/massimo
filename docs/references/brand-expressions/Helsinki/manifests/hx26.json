@@ -1,0 +1,27 @@
+{
+  "id": "HX26",
+  "title": "The Crown Bridges’ worksite sign on Sörnäisten rantatie. ",
+  "image": "hx26.png",
+  "source": "../sources/design-and-create.offline.html",
+  "location": {
+    "series": "Web guideline introduction/component",
+    "order": 91,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/design-and-create",
+    "original_html": "../sources/design-and-create.html"
+  },
+  "slide_intent": "Make worksites explain themselves because passersby need to know what is happening and for how long.",
+  "strategic_value": "The framed logo and wave corner can connect a street construction notice to Helsinki while dates and multilingual text provide practical context.",
+  "demonstration": "This webpage photograph shows the Crown Bridges worksite sign beside a street: a multilingual header, 10/2021–2027 dates, logo at upper right, columns of text and an orange wave corner.",
+  "category": "Application",
+  "practical_value": "Compare informational hierarchy and city identification in a real construction setting.",
+  "content_islands": [
+    {
+      "name": "Worksite sign",
+      "spec": "Keep the sign, street surroundings and identifying photo credit together."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The photographed sign identifies a Crown Bridges worksite on Sörnäisten rantatie.",
+    "Expression": "The notice uses the framed logo and orange wave detail within a multilingual layout."
+  }
+}

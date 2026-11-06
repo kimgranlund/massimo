@@ -1,0 +1,43 @@
+{
+  "id": "HE008",
+  "title": "Logo against colourful background",
+  "image": "he008.png",
+  "source": "../sources/use-basic-elements.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Logo against colourful background",
+    "order": 12,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/use-basic-elements#logo-against-colourful-background",
+    "original_html": "../sources/use-basic-elements.html"
+  },
+  "slide_intent": "Choose a logo color against its actual background because recognition depends on contrast, not on a preferred swatch alone.",
+  "strategic_value": "Consistent contrast decisions can keep Helsinki’s framed signature visible across its varied palette and photographs.",
+  "demonstration": "This expanded webpage section separates black and white logo guidance and illustrates color-background combinations with named exceptions.",
+  "category": "Color",
+  "practical_value": "Choose black or white from the background pairing, then verify visibility over photographs.",
+  "content_islands": [
+    {
+      "name": "General contrast",
+      "spec": "Open with primary black/white usage and photographic background guidance."
+    },
+    {
+      "name": "White-logo combinations",
+      "spec": "List exceptions and show white marks on palette fields."
+    },
+    {
+      "name": "Black-logo combinations",
+      "spec": "List dark-field exceptions and show black marks on palette fields."
+    }
+  ],
+  "ingredient": {
+    "name": "Black or white framed logo",
+    "role": "Keep the city signature distinguishable from its surroundings.",
+    "application": "Use black on Engel and Silver; use white on Brick, Bus and Coat of Arms; check photographic contrast.",
+    "scope": "Black and white are primary choices. Other logo colors are possible only with careful consideration, so the section does not establish an absolute two-color prohibition."
+  },
+  "reference_purposes": {
+    "Intent": "The text repeatedly explains the choices through the logo’s visibility against its background.",
+    "Application": "The examples compare marks on colored fields.",
+    "Constraint": "White excludes Engel and Silver; black excludes Brick, Bus and Coat of Arms."
+  }
+}

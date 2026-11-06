@@ -1,0 +1,39 @@
+{
+  "id": "DW015",
+  "title": "Icon / Avatars",
+  "image": "dw015.png",
+  "source": "../sources/pages/identity-logos.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/identity/logos",
+    "section": "Avatars",
+    "item": 15,
+    "order": 150
+  },
+  "slide_intent": "Adjust a recognizable face to its mask because the same crop does not work equally in square and circular frames.",
+  "strategic_value": "Defined eye-mask spacing can keep Duo recognizable across Duolingo’s social avatars and small icons.",
+  "demonstration": "Four avatar examples compare framing treatments; the text distinguishes square edge contact from circular side clearance and notes use as small as 16 px.",
+  "category": "Geometry",
+  "practical_value": "Choose crop spacing based on the final avatar mask.",
+  "content_islands": [
+    {
+      "name": "Avatar comparison",
+      "spec": "Arrange the four framed examples in a row within the left panel."
+    },
+    {
+      "name": "Mask-specific instructions",
+      "spec": "Place the heading, small-size example and square-versus-circle cropping guidance at right."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source says the icon keeps Duo’s personality central to social accounts.",
+    "Application": "The examples show how the face adapts to avatar masks.",
+    "Constraint": "The eye mask touches square-frame side edges but leaves side space as the mask approaches a circle."
+  },
+  "ingredient": {
+    "name": "Duo avatar crop",
+    "role": "Keep facial recognition clear within different masks.",
+    "application": "Touch left and right edges in square masks; leave side space in circular masks.",
+    "scope": "Historical archived guidelines. Historical avatar guidance. The source describes use as small as 16 px; that is not the logotype minimum."
+  }
+}

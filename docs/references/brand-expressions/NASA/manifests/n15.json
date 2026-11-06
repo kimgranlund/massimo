@@ -1,0 +1,24 @@
+{
+  "id": "N15",
+  "title": "Reproduction Art",
+  "image": "n15.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 15
+  },
+  "slide_intent": "Teach designers to select a prepared configuration at its intended size. A name broken into two lines occupies a different space from the same name in a narrow column.",
+  "strategic_value": "NASA can protect both letterform proportions and the setting of its full name by issuing configurations that already fit common formats.",
+  "demonstration": "Two columns repeat agency lockups at five descending sizes. The narrower version wraps the agency name across four lines, while the wider version uses two.",
+  "category": "Typography",
+  "practical_value": "Choose the width and printed specimen size that fit the space. The page directs users to reproduce these typographic masters at their shown sizes.",
+  "content_islands": [
+    {
+      "name": "Use instructions",
+      "spec": "Group the heading, same-size reproduction instruction and supply note at the upper left."
+    },
+    {
+      "name": "Two-column size comparison",
+      "spec": "Align the narrow and wide agency lockups in rows of descending size, keeping the repeated names attached to their marks."
+    }
+  ]
+}

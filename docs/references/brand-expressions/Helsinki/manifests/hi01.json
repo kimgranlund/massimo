@@ -1,0 +1,34 @@
+{
+  "id": "HI01",
+  "title": "Helsinki-hetket / Kuvitukset Lille Santanen",
+  "image": "hi01.png",
+  "source": "../sources/illustration-examples.pdf",
+  "location": {
+    "page": 1,
+    "series": "Helsinki illustration examples — PDF derived from the official PowerPoint deck with LibreOffice",
+    "order": 191
+  },
+  "slide_intent": "Introduce a civic illustration voice through ordinary life so people can recognize their city in human scenes.",
+  "strategic_value": "The framed logo, bold fields and varied characters can connect Helsinki’s institutional identity to everyday experience.",
+  "demonstration": "An orange-and-pink wave divides the cover behind white title and illustrator credit; people, trees and a building occupy the right side.",
+  "category": "Brand",
+  "practical_value": "Use a cover to establish the relationship between the city identity and an illustration collection before presenting its assets.",
+  "content_islands": [
+    {
+      "name": "Title and credit",
+      "spec": "Place the large two-line title above the smaller illustration credit at left."
+    },
+    {
+      "name": "Illustrated life",
+      "spec": "Arrange people, dog, trees and a building across the pink right-hand area."
+    },
+    {
+      "name": "City signature",
+      "spec": "Place the white framed logo at bottom right."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The cover combines the orange/pink wave field, civic logo and character illustrations.",
+    "Application": "It applies those elements to the introduction of an illustration deck."
+  }
+}

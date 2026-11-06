@@ -1,0 +1,30 @@
+{
+  "id": "HI36",
+  "title": "Kiitos!",
+  "image": "hi36.png",
+  "source": "../sources/illustration-examples.pdf",
+  "location": {
+    "page": 36,
+    "series": "Helsinki illustration examples — PDF derived from the official PowerPoint deck with LibreOffice",
+    "order": 226
+  },
+  "slide_intent": "End with a clear acknowledgment and signature so viewers recognize the presentation’s close and source.",
+  "strategic_value": "Repeating the orange/pink wave from the cover can give the Helsinki deck a coherent beginning and ending.",
+  "demonstration": "White “Kiitos!” sits at upper left on an orange field that meets pink through a large wave edge; the framed logo sits bottom right.",
+  "category": "Brand",
+  "practical_value": "Use the closing page to repeat a few identity elements rather than introduce another illustration scene.",
+  "content_islands": [
+    {
+      "name": "Closing acknowledgment",
+      "spec": "Place the large white word at the upper left."
+    },
+    {
+      "name": "Wave field and signature",
+      "spec": "Carry the orange/pink division across the page and place the white logo bottom right."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The slide applies the identity to a closing acknowledgment.",
+    "Expression": "The orange/pink wave and white logo repeat the cover’s visual treatment."
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "I058",
+  "title": "Illustration Intro",
+  "image": "i058.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 58
+  },
+  "slide_intent": "Set the relative prominence of illustration before selecting a style. A playful drawing should leave enough attention for the food itself.",
+  "strategic_value": "Instacart can use illustration to add humor while food remains the main attraction.",
+  "demonstration": "One large statement on cream compares illustration to seasoning a dish. A small section label sits above it.",
+  "category": "Imagery",
+  "practical_value": "Check an illustrated composition by asking whether the drawing adds a useful note or overwhelms the food.",
+  "content_islands": [
+    {
+      "name": "Section label",
+      "spec": "Place Illustration Intro beneath the quiet running header."
+    },
+    {
+      "name": "Governing statement",
+      "spec": "Set the food metaphor in large dark green type across several lines, holding the rest of the cream page open."
+    }
+  ]
+}

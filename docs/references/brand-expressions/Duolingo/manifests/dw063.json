@@ -1,0 +1,32 @@
+{
+  "id": "DW063",
+  "title": "Writing / Duo",
+  "image": "dw063.png",
+  "source": "../sources/pages/writing-duo.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/duo",
+    "section": "Duo",
+    "item": 63,
+    "order": 630
+  },
+  "slide_intent": "Give a mascot a defined relationship with people so its persistence feels like a recognizable personality.",
+  "strategic_value": "Describing Duo as an enthusiastic supporter can align reminders and encouragement around one character.",
+  "demonstration": "The blue introduction pairs a paragraph describing Duo’s supportive, persistent personality with the owl and a speech bubble.",
+  "category": "Voice",
+  "practical_value": "Define who the mascot is to the audience before writing in its perspective.",
+  "content_islands": [
+    {
+      "name": "Section introduction",
+      "spec": "Place the Writing label, lowercase section title and explanatory paragraph at left on the blue field."
+    },
+    {
+      "name": "Illustrated cue",
+      "spec": "Place Duo beside a pale blue speech bubble at right."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source describes Duo as learners’ supporter and explains his persistent, emotional communication style; its performance claims remain source claims, not independently measured results.",
+    "Expression": "The blue introduction pairs a paragraph describing Duo’s supportive, persistent personality with the owl and a speech bubble."
+  }
+}

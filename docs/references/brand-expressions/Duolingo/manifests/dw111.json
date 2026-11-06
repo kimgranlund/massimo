@@ -1,0 +1,43 @@
+{
+  "id": "DW111",
+  "title": "Illustration / Floating accents",
+  "image": "dw111.png",
+  "source": "../sources/pages/illustration-shape-language.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/illustration/shape-language",
+    "section": "Floating accents",
+    "item": 111,
+    "order": 1110
+  },
+  "slide_intent": "Use separation purposefully because detached parts can aid posing but can also weaken a figure’s coherence.",
+  "strategic_value": "Floating details derived from Duo’s feet can connect objects and characters to a recognizable Duolingo convention.",
+  "demonstration": "Five isolated examples show floating feet, leaves, hat details, ears and hair above two rejected character treatments.",
+  "category": "Geometry",
+  "practical_value": "Detach a part only when it serves the illustration or makes posing easier.",
+  "content_islands": [
+    {
+      "name": "Useful separations",
+      "spec": "Arrange Duo, carrot and three heads across the upper part of the pale panel."
+    },
+    {
+      "name": "Forced separations",
+      "spec": "Place the two crossed-out full figures below."
+    },
+    {
+      "name": "Purpose and limit",
+      "spec": "Explain the origin in Duo’s feet and the conditional use of floating objects at right."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source says floating parts give flexibility when turning and posing an object.",
+    "Application": "Examples extend the device from Duo’s feet to plants and heads.",
+    "Constraint": "Float an object only when it serves the illustration; do not force the device."
+  },
+  "ingredient": {
+    "name": "Floating accents",
+    "role": "Allow flexible posing while repeating a recognizable construction device.",
+    "application": "Separate selected parts above or below a subject when the separation serves the drawing.",
+    "scope": "Occasional historical illustration device, not a requirement for every object or limb."
+  }
+}

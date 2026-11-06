@@ -1,0 +1,39 @@
+{
+  "id": "IB018T33",
+  "title": "People illustration / Rose and Almond — CMYK palette",
+  "image": "ib018t33.png",
+  "source": "../sources/alternate-tabs.json",
+  "location": {
+    "series": "IBM Design Language / alternate tab states",
+    "parent": "IB018",
+    "group": 3,
+    "tab": 3,
+    "label": "CMYK",
+    "url": "https://www.ibm.com/design/language/illustration/people/",
+    "order": 18133
+  },
+  "slide_intent": "Preserve the range of human representation across print production, because a digital specimen alone does not specify its ink mixture.",
+  "strategic_value": "Recorded process-color builds can help IBM’s people illustrations retain their intended tonal distinctions in print.",
+  "demonstration": "The CMYK tab presents ten Rose and ten Almond grades with cyan, magenta, yellow and black values in two parallel columns.",
+  "category": "Color",
+  "practical_value": "Use the supplied process build for a chosen people-palette grade when preparing print illustration.",
+  "content_islands": [
+    {
+      "name": "Encoding selector",
+      "spec": "Show CMYK selected in the three-tab control."
+    },
+    {
+      "name": "Rose process builds",
+      "spec": "List the Rose family from 100 to 10 with four ink-channel values."
+    },
+    {
+      "name": "Almond process builds",
+      "spec": "Place the corresponding Almond grade sequence alongside it."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Parallel Rose and Almond ramps show the palette’s tonal range.",
+    "Application": "The selected tab supplies CMYK builds for all twenty people-palette entries.",
+    "Constraint": "The accompanying People guidance reserves these colors for skin, hair and nails, rather than broadening the main IBM palette."
+  }
+}

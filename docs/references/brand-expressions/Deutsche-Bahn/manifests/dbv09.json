@@ -1,0 +1,35 @@
+{
+  "id": "DBV09",
+  "title": "Fläche_side-1c",
+  "image": "dbv09.png",
+  "source": "../sources/media/dbv09.mp4",
+  "location": {
+    "series": "DB new design / motion demonstrations",
+    "source_page": 15,
+    "section": "Bewegungsmuster-14021478",
+    "source_url": "https://ecm-mediathek-cdn.deutschebahn.com/cdnenhancedecmvidhls/db306393/2880755/video_config.json",
+    "capture_date": "2026-11-05"
+  },
+  "slide_intent": "Use one direction to introduce a plane so a viewer can understand the transition quickly.",
+  "strategic_value": "A single red horizontal wipe can carry DB recognition while leaving dense content a simple transition.",
+  "demonstration": "A red plane enters from the left, fills the frame, and exits toward the right.",
+  "category": "Motion",
+  "practical_value": "Choose the one-color horizontal treatment for functional or information-dense applications.",
+  "content_islands": [
+    {
+      "name": "Entry",
+      "spec": "Extend the red plane from the left edge."
+    },
+    {
+      "name": "Exit",
+      "spec": "Continue the plane along the horizontal axis until the pale field returns."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A red plane enters from the left, fills the frame, and exits toward the right.",
+    "Application": "The source provides a playable demonstration of this repeatable sequence: A red plane enters from the left, fills the frame, and exits toward the right.",
+    "Intent": "Accompanying Flächenverhalten prose says clear axes and straight movement keep focus on content; two-color variants add expression for bold content.",
+    "Constraint": "The source associates one-color planes with high information density and functional use, and two-color planes with bold, expressive content."
+  },
+  "motion": "../sources/media/dbv09.mp4"
+}

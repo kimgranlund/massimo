@@ -1,0 +1,36 @@
+{
+  "id": "ML11",
+  "title": "Elevator bank in the atrium",
+  "image": "ml11.png",
+  "source": "../sources/ml11.jpg",
+  "location": {
+    "series": "Pentagram / MIT Media Lab / 2014 identity",
+    "item": 11,
+    "extent": "Published lightbox artwork"
+  },
+  "slide_intent": "Assess the identity in its wider environment because isolated graphics do not reveal architectural integration.",
+  "strategic_value": "Coordinated elevator areas can establish continuity across a large open building.",
+  "demonstration": "An elevated photograph shows two elevator bays, glass walls and the surrounding atrium.",
+  "category": "Application",
+  "practical_value": "Judge the relationship between graphic landmarks and building circulation.",
+  "content_islands": [
+    {
+      "name": "Elevator bays",
+      "spec": "Two tall glass-fronted volumes form the center."
+    },
+    {
+      "name": "Atrium context",
+      "spec": "Floors, railings and neighboring surfaces show the installation at building scale."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "An elevated photograph shows two elevator bays, glass walls and the surrounding atrium.",
+    "Application": "An elevated photograph shows two elevator bays, glass walls and the surrounding atrium."
+  },
+  "ingredient": {
+    "name": "Elevator bank in the atrium",
+    "role": "Assess the identity in its wider environment because isolated graphics do not reveal architectural integration.",
+    "application": "Judge the relationship between graphic landmarks and building circulation.",
+    "scope": "Observed in this historical case-study artwork; not a mandatory usage rule or a current brand standard."
+  }
+}

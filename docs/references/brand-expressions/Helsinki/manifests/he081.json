@@ -1,0 +1,32 @@
+{
+  "id": "HE081",
+  "title": "Acquisition guide for visual communications",
+  "image": "he081.png",
+  "source": "../sources/design-and-create.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Acquisition guide for visual communications",
+    "order": 110,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/design-and-create#acquisition-guide-for-visual-communications",
+    "original_html": "../sources/design-and-create.html"
+  },
+  "slide_intent": "Keep creative effort inside the established identity so new work builds recognition instead of repeatedly replacing it.",
+  "strategic_value": "Directing partners toward ideas and content can let Helsinki gain variety while retaining shared visual equity.",
+  "demonstration": "This expanded webpage-section capture states the assignment boundary, emphasizes idea/content/concept and links to an external acquisition guide.",
+  "category": "Brand",
+  "practical_value": "Brief a new creative solution within the identity rather than asking the supplier to add identity elements.",
+  "content_islands": [
+    {
+      "name": "Commission boundary",
+      "spec": "State that assignments stay within the visual identity and additions are not part of the quote."
+    },
+    {
+      "name": "Creative emphasis and resource",
+      "spec": "Follow with idea/content/concept guidance and the acquisition-guide link."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The section directs attention to idea, content and concept within the existing identity.",
+    "Constraint": "Partners are not expected to add to the visual identity, and such additions should not be included in their quote."
+  }
+}

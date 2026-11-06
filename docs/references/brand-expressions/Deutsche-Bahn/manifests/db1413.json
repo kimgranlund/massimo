@@ -1,0 +1,35 @@
+{
+  "id": "DB1413",
+  "title": "Look & Feel / photographic comparisons",
+  "image": "db1413.png",
+  "source": "../sources/page-14.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 14,
+    "section": 13,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Bildwelt"
+  },
+  "slide_intent": "Show the boundary between natural and artificial treatments so image selection can be judged consistently.",
+  "strategic_value": "Specific paired examples can protect DB’s photographic credibility across commissions.",
+  "demonstration": "Six positive/negative pairs compare color, lighting, facial shadows, interaction, work portrayal and vehicle dynamics.",
+  "category": "Imagery",
+  "practical_value": "Use the pairs to reject effect-led or staged imagery while retaining genuine people, movement and places.",
+  "content_islands": [
+    {
+      "name": "Look summary",
+      "spec": "Restate natural directional light and neutral color above the comparisons."
+    },
+    {
+      "name": "Light and color pairs",
+      "spec": "Compare neutral color, directed light and legible faces with warm casts, extreme backlight and distracting shadow."
+    },
+    {
+      "name": "Authenticity pairs",
+      "spec": "Compare real interaction, work and movement with staged poses, stock-like workers and exaggerated renderings."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "Six paired photographs provide explicit image-selection comparisons.",
+    "Constraint": "The source rejects overly warm color, cinematic light, face-obscuring shadows, posed interactions, generic stock-worker aesthetics and exaggerated rendering or speed effects."
+  }
+}

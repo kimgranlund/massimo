@@ -1,0 +1,26 @@
+{
+  "id": "HX12",
+  "title": "People in Helsinki photography",
+  "image": "hx12.png",
+  "source": "../sources/visual-storytelling.offline.html",
+  "location": {
+    "series": "Web guideline introduction/component",
+    "order": 41,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/visual-storytelling",
+    "original_html": "../sources/visual-storytelling.html"
+  },
+  "slide_intent": "Show varied everyday lives because viewers need opportunities to recognize themselves within a city story.",
+  "strategic_value": "The event, mobility, older residents, solar-panel setting and snowy street can broaden Helsinki’s visible account of its people.",
+  "demonstration": "This webpage image strip places five photographs side by side: an event portrait, people including a wheelchair user, older women, a man near solar panels and an adult with a stroller in snow.",
+  "category": "Imagery",
+  "practical_value": "Compare subject, setting and season across a planned photography selection.",
+  "content_islands": [
+    {
+      "name": "People strip",
+      "spec": "Keep the five photographs in one horizontal comparison with their credits below."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The strip presents varied people, activities and seasons through Helsinki photography."
+  }
+}

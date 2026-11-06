@@ -1,0 +1,30 @@
+{
+  "id": "DJ08",
+  "title": "Change the world. One word at a time.",
+  "image": "dj08.png",
+  "source": "../sources/johnson-banks/Duolingo_typography3-by-Johnson-Banks.jpg",
+  "location": {
+    "series": "Johnson Banks / Everyone can Duolingo / 2019",
+    "item": 8,
+    "extent": "Whole published artwork",
+    "order": 2008
+  },
+  "slide_intent": "Test a typeface in meaningful language because rhythm and line breaks shape how a promise is heard.",
+  "strategic_value": "Duolingo’s mission can acquire a consistent typographic voice through the broad rounded forms of this four-line statement.",
+  "demonstration": "Large white lettering forms four lines on green; faint horizontal guides expose line alignment and letter heights.",
+  "category": "Typography",
+  "practical_value": "Evaluate the custom face at headline scale using a complete phrase and visible line structure.",
+  "content_islands": [
+    {
+      "name": "Headline",
+      "spec": "Stack the statement in four left-aligned lines on green."
+    },
+    {
+      "name": "Construction guides",
+      "spec": "Retain the faint horizontal guides crossing the headline."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The white statement demonstrates headline rhythm, rounded forms and generous letter width."
+  }
+}

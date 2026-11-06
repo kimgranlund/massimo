@@ -1,0 +1,29 @@
+{
+  "id": "BKE11",
+  "title": "Macro burger detail",
+  "image": "bke11.png",
+  "source": "../sources/bke11.webp",
+  "location": {
+    "series": "JKR / Burger King identity case study",
+    "item": 11,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Make material details visible so a viewer can imagine freshness, texture and taste.",
+  "strategic_value": "A close cross-section can focus Burger King’s identity on food ingredients rather than abstract claims.",
+  "demonstration": "The frame crops tightly into bun, lettuce, tomato, onion, pickles, sauce and grilled patty with no headline.",
+  "category": "Imagery",
+  "practical_value": "Evaluate which ingredient details remain readable in a very tight food crop.",
+  "content_islands": [
+    {
+      "name": "Layered ingredients",
+      "spec": "Fill the upper and middle frame with bun and vegetables."
+    },
+    {
+      "name": "Grilled texture",
+      "spec": "Retain the patty and sauce across the lower area to contrast textures."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The macro photograph makes stacked ingredients and surface textures the entire composition."
+  }
+}

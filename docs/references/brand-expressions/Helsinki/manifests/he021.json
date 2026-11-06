@@ -1,0 +1,39 @@
+{
+  "id": "HE021",
+  "title": "Decal colours and materials",
+  "image": "he021.png",
+  "source": "../sources/use-basic-elements.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Decal colours and materials",
+    "order": 27,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/use-basic-elements#decal-colours-and-materials",
+    "original_html": "../sources/use-basic-elements.html"
+  },
+  "slide_intent": "Choose color together with substrate and service life because a physical mark must remain recognizable after installation.",
+  "strategic_value": "Appropriate decal materials can keep Helsinki signage and vehicles consistent over their intended lifespan.",
+  "demonstration": "This expanded webpage section lists decal uses and three manufacturers, explains surface/durability choices and shows icon decals on a playpark facade.",
+  "category": "Application",
+  "practical_value": "Select decal stock by surface shape, indoor/outdoor location and required color-fastness duration.",
+  "content_islands": [
+    {
+      "name": "Use and material guidance",
+      "spec": "List windows, signs, boards and vehicles before manufacturer and durability notes."
+    },
+    {
+      "name": "Facade application",
+      "spec": "Show the service-icon decals on the building with their caption."
+    }
+  ],
+  "ingredient": {
+    "name": "Colored decals",
+    "role": "Carry city information onto physical surfaces.",
+    "application": "Use specified manufacturer definitions and choose stock for curved/straight surfaces, indoor/outdoor exposure and intended service life.",
+    "scope": "The section names Avery, 3M and Oracal; it does not claim their materials are interchangeable."
+  },
+  "reference_purposes": {
+    "Intent": "The source says desired color-fastness duration must be considered when selecting decals.",
+    "Application": "The facade photograph shows decals identifying available playpark services.",
+    "Constraint": "Material selection must take the desired duration of color fastness into account."
+  }
+}

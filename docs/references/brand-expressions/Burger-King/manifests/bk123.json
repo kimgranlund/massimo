@@ -1,0 +1,39 @@
+{
+  "id": "BK123",
+  "title": "Legal Standards / Disclaimers & Other Fine Print",
+  "image": "bk123.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 123
+  },
+  "slide_intent": "Give qualifying information deliberate typographic treatment so readers can distinguish it from promotional copy and still read it.",
+  "strategic_value": "Specific print and television treatments can help Burger King maintain readable conditions alongside persuasive communications.",
+  "demonstration": "A left section heading accompanies a narrow text column specifying print disclaimer treatment, US type sizes and television contrast/scan-line guidance.",
+  "category": "Typography",
+  "practical_value": "Separate the historical US print and television specifications from the instruction to obtain guidance for other countries.",
+  "content_islands": [
+    {
+      "name": "Section heading",
+      "spec": "Place the three-line fine-print heading at left."
+    },
+    {
+      "name": "Print treatment",
+      "spec": "Begin the adjacent text column with bolding guidance and the US 8-point disclaimer and 5-point legal-line preferences."
+    },
+    {
+      "name": "Television treatment",
+      "spec": "Continue below with black-background white-type guidance, other-background shadow treatment and the outside-US referral."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text connects bolding to distinction from sales copy and readability, and drop shadows to television legibility.",
+    "Application": "The page describes print and television treatments separately.",
+    "Constraint": "Historical US preferences are 8-point printed disclaimers and 5-point trademark/copyright lines; black-background TV disclaimers use at least 22 scan lines in 100% white. Other TV backgrounds use a drop shadow; outside-US cases go to Legal."
+  },
+  "ingredient": {
+    "name": "Disclaimer typography",
+    "role": "Keep qualifying information distinguishable and readable.",
+    "application": "Follow the source’s medium-specific treatments: bold print disclaimers; US preferred sizes of 8 pt for disclaimers and 5 pt for legal lines; US black-background TV uses at least 22 scan lines in 100% white, with drop shadows on other backgrounds.",
+    "scope": "Historical 2020 guide statements, not current legal advice. Requirements vary by country; the page refers outside-US treatment to Burger King Legal."
+  }
+}

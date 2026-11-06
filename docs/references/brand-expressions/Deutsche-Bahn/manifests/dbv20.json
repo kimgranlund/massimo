@@ -1,0 +1,42 @@
+{
+  "id": "DBV20",
+  "title": "Type_Expressive-B",
+  "image": "dbv20.png",
+  "source": "../sources/media/dbv20.mp4",
+  "location": {
+    "series": "DB new design / motion demonstrations",
+    "source_page": 15,
+    "section": "Animation-14021536",
+    "source_url": "https://ecm-mediathek-cdn.deutschebahn.com/cdnenhancedecmvidhls/db306407/2880857/video_config.json",
+    "capture_date": "2026-11-05",
+    "note": "The adjacent page caption does not reliably describe this embedded file. This manifest follows the inspected video and its file title; broader typography rules come from the surrounding prose. Adjacent caption: Klicken, um das folgende Video zu überspringen Ende des oberhalb befindlichen Videos Zeilenweise Textanimation von unten nach oben"
+  },
+  "slide_intent": "Use repeated words as a rhythm so viewers can perceive a change in message through sequence.",
+  "strategic_value": "The IMMER-to-BESSER replacement can give DB a forceful verbal rhythm using type alone.",
+  "demonstration": "Three stacked IMMER lines change sequentially into BESSER lines.",
+  "category": "Motion",
+  "practical_value": "Choose stacked keyword replacement when repetition contributes to the message and the words remain short.",
+  "content_islands": [
+    {
+      "name": "Initial stack",
+      "spec": "Place IMMER on three tightly stacked lines."
+    },
+    {
+      "name": "Replacement",
+      "spec": "Change the lines in sequence to BESSER."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Three stacked IMMER lines change sequentially into BESSER lines.",
+    "Application": "The source provides a playable demonstration of this repeatable sequence: Three stacked IMMER lines change sequentially into BESSER lines.",
+    "Intent": "Accompanying Typografie prose prioritizes legibility and uses simple staggered line movement to keep text lively and clear.",
+    "Constraint": "Expressive typography is suited to individual keywords, not whole sentences or text blocks."
+  },
+  "motion": "../sources/media/dbv20.mp4",
+  "ingredient": {
+    "name": "Expressive type motion",
+    "role": "Emphasize a short verbal message through lettering movement.",
+    "application": "Apply the expressive treatment to individual keywords.",
+    "scope": "Official DB new-design web guidance, undated live edition captured 2026-11-05; applies to the demonstrated motion context. The source excludes whole sentences and text blocks from this treatment."
+  }
+}

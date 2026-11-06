@@ -1,0 +1,40 @@
+{
+  "id": "DW001",
+  "title": "Guidelines / Hola",
+  "image": "dw001.png",
+  "source": "../sources/pages/home.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/",
+    "section": "Hola",
+    "item": 1,
+    "order": 10
+  },
+  "slide_intent": "Give contributors clear routes into a brand system because consistency depends on people finding the guidance they need.",
+  "strategic_value": "Separating identity, writing, illustration, marketing and resources can help Duolingo coordinate communication across teams.",
+  "demonstration": "The home page introduces the guide and presents five colored section cards, quick links and site navigation.",
+  "category": "Brand",
+  "practical_value": "Choose the relevant guidance area before making a visual or verbal brand decision.",
+  "content_islands": [
+    {
+      "name": "Welcome",
+      "spec": "Place the greeting and purpose statement above the guide cards."
+    },
+    {
+      "name": "Quick links",
+      "spec": "Keep the press, color and website links beside the welcome."
+    },
+    {
+      "name": "Guide cards",
+      "spec": "Arrange the five colored destinations with their descriptions and illustrations beneath the introduction."
+    },
+    {
+      "name": "Site navigation",
+      "spec": "Retain the top and bottom navigation around the guide content."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The introduction says the guidelines unify Duolingo communications across its work.",
+    "Application": "Five guide destinations identify where to find identity, writing, illustration, marketing and asset guidance."
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "id": "HE032",
+  "title": "Examples of photo storytelling",
+  "image": "he032.png",
+  "source": "../sources/visual-storytelling.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Examples of photo storytelling",
+    "order": 44,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/visual-storytelling#examples-of-photo-storytelling",
+    "original_html": "../sources/visual-storytelling.html"
+  },
+  "slide_intent": "Treat routine imagery as part of identity because people build their impression from repeated everyday encounters as well as campaigns.",
+  "strategic_value": "Consistent Helsinki photo choices can connect news and social channels with larger brand communications.",
+  "demonstration": "This expanded webpage section states the brand role of everyday imagery and shows four captures of city news, a web feature and a social-media campaign.",
+  "category": "Imagery",
+  "practical_value": "Apply the same brand judgment to a news or social image that would be applied to advertising.",
+  "content_islands": [
+    {
+      "name": "Everyday-brand premise",
+      "spec": "Place the explanation above the examples."
+    },
+    {
+      "name": "Channel examples",
+      "spec": "Arrange two news-page captures above a web-feature capture and a Facebook campaign post, preserving each image with its surrounding content."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text explicitly equates the brand-building role of news/social images with campaign/advertising images.",
+    "Expression": "Four examples show city photography within its published news, web and social compositions.",
+    "Application": "The specimens demonstrate photography in ordinary news and social communications."
+  }
+}

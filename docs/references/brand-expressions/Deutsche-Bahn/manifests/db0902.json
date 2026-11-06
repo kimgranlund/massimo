@@ -1,0 +1,31 @@
+{
+  "id": "DB0902",
+  "title": "Typography / photographic campaign pair",
+  "image": "db0902.png",
+  "source": "../sources/page-09.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 9,
+    "section": 2,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Typografie_neu"
+  },
+  "slide_intent": "Keep a short message legible against photography so viewers can grasp a campaign at a glance.",
+  "strategic_value": "Bold white headlines and red DB marks can connect different travel stories.",
+  "demonstration": "Two campaign compositions pair photographs with heavy white headlines: SCHNELLER AM ZIEL and BERLIN.",
+  "category": "Typography",
+  "practical_value": "Compare a compact left-aligned headline with a large destination name near the lower edge.",
+  "content_islands": [
+    {
+      "name": "Arrival campaign",
+      "spec": "Place the short headline beside the photographed travelers at left."
+    },
+    {
+      "name": "Berlin campaign",
+      "spec": "Place the destination and fare over the lower part of the outdoor photograph at right."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Both compositions pair heavy white lettering with photographs.",
+    "Application": "The type is shown in two finished travel communications."
+  }
+}

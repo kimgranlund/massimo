@@ -1,0 +1,30 @@
+{
+  "id": "C424",
+  "title": "Speculative Structures world",
+  "image": "c424.png",
+  "source": "../sources/c424.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 masterbrand / 2023",
+    "item": 24,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Let the setting reinforce the subject so the title and image communicate the same idea.",
+  "strategic_value": "Architectural depth can give Channel 4’s design-related collection a distinct atmosphere within the world system.",
+  "demonstration": "White Speculative Structures lettering sits within a rendered modern building with deep openings, water and a distant figure.",
+  "category": "Imagery",
+  "practical_value": "Choose a setting whose spatial character supports a collection’s subject.",
+  "content_islands": [
+    {
+      "name": "Architectural scene",
+      "spec": "Use the building openings and reflective water to establish depth."
+    },
+    {
+      "name": "Title",
+      "spec": "Place the two-line white title over the darker left-center opening."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The content world is applied to a collection titled Speculative Structures.",
+    "Expression": "The architectural setting gives the title a specific spatial atmosphere."
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "id": "DW138",
+  "title": "Marketing / Cast / Background choices",
+  "image": "dw138.png",
+  "source": "../sources/pages/marketing-assets.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/marketing/assets",
+    "section": "On backgrounds",
+    "item": 138,
+    "order": 1380
+  },
+  "slide_intent": "Match background freedom to the subject because different color structures create different interactions with the same palette.",
+  "strategic_value": "The cast’s varied hues can give Duolingo more background options than the predominantly green mascot.",
+  "demonstration": "Four cropped characters appear on white, green, blue and yellow squares beside a comparison with Duo.",
+  "category": "Color",
+  "practical_value": "Evaluate each character’s colors before selecting a core or secondary background.",
+  "content_islands": [
+    {
+      "name": "Background examples",
+      "spec": "Arrange the four character portraits in a two-by-two grid of white, green, blue and yellow fields."
+    },
+    {
+      "name": "Scope of flexibility",
+      "spec": "Explain the broader core and secondary background range at right."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source attributes reduced color vibration to the characters’ broader range of hues.",
+    "Application": "Four portraits demonstrate varied background choices.",
+    "Constraint": "The cast can use a broader range of core and secondary colors than Duo."
+  },
+  "ingredient": {
+    "name": "Cast background colors",
+    "role": "Support varied characters without harsh color interaction.",
+    "application": "Select from the broader core and secondary color range while checking the character against its background.",
+    "scope": "Historical cast guidance; the four examples are not stated as an exhaustive palette."
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "id": "IBS25",
+  "title": "Misuse / Joint logo lockup",
+  "image": "ibs25.png",
+  "source": "../sources/ibm-logo-strategic-partners.pdf",
+  "location": {
+    "page": 25,
+    "series": "IBM Logo Guidelines for Strategic Partners / Version 1.2 / copyright 2023",
+    "order": 200025
+  },
+  "slide_intent": "Show where an exceptional asset becomes misleading so partners do not extend a lockup beyond its approved role.",
+  "strategic_value": "Clear prohibited applications can preserve the distinction between a partnership announcement and an enduring joint brand.",
+  "demonstration": "Crossed collateral, paid media, merchandise, email and social layouts use the joint lockup; two altered combinations below add multiplication or plus signs.",
+  "category": "Application",
+  "practical_value": "Reject self-made lockups and avoid using the approved lockup as the identity for a joint offering.",
+  "content_islands": [
+    {
+      "name": "Scope statement",
+      "spec": "Keep the warning that the lockup is not a joint-offering identity in the left column."
+    },
+    {
+      "name": "Misapplied formats",
+      "spec": "Arrange crossed collateral, merchandise, email, paid-media and social examples across the main field."
+    },
+    {
+      "name": "Altered combinations",
+      "spec": "Show the partner/IBM combinations using x and + at lower right with the approved-artwork-only warning."
+    }
+  ],
+  "reference_purposes": {
+    "Constraint": "The page rejects using a joint lockup as an offering identity and prohibits creating an alternative lockup; only the approved version may be used."
+  }
+}

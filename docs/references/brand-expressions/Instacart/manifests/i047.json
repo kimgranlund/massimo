@@ -1,0 +1,25 @@
+{
+  "id": "I047",
+  "title": "Food texture close-up",
+  "image": "i047.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 47,
+    "printed_page": 47
+  },
+  "slide_intent": "Demonstrate how proximity can make a photograph feel sensory. A tight crop lets a viewer inspect the ingredients and surfaces themselves.",
+  "strategic_value": "Instacart can invite appetite through recognizable details of a prepared dish without relying on an accompanying headline.",
+  "demonstration": "A full-bleed close-up contains a fried egg, avocado, herbs and sliced onion. The yolk, scattered crumbs and overlapping ingredients fill the frame.",
+  "category": "Imagery",
+  "practical_value": "Use a close crop when the food’s texture and color can carry the message at viewing size.",
+  "content_islands": [
+    {
+      "name": "Food photograph",
+      "spec": "Fill the entire canvas with the dish. Preserve the bright yolk beside the green avocado, with herb leaves and onion crossing the frame."
+    },
+    {
+      "name": "Book identifiers",
+      "spec": "Keep the small running metadata near the top edge so the photograph remains the first read."
+    }
+  ]
+}

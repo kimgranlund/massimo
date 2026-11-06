@@ -1,0 +1,39 @@
+{
+  "id": "IB033T32",
+  "title": "Pictograms / Gradient treatments — Dark background",
+  "image": "ib033t32.png",
+  "source": "../sources/alternate-tabs.json",
+  "location": {
+    "series": "IBM Design Language / alternate tab states",
+    "parent": "IB033",
+    "group": 3,
+    "tab": 2,
+    "label": "Dark background",
+    "url": "https://www.ibm.com/design/language/iconography/pictograms/design/",
+    "order": 33132
+  },
+  "slide_intent": "Use a controlled gradient to enrich simple linework, because a consistent color transition can add character without introducing unrelated effects.",
+  "strategic_value": "Related two-color gradients can give IBM’s varied pictogram concepts a shared luminous treatment on dark fields.",
+  "demonstration": "Eight outlined pictograms form two rows on near-black, including an exit arrow, wheelchair, globe, racket, overlapping squares, rocket, network and bandage.",
+  "category": "Color",
+  "practical_value": "Choose a permitted two-color gradient while keeping the pictogram silhouette legible against the dark field.",
+  "content_islands": [
+    {
+      "name": "Background selector",
+      "spec": "Show Dark background selected above the examples."
+    },
+    {
+      "name": "Upper gradient row",
+      "spec": "Align exit, accessibility, globe and racket symbols with cyan/blue, green/teal and purple/magenta transitions."
+    },
+    {
+      "name": "Lower gradient row",
+      "spec": "Continue with overlapping squares, rocket, connected circles and bandage examples."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Colored transitions enrich the same thin-line pictogram structure across eight concepts.",
+    "Application": "The specimens show gradient pictograms on a dark field.",
+    "Constraint": "The accompanying gradient section specifies accepted two-color families and 45° application; it rejects radial gradients, more than two colors and blends more than two palette steps apart."
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "id": "HE104",
+  "title": "How to change the colour theme",
+  "image": "he104.png",
+  "source": "../sources/design-and-create.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "How to change the colour theme",
+    "order": 139,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/design-and-create#how-to-change-the-colour-theme",
+    "original_html": "../sources/design-and-create.html"
+  },
+  "slide_intent": "Check consequences of palette changes so a new theme does not silently reduce chart legibility.",
+  "strategic_value": "Restoring outlines and checking labels can keep Helsinki charts readable after recoloring.",
+  "demonstration": "Expanded webpage section: a long sequence of Excel screenshots and notes covers theme changes, chart colors, missing outlines and label contrast.",
+  "category": "Color",
+  "practical_value": "After changing a theme, update chart colors, restore black outlines and check label contrast; line charts need additional judgment.",
+  "content_islands": [
+    {
+      "name": "Theme and chart changes",
+      "spec": "Upper screenshots show document and chart color controls."
+    },
+    {
+      "name": "Repair and contrast",
+      "spec": "Lower screenshots and notes address outlines, line charts and label colors."
+    }
+  ],
+  "reference_purposes": {
+    "Constraint": "The source says to restore black outlines manually after recoloring and warns that not all colors are accessible in line charts."
+  },
+  "ingredient": {
+    "name": "Chart color theme",
+    "role": "Distinguish data while preserving readable boundaries and labels.",
+    "application": "After changing theme colors, update chart colors, restore black outlines and check label contrast; line charts need additional accessibility judgment.",
+    "scope": "The demonstrated Helsinki M365 chart-template workflow, not a universal rule for all charts or brand graphics."
+  }
+}

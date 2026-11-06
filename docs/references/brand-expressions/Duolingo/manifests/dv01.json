@@ -1,0 +1,41 @@
+{
+  "id": "DV01",
+  "title": "Logotype / Gray variant",
+  "image": "dv01.png",
+  "source": "../sources/pages/dv01.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/identity/logos",
+    "section": "Logotype",
+    "selected_control_index": 1,
+    "related_default": "DW003",
+    "order": 31
+  },
+  "slide_intent": "Recognize a signature through its form because its identity must remain clear when the main brand color is absent.",
+  "strategic_value": "The custom rounded letters and eyebrow-like g can carry Duolingo recognition in a neutral treatment.",
+  "demonstration": "A gray wordmark appears on a pale field beside its design rationale and three-color rule.",
+  "category": "Brand",
+  "practical_value": "Check whether the signature remains distinctive without relying on green.",
+  "content_islands": [
+    {
+      "name": "Alternate color specimen",
+      "spec": "Center the gray wordmark on the pale panel and retain the download symbol and selected gray control."
+    },
+    {
+      "name": "Origin and colors",
+      "spec": "Place the heading and explanation of Duo-inspired forms and the three approved colors in the right column."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The copy explains the relationship between letterforms and Duo’s curves and expressive eyebrows.",
+    "Expression": "A gray wordmark appears on a pale field beside its design rationale and three-color rule.",
+    "Constraint": "The source allows the logotype in Feather Green, white or gray.",
+    "Application": "The source radio control supplies this fixed alternate color presentation."
+  },
+  "ingredient": {
+    "name": "Duolingo logotype",
+    "role": "Identify the brand through custom lettering.",
+    "application": "Use the supplied drawing in Feather Green, white or gray.",
+    "scope": "Historical archived guidelines. Applies to the historical logotype; no other colors are authorized by this section."
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "DB0800",
+  "title": "Color / header palette",
+  "image": "db0800.png",
+  "source": "../sources/page-08.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 8,
+    "section": 0,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Markenfarben"
+  },
+  "slide_intent": "Introduce the dominant color relationships so viewers can recognize the palette before studying its rules.",
+  "strategic_value": "Red against restrained light and dark fields can make DB’s identifying accent memorable.",
+  "demonstration": "Three labeled swatches—DB Red, White and Cold Black—sit on a dark field above a red sleeper strip.",
+  "category": "Color",
+  "practical_value": "Compare the visual contrast of the core colors without inferring usage percentages.",
+  "content_islands": [
+    {
+      "name": "Core swatches",
+      "spec": "Align red, white and dark swatches with their names."
+    },
+    {
+      "name": "Sleeper motif",
+      "spec": "Place the red strip along the lower edge of the dark header."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The header presents DB Red, White and Cold Black as a contrasting palette."
+  }
+}

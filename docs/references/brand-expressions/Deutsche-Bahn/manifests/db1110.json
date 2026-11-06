@@ -1,0 +1,31 @@
+{
+  "id": "DB1110",
+  "title": "Gezielte Abflachung",
+  "image": "db1110.png",
+  "source": "../sources/page-11.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 11,
+    "section": 10,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Icons"
+  },
+  "slide_intent": "Trim acute tips so small details do not create unintended visual spikes.",
+  "strategic_value": "Targeted flattening can keep DB icons balanced at small sizes.",
+  "demonstration": "A crossed-out sharp speech-bubble corner is compared with a flattened version, each enlarged in a circular detail.",
+  "category": "Geometry",
+  "practical_value": "Flatten acute corners and consider an inside-aligned stroke for precise outside contours.",
+  "content_islands": [
+    {
+      "name": "Rationale",
+      "spec": "Explain the imbalance caused by angles below 45°."
+    },
+    {
+      "name": "Comparison",
+      "spec": "Pair the sharp corner and corrected corner with enlarged details."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source says angles below 45° create point imbalance and long tips.",
+    "Application": "It recommends deliberate flattening and inside-aligned strokes for contour control."
+  }
+}

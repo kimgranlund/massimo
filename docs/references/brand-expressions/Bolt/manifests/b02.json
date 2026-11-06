@@ -1,0 +1,24 @@
+{
+  "id": "B02",
+  "title": "Tone of Voice",
+  "image": "b02.png",
+  "source": "../bolt-brand-guidelines-2025-12.pdf",
+  "location": {
+    "page": 2
+  },
+  "slide_intent": "Signal a change from identifying the book to reading about language. A short section title gives the reader one subject to carry into the following guidance.",
+  "strategic_value": "Opening with voice can give the brand’s wording the same editorial importance as its visual assets.",
+  "demonstration": "The white section name sits alone across the middle of a dark field with a small mark above and folio below.",
+  "category": "Layout",
+  "practical_value": "Use this page as the opening beat of a chapter and place the actual writing principles on the next page.",
+  "content_islands": [
+    {
+      "name": "Book identifiers",
+      "spec": "Place a small white Bolt mark in the upper-left corner and the folio in the lower-left corner."
+    },
+    {
+      "name": "Section title",
+      "spec": "Set “Tone of Voice” in large white type on the dark full-page field. Align the title near mid-height, inset farther than the small identifiers."
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "DB0500",
+  "title": "Brand personality / driver header",
+  "image": "db0500.png",
+  "source": "../sources/page-05.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 5,
+    "section": 0,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Unsere-Markenpersoenlichkeit"
+  },
+  "slide_intent": "Make personality visible through an operational action so the brand is associated with real work.",
+  "strategic_value": "The close view of the driver at the controls can support DB’s responsible and active stance.",
+  "demonstration": "A cropped driver and control desk fill the header above a red sleeper strip.",
+  "category": "Imagery",
+  "practical_value": "Use a work detail to introduce personality before describing it in words.",
+  "content_islands": [
+    {
+      "name": "Driver detail",
+      "spec": "Fill the header with the driver’s arm, uniform and control equipment."
+    },
+    {
+      "name": "Sleeper edge",
+      "spec": "Place the red sleeper motif on the lower edge of the photograph."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The photograph and sleeper motif connect a working railway scene to the brand."
+  }
+}

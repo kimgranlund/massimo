@@ -1,0 +1,41 @@
+{
+  "id": "DV02",
+  "title": "Logotype / White variant",
+  "image": "dv02.png",
+  "source": "../sources/pages/dv02.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/identity/logos",
+    "section": "Logotype",
+    "selected_control_index": 2,
+    "related_default": "DW003",
+    "order": 32
+  },
+  "slide_intent": "Preserve a recognizable signature across figure-ground changes because branded surfaces need a clear mark as well as a distinctive color.",
+  "strategic_value": "A white wordmark on green can combine Duolingo’s signature shape with its characteristic color field.",
+  "demonstration": "The wordmark reverses to white on green while the gray, green and white controls remain below.",
+  "category": "Color",
+  "practical_value": "Use the supplied reversed treatment when the wordmark sits on the demonstrated green field.",
+  "content_islands": [
+    {
+      "name": "Alternate color specimen",
+      "spec": "Center the white wordmark on green and retain the selected white control and download symbol."
+    },
+    {
+      "name": "Origin and colors",
+      "spec": "Place the heading and explanation of Duo-inspired forms and the three approved colors in the right column."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The copy explains the relationship between letterforms and Duo’s curves and expressive eyebrows.",
+    "Expression": "The wordmark reverses to white on green while the gray, green and white controls remain below.",
+    "Constraint": "The source allows the logotype in Feather Green, white or gray.",
+    "Application": "The source radio control supplies this fixed alternate color presentation."
+  },
+  "ingredient": {
+    "name": "Duolingo logotype",
+    "role": "Identify the brand through custom lettering.",
+    "application": "Use the supplied drawing in Feather Green, white or gray.",
+    "scope": "Historical archived guidelines. Applies to the historical logotype; no other colors are authorized by this section."
+  }
+}

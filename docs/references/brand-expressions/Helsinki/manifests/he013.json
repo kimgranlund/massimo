@@ -1,0 +1,48 @@
+{
+  "id": "HE013",
+  "title": "Helsinki Grotesk Pro and Arial",
+  "image": "he013.png",
+  "source": "../sources/use-basic-elements.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Helsinki Grotesk Pro and Arial",
+    "order": 18,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/use-basic-elements#helsinki-grotesk-pro-and-arial",
+    "original_html": "../sources/use-basic-elements.html"
+  },
+  "slide_intent": "Define both the expressive typeface and practical substitutes so consistent communication remains possible across languages and software.",
+  "strategic_value": "A custom face linked to the framed logo can give Helsinki a shared voice while named substitutions support wider access.",
+  "demonstration": "This expanded webpage section pairs custom-type and substitution guidance with letterform details, upright/italic weight specimens and campaign applications, then supplies licensing information.",
+  "category": "Typography",
+  "practical_value": "Choose the face according to language, application and licensed availability.",
+  "content_islands": [
+    {
+      "name": "Typeface and substitutions",
+      "spec": "Introduce the custom family, its logo relationship, language exceptions and Office use of Arial."
+    },
+    {
+      "name": "Form and family specimens",
+      "spec": "Show enlarged letter/number details, multilingual phrases and the upright/italic weight chart."
+    },
+    {
+      "name": "Licensing",
+      "spec": "Place licence responsibility, price and contact guidance below the specimens."
+    },
+    {
+      "name": "Applied typography",
+      "spec": "Finish with orange/black energy campaign layouts and multilingual face-mask posters."
+    }
+  ],
+  "ingredient": {
+    "name": "Helsinki Grotesk Pro and substitutes",
+    "role": "Give city language a consistent typographic voice across contexts.",
+    "application": "Use the custom family for professional work; use Arial for Office and Arabic, Noto Sans for languages unsupported by the other faces.",
+    "scope": "This live section lists five weights and italic cuts; its linked 2025 specimen may document a broader family. The section’s Microsoft compatibility statement is source guidance, not an independently tested software claim."
+  },
+  "reference_purposes": {
+    "Intent": "The source connects the custom type design to the logo’s arches and wave motifs.",
+    "Expression": "The specimens show the custom sans-serif family.",
+    "Application": "The text assigns substitutes for Office and unsupported languages.",
+    "Constraint": "Text must not become illustration; licensed use and named substitutions are specified."
+  }
+}

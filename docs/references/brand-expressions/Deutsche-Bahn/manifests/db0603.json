@@ -1,0 +1,35 @@
+{
+  "id": "DB0603",
+  "title": "Designsprache",
+  "image": "db0603.png",
+  "source": "../sources/page-06.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 6,
+    "section": 3,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Designprinzipien"
+  },
+  "slide_intent": "Separate stable recognition from expressive range so adaptation does not erase continuity.",
+  "strategic_value": "DB can preserve trust through its core while varying the mix of ingredients for different audiences.",
+  "demonstration": "Two concept panels compare a factual timeless core with expressive extension; three circular ingredient diagrams show different balances below.",
+  "category": "Brand",
+  "practical_value": "Choose the balance of ingredients according to content, audience, medium and application.",
+  "content_islands": [
+    {
+      "name": "Core and extension",
+      "spec": "Compare the typographic core at left with the illustrated expressive extension at right."
+    },
+    {
+      "name": "Range diagrams",
+      "spec": "Place three ingredient-mixture circles beneath, progressing from factual to expressive."
+    },
+    {
+      "name": "Context statement",
+      "spec": "Close with the explanation that weighting can change without leaving the shared language."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text links the core to trust and recognition and the extension to continued relevance.",
+    "Application": "The source explicitly permits changing ingredient weights according to communication context."
+  }
+}

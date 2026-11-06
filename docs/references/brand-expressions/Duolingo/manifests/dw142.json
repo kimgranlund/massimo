@@ -1,0 +1,31 @@
+{
+  "id": "DW142",
+  "title": "Help / Unfinished introduction",
+  "image": "dw142.png",
+  "source": "../sources/pages/help.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/help",
+    "section": "Help",
+    "item": 142,
+    "order": 1420
+  },
+  "slide_intent": "Distinguish an unfinished support surface from usable guidance because placeholder prose cannot resolve a designer’s question.",
+  "strategic_value": "The shared header treatment can preserve visual continuity, but this archived placeholder supplies no substantive help.",
+  "demonstration": "A green header pairs a lowercase help title and lorem ipsum with four quick links.",
+  "category": "Brand",
+  "practical_value": "Recognize and document unfinished source content without inventing missing answers.",
+  "content_islands": [
+    {
+      "name": "Placeholder introduction",
+      "spec": "Keep the help heading above the lorem ipsum at left."
+    },
+    {
+      "name": "Resource shortcuts",
+      "spec": "Place the four quick links in two columns at right."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The unfinished page retains the green field and white rounded display type used by the site."
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "DBV31",
+  "title": "UI_LazyLoader",
+  "image": "dbv31.png",
+  "source": "../sources/media/dbv31.mp4",
+  "location": {
+    "series": "DB new design / motion demonstrations",
+    "source_page": 15,
+    "section": "Animation-14021536",
+    "source_url": "https://ecm-mediathek-cdn.deutschebahn.com/cdnenhancedecmvidhls/db306430/2881019/video_config.json",
+    "capture_date": "2026-11-05"
+  },
+  "slide_intent": "Show an unfinished state explicitly so the user understands that content is still arriving.",
+  "strategic_value": "A restrained placeholder pulse can make waiting legible within DB’s interface language.",
+  "demonstration": "An image placeholder at the left and three text bars at the right pulse in gray.",
+  "category": "Motion",
+  "practical_value": "Use a skeleton placeholder when the approximate content structure is known before loading completes.",
+  "content_islands": [
+    {
+      "name": "Image placeholder",
+      "spec": "Place a gray rectangle on the left."
+    },
+    {
+      "name": "Text placeholders",
+      "spec": "Align three gray bars on the right and pulse their visibility with the rectangle."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "An image placeholder at the left and three text bars at the right pulse in gray.",
+    "Application": "The source provides a playable demonstration of this repeatable sequence: An image placeholder at the left and three text bars at the right pulse in gray.",
+    "Intent": "Accompanying Icons, Signature Graphics, or Animation im UI prose explains that animation directs focus, makes relationships understandable, and adds expression.",
+    "Constraint": "The accompanying guidance says animation is deliberate and never disturbing or complex."
+  },
+  "motion": "../sources/media/dbv31.mp4"
+}

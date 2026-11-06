@@ -1,0 +1,39 @@
+{
+  "id": "DW022",
+  "title": "Typography / Feather Bold specimen",
+  "image": "dw022.png",
+  "source": "../sources/pages/identity-typography.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/identity/typography",
+    "section": "Feather Bold",
+    "item": 22,
+    "order": 220
+  },
+  "slide_intent": "Give attention-seeking language a distinctive sound because headline typography helps people notice and remember a message.",
+  "strategic_value": "Feather Bold’s custom forms can give Duolingo headlines a recognizable voice.",
+  "demonstration": "A Feather Bold character specimen presents letters, figures, symbols and accented forms, with controls and a short explanation of its headline role.",
+  "category": "Typography",
+  "practical_value": "Check the typeface’s repertoire and character before applying it to a headline.",
+  "content_islands": [
+    {
+      "name": "Specimen and controls",
+      "spec": "Place the green character sample in the left panel and retain the two color controls below."
+    },
+    {
+      "name": "Role statement",
+      "spec": "Use the right column for the typeface name and its headline-attention and bespoke-ownership explanation."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source says Feather Bold is used when headlines need to shout out and get noticed.",
+    "Expression": "The sample presents the custom typeface across letters, figures and symbols.",
+    "Constraint": "The text identifies the typeface as bespoke to Duolingo and states that others cannot use it."
+  },
+  "ingredient": {
+    "name": "Feather Bold",
+    "role": "Give short headlines distinctive emphasis.",
+    "application": "Use the brand’s custom face for headline emphasis within authorized Duolingo work.",
+    "scope": "Historical archived guidelines. Historical specimen; detailed size and setting rules appear in the following usage section."
+  }
+}

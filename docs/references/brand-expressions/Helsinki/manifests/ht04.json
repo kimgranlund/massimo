@@ -1,0 +1,28 @@
+{
+  "id": "HT04",
+  "title": "Helsinki Grotesk Pro / Opentype-Features",
+  "image": "ht04.png",
+  "source": "../sources/helsinki-grotesk-pro-2025.pdf",
+  "location": {
+    "page": 4,
+    "order": 182
+  },
+  "slide_intent": "Demonstrate alternate forms in context so typesetters can choose legible and linguistically appropriate glyph behavior.",
+  "strategic_value": "Explicit feature comparisons can improve consistency in Helsinki’s multilingual text and numeric information.",
+  "demonstration": "Two columns compare default and substituted forms for ligatures, figures, fractions, case-sensitive forms, scientific notation, localized forms and six stylistic sets.",
+  "category": "Typography",
+  "practical_value": "Test the relevant OpenType feature with the intended content before applying it.",
+  "content_islands": [
+    {
+      "name": "Functional features",
+      "spec": "Left rows pair examples such as fractions, superscripts and localized forms."
+    },
+    {
+      "name": "Stylistic sets",
+      "spec": "Right rows compare accessibility forms, slashed zero and script-specific alternates."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "Paired before-and-after glyph samples label OpenType features including fractions, superscripts, localized forms and stylistic sets."
+  }
+}

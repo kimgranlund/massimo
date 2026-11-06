@@ -1,0 +1,38 @@
+{
+  "id": "FG17",
+  "title": "An idea changes shape / mobile sequence",
+  "image": "fg17.png",
+  "source": "../sources/fg17.mp4",
+  "location": {
+    "series": "COLLINS / Figma / Nothing Great Is Made Alone case study",
+    "item": 17,
+    "section": "Gallery",
+    "extent": "Complete clip; PNG is midpoint poster",
+    "poster_seconds": 8.02
+  },
+  "slide_intent": "Show iteration as visible transformation because a viewer can understand improvement as a process rather than a finished object.",
+  "strategic_value": "A changing star shape can make Figma’s collaborative creation promise tangible within a short mobile presentation.",
+  "demonstration": "Within a phone mockup, cursors develop a small star into larger layered shapes while copy explains that an idea’s first shape is not its last; the logo closes the clip.",
+  "category": "Application",
+  "practical_value": "Pair changing geometry with a concise process statement in a mobile campaign.",
+  "content_islands": [
+    {
+      "name": "Phone frame",
+      "spec": "Keep the white portrait screen inside a phone outline on a dark field."
+    },
+    {
+      "name": "Developing shape",
+      "spec": "Expand and reshape the star with several visible colored cursors."
+    },
+    {
+      "name": "Copy and signature",
+      "spec": "Build the process statement near the bottom and close with the logo on a white screen against blue-violet."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The printed sentence explains that an initial idea continues to change.",
+    "Application": "The clip demonstrates the evolving graphic in a phone-format campaign.",
+    "Expression": "Layered stars and colored cursors make the editing process visible."
+  },
+  "motion": "../sources/fg17.mp4"
+}

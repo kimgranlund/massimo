@@ -1,0 +1,33 @@
+{
+  "id": "IBS02",
+  "title": "Contents",
+  "image": "ibs02.png",
+  "source": "../sources/ibm-logo-strategic-partners.pdf",
+  "location": {
+    "page": 2,
+    "series": "IBM Logo Guidelines for Strategic Partners / Version 1.2 / copyright 2023",
+    "order": 200002
+  },
+  "slide_intent": "Expose the structure of the guide so a reader can locate the rule or example needed for a specific task.",
+  "strategic_value": "A compact hierarchy can make IBM partner guidance easier to consult consistently.",
+  "demonstration": "A Contents label at left accompanies a numbered list with blue Fundamentals and Usage group headings and indented application examples.",
+  "category": "Layout",
+  "practical_value": "Find the relevant page before deciding how to use the IBM logo.",
+  "content_islands": [
+    {
+      "name": "Contents label",
+      "spec": "Keep the heading in the left column."
+    },
+    {
+      "name": "Section map",
+      "spec": "Set page numbers beside the main titles; use blue section headings and indented example categories to show hierarchy."
+    },
+    {
+      "name": "Edition footer",
+      "spec": "Retain the guide name, version and page number in the lower white strip."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The index maps logo fundamentals, usage examples, merchandise, joint lockups and approval to specific pages."
+  }
+}

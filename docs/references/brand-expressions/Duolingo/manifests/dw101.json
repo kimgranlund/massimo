@@ -1,0 +1,32 @@
+{
+  "id": "DW101",
+  "title": "Illustration / Shape language / Introduction",
+  "image": "dw101.png",
+  "source": "../sources/pages/illustration-shape-language.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/illustration/shape-language",
+    "section": "Shape language",
+    "item": 101,
+    "order": 1010
+  },
+  "slide_intent": "Connect recurring construction choices to recognition because a family of drawings should remain identifiable across different subjects.",
+  "strategic_value": "Consistent forms, colors and shadows can make new Duolingo illustrations feel part of the same world.",
+  "demonstration": "A white heading and rationale sit beside a rounded bouquet on a purple field.",
+  "category": "Imagery",
+  "practical_value": "Establish common construction principles before expanding an illustration library.",
+  "content_islands": [
+    {
+      "name": "Rationale",
+      "spec": "Place the illustration label, lowercase heading and explanatory paragraph at left."
+    },
+    {
+      "name": "Bouquet specimen",
+      "spec": "Place the wrapped flowers at right, showing rounded petals, leaves and ribbon against purple."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The introduction attributes recognizable Duolingo illustration to consistent palette and shadow guidance.",
+    "Expression": "The bouquet demonstrates bright flat colors and rounded forms."
+  }
+}

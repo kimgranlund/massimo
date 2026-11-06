@@ -1,0 +1,27 @@
+{
+  "id": "BK095",
+  "title": "Illustration: Storytelling",
+  "image": "bk095.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 95
+  },
+  "slide_intent": "Separate narrative illustration from other image uses because designers need to know which task the next guidance addresses.",
+  "strategic_value": "The yellow chapter field can distinguish Burger King’s storytelling subsection while the same display typography maintains continuity.",
+  "demonstration": "The two-line heading ILLUSTRATION: STORYTELLING appears in brown on a full yellow field.",
+  "category": "Imagery",
+  "practical_value": "Locate the narrative-illustration guidance that follows, rather than inferring a drawing rule from the divider.",
+  "content_islands": [
+    {
+      "name": "Subsection heading",
+      "spec": "Set the large two-line brown title near the upper left on yellow."
+    },
+    {
+      "name": "Navigation and notice",
+      "spec": "Keep the small running labels and rights notice at the page edges."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The yellow field and large brown title show the subsection’s presentation treatment."
+  }
+}

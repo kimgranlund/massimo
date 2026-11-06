@@ -1,0 +1,34 @@
+{
+  "id": "AU15",
+  "title": "Audi Sport across digital and campaign formats",
+  "image": "au15.png",
+  "source": "../sources/14-kms-team-audi-sport-CD03_16-9.jpg",
+  "location": {
+    "series": "KMS TEAM / Audi and Audi Sport identity case study",
+    "item": 15,
+    "extent": "Complete source media"
+  },
+  "slide_intent": "Test a sub-brand across different contexts because a distinctive treatment must remain workable beyond one hero composition.",
+  "strategic_value": "Repeated red statements and the Audi Sport signature can connect campaign imagery with smaller digital interfaces.",
+  "demonstration": "A white-ground montage groups tablet, phone and watch examples with portrait, people and driving campaign panels, including diagonal and horizontal image interruptions.",
+  "category": "Application",
+  "practical_value": "Compare what survives at watch and phone scale with what can expand across larger image panels.",
+  "content_islands": [
+    {
+      "name": "Digital group",
+      "spec": "Place the tablet left, phone near the center-right and small watch below."
+    },
+    {
+      "name": "Campaign group",
+      "spec": "Overlap a people image above, a split portrait panel at upper right and driving scene at lower right."
+    },
+    {
+      "name": "Repeated treatment",
+      "spec": "Repeat red uppercase phrases and Audi Sport signatures while varying image crop and panel shape."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Red statement typography and interrupted photographic compositions recur across the montage.",
+    "Application": "The source compares tablet, phone, watch and larger campaign formats."
+  }
+}

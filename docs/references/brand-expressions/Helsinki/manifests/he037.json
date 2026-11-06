@@ -1,0 +1,40 @@
+{
+  "id": "HE037",
+  "title": "Photography permits",
+  "image": "he037.png",
+  "source": "../sources/visual-storytelling.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Photography permits",
+    "order": 49,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/visual-storytelling#photography-permits",
+    "original_html": "../sources/visual-storytelling.html"
+  },
+  "slide_intent": "Clarify consent at the point of image production because the intended use changes what permission must be recorded.",
+  "strategic_value": "A stated consent workflow can help Helsinki prepare photographs for their planned communications.",
+  "demonstration": "This expanded webpage section presents marketing consent instructions, guardian and age conditions, a qualified news-use exception and a consent-form link.",
+  "category": "Application",
+  "practical_value": "Identify the planned use and relevant signatories before commissioning or reusing a photograph.",
+  "content_islands": [
+    {
+      "name": "Marketing consent",
+      "spec": "State written consent and guardian/12–17-year-old signatures."
+    },
+    {
+      "name": "Permission scope",
+      "spec": "List filming, publication and potential transfer."
+    },
+    {
+      "name": "News-use qualification",
+      "spec": "Describe the source’s necessity, non-offensive-context and privacy conditions."
+    },
+    {
+      "name": "Forms",
+      "spec": "Link to the official multilingual forms."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The source provides a workflow and links consent forms.",
+    "Constraint": "Marketing requires written consent; ages 12–17 sign alongside a guardian; the news-use exception is qualified by necessity, context and privacy."
+  }
+}

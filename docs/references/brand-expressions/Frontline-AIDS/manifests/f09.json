@@ -1,0 +1,24 @@
+{
+  "id": "F09",
+  "title": "Our vision",
+  "image": "f09.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 9
+  },
+  "slide_intent": "Show how an aspirational statement relates to present-day work. A reader can distinguish what the organization wants to change from how it works.",
+  "strategic_value": "Frontline AIDS can express one shared vision while giving partners concrete language for explaining the organization.",
+  "demonstration": "A large statement about a future free from AIDS sits above three ruled rows for why the organization exists, what it does and how it works.",
+  "category": "Brand",
+  "practical_value": "Lead a presentation with the vision, then select the explanatory row that answers the audience’s question.",
+  "content_islands": [
+    {
+      "name": "Heading and orientation",
+      "spec": "Use the section rail and narrow introduction column at left."
+    },
+    {
+      "name": "Vision and explanations",
+      "spec": "Set the vision in large uppercase type at right. Align the three smaller labels and supporting explanations below it on common column edges."
+    }
+  ]
+}

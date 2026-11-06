@@ -1,0 +1,24 @@
+{
+  "id": "I062",
+  "title": "Subject Matter",
+  "image": "i062.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 62
+  },
+  "slide_intent": "Develop a story from the purpose of an illustration. A familiar idea can become easier to remember when the image gives it a specific action or surprise.",
+  "strategic_value": "Instacart can communicate delivery, variety and savings with a point of view that belongs to its illustrated world.",
+  "demonstration": "Rows link a communication need to two treatments. For quick delivery, a lightning bolt gives way to sneakers with fire behind them. For delivery itself, a bag on a doorstep becomes a hand pressing a doorbell.",
+  "category": "Imagery",
+  "practical_value": "Write the communication need first, then compare a literal symbol with an action that conveys the same idea more vividly.",
+  "content_islands": [
+    {
+      "name": "Reading key",
+      "spec": "Keep the introduction to the left of the table. Label the three main columns by need, literal depiction and preferred story."
+    },
+    {
+      "name": "Conversion rows",
+      "spec": "Align the rejected and preferred concepts with the need they answer. Use a thin arrow between alternatives and group multi-line examples under Benefits and How-tos."
+    }
+  ]
+}

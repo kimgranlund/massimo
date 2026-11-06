@@ -1,0 +1,24 @@
+{
+  "id": "F77",
+  "title": "Bringing it all together",
+  "image": "f77.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 77
+  },
+  "slide_intent": "Introduce the move from individual assets to a complete communication. Seeing several elements in use helps a designer judge which element leads and which ones support it.",
+  "strategic_value": "Combining a human photograph with the brand’s signs and lettering can give a communication both a personal subject and a recognizable author.",
+  "demonstration": "A pink chapter opener places a photograph, boxed words, a heart and hand-drawn marks in an angled, layered assembly. Introductory copy sits in the open upper-left area.",
+  "category": "Application",
+  "practical_value": "Use the chapter opener to study how to stack type and illustration while keeping the photographic subject visible.",
+  "content_islands": [
+    {
+      "name": "Chapter opener",
+      "spec": "Keep the title and brief introduction aligned to the left beside the chapter rail."
+    },
+    {
+      "name": "Layered example",
+      "spec": "Rotate the photograph and stack the black headline strips, heart, smaller text blocks and marker strokes above it. Place the identity separately on the surrounding pink field."
+    }
+  ]
+}

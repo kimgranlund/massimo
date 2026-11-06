@@ -1,0 +1,31 @@
+{
+  "id": "HE099",
+  "title": "How to use chart templates",
+  "image": "he099.png",
+  "source": "../sources/design-and-create.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "How to use chart templates",
+    "order": 134,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/design-and-create#how-to-use-chart-templates",
+    "original_html": "../sources/design-and-create.html"
+  },
+  "slide_intent": "Establish chart styling at its source so copying between applications does not introduce inconsistent elements.",
+  "strategic_value": "An Excel-first workflow can keep Helsinki’s charts coordinated across documents and presentations.",
+  "demonstration": "Expanded webpage section: an Always start with Excel subheading precedes an explanation and a three-step workflow.",
+  "category": "Application",
+  "practical_value": "Set brand colors and Arial in Excel before creating and exporting the chart.",
+  "content_islands": [
+    {
+      "name": "Workflow rationale",
+      "spec": "The subheading and paragraph explain why chart creation begins in Excel."
+    },
+    {
+      "name": "Three steps",
+      "spec": "Set themes, create/edit the chart, then copy or save it."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source says starting in Excel helps ensure styles and chart elements are laid out appropriately."
+  }
+}

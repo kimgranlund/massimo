@@ -1,0 +1,24 @@
+{
+  "id": "N44",
+  "title": "Interior Grid Formats: Case Bound and Educational Publications",
+  "image": "n44.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 44
+  },
+  "slide_intent": "Teach publication designers to reserve a predictable place for figures and captions so readers can stay oriented during sustained reading.",
+  "strategic_value": "NASA can give educational books a quieter reading rhythm while still making room for illustrations beside the relevant passage.",
+  "demonstration": "Three spread pairs place pictures within text columns, in the outer margin, or in a bleed opposite single-column text. The top notes connect these book formats to wider margins and the use of serif type.",
+  "category": "Layout",
+  "practical_value": "Decide whether an illustration needs to follow the copy inside a column, sit in a margin, or occupy a full field across from the text.",
+  "content_islands": [
+    {
+      "name": "Book-format guidance",
+      "spec": "Set the heading at upper left. Keep each lettered treatment with its notes about scale, captions and text setting."
+    },
+    {
+      "name": "Three book grids",
+      "spec": "Arrange three rows of paired diagrams with the same scale and visible guides. Draw a two-column text measure with wide margins in a, a single column with marginal illustrations in b, and a top caption band with bleed photography in c."
+    }
+  ]
+}

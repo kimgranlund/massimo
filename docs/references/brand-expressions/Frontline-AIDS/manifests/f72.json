@@ -1,0 +1,28 @@
+{
+  "id": "F72",
+  "title": "Straight-talking",
+  "image": "f72.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 72
+  },
+  "slide_intent": "Teach writers to communicate one point in everyday language. A person outside the sector should be able to follow a sensitive issue without specialist vocabulary.",
+  "strategic_value": "Clear phrasing can make the organization’s position accessible while preserving the facts and dignity of the people involved.",
+  "demonstration": "The first numbered principle defines directness, describes the sound of plain speech and gives a read-aloud test. A separate column turns the principle into writing practices.",
+  "category": "Voice",
+  "practical_value": "Read a sentence aloud, identify its central point, and replace any sector term that an unfamiliar reader would need explained.",
+  "content_islands": [
+    {
+      "name": "Principle identifier",
+      "spec": "Mark Straight-talking in the chapter rail. Pair the large pale numeral 1 with its pink nameplate and the cyan underline."
+    },
+    {
+      "name": "Definition and limits",
+      "spec": "Use the central column for a definition, a prose example of the approach and its boundaries, including sensitivity and sufficient detail."
+    },
+    {
+      "name": "Writing guidance",
+      "spec": "Place a short writing checklist at right. Include the doctor or nurse analogy and the read-aloud check."
+    }
+  ]
+}

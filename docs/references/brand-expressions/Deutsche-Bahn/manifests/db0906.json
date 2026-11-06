@@ -1,0 +1,30 @@
+{
+  "id": "DB0906",
+  "title": "Typography / office and screen examples",
+  "image": "db0906.png",
+  "source": "../sources/page-09.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 9,
+    "section": 6,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Typografie_neu"
+  },
+  "slide_intent": "Test type in real reading contexts so a family choice serves both identity and information.",
+  "strategic_value": "The same DB signature can connect a personal business card and a digital information panel.",
+  "demonstration": "A portrait business card sits beside a dark information panel headed Sondervermögen gut investiert.",
+  "category": "Application",
+  "practical_value": "Compare name hierarchy on a small printed object with heading, paragraph and button hierarchy on screen.",
+  "content_islands": [
+    {
+      "name": "Business card",
+      "spec": "Place the portrait, name and small identity details on the white card at left."
+    },
+    {
+      "name": "Digital panel",
+      "spec": "Place a white headline and paragraph above a red button on the dark panel at right."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The specimens show type used on a business card and digital content panel."
+  }
+}

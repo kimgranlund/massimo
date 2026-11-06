@@ -1,0 +1,28 @@
+{
+  "id": "F54",
+  "title": "Drawing a line",
+  "image": "f54.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 54
+  },
+  "slide_intent": "Teach designers when an illustration can carry an idea that is difficult to photograph. Two shapes can suggest a relationship without requiring a person to stand in for the idea.",
+  "strategic_value": "Frontline AIDS can give conceptual subjects an energetic visual voice. The familiar heart shape, heavy stroke and vivid color give a reader an immediate point of entry.",
+  "demonstration": "An oversized illustration pairs two overlapping, oppositely oriented hearts on a cyan field. A separate hand-drawn pink arrow points to the upper edge of one heart.",
+  "category": "Imagery",
+  "practical_value": "Choose illustration when the message depends on an abstract relationship. Try one large, legible figure before adding supporting details.",
+  "content_islands": [
+    {
+      "name": "Section rail",
+      "spec": "Run a narrow navigation rail down the left edge. Separate it from the artwork with a vertical rule. Emphasize the Illustration section and retain the book identifier at the foot."
+    },
+    {
+      "name": "Purpose statement",
+      "spec": "Place the illustration label, compact uppercase heading and short explanation beside the rail. Give the text a narrow measure and leave room to its right for the main figure."
+    },
+    {
+      "name": "Heart illustration",
+      "spec": "Enlarge two heart shapes until the pair occupies most of the page. Outline each with a heavy black stroke, turn one upside down and fill it green. Preserve the cyan background in the other. Use the distinct pink arrow to direct the eye to their contours."
+    }
+  ]
+}

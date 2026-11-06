@@ -1,0 +1,33 @@
+{
+  "id": "MO08",
+  "title": "Subway poster pair",
+  "image": "mo08.png",
+  "source": "../sources/mo08.jpg",
+  "location": {
+    "series": "Pentagram / MoMA / 2009 identity case study",
+    "item": 8,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Compare adjacent executions in their actual setting, because an identity must connect different messages within environmental clutter.",
+  "strategic_value": "The repeated right-edge MoMA signature can make two contrasting exhibition images read as a museum family.",
+  "demonstration": "Two framed posters share a tiled subway wall. One contains a pale sideways portrait; the other combines monochrome figures, shovel and green bucket separated by plus signs.",
+  "category": "Application",
+  "practical_value": "Check whether the repeated signature connects a single-image poster with a multi-image composition.",
+  "content_islands": [
+    {
+      "name": "Left poster",
+      "spec": "Place the pale portrait poster in its black frame at left with heading band above and MoMA strip at right."
+    },
+    {
+      "name": "Right poster",
+      "spec": "Place the object sequence in the neighboring frame, keeping the plus signs and right-edge signature visible."
+    },
+    {
+      "name": "Station setting",
+      "spec": "Retain the white tiled wall, red upper band and oblique viewing angle around both frames."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "Pentagram identifies this installation as the Fifth Avenue and 53rd Street station near MoMA."
+  }
+}

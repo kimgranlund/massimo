@@ -1,0 +1,31 @@
+{
+  "id": "HE084",
+  "title": "Questions and comments on guidelines",
+  "image": "he084.png",
+  "source": "../sources/design-and-create.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Questions and comments on guidelines",
+    "order": 115,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/design-and-create#questions-and-comments-on-guidelines",
+    "original_html": "../sources/design-and-create.html"
+  },
+  "slide_intent": "Give designers a clear help route so uncertain applications can be resolved before inconsistent work spreads.",
+  "strategic_value": "Separating central guideline questions from division-specific material questions can support Helsinki’s shared identity.",
+  "demonstration": "This expanded webpage-section capture provides a central specialist contact and directs division-specific questions to the relevant graphic designers.",
+  "category": "Application",
+  "practical_value": "Route a general guideline question centrally and a division-material question to the division’s specialists.",
+  "content_islands": [
+    {
+      "name": "General support",
+      "spec": "Place the named central contact with the guideline-question instruction."
+    },
+    {
+      "name": "Division support",
+      "spec": "Keep the separate route for local application and material questions below."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The text distinguishes central guideline assistance from division-specific help."
+  }
+}

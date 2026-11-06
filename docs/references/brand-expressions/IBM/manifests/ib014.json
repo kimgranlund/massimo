@@ -1,0 +1,52 @@
+{
+  "id": "IB014",
+  "title": "Illustration / Line style — Design",
+  "image": "ib014.png",
+  "source": "../sources/illustration-line-style-design.txt",
+  "location": {
+    "series": "IBM Design Language / public web guidelines",
+    "item": 14,
+    "extent": "Complete webpage content-area capture; interactive elements retain their captured state",
+    "url": "https://www.ibm.com/design/language/illustration/line-style/design/",
+    "order": 14000
+  },
+  "slide_intent": "Control line weight, spacing and curvature so detailed drawings remain clear and look deliberately constructed.",
+  "strategic_value": "A shared 4px foundation and disciplined strokes can connect IBM’s varied line illustrations to the same precise visual language.",
+  "demonstration": "A gallery of line illustrations leads into stroke scales, weight and spacing comparisons, grid alignment, angle and curve construction, and gradient examples.",
+  "category": "Geometry",
+  "practical_value": "Build line artwork on the prescribed grid, then check that stroke differences and spacing remain intentional.",
+  "content_islands": [
+    {
+      "name": "Examples",
+      "spec": "Present the gradient spiral, outline finger, circuit, city and technical drawings as the introductory family."
+    },
+    {
+      "name": "Stroke logic",
+      "spec": "Show the labeled line-weight scale followed by approved/rejected mixing and spacing comparisons."
+    },
+    {
+      "name": "Grid and drawing",
+      "spec": "Pair the illustrated grid with snap-to-grid examples, then show a drawing divided into construction and finished halves."
+    },
+    {
+      "name": "Angles and curves",
+      "spec": "Follow with standard-angle rays, circle-derived curves, an organic shoe contour and nested-radius comparisons."
+    },
+    {
+      "name": "Color behavior",
+      "spec": "Close with stroke-following gradients and examples that imply transparency through palette choices."
+    }
+  ],
+  "ingredient": {
+    "name": "Line-style grid and strokes",
+    "role": "Keep detailed illustrations precise and visually open.",
+    "application": "Use the 4px grid and snap anchor points to it; make spacing at least equal to the line weight; choose clearly differentiated weights and prefer standard angles.",
+    "scope": "IBM line-style illustrations. Four weights is a recommendation, not an absolute prohibition; organic curves and other angles remain permitted when the concept needs them."
+  },
+  "reference_purposes": {
+    "Intent": "The source connects disciplined lines and grid positioning to lightness, clarity and IBM’s engineered aesthetic.",
+    "Expression": "The examples show the recognizable line-based treatment across abstract and literal subjects.",
+    "Application": "Construction diagrams teach grid snapping, stroke separation and curve construction.",
+    "Constraint": "The line-style grid is 4px for all canvas sizes; spacing must be at least the line weight. The source recommends no more than four weights and permits nonstandard angles or organic curves when justified."
+  }
+}

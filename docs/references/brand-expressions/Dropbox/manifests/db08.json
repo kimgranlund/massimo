@@ -1,0 +1,38 @@
+{
+  "id": "DB08",
+  "title": "Extensibility",
+  "image": "db08.png",
+  "source": "../sources/db08.jpg",
+  "location": {
+    "series": "COLLINS / Dropbox / 2017 identity case study",
+    "item": 8,
+    "section": "Extensibility",
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Show a family resemblance because future products need a visible connection without becoming indistinguishable.",
+  "strategic_value": "Shared isometric geometry can connect Dropbox and Paper while allowing another concept to take a different form.",
+  "demonstration": "Three blue forms appear in a row: the Dropbox mark, overlapping Paper diamonds and a hexagonal future-concept form, each with an orange handwritten label.",
+  "category": "Brand",
+  "practical_value": "Compare how much geometry can change while preserving a related visual language.",
+  "content_islands": [
+    {
+      "name": "Product family",
+      "spec": "Align the three symbols across the pale field."
+    },
+    {
+      "name": "Labels",
+      "spec": "Keep each handwritten identifier beneath its symbol; the third is a speculative extension, not a verified released product."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The Extensibility caption explains accommodating future additions while retaining coherence.",
+    "Expression": "Three blue forms appear in a row: the Dropbox mark, overlapping Paper diamonds and a hexagonal future-concept form, each with an orange handwritten label.",
+    "Application": "Three blue forms appear in a row: the Dropbox mark, overlapping Paper diamonds and a hexagonal future-concept form, each with an orange handwritten label."
+  },
+  "ingredient": {
+    "name": "Related product geometry",
+    "role": "Connect related product identities while allowing differences in form.",
+    "application": "Compare how much geometry can change while preserving a related visual language.",
+    "scope": "Observed or explained in this historical COLLINS case study; no numeric dimensions or universal rule are supplied."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "MC07",
+  "title": "Retail acceptance mark",
+  "image": "mc07.png",
+  "source": "../sources/mc07.jpg",
+  "location": {
+    "series": "Pentagram / Mastercard / 2016 identity case study",
+    "item": 7,
+    "extent": "Full published artwork"
+  },
+  "slide_intent": "Show recognition at the point of purchase because a payment identity must signal where a service is available.",
+  "strategic_value": "A compact acceptance mark can carry practical meaning within an everyday scene.",
+  "demonstration": "A family sits outside a shop; a vertical payment-sticker group appears on the glass at right.",
+  "category": "Application",
+  "practical_value": "Inspect the mark at incidental scale beside other payment brands.",
+  "content_islands": [
+    {
+      "name": "Human setting",
+      "spec": "Retain the family and storefront context across the photograph."
+    },
+    {
+      "name": "Acceptance signs",
+      "spec": "Keep the small payment marks on the right glass panel, including Mastercard."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The caption identifies the storefront sticker as the acceptance mark at a retail location."
+  }
+}

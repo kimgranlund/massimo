@@ -1,0 +1,134 @@
+{
+  "id": "IB041",
+  "title": "Line illustration / Usage",
+  "image": "ib041.png",
+  "source": "../sources/illustration-line-style-usage.txt",
+  "location": {
+    "series": "IBM Design Language / public web guidelines",
+    "item": 41,
+    "extent": "Complete webpage content area, default interactive state",
+    "url": "https://www.ibm.com/design/language/illustration/line-style/usage/",
+    "order": 41000
+  },
+  "slide_intent": "Let motion reinforce graphic structure so viewers can follow a precise idea without distracting overlap or artificial realism.",
+  "strategic_value": "Geometric movement and controlled linework can carry IBM’s engineered character into campaigns and explanations.",
+  "demonstration": "Application examples precede animated specimens and paired recommendations for gradients, offset timing and graphic performance.",
+  "category": "Motion",
+  "practical_value": "Plan position, rotation and scale around the original drawing; compare choreography and overlap before adding complex effects.",
+  "content_islands": [
+    {
+      "name": "Application examples",
+      "spec": "Open with website, publication and technical-communication mockups."
+    },
+    {
+      "name": "Animation approach",
+      "spec": "Place the large blue specimen and practical tips below the applications."
+    },
+    {
+      "name": "Gradient and offset comparisons",
+      "spec": "Pair permitted and discouraged motion examples with captions about conceptual relevance and overlapping linework."
+    },
+    {
+      "name": "Graphic performance",
+      "spec": "End with contrasting finger illustrations and guidance on stylized versus overly fluid performance."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text links reduced line construction to precise, geometrically driven animation.",
+    "Expression": "The specimens use thin linework on strong blue grounds and schematic forms.",
+    "Application": "The page teaches gradient tracking and choreographed offsets with paired examples.",
+    "Constraint": "The source says to preserve original shapes, avoid overlapping linework and use camera moves only rarely when they further the message."
+  },
+  "ingredient": {
+    "name": "Line-style movement",
+    "role": "Explain a graphic idea through precise changes of position and shape.",
+    "application": "Favor position, rotation and scale; keep gradients tracking with strokes and stagger motion without overlapping linework.",
+    "scope": "IBM line-style illustrations. These motion rules are stated in the source; the webpage PNG records still frames and local clips provide the examples."
+  },
+  "motion_assets": [
+    {
+      "title": "Line illustration motion overview",
+      "file": "../sources/media/6d4dc77982a0.mp4",
+      "poster": "../sources/media/6d4dc77982a0-poster.png",
+      "duration_seconds": 10.0,
+      "source_url": "https://www.ibm.com/design/language/videos/illustration/ls-usage-hero.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Line gradients: conceptual use",
+      "file": "../sources/media/19e7a1c1918d.mp4",
+      "poster": "../sources/media/19e7a1c1918d-poster.png",
+      "duration_seconds": 3.46,
+      "source_url": "https://www.ibm.com/design/language/videos/illustration/ls-gradients-1.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Line gradients: unnecessary complexity",
+      "file": "../sources/media/a93074cbd923.mp4",
+      "poster": "../sources/media/a93074cbd923-poster.png",
+      "duration_seconds": 4.96,
+      "source_url": "https://www.ibm.com/design/language/videos/illustration/ls-gradients-2.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Line offsets: approved choreography",
+      "file": "../sources/media/0953f1f4c6f2.mp4",
+      "poster": "../sources/media/0953f1f4c6f2-poster.png",
+      "duration_seconds": 6.0,
+      "source_url": "https://www.ibm.com/design/language/videos/illustration/ls-offset-do.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Line offsets: overlapping strokes",
+      "file": "../sources/media/c18d858904a2.mp4",
+      "poster": "../sources/media/c18d858904a2-poster.png",
+      "duration_seconds": 6.0,
+      "source_url": "https://www.ibm.com/design/language/videos/illustration/ls-offset-dont.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Line performance: graphic interpretation",
+      "file": "../sources/media/efbfba032d19.mp4",
+      "poster": "../sources/media/efbfba032d19-poster.png",
+      "duration_seconds": 2.42,
+      "source_url": "https://www.ibm.com/design/language/videos/illustration/ls-design-do.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Line performance: overly fluid gesture",
+      "file": "../sources/media/67e8cd4c1ea4.mp4",
+      "poster": "../sources/media/67e8cd4c1ea4-poster.png",
+      "duration_seconds": 2.42,
+      "source_url": "https://www.ibm.com/design/language/videos/illustration/ls-design-dont.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    }
+  ]
+}

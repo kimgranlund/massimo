@@ -1,0 +1,32 @@
+{
+  "id": "B15",
+  "title": "Color in use",
+  "image": "b15.png",
+  "source": "../bolt-brand-guidelines-2025-12.pdf",
+  "location": {
+    "page": 15
+  },
+  "slide_intent": "Teach designers to recognize an identity across materials and viewing distances. The same hue can occupy an entire object, appear in clothing or pick out a word on a screen.",
+  "strategic_value": "Bolt can connect an encounter with its transit advertising to an encounter with its dashboard. Blue recurs in each setting while the surrounding composition changes with the medium.",
+  "demonstration": "Six tiles place lifestyle photography, a street advertisement, a phone, a tote, a dashboard and an illustration in one field. Blue appears as fabric, a bag ground, a navigation highlight and part of the dashboard headline.",
+  "category": "Application",
+  "practical_value": "Compare a proposed product or campaign asset with the montage and choose which element should carry blue in that medium.",
+  "content_islands": [
+    {
+      "name": "Book rail",
+      "spec": "Retain the small white Bolt wordmark on a dark vertical strip and the folio at its foot."
+    },
+    {
+      "name": "Lifestyle and tote",
+      "spec": "Stack a dining photograph above a close view of a blue tote on the left. Keep image edges aligned with a narrow gutter."
+    },
+    {
+      "name": "Street and phone",
+      "spec": "Give the street advertisement the widest upper tile. Place the narrower phone photograph at upper right and retain the photographic surroundings in both images."
+    },
+    {
+      "name": "Dashboard and illustration",
+      "spec": "Place the pale dashboard beneath the street scene, with its dark headline panel and blue emphasis. Fill the remaining lower-right tile with the illustration on a dark ground. Keep white gutters between the six tiles."
+    }
+  ]
+}

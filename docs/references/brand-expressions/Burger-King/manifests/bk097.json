@@ -1,0 +1,39 @@
+{
+  "id": "BK097",
+  "title": "Illustration Library",
+  "image": "bk097.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 97
+  },
+  "slide_intent": "Make the approved repertoire visible because choosing an existing asset can preserve a shared drawing language across many messages.",
+  "strategic_value": "The ingredient and Whopper variations can help Burger King express different food stories without inventing a new visual style each time.",
+  "demonstration": "A yellow catalog groups lettuce, tomatoes, hands, onions, pickles, bun and patty above multiple Whopper arrangements and a progressive burger sequence.",
+  "category": "Imagery",
+  "practical_value": "Select the existing ingredient or product variant that fits the message while retaining its supplied colors.",
+  "content_islands": [
+    {
+      "name": "Library introduction",
+      "spec": "Place the Cachetejack credit and no-color-amendment statement at upper left."
+    },
+    {
+      "name": "Ingredients catalog",
+      "spec": "Arrange labeled ingredient groups across the upper-right area, including whole and sliced forms."
+    },
+    {
+      "name": "Products catalog",
+      "spec": "Arrange Whopper variants, hands, sequence and deconstructed stack across the lower-right area."
+    }
+  ],
+  "ingredient": {
+    "name": "Approved illustration variants",
+    "role": "Provide consistent ready-made subjects for varied food messages.",
+    "application": "Select from the labeled ingredient and product library without changing colors.",
+    "scope": "Historical 2020 partner guidelines, PDF produced January 2021. Page 96 also prohibits cropping and directs library expansion to the Global Design Team."
+  },
+  "reference_purposes": {
+    "Expression": "The catalog reveals consistent contours, textures and palette across many food subjects.",
+    "Application": "Labels distinguish approved ingredient and product options for selection.",
+    "Constraint": "The page explicitly says no colors should be amended."
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "DW129",
+  "title": "Illustration / Characters / Hair",
+  "image": "dw129.png",
+  "source": "../sources/pages/illustration-characters.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/illustration/characters",
+    "section": "Hair",
+    "item": 129,
+    "order": 1290
+  },
+  "slide_intent": "Reduce a hairstyle to large coherent forms so it stays recognizable when the character changes view.",
+  "strategic_value": "Simple but distinctive hair shapes can help Duolingo preserve variety while making illustration and animation easier to manage.",
+  "demonstration": "Four rows pair a finished hairstyle with a translucent geometric breakdown, connected by arrows, with explanatory copy at right.",
+  "category": "Geometry",
+  "practical_value": "Look for one or two large shapes that preserve the hairstyle’s character before adding irregular details.",
+  "content_islands": [
+    {
+      "name": "Hairstyle breakdowns",
+      "spec": "Stack four finished heads at left, each followed by an arrow and a blue construction view showing the principal hair shapes."
+    },
+    {
+      "name": "Simplicity rationale",
+      "spec": "Place the Hair heading and explanation at right, connecting excess irregular shapes with difficulty turning the head."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source explains that too many irregular shapes make hair complex and hard to turn in space.",
+    "Expression": "The examples retain distinct hairstyles despite simple construction.",
+    "Application": "Arrows connect finished heads to geometric breakdowns.",
+    "Constraint": "The guidance prefers one or two large hair shapes where possible, rather than an absolute shape-count limit."
+  },
+  "ingredient": {
+    "name": "Large-shape hair construction",
+    "role": "Keep a distinctive hairstyle manageable across views.",
+    "application": "When possible, compose hair from one or two large shapes and avoid unnecessary irregular pieces.",
+    "scope": "Historical official Duolingo illustration guidance from the 2024–2025 archived snapshot. The one-or-two preference is explicitly conditional, not a prohibition on every more complex hairstyle."
+  }
+}

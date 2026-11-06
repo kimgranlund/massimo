@@ -1,0 +1,42 @@
+{
+  "id": "HE012",
+  "title": "Helsinki’s coat of arms",
+  "image": "he012.png",
+  "source": "../sources/use-basic-elements.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Helsinki’s coat of arms",
+    "order": 16,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/use-basic-elements#helsinki-s-coat-of-arms",
+    "original_html": "../sources/use-basic-elements.html"
+  },
+  "slide_intent": "Separate ceremonial heritage from everyday identification so each symbol carries a clear role.",
+  "strategic_value": "Keeping the coat of arms distinct from the framed logo can preserve Helsinki’s heraldic meaning without confusing ordinary city communication.",
+  "demonstration": "This expanded webpage section lists ceremonial uses of the coat of arms, states a non-combination rule and shows the heraldic symbol and City Hall facade.",
+  "category": "Brand",
+  "practical_value": "Decide whether the occasion calls for heraldry or the everyday framed logo.",
+  "content_islands": [
+    {
+      "name": "Heraldic variants",
+      "spec": "Begin with color and outline coats of arms, with and without the external crown."
+    },
+    {
+      "name": "Ceremonial scope",
+      "spec": "Follow with official occasions, qualified community use, the non-combination rule and a separate guide link."
+    },
+    {
+      "name": "Built application",
+      "spec": "End with the City Hall facade photograph and credit."
+    }
+  ],
+  "ingredient": {
+    "name": "Helsinki coat of arms",
+    "role": "Carry the city’s ceremonial and heraldic identity.",
+    "application": "Use for the stated ceremonial contexts and follow the separate heraldic guide.",
+    "scope": "Never combine with the framed logo; private/community use is qualified by respectful use and heraldic principles."
+  },
+  "reference_purposes": {
+    "Application": "The text names state visits, anniversaries, seals, stamps, medals and diplomas as ceremonial uses.",
+    "Constraint": "The coat of arms and Helsinki framed logo are never used together; community use follows heraldic guidelines."
+  }
+}

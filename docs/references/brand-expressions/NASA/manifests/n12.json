@@ -1,0 +1,28 @@
+{
+  "id": "N12",
+  "title": "Mission Patches and Other Symbols",
+  "image": "n12.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 12
+  },
+  "slide_intent": "Distinguish the identity of a mission from the identity of the agency. Giving each symbol space lets the viewer understand what it represents.",
+  "strategic_value": "NASA can preserve the personality of an individual mission while maintaining a recognizable agency signature for the work it oversees.",
+  "demonstration": "Two distinct mission patches appear as separate specimens below the guidance. Apollo 11 is circular and the GTA-6 patch has a polygonal outline.",
+  "category": "Brand",
+  "practical_value": "When a mission patch accompanies agency identification, give it its own visual space as the manual directs.",
+  "content_islands": [
+    {
+      "name": "Mission guidance",
+      "spec": "Set the title and explanation of patches in the top columns."
+    },
+    {
+      "name": "Apollo 11 specimen",
+      "spec": "Center the circular mission patch within a broad white band between horizontal rules."
+    },
+    {
+      "name": "GTA-6 specimen",
+      "spec": "Center the second patch in its own band. Keep its outline and internal lettering intact."
+    }
+  ]
+}

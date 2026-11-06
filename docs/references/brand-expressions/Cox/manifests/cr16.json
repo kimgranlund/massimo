@@ -1,0 +1,26 @@
+{
+  "id": "CR16",
+  "title": "Content Library Still — living-room play",
+  "image": "cr16.png",
+  "source": "../sources/cr16.jpg",
+  "location": {
+    "series": "Cox Brand Collection — Lindsay Little / Periscope",
+    "item": 16,
+    "extent": "whole source image"
+  },
+  "slide_intent": "Choose an active shared moment so entertainment is understood as something people do together.",
+  "strategic_value": "The dance-game scene can associate Cox’s entertainment world with participation and household energy.",
+  "demonstration": "Three people face a television showing a dance game in a bright living room.",
+  "category": "Imagery",
+  "practical_value": "Frame both participants and screen so the relationship between their movements and the activity remains clear.",
+  "content_islands": [
+    {
+      "name": "Participants and screen",
+      "spec": "Arrange the standing figures around the television, keeping the child visible in the foreground."
+    },
+    {
+      "name": "Domestic frame",
+      "spec": "Retain the sofa back, plants and light furnishings as a recognizable home setting."
+    }
+  ]
+}

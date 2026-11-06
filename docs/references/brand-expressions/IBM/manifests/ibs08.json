@@ -1,0 +1,41 @@
+{
+  "id": "IBS08",
+  "title": "Logo color options",
+  "image": "ibs08.png",
+  "source": "../sources/ibm-logo-strategic-partners.pdf",
+  "location": {
+    "page": 8,
+    "series": "IBM Logo Guidelines for Strategic Partners / Version 1.2 / copyright 2023",
+    "order": 200008
+  },
+  "slide_intent": "Use color and background together so a familiar mark remains legible without losing its approved identity.",
+  "strategic_value": "A limited set of IBM logo treatments can maintain recognition across partner materials.",
+  "demonstration": "Four quadrants show positive Black and Blue60 on light grounds, reversed White and Blue50 on black, beside the usage conditions.",
+  "category": "Color",
+  "practical_value": "Choose one approved color/version/background combination for the actual setting.",
+  "content_islands": [
+    {
+      "name": "Color rules",
+      "spec": "Place the conditional rules in the left column."
+    },
+    {
+      "name": "Positive treatments",
+      "spec": "Compare Black and Blue60 versions across the upper row."
+    },
+    {
+      "name": "Reversed treatments",
+      "spec": "Compare White and Blue50 on black across the lower row."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The four specimens establish black, white and blue as the permitted logo appearances.",
+    "Application": "The page pairs each logo treatment with its background condition.",
+    "Constraint": "Positive Black or Blue60 uses light-to-medium gray; reversed White uses medium gray to black; reversed Blue50 is for black backgrounds only. Imagery must provide a clear, simple and contrasting placement."
+  },
+  "ingredient": {
+    "name": "8-bar logo color",
+    "role": "Keep the approved mark clear on the chosen background.",
+    "application": "Select positive Black or Blue60 for light-to-medium gray, reversed White for medium gray to black, or reversed Blue50 on black only.",
+    "scope": "Version1.2 strategic-partner logo treatments, not the full IBM palette or a permission to recolor logo artwork freely."
+  }
+}

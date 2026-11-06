@@ -1,0 +1,43 @@
+{
+  "id": "DW033",
+  "title": "Imagery / Duo’s personality",
+  "image": "dw033.png",
+  "source": "../sources/pages/identity-imagery.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/identity/imagery",
+    "section": "Duo",
+    "item": 33,
+    "order": 330
+  },
+  "slide_intent": "Connect character poses to personality because a mascot should express recognizable motivations rather than serve as generic decoration.",
+  "strategic_value": "Duo’s supportive, persistent and adventurous roles can make Duolingo feel emotionally consistent across encounters.",
+  "demonstration": "Six Duo expressions and a larger swimming scene accompany copy describing the mascot’s encouragement, persistence, emotions and adventures.",
+  "category": "Imagery",
+  "practical_value": "Choose a pose that supports the intended character trait or activity.",
+  "content_islands": [
+    {
+      "name": "Expression family",
+      "spec": "Arrange six Duo poses in two rows of three at upper left."
+    },
+    {
+      "name": "Adventure scene",
+      "spec": "Place the large swimming scene beneath the pose grid."
+    },
+    {
+      "name": "Personality and contexts",
+      "spec": "Place the heading and supportive, persistent, emotional and adventurous descriptions at right, ending with the drawing-guidance link."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source explains Duo as a supporter of learner success and links his personality to his different positions.",
+    "Expression": "Multiple poses present the mascot’s emotional and activity range.",
+    "Application": "The text distinguishes learner support from adventurous activity outside the app."
+  },
+  "ingredient": {
+    "name": "Duo poses",
+    "role": "Express a recognizable supportive and curious character.",
+    "application": "Choose a pose that reflects the stated mood or activity and follow the dedicated drawing guidance.",
+    "scope": "Historical archived guidelines. Historical characterization. The text’s claims about user effectiveness are source assertions, not measured outcomes established by this manifest."
+  }
+}

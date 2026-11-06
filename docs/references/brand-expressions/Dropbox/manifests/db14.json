@@ -1,0 +1,32 @@
+{
+  "id": "DB14",
+  "title": "Sharp / animated type range",
+  "image": "db14.png",
+  "source": "../sources/db14.mp4",
+  "location": {
+    "series": "COLLINS / Dropbox / 2017 identity case study",
+    "item": 14,
+    "section": "Gallery",
+    "extent": "Complete published clip; PNG is a frame at 0.5 seconds",
+    "duration_seconds": 3.41
+  },
+  "slide_intent": "Demonstrate width and weight together because type variation changes the voice and rhythm of the same word.",
+  "strategic_value": "A broad typographic range can make Dropbox’s expression flexible while retaining a shared letter family.",
+  "demonstration": "Six colored cells repeatedly change their size and the width and weight of the word Sharp; small numbers accompany the specimens.",
+  "category": "Typography",
+  "practical_value": "Compare narrow, broad, light and heavy treatments using identical content.",
+  "content_islands": [
+    {
+      "name": "Specimen grid",
+      "spec": "Maintain three columns and two rows while cell proportions and letterforms change."
+    },
+    {
+      "name": "Sample identifiers",
+      "spec": "Keep the small numbers attached to their specimens; they are not motion durations."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Six colored cells repeatedly change their size and the width and weight of the word Sharp; small numbers accompany the specimens."
+  },
+  "motion": "../sources/db14.mp4"
+}

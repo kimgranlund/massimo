@@ -1,0 +1,41 @@
+{
+  "id": "DBV13",
+  "title": "Schwelle_Auf-und-Abbau",
+  "image": "dbv13.png",
+  "source": "../sources/media/dbv13.mp4",
+  "location": {
+    "series": "DB new design / motion demonstrations",
+    "source_page": 15,
+    "section": "Animation-14021536",
+    "source_url": "https://ecm-mediathek-cdn.deutschebahn.com/cdnenhancedecmvidhls/db306405/2880823/video_config.json",
+    "capture_date": "2026-11-05"
+  },
+  "slide_intent": "Give a recurring motif a fixed movement sequence so viewers can recognize it in time as well as shape.",
+  "strategic_value": "The progressive red bars can make the Schwelle carry DB’s stated association with progress and movement.",
+  "demonstration": "Red bars build across a dark field, resolve into a thin-to-thick progression, and retract.",
+  "category": "Motion",
+  "practical_value": "Use the Schwelle’s defined build and removal sequence rather than inventing a separate animation for each placement.",
+  "content_islands": [
+    {
+      "name": "Build",
+      "spec": "Extend a horizontal group of red bars on the dark field."
+    },
+    {
+      "name": "Progression and removal",
+      "spec": "Resolve thin bars at the left and thicker bars at the right before retracting."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Red bars build across a dark field, resolve into a thin-to-thick progression, and retract.",
+    "Application": "The source provides a playable demonstration of this repeatable sequence: Red bars build across a dark field, resolve into a thin-to-thick progression, and retract.",
+    "Intent": "Accompanying Schwelle prose identifies this directional motif with progress and movement.",
+    "Constraint": "The source states that the Schwelle follows a fixed movement sequence."
+  },
+  "motion": "../sources/media/dbv13.mp4",
+  "ingredient": {
+    "name": "Schwelle motion",
+    "role": "Express direction and progress through the bar pattern.",
+    "application": "Follow the demonstrated build and removal sequence.",
+    "scope": "Official DB new-design web guidance, undated live edition captured 2026-11-05; applies to the demonstrated motion context. The source provides the visual sequence, not a numeric timing specification."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "F43",
+  "title": "Creative headlines",
+  "image": "f43.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 43
+  },
+  "slide_intent": "Teach designers to direct the order of reading as words overlap or change size. Type can convey the action of a sentence through its arrangement.",
+  "strategic_value": "Frontline AIDS can echo the layering of activist placards while giving a particular message a distinct visual rhythm.",
+  "demonstration": "The question is assembled from black uppercase words on separate pink blocks against cyan. The blocks overlap and increase in scale toward the large final word and question mark.",
+  "category": "Typography",
+  "practical_value": "Read an experimental headline aloud in the order its layout suggests. Adjust layering and scale until the sentence still resolves.",
+  "content_islands": [
+    {
+      "name": "Construction prompts",
+      "spec": "Arrange Context, Back to front, Readability and Scale as short instructions beside the section rail."
+    },
+    {
+      "name": "Headline composition",
+      "spec": "Fill the right half with cyan and stack separate pink text blocks over it. Overlap selected lines, enlarge the last word and separate the question mark below it."
+    },
+    {
+      "name": "Font note",
+      "spec": "Place the small note beneath the composition so the example remains the dominant visual."
+    }
+  ]
+}

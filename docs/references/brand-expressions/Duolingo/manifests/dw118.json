@@ -1,0 +1,40 @@
+{
+  "id": "DW118",
+  "title": "Illustration / Characters / Body types",
+  "image": "dw118.png",
+  "source": "../sources/pages/illustration-characters.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/illustration/characters",
+    "section": "Body types",
+    "item": 118,
+    "order": 1180
+  },
+  "slide_intent": "Build varied characters from simple pieces so their identity survives changes of scale and pose.",
+  "strategic_value": "Different proportions within a shared geometric approach can let Duolingo represent a broad cast without losing consistency or making production unwieldy.",
+  "demonstration": "Six translucent construction figures form two rows at left, varying the head, torso and limb proportions; explanatory copy sits at right.",
+  "category": "Geometry",
+  "practical_value": "Choose a small number of basic head and body shapes, then vary proportions and features to distinguish the character.",
+  "content_islands": [
+    {
+      "name": "Body construction examples",
+      "spec": "Arrange six pale blue outlined figures in two rows of three at left, exposing overlapping head, torso and limb shapes."
+    },
+    {
+      "name": "Construction rationale",
+      "spec": "Place the Body Types heading and explanation at right, connecting simplicity with scaling and posing while allowing customization."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text links simple pieces to scalability in both image size and production, and to easier posing.",
+    "Expression": "The six distinct silhouettes demonstrate variety within one geometric character language.",
+    "Application": "The examples offer multiple head and torso combinations.",
+    "Constraint": "The source says heads and bodies usually use 1–2 basic shapes each; it leaves widths, heights, shapes and facial features customizable."
+  },
+  "ingredient": {
+    "name": "Simple character bodies",
+    "role": "Keep characters distinct while making them easy to scale and pose.",
+    "application": "Usually compose the head and body from 1–2 basic shapes each; customize proportions and facial features.",
+    "scope": "Historical official Duolingo illustration guidance from the 2024–2025 archived snapshot. The 1–2-shape statement is a usual construction pattern, not an absolute limit on every character."
+  }
+}

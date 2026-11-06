@@ -1,0 +1,38 @@
+{
+  "id": "BK072",
+  "title": "Line Heights",
+  "image": "bk072.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 72
+  },
+  "slide_intent": "Balance tight rhythm with legibility because different sizes and letter cases need different amounts of vertical room.",
+  "strategic_value": "Consistent square setting can give Burger King copy a compact rhythm while the stated exceptions protect small text and uppercase headlines.",
+  "demonstration": "Three numbered text blocks demonstrate 120/120, 72/72 and 36/36 settings; left copy explains the 1:1 default and exceptions.",
+  "category": "Typography",
+  "practical_value": "Start with leading equal to point size, then evaluate the two explicitly allowed exceptions.",
+  "content_islands": [
+    {
+      "name": "Rule and exceptions",
+      "spec": "Place the explanatory text at upper left."
+    },
+    {
+      "name": "Headline specimen",
+      "spec": "Use the largest multiline block across the upper right."
+    },
+    {
+      "name": "Supporting specimens",
+      "spec": "Place Regular and Sans blocks below, keyed to the numbered size/leading legend at lower left."
+    }
+  ],
+  "ingredient": {
+    "name": "Square line-height setting",
+    "role": "Keep text blocks compact without losing readability.",
+    "application": "Set leading equal to point size by default. Below 12 pt, leading may increase, for example 10/12 pt; Flame Bold caps may reduce it, for example 204/168 pt.",
+    "scope": "Historical 2020 partner guidelines, PDF produced January 2021. The next page supplies a separate 75% rule for all-caps headlines; preserve both source statements rather than treating the example here as that ratio."
+  },
+  "reference_purposes": {
+    "Application": "Three numbered specimens demonstrate square line-height settings.",
+    "Constraint": "The default is 1:1 point size to leading; below 12 pt leading may increase, and Flame Bold caps may use reduced leading."
+  }
+}

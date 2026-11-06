@@ -1,0 +1,45 @@
+{
+  "id": "IB006T12",
+  "title": "Typography / Large-format scale — 4x table",
+  "image": "ib006t12.png",
+  "source": "../sources/alternate-tabs.json",
+  "location": {
+    "series": "IBM Design Language / alternate tab states",
+    "parent": "IB006",
+    "group": 1,
+    "tab": 2,
+    "label": "4x",
+    "url": "https://www.ibm.com/design/language/typography/type-scale/",
+    "order": 6112
+  },
+  "slide_intent": "Increase type and line spacing together for larger viewing conditions, because enlargement should preserve hierarchy rather than merely stretch individual headings.",
+  "strategic_value": "A ready-made 4x table can keep IBM large-format typography related to the baseline scale and its script adjustments.",
+  "demonstration": "The selected 4x tab shows default sizes 24–1200, 95% adjusted sizes and corresponding line heights. The source repeats the 1072/1018.4/1184 row; the capture preserves it.",
+  "category": "Typography",
+  "practical_value": "Use the 4x values only for a format that the surrounding guidance assigns that multiplier, then choose the relevant script column.",
+  "content_islands": [
+    {
+      "name": "Multiplier selector",
+      "spec": "Show 4x selected between 1x and 8x."
+    },
+    {
+      "name": "Scaled type columns",
+      "spec": "Pair each default size with its 95% adjusted equivalent."
+    },
+    {
+      "name": "Scaled line heights",
+      "spec": "Keep line-height alternatives aligned with their size rows, including the repeated source row near the bottom."
+    }
+  ],
+  "ingredient": {
+    "name": "4x large-format type scale",
+    "role": "Preserve apparent hierarchy at a larger format or viewing distance.",
+    "application": "Use the supplied 4x type and line-height values where the medium’s guidance calls for 4x; retain the 95% point-size adjustment for the named scripts.",
+    "scope": "The parent guidance gives large posters/small signage and 8K digital artboards as 4x examples and assumes artwork at 100%. The repeated 1072 row is a source duplication, not a new scale step."
+  },
+  "reference_purposes": {
+    "Intent": "The accompanying large-format guidance explains that viewing distance changes perceived type size.",
+    "Application": "The 4x table provides multiplied size and line-height values without requiring manual calculation.",
+    "Constraint": "The accompanying guidance conditions these large-format rules on artwork produced at 100%; other design scales require additional scaling."
+  }
+}

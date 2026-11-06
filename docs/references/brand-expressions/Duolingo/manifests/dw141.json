@@ -1,0 +1,38 @@
+{
+  "id": "DW141",
+  "title": "Resources / Emoji 5.0 compatibility",
+  "image": "dw141.png",
+  "source": "../sources/pages/resources.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/resources",
+    "section": "5.0",
+    "item": 141,
+    "order": 1410
+  },
+  "slide_intent": "Distinguish expressive choice from platform support because an unavailable symbol cannot communicate its intended meaning.",
+  "strategic_value": "Separating unsupported emoji can help Duolingo avoid unreadable notification content on older devices.",
+  "demonstration": "Nine emoji sit beside a historical warning about iOS 11 and Emoji 5.0 support.",
+  "category": "Voice",
+  "practical_value": "Record a compatibility condition separately from brand approval instead of treating a temporary restriction as permanent.",
+  "content_islands": [
+    {
+      "name": "Compatibility note",
+      "spec": "Place the Emoji 5.0 heading and iOS 11 explanation at left."
+    },
+    {
+      "name": "Deferred emoji",
+      "spec": "Place the nine selected symbols in a single row on the pale panel at right."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text explains that otherwise suitable emoji are separated because iOS 11 does not support them.",
+    "Constraint": "The historical source defers these emoji until the stated iOS 11 audience declines."
+  },
+  "ingredient": {
+    "name": "Emoji 5.0 subset",
+    "role": "Express additional ideas when the receiving platform supports them.",
+    "application": "Keep this subset separate under the source’s iOS 11 compatibility condition.",
+    "scope": "Historical guidance; the stated approximately 10% audience share is the source’s period-specific claim, not a current statistic."
+  }
+}

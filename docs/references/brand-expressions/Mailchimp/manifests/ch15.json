@@ -1,0 +1,30 @@
+{
+  "id": "CH15",
+  "title": "Six illustrated benefits",
+  "image": "ch15.png",
+  "source": "../sources/ch15.png",
+  "location": {
+    "series": "COLLINS / Mailchimp case study",
+    "item": 15,
+    "extent": "Complete published artwork",
+    "section": "Gallery"
+  },
+  "slide_intent": "Give repeated benefits a clear comparison structure because readers need to scan several reasons to choose a service.",
+  "strategic_value": "Consistent image-and-caption pairs can organize Mailchimp’s eccentric illustrations into a usable feature overview.",
+  "demonstration": "Six black illustrations and short serif benefit lines form a two-column, three-row grid on yellow.",
+  "category": "Layout",
+  "practical_value": "Evaluate whether varied illustrations remain comparable when caption placement repeats.",
+  "content_islands": [
+    {
+      "name": "Benefit grid",
+      "spec": "Arrange each illustration above its short benefit in six evenly separated cells."
+    },
+    {
+      "name": "Shared field",
+      "spec": "Keep the yellow ground continuous so the cells read as one family."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "A repeated grid applies illustration and short copy to six service benefits."
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "C404",
+  "title": "One system across broadcast, browsing and social",
+  "image": "c404.png",
+  "source": "../sources/c404.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 masterbrand / 2023",
+    "item": 4,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Maintain recognizable transitions across formats so different viewing experiences feel connected.",
+  "strategic_value": "Repeated lateral movement, gradient panels and the green 4 can connect Channel 4 broadcast and social encounters.",
+  "demonstration": "The film moves from a next/later television panel to a programme carousel and then a portrait social post.",
+  "category": "Motion",
+  "practical_value": "Compare which motion and identity cues persist when the layout changes medium.",
+  "content_islands": [
+    {
+      "name": "Broadcast panel",
+      "spec": "Introduce programme footage beside sliding next and later panels."
+    },
+    {
+      "name": "Browsing carousel",
+      "spec": "Show a selected programme card among adjacent cards under the green mark."
+    },
+    {
+      "name": "Social frame",
+      "spec": "End with a portrait post that carries programme footage and a smaller signature."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "Broadcast continuity, a browsing interface and an Instagram-style post share visual ingredients.",
+    "Intent": "Pentagram says the worlds connect product, marketing, on-screen presentation and social platforms."
+  },
+  "motion": "../sources/c404.mp4"
+}

@@ -1,0 +1,26 @@
+{
+  "id": "DB0506",
+  "title": "Die Macher:innen in Aktion / Unsere Winning Tools",
+  "image": "db0506.png",
+  "source": "../sources/page-05.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 5,
+    "section": 6,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Unsere-Markenpersoenlichkeit"
+  },
+  "slide_intent": "Make progress inspectable so an audience can distinguish an aspiration from its development.",
+  "strategic_value": "A focus on what changed, what was achieved and what comes next can support DB’s accountability.",
+  "demonstration": "A title and subheading introduce a short statement about making progress, development and change visible.",
+  "category": "Brand",
+  "practical_value": "Select evidence that communicates both achievements and next steps.",
+  "content_islands": [
+    {
+      "name": "Action statement",
+      "spec": "Keep the two-level heading above the compact explanation of visible progress."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The statement explicitly says progress should become visible and development understandable."
+  }
+}

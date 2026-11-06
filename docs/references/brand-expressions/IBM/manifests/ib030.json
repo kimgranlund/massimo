@@ -1,0 +1,189 @@
+{
+  "id": "IB030",
+  "title": "Animation / Tips and techniques",
+  "image": "ib030.png",
+  "source": "../sources/animation-tips-and-techniques.txt",
+  "location": {
+    "series": "IBM Design Language / public web guidelines",
+    "item": 30,
+    "extent": "Complete webpage content-area capture; visible default tab states",
+    "url": "https://www.ibm.com/design/language/animation/tips-and-techniques/",
+    "order": 30000
+  },
+  "slide_intent": "Control attention, rhythm and physical behavior so viewers can follow a dense moving message without confusion or fatigue.",
+  "strategic_value": "Precise forms, consistent movement and readable type can carry IBM’s engineered character through animation.",
+  "demonstration": "The webpage mixes animation examples and paired accepted/rejected demonstrations across attention, clarity, personality, physicality, sequence/loop structure and typography. The PNG preserves still frames.",
+  "category": "Motion",
+  "practical_value": "Plan the focal point and sequence first, then check movement consistency, form integrity, frame rate and reading time against the stated guidance.",
+  "content_islands": [
+    {
+      "name": "Examples and attention",
+      "spec": "Open with a montage of animation frames, then Focus and Camera examples showing the source’s preferred and rejected treatments."
+    },
+    {
+      "name": "Visual clarity",
+      "spec": "Group Complexity, Detail and Consistency with paired geometric demonstrations and captions."
+    },
+    {
+      "name": "Personality",
+      "spec": "Follow Precision, Rhythm and Fluidity through diagrams, looping-form frames and comparison panels."
+    },
+    {
+      "name": "Physicality",
+      "spec": "Place Mass and momentum and Volume beside their object demonstrations."
+    },
+    {
+      "name": "Structure",
+      "spec": "Compare sequential, simple-loop and nested-loop diagrams, including the labelled A–D panels."
+    },
+    {
+      "name": "Type",
+      "spec": "End with Presentation and Integrity text specimens, pairing acceptable/rejected examples with reading-direction and distortion guidance."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "Attention guidance explains reducing confusion and fatigue; complexity guidance relates information density to how much motion a composition can carry.",
+    "Application": "The page teaches focal-point transfer, controlled cameras, consistent transitions, staggered rhythm, physical behavior and sequence/loop choices.",
+    "Constraint": "The source specifies at least 24 FPS, rejects excessive overlapping action and prohibits stretching, warping or otherwise distorting IBM Plex. Type must remain long enough to read."
+  },
+  "ingredient": {
+    "name": "Animated typography",
+    "role": "Preserve reading order and the typeface’s recognizable form.",
+    "application": "Reveal type in an order that supports reading, move it on one axis at a time and leave it visible long enough to understand; maintain glyph geometry.",
+    "scope": "IBM animation guidance. The source describes typical left-to-right, top-to-bottom reading, not a universal rule overriding other writing systems. The PNG alone does not demonstrate timing."
+  },
+  "motion_assets": [
+    {
+      "title": "Animated data curve",
+      "file": "../sources/media/802eb48c912d.mp4",
+      "poster": "../sources/media/802eb48c912d-poster.png",
+      "duration_seconds": 6.71,
+      "source_url": "https://www.ibm.com/design/language/videos/animation/minified/animation-tt-ex1.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Watson symbol movement",
+      "file": "../sources/media/3664a65ffd7a.mp4",
+      "poster": "../sources/media/3664a65ffd7a-poster.png",
+      "duration_seconds": 14.08,
+      "source_url": "https://www.ibm.com/design/language/videos/animation/minified/animation-tt-ex3.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Animation system montage",
+      "file": "../sources/media/70821d3afcd2.mp4",
+      "poster": "../sources/media/70821d3afcd2-poster.png",
+      "duration_seconds": 15.25,
+      "source_url": "https://www.ibm.com/design/language/videos/animation/animation-tt-ex4.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Type composition and photographic reveal",
+      "file": "../sources/media/037f52aaae58.mp4",
+      "poster": "../sources/media/037f52aaae58-poster.png",
+      "duration_seconds": 5.75,
+      "source_url": "https://www.ibm.com/design/language/videos/animation/animation-tt-ex5.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Character and data performance",
+      "file": "../sources/media/1700aa705a68.mp4",
+      "poster": "../sources/media/1700aa705a68-poster.png",
+      "duration_seconds": 4.71,
+      "source_url": "https://www.ibm.com/design/language/videos/animation/animation-tt-ex6.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Rhythm: line illustration",
+      "file": "../sources/media/7fe24209681f.mp4",
+      "poster": "../sources/media/7fe24209681f-poster.png",
+      "duration_seconds": 8.92,
+      "source_url": "https://www.ibm.com/design/language/videos/animation/animation-tt-rhythm1.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Rhythm: circular lines",
+      "file": "../sources/media/5a801949ab8a.mp4",
+      "poster": "../sources/media/5a801949ab8a-poster.png",
+      "duration_seconds": 3.0,
+      "source_url": "https://www.ibm.com/design/language/videos/animation/animation-tt-rhythm2.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Volume: approved movement",
+      "file": "../sources/media/58a0f1a6248e.mp4",
+      "poster": "../sources/media/58a0f1a6248e-poster.png",
+      "duration_seconds": 4.63,
+      "source_url": "https://www.ibm.com/design/language/videos/animation/animation-tt-volume-do.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Volume: discouraged movement",
+      "file": "../sources/media/eee35de1d046.mp4",
+      "poster": "../sources/media/eee35de1d046-poster.png",
+      "duration_seconds": 2.5,
+      "source_url": "https://www.ibm.com/design/language/videos/animation/animation-tt-volume-dont.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Sequential structure",
+      "file": "../sources/media/b96228afc1d4.mp4",
+      "poster": "../sources/media/b96228afc1d4-poster.png",
+      "duration_seconds": 4.92,
+      "source_url": "https://www.ibm.com/design/language/videos/animation/animation-tt-sequential-wide.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Simple loop structure",
+      "file": "../sources/media/1f6c612141a6.mp4",
+      "poster": "../sources/media/1f6c612141a6-poster.png",
+      "duration_seconds": 3.67,
+      "source_url": "https://www.ibm.com/design/language/videos/animation/animation-tt-simple-loop-wide.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    }
+  ]
+}

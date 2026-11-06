@@ -1,0 +1,35 @@
+{
+  "id": "BKE03",
+  "title": "Flame typography film",
+  "image": "bke03.png",
+  "source": "../sources/bke03.mp4",
+  "location": {
+    "series": "JKR / Burger King identity case study",
+    "item": 3,
+    "extent": "Complete clip; PNG is a poster frame",
+    "duration_seconds": 29.27
+  },
+  "slide_intent": "Use the movement of letters to reinforce their tone so typography can communicate appetite as well as words.",
+  "strategic_value": "Large rounded forms and changing scale can give Burger King’s verbal character a distinctive moving expression.",
+  "demonstration": "The film sequences large food words, typeface identification, repeated phrases, close crops of glyphs and a closing Have It Your Way lockup.",
+  "category": "Motion",
+  "practical_value": "Compare repetition, scale and glyph detail as ways to animate an established type family.",
+  "content_islands": [
+    {
+      "name": "Word sequence",
+      "spec": "Open with a large Eat specimen and move through short phrases and font labels."
+    },
+    {
+      "name": "Texture and detail",
+      "spec": "Repeat tasty and gooey words, vary scale and crop into rounded letterforms."
+    },
+    {
+      "name": "Signature ending",
+      "spec": "Resolve the animation into the Have It Your Way phrase on red."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The clip uses food words, repetition, shifting scale and letterform close-ups to express the type system."
+  },
+  "motion": "../sources/bke03.mp4"
+}

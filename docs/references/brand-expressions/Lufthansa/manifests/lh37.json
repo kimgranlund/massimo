@@ -1,0 +1,25 @@
+{
+  "id": "LH37",
+  "title": "Livery in production",
+  "image": "lh37.png",
+  "source": "../sources/lh37.jpg",
+  "location": {
+    "series": "HvD Fonts / Lufthansa 2018",
+    "item": 16,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Inspect production at full scale because material application can reveal problems absent from a mockup.",
+  "strategic_value": "A real fuselage test can help Lufthansa check lettering against windows, seams and masking.",
+  "demonstration": "A partially masked aircraft fuselage carries a small Boeing 747–8 Brandenburg label near the windows.",
+  "category": "Application",
+  "practical_value": "Check physical registration and surface constraints before approving final markings.",
+  "content_islands": [
+    {
+      "name": "Production surface",
+      "spec": "Frame the fuselage, windows, label and masking material together."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "A partially masked aircraft fuselage carries a small Boeing 747–8 Brandenburg label near the windows."
+  }
+}

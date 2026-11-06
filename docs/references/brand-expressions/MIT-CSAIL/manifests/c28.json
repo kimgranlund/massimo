@@ -1,0 +1,28 @@
+{
+  "id": "C28",
+  "title": "Business Cards",
+  "image": "c28.png",
+  "source": "../csail-branding-short-guide.pdf",
+  "location": {
+    "page": 28
+  },
+  "slide_intent": "Teach how to distribute identity and contact information across two faces of a small card. Separating roles from contact details can make a dense affiliation legible.",
+  "strategic_value": "CSAIL can distinguish members of its groups while keeping both laboratory and Alliances cards within the same family.",
+  "demonstration": "Three rows compare cards for different people. Contact sides show laboratory or Alliances marks, while reverse sides pair role text or the tagline with warm angular fields.",
+  "category": "Application",
+  "practical_value": "Choose the identifier appropriate to the person’s affiliation and decide whether the reverse needs extended roles or the short tagline.",
+  "content_islands": [
+    {
+      "name": "Context",
+      "spec": "Set the stationery guidance at left and retain the distinction between primary and group styles."
+    },
+    {
+      "name": "Contact faces",
+      "spec": "Stack three examples showing the identifying mark, name and contact blocks."
+    },
+    {
+      "name": "Reverse faces",
+      "spec": "Pair each contact face with its reverse. Repeat the orange, yellow and gray geometry along the right edge."
+    }
+  ]
+}

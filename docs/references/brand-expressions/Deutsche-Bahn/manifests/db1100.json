@@ -1,0 +1,30 @@
+{
+  "id": "DB1100",
+  "title": "Icons / header library",
+  "image": "db1100.png",
+  "source": "../sources/page-11.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 11,
+    "section": 0,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Icons"
+  },
+  "slide_intent": "Show a family together so viewers can recognize the shared construction behind individual symbols.",
+  "strategic_value": "A consistent outline vocabulary can make DB functions feel related.",
+  "demonstration": "Rows of white outline icons sit on a dark field with a red Schwelle at the lower edge.",
+  "category": "Geometry",
+  "practical_value": "Compare stroke weight and visual density across different subjects.",
+  "content_islands": [
+    {
+      "name": "Icon rows",
+      "spec": "Arrange transport, service and interface symbols in a regular field."
+    },
+    {
+      "name": "Signature",
+      "spec": "Place the red bar sequence along the lower edge."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The header presents a coherent white outline icon family."
+  }
+}

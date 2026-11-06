@@ -1,0 +1,28 @@
+{
+  "id": "B09",
+  "title": "Co-branding",
+  "image": "b09.png",
+  "source": "../bolt-brand-guidelines-2025-12.pdf",
+  "location": {
+    "page": 9
+  },
+  "slide_intent": "Teach designers to balance two marks with different outlines. A measured gap and an optical height comparison make the partnership legible without one name overwhelming the other.",
+  "strategic_value": "Bolt can appear consistently beside distinct partners while accommodating descenders and irregular outlines.",
+  "demonstration": "The same Bolt wordmark appears with Stripe, Klarna and REVOLVE in three rows. Each row marks the Bolt wordmark width as x and the inter-logo gap as 0.28x.",
+  "category": "Geometry",
+  "practical_value": "Use the Bolt width to size the gap, then check a partner’s visible letter height and allow for small overhanging details.",
+  "content_islands": [
+    {
+      "name": "Section rail",
+      "spec": "Place the wordmark at the top of the dark rail, highlight the current topic in the navigation and set the small folio at the foot."
+    },
+    {
+      "name": "Lockup rule",
+      "spec": "Place the co-branding guidance in the left column with the spacing rule and the optical-alignment exception."
+    },
+    {
+      "name": "Partner comparison",
+      "spec": "Stack three black lockups on a pale panel. Align Bolt on the left and the partner on the right, separated by a multiplication sign. Place the guides and dimensions on the marks themselves."
+    }
+  ]
+}

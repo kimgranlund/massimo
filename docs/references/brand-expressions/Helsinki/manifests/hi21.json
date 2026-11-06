@@ -1,0 +1,29 @@
+{
+  "id": "HI21",
+  "title": "Night music and lights",
+  "image": "hi21.png",
+  "source": "../sources/illustration-examples.pdf",
+  "location": {
+    "page": 21,
+    "series": "Helsinki illustration examples — PDF derived from the official PowerPoint deck with LibreOffice",
+    "order": 211
+  },
+  "slide_intent": "Create atmosphere with repeated light and performance cues so viewers can recognize an evening celebration.",
+  "strategic_value": "Stars, string lights and a DJ can make Helsinki’s event imagery energetic while keeping the city palette visible.",
+  "demonstration": "Moon and stars, a string of bulbs, orange figures, an orange window scene and a DJ setup sit on dark blue.",
+  "category": "Imagery",
+  "practical_value": "Choose a few night-light and performance motifs to convey celebration without overcrowding.",
+  "content_islands": [
+    {
+      "name": "Night lights",
+      "spec": "Run the moon, stars and string lights across the upper area."
+    },
+    {
+      "name": "Performance scenes",
+      "spec": "Place orange figures at left, window activity at right and DJ equipment below."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Moon and stars, a string of bulbs, orange figures, an orange window scene and a DJ setup sit on dark blue."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "id": "DW049",
+  "title": "Writing / Brand Narrative / The Duolingo difference",
+  "image": "dw049.png",
+  "source": "../sources/pages/writing-brand-narrative.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/brand-narrative",
+    "section": "The Duolingo difference",
+    "item": 49,
+    "order": 490
+  },
+  "slide_intent": "Give a broad promise distinct supporting reasons so prospective learners can understand what makes the offer relevant.",
+  "strategic_value": "The combination of access, motivating lessons, inclusion, support and continued development can make Duolingo’s positioning easier to explain.",
+  "demonstration": "Six paragraphs on the right emphasize differentiating claims in bold, beside a short explanation of why learners choose Duolingo.",
+  "category": "Brand",
+  "practical_value": "Choose which supporting reason fits a communication without treating the historical claims as current measurements.",
+  "content_islands": [
+    {
+      "name": "Guidance column",
+      "spec": "Place the Difference title and learner-choice caption at left."
+    },
+    {
+      "name": "Worked examples",
+      "spec": "Set six paragraphs in one pale panel at right; bold the phrases naming popularity, availability, motivation, inclusion, encouragement and ongoing development."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The left caption frames the list as reasons learners choose Duolingo.",
+    "Expression": "Bold phrases embedded in conversational paragraphs demonstrate the historical positioning voice."
+  }
+}

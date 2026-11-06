@@ -1,0 +1,28 @@
+{
+  "id": "N33",
+  "title": "Cover Design: News Publications",
+  "image": "n33.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 33
+  },
+  "slide_intent": "Teach editors to distinguish the publication’s owner from its lead story so a reader can identify both on the front page.",
+  "strategic_value": "NASA can connect center-specific and agency-wide news while allowing each issue’s image and headline to change.",
+  "demonstration": "A compact Langley Researcher cover appears beside a larger NASA Activities cover. Each example separates masthead information from the lead material.",
+  "category": "Layout",
+  "practical_value": "Set the masthead hierarchy first. Choose the lead image for its content and graphic impact and check that the story reads after the publication identity.",
+  "content_islands": [
+    {
+      "name": "Priority guidance",
+      "spec": "Place the section title at upper left and the masthead and image-selection guidance in two adjoining columns."
+    },
+    {
+      "name": "Center newspaper",
+      "spec": "Show the entire Langley Researcher example at left, including its compact masthead, columns and inset image."
+    },
+    {
+      "name": "Agency news publication",
+      "spec": "Align the top of the larger NASA Activities cover with the newspaper. Preserve the large masthead, date, headline and dominant image."
+    }
+  ]
+}

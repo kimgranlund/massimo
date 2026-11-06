@@ -1,0 +1,28 @@
+{
+  "id": "N29",
+  "title": "Typography—Serif: Garamond",
+  "image": "n29.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 29
+  },
+  "slide_intent": "Teach designers to give long-form reading a suitable serif face, then create enough separation for the reader to find each heading.",
+  "strategic_value": "NASA can use Garamond for a publication meant to endure while retaining an option for headings in the agency’s sans serif.",
+  "demonstration": "The page compares Garamond and Garamond Bold character sets. The lower samples pair Garamond body text with Helvetica Medium headings on the left and Garamond Bold headings on the right.",
+  "category": "Typography",
+  "practical_value": "Choose between the two heading treatments. When using Garamond Bold, consider size or surrounding space to make the heading stand out.",
+  "content_islands": [
+    {
+      "name": "Reading and emphasis guidance",
+      "spec": "Set the family title and reading guidance across the top, including the note about the relatively light bold weight."
+    },
+    {
+      "name": "Garamond specimens",
+      "spec": "Stack the regular and bold characters between horizontal rules with labels at right."
+    },
+    {
+      "name": "Heading alternatives",
+      "spec": "Place the two paragraph settings below, distinguishing the Helvetica Medium and Garamond Bold headings and their column measures."
+    }
+  ]
+}

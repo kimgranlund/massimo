@@ -1,0 +1,38 @@
+{
+  "id": "DW027",
+  "title": "Typography / Combining typefaces",
+  "image": "dw027.png",
+  "source": "../sources/pages/identity-typography.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/identity/typography",
+    "section": "Combining typefaces",
+    "item": 27,
+    "order": 270
+  },
+  "slide_intent": "Orchestrate two typefaces with clear roles because a composition needs one leading voice and one supporting voice.",
+  "strategic_value": "A consistent Feather Bold/DIN relationship can make Duolingo headlines and explanations feel coordinated.",
+  "demonstration": "Three text examples combine display and supporting copy, beside rules for case, left alignment, scale, leading and separation of faces. In the preserved desktop rendering, the last definition is visibly clipped after “and” by its original fixed-height illustration container.",
+  "category": "Typography",
+  "practical_value": "Set the display and supporting roles before adjusting individual text blocks.",
+  "content_islands": [
+    {
+      "name": "Paired specimens",
+      "spec": "Stack three display/body pairings in the left panel; retain the final definition’s source-rendered clipping."
+    },
+    {
+      "name": "Combination rules",
+      "spec": "Place the heading and role, size, alignment, leading and sentence-separation guidance in the right column."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "Examples demonstrate Feather Bold leading and DIN supporting.",
+    "Constraint": "The source requires lowercase Feather Bold and left alignment, says DIN must not appear larger, and prohibits mixing the faces in one sentence."
+  },
+  "ingredient": {
+    "name": "Two-face hierarchy",
+    "role": "Make display type lead and supporting type accompany.",
+    "application": "Use lowercase Feather Bold and align left; never let DIN appear larger or mix both in one sentence. The source says to aim for Feather Bold “150% larger” than DIN, use equal leading where possible and clarify title/body separation with punctuation.",
+    "scope": "Historical archived guidelines. Historical combination guidance. Preserve “150% larger” as printed rather than silently converting that potentially ambiguous phrase to a ratio."
+  }
+}

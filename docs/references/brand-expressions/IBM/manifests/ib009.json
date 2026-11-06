@@ -1,0 +1,52 @@
+{
+  "id": "IB009",
+  "title": "IBM logos / 8-Bar",
+  "image": "ib009.png",
+  "source": "../sources/ibm-logos-8-bar.txt",
+  "location": {
+    "series": "IBM Design Language / public web guidelines",
+    "item": 9,
+    "extent": "Complete webpage content-area capture; interactive elements retain their captured state",
+    "url": "https://www.ibm.com/design/language/ibm-logos/8-bar/",
+    "order": 9000
+  },
+  "slide_intent": "Protect a familiar signature while adjusting its reproduction optically, because recognition depends on both consistency and legibility.",
+  "strategic_value": "The distinct positive and reversed drawings, disciplined color and clear-space examples can preserve IBM’s accumulated identity across applications.",
+  "demonstration": "The page compares positive and reversed 8-bar drawings, shows trademark placement and color pairs, explains clear space and alignment, contrasts photographic uses, and catalogs misuse and historical marks.",
+  "category": "Brand",
+  "practical_value": "Select the correct supplied logo version, then test contrast, isolation and alignment for its intended placement.",
+  "content_islands": [
+    {
+      "name": "Origin and optical versions",
+      "spec": "Place the title and resource links before the black positive and white reversed marks; follow with magnified counter-shape differences."
+    },
+    {
+      "name": "Trademark and color",
+      "spec": "Show the legal-requirements example, core swatches and approved foreground/background pairs before rejected color treatments."
+    },
+    {
+      "name": "Placement",
+      "spec": "Present the clear-space diagram, business-name alignment and scale relationships, then correct and incorrect photographic placements."
+    },
+    {
+      "name": "Misuse",
+      "spec": "Arrange the prohibited altered marks as a red-marked example grid."
+    },
+    {
+      "name": "Lineage and third parties",
+      "spec": "Close with the historical logo timeline and links for third-party and strategic-partner guidance."
+    }
+  ],
+  "ingredient": {
+    "name": "IBM 8-bar signature",
+    "role": "Identify and authenticate official IBM communication.",
+    "application": "Use the supplied positive or reversed drawing; preserve the minimum isolation distance equal to logo height in most situations; apply core blue/gray colors with at least five palette steps of contrast.",
+    "scope": "IBM’s 8-bar guidance as captured. The source qualifies clear-space adherence as applying in most situations and distinguishes US trademark requirements from other-country legal guidance."
+  },
+  "reference_purposes": {
+    "Intent": "The source explicitly links consistent visible use to memorability, authentication, authority and trust.",
+    "Expression": "Positive and reversed specimens reveal the optical adjustments and characteristic eight-bar form.",
+    "Application": "Clear-space, alignment and photograph examples teach placement decisions.",
+    "Constraint": "The source restricts logo color to blue and gray families, requires at least five palette steps of foreground/background separation, and prohibits distortion, recoloring individual letters and gradients."
+  }
+}

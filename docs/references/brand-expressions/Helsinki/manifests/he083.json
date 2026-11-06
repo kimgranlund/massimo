@@ -1,0 +1,33 @@
+{
+  "id": "HE083",
+  "title": "Visuality",
+  "image": "he083.png",
+  "source": "../sources/design-and-create.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Visuality",
+    "order": 113,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/design-and-create#visuality",
+    "original_html": "../sources/design-and-create.html"
+  },
+  "slide_intent": "Carry recognizable ingredients into social posts so people can connect varied content to the city at a glance.",
+  "strategic_value": "Helsinki Grotesk, the logo and wave-divided profiles can link individual social messages to a common civic identity.",
+  "demonstration": "This expanded webpage-section capture places three social-visuality instructions above a group of phone mockups showing varied city posts.",
+  "category": "Application",
+  "practical_value": "Choose a logo or wave-divided profile image and use the shared visual ingredients while checking equality, consent and accessibility.",
+  "content_islands": [
+    {
+      "name": "Social guidance",
+      "spec": "Keep profile-image choice, content responsibilities and type recognition together."
+    },
+    {
+      "name": "Phone examples",
+      "spec": "Show the overlapping phones as a comparison of different posts within the identity."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text says Helsinki Grotesk supports messages and increases recognition.",
+    "Application": "The section specifies logo or wave-divided profile images and shows social-post examples.",
+    "Constraint": "Social content must comply with the visual identity and consider equality, consents and accessibility."
+  }
+}

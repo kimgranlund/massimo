@@ -1,0 +1,38 @@
+{
+  "id": "HE028",
+  "title": "Empty space",
+  "image": "he028.png",
+  "source": "../sources/use-basic-elements.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Empty space",
+    "order": 36,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/use-basic-elements#empty-space",
+    "original_html": "../sources/use-basic-elements.html"
+  },
+  "slide_intent": "Use empty space to direct attention because crowding reduces the distinction between important elements.",
+  "strategic_value": "Airy Helsinki compositions can make a few identity elements more noticeable and easier to read.",
+  "demonstration": "This expanded webpage section explains that empty space can be white, colored or photographic and shows an airy layout.",
+  "category": "Layout",
+  "practical_value": "Remove competing elements and identify the quiet area that lets the main message stand out.",
+  "content_islands": [
+    {
+      "name": "Attention rationale",
+      "spec": "Explain what empty space does and the forms it can take."
+    },
+    {
+      "name": "Airy spread",
+      "spec": "Show a pink/blue section page beside a white page with a narrow body-text column and substantial unused area."
+    }
+  ],
+  "ingredient": {
+    "name": "Empty space",
+    "role": "Direct attention and separate visual priorities.",
+    "application": "Leave quiet areas around selected elements; these may be colored backgrounds or calm photographic areas.",
+    "scope": "No numeric whitespace ratio is prescribed."
+  },
+  "reference_purposes": {
+    "Intent": "The text explicitly says empty space directs attention to visual elements.",
+    "Application": "The specimen demonstrates an airy layout and the text recommends fewer elements over crowding."
+  }
+}

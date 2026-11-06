@@ -1,0 +1,39 @@
+{
+  "id": "BK117",
+  "title": "Digital Button",
+  "image": "bk117.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 117
+  },
+  "slide_intent": "Control corner shape consistently so calls to action feel tangible while remaining visually distinct from fully rounded capsules.",
+  "strategic_value": "A repeatable radius-to-height relationship can make Burger King digital calls to action recognizable across banner sizes.",
+  "demonstration": "The left text defines a corner-radius rule beside an isolated red Order Now button and a promotional banner containing a second call to action.",
+  "category": "Geometry",
+  "practical_value": "Set button corner radius to 25% of its vertical height and avoid capsule shapes; treat the banner as inspiration only.",
+  "content_islands": [
+    {
+      "name": "Button rule",
+      "spec": "Place the tactile rationale and radius prohibition at left."
+    },
+    {
+      "name": "Isolated control",
+      "spec": "Show the red Order Now button above the application example."
+    },
+    {
+      "name": "Banner example",
+      "spec": "Place the chicken-nugget promotional banner below and retain its Image for inspiration only qualification near the footer."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text says slightly rounded corners give digital buttons a more tactile appearance.",
+    "Application": "An isolated button and promotional banner demonstrate the corner treatment.",
+    "Constraint": "The corner radius should always be 25% of button height; fully rounded capsule shapes are prohibited. The banner is marked inspiration only."
+  },
+  "ingredient": {
+    "name": "Digital button corners",
+    "role": "Give calls to action a consistent, tactile contour.",
+    "application": "Set corner radius to 25% of the button’s vertical height; do not fully round into a capsule.",
+    "scope": "Historical digital CTA guidance. The promotional banner is an inspirational example, not a complete production specification."
+  }
+}

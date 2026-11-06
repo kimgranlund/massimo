@@ -1,0 +1,26 @@
+{
+  "id": "CR04",
+  "title": "Content Library Still — connected belongings",
+  "image": "cr04.png",
+  "source": "../sources/cr04.jpg",
+  "location": {
+    "series": "Cox Brand Collection — Lindsay Little / Periscope",
+    "item": 4,
+    "extent": "whole source image"
+  },
+  "slide_intent": "Use familiar possessions to make a technical service feel part of daily life.",
+  "strategic_value": "The casually arranged phone, headphones and bag can extend Cox’s lifestyle language beyond portraits.",
+  "demonstration": "A phone playing music rests on books and a bag beside turquoise headphones, glasses and keys.",
+  "category": "Imagery",
+  "practical_value": "Build an object scene around a recognizable activity and preserve clear visual access to the device.",
+  "content_islands": [
+    {
+      "name": "Everyday objects",
+      "spec": "Arrange the bag, books, clothing and accessories diagonally across the right and lower image."
+    },
+    {
+      "name": "Music connection",
+      "spec": "Let the turquoise headphone cable curve into the open left side and lead to the phone."
+    }
+  ]
+}

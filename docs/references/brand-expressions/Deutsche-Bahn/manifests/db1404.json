@@ -1,0 +1,31 @@
+{
+  "id": "DB1404",
+  "title": "Look & Feel / photographic foundation",
+  "image": "db1404.png",
+  "source": "../sources/page-14.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 14,
+    "section": 4,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Bildwelt"
+  },
+  "slide_intent": "Use light and geometry to give ordinary settings depth so the image remains clear and engaging.",
+  "strategic_value": "Natural contrast and restrained color can give DB photography a consistent character.",
+  "demonstration": "A short principle statement sits above a collage of seating, work and a red train doorway.",
+  "category": "Imagery",
+  "practical_value": "Compare how directional light, surfaces and lines organize different subjects.",
+  "content_islands": [
+    {
+      "name": "Visual principle",
+      "spec": "Place the natural-light and neutral-color statement above the collage."
+    },
+    {
+      "name": "Image collage",
+      "spec": "Pair seating and worker scenes at left with the vertical red doorway at right."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The copy says directed natural light creates depth and tension.",
+    "Expression": "The photographs demonstrate shadows, clear surfaces and restrained color."
+  }
+}

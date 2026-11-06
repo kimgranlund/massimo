@@ -1,0 +1,29 @@
+{
+  "id": "LH17",
+  "title": "Livery in flight",
+  "image": "lh17.png",
+  "source": "../sources/lh17.jpg",
+  "location": {
+    "series": "Mona Franz / Lufthansa 2018",
+    "item": 17,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Judge the whole vehicle silhouette because markings must work together at long viewing distances.",
+  "strategic_value": "A dark tail and restrained fuselage wordmark can give Lufthansa a consistent airborne signature.",
+  "demonstration": "A white aircraft with a dark blue tail and Lufthansa wordmark flies against a blue sky.",
+  "category": "Application",
+  "practical_value": "Compare the balance of tail recognition and fuselage naming at whole-aircraft scale.",
+  "content_islands": [
+    {
+      "name": "Aircraft profile",
+      "spec": "Place the complete aircraft diagonally across the sky."
+    },
+    {
+      "name": "Atmosphere",
+      "spec": "Retain the broad blue field and distant clouds as viewing context."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "A white aircraft with a dark blue tail and Lufthansa wordmark flies against a blue sky."
+  }
+}

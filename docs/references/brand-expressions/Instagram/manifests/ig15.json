@@ -1,0 +1,36 @@
+{
+  "id": "IG15",
+  "title": "Colors in sequence / Creator Week",
+  "image": "ig15.png",
+  "source": "../sources/ig15.png",
+  "location": {
+    "series": "Elvis Dinh / Instagram brand design system / project year 2022",
+    "item": 15,
+    "extent": "whole source artwork"
+  },
+  "slide_intent": "Coordinate color across neighboring panels so a viewer reads a campaign as a sequence.",
+  "strategic_value": "Varied hues can sustain interest across Instagram placements while the shared palette links them.",
+  "demonstration": "Four adjacent displays alternate purple, pink, orange and white; a small palette diagram underneath traces selected hues.",
+  "category": "Color",
+  "practical_value": "Review neighboring placements together when distributing colors across a campaign.",
+  "content_islands": [
+    {
+      "name": "Display sequence",
+      "spec": "Align the four tall Creator Week executions against the tiled wall."
+    },
+    {
+      "name": "Palette path",
+      "spec": "Center the three-row color-dot diagram below and retain its connecting line."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Adjacent executions show distinct hues within one campaign.",
+    "Application": "The palette path demonstrates color selection across a four-panel placement."
+  },
+  "ingredient": {
+    "name": "Sequential campaign color",
+    "role": "Link neighboring panels without making them identical.",
+    "application": "Distribute related palette colors across the sequence as demonstrated.",
+    "scope": "The pictured Creator Week sequence; the path is an example rather than a mandatory ordering for every campaign."
+  }
+}

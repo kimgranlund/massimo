@@ -1,0 +1,24 @@
+{
+  "id": "F32",
+  "title": "Make some noise",
+  "image": "f32.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 32
+  },
+  "slide_intent": "Introduce palette choice as a question of the intensity an audience should feel. Placing bright hues in direct contact can lend a message urgency.",
+  "strategic_value": "Frontline AIDS can draw on the energy of activist placards and public painting to distinguish its communications.",
+  "demonstration": "A photograph of a person painting a wall occupies the spread. Pink covers much of the wall, a blue looping stroke crosses it and the painter wears green.",
+  "category": "Color",
+  "practical_value": "Use this as a reference for bold, large-area color when a campaign is meant to attract immediate attention.",
+  "content_islands": [
+    {
+      "name": "Color chapter opening",
+      "spec": "Place the chapter heading and explanation over the lighter portion of the wall, retaining the rail and folio."
+    },
+    {
+      "name": "Painted field",
+      "spec": "Let the pink field and thick blue stroke occupy the broad right side. Keep the painter near the lower-left edge of the field so the scale of the color remains visible."
+    }
+  ]
+}

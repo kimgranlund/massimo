@@ -1,0 +1,31 @@
+{
+  "id": "C415",
+  "title": "Drama lockup motion",
+  "image": "c415.png",
+  "source": "../sources/c415.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 masterbrand / 2023",
+    "item": 15,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Reveal the relationship between parent symbol and descriptor so a combined name remains easy to parse.",
+  "strategic_value": "Animating from the isolated 4 to 4 Drama can reinforce Channel 4 as the source of the category.",
+  "demonstration": "The green mark changes scale and position as white Drama appears beside it; the sequence repeats the handoff with different placements.",
+  "category": "Motion",
+  "practical_value": "Compare the isolated logo interval with the assembled category lockup.",
+  "content_islands": [
+    {
+      "name": "Parent mark",
+      "spec": "Begin with the green 4 alone on black."
+    },
+    {
+      "name": "Descriptor reveal",
+      "spec": "Add white Drama to its right, then return to the isolated mark."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The animation demonstrates formation of a 4 Drama lockup.",
+    "Intent": "Pentagram links the leading 4 principle to practical lockup behavior."
+  },
+  "motion": "../sources/c415.mp4"
+}

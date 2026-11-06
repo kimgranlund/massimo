@@ -1,0 +1,28 @@
+{
+  "id": "C31",
+  "title": "Presentation Templates",
+  "image": "c31.png",
+  "source": "../csail-branding-short-guide.pdf",
+  "location": {
+    "page": 31
+  },
+  "slide_intent": "Teach presenters to select one recurring frame for a talk. A stable edge treatment helps the audience recognize title, content and section changes.",
+  "strategic_value": "CSAIL can support single-brand and dual-brand talks without relocating its identifier on every slide.",
+  "demonstration": "Two labeled sets of six thumbnails compare the horizontal footer and vertical sidebar across several kinds of slides, including photo-led and text-heavy examples.",
+  "category": "Layout",
+  "practical_value": "Use one family throughout the presentation. Choose the sidebar for dual branding when the second logo needs the opposite side.",
+  "content_islands": [
+    {
+      "name": "Selection guidance",
+      "spec": "Place the explanation of templates, dual branding and dark backgrounds in the left column."
+    },
+    {
+      "name": "Horizontal-footer family",
+      "spec": "Arrange six thumbnails in two rows below the family label. Vary content while keeping the warm footer device."
+    },
+    {
+      "name": "Vertical-sidebar family",
+      "spec": "Repeat the six-up comparison below, using the edge stripe so viewers can compare the two systems."
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "id": "DB1007",
+  "title": "Verhältnis zum Logo",
+  "image": "db1007.png",
+  "source": "../sources/page-10.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 10,
+    "section": 7,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Schwelle"
+  },
+  "slide_intent": "Set a proportional range so the supporting element does not overwhelm the identity mark.",
+  "strategic_value": "A bounded relationship can keep DB’s logo and Schwelle visually balanced.",
+  "demonstration": "Three red sequences are compared with pale logo references at half, two-thirds and full logo height.",
+  "category": "Geometry",
+  "practical_value": "Use approximately two-thirds as guidance while staying between half and full logo height.",
+  "content_islands": [
+    {
+      "name": "Proportion guidance",
+      "spec": "Place the explanation above the diagram."
+    },
+    {
+      "name": "Size comparison",
+      "spec": "Stack the minimum, recommended and maximum sequence sizes beside logo references and labels."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text connects proportion choices to harmonious balance among logo, Schwelle and layout.",
+    "Constraint": "Half logo height is the minimum and full logo height the maximum; two-thirds is a flexible recommended value.",
+    "Application": "The three labeled specimens distinguish a recommendation from limits."
+  },
+  "ingredient": {
+    "name": "Schwelle-to-logo height",
+    "role": "Balance the supporting bars with the primary mark.",
+    "application": "Aim for approximately two-thirds logo height; keep within one-half to one full logo height.",
+    "scope": "Official DB new-design website captured 2026-11-05; edition date unstated. Two-thirds is guidance, not a fixed requirement."
+  }
+}

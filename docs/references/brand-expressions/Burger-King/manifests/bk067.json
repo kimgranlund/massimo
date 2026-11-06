@@ -1,0 +1,28 @@
+{
+  "id": "BK067",
+  "title": "Typography",
+  "image": "bk067.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 67
+  },
+  "slide_intent": "Connect the shape of letters to the subject they describe because readers perceive character before they finish reading the message.",
+  "strategic_value": "Linking rounded letterforms to food can give Burger King’s written messages an appetizing identity without adding a food photograph.",
+  "demonstration": "A short left-hand label accompanies a larger statement that links irreverent typography to natural, organic food shapes.",
+  "category": "Typography",
+  "practical_value": "Judge type choices against the stated food-shape rationale rather than treating the font as a neutral carrier.",
+  "content_islands": [
+    {
+      "name": "Topic label",
+      "spec": "Place the small Typography label in the left column."
+    },
+    {
+      "name": "Rationale statement",
+      "spec": "Set the large brown paragraph in the upper-right area of the cream page."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The paragraph explicitly says the typography evokes natural, organic food shapes and aims to appear delicious.",
+    "Expression": "The statement uses the rounded proprietary face it describes."
+  }
+}

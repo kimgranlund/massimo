@@ -1,0 +1,30 @@
+{
+  "id": "DB0907",
+  "title": "Typography / presentation titles",
+  "image": "db0907.png",
+  "source": "../sources/page-09.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 9,
+    "section": 7,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Typografie_neu"
+  },
+  "slide_intent": "Build a clear title hierarchy so a reader recognizes the subject before secondary details.",
+  "strategic_value": "A consistent title system can connect DB presentations across light and dark backgrounds.",
+  "demonstration": "A dark portrait title uses white text and a lilac gate graphic; a white landscape title uses black text and a red Schwelle.",
+  "category": "Application",
+  "practical_value": "Compare title placement and supporting graphics across presentation orientations.",
+  "content_islands": [
+    {
+      "name": "Portrait title",
+      "spec": "Place the white two-line title beneath the red mark and above the gate illustration."
+    },
+    {
+      "name": "Landscape title",
+      "spec": "Place the black title and subtitle centrally within a white slide framed by mark and Schwelle."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The pair demonstrates title hierarchy in two presentation formats."
+  }
+}

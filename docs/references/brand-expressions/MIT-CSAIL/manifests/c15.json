@@ -1,0 +1,24 @@
+{
+  "id": "C15",
+  "title": "Dual Branding Lock-ups",
+  "image": "c15.png",
+  "source": "../csail-branding-short-guide.pdf",
+  "location": {
+    "page": 15
+  },
+  "slide_intent": "Explain how to align partner marks whose shapes and lettering differ. A common baseline and measured gap make the relationship legible without forcing both marks into identical boxes.",
+  "strategic_value": "CSAIL can acknowledge outside partners while preserving the proportional structure of its own program signatures.",
+  "demonstration": "Two lockups pair CSAIL Alliances with STL Fintech and the Advanced Networks Architecture Group with IBM. Blue guides span the pairs to label baseline, height and separation.",
+  "category": "Geometry",
+  "practical_value": "Choose a comparable visual height and baseline for the partner, then measure the minimum gap using the CSAIL exclusion unit.",
+  "content_islands": [
+    {
+      "name": "Relationship rules",
+      "spec": "Define the lockup and list baseline, suggested area and total height in the left rail."
+    },
+    {
+      "name": "Partner comparisons",
+      "spec": "Stack two pairings across the pale panel. Carry guide lines through both marks, label the variable gaps and retain the minimum-distance markers."
+    }
+  ]
+}

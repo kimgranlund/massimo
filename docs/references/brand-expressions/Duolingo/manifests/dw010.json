@@ -1,0 +1,38 @@
+{
+  "id": "DW010",
+  "title": "Landscape lockup / Clear space",
+  "image": "dw010.png",
+  "source": "../sources/pages/identity-logos.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/identity/logos",
+    "section": "Clear space",
+    "item": 10,
+    "order": 100
+  },
+  "slide_intent": "Define relationships inside and around a lockup because consistency depends on alignment as well as individual assets.",
+  "strategic_value": "A stable Duo-to-wordmark relationship can make supplied Duolingo signatures repeatable.",
+  "demonstration": "An annotated lockup explains body alignment with the g loop, head alignment with the l, a half-x-height gap and an exclusion area.",
+  "category": "Geometry",
+  "practical_value": "Check both internal spacing and external clearance before placing the lockup.",
+  "content_islands": [
+    {
+      "name": "Construction diagram",
+      "spec": "Place the annotated Duo and wordmark alignment in the large left panel."
+    },
+    {
+      "name": "Alignment and exclusion rules",
+      "spec": "In the right column, put the body, head and gap instructions above the prohibition on objects in the exclusion zone."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The diagram and copy specify body, head and gap relationships.",
+    "Constraint": "Duo and the wordmark are separated by half the x-height, and objects cannot enter the shown clear space."
+  },
+  "ingredient": {
+    "name": "Landscape lockup geometry",
+    "role": "Hold mascot and name in a stable relationship.",
+    "application": "Align Duo’s body bottom with the g loop interior and head side with the l top; leave half the x-height between mascot and name and preserve the shown exclusion zone.",
+    "scope": "Historical archived guidelines. Historical landscape lockup; the half-x-height value describes the internal gap."
+  }
+}

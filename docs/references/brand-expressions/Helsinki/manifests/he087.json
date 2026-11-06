@@ -1,0 +1,31 @@
+{
+  "id": "HE087",
+  "title": "Introduction to the visual identity",
+  "image": "he087.png",
+  "source": "../sources/design-and-create.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Introduction to the visual identity",
+    "order": 118,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/design-and-create#introduction-to-the-visual-identity",
+    "original_html": "../sources/design-and-create.html"
+  },
+  "slide_intent": "Teach new contributors how the identity works so consistent execution does not depend on prior institutional knowledge.",
+  "strategic_value": "Repeated induction sessions can help Helsinki bring new staff and commissioning teams into a shared practice.",
+  "demonstration": "Expanded webpage section: five bullets describe coffee meetings, frequency, HR coordination, audiences and identity news.",
+  "category": "Brand",
+  "practical_value": "Use induction as a continuing support mechanism rather than relying on a one-time document handoff.",
+  "content_islands": [
+    {
+      "name": "Induction model",
+      "spec": "The upper bullets describe three yearly events and coordination with employee onboarding."
+    },
+    {
+      "name": "Audience and updates",
+      "spec": "Lower bullets identify participants and the latest identity information."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text says three yearly sessions are intended to reach employees who begin at different times."
+  }
+}

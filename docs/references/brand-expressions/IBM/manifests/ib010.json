@@ -1,0 +1,52 @@
+{
+  "id": "IB010",
+  "title": "IBM logos / Rebus",
+  "image": "ib010.png",
+  "source": "../sources/ibm-logos-rebus.txt",
+  "location": {
+    "series": "IBM Design Language / public web guidelines",
+    "item": 10,
+    "extent": "Complete webpage content-area capture; interactive elements retain their captured state",
+    "url": "https://www.ibm.com/design/language/ibm-logos/rebus/",
+    "order": 10000
+  },
+  "slide_intent": "Separate expressive heritage from the official signature, so a playful familiar motif adds character without confusing the identity’s formal role.",
+  "strategic_value": "The eye-bee-M and vertical totem can extend IBM’s recognizable heritage into merchandise, events and environments while preserving the 8-bar’s authority.",
+  "demonstration": "Horizontal, vertical and classic rebus specimens lead into color pairs, clear-space and misuse diagrams, approved repeat patterns and applied examples.",
+  "category": "Brand",
+  "practical_value": "Choose the rebus for a permitted expressive context while retaining the 8-bar for official sign-offs.",
+  "content_islands": [
+    {
+      "name": "Origin and current rebus",
+      "spec": "Begin with the historical introduction and resource card, then large positive and reversed horizontal specimens."
+    },
+    {
+      "name": "Totem and classic variant",
+      "spec": "Compare vertical totems and their grid relationship before showing the restricted historic color treatment on black."
+    },
+    {
+      "name": "Color and isolation",
+      "spec": "Arrange core-color pairings above the M-height clear-space diagram."
+    },
+    {
+      "name": "Misuse and patterns",
+      "spec": "Contrast prohibited rearrangements and sign-off uses with approved repeat patterns."
+    },
+    {
+      "name": "Applied heritage",
+      "spec": "Close with merchandise and environmental examples including a notebook, shirt and large vertical display."
+    }
+  ],
+  "ingredient": {
+    "name": "IBM rebus",
+    "role": "Express heritage and human character in special applications.",
+    "application": "Use the approved positive, reversed or totem artwork with isolation equal to the M height; retain the 8-bar for official communication sign-offs.",
+    "scope": "Special applications such as merchandise, badges and events. The classic historic color artwork is restricted to heritage merchandise or approved occasions, requires prior approval and must use a black background."
+  },
+  "reference_purposes": {
+    "Intent": "The source explains the totem as a human connection between mankind and machines and connects pattern uses to practical settings.",
+    "Expression": "Horizontal and vertical rebuses, patterns and merchandise demonstrate IBM’s heritage vocabulary.",
+    "Application": "The page shows positive/reversed versions, background pairings, clear space and applications.",
+    "Constraint": "The rebus cannot replace the 8-bar sign-off; the classic color version requires permission and a black background, and its colors are not the current standard palette."
+  }
+}

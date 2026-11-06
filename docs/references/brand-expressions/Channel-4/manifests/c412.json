@@ -1,0 +1,30 @@
+{
+  "id": "C412",
+  "title": "Travel Man promotional side panel",
+  "image": "c412.png",
+  "source": "../sources/c412.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 masterbrand / 2023",
+    "item": 12,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Keep the programme visible while giving viewers a clear action they can take.",
+  "strategic_value": "The gradient side panel can carry Channel 4 attribution and a streaming invitation without interrupting Travel Man footage.",
+  "demonstration": "A travel montage gains a right-hand gradient panel; the green 4 gives way to Travel Man: 96 Hours in Rio and Stream now.",
+  "category": "Application",
+  "practical_value": "Choose a supporting panel that accommodates the call to action while leaving most footage visible.",
+  "content_islands": [
+    {
+      "name": "Programme montage",
+      "spec": "Use the wide left region for Rio locations and the presenters."
+    },
+    {
+      "name": "Information panel",
+      "spec": "Introduce the narrow right panel with the mark, then retain title and streaming action."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The film applies a gradient side panel to a Travel Man promotion."
+  },
+  "motion": "../sources/c412.mp4"
+}

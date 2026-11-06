@@ -1,0 +1,24 @@
+{
+  "id": "F06",
+  "title": "We are Frontline AIDS",
+  "image": "f06.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 6
+  },
+  "slide_intent": "Bring a sequence of campaign declarations back to the speaker. A simple reveal makes clear whose voice the reader has been hearing.",
+  "strategic_value": "The organization can make its name memorable by giving it the same assertive treatment as the preceding declarations.",
+  "demonstration": "The name appears as stacked black type on a pink box against green. A black dot grid, cyan loop and cyan arrow direct attention toward the name.",
+  "category": "Brand",
+  "practical_value": "Use this graphic interlude when the sequence needs to identify the organization in its own words.",
+  "content_islands": [
+    {
+      "name": "Pattern field",
+      "spec": "Place a field of black dots across the upper-left portion of the green page."
+    },
+    {
+      "name": "Name and gesture",
+      "spec": "Set the name in a pink rectangle right of center. Wrap it with the cyan line and direct the arrow toward the rectangle."
+    }
+  ]
+}

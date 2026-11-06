@@ -1,0 +1,32 @@
+{
+  "id": "DW046",
+  "title": "Sub-brands / Examples",
+  "image": "dw046.png",
+  "source": "../sources/pages/identity-brand-family.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/identity/brand-family",
+    "section": "Examples",
+    "item": 46,
+    "order": 460
+  },
+  "slide_intent": "Compare several related signatures because examples reveal whether an architecture can accommodate different names and formats.",
+  "strategic_value": "A visible family of Duolingo applications can make the generic lockup system easier for contributors to recognize and use.",
+  "demonstration": "A grid presents established sub-brand signatures in different layouts under a brief examples caption.",
+  "category": "Brand",
+  "practical_value": "Compare a proposed sub-brand lockup with the range of established family examples.",
+  "content_islands": [
+    {
+      "name": "Sub-brand examples",
+      "spec": "Arrange ten green lockups in two columns at left: events, incubator, podcasts, gear, ai, push, university programs, cefr checker, community and design studio."
+    },
+    {
+      "name": "Context caption",
+      "spec": "Place the heading and note about established sub-brands at right."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The source presents established sub-brand signatures as worked examples.",
+    "Expression": "The repeated master signature connects the different names and layouts."
+  }
+}

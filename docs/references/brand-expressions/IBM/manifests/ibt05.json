@@ -1,0 +1,34 @@
+{
+  "id": "IBT05",
+  "title": "Trademark license agreement",
+  "image": "ibt05.png",
+  "source": "../sources/ibm-logo-third-parties.pdf",
+  "location": {
+    "page": 5,
+    "series": "IBM Logo and Brand Guidelines for Third Parties / copyright 2022",
+    "order": 100005
+  },
+  "slide_intent": "Separate design guidance from permission to use an identity, so a designer does not mistake an available logo for unrestricted authorization.",
+  "strategic_value": "Documented scope and duration can help IBM keep third-party trademark use aligned with the actual relationship.",
+  "demonstration": "Three text blocks explain licensing, preparation before use and a bold statement that an executed license prevails in a conflict.",
+  "category": "Brand",
+  "practical_value": "Check the applicable agreement’s scope before treating any example as permission to use the mark.",
+  "content_islands": [
+    {
+      "name": "Heading",
+      "spec": "Place Trademark license agreement at upper left."
+    },
+    {
+      "name": "License requirements",
+      "spec": "Use two paragraphs in the adjoining column for scope, duration and contacting the IBM sponsor."
+    },
+    {
+      "name": "Precedence statement",
+      "spec": "End the column with the bold clarification that executed license terms prevail over inconsistent guidance."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The page directs users to review the agreement and contact their IBM sponsor when an agreement is absent.",
+    "Constraint": "The source requires a license other than fair use and gives executed license terms precedence over inconsistent guideline terms."
+  }
+}

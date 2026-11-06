@@ -1,0 +1,86 @@
+{
+  "id": "IB045",
+  "title": "Hybrid UI illustration / Usage",
+  "image": "ib045.png",
+  "source": "../sources/illustration-hybrid-ui-style-usage.txt",
+  "location": {
+    "series": "IBM Design Language / public web guidelines",
+    "item": 45,
+    "extent": "Complete webpage content area, default interactive state",
+    "url": "https://www.ibm.com/design/language/illustration/hybrid-ui-style/usage/",
+    "order": 45000
+  },
+  "slide_intent": "Explain a product at the right level of detail so a conceptual introduction does not masquerade as an actual working interface.",
+  "strategic_value": "Faithful UI elements combined with IBM illustration can make complex products approachable without losing their identity.",
+  "demonstration": "Marketing examples, UI-to-illustration comparisons and layout guidance distinguish product introductions from detailed demonstrations.",
+  "category": "Application",
+  "practical_value": "Choose hybrid illustration for high-level product explanation and prefer real screens when accurate interaction detail matters.",
+  "content_islands": [
+    {
+      "name": "Applications and role",
+      "spec": "Introduce website and print mockups, followed by the distinction between an overview and actual UI."
+    },
+    {
+      "name": "Product-specific approaches",
+      "spec": "Compare non-Carbon, syntax-based and suite interfaces with their corresponding illustrations."
+    },
+    {
+      "name": "Balance and leadspace",
+      "spec": "List product-fidelity tips and show how foreground assets sit beside text and buttons."
+    },
+    {
+      "name": "Motion examples",
+      "spec": "Conclude with three product compositions associated with top-to-bottom leadspace motion."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The page explains that hybrid illustrations clarify complicated product scenarios and inspire confidence.",
+    "Expression": "UI fragments combine with pictograms and conceptual imagery on pale brand fields.",
+    "Application": "Paired real interfaces and illustrations teach adaptation for non-Carbon products, code-oriented products and suites.",
+    "Constraint": "The source specifies 60% UI and 40% illustration, rejects whole-screen substitution and reuse across different products, and distinguishes actual demos from conceptual overviews."
+  },
+  "ingredient": {
+    "name": "Hybrid UI composition",
+    "role": "Introduce product functionality without claiming to be the product itself.",
+    "application": "Balance 60% UI with 40% illustration and stay faithful to the product. Prefer actual full product screens for detailed demos to avoid confusion; hybrid elements may appear in overview demos.",
+    "scope": "High-level product communications, not client stories. Hybrid UI illustrations must not be used inside the product itself; the source allows illustrations inspired by their composition style only without high-fidelity UI elements. For suites or difficult UI, it permits a more conceptual, lower-fidelity approach."
+  },
+  "motion_assets": [
+    {
+      "title": "Hybrid UI: API Connect",
+      "file": "../sources/media/8c7cd710d02e.mp4",
+      "poster": "../sources/media/8c7cd710d02e-poster.png",
+      "duration_seconds": 5.73,
+      "source_url": "https://www.ibm.com/design/language/394cf02a93167ebdaa8878bc6eb36a4c/motion_APIC.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Hybrid UI: Orchestrate",
+      "file": "../sources/media/bf92d2946992.mp4",
+      "poster": "../sources/media/bf92d2946992-poster.png",
+      "duration_seconds": 3.6,
+      "source_url": "https://www.ibm.com/design/language/779b44f700582d42f40a30964f5cf5d3/motion_orchestrate.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Hybrid UI: watsonx Assistant",
+      "file": "../sources/media/0ca916af7282.mp4",
+      "poster": "../sources/media/0ca916af7282-poster.png",
+      "duration_seconds": 6.1,
+      "source_url": "https://www.ibm.com/design/language/609249740bb4c49e2a16ef39fa7c2272/motion_wastonx_assistant.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    }
+  ]
+}

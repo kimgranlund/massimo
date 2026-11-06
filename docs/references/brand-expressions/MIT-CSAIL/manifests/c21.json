@@ -1,0 +1,28 @@
+{
+  "id": "C21",
+  "title": "Color",
+  "image": "c21.png",
+  "source": "../csail-branding-short-guide.pdf",
+  "location": {
+    "page": 21
+  },
+  "slide_intent": "Show how to reproduce a color family as it becomes lighter or darker. Specifying each step gives designers in different media a common reference.",
+  "strategic_value": "CSAIL can support variety in charts and backgrounds while retaining a traceable relationship to its seven base hues.",
+  "demonstration": "Each hue occupies a column. Two darker rows precede a taller base-color row, with three lighter rows beneath. Cells carry hex values.",
+  "category": "Color",
+  "practical_value": "Look up a screen value by column and row. For a printed piece, use the guide’s Pantone reference and a physical chip when the match is uncertain.",
+  "content_islands": [
+    {
+      "name": "Medium guidance",
+      "spec": "Place the screen and print reproduction notes at left and include the tint and shade guidance beneath."
+    },
+    {
+      "name": "Color matrix",
+      "spec": "Align seven contiguous columns. Start with dark shades, enlarge the base swatches, then step through the lighter tints. Label each cell on its own background."
+    },
+    {
+      "name": "Tool note",
+      "spec": "Place a small note low in the left column explaining how to obtain variants."
+    }
+  ]
+}

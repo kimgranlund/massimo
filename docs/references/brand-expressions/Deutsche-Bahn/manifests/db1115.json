@@ -1,0 +1,31 @@
+{
+  "id": "DB1115",
+  "title": "Adaption",
+  "image": "db1115.png",
+  "source": "../sources/page-11.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 11,
+    "section": 15,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Icons"
+  },
+  "slide_intent": "Reuse established parts so related functions look related to users.",
+  "strategic_value": "Shared speaker forms can make DB audio states recognizable as one family.",
+  "demonstration": "Three speaker icons compare muted, standard and amplified states using a common base shape.",
+  "category": "Geometry",
+  "practical_value": "Adapt the existing speaker form when creating an additional audio state.",
+  "content_islands": [
+    {
+      "name": "Adaptation principle",
+      "spec": "Place the reuse rationale above the specimen."
+    },
+    {
+      "name": "Audio family",
+      "spec": "Align the three speaker states on a shared light field."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text connects adapting existing forms to harmony and recognition.",
+    "Application": "Three related speaker states demonstrate reuse."
+  }
+}

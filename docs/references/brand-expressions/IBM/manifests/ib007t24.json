@@ -1,0 +1,38 @@
+{
+  "id": "IB007T24",
+  "title": "Color / UI palette — CMYK specifications",
+  "image": "ib007t24.png",
+  "source": "../sources/alternate-tabs.json",
+  "location": {
+    "series": "IBM Design Language / alternate tab states",
+    "parent": "IB007",
+    "group": 2,
+    "tab": 4,
+    "label": "CMYK",
+    "url": "https://www.ibm.com/design/language/color/",
+    "order": 7124
+  },
+  "slide_intent": "Carry a functional color subset into process-color production deliberately, because relying on visual copying can blur distinctions between structural and status colors.",
+  "strategic_value": "Documented CMYK builds can help printed IBM interface illustrations stay consistent with the named UI palette.",
+  "demonstration": "The CMYK table shows blue and gray ramps alongside four alert colors, each with a process-ink specification.",
+  "category": "Color",
+  "practical_value": "Use the selected UI color’s recorded build for process-print representations while preserving the original role distinctions.",
+  "content_islands": [
+    {
+      "name": "Encoding selector",
+      "spec": "Keep CMYK selected above the table."
+    },
+    {
+      "name": "Core ramps",
+      "spec": "Present the long blue and gray columns with four-channel values from black through white."
+    },
+    {
+      "name": "Status builds",
+      "spec": "Place the shorter red, green, orange and yellow alert column to the right."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The blue, gray and alert grouping shows the structure of IBM’s UI subset.",
+    "Application": "Each UI swatch carries a CMYK build, including Alert 40 c 0 m 60 y 91 k 0 and Alert 30 c 6 m 22 y 99 k 0."
+  }
+}

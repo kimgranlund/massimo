@@ -1,0 +1,36 @@
+{
+  "id": "IG31",
+  "title": "Experiential / gradient football court",
+  "image": "ig31.png",
+  "source": "../sources/ig31.jpg",
+  "location": {
+    "series": "Elvis Dinh / Instagram brand design system / project year 2022",
+    "item": 31,
+    "extent": "whole source artwork"
+  },
+  "slide_intent": "Extend an identity across an environment so participants encounter the brand through activity.",
+  "strategic_value": "A continuous color field can make an Instagram event recognizable in both wide views and participant photographs.",
+  "demonstration": "A wide view shows a gradient football court, white playing lines, central partner mark and seating beneath the Eiffel Tower.",
+  "category": "Application",
+  "practical_value": "Assess the field, signage and partner marks together when reviewing an event identity.",
+  "content_islands": [
+    {
+      "name": "Court field",
+      "spec": "Carry the gradient across the playing surface while keeping white sport markings legible."
+    },
+    {
+      "name": "Venue surroundings",
+      "spec": "Retain stands, perimeter signs and the skyline to establish the event scale."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The photo demonstrates brand color applied across a sports environment.",
+    "Expression": "The gradient turns the playing field into a continuous brand-colored surface."
+  },
+  "ingredient": {
+    "name": "Environmental gradient",
+    "role": "Connect activity and setting with the brand palette.",
+    "application": "Apply the gradient across the court while keeping white sport markings and partner identification visible, as shown.",
+    "scope": "This photographed football activation; no general specification for sports surfaces is supplied."
+  }
+}

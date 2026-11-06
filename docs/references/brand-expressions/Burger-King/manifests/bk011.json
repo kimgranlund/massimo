@@ -1,0 +1,31 @@
+{
+  "id": "BK011",
+  "title": "Design Approach / Communicating character and desire",
+  "image": "bk011.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 11
+  },
+  "slide_intent": "Explain why design should do more than identify the sender: it can help people imagine taste and experience.",
+  "strategic_value": "Connecting visual choices with freshness and flame grilling can give Burger King a food-specific design purpose.",
+  "demonstration": "Two substantial paragraphs explain design’s communication role and the intended sensory effect of the new identity.",
+  "category": "Brand",
+  "practical_value": "Ask whether proposed identity choices express both brand character and product appetite.",
+  "content_islands": [
+    {
+      "name": "Design role",
+      "spec": "Place the first paragraph about identity, values and desire at upper right."
+    },
+    {
+      "name": "Sensory ambition",
+      "spec": "Place the longer food-focused paragraph below."
+    },
+    {
+      "name": "Topic label",
+      "spec": "Keep Design Approach at left."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text explicitly names freshness, flame grilling and taste as intended design effects."
+  }
+}

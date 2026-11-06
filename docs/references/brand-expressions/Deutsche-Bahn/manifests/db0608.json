@@ -1,0 +1,33 @@
+{
+  "id": "DB0608",
+  "title": "Sachliche Anwendung",
+  "image": "db0608.png",
+  "source": "../sources/page-06.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 6,
+    "section": 8,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Designprinzipien"
+  },
+  "slide_intent": "Restrain expression when fast comprehension matters so information remains the focus.",
+  "strategic_value": "A quieter treatment can help DB presentations and internal communications feel clear and dependable.",
+  "demonstration": "The text defines factual use in presentations, office communication and internal information and lists the permitted standard type styles.",
+  "category": "Application",
+  "practical_value": "Choose restrained color and layout and use the named standard styles for these factual contexts.",
+  "content_islands": [
+    {
+      "name": "Factual-use guidance",
+      "spec": "Place the heading above the paragraph connecting restraint to quick understanding and orientation."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text says the factual treatment supports quick comprehension and orientation.",
+    "Constraint": "For factual applications it specifies only DB Neo Regular, DB Neo Black and DB Neo Sans."
+  },
+  "ingredient": {
+    "name": "Factual communication",
+    "role": "Make information quickly understandable.",
+    "application": "Use restrained typography, layout and color with DB Neo Regular, DB Neo Black and DB Neo Sans as listed.",
+    "scope": "Applies to factual contexts such as presentations, office communication and internal information; expressive advertising has separate guidance."
+  }
+}

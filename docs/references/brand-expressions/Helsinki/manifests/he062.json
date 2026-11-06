@@ -1,0 +1,32 @@
+{
+  "id": "HE062",
+  "title": "Indicate the use of artificial intelligence (AI)",
+  "image": "he062.png",
+  "source": "../sources/visual-storytelling.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Indicate the use of artificial intelligence (AI)",
+    "order": 86,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/visual-storytelling#indicate-the-use-of-artificial-intelligence--ai--2",
+    "original_html": "../sources/visual-storytelling.html"
+  },
+  "slide_intent": "Disclose synthetic or meaningfully altered content so viewers can understand how a representation was made.",
+  "strategic_value": "Visible AI disclosure can help Helsinki make the provenance of its communications inspectable.",
+  "demonstration": "This expanded webpage-section capture states when AI disclosure applies and supplies two wording examples alongside watermark, text or audio methods.",
+  "category": "Imagery",
+  "practical_value": "Check whether content is wholly AI-produced or altered enough to change meaning, then apply the stated disclosure methods.",
+  "content_islands": [
+    {
+      "name": "Disclosure condition",
+      "spec": "Place the fully generated or meaning-changing modification condition first."
+    },
+    {
+      "name": "Marking methods and wording",
+      "spec": "Follow with watermark and text/audio instructions and the two sample statements."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The section gives disclosure methods and two sample statements.",
+    "Constraint": "It applies disclosure to wholly AI-created content or significant modification that changes meaning."
+  }
+}

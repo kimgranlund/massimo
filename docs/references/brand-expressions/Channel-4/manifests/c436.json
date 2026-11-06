@@ -1,0 +1,30 @@
+{
+  "id": "C436",
+  "title": "Bus-shelter multi-content display",
+  "image": "c436.png",
+  "source": "../sources/c436.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 masterbrand / 2023",
+    "item": 36,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Reveal variety within a narrow surface so viewers can discover breadth without losing the brand anchor.",
+  "strategic_value": "A changing collage under the green heading can communicate Channel 4’s range on a street display.",
+  "demonstration": "The bus-shelter screen begins with The biggest free streaming service over programme portraits, then expands the portrait collage as the headline region contracts.",
+  "category": "Application",
+  "practical_value": "Compare the opening message area with the later area allocated to content.",
+  "content_islands": [
+    {
+      "name": "Street display",
+      "spec": "Keep the portrait digital screen within the shelter and traffic context."
+    },
+    {
+      "name": "Changing collage",
+      "spec": "Reduce the headline region and expose additional programme portraits below."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "A moving multi-content composition is applied to a bus-shelter display."
+  },
+  "motion": "../sources/c436.mp4"
+}

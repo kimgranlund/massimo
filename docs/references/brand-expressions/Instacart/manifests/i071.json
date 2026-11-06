@@ -1,0 +1,28 @@
+{
+  "id": "I071",
+  "title": "Icon Style",
+  "image": "i071.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 71
+  },
+  "slide_intent": "Decide which corners should stay straight and which curves need enough breadth to read at small sizes. The difference can disappear when a drawing is reduced.",
+  "strategic_value": "Instacart can carry the sharp and rounded details of its symbol into functional icons that remain recognizable in the interface.",
+  "demonstration": "A symbol, map pin and flag appear enlarged on blue grids and again at small scale. Callouts connect their contours to the intended treatment of corners and rounds.",
+  "category": "Geometry",
+  "practical_value": "Inspect an enlarged drawing and its reduced silhouette together. Keep small corners straight and reserve rounding for a feature large enough to survive the reduction.",
+  "content_islands": [
+    {
+      "name": "Construction brief",
+      "spec": "Set the title and shape guidance at left."
+    },
+    {
+      "name": "Gridded examples",
+      "spec": "Arrange the symbol, pin and flag across three blue grids. Circle the contour details and attach concise blue callouts beneath them."
+    },
+    {
+      "name": "Small-size checks",
+      "spec": "Align a reduced version under each enlarged specimen so the reader can compare the same geometry at both scales."
+    }
+  ]
+}

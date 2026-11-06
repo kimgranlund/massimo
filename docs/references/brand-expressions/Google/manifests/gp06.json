@@ -1,0 +1,36 @@
+{
+  "id": "GP06",
+  "title": "Product Sans / Terminals",
+  "image": "gp06.png",
+  "source": "../product-sans-specimen.pdf",
+  "location": {
+    "page": 6,
+    "printed_page": "P–6"
+  },
+  "slide_intent": "Treat stroke endings as part of a typeface’s voice because small angle choices alter openness and character.",
+  "strategic_value": "Consistent open terminals can give Product Sans a recognizable character across otherwise geometric letters.",
+  "demonstration": "A large two-row set of letters with visible open stroke endings sits above an explanation of terminal angles on blue.",
+  "category": "Typography",
+  "practical_value": "Inspect the endings across several letters together when judging whether a typeface’s construction is coherent.",
+  "content_islands": [
+    {
+      "name": "Terminal specimens",
+      "spec": "Distribute C G J S a c e f across the upper row and g j s t beneath."
+    },
+    {
+      "name": "Angle explanation",
+      "spec": "Place the construction note below at left, retaining its conditional language about 45-degree endings."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text identifies terminal angles as a distinguishing feature of geometric typefaces.",
+    "Expression": "The letter set demonstrates the open approach to stroke endings.",
+    "Application": "The note describes endings near 45 degrees where possible and cuts perpendicular to the stroke tangent."
+  },
+  "ingredient": {
+    "name": "Open terminals",
+    "role": "Give the geometric letters a consistent open character.",
+    "application": "The specimen describes strokes ending at about 45 degrees where possible and terminals cut perpendicular to the stroke tangent.",
+    "scope": "A description of the designed Product Sans letterforms, not a universal exact-angle rule."
+  }
+}

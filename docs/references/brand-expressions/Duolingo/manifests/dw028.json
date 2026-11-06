@@ -1,0 +1,38 @@
+{
+  "id": "DW028",
+  "title": "Typography / Typesetting Duolingo",
+  "image": "dw028.png",
+  "source": "../sources/pages/identity-typography.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/identity/typography",
+    "section": "Typesetting 'Duolingo'",
+    "item": 28,
+    "order": 280
+  },
+  "slide_intent": "Treat the brand name consistently within sentences because small spelling and spacing changes affect the signature people learn.",
+  "strategic_value": "Typeface-specific casing and a built-in wordmark glyph can keep Duolingo’s name consistent in running messages.",
+  "demonstration": "Two examples contrast the brand name in Feather Bold and DIN Next Rounded, beside casing and replacement-glyph guidance.",
+  "category": "Typography",
+  "practical_value": "Choose the appropriate name treatment for the typeface in use.",
+  "content_islands": [
+    {
+      "name": "Name specimens",
+      "spec": "Place the large Feather Bold phrase above the smaller DIN sentence in the left panel."
+    },
+    {
+      "name": "Typeface-specific rules",
+      "spec": "Place the heading and lowercase, tilde-replacement and sentence-case instructions in the right column."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The text explains that a tilde in Feather Bold triggers the full logotype with different kerning.",
+    "Constraint": "Duolingo is lowercase in Feather Bold and sentence case in DIN Next Rounded."
+  },
+  "ingredient": {
+    "name": "Brand-name setting",
+    "role": "Keep the name’s appearance consistent inside copy.",
+    "application": "Set duolingo lowercase in Feather Bold and use its tilde-triggered logotype when possible; set Duolingo in sentence case in DIN.",
+    "scope": "Historical archived guidelines. Historical font-specific behavior; the tilde replacement is not a general rule for other typefaces."
+  }
+}

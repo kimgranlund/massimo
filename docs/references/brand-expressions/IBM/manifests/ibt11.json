@@ -1,0 +1,34 @@
+{
+  "id": "IBT11",
+  "title": "Things to avoid",
+  "image": "ibt11.png",
+  "source": "../sources/ibm-logo-third-parties.pdf",
+  "location": {
+    "page": 11,
+    "series": "IBM Logo and Brand Guidelines for Third Parties / copyright 2022",
+    "order": 100011
+  },
+  "slide_intent": "Define misuse in both form and meaning, because an unchanged-looking mark can still misrepresent the source of a communication.",
+  "strategic_value": "Protecting the artwork and the relationship it implies can keep IBM’s identity distinct from third-party names and messaging.",
+  "demonstration": "A short introduction and three columns of prohibitions cover unauthorized redraws, artwork alterations, sentence use, reputation, source confusion and incorporation into other identities.",
+  "category": "Brand",
+  "practical_value": "Review the composition for both altered artwork and misleading placement or naming.",
+  "content_islands": [
+    {
+      "name": "Scope introduction",
+      "spec": "Place the heading and short instruction in the first column."
+    },
+    {
+      "name": "Artwork and text use",
+      "spec": "Use the second column for redraw/alteration prohibitions and guidance to write IBM as text in sentences."
+    },
+    {
+      "name": "Identity and origin",
+      "spec": "Continue across the remaining columns with reputational, identity, source and naming restrictions."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The page gives the text-only letters IBM as the alternative to inserting the visual mark into a sentence.",
+    "Constraint": "The source prohibits changing supplied artwork, incorporating trademarks into another identity or name, and placements that confuse communication origin."
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "id": "DW075",
+  "title": "Writing / Style / Semicolons",
+  "image": "dw075.png",
+  "source": "../sources/pages/writing-style.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/style",
+    "section": "Semicolons",
+    "item": 75,
+    "order": 750
+  },
+  "slide_intent": "Break complex thoughts into simpler sentences so conversational copy is easier to follow.",
+  "strategic_value": "Preferring short sentences can help Duolingo maintain the approachable rhythm shown in its writing examples.",
+  "demonstration": "Two accepted versions use a full stop or em dash; the rejected version joins the clauses with a semicolon.",
+  "category": "Voice",
+  "practical_value": "Split a two-part sentence when possible, using an em dash only as the secondary option.",
+  "content_islands": [
+    {
+      "name": "Guidance column",
+      "spec": "Place the topic heading, its parent label and the written convention in the narrow left column."
+    },
+    {
+      "name": "Worked examples",
+      "spec": "Place the worked copy in the pale right panel, keeping preference labels and green checks with their examples."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "A dog-greeting example is shown as two sentences, with an em dash and with a rejected semicolon.",
+    "Constraint": "Replace semicolons with an em dash or, preferably, two simple sentences."
+  },
+  "ingredient": {
+    "name": "Semicolons convention",
+    "role": "Conversational copy is easier to follow.",
+    "application": "Replace semicolons with an em dash or, preferably, two simple sentences.",
+    "scope": "Historical official guidelines from the 2024–2025 archived snapshot; this records the displayed guidance, not current Duolingo product behavior."
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "F59",
+  "title": "Hand drawn graphics",
+  "image": "f59.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 59
+  },
+  "slide_intent": "Show how an informal mark can direct attention to a headline or photographic detail. A hand-drawn gesture needs a clear target to serve that purpose.",
+  "strategic_value": "The organization can give communications a sense of human energy while keeping the central message and photograph legible.",
+  "demonstration": "Large doodled rings, arrows and short strokes surround two completed examples, including a publication cover and a social post.",
+  "category": "Imagery",
+  "practical_value": "Place one hand-drawn accent where it points to information that deserves a second look, then check that it remains secondary to the message.",
+  "content_islands": [
+    {
+      "name": "Gesture guidance",
+      "spec": "Use the left column to explain the vocabulary and identify the accents as supporting elements."
+    },
+    {
+      "name": "Marks and applications",
+      "spec": "Scatter enlarged strokes over the pale field and overlap the examples near the center. Repeat a mark at smaller scale inside the finished design so the reader sees its job."
+    }
+  ]
+}

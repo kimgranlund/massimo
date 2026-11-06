@@ -1,0 +1,31 @@
+{
+  "id": "HE100",
+  "title": "How to set colours and text styles",
+  "image": "he100.png",
+  "source": "../sources/design-and-create.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "How to set colours and text styles",
+    "order": 135,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/design-and-create#how-to-set-colours-and-text-styles",
+    "original_html": "../sources/design-and-create.html"
+  },
+  "slide_intent": "Set the document theme before drawing charts so repeated visual choices stay consistent.",
+  "strategic_value": "Named color and font themes can make Helsinki chart production less dependent on manual styling.",
+  "demonstration": "Expanded webpage section: two Excel screenshots show the font and color menus beside charts, each paired with instructions.",
+  "category": "Color",
+  "practical_value": "Set Arial and the default HKI_L_tunnusvarit palette through Page Layout before chart work.",
+  "content_islands": [
+    {
+      "name": "Font theme",
+      "spec": "Upper text and screenshot locate the font menu."
+    },
+    {
+      "name": "Color theme",
+      "spec": "Lower text and screenshot locate the custom color themes."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The source specifies Page Layout font/color menus, Arial as the general font theme and HKI_L_tunnusvarit as the default palette."
+  }
+}

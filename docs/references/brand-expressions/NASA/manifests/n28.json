@@ -1,0 +1,28 @@
+{
+  "id": "N28",
+  "title": "Typography—Sans Serif: Futura",
+  "image": "n28.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 28
+  },
+  "slide_intent": "Teach designers to judge apparent size from the letters people see. Nominal point size alone does not account for Futura’s small x-height.",
+  "strategic_value": "NASA can use the geometric character of Futura in a catalog or technical brochure while keeping its hierarchy readable.",
+  "demonstration": "Futura Light and Demibold character sets sit above two text settings. The introduction compares the apparent size of 11-point Futura with 10-point Helvetica.",
+  "category": "Typography",
+  "practical_value": "Size Futura by comparing its lowercase letters at reading scale and pair its text with Futura Demibold headings.",
+  "content_islands": [
+    {
+      "name": "Size and pairing guidance",
+      "spec": "Use the header columns to connect Futura to the intended publication and explain its x-height and heading choice."
+    },
+    {
+      "name": "Weight specimens",
+      "spec": "Stack Light and Demibold alphabets, numbers and punctuation in the middle. Keep the label with each specimen."
+    },
+    {
+      "name": "Column examples",
+      "spec": "Set a broad text measure at left and a narrow one at right. Use Futura Demibold for their headings and retain the annotations identifying the settings."
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": "DV05",
+  "title": "Typography / DIN Next Rounded / White variant",
+  "image": "dv05.png",
+  "source": "../sources/pages/dv05.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/identity/typography",
+    "section": "DIN Next Rounded",
+    "selected_control_index": 4,
+    "related_default": "DW024",
+    "order": 242
+  },
+  "slide_intent": "Evaluate a reading face on a colored field because changing figure-ground relationships changes how its weights appear.",
+  "strategic_value": "Reversed DIN specimens can extend Duolingo’s reading voice onto green communication surfaces.",
+  "demonstration": "Four white weights appear on green beside the unchanged long-text role and ten-word headline condition.",
+  "category": "Typography",
+  "practical_value": "Compare the reversed weights before using the face on a colored field.",
+  "content_islands": [
+    {
+      "name": "Alternate color specimen",
+      "spec": "Stack the four white specimens on green and retain the selected white control below."
+    },
+    {
+      "name": "Reading role",
+      "spec": "Place the heading and longer-text role in the right column."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The source assigns DIN Next Rounded to longer sections and says it is used in marketing headlines of 10 words or longer.",
+    "Expression": "Four white weights appear on green beside the unchanged long-text role and ten-word headline condition."
+  },
+  "ingredient": {
+    "name": "DIN Next Rounded",
+    "role": "Support longer reading within the brand voice.",
+    "application": "Use for longer sections of text; this introduction names marketing headlines of 10 words or longer.",
+    "scope": "Historical archived guidelines. Historical source. The adjacent usage section says “longer than 10 words”; preserve that slight threshold difference rather than silently rewriting it."
+  }
+}

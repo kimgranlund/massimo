@@ -1,0 +1,27 @@
+{
+  "id": "BK002",
+  "title": "Burger King Corporation Terms & Conditions",
+  "image": "bk002.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 2
+  },
+  "slide_intent": "Separate permission to use a brand from knowledge of its design so readers understand the limits of the reference.",
+  "strategic_value": "Explicit review and territorial conditions can help Burger King keep partner execution accountable.",
+  "demonstration": "A left notice introduces two narrower columns of terms on a cream field.",
+  "category": "Brand",
+  "practical_value": "Check authorization, market-specific marks and approval requirements before treating examples as reusable assets.",
+  "content_islands": [
+    {
+      "name": "Notice",
+      "spec": "Place the heading and opening condition in the left column."
+    },
+    {
+      "name": "Terms",
+      "spec": "Set the authorized-use, territorial trademark, review and return conditions in two columns to the right."
+    }
+  ],
+  "reference_purposes": {
+    "Constraint": "The terms restrict authorized use, require review and approvals, and distinguish registered marks by territory."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "DB0502",
+  "title": "Die Macher:innen / Unser Markenkern",
+  "image": "db0502.png",
+  "source": "../sources/page-05.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 5,
+    "section": 2,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Unsere-Markenpersoenlichkeit"
+  },
+  "slide_intent": "Connect promises with actions and accountability so an audience can understand what the brand stands for.",
+  "strategic_value": "DB can make its progress claim more credible by emphasizing responsibility, honest assessment and measurable results.",
+  "demonstration": "A brand-core manifesto develops responsibility and performance above a photograph of an employee wearing a safety vest.",
+  "category": "Brand",
+  "practical_value": "Check whether proposed brand language describes observable work and outcomes.",
+  "content_islands": [
+    {
+      "name": "Brand-core statement",
+      "spec": "Place the responsibility and performance paragraphs under the title and subheading."
+    },
+    {
+      "name": "Employee portrait",
+      "spec": "Anchor the manifesto with the worker photograph below."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The manifesto explains responsibility, visible progress and being judged by results.",
+    "Expression": "The worker portrait gives the text a concrete human railway subject."
+  }
+}

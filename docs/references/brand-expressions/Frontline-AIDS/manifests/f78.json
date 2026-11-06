@@ -1,0 +1,24 @@
+{
+  "id": "F78",
+  "title": "A quick recap",
+  "image": "f78.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 78
+  },
+  "slide_intent": "Teach how to identify the parts of a finished communication. Numbered cross-references let a reader trace a design choice from specimen to application.",
+  "strategic_value": "A recognizable family of assets can support both expressive covers and report pages with substantial text.",
+  "demonstration": "An upper strip catalogs the logo, strapline, colors, type, photography, illustration, marks and patterns. Numbered labels point to those elements in the printed pieces below.",
+  "category": "Application",
+  "practical_value": "Identify the few assets a proposed piece needs by comparing it with the annotated covers and interior spread.",
+  "content_islands": [
+    {
+      "name": "Asset key",
+      "spec": "Arrange named specimens across the gray upper field and attach a small numbered marker to each asset class."
+    },
+    {
+      "name": "Annotated applications",
+      "spec": "Line up the covers and open publication below. Place the same numbers near the features they identify, with fine leaders where useful."
+    }
+  ]
+}

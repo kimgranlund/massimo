@@ -1,0 +1,41 @@
+{
+  "id": "IB035",
+  "title": "UI icons / Contribution",
+  "image": "ib035.png",
+  "source": "../sources/iconography-ui-icons-contribute.txt",
+  "location": {
+    "series": "IBM Design Language / public web guidelines",
+    "item": 35,
+    "extent": "Complete webpage content area, default interactive state",
+    "url": "https://www.ibm.com/design/language/iconography/ui-icons/contribute/",
+    "order": 35000
+  },
+  "slide_intent": "Make new symbols enter a shared system through deliberate review, because uncontrolled additions can create duplicate meanings and inconsistent rendering.",
+  "strategic_value": "The submission checklist can protect IBM’s icon vocabulary as more teams contribute.",
+  "demonstration": "Resource cards precede design criteria, production instructions and a numbered approval process with request links.",
+  "category": "Application",
+  "practical_value": "Prepare a distinct 32px SVG icon with correct pixel alignment and plan for review before publication.",
+  "content_islands": [
+    {
+      "name": "Resources",
+      "spec": "Place starter-file and library cards below the introduction."
+    },
+    {
+      "name": "Design and production",
+      "spec": "Follow with uniqueness, accessibility and international-understanding criteria."
+    },
+    {
+      "name": "Production checklist",
+      "spec": "Specify pixel snapping, layer naming, 32px SVG delivery and expanded strokes in the central text column."
+    },
+    {
+      "name": "Approval process",
+      "spec": "Conclude with the review stages, timing note and single, batch and update request links."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source explains that contribution guidance maintains visual consistency and proper formatting.",
+    "Application": "The checklist describes artboard setup, pixel alignment, stroke expansion and submission.",
+    "Constraint": "All submissions require approval; production-ready UI icons are 32×32px SVGs with expanded strokes and full-pixel values."
+  }
+}

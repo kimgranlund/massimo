@@ -1,0 +1,38 @@
+{
+  "id": "DW081",
+  "title": "Writing / Style / Lists",
+  "image": "dw081.png",
+  "source": "../sources/pages/writing-style.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/style",
+    "section": "Lists",
+    "item": 81,
+    "order": 810
+  },
+  "slide_intent": "Keep parallel list items grammatically parallel so a reader can scan them as one coherent group.",
+  "strategic_value": "Two contrasting list formats can help Duolingo avoid uneven rhythm within otherwise simple explanatory copy.",
+  "demonstration": "A fruit list of lowercase fragments is followed by a list of complete sentences about learning motivations.",
+  "category": "Voice",
+  "practical_value": "Decide whether the list uses fragments or sentences, then apply that form to every item.",
+  "content_islands": [
+    {
+      "name": "Guidance column",
+      "spec": "Place the Lists heading and consistency requirement at left."
+    },
+    {
+      "name": "Worked examples",
+      "spec": "Show the fragment-list instruction and example above the complete-sentence instruction and example at right."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "Two complete lists demonstrate the different treatments of fragments and sentences.",
+    "Constraint": "Lead into a list with a colon; fragments have no capitalization or terminal punctuation, complete sentences have both, and items within a list must use the same form."
+  },
+  "ingredient": {
+    "name": "List construction",
+    "role": "Make parallel items easy to scan.",
+    "application": "Use a colon before lists; format all items as either unpunctuated lowercase fragments or capitalized, punctuated sentences.",
+    "scope": "Historical official guidelines from the 2024–2025 archived snapshot; this records the displayed guidance, not current Duolingo product behavior."
+  }
+}

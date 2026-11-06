@@ -1,0 +1,24 @@
+{
+  "id": "F89",
+  "title": "Get in touch",
+  "image": "f89.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 89
+  },
+  "slide_intent": "Close the book with a clear route for follow-up. A reader who needs clarification should be able to find the contact details immediately.",
+  "strategic_value": "The final page can keep the guidelines attributable to Frontline AIDS and connect a reader with the communications contacts listed in this edition.",
+  "demonstration": "A pink field carries a contact block at upper left, a large black logo at upper right and a compact campaign line at lower right.",
+  "category": "Layout",
+  "practical_value": "Place the contact route where a reader returning to the back page can find it. Treat the listed names and addresses as details from the January 2021 guide.",
+  "content_islands": [
+    {
+      "name": "Contact block",
+      "spec": "Stack the heading, two named contacts with email addresses and the bold website address at upper left."
+    },
+    {
+      "name": "Closing identity",
+      "spec": "Set the black brand lockup at upper right and the short strapline at lower right. Leave the central pink field open."
+    }
+  ]
+}

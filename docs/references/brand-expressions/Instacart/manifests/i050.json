@@ -1,0 +1,25 @@
+{
+  "id": "I050",
+  "title": "Food-focused",
+  "image": "i050.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 50,
+    "printed_page": 50
+  },
+  "slide_intent": "Teach designers to show food in an abundant, natural context. Ingredients, utensils and preparation gestures help viewers understand how a product will be enjoyed.",
+  "strategic_value": "Instacart can make an item feel like part of a meal by showing its textures, surroundings and handling.",
+  "demonstration": "A dark green rule column accompanies a tiled montage of food preparation, plated dishes, close-ups and a pasta-serving gesture. Four descriptive words close the column.",
+  "category": "Imagery",
+  "practical_value": "Choose between a plated scene, a pattern and a close-up, keeping enough contextual detail and contrast for the food to remain prominent.",
+  "content_islands": [
+    {
+      "name": "Brief and descriptors",
+      "spec": "Keep the food-focused heading and short guidance on the green left rail. Stack the four descriptive qualities near the foot."
+    },
+    {
+      "name": "Food montage",
+      "spec": "Fill the rest of the page edge to edge. Alternate overhead ingredients, hands preparing food and closer plated views so the examples demonstrate a range within the tier."
+    }
+  ]
+}

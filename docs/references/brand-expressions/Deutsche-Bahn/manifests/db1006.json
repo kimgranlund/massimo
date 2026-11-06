@@ -1,0 +1,32 @@
+{
+  "id": "DB1006",
+  "title": "Farbigkeit / Schwelle",
+  "image": "db1006.png",
+  "source": "../sources/page-10.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 10,
+    "section": 6,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Schwelle"
+  },
+  "slide_intent": "Assign color alternatives by role so an accent stays recognizable across backgrounds.",
+  "strategic_value": "Prioritizing DB Red can keep the Schwelle associated with the core identity while Lilac adds expression.",
+  "demonstration": "Primary red/white combinations appear above expressive lilac combinations on light and dark backgrounds.",
+  "category": "Color",
+  "practical_value": "Prefer DB Red; select White or Lilac within the defined options when context and contrast warrant them.",
+  "content_islands": [
+    {
+      "name": "Primary use",
+      "spec": "Pair red on White with red or white on Cold Black."
+    },
+    {
+      "name": "Expressive use",
+      "spec": "Pair lilac on White with lilac on Cold Black below."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The copy connects color selection with visibility and a coherent brand appearance.",
+    "Application": "Four panels demonstrate five primary and expressive color/background combinations, including both red and white on Cold Black.",
+    "Constraint": "The stated colors are DB Red, White and Lilac, with DB Red taking priority over Lilac."
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "IG14",
+  "title": "Expanded colors",
+  "image": "ig14.png",
+  "source": "../sources/ig14.png",
+  "location": {
+    "series": "Elvis Dinh / Instagram brand design system / project year 2022",
+    "item": 14,
+    "extent": "whole source artwork"
+  },
+  "slide_intent": "Extend a palette through related light and dark variants so variety retains a visible family relationship.",
+  "strategic_value": "Parallel hue families can broaden Instagram’s expressive range while keeping it coherent.",
+  "demonstration": "Five light hues form the upper row and five dark hues form the lower row, with names and hex labels.",
+  "category": "Color",
+  "practical_value": "Select an extended shade by its relationship to a core hue rather than introducing an unrelated color.",
+  "content_islands": [
+    {
+      "name": "Light variants",
+      "spec": "Place the five light hue swatches in one aligned row."
+    },
+    {
+      "name": "Dark variants",
+      "spec": "Align the dark equivalents underneath and preserve each reproduction label."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The paired light and dark rows demonstrate an extended family of colors.",
+    "Application": "Named, coded variants provide additional color choices for the system."
+  }
+}

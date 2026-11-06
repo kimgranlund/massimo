@@ -1,0 +1,29 @@
+{
+  "id": "HC01",
+  "title": "Helsingin kaupunginvaakuna / History and use",
+  "image": "hc01.png",
+  "source": "../sources/coat-of-arms-2019.pdf",
+  "location": {
+    "page": 1,
+    "order": 176
+  },
+  "slide_intent": "Distinguish ceremonial authority from everyday service identity so viewers can recognize which civic role is being represented.",
+  "strategic_value": "Separating the historic coat of arms from the framed service logo can preserve the meaning of each.",
+  "demonstration": "Three numbered Finnish text sections explain the coat of arms history, the 2017 framed logo and permitted heraldic contexts.",
+  "category": "Brand",
+  "practical_value": "Choose the appropriate civic symbol before composing a ceremonial or service communication.",
+  "content_islands": [
+    {
+      "name": "Historical account",
+      "spec": "Upper paragraphs explain the seal, heraldic description and approved model."
+    },
+    {
+      "name": "Identity and use",
+      "spec": "Lower numbered sections distinguish the framed logo and restricted crowned coat of arms."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The numbered sections distinguish everyday framed-logo use from ceremonial heraldic use and identify which users may use the crowned version.",
+    "Constraint": "The text separates crowned use by central administration from other uses and says the coat of arms and framed logo are not used together."
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "IB011T12",
+  "title": "Iconography / Expressive pictogram vocabulary",
+  "image": "ib011t12.png",
+  "source": "../sources/alternate-tabs.json",
+  "location": {
+    "series": "IBM Design Language / alternate tab states",
+    "parent": "IB011",
+    "group": 1,
+    "tab": 2,
+    "label": "Expressive",
+    "url": "https://www.ibm.com/design/language/iconography/overview/",
+    "order": 11112
+  },
+  "slide_intent": "Choose stronger visual presence deliberately, because expressive detail can attract attention but may be unnecessary for a simple functional action.",
+  "strategic_value": "A shared combination of thin black detail and blue-violet gradient strokes can make IBM’s expressive symbols recognizable as a family.",
+  "demonstration": "Eighteen expressive pictograms occupy a three-row, six-column grid under the selected Expressive tab, showing people, networks, data, shopping and other concepts.",
+  "category": "Imagery",
+  "practical_value": "Compare the expressive vocabulary before selecting a pictogram for a context that warrants visual emphasis.",
+  "content_islands": [
+    {
+      "name": "Type selector",
+      "spec": "Show Expressive selected beside Productive."
+    },
+    {
+      "name": "Specimen grid",
+      "spec": "Arrange the eighteen symbols in equal cells, preserving their mix of black detail, circular points and colored gradient paths."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The accompanying overview explains that expressive pictograms are for selected uses needing greater visual impact.",
+    "Expression": "The repeated stroke, point and gradient treatments unite the varied concepts into a recognizable style.",
+    "Application": "The specimen set makes the expressive option available for comparison with the productive type in the parent page."
+  }
+}

@@ -1,0 +1,182 @@
+{
+  "id": "IB043",
+  "title": "Isometric illustration / Usage",
+  "image": "ib043.png",
+  "source": "../sources/illustration-isometric-style-usage.txt",
+  "location": {
+    "series": "IBM Design Language / public web guidelines",
+    "item": 43,
+    "extent": "Complete webpage content area, default interactive state",
+    "url": "https://www.ibm.com/design/language/illustration/isometric-style/usage/",
+    "order": 43000
+  },
+  "slide_intent": "Preserve a believable spatial frame while objects move so viewers can understand depth and cause and effect.",
+  "strategic_value": "Consistent perspective and physical weight can make IBM’s architectural illustration language useful for complex concepts.",
+  "demonstration": "Application mockups precede a layered-cube sequence and paired motion examples for translation, rotation, camera, shading and weight.",
+  "category": "Motion",
+  "practical_value": "Animate along the isometric grid and evaluate whether each movement preserves the scene’s perspective.",
+  "content_islands": [
+    {
+      "name": "Applications",
+      "spec": "Begin with reports, diagrams, product screens and printed communications."
+    },
+    {
+      "name": "Animation model",
+      "spec": "Introduce the layered blue cube and tips on volume, shadows and physicality."
+    },
+    {
+      "name": "Perspective comparisons",
+      "spec": "Group translation, rotation and camera pairs around the cube motif."
+    },
+    {
+      "name": "Shading and physicality",
+      "spec": "Finish with 2D-gradient and weight comparisons, retaining their explanatory captions."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text explains that violating the grid breaks the illusion of space and depth.",
+    "Expression": "Blue volumetric forms use a fixed isometric frame.",
+    "Application": "Pairs demonstrate one-axis translation and rotation, fixed-camera behavior and shading choices.",
+    "Constraint": "The page calls for one-axis motion and a locked isometric camera, with only rare controlled camera repositioning; it discourages baked 3D gradients and exaggerated motion."
+  },
+  "ingredient": {
+    "name": "Isometric motion frame",
+    "role": "Keep depth and movement understandable.",
+    "application": "Move along the 30° construction grid, usually on one axis at a time; keep the camera fixed and make shadows respond to the objects.",
+    "scope": "IBM isometric illustrations, typically produced as 2D artwork. The source preserves rare controlled-camera exceptions and selective rotation."
+  },
+  "motion_assets": [
+    {
+      "title": "Isometric motion overview",
+      "file": "../sources/media/ba5bfc74a8b7.mp4",
+      "poster": "../sources/media/ba5bfc74a8b7-poster.png",
+      "duration_seconds": 17.71,
+      "source_url": "https://www.ibm.com/design/language/videos/illustration/usage-hero.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Isometric translation: one axis",
+      "file": "../sources/media/f70f59ee9421.mp4",
+      "poster": "../sources/media/f70f59ee9421-poster.png",
+      "duration_seconds": 6.0,
+      "source_url": "https://www.ibm.com/design/language/videos/illustration/translation-do.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Isometric translation: overlapping axes",
+      "file": "../sources/media/c57e1b74541c.mp4",
+      "poster": "../sources/media/c57e1b74541c-poster.png",
+      "duration_seconds": 6.0,
+      "source_url": "https://www.ibm.com/design/language/videos/illustration/translation-dont.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Isometric rotation: one axis",
+      "file": "../sources/media/7827a9a561c7.mp4",
+      "poster": "../sources/media/7827a9a561c7-poster.png",
+      "duration_seconds": 2.96,
+      "source_url": "https://www.ibm.com/design/language/videos/illustration/rotation-do.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Isometric rotation: overlapping axes",
+      "file": "../sources/media/4710ec8d96df.mp4",
+      "poster": "../sources/media/4710ec8d96df-poster.png",
+      "duration_seconds": 2.96,
+      "source_url": "https://www.ibm.com/design/language/videos/illustration/rotation-dont.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Isometric camera: fixed perspective",
+      "file": "../sources/media/e9ff11cebf08.mp4",
+      "poster": "../sources/media/e9ff11cebf08-poster.png",
+      "duration_seconds": 2.96,
+      "source_url": "https://www.ibm.com/design/language/videos/illustration/camera-do.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Isometric camera: changing perspective",
+      "file": "../sources/media/27250291c3f9.mp4",
+      "poster": "../sources/media/27250291c3f9-poster.png",
+      "duration_seconds": 6.04,
+      "source_url": "https://www.ibm.com/design/language/videos/illustration/camera-dont.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Isometric light: 2D treatment",
+      "file": "../sources/media/e3e9dab4ae94.mp4",
+      "poster": "../sources/media/e3e9dab4ae94-poster.png",
+      "duration_seconds": 3.79,
+      "source_url": "https://www.ibm.com/design/language/videos/illustration/light-do.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Isometric light: baked 3D treatment",
+      "file": "../sources/media/c250c53463aa.mp4",
+      "poster": "../sources/media/c250c53463aa-poster.png",
+      "duration_seconds": 3.79,
+      "source_url": "https://www.ibm.com/design/language/videos/illustration/light-dont.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Isometric physicality: weight and momentum",
+      "file": "../sources/media/aac029c4a77b.mp4",
+      "poster": "../sources/media/aac029c4a77b-poster.png",
+      "duration_seconds": 4.58,
+      "source_url": "https://www.ibm.com/design/language/videos/illustration/physicality-do.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Isometric physicality: exaggerated movement",
+      "file": "../sources/media/1cc9c9724416.mp4",
+      "poster": "../sources/media/1cc9c9724416-poster.png",
+      "duration_seconds": 4.58,
+      "source_url": "https://www.ibm.com/design/language/videos/illustration/physicality-dont.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    }
+  ]
+}

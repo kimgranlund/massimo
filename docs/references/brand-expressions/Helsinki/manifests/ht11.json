@@ -1,0 +1,28 @@
+{
+  "id": "HT11",
+  "title": "Helsinki Grotesk Pro / Bold and Bold Italic",
+  "image": "ht11.png",
+  "source": "../sources/helsinki-grotesk-pro-2025.pdf",
+  "location": {
+    "page": 11,
+    "order": 189
+  },
+  "slide_intent": "Judge bold and bold italic in real words and paragraphs so weight and slant can be chosen for both voice and reading.",
+  "strategic_value": "The bold and bold italic specimens can help Helsinki retain a consistent family while selecting an appropriate degree of emphasis.",
+  "demonstration": "A two-column specimen combines Cyrillic words and a Ukrainian paragraph with large Cyrillic forms.",
+  "category": "Typography",
+  "practical_value": "Compare the bold and bold italic cuts at display and paragraph scale before assigning them to a communication.",
+  "content_islands": [
+    {
+      "name": "Word specimens",
+      "spec": "Large words demonstrate the selected upright and italic cuts."
+    },
+    {
+      "name": "Paragraph and large forms",
+      "spec": "A smaller paragraph and oversized letter or numeral forms provide contrasting reading scales."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A two-column specimen combines Cyrillic words and a Ukrainian paragraph with large Cyrillic forms."
+  }
+}

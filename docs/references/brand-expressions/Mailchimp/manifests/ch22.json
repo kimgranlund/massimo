@@ -1,0 +1,35 @@
+{
+  "id": "CH22",
+  "title": "Billboard / More than mail",
+  "image": "ch22.png",
+  "source": "../sources/ch22.jpg",
+  "location": {
+    "series": "COLLINS / Mailchimp case study",
+    "item": 22,
+    "extent": "Complete published artwork",
+    "section": "Gallery"
+  },
+  "slide_intent": "Acknowledge a limiting association directly because people need a reason to revise what they think a brand offers.",
+  "strategic_value": "The self-aware name joke can help Mailchimp communicate expansion beyond email while retaining humor.",
+  "demonstration": "A large yellow street billboard pairs an unusual hand drawing with a two-line message about the name and broader offer, followed by the logo.",
+  "category": "Voice",
+  "practical_value": "Compare how a concise joke, product scope and brand signature share a billboard.",
+  "content_islands": [
+    {
+      "name": "Drawing",
+      "spec": "Place the black hand illustration on the left half."
+    },
+    {
+      "name": "Message and signature",
+      "spec": "Keep the short message at right with the signature directly below."
+    },
+    {
+      "name": "Street context",
+      "spec": "Retain pedestrians and surrounding architecture to show viewing scale."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The message appears on an outdoor billboard.",
+    "Expression": "The copy uses a self-aware joke about the brand name alongside the hand drawing."
+  }
+}

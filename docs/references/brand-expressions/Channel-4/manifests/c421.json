@@ -1,0 +1,36 @@
+{
+  "id": "C421",
+  "title": "Cube framework / Explicit cube / Implied cube",
+  "image": "c421.png",
+  "source": "../sources/c421.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 masterbrand / 2023",
+    "item": 21,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Distinguish a construction framework from its visible expression so a system can vary without losing structure.",
+  "strategic_value": "A cube that can be explicit or implied can give Channel 4 content worlds flexibility.",
+  "demonstration": "Three labeled panels compare a wireframe cube, a visible room and a purple soft-form composition around the green 4.",
+  "category": "Geometry",
+  "practical_value": "Decide how much of the underlying cube needs to remain visible in a particular world.",
+  "content_islands": [
+    {
+      "name": "Framework",
+      "spec": "Show the wireframe cube at left."
+    },
+    {
+      "name": "Expression comparison",
+      "spec": "Place explicit-room and implied-cube examples to its right under their labels."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The labeled comparison teaches explicit and implied uses of the cube framework.",
+    "Intent": "Pentagram says the square motif can be recessive or prominent to support a flexible canvas."
+  },
+  "ingredient": {
+    "name": "Cube world",
+    "role": "Organize different content environments.",
+    "application": "Use an explicit room or an implied cube while retaining the underlying spatial idea.",
+    "scope": "The 2023 case study expressly allows the motif to be recessive or prominent; it supplies no dimensional construction specification."
+  }
+}

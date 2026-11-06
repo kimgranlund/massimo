@@ -1,0 +1,32 @@
+{
+  "id": "DW139",
+  "title": "Resources / Introduction",
+  "image": "dw139.png",
+  "source": "../sources/pages/resources.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/resources",
+    "section": "Resources",
+    "item": 139,
+    "order": 1390
+  },
+  "slide_intent": "Make approved materials easy to locate because finding the right source helps people represent a brand consistently.",
+  "strategic_value": "A resource introduction and prominent shortcuts can reduce the effort needed to find Duolingo artwork.",
+  "demonstration": "White introductory text and four quick links sit across a coral field.",
+  "category": "Brand",
+  "practical_value": "Separate the asset-entry point from detailed usage guidance when organizing a brand library.",
+  "content_islands": [
+    {
+      "name": "Introduction",
+      "spec": "Place the large lowercase heading above the explanatory paragraph at left."
+    },
+    {
+      "name": "Quick links",
+      "spec": "Group Press Kit, Illustration Colors, Brand Colors and Duolingo.com in two columns at right."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The introduction says these resources help people represent Duolingo or share its story.",
+    "Application": "The header routes readers to press, illustration and brand-color resources."
+  }
+}

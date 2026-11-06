@@ -1,0 +1,28 @@
+{
+  "id": "F38",
+  "title": "Headline typeface",
+  "image": "f38.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 38
+  },
+  "slide_intent": "Teach designers to select a display face by the voice a headline should carry. Weight and case can give a short phrase force at first read.",
+  "strategic_value": "Frontline AIDS can sustain its direct voice with Quasimoda Heavy across headlines, with an available system alternative for office documents.",
+  "demonstration": "White and pink uppercase words in Quasimoda Heavy make a large specimen against black. The page specifies uppercase use and identifies Arial Black as the fallback.",
+  "category": "Typography",
+  "practical_value": "Use uppercase Quasimoda Heavy for a headline, or Arial Black in a system-font document.",
+  "content_islands": [
+    {
+      "name": "Face and fallback",
+      "spec": "Set the introduction and the system-font alternative at left in light text. Show the substitute’s name in its own weight."
+    },
+    {
+      "name": "Headline specimen",
+      "spec": "On black, set the face name in white and the descriptive phrase in pink. Keep the specimen large and tightly stacked."
+    },
+    {
+      "name": "Character set",
+      "spec": "Place the uppercase alphabet and numerals below the specimen, with the note about uppercase use close to the letters."
+    }
+  ]
+}

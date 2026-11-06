@@ -1,0 +1,27 @@
+{
+  "id": "LH28",
+  "title": "Wordmark development wall",
+  "image": "lh28.png",
+  "source": "../sources/lh28.jpg",
+  "location": {
+    "series": "HvD Fonts / Lufthansa 2018",
+    "item": 7,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Compare repeated wordmarks at a common scale because subtle shape and spacing changes accumulate across a word.",
+  "strategic_value": "A structured proof wall can help select a Lufthansa wordmark that retains recognition while refining details.",
+  "demonstration": "Rows of Lufthansa proofs and enlarged test strings cover a studio wall beside a person.",
+  "category": "Typography",
+  "practical_value": "Judge whole-word rhythm across several alternatives before choosing individual letter details.",
+  "content_islands": [
+    {
+      "name": "Proof columns",
+      "spec": "Arrange alternatives in aligned rows and columns."
+    },
+    {
+      "name": "Review context",
+      "spec": "Preserve the person at right and the studio setting."
+    }
+  ],
+  "reference_purposes": {}
+}

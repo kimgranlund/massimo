@@ -1,0 +1,24 @@
+{
+  "id": "F21",
+  "title": "Logo usage",
+  "image": "f21.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 21
+  },
+  "slide_intent": "Show how different surfaces change the space a signature receives. Seeing actual uses helps a designer decide when the alternate lockup earns its place.",
+  "strategic_value": "Frontline AIDS can favor its primary identity across campaign materials while using its stacked form where it offers useful visibility.",
+  "demonstration": "Website and poster examples share a group with a pen. A separate gray field pairs tote and phone examples at different strengths of emphasis.",
+  "category": "Application",
+  "practical_value": "Check the signature against its intended surface. Use the narrow pen and small phone examples to judge whether a different treatment helps recognition.",
+  "content_islands": [
+    {
+      "name": "Primary applications",
+      "spec": "Place the guidance beside overlapping website and poster examples and the tall pen specimen."
+    },
+    {
+      "name": "Secondary comparisons",
+      "spec": "On the gray field, pair faded and full-strength tote and phone specimens. Keep the explanatory note close to these examples."
+    }
+  ]
+}

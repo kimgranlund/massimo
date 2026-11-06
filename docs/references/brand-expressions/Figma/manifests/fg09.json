@@ -1,0 +1,33 @@
+{
+  "id": "FG09",
+  "title": "Participant label sequence",
+  "image": "fg09.png",
+  "source": "../sources/fg09.mp4",
+  "location": {
+    "series": "COLLINS / Figma / Nothing Great Is Made Alone case study",
+    "item": 9,
+    "section": "Gallery",
+    "extent": "Complete clip; PNG is midpoint poster",
+    "poster_seconds": 4.96
+  },
+  "slide_intent": "Show a range of contributors in one repeated format so diverse roles feel equally eligible to participate.",
+  "strategic_value": "Switching labels and fields can make Figma’s invitation feel broader than a single profession.",
+  "demonstration": "A portrait sequence changes flat backgrounds, cursor types and role labels, including producer, architect, writer and other campaign characters.",
+  "category": "Motion",
+  "practical_value": "Keep a participant motif consistent while varying role, tool and color.",
+  "content_islands": [
+    {
+      "name": "Role card",
+      "spec": "Keep a compact tool-and-label pairing near the center of each portrait frame."
+    },
+    {
+      "name": "Sequence changes",
+      "spec": "Change the background, label and tool together as the clip advances."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Repeated tool-and-label cards cycle through contrasting colors and varied contributor roles.",
+    "Intent": "The source narrative describes inviting developers, producers, writers and others into the collaboration story."
+  },
+  "motion": "../sources/fg09.mp4"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "DB0509",
+  "title": "Dynamische Aktionen & Programme",
+  "image": "db0509.png",
+  "source": "../sources/page-05.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 5,
+    "section": 9,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Unsere-Markenpersoenlichkeit"
+  },
+  "slide_intent": "Make ongoing work followable so people can understand development between launch and completion.",
+  "strategic_value": "Continuous documentation can make DB’s strategic programs feel active and accountable.",
+  "demonstration": "A laptop showing a news hub sits beside bullets about live documentation, blogs, updates and stories of people and infrastructure.",
+  "category": "Application",
+  "practical_value": "Choose recurring updates when a program’s progress matters beyond its announcement.",
+  "content_islands": [
+    {
+      "name": "News-hub specimen",
+      "spec": "Place the laptop and its editorial page at left."
+    },
+    {
+      "name": "Program explanation",
+      "spec": "Place the live-documentation heading and three bullets in the right panel."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text says programs should be reported continuously, not only at start or completion.",
+    "Application": "The laptop illustrates a news hub supporting that reporting cadence."
+  }
+}

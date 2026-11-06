@@ -1,0 +1,32 @@
+{
+  "id": "HE026",
+  "title": "Layout templates",
+  "image": "he026.png",
+  "source": "../sources/use-basic-elements.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Layout templates",
+    "order": 34,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/use-basic-elements#layout-templates",
+    "original_html": "../sources/use-basic-elements.html"
+  },
+  "slide_intent": "Use a template hierarchy to establish relationships so a new format begins with deliberate priorities rather than isolated placements.",
+  "strategic_value": "Shared templates can help Helsinki designers maintain spacious arrangements across communications.",
+  "demonstration": "This expanded webpage section presents two short instructions about template hierarchy and bold, spacious arrangement, followed by a download link.",
+  "category": "Layout",
+  "practical_value": "Use the linked templates to establish relative emphasis and spacing before refining a layout.",
+  "content_islands": [
+    {
+      "name": "Hierarchy guidance",
+      "spec": "Place the two layout instructions beneath the section title."
+    },
+    {
+      "name": "Template access",
+      "spec": "Finish with the download link."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source says template hierarchy helps decide correlations between elements.",
+    "Application": "It directs designers to layout templates and asks for bold, spacious arrangement."
+  }
+}

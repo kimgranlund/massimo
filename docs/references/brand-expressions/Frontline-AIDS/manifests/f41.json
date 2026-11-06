@@ -1,0 +1,28 @@
+{
+  "id": "F41",
+  "title": "Headlines",
+  "image": "f41.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 41
+  },
+  "slide_intent": "Teach designers to choose how much of a statement receives emphasis. A word highlight directs the eye more selectively than a box enclosing every line.",
+  "strategic_value": "Frontline AIDS can vary emphasis while keeping a consistent headline voice, even across campaigns with very different messages.",
+  "demonstration": "The same multiline headline appears in regular, highlighted and boxed treatments. Enlarged construction diagrams define clearance as one third of the letter height.",
+  "category": "Typography",
+  "practical_value": "Choose a regular headline for direct use, highlight a word for selective emphasis or box the whole headline when the complete message needs prominence.",
+  "content_islands": [
+    {
+      "name": "Margin construction",
+      "spec": "Place enlarged pale letters and pink guides above the examples. Show X as one third of the letter height."
+    },
+    {
+      "name": "Three headline treatments",
+      "spec": "Align the same phrase in three columns, first in plain black, then with a word highlighted, then as colored type in a black box."
+    },
+    {
+      "name": "Spacing notes",
+      "spec": "Attach the equal-margin notes to the relevant specimens. Size the box to the longest line and retain space at its edges."
+    }
+  ]
+}

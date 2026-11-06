@@ -1,0 +1,34 @@
+{
+  "id": "BK034",
+  "title": "Primary Logo Clearspace",
+  "image": "bk034.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 34
+  },
+  "slide_intent": "Keep other content away from the mark so its burger silhouette and name remain easy to distinguish.",
+  "strategic_value": "A repeatable buffer can preserve the primary logo’s recognition across crowded applications.",
+  "demonstration": "The primary logo sits inside a shaded clearance diagram measured with copies of its U; explanatory text sits at left.",
+  "category": "Geometry",
+  "practical_value": "Use the width of the Burger U as the minimum separation from neighboring visual and verbal elements.",
+  "content_islands": [
+    {
+      "name": "Clearspace definition",
+      "spec": "Place the definition at upper left, identifying the width of the Burger U as the unit."
+    },
+    {
+      "name": "Measured logo",
+      "spec": "Place the full-color logo to the right with a shaded perimeter and rotated U specimens on all four sides."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The paragraph and diagram define the minimum clearspace using the width of the Burger U.",
+    "Constraint": "Other visual and verbal elements must remain outside the defined minimum clearspace."
+  },
+  "ingredient": {
+    "name": "Primary logo clearspace",
+    "role": "Keep the logo visually separate from adjacent content.",
+    "application": "Reserve at least one Burger U width around the logo.",
+    "scope": "Historical 2020 partner guide; applies to the primary logo, not the separate wordmark or Chinese lockup measurements."
+  }
+}

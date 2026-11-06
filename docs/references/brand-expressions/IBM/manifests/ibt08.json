@@ -1,0 +1,40 @@
+{
+  "id": "IBT08",
+  "title": "Clear space requirements",
+  "image": "ibt08.png",
+  "source": "../sources/ibm-logo-third-parties.pdf",
+  "location": {
+    "page": 8,
+    "series": "IBM Logo and Brand Guidelines for Third Parties / copyright 2022",
+    "order": 100008
+  },
+  "slide_intent": "Protect a mark from visual interference, because nearby elements can weaken recognition and obscure its boundaries.",
+  "strategic_value": "A measurable isolation area can keep IBM’s 8-bar recognizable across third-party layouts.",
+  "demonstration": "A left text column introduces the rule; a large gray panel shows the IBM logo inside an X-measured clear-space construction with a registration-mark callout.",
+  "category": "Geometry",
+  "practical_value": "Measure the isolation zone from the I height and keep other content beyond it.",
+  "content_islands": [
+    {
+      "name": "Rule text",
+      "spec": "Place the clear-space heading and minimum-distance statement at upper left."
+    },
+    {
+      "name": "Isolation construction",
+      "spec": "Center the large logo in the right field, with four surrounding X boxes and an explanation of the I-height unit."
+    },
+    {
+      "name": "Registration callout",
+      "spec": "Place the registration note beside the small registered mark at the logo’s lower right."
+    }
+  ],
+  "ingredient": {
+    "name": "Third-party logo isolation",
+    "role": "Keep the trademark visually distinct from nearby content.",
+    "application": "Reserve clear space at least equal to the I height around the IBM mark.",
+    "scope": "This guide’s general third-party placement rule. The registration-mark instruction shown here has explicit clothing and small-item exceptions on page 13."
+  },
+  "reference_purposes": {
+    "Application": "The diagram defines the clear-space unit as the height of the I and shows the surrounding isolation area.",
+    "Constraint": "This page requires clear space at least equal to trademark height and says the 8-bar includes the registration mark; page 13 separately supplies merchandise exceptions."
+  }
+}

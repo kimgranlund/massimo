@@ -1,0 +1,39 @@
+{
+  "id": "DW120",
+  "title": "Illustration / Characters / Body types / Shoulders",
+  "image": "dw120.png",
+  "source": "../sources/pages/illustration-characters.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/illustration/characters",
+    "section": "Shoulders",
+    "item": 120,
+    "order": 1200
+  },
+  "slide_intent": "Conceal construction joints and reduce unnecessary pieces so a viewer reads a clear silhouette rather than the assembly.",
+  "strategic_value": "A simple shoulder connection can help Duolingo preserve its uncluttered character style through posing.",
+  "demonstration": "Two translucent figures compare a concealed shoulder connection with an overbuilt version marked by a pale red prohibition frame.",
+  "category": "Geometry",
+  "practical_value": "Place the arm socket behind the torso and remove extra shapes that complicate the outline.",
+  "content_islands": [
+    {
+      "name": "Shoulder comparison",
+      "spec": "Place the simpler figure at left with its shoulder joint highlighted; place the more complex figure beside it inside a crossed red frame."
+    },
+    {
+      "name": "Silhouette rule",
+      "spec": "Set the Shoulders heading and two brief instructions at right."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The copy explains that too many shapes complicate the silhouette.",
+    "Application": "The highlighted socket and contrasting figure show the intended arm-to-torso relationship.",
+    "Constraint": "The arm socket must remain concealed behind the torso, and excess shapes should be avoided."
+  },
+  "ingredient": {
+    "name": "Concealed shoulder socket",
+    "role": "Keep the body silhouette simple.",
+    "application": "Hide the arm socket behind the torso and avoid adding unnecessary construction shapes.",
+    "scope": "Historical official Duolingo illustration guidance from the 2024–2025 archived snapshot. Applies to the displayed character-body construction guidance."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "LH04",
+  "title": "Crane curve construction",
+  "image": "lh04.png",
+  "source": "../sources/lh04.jpg",
+  "location": {
+    "series": "Mona Franz / Lufthansa 2018",
+    "item": 4,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Expose underlying curve relationships because visual balance requires deliberate shaping.",
+  "strategic_value": "The curve study can help preserve a coherent crane as its outline becomes lighter.",
+  "demonstration": "A black crane and ring are overlaid with pale cyan circular construction guides.",
+  "category": "Geometry",
+  "practical_value": "Compare the silhouette with its guiding curves before judging the isolated mark.",
+  "content_islands": [
+    {
+      "name": "Silhouette",
+      "spec": "Center the black crane within its enclosing ring."
+    },
+    {
+      "name": "Construction overlay",
+      "spec": "Retain the pale circular guides crossing the wing, neck and tail."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A black crane and ring are overlaid with pale cyan circular construction guides."
+  }
+}

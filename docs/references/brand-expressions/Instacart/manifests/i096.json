@@ -1,0 +1,25 @@
+{
+  "id": "I096",
+  "title": "Delivery",
+  "image": "i096.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 96,
+    "printed_page": 102
+  },
+  "slide_intent": "Show how to make progress legible to someone waiting for a delivery, using a route and identifiable endpoints.",
+  "strategic_value": "An Instacart-colored route and marker can carry the identity into a functional status view.",
+  "demonstration": "A cream map card shows a delivery status heading, a route with bright and dark green sections, a circular marker and an orange destination pin.",
+  "category": "Application",
+  "practical_value": "Choose a hierarchy that lets the person see status first, then find the marker and destination along the route.",
+  "content_islands": [
+    {
+      "name": "Status heading",
+      "spec": "Place the delivery message above the map inside a narrow cream card against dark green."
+    },
+    {
+      "name": "Route map",
+      "spec": "Keep the base map pale. Use green line segments, a circular marker and an orange pin to distinguish progress and destination."
+    }
+  ]
+}

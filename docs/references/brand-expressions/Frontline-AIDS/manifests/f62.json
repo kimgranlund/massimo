@@ -1,0 +1,24 @@
+{
+  "id": "F62",
+  "title": "Character illustration style",
+  "image": "f62.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 62
+  },
+  "slide_intent": "Teach illustrators which features make an abstract figure read as part of the same family. Silhouette, line weight and pose have to work together.",
+  "strategic_value": "The brand can connect its geometric illustration vocabulary to human scenes across different subjects and situations.",
+  "demonstration": "A figure holding a megaphone is annotated from head to legs; two smaller watchouts show how to treat a front-facing character and the surrounding setting.",
+  "category": "Imagery",
+  "practical_value": "Check a new figure against the annotated features, including two to four colors, a few heavy outline strokes and lighter detail lines. Bring a front-facing head closer to the body.",
+  "content_islands": [
+    {
+      "name": "Construction guidance",
+      "spec": "Set the purpose and resource note in the left column with the small watchout examples beneath."
+    },
+    {
+      "name": "Annotated character",
+      "spec": "Isolate the full figure on white. Draw fine leader lines from facial treatment, body shapes, lines, colors and pattern to the corresponding notes."
+    }
+  ]
+}

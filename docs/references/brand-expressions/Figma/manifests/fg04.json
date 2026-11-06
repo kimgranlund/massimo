@@ -1,0 +1,41 @@
+{
+  "id": "FG04",
+  "title": "Memory Marker",
+  "image": "fg04.png",
+  "source": "../sources/fg04.jpg",
+  "location": {
+    "series": "COLLINS / Figma / Nothing Great Is Made Alone case study",
+    "item": 4,
+    "section": "Memory Marker",
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Repeat a distinctive cue across formats because viewers need something familiar when the content changes.",
+  "strategic_value": "Colored contributor labels can connect Figma’s print, social and website communications as one collaborative story.",
+  "demonstration": "Orange circles and arrows connect colored name labels across a Mona Lisa poster, social music illustration and tablet website.",
+  "category": "Brand",
+  "practical_value": "Choose a small recurring cue that can survive changes in medium and subject.",
+  "content_islands": [
+    {
+      "name": "Print example",
+      "spec": "Place the annotated portrait at left with circles around selected contributor labels."
+    },
+    {
+      "name": "Social example",
+      "spec": "Place the music post in the middle and point to its label."
+    },
+    {
+      "name": "Web example",
+      "spec": "Place the tablet at right and connect its contributor labels back to the other formats."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The Memory Marker caption explicitly describes a repeated cue as an aid to recognition and recall.",
+    "Application": "Arrows trace contributor labels across print, social and web examples."
+  },
+  "ingredient": {
+    "name": "Contributor labels",
+    "role": "Make separate contributors visible and connect campaign formats.",
+    "application": "Pair short names or roles with colored cursor-like tools and carry the pairing across formats.",
+    "scope": "Demonstrated campaign examples; no mandatory label colors, positions or dimensions are specified."
+  }
+}

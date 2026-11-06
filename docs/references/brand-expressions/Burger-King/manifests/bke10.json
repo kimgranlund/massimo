@@ -1,0 +1,29 @@
+{
+  "id": "BKE10",
+  "title": "Illustrated burger mural",
+  "image": "bke10.png",
+  "source": "../sources/bke10.webp",
+  "location": {
+    "series": "JKR / Burger King identity case study",
+    "item": 10,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Scale a recognizable gesture into the environment so a brand can communicate quickly across a street.",
+  "strategic_value": "A giant held burger with a small signature can give Burger King a presence led by food rather than a large logo alone.",
+  "demonstration": "A yellow mural on a building combines oversized pale lettering with an illustrated burger held by two brown hands.",
+  "category": "Application",
+  "practical_value": "Compare the relative roles of illustration, type and signature at architectural scale.",
+  "content_islands": [
+    {
+      "name": "Mural",
+      "spec": "Place the held burger over large pale lettering on yellow, with a small signature below."
+    },
+    {
+      "name": "Building context",
+      "spec": "Retain the surrounding facade, roof and windows to show size and placement."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "Illustration, typography and signature are applied together to a large building mural."
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "F01",
+  "title": "Join us. End it.",
+  "image": "f01.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 1
+  },
+  "slide_intent": "Introduce the brand through a person and an invitation. The reader can encounter the people at the center of the work before reading the guidelines.",
+  "strategic_value": "Frontline AIDS can give its call to action a human setting through a portrait and a visible conversation.",
+  "demonstration": "A photograph fills the cover. The wordmark appears at upper left and a cyan drawn line brackets a two-line pink invitation on black.",
+  "category": "Brand",
+  "practical_value": "Choose a crop with room for both the person’s face and the invitation. Place the headline where it can be read without covering the face.",
+  "content_islands": [
+    {
+      "name": "Portrait",
+      "spec": "Fill the landscape frame with the conversation. Keep the sharply focused face on the right."
+    },
+    {
+      "name": "Identity and invitation",
+      "spec": "Place the small dark logo at upper left. Group the headline, cyan gesture and January 2021 edition line in the lower-left field."
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "DB1203",
+  "title": "Signature Graphics / object and Wi-Fi campaign",
+  "image": "db1203.png",
+  "source": "../sources/page-12.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 12,
+    "section": 3,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Signature-Graphics"
+  },
+  "slide_intent": "Let the same construction express a single object or a service so recognition extends beyond destinations.",
+  "strategic_value": "The line-based style can connect DB service messages to its broader identity.",
+  "demonstration": "A dark lightbulb silhouette made from bars on a light field sits beside a MEHR NETZ IM ZUG campaign with a lilac Wi-Fi graphic.",
+  "category": "Application",
+  "practical_value": "Compare a standalone pictorial shape with a service symbol paired with a headline.",
+  "content_islands": [
+    {
+      "name": "Standalone graphic",
+      "spec": "Center the vertically striped lightbulb at left."
+    },
+    {
+      "name": "Service campaign",
+      "spec": "Pair the heavy headline with a lilac Wi-Fi graphic at right."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Both images build recognizable silhouettes from parallel vertical lines.",
+    "Application": "The right composition applies the construction to a train-connectivity message."
+  }
+}

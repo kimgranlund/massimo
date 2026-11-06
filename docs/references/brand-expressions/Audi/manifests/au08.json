@@ -1,0 +1,30 @@
+{
+  "id": "AU08",
+  "title": "I had a dream",
+  "image": "au08.png",
+  "source": "../sources/07-kms-team-audi-CD03_3-2.jpg",
+  "location": {
+    "series": "KMS TEAM / Audi and Audi Sport identity case study",
+    "item": 8,
+    "extent": "Complete source media"
+  },
+  "slide_intent": "Give a short statement a distinct visual voice because the tone of a message comes from its typography and image as well as its words.",
+  "strategic_value": "The red headline over a candid monochrome portrait can make Audi’s communication feel direct and human.",
+  "demonstration": "A large red I had a dream headline crosses a black-and-white photograph of a man leaning beside an open car, with the face cropped at the top.",
+  "category": "Voice",
+  "practical_value": "Compare the intimacy of the image with the assertive scale and color of the statement.",
+  "content_islands": [
+    {
+      "name": "Human photograph",
+      "spec": "Fill the composition with the cropped figure and car, preserving the high-key background."
+    },
+    {
+      "name": "Statement",
+      "spec": "Place the large red headline horizontally across the upper-middle image."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Red heavy lettering contrasts with the monochrome, closely cropped human photograph.",
+    "Application": "The artwork demonstrates the identity’s typographic and photographic treatment in a campaign composition."
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "GE06",
+  "title": "Google Dots in Motion",
+  "image": "ge06.png",
+  "source": "../sources/ge06.mp4",
+  "location": {
+    "series": "Evolving the Google Identity / 2015",
+    "item": 6,
+    "extent": "whole source",
+    "poster_seconds": 10.26,
+    "duration_seconds": 20.52
+  },
+  "slide_intent": "Give system states distinguishable movements so people can tell whether a service is listening, processing or responding.",
+  "strategic_value": "Four recurring colored dots can turn Google’s identity into useful feedback during an interaction.",
+  "demonstration": "The animation labels listening, user speech, thinking and replying while dots shift into bars, clusters and a row; a later construction view reveals arc paths.",
+  "category": "Motion",
+  "practical_value": "Compare the movements assigned to different states and preserve the relationship between a state and its motion.",
+  "content_islands": [
+    {
+      "name": "State examples",
+      "spec": "Center the four colored shapes above a small state caption on a pale field."
+    },
+    {
+      "name": "Path demonstration",
+      "spec": "Replace the examples with a guided arc construction showing coordinated dot movement."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The article explicitly describes the dots as Google’s intelligence at work and feedback that Google is working for the user.",
+    "Expression": "Colored dots vary height, grouping and position across the labeled states.",
+    "Application": "The sequence maps the visual behaviors to listening, user speech, thinking and replying."
+  },
+  "ingredient": {
+    "name": "Animated dots",
+    "role": "Communicate the current interaction state while retaining Google’s color identity.",
+    "application": "Assign distinct behavior to each state and coordinate the dots along consistent paths and easing, as described by the article.",
+    "scope": "The 2015 assistive identity demonstration. The clip is illustrative and does not provide production timing or easing values."
+  },
+  "motion": "../sources/ge06.mp4"
+}

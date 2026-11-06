@@ -1,0 +1,38 @@
+{
+  "id": "HE014",
+  "title": "Do not use upper case letters",
+  "image": "he014.png",
+  "source": "../sources/use-basic-elements.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Do not use upper case letters",
+    "order": 19,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/use-basic-elements#do-not-use-upper-case-letters",
+    "original_html": "../sources/use-basic-elements.html"
+  },
+  "slide_intent": "Use normal word shapes consistently because case changes alter both reading texture and the perceived voice.",
+  "strategic_value": "Sentence-style Helsinki typography can remain recognizable across otherwise varied messages.",
+  "demonstration": "This expanded webpage section pairs a brief normal-case rule with contrasting case specimens.",
+  "category": "Typography",
+  "practical_value": "Keep headings and text in ordinary capitalization rather than defaulting to all caps.",
+  "content_islands": [
+    {
+      "name": "Case rule",
+      "spec": "State normal capital/lowercase usage below the heading."
+    },
+    {
+      "name": "Comparison",
+      "spec": "Place the contrasting text treatments beneath the rule."
+    }
+  ],
+  "ingredient": {
+    "name": "Normal capitalization",
+    "role": "Maintain the intended reading texture and voice.",
+    "application": "Use initial capitals and lowercase in normal text and headings.",
+    "scope": "The source says normally; do not convert this wording into an exception-free ban."
+  },
+  "reference_purposes": {
+    "Application": "The comparison demonstrates normal capitalization against an uppercase treatment.",
+    "Constraint": "Titles and other text may not normally be written in uppercase."
+  }
+}

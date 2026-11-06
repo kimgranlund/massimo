@@ -1,0 +1,31 @@
+{
+  "id": "IT20",
+  "title": "ITV / Channel expression strip",
+  "image": "it20.png",
+  "source": "../sources/1749146187-itv_13.png",
+  "location": {
+    "series": "DixonBaxi / ITV case-study artwork series",
+    "item": 20,
+    "extent": "Whole source artwork",
+    "source_asset_index": 19
+  },
+  "slide_intent": "Compare the expressive range of channel identities within one network, because audiences need both a recognizable network and distinct programme destinations.",
+  "strategic_value": "This approach can strengthen network coherence without erasing channel personality.",
+  "demonstration": "Five small channel-expression panels run horizontally on a dark field, showing repeated 1s, a pink dimensional 2, a blurred 3, green angular 4 and circles with Be.",
+  "category": "Brand",
+  "practical_value": "Compare the expressive range of channel identities within one network.",
+  "content_islands": [
+    {
+      "name": "Comparison strip",
+      "spec": "Five equal-height panels place contrasting treatments side by side."
+    },
+    {
+      "name": "Surround",
+      "spec": "A dark margin keeps the comparison separate from its environment."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Five small channel-expression panels run horizontally on a dark field, showing repeated 1s, a pink dimensional 2, a blurred 3, green angular 4 and circles with Be.",
+    "Intent": "The case-study section Embracing eclectic says distinct channel personalities are joined into one connected brand beyond broadcast."
+  }
+}

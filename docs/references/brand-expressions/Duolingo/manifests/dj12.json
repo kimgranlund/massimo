@@ -1,0 +1,35 @@
+{
+  "id": "DJ12",
+  "title": "Social composition grid",
+  "image": "dj12.png",
+  "source": "../sources/johnson-banks/Duolingo_social-by-Johnson-Banks.jpg",
+  "location": {
+    "series": "Johnson Banks / Everyone can Duolingo / 2019",
+    "item": 12,
+    "extent": "Whole published artwork",
+    "order": 2012
+  },
+  "slide_intent": "Demonstrate variation within a repeatable frame because a stream of messages must stay recognizable without looking identical.",
+  "strategic_value": "A mix of portraits, illustration and short phrases can let Duolingo present different people and occasions in one social identity.",
+  "demonstration": "Twelve square social examples form three rows of four, mixing portraits, characters, Duo, multilingual words and bright backgrounds.",
+  "category": "Layout",
+  "practical_value": "Compare which repeated elements are sufficient to connect a varied social series.",
+  "content_islands": [
+    {
+      "name": "Top row",
+      "spec": "Show four square tiles combining character, portrait, download milestone and diversity message."
+    },
+    {
+      "name": "Middle row",
+      "spec": "Arrange text, a character reference, a portrait and Duo in a helmet as distinct compositions."
+    },
+    {
+      "name": "Bottom row",
+      "spec": "Finish with portrait, family-language text, Duo and a rainbow-colored pride image."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The grid demonstrates twelve social-format compositions.",
+    "Expression": "Shared type and short text connect otherwise varied photographs, illustrations and colors."
+  }
+}

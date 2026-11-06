@@ -1,0 +1,35 @@
+{
+  "id": "BKE00",
+  "title": "Signature animation",
+  "image": "bke00.png",
+  "source": "../sources/bke00.mp4",
+  "location": {
+    "series": "JKR / Burger King identity case study",
+    "item": 0,
+    "extent": "Complete clip; PNG is a poster frame",
+    "duration_seconds": 9.02
+  },
+  "slide_intent": "Connect symbol and wordmark through movement so viewers can recognize different forms as the same identity.",
+  "strategic_value": "A repeating sequence from bun to logo to lettering can reinforce Burger King’s food-shaped signature.",
+  "demonstration": "The clip assembles the burger logo, reduces it to the compact symbol, enlarges and repeats the wordmark, then returns to the logo.",
+  "category": "Motion",
+  "practical_value": "Compare how transformations preserve recognition between full and compact signatures.",
+  "content_islands": [
+    {
+      "name": "Assembly",
+      "spec": "Begin with the bun form on a cream field, then build the primary signature."
+    },
+    {
+      "name": "Wordmark sequence",
+      "spec": "Move through the compact symbol into large scrolling and repeated wordmarks."
+    },
+    {
+      "name": "Return",
+      "spec": "Resolve to the primary logo and back to a bun for the loop."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The complete clip connects the bun-shaped symbol, compact mark and rounded wordmark through scale and repetition."
+  },
+  "motion": "../sources/bke00.mp4"
+}

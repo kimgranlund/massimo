@@ -1,0 +1,37 @@
+{
+  "id": "DJ07",
+  "title": "Feather bold character specimen",
+  "image": "dj07.png",
+  "source": "../sources/johnson-banks/Duolingo_feather_bold-by-Johnson-Banks.jpg",
+  "location": {
+    "series": "Johnson Banks / Everyone can Duolingo / 2019",
+    "item": 7,
+    "extent": "Whole published artwork",
+    "order": 2007
+  },
+  "slide_intent": "Demonstrate a typeface beyond the logo because a brand needs a consistent voice for many words and languages.",
+  "strategic_value": "A broader character set can extend Duolingo’s recognizable letter shapes into everyday communications.",
+  "demonstration": "A green rounded panel contains white lowercase and uppercase alphabets, accented a forms and numerals beneath the Feather bold title.",
+  "category": "Typography",
+  "practical_value": "Check whether the face carries its character across cases, accents and figures.",
+  "content_islands": [
+    {
+      "name": "Title",
+      "spec": "Center the Feather bold name above the specimen."
+    },
+    {
+      "name": "Character repertoire",
+      "spec": "Arrange lowercase, uppercase, accented forms and digits in separate rows on green."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The specimen presents the custom face across letters, accents and numerals.",
+    "Intent": "The case study says the fine-tuned logotype was extrapolated into further characters to create Feather Bold."
+  },
+  "ingredient": {
+    "name": "Feather Bold and the Duolingo wordmark",
+    "role": "Carry mascot-derived character into typography.",
+    "application": "Use the specimen to compare character coverage and consistency beyond the brand name.",
+    "scope": "Historical 2019 case-study evidence. These are observed design relationships, not a license to redraw the mark or a complete type-usage specification."
+  }
+}

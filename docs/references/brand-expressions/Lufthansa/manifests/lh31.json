@@ -1,0 +1,36 @@
+{
+  "id": "LH31",
+  "title": "Head and Text alphabet comparison",
+  "image": "lh31.png",
+  "source": "../sources/lh31.svg",
+  "location": {
+    "series": "HvD Fonts / Lufthansa 2018",
+    "item": 10,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Compare optical families directly because a shared voice must remain readable at different scales.",
+  "strategic_value": "Related alphabets can connect prominent Lufthansa headlines with longer informational text.",
+  "demonstration": "A larger Lufthansa Head alphabet sits above a smaller Lufthansa Text alphabet, both including numerals.",
+  "category": "Typography",
+  "practical_value": "Compare letter openness, proportions and spacing across the two optical roles.",
+  "content_islands": [
+    {
+      "name": "Head repertoire",
+      "spec": "Place the larger alphabet above."
+    },
+    {
+      "name": "Text repertoire",
+      "spec": "Place the smaller labeled alphabet below with enough separation to compare."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A larger Lufthansa Head alphabet sits above a smaller Lufthansa Text alphabet, both including numerals.",
+    "Intent": "HvD links the two optical sizes to different reading tasks."
+  },
+  "ingredient": {
+    "name": "Head and Text alphabet comparison",
+    "role": "Connect large headlines and smaller text through related letterforms.",
+    "application": "Compare letter openness, proportions and spacing across the two optical roles.",
+    "scope": "Historical 2018 Lufthansa airline refresh case study; observed example, not a complete brand manual or a current Lufthansa Group rule."
+  }
+}

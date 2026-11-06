@@ -1,0 +1,31 @@
+{
+  "id": "DB1409C",
+  "title": "Bildbearbeitung / flatter tonal state",
+  "image": "db1409c.png",
+  "source": "../sources/db1409c-page.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 14,
+    "section": 9,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Bildwelt"
+  },
+  "slide_intent": "Inspect the starting tonal state so the purpose of editing can be understood through comparison.",
+  "strategic_value": "Seeing both states can help DB teams judge refinement without assuming every change improves realism.",
+  "demonstration": "The slider exposes the brighter, flatter rail-work photograph while retaining the paired color examples and editing checklist below.",
+  "category": "Imagery",
+  "practical_value": "Compare the unaccented rail and glove detail with the refined endpoint before choosing an edit.",
+  "content_islands": [
+    {
+      "name": "Alternate rail-work image",
+      "spec": "Expose the complete brighter rail-work photograph."
+    },
+    {
+      "name": "Editing criteria",
+      "spec": "Keep the color comparison and the natural-color/no-effects checklist below the image."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The alternate endpoint supplies the second complete tonal state for direct comparison.",
+    "Intent": "The source states that editing should bring out light, contrast and color while retaining natural materiality."
+  }
+}

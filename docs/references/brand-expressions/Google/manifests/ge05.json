@@ -1,0 +1,40 @@
+{
+  "id": "GE05",
+  "title": "Google G Construction",
+  "image": "ge05.png",
+  "source": "../sources/ge05.mp4",
+  "location": {
+    "series": "Evolving the Google Identity / 2015",
+    "item": 5,
+    "extent": "whole source",
+    "poster_seconds": 7.0,
+    "duration_seconds": 14.0
+  },
+  "slide_intent": "Refine a geometric symbol optically so it stays balanced and legible at small sizes.",
+  "strategic_value": "A heavier compact G can retain Google’s identity when the full name cannot fit.",
+  "demonstration": "A gridded circular construction becomes a multicolored G; guide lines and close views demonstrate its geometry and optical adjustments.",
+  "category": "Geometry",
+  "practical_value": "Compare a small symbol’s apparent weight and joins with its geometric construction before accepting the grid as sufficient.",
+  "content_islands": [
+    {
+      "name": "Grid and circular skeleton",
+      "spec": "Begin with a centered square grid and circular G construction."
+    },
+    {
+      "name": "Colored result",
+      "spec": "Reveal the four-color G in the same position, then compare its contour and crossbar relationships."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The article explains increased visual weight for small contexts and optical correction at the circular form’s crossbar.",
+    "Expression": "The final G combines the familiar four colors into one compact form.",
+    "Application": "The construction sequence demonstrates the relationship between the grid, curves and final icon."
+  },
+  "ingredient": {
+    "name": "Compact Google G",
+    "role": "Keep the brand identifiable where the full wordmark is too large.",
+    "application": "Use a visually heavier G derived from the wordmark, with an optically refined circular join and the demonstrated color order.",
+    "scope": "Historical 2015 icon construction; no numerical spacing rule is invented from the animation."
+  },
+  "motion": "../sources/ge05.mp4"
+}

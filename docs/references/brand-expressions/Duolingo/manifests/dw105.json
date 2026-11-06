@@ -1,0 +1,38 @@
+{
+  "id": "DW105",
+  "title": "Illustration / Objects in space",
+  "image": "dw105.png",
+  "source": "../sources/pages/illustration-shape-language.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/illustration/shape-language",
+    "section": "Objects in space",
+    "item": 105,
+    "order": 1050
+  },
+  "slide_intent": "Control viewpoint because inconsistent perspective can make related drawings appear to belong to different visual systems.",
+  "strategic_value": "A flat line of sight can keep Duolingo icons simple and recognizable.",
+  "demonstration": "Three yellow vehicles compare permitted flat views with a crossed-out angled view.",
+  "category": "Geometry",
+  "practical_value": "Convey depth without changing the established line of sight.",
+  "content_islands": [
+    {
+      "name": "Viewpoint comparison",
+      "spec": "Align the three cars across the pale left panel, retaining the rejection frame around the right example."
+    },
+    {
+      "name": "Perspective rule",
+      "spec": "Place the heading and flat-perspective explanation at right."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The cars demonstrate flat viewpoints and a rejected angled treatment.",
+    "Constraint": "Depth is allowed only on the same line of sight."
+  },
+  "ingredient": {
+    "name": "Flat perspective",
+    "role": "Unify object and character viewpoints.",
+    "application": "Use a flat perspective; convey depth on the same line of sight.",
+    "scope": "Historical illustration guidance; this is not a prohibition on all overlap or depth."
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "DBV17",
+  "title": "Type_Secondary-centered",
+  "image": "dbv17.png",
+  "source": "../sources/media/dbv17.mp4",
+  "location": {
+    "series": "DB new design / motion demonstrations",
+    "source_page": 15,
+    "section": "Animation-14021536",
+    "source_url": "https://ecm-mediathek-cdn.deutschebahn.com/cdnenhancedecmvidhls/db306410/2880887/video_config.json",
+    "capture_date": "2026-11-05",
+    "note": "The adjacent page caption does not reliably describe this embedded file. This manifest follows the inspected video and its file title; broader typography rules come from the surrounding prose. Adjacent caption: Klicken, um das folgende Video zu überspringen Ende des oberhalb befindlichen Videos Animiertes Tracking (Abstand zwischen den einzelnen Buchstaben) eines Wortes nach den Bewegungsmustern."
+  },
+  "slide_intent": "Animate longer copy with restraint because readers need time to follow multiple lines.",
+  "strategic_value": "The centered paragraph can extend DB’s movement language to explanatory text without giving every word equal emphasis.",
+  "demonstration": "A centered four-line paragraph enters, remains readable, and leaves the pale field.",
+  "category": "Motion",
+  "practical_value": "Use the paragraph specimen to judge whether the motion leaves enough stable reading time.",
+  "content_islands": [
+    {
+      "name": "Paragraph entrance",
+      "spec": "Introduce the centered lines as one text group."
+    },
+    {
+      "name": "Reading hold",
+      "spec": "Keep all four lines visible before departure."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A centered four-line paragraph enters, remains readable, and leaves the pale field.",
+    "Application": "The source provides a playable demonstration of this repeatable sequence: A centered four-line paragraph enters, remains readable, and leaves the pale field.",
+    "Intent": "Accompanying Typografie prose prioritizes legibility and uses simple staggered line movement to keep text lively and clear.",
+    "Constraint": "The source prioritizes legibility when animating typography."
+  },
+  "motion": "../sources/media/dbv17.mp4"
+}

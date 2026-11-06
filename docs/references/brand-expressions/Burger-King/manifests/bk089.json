@@ -1,0 +1,34 @@
+{
+  "id": "BK089",
+  "title": "Applying Full-Frame Photography",
+  "image": "bk089.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 89
+  },
+  "slide_intent": "Make legibility a condition of image-led composition because text loses its role when the background overwhelms it.",
+  "strategic_value": "A close-up tomato can carry Burger King’s food character while cream typography and a small signature keep the communication identifiable.",
+  "demonstration": "A tomato photograph fills a landscape example behind the headline, subhead, body line and logo, with grid guides retained.",
+  "category": "Layout",
+  "practical_value": "Use a full-background photograph only when the type hierarchy and sufficient contrast survive.",
+  "content_islands": [
+    {
+      "name": "Full-frame condition",
+      "spec": "Place the short conditional guidance at left."
+    },
+    {
+      "name": "Image-led composition",
+      "spec": "Fill the example with tomato texture; keep cream type in the right-hand area and the logo at bottom right."
+    }
+  ],
+  "ingredient": {
+    "name": "Full-frame photograph",
+    "role": "Create an immersive food image while keeping information readable.",
+    "application": "Allow the photograph to span all four corners only while maintaining the type system and sufficient contrast.",
+    "scope": "Historical 2020 partner guidelines, PDF produced January 2021. The source states no numeric contrast threshold on this page."
+  },
+  "reference_purposes": {
+    "Application": "The example overlays the type system and logo on a photograph reaching all four corners.",
+    "Constraint": "The copy permits the approach only if the type system is maintained and contrast is sufficient."
+  }
+}

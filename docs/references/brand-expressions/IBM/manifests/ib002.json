@@ -1,0 +1,54 @@
+{
+  "id": "IB002",
+  "title": "Philosophy / Point of view",
+  "image": "ib002.png",
+  "source": "../sources/philosophy-pov.txt",
+  "location": {
+    "series": "IBM Design Language / public web guidelines",
+    "item": 2,
+    "extent": "Complete webpage content-area capture; interactive elements retain their captured state",
+    "url": "https://www.ibm.com/design/language/philosophy/pov/",
+    "order": 2000
+  },
+  "slide_intent": "Define the human relationship behind design decisions, because consistency needs a purpose beyond repeating recognizable shapes.",
+  "strategic_value": "Linking IBM’s role between people and machines to guidance can give teams a common reason to preserve both usefulness and character.",
+  "demonstration": "A film player precedes a long-form argument about building bonds, design heritage, the relationship between mankind and machine, and the Think → Guide ethos.",
+  "category": "Brand",
+  "practical_value": "Evaluate an expression by how it guides people and represents IBM’s character, rather than by visual resemblance alone.",
+  "content_islands": [
+    {
+      "name": "Title and film",
+      "spec": "Open with the black Point of view header and the wide film player showing a typographic guide frame."
+    },
+    {
+      "name": "Build bonds argument",
+      "spec": "Place the introductory purpose statement above the Design is how we build bonds section; retain the small design-history sidebar."
+    },
+    {
+      "name": "Aesthetic and distinction",
+      "spec": "Follow with the Paul Rand quotation and the Stand for = Stand out argument, paired with the Here → There note."
+    },
+    {
+      "name": "Think → Guide",
+      "spec": "End the essay with enduring criteria for anyone designing on IBM’s behalf and the time-saved or time-well-spent sidebar."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The essay explicitly connects design to relationships, progress and guiding people emotionally and functionally.",
+    "Application": "The closing section presents philosophy and principles as criteria for anyone authoring or authorizing IBM design."
+  },
+  "motion_assets": [
+    {
+      "title": "Design philosophy: geometric and typographic film",
+      "file": "../sources/media/02063b9b6903.mp4",
+      "poster": "../sources/media/02063b9b6903-poster.png",
+      "duration_seconds": 109.93,
+      "source_url": "https://www.ibm.com/design/language/static/296064420-d536d28f2e72f1f233fd8649b1946af5.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    }
+  ]
+}

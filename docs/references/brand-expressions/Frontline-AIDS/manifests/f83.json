@@ -1,0 +1,24 @@
+{
+  "id": "F83",
+  "title": "Social media",
+  "image": "f83.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 83
+  },
+  "slide_intent": "Distinguish the identity of an individual post from the identity of the account hosting it. Readers can encounter either at a small size.",
+  "strategic_value": "Frontline AIDS can vary campaign art across posts while a repeated symbol and cover treatment identify its account.",
+  "demonstration": "Several overlapping social post cards occupy the left. On the right, an enlarged device view pairs a symbol avatar with a pink cover showing a megaphone.",
+  "category": "Application",
+  "practical_value": "Test a message inside a realistic post frame, then compare the account cover and avatar at their separate scales.",
+  "content_islands": [
+    {
+      "name": "Post examples",
+      "spec": "On a green field, overlap the small platform cards while leaving the campaign imagery and key type legible."
+    },
+    {
+      "name": "Profile view",
+      "spec": "Give the device at right more space; show the compact avatar independently of the wider cover graphic and the feed beneath."
+    }
+  ]
+}

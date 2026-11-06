@@ -1,0 +1,29 @@
+{
+  "id": "HI13",
+  "title": "Maritime gathering and refreshments",
+  "image": "hi13.png",
+  "source": "../sources/illustration-examples.pdf",
+  "location": {
+    "page": 13,
+    "series": "Helsinki illustration examples — PDF derived from the official PowerPoint deck with LibreOffice",
+    "order": 203
+  },
+  "slide_intent": "Give leisure a specific setting so a scene can evoke the city through its activities and landmarks.",
+  "strategic_value": "Waterfront seating, a canopy, sculpture and kiosk can make Helsinki’s leisure imagery locally distinctive.",
+  "demonstration": "A white tent, terraces, a floating pool-like scene, a fountain, fish seller, birds and an ice-cream vendor sit on green.",
+  "category": "Imagery",
+  "practical_value": "Combine a setting element with a small number of leisure figures to establish a waterfront theme.",
+  "content_islands": [
+    {
+      "name": "Shelter and waterside setting",
+      "spec": "Place the tent, terrace and blue water structure across the top and middle."
+    },
+    {
+      "name": "Public-life details",
+      "spec": "Arrange fountain, fish seller, birds and ice-cream vendor along the lower area."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A white tent, terraces, a floating pool-like scene, a fountain, fish seller, birds and an ice-cream vendor sit on green."
+  }
+}

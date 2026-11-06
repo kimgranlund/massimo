@@ -1,0 +1,30 @@
+{
+  "id": "CR07",
+  "title": "Fixture design — Homelife",
+  "image": "cr07.png",
+  "source": "../sources/cr07.jpg",
+  "location": {
+    "series": "Cox Brand Collection — Lindsay Little / Periscope",
+    "item": 7,
+    "extent": "whole source image"
+  },
+  "slide_intent": "Bring the service explanation beside a working demonstration so shoppers can connect the promise to an action.",
+  "strategic_value": "The staffed Homelife counter can make a connected-home system feel approachable and tangible.",
+  "demonstration": "A customer demonstration counter combines devices, a large overhead Homelife screen, line icons and a family photograph behind the staff.",
+  "category": "Application",
+  "practical_value": "Place the category cue above the demonstration and keep the devices accessible at hand height.",
+  "content_islands": [
+    {
+      "name": "Category sign",
+      "spec": "Mount a screen with the Homelife name and house-shaped icon above the counter."
+    },
+    {
+      "name": "Demonstration surface",
+      "spec": "Arrange the touchscreen and connected devices along the white counter beside the customers and staff."
+    },
+    {
+      "name": "Supporting context",
+      "spec": "Keep a large family image behind the demonstration and a smaller bundle poster on the adjacent wall."
+    }
+  ]
+}

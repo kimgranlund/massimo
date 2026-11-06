@@ -1,0 +1,27 @@
+{
+  "id": "BK066",
+  "title": "Typography",
+  "image": "bk066.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 66
+  },
+  "slide_intent": "Mark a change of subject with a visible type voice so readers recognize that letterform choice is itself part of the identity.",
+  "strategic_value": "The oversized rounded brown letters on orange can establish Flame as a recognizable Burger King ingredient before the rules begin.",
+  "demonstration": "A single large uppercase TYPOGRAPHY heading occupies the upper portion of an orange divider.",
+  "category": "Typography",
+  "practical_value": "Use this divider to compare the brand’s display voice with the functional running labels.",
+  "content_islands": [
+    {
+      "name": "Display heading",
+      "spec": "Place the dark brown all-caps heading near the upper left on a full orange field."
+    },
+    {
+      "name": "Document navigation",
+      "spec": "Keep small chapter labels across the top and the rights notice at bottom left."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The orange field and large rounded Flame lettering demonstrate the display treatment."
+  }
+}

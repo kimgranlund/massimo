@@ -1,0 +1,36 @@
+{
+  "id": "HE079",
+  "title": "Invest in careful background work and project initiation",
+  "image": "he079.png",
+  "source": "../sources/design-and-create.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Invest in careful background work and project initiation",
+    "order": 108,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/design-and-create#invest-in-careful-background-work-and-project-initiation",
+    "original_html": "../sources/design-and-create.html"
+  },
+  "slide_intent": "Make the brief visible and shared so collaborators can understand the desired result before producing it.",
+  "strategic_value": "A common set of Helsinki examples and research can reduce ambiguity while leaving room for a strong idea.",
+  "demonstration": "This expanded webpage-section capture combines onboarding resources, visual-briefing advice and a photograph of two collaborators discussing material.",
+  "category": "Application",
+  "practical_value": "Provide existing guidelines, relevant examples and research, and explain the particular quality each reference should inform.",
+  "content_islands": [
+    {
+      "name": "Onboarding materials",
+      "spec": "List the video introduction, brand guidance and existing materials."
+    },
+    {
+      "name": "Briefing method",
+      "spec": "Follow with examples, research, benchmarks and discussion prompts."
+    },
+    {
+      "name": "Working session",
+      "spec": "Place the collaboration photograph and caption below the method."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text explains that creative assignments are difficult to brief only verbally or in writing.",
+    "Application": "It recommends visual examples, studies, annotated benchmarks and a meeting to establish shared understanding."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "DB0105",
+  "title": "Unsere Designelemente",
+  "image": "db0105.png",
+  "source": "../sources/page-01.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 1,
+    "section": 5,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design"
+  },
+  "slide_intent": "Show how ingredients work together so designers can recognize a system beyond its logo.",
+  "strategic_value": "The eight-item inventory can help DB preserve coherence as individual ingredients evolve.",
+  "demonstration": "A two-row grid pairs eight visual specimens with descriptions of logo, sleeper, color, imagery, typography, layout, Signature Graphics and icons.",
+  "category": "Brand",
+  "practical_value": "Locate the ingredient guidance needed for a particular design decision.",
+  "content_islands": [
+    {
+      "name": "Ingredient grid",
+      "spec": "Pair each specimen with its role and link across two rows of four."
+    },
+    {
+      "name": "System statement",
+      "spec": "Close beneath the grid with the explanation that the elements form a flexible system."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The descriptions identify recognition, movement, information and orientation as jobs of the elements.",
+    "Expression": "The grid displays the mark, sleeper, palette, photographs, type and graphic families."
+  }
+}

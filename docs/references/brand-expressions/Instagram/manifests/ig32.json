@@ -1,0 +1,30 @@
+{
+  "id": "IG32",
+  "title": "Experiential / player and court glyph",
+  "image": "ig32.png",
+  "source": "../sources/ig32.jpg",
+  "location": {
+    "series": "Elvis Dinh / Instagram brand design system / project year 2022",
+    "item": 32,
+    "extent": "whole source artwork"
+  },
+  "slide_intent": "Check how environmental branding reads in a close action photograph.",
+  "strategic_value": "The white glyph on a vivid field can remain recognizable when the participant becomes the focus.",
+  "demonstration": "A player moves across the orange-red court with a large white Instagram glyph behind.",
+  "category": "Application",
+  "practical_value": "Use participant-scale views to check that identifying marks survive tighter crops.",
+  "content_islands": [
+    {
+      "name": "Player in action",
+      "spec": "Keep the moving player large within the vertical photograph."
+    },
+    {
+      "name": "Court identifier",
+      "spec": "Retain enough of the white glyph and colored field to identify the setting."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The action photo shows the court identity at participant scale.",
+    "Expression": "The bright field and oversized white glyph remain visible behind the player."
+  }
+}

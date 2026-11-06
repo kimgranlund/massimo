@@ -1,0 +1,45 @@
+{
+  "id": "IB033T22",
+  "title": "Pictograms / Tints and shades — Dark background",
+  "image": "ib033t22.png",
+  "source": "../sources/alternate-tabs.json",
+  "location": {
+    "series": "IBM Design Language / alternate tab states",
+    "parent": "IB033",
+    "group": 2,
+    "tab": 2,
+    "label": "Dark background",
+    "url": "https://www.ibm.com/design/language/iconography/pictograms/design/",
+    "order": 33122
+  },
+  "slide_intent": "Add tonal depth without sacrificing the pictogram’s outline, because the underlying metaphor must remain readable when fills become expressive.",
+  "strategic_value": "Controlled blue shading can give IBM pictograms additional character while preserving a coherent line vocabulary.",
+  "demonstration": "Eight blue pictograms form two rows on a dark-blue field, combining brighter outlines with darker tinted or shaded regions.",
+  "category": "Color",
+  "practical_value": "Keep the identifying strokes distinct from the fill when adding shade on a dark background.",
+  "content_islands": [
+    {
+      "name": "Background selector",
+      "spec": "Show Dark background selected in the tab row."
+    },
+    {
+      "name": "Upper specimens",
+      "spec": "Arrange four examples including a mortar-and-pestle, network form, switches and heart with arrows."
+    },
+    {
+      "name": "Lower specimens",
+      "spec": "Continue with a branching diagram, geometric groups, calendar and pointing hand."
+    }
+  ],
+  "ingredient": {
+    "name": "Shaded pictogram fill",
+    "role": "Add depth while preserving the identifying outline.",
+    "application": "Use approved families and keep strokes accessible; on Black or value 100 backgrounds, choose fill shades one or two steps down as stated in the source.",
+    "scope": "The numeric fill rule is explicitly for Black/value 100 in the accompanying guidance; this specimen demonstrates the general dark-background treatment. It does not establish a new universal fill ratio."
+  },
+  "reference_purposes": {
+    "Expression": "The specimens demonstrate blue tonal variation within simple pictogram linework.",
+    "Application": "The examples show how dark fills and brighter strokes can coexist on a dark field.",
+    "Constraint": "The accompanying tint/shade guidance permits one- to three-color families, recommends one family, and requires accessible strokes and the stated five-step rule."
+  }
+}

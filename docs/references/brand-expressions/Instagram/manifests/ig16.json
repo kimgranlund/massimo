@@ -1,0 +1,30 @@
+{
+  "id": "IG16",
+  "title": "Layout techniques / Some stories start small",
+  "image": "ig16.png",
+  "source": "../sources/ig16.png",
+  "location": {
+    "series": "Elvis Dinh / Instagram brand design system / project year 2022",
+    "item": 16,
+    "extent": "whole source artwork"
+  },
+  "slide_intent": "Let type, illustration and imagery each carry part of a message so the composition invites exploration without losing its reading order.",
+  "strategic_value": "A recurring phrase and glyph can connect playful Instagram compositions across formats.",
+  "demonstration": "Large separated words and two stickers occupy the white left half; a portrait, white glyph and Meta signature occupy the right.",
+  "category": "Layout",
+  "practical_value": "Use whitespace and the line sequence to keep scattered elements readable.",
+  "content_islands": [
+    {
+      "name": "Words and stickers",
+      "spec": "Distribute the sentence vertically through the white left panel, with small in gradient near the bottom."
+    },
+    {
+      "name": "Portrait signature",
+      "spec": "Fill the right panel with the portrait and center the glyph over it, keeping the parent signature below."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Loose words, stickers and portrait show a playful compositional voice.",
+    "Application": "The split layout demonstrates how those elements combine in a campaign."
+  }
+}

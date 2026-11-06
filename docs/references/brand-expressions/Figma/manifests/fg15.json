@@ -1,0 +1,38 @@
+{
+  "id": "FG15",
+  "title": "Music collaboration / social sequence",
+  "image": "fg15.png",
+  "source": "../sources/fg15.mp4",
+  "location": {
+    "series": "COLLINS / Figma / Nothing Great Is Made Alone case study",
+    "item": 15,
+    "section": "Gallery",
+    "extent": "Complete clip; PNG is midpoint poster",
+    "poster_seconds": 8.0
+  },
+  "slide_intent": "Reveal contributions before stating the conclusion so a campaign claim has a visible example behind it.",
+  "strategic_value": "A music story can make Figma’s teamwork message relevant to an audience beyond product designers.",
+  "demonstration": "A social-post mockup moves from individual music details and named contributors to a combined guitar-and-boombox illustration, then a campaign end card.",
+  "category": "Application",
+  "practical_value": "Sequence close details, a combined result and a clear closing message in a social format.",
+  "content_islands": [
+    {
+      "name": "Social container",
+      "spec": "Keep the white social frame on lavender with an orange content field and small interface icons."
+    },
+    {
+      "name": "Contributor details",
+      "spec": "Show editing gestures beside labels for Aerosmith, Run-DMC and Rick Rubin."
+    },
+    {
+      "name": "Combined image and end card",
+      "spec": "Reveal the full music composition, then replace it with the campaign message and Figma signature."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The clip presents an illustrated campaign story within a social-post layout.",
+    "Intent": "The end card invites viewers to learn about collaboration from musicians.",
+    "Expression": "Outlined instruments, colored labels and blue handles carry the identity through the sequence."
+  },
+  "motion": "../sources/fg15.mp4"
+}

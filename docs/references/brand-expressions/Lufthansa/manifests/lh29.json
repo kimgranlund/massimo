@@ -1,0 +1,36 @@
+{
+  "id": "LH29",
+  "title": "The s–a relationship",
+  "image": "lh29.png",
+  "source": "../sources/lh29.jpg",
+  "location": {
+    "series": "HvD Fonts / Lufthansa 2018",
+    "item": 8,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Study counterspace between letters because the shape between forms can be as distinctive as the forms themselves.",
+  "strategic_value": "A deliberate s–a relationship can preserve a recognizable feature of the Lufthansa wordmark.",
+  "demonstration": "Pencil sketches examine the s and a, with shaded connecting counterforms and small Lufthansa word tests.",
+  "category": "Geometry",
+  "practical_value": "Evaluate letter pairs as connected white and black shapes.",
+  "content_islands": [
+    {
+      "name": "Large pair",
+      "spec": "Place the largest s–a study across the upper area."
+    },
+    {
+      "name": "Alternative sketches",
+      "spec": "Keep the smaller pair tests and notes below and beside it."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Pencil sketches examine the s and a, with shaded connecting counterforms and small Lufthansa word tests.",
+    "Intent": "HvD identifies the s–a counterspace as a feature to retain."
+  },
+  "ingredient": {
+    "name": "The s–a relationship",
+    "role": "Preserve a recognizable relationship between adjacent letterforms.",
+    "application": "Evaluate letter pairs as connected white and black shapes.",
+    "scope": "Historical 2018 Lufthansa airline refresh case study; observed example, not a complete brand manual or a current Lufthansa Group rule."
+  }
+}

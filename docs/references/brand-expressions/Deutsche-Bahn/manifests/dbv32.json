@@ -1,0 +1,35 @@
+{
+  "id": "DBV32",
+  "title": "Logo",
+  "image": "dbv32.png",
+  "source": "../sources/media/dbv32.mp4",
+  "location": {
+    "series": "DB new design / motion demonstrations",
+    "source_page": 15,
+    "section": "Bewegtbild-14021636",
+    "source_url": "https://ecm-mediathek-cdn.deutschebahn.com/cdnenhancedecmvidhls/db306435/2881057/video_config.json",
+    "capture_date": "2026-11-05"
+  },
+  "slide_intent": "Give the logo a clear arrival so viewers can identify the sender without losing the surrounding content.",
+  "strategic_value": "A compact red DB reveal can create a recognizable brand accent in audiovisual communication.",
+  "demonstration": "Red DB lettering and its enclosing frame assemble or reveal at the center of a white field and hold.",
+  "category": "Motion",
+  "practical_value": "Use the isolated reveal to judge how the logo can arrive as a brief accent.",
+  "content_islands": [
+    {
+      "name": "Logo build",
+      "spec": "Reveal the red letters and enclosing outline around a shared center."
+    },
+    {
+      "name": "Logo hold",
+      "spec": "Keep the completed red mark on the white field."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Red DB lettering and its enclosing frame assemble or reveal at the center of a white field and hold.",
+    "Application": "The source provides a playable demonstration of this repeatable sequence: Red DB lettering and its enclosing frame assemble or reveal at the center of a white field and hold.",
+    "Intent": "Accompanying Logo prose says animation should set a clear accent and strengthen the brand.",
+    "Constraint": "The source says logo animation should not impair the content."
+  },
+  "motion": "../sources/media/dbv32.mp4"
+}

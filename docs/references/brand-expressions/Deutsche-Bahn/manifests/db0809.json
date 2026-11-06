@@ -1,0 +1,33 @@
+{
+  "id": "DB0809",
+  "title": "Funktionsfarben / Information und Differenzierung",
+  "image": "db0809.png",
+  "source": "../sources/page-08.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 8,
+    "section": 9,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Markenfarben"
+  },
+  "slide_intent": "Use tonal variation for information so extra shades improve differentiation instead of weakening recognition.",
+  "strategic_value": "Scoped shade families can support DB interfaces and data graphics while retaining the core palette.",
+  "demonstration": "A text section distinguishes functional Cold Black shades from DB Red and Lilac shades reserved for information visualization.",
+  "category": "Color",
+  "practical_value": "Choose Cold Black tones for UI structure and reserve red/Lilac tonal families for the named graphic contexts.",
+  "content_islands": [
+    {
+      "name": "Shade-use guidance",
+      "spec": "Place the compact explanation below the title and information/differentiation subheading."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text links Cold Black shades to subtle hierarchy and differentiation.",
+    "Constraint": "DB Red and Lilac shades are exclusively for visualizing and differentiating information in infographics and illustrations."
+  },
+  "ingredient": {
+    "name": "Functional shade families",
+    "role": "Differentiate information within the established palette.",
+    "application": "Use Cold Black shades primarily for structure and UI differentiation; reserve DB Red/Lilac shades for information in infographics and illustrations.",
+    "scope": "The exclusivity is stated for red and Lilac shades, not for all uses of the main DB Red identity color."
+  }
+}

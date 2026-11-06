@@ -1,0 +1,30 @@
+{
+  "id": "DB0700",
+  "title": "Logo / header specimen",
+  "image": "db0700.png",
+  "source": "../sources/page-07.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 7,
+    "section": 0,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Logo_neu"
+  },
+  "slide_intent": "Isolate a familiar mark so its form remains recognizable apart from a complete layout.",
+  "strategic_value": "The red DB mark can remain a stable point of recognition within the refreshed system.",
+  "demonstration": "A large red DB mark sits centrally over a pale photographic field with a red sleeper strip along the bottom.",
+  "category": "Brand",
+  "practical_value": "Compare logo prominence with a subordinate edge motif.",
+  "content_islands": [
+    {
+      "name": "Logo specimen",
+      "spec": "Center the red DB mark in the light field."
+    },
+    {
+      "name": "Lower motif",
+      "spec": "Keep the sleeper strip at the bottom edge."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The header isolates the red mark while retaining the new sleeper element."
+  }
+}

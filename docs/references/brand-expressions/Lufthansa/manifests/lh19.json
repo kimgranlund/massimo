@@ -1,0 +1,31 @@
+{
+  "id": "LH19",
+  "title": "Livery editorial explanation",
+  "image": "lh19.png",
+  "source": "../sources/lh19.jpg",
+  "location": {
+    "series": "Mona Franz / Lufthansa 2018",
+    "item": 19,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Combine a finished object with explanatory detail because readers need both an overall impression and reasons for the design.",
+  "strategic_value": "The annotated aircraft spread can make Lufthansa’s refresh understandable beyond a logo change.",
+  "demonstration": "A magazine spread pairs a large aircraft rendering with callouts, numeric facts and a lower livery chronology.",
+  "category": "Layout",
+  "practical_value": "Organize a complex redesign explanation around one dominant image and supporting detail.",
+  "content_islands": [
+    {
+      "name": "Main aircraft and callouts",
+      "spec": "Anchor the spread with the large plane and surrounding text."
+    },
+    {
+      "name": "Fact column",
+      "spec": "Keep the numeric facts at right."
+    },
+    {
+      "name": "History strip",
+      "spec": "Run the smaller aircraft sequence along the bottom."
+    }
+  ],
+  "reference_purposes": {}
+}

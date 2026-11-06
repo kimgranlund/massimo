@@ -1,0 +1,37 @@
+{
+  "id": "HE071",
+  "title": "Helsinki framed logo and operator’s name clearly displayed on facade",
+  "image": "he071.png",
+  "source": "../sources/design-and-create.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Helsinki framed logo and operator’s name clearly displayed on facade",
+    "order": 98,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/design-and-create#helsinki-framed-logo-and-operator-s-name-clearly-displayed-on-facade",
+    "original_html": "../sources/design-and-create.html"
+  },
+  "slide_intent": "Make organizational ownership visible at the entrance so visitors know which services the building contains.",
+  "strategic_value": "A clear framed logo alongside operator naming can distinguish Helsinki services in shared buildings.",
+  "demonstration": "This expanded webpage-section capture combines facade guidance, a school entrance photograph and two logo/name spacing diagrams using orange H units.",
+  "category": "Brand",
+  "practical_value": "Choose a facade identification method and scale it for location and viewing height, while preserving the logo’s spacing.",
+  "content_islands": [
+    {
+      "name": "Facade rationale",
+      "spec": "Explain city identification and shared-building importance first."
+    },
+    {
+      "name": "Installed example",
+      "spec": "Show the school name and framed logo on the wooden facade."
+    },
+    {
+      "name": "Name arrangements",
+      "spec": "Stack bilingual and single-language lockup diagrams with orange spacing markers."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text says the logo tells visitors that the City operates in the building, especially with multiple operators.",
+    "Application": "It lists neon signs, separate letters and decals as facade methods.",
+    "Constraint": "A Helsinki, Helsingfors or bilingual framed logo must be clearly visible on the facade."
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "id": "HE073",
+  "title": "Signage types",
+  "image": "he073.png",
+  "source": "../sources/design-and-create.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Signage types",
+    "order": 100,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/design-and-create#signage-types",
+    "original_html": "../sources/design-and-create.html"
+  },
+  "slide_intent": "Adapt hierarchy to the navigational task so building, direction, room and floor information remain easy to distinguish.",
+  "strategic_value": "A family of related sign types can give Helsinki visitors consistent cues at each stage of a journey.",
+  "demonstration": "This expanded webpage-section capture presents main/floor directories, direction signs, room signs, icon signs and floor-number signs with diagrams and rule lists.",
+  "category": "Application",
+  "practical_value": "Choose the sign type before composing its contents, then follow the corresponding alignment and spacing conditions.",
+  "content_islands": [
+    {
+      "name": "Main and floor directories",
+      "spec": "Begin with directory text, floor plan and grouped floor information examples."
+    },
+    {
+      "name": "Directional and room signs",
+      "spec": "Compare arrows, words, languages and room labels through the middle sequence."
+    },
+    {
+      "name": "Icon and floor signs",
+      "spec": "Finish with square pictogram and centered floor-number specimens."
+    }
+  ],
+  "ingredient": {
+    "name": "Wayfinding sign family",
+    "role": "Assign a consistent structure to each navigation task.",
+    "application": "Follow each sign type’s own arrangement: directional text opposite the arrow, separate text left-aligned, square icon/floor-number signs.",
+    "scope": "Building signage; room signs also permit centered alignment. Main/floor sign spacing references the logo protected area as a recommendation."
+  },
+  "reference_purposes": {
+    "Application": "Five sign types are compared through detailed diagrams and instructions.",
+    "Constraint": "Direction text sits opposite its arrow; separated text aligns left; room signs may alternatively center; icon and floor-number signs use square formats."
+  }
+}

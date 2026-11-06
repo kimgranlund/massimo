@@ -1,0 +1,38 @@
+{
+  "id": "DW092",
+  "title": "Writing / Style / Percentages",
+  "image": "dw092.png",
+  "source": "../sources/pages/writing-style.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/style",
+    "section": "Percentages",
+    "item": 92,
+    "order": 920
+  },
+  "slide_intent": "Use a compact percentage form so proportions remain easy to spot in a line of copy.",
+  "strategic_value": "One standard representation can help Duolingo avoid competing spellings for the same quantity.",
+  "demonstration": "The preferred numeric percentage is compared with percent written as one word and two words.",
+  "category": "Voice",
+  "practical_value": "Use the percent symbol with the numeric value.",
+  "content_islands": [
+    {
+      "name": "Guidance column",
+      "spec": "Place the topic heading, its parent label and the written convention in the narrow left column."
+    },
+    {
+      "name": "Worked examples",
+      "spec": "Place the worked copy in the pale right panel, keeping preference labels and green checks with their examples."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The comparison shows 95% against two written-out alternatives.",
+    "Constraint": "Use the % symbol rather than spelling out percent."
+  },
+  "ingredient": {
+    "name": "Percentages convention",
+    "role": "Proportions remain easy to spot in a line of copy.",
+    "application": "Use the % symbol rather than spelling out percent.",
+    "scope": "Historical official guidelines from the 2024–2025 archived snapshot; this records the displayed guidance, not current Duolingo product behavior."
+  }
+}

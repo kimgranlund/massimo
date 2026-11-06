@@ -1,0 +1,25 @@
+{
+  "id": "I099",
+  "title": "Digital OOH",
+  "image": "i099.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 99,
+    "printed_page": 105
+  },
+  "slide_intent": "Teach how a short line can communicate at outdoor viewing distance while a photograph supplies the sensory appeal.",
+  "strategic_value": "The repeated phrase can turn a tap on a device into anticipation of eating, connecting shopping with savoring in one composition.",
+  "demonstration": "A photographed billboard divides a dark green type field from a portrait of a person enjoying food. The signature sits beneath the large tap tap / nom nom line.",
+  "category": "Application",
+  "practical_value": "Test whether the short line and portrait still read at distance, then size the signature to identify the advertiser without competing with them.",
+  "content_islands": [
+    {
+      "name": "Outdoor frame",
+      "spec": "Show the whole billboard within its surroundings so the viewing context remains apparent."
+    },
+    {
+      "name": "Message and portrait",
+      "spec": "Divide the board into two nearly equal fields. Set the short line large above a small signature at left and let the portrait fill the right."
+    }
+  ]
+}

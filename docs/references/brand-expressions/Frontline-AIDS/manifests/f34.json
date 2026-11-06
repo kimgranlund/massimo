@@ -1,0 +1,28 @@
+{
+  "id": "F34",
+  "title": "Colour usage",
+  "image": "f34.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 34
+  },
+  "slide_intent": "Teach designers to control the intensity of a message through the number and balance of colors. The topic and audience can call for different levels of emphasis.",
+  "strategic_value": "Frontline AIDS can retain attention-getting pink and blue for a strong public message and support a quieter sensitive communication with green or black.",
+  "demonstration": "Five narrow examples move from one-color to multicolor compositions and a case with illustration. Palette chips beneath each image identify the colors used.",
+  "category": "Color",
+  "practical_value": "Choose how many hues the subject needs, then check the actual color areas against the five annotated examples.",
+  "content_islands": [
+    {
+      "name": "Use principles",
+      "spec": "Set the descriptions of attention and grounding colors beside the chapter rail."
+    },
+    {
+      "name": "Progressive examples",
+      "spec": "Arrange five equally spaced columns across the main field. Give each a finished communication, the matching color chips, and an explanation of the palette choice."
+    },
+    {
+      "name": "Illustration case",
+      "spec": "Place the illustrated example at the far right to show how additional hues work in a composition that already carries a message."
+    }
+  ]
+}

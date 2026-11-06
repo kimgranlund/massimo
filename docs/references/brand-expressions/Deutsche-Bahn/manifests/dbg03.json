@@ -1,0 +1,27 @@
+{
+  "id": "DBG03",
+  "title": "Telephone / Attention cue",
+  "image": "dbg03.png",
+  "source": "../sources/media/79465e0e449d-Bild_03-data.gif",
+  "location": {
+    "series": "DB new design / original GIF demonstrations",
+    "source_page": 15,
+    "section": 3,
+    "url": "https://marketingportal.extranet.deutschebahn.com/resource/blob/14025278/7c351fefcf64682ff789d7e228ff0539/Bild_03-data.gif"
+  },
+  "slide_intent": "Use a small movement to draw attention because an icon can signal activity without extra text.",
+  "strategic_value": "The restrained rocking telephone can carry DB icon character into a functional interface.",
+  "demonstration": "A dark outline telephone rocks on a pale field and returns to a stable angle.",
+  "category": "Motion",
+  "practical_value": "Compare the moving and resting telephone states when deciding how strongly to call attention.",
+  "content_islands": [
+    {
+      "name": "Telephone outline",
+      "spec": "Keep the icon centered and preserve the open interior while its angle changes."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The telephone outline rocks while retaining its shape and location."
+  },
+  "motion": "../sources/media/dbg03.mp4"
+}

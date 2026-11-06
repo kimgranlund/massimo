@@ -1,0 +1,27 @@
+{
+  "id": "HX28",
+  "title": "Visual identity in a space",
+  "image": "hx28.png",
+  "source": "../sources/design-and-create.offline.html",
+  "location": {
+    "series": "Web guideline introduction/component",
+    "order": 103,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/design-and-create",
+    "original_html": "../sources/design-and-create.html"
+  },
+  "slide_intent": "Adapt identity to an existing place because the resident’s experience depends on how graphics work with materials and functions.",
+  "strategic_value": "Helsinki can make its spaces more useful and recognizable by choosing colors and shapes that add value to the setting.",
+  "demonstration": "This webpage introduction asks how visual identity can enhance spaces, existing materials and functions while adding value for residents.",
+  "category": "Application",
+  "practical_value": "Assess the place and its users before adding a branded surface.",
+  "content_islands": [
+    {
+      "name": "Spatial questions",
+      "spec": "Keep the resident-value and existing-environment questions beneath the heading."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source asks whether identity adds resident value and enhances the existing environment.",
+    "Application": "It suggests applying identity through colors and shapes in a space."
+  }
+}

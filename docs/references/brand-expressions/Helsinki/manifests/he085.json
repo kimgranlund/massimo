@@ -1,0 +1,31 @@
+{
+  "id": "HE085",
+  "title": "The City’s visual communications operators",
+  "image": "he085.png",
+  "source": "../sources/design-and-create.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "The City’s visual communications operators",
+    "order": 116,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/design-and-create#the-city-s-visual-communications-operators",
+    "original_html": "../sources/design-and-create.html"
+  },
+  "slide_intent": "Locate the people who maintain the identity so local needs can be addressed without losing shared expertise.",
+  "strategic_value": "A visible network of division specialists can help Helsinki adapt its identity coherently across services.",
+  "demonstration": "This expanded webpage-section capture describes the visual-communications teams and lists five division or executive-office destinations.",
+  "category": "Application",
+  "practical_value": "Find the relevant division’s communications specialists when an application or material question depends on local context.",
+  "content_islands": [
+    {
+      "name": "Responsibilities",
+      "spec": "Describe the design, identity-management and partner-collaboration roles first."
+    },
+    {
+      "name": "Division destinations",
+      "spec": "List the five city organizational destinations below the explanation."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The section identifies where division-specific visual-identity expertise sits and names the organizational destinations."
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "DB0601",
+  "title": "DESIGNPRINZIPIEN",
+  "image": "db0601.png",
+  "source": "../sources/page-06.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 6,
+    "section": 1,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Designprinzipien"
+  },
+  "slide_intent": "State decision principles before detailed rules so designers can judge unfamiliar applications consistently.",
+  "strategic_value": "A common framework can keep DB recognizable while allowing new formats.",
+  "demonstration": "The introduction names clarity, constant movement and universal connection and distinguishes principles from element-level specifications.",
+  "category": "Brand",
+  "practical_value": "Use the principles to set priorities when a detailed construction rule does not decide the composition.",
+  "content_islands": [
+    {
+      "name": "Principle rationale",
+      "spec": "Place the uppercase title above the explanation of abstract traits becoming visual orientation."
+    },
+    {
+      "name": "Scope of principles",
+      "spec": "Follow with their role as an overarching framework and the three named principles."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The prose says principles help make consistent decisions and preserve recognition across applications."
+  }
+}

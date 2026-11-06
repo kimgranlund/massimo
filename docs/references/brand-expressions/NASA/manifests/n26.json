@@ -1,0 +1,28 @@
+{
+  "id": "N26",
+  "title": "NASA Publications (continued)",
+  "image": "n26.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 26
+  },
+  "slide_intent": "Teach editors to choose inks, paper and page format with the constraints of printing and reading in mind.",
+  "strategic_value": "NASA can maintain a family of publications across different budgets by stating which production choices can vary.",
+  "demonstration": "The text continues the typography guidance, then moves through Color, Paper, Sizes and Formats. The page distinguishes one-color, two-color and special process-printing uses.",
+  "category": "Application",
+  "practical_value": "For a two-color job, select the second ink according to the work it must do: accent the identity, distinguish information or deepen a photographic duotone.",
+  "content_islands": [
+    {
+      "name": "Typography and ink choices",
+      "spec": "Continue the prior page in three narrow columns without adding a new display heading. Introduce Color in the first column and carry the printing options into the second."
+    },
+    {
+      "name": "Paper and sizes",
+      "spec": "Set Paper and Sizes as short subheads in the middle column. Let the discussion of standard sizes continue into the last column."
+    },
+    {
+      "name": "Format guidance",
+      "spec": "Finish in the right column with the vertical-format recommendation for booklets and brochures and the route for exceptions."
+    }
+  ]
+}

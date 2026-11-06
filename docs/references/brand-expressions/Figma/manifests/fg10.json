@@ -1,0 +1,37 @@
+{
+  "id": "FG10",
+  "title": "Stonehenge / built together",
+  "image": "fg10.png",
+  "source": "../sources/fg10.mp4",
+  "location": {
+    "series": "COLLINS / Figma / Nothing Great Is Made Alone case study",
+    "item": 10,
+    "section": "Gallery",
+    "extent": "Complete clip; PNG is midpoint poster",
+    "poster_seconds": 12.5
+  },
+  "slide_intent": "Show a construction becoming possible through combined actions because teamwork is easier to grasp as a sequence of contributions.",
+  "strategic_value": "A familiar monument assembled with editing tools can make Figma’s product metaphor accessible without product knowledge.",
+  "demonstration": "Named Neolithic contributors scale and move illustrated stones; the view expands to the stone circle before the campaign line and Figma mark appear.",
+  "category": "Motion",
+  "practical_value": "Turn the shared editing model into a simple visual story with a visible outcome.",
+  "content_islands": [
+    {
+      "name": "Stone construction",
+      "spec": "Show outlined stones on gray with long black shadows and selection handles."
+    },
+    {
+      "name": "Contributor tools",
+      "spec": "Use colored role labels and pointers to manipulate individual stones."
+    },
+    {
+      "name": "Resolution",
+      "spec": "Reveal the larger circle, then the campaign promise and logo."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Cursor-driven stone assembly translates editing behavior into a historical illustration.",
+    "Intent": "The campaign narrative explicitly challenges the lone-genius account of how great things are made."
+  },
+  "motion": "../sources/fg10.mp4"
+}

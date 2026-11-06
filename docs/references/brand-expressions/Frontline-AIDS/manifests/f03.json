@@ -1,0 +1,24 @@
+{
+  "id": "F03",
+  "title": "We are here, on the frontline of truth / against persecution",
+  "image": "f03.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 3
+  },
+  "slide_intent": "Show how a repeated declaration can connect two different concerns. The constant opening gives the reader a phrase to recognize as its ending changes.",
+  "strategic_value": "Frontline AIDS can use the same campaign voice for statements about truth and opposition to persecution.",
+  "demonstration": "Two vertically divided photographic panels pair the declaration about truth with a speaker and the declaration against persecution with a second portrait. Blue-on-black and black-on-pink headline treatments distinguish the two.",
+  "category": "Voice",
+  "practical_value": "Keep the opening words consistent when comparing issues, then place each ending on its own image.",
+  "content_islands": [
+    {
+      "name": "Speaker and declaration",
+      "spec": "Fill the left half with the speaker holding a sheet of paper. Place the blue headline block over the lower part of the image."
+    },
+    {
+      "name": "Second scene",
+      "spec": "Fill the right half with the second photographic scene. Place the pink headline higher in the frame and keep its line breaks compact."
+    }
+  ]
+}

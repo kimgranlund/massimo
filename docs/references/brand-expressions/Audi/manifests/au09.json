@@ -1,0 +1,30 @@
+{
+  "id": "AU09",
+  "title": "Rings on contrasting photographic fields",
+  "image": "au09.png",
+  "source": "../sources/08-kms-team-audi-CD04_3-2.jpg",
+  "location": {
+    "series": "KMS TEAM / Audi and Audi Sport identity case study",
+    "item": 9,
+    "extent": "Complete source media"
+  },
+  "slide_intent": "Adjust a signature to its image context so people can identify the same brand across contrasting scenes.",
+  "strategic_value": "White rings over the dark vehicle scene and black rings beside the portrait can maintain Audi recognition without one fixed background.",
+  "demonstration": "A vertical split pairs a frontal car photograph with white rings at upper left and a bright portrait with black rings and myAudi below.",
+  "category": "Brand",
+  "practical_value": "Compare positive and reversed signatures against the actual lightness of their photographic surroundings.",
+  "content_islands": [
+    {
+      "name": "Vehicle panel",
+      "spec": "Place the front-facing car within a dark architectural photograph on the left, with white rings above."
+    },
+    {
+      "name": "Portrait panel",
+      "spec": "Use a bright close-up on the right, placing black rings and myAudi beside the face."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The two halves reverse the ring color while retaining the same recognizable form.",
+    "Application": "The side-by-side example places the signature in vehicle and myAudi contexts."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "F75",
+  "title": "Empowering",
+  "image": "f75.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 75
+  },
+  "slide_intent": "Teach writers to preserve a person’s ownership of their story. The reader should hear that individual’s experience in their own voice.",
+  "strategic_value": "Frontline AIDS can foreground the people it supports and show the human impact of its work without taking over their account.",
+  "demonstration": "The fourth principle centers personal experience and asks the writer to preserve authenticity when clarifying a story. The writing column assigns the organization a supporting role.",
+  "category": "Voice",
+  "practical_value": "Check whose viewpoint leads a profile. Preserve the individual’s language when editing and retain the complexity of their experience.",
+  "content_islands": [
+    {
+      "name": "Principle identifier",
+      "spec": "Mark Empowering in the chapter rail. Pair the large pale numeral 4 with its pink nameplate and the cyan underline."
+    },
+    {
+      "name": "Definition and limits",
+      "spec": "Introduce the principle as personal and respectful, then set the guidance on people telling their own stories beside its boundaries."
+    },
+    {
+      "name": "Writing guidance",
+      "spec": "Use the right column for the individual’s role, careful editing and empathy. Keep the organization’s role secondary."
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "id": "BK093",
+  "title": "Layouts with Variable Type",
+  "image": "bk093.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 93
+  },
+  "slide_intent": "Turn a word into a pattern when recognition must happen through shape and repetition as well as reading.",
+  "strategic_value": "Repeated YUM and CRUNCH forms can make Burger King’s appetite vocabulary function as a graphic identity element.",
+  "demonstration": "Three portrait panels show repeated YUM, a single vertically stacked YUM and repeated CRUNCH, with width changes filling their fields.",
+  "category": "Layout",
+  "practical_value": "Use variable type for a full-page pattern built from one word or repeated words.",
+  "content_islands": [
+    {
+      "name": "Pattern guidance",
+      "spec": "Place the description and out-of-home context at left."
+    },
+    {
+      "name": "Three type fields",
+      "spec": "Align cream/red, brown/cream and green/cream panels, contrasting repeated rows with stacked letters."
+    },
+    {
+      "name": "Example qualification",
+      "spec": "Retain the small review note beneath the panels."
+    }
+  ],
+  "ingredient": {
+    "name": "Variable type pattern",
+    "role": "Make words serve as a large graphic field.",
+    "application": "Build a full-page type composition from one word or repeated sequences using the designed width range.",
+    "scope": "Historical 2020 partner guidelines, PDF produced January 2021. Generally intended for evocative out-of-home work; the full-page restriction is on page 77. Printed examples require BK legal trademark clearance and local legal review before use."
+  },
+  "reference_purposes": {
+    "Application": "The page explicitly demonstrates large patterns made from single or repeating words, generally for out-of-home.",
+    "Expression": "Variable widths let the words occupy nearly the entire panel."
+  }
+}

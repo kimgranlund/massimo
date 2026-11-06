@@ -1,0 +1,31 @@
+{
+  "id": "HE111",
+  "title": "Adobe Swatch Exchange (ASE) colour palettes for Adobe software",
+  "image": "he111.png",
+  "source": "../sources/download-elements.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Adobe Swatch Exchange (ASE) colour palettes for Adobe software",
+    "order": 149,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/download-elements#adobe-swatch-exchange--ase--colour-palettes-for-adobe-software",
+    "original_html": "../sources/download-elements.html"
+  },
+  "slide_intent": "Import approved swatches directly so color values are not repeatedly transcribed by hand.",
+  "strategic_value": "A shared ASE palette can reduce inconsistent Helsinki colors across Adobe documents.",
+  "demonstration": "Expanded webpage section: the expanded section explains Adobe Swatch Exchange files and links to palette downloads.",
+  "category": "Color",
+  "practical_value": "Import the supplied ASE palette into Adobe software.",
+  "content_islands": [
+    {
+      "name": "Format explanation",
+      "spec": "A paragraph identifies ASE and direct import."
+    },
+    {
+      "name": "Palette link",
+      "spec": "The download link follows the explanation."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The source says the colors are saved as ASE files for direct import into Adobe software."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "id": "C22",
+  "title": "Color",
+  "image": "c22.png",
+  "source": "../csail-branding-short-guide.pdf",
+  "location": {
+    "page": 22
+  },
+  "slide_intent": "Distinguish color choices for identifiers from choices for supporting content. A small label needs readable contrast even when a designer has several palette options.",
+  "strategic_value": "CSAIL can keep the mark recognizable while allowing a wider range of colors in editorial panels and notes.",
+  "demonstration": "Two large logo treatments appear above six adjacent samples of type on color. A strip of pale sticky-note examples repeats the comparison at a quieter intensity.",
+  "category": "Color",
+  "practical_value": "Use primary colors for the logos. Check small text against its proposed background and choose a darker foreground on white.",
+  "content_islands": [
+    {
+      "name": "Palette roles",
+      "spec": "Set the color rationale and logo restriction in the left column."
+    },
+    {
+      "name": "Logo backgrounds",
+      "spec": "Place two wide panels at the top with a gray mark on yellow and a pale mark on brick."
+    },
+    {
+      "name": "Text trials",
+      "spec": "Align six narrow compositions below, each with headline and smaller text on a different field."
+    },
+    {
+      "name": "Note swatches",
+      "spec": "Place six lighter sticky notes on the bottom row and the contrast reminder nearby at left."
+    }
+  ]
+}

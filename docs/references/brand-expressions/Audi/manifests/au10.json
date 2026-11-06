@@ -1,0 +1,36 @@
+{
+  "id": "AU10",
+  "title": "Brand portal across devices",
+  "image": "au10.png",
+  "source": "../sources/10-kms-team-audi-tools-16-9.mov",
+  "location": {
+    "series": "KMS TEAM / Audi and Audi Sport identity case study",
+    "item": 10,
+    "extent": "Complete source media",
+    "poster_time_seconds": 14.35
+  },
+  "slide_intent": "Make guidance usable in the context of production because designers need to find, compare and apply identity choices consistently.",
+  "strategic_value": "A navigable portal and automated tools can help Audi’s distributed teams implement a flexible system.",
+  "demonstration": "The 26.4-second presentation shows tablet, phone and laptop views of the brand portal, moving through introduction, imagery, typography, animation curves and logo-ending examples.",
+  "category": "Application",
+  "practical_value": "Compare guidance presentation on different screen sizes and distinguish explanatory specimens from interactive production tools.",
+  "content_islands": [
+    {
+      "name": "Device arrangement",
+      "spec": "Place tablet at upper left, phone in front and laptop at right against black."
+    },
+    {
+      "name": "Guidance navigation",
+      "spec": "Keep the portal navigation visible while the devices scroll through guidance and examples."
+    },
+    {
+      "name": "Motion demonstration",
+      "spec": "Show an animation curve and logo-ending example within the laptop view."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The clip demonstrates the guideline portal on three device formats.",
+    "Intent": "The accompanying Smart tools section says the portal makes the identity easier to understand and apply and describes automated logo-ending and ring-proportion tools."
+  },
+  "motion": "../sources/au10.mp4"
+}

@@ -1,0 +1,66 @@
+{
+  "id": "IB027",
+  "title": "Layout / Tips and techniques",
+  "image": "ib027.png",
+  "source": "../sources/layout-tips-and-techniques.txt",
+  "location": {
+    "series": "IBM Design Language / public web guidelines",
+    "item": 27,
+    "extent": "Complete webpage content-area capture; visible default tab states",
+    "url": "https://www.ibm.com/design/language/layout/tips-and-techniques/",
+    "order": 27000
+  },
+  "slide_intent": "Balance repetition, variation and space so a reader can follow content without monotony or overload.",
+  "strategic_value": "A shared grid with deliberate changes in rhythm and hierarchy can give IBM communications both continuity and a distinctive sense of movement.",
+  "demonstration": "The long webpage combines interface and editorial examples with grid overlays and do/don’t comparisons for whitespace, hierarchy, compositional flow and asymmetry.",
+  "category": "Layout",
+  "practical_value": "Plan repeated content units, pauses and focal points before refining a composition’s alignment and asymmetric balance.",
+  "content_islands": [
+    {
+      "name": "Pattern and structural rhythm",
+      "spec": "Open with paired communication examples, then a laptop grid overlay and sizing-scale demonstration."
+    },
+    {
+      "name": "Editorial rhythm",
+      "spec": "Place tall webpage sequences together to compare repeated and alternating content units."
+    },
+    {
+      "name": "Whitespace",
+      "spec": "Follow the breathing-room rationale with a spacious-versus-crowded wireframe pair and a full webpage example."
+    },
+    {
+      "name": "Hierarchy and flow",
+      "spec": "Compare typographic hierarchy, then show a structured service webpage and a dark threat-intelligence dashboard before editorial compositions illustrating eye movement."
+    },
+    {
+      "name": "Asymmetry",
+      "spec": "End with balanced-versus-centered wireframes and a group of web, poster and publication examples that distribute positive and negative space unevenly."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source explains rhythm through music, whitespace as a visual pause and hierarchy as a means of making information navigable.",
+    "Expression": "IBM applications show grid-based structure combined with variation, strong type scale and asymmetric space.",
+    "Application": "The guidance teaches structural and editorial rhythm, deliberate whitespace, typographic hierarchy and planned eye movement.",
+    "Constraint": "The do/don’t pairs reject overcrowding and undifferentiated hierarchy; the text advises avoiding perfect symmetry as less engaging, rather than declaring every symmetric layout forbidden."
+  },
+  "ingredient": {
+    "name": "Structural and editorial rhythm",
+    "role": "Give readers continuity and moments of distinction.",
+    "application": "Repeat useful measurements and content structures, then introduce deliberate variation; use whitespace and typographic contrast to show order.",
+    "scope": "IBM layout guidance across pages and media. Rhythm is a composition principle, not a fixed ratio or universal module count."
+  },
+  "motion_assets": [
+    {
+      "title": "Webpage hierarchy and scrolling",
+      "file": "../sources/media/482fc870336a.mp4",
+      "poster": "../sources/media/482fc870336a-poster.png",
+      "duration_seconds": 14.51,
+      "source_url": "https://www.ibm.com/design/language/static/292028388-0d8d16ee85ffbbd84f0446de5a9e95de.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    }
+  ]
+}

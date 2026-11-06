@@ -1,0 +1,29 @@
+{
+  "id": "HI22",
+  "title": "Street culture and movement",
+  "image": "hi22.png",
+  "source": "../sources/illustration-examples.pdf",
+  "location": {
+    "page": 22,
+    "series": "Helsinki illustration examples — PDF derived from the official PowerPoint deck with LibreOffice",
+    "order": 212
+  },
+  "slide_intent": "Use active poses to communicate urban energy so illustration can suggest participation without depicting motion literally.",
+  "strategic_value": "Skating and street-life figures can extend Helsinki’s visual voice into youth and street culture.",
+  "demonstration": "Skating figures, a seated person, a balloon seller, equipment and architectural fragments are distributed across a pale-gray field with ochre accents.",
+  "category": "Imagery",
+  "practical_value": "Select poses and objects that support the activity being discussed; this still does not specify animation.",
+  "content_islands": [
+    {
+      "name": "Active figures",
+      "spec": "Spread skating, seated and balloon-selling figures across the composition."
+    },
+    {
+      "name": "Urban fragments",
+      "spec": "Interleave equipment, signboards and architectural details to establish context."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Skating figures, a seated person, a balloon seller, equipment and architectural fragments are distributed across a pale-gray field with ochre accents."
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "id": "DBV37",
+  "title": "Trenner_up-1c",
+  "image": "dbv37.png",
+  "source": "../sources/media/dbv37.mp4",
+  "location": {
+    "series": "DB new design / motion demonstrations",
+    "source_page": 15,
+    "section": "Bewegtbild-14021636",
+    "source_url": "https://ecm-mediathek-cdn.deutschebahn.com/cdnenhancedecmvidhls/db306442/2881111/video_config.json",
+    "capture_date": "2026-11-05",
+    "note": "Transition page grouping/captions and embedded file behavior are inconsistent. Direction and color count here follow the inspected video; the preference for two-color dividers remains a separately attributed source rule."
+  },
+  "slide_intent": "Keep a vertical scene transition direct so viewers can follow a new shot replacing the old one.",
+  "strategic_value": "A rising single red plane can give DB film structure with little additional visual complexity.",
+  "demonstration": "A red plane rises over aerial solar-farm footage and reveals a passing train as it clears the top.",
+  "category": "Motion",
+  "practical_value": "Choose the observed one-color upward divider when a simple vertical transition suits the sequence.",
+  "content_islands": [
+    {
+      "name": "First scene",
+      "spec": "Show the solar panels from above."
+    },
+    {
+      "name": "Upward wipe",
+      "spec": "Raise the red field from bottom to top to reveal the train."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A red plane rises over aerial solar-farm footage and reveals a passing train as it clears the top.",
+    "Application": "The source provides a playable demonstration of this repeatable sequence: A red plane rises over aerial solar-farm footage and reveals a passing train as it clears the top.",
+    "Intent": "Accompanying Trenner prose says transitions separate film sequences, create structure, and help viewers orient themselves.",
+    "Constraint": "The source prefers the two-color dynamic divider and uses the one-color divider especially on busy backgrounds; dividers follow the main axes."
+  },
+  "motion": "../sources/media/dbv37.mp4",
+  "ingredient": {
+    "name": "Scene divider",
+    "role": "Make the boundary between film sequences visible.",
+    "application": "Prefer two-color dynamic dividers; use a one-color divider particularly for a busy background. Keep movement on a main axis.",
+    "scope": "Official DB new-design web guidance, undated live edition captured 2026-11-05; applies to the demonstrated motion context. File behavior determines this record’s direction and color count because nearby page captions/groupings do not consistently match the embedded clips."
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "C459",
+  "title": "It’s a Sin vertical poster",
+  "image": "c459.png",
+  "source": "../sources/c459.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 / 2023 masterbrand case study",
+    "item": 59,
+    "extent": "Full published artwork"
+  },
+  "slide_intent": "Adapt title lettering to a tall format, because different placements require a new rhythm rather than a scaled copy.",
+  "strategic_value": "Repeated condensed title fragments and saturated red/pink fields can give Channel 4’s drama a distinctive campaign voice while retaining the small green signature.",
+  "demonstration": "A tall red poster stacks and repeats It’s a Sin lettering at changing scales around a central photographic strip; a green 4 and small season/date information appear at the top.",
+  "category": "Application",
+  "practical_value": "Explore how repeated title fragments can organize a narrow poster while leaving room for a content image.",
+  "content_islands": [
+    {
+      "name": "Top attribution",
+      "spec": "Keep the green 4 and small release information above the main lettering."
+    },
+    {
+      "name": "Type and image sequence",
+      "spec": "Stack oversized title fragments around the central image band, alternating pink and dark letters against red."
+    },
+    {
+      "name": "Vertical frame",
+      "spec": "Retain the complete tall poster within the black surrounding field."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A tall red poster stacks and repeats It’s a Sin lettering at changing scales around a central photographic strip; a green 4 and small season/date information appear at the top.",
+    "Application": "The source demonstrates this treatment in a tall programme poster."
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "BK114",
+  "title": "Operational Icons",
+  "image": "bk114.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 114
+  },
+  "slide_intent": "Make small product symbols simple and consistent so staff and customers can identify ingredients quickly.",
+  "strategic_value": "Illustration-derived icons can extend Burger King character into practical packaging information without sacrificing recognition.",
+  "demonstration": "A left instruction column accompanies a four-row array of brown ingredient and operational symbols with captions, including cheese, patties, sauces, egg and abbreviated combinations.",
+  "category": "Imagery",
+  "practical_value": "Use consistent-height operational icons between 24 and 84 pt, with the product-category color on white packaging.",
+  "content_islands": [
+    {
+      "name": "Icon guidance",
+      "spec": "Place the style rationale, size interval and white-background color rule at left."
+    },
+    {
+      "name": "Ingredient grid",
+      "spec": "Arrange captioned ingredient and container icons in orderly rows across the right."
+    },
+    {
+      "name": "Combination symbols",
+      "spec": "Retain the egg, EC and S specimens on the bottom row as part of the operational vocabulary."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text links the updated illustration-inspired style to bolder, simpler and instantly identifiable icons.",
+    "Expression": "The array demonstrates solid, irregular food silhouettes.",
+    "Application": "The page gives operational icon sizes and the product-category color treatment for white packaging.",
+    "Constraint": "Icons must remain at a consistent height, no larger than 84 pt and no smaller than 24 pt."
+  },
+  "ingredient": {
+    "name": "Operational icons",
+    "role": "Identify products and ingredients on packaging.",
+    "application": "Keep a consistent height between 24 and 84 pt. On white packaging, use the product category’s primary color, such as Flaming Orange for chicken.",
+    "scope": "Historical operational packaging icons; these point sizes do not apply to the separate digital-icon rule."
+  }
+}

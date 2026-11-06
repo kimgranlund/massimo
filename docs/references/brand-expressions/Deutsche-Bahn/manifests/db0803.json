@@ -1,0 +1,30 @@
+{
+  "id": "DB0803",
+  "title": "Color applications / offer and connection",
+  "image": "db0803.png",
+  "source": "../sources/page-08.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 8,
+    "section": 3,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Markenfarben"
+  },
+  "slide_intent": "Show color continuity across different layouts so the brand survives changing content.",
+  "strategic_value": "Repeated red identification can connect DB product advertising with a broader connection message.",
+  "demonstration": "A BahnCard offer on white sits beside a wide light/dark composition reading Wir verbinden / Was bewegt with rail imagery and sleepers.",
+  "category": "Application",
+  "practical_value": "Compare how red works as product emphasis, logo and edge motif across two applications.",
+  "content_islands": [
+    {
+      "name": "Product offer",
+      "spec": "Place the tilted BahnCard and bold black headline in the left light panel."
+    },
+    {
+      "name": "Connection composition",
+      "spec": "Pair dark text/image space with a white message panel and a red lower sleeper at right."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The examples use the palette in product advertising and a connection-themed layout."
+  }
+}

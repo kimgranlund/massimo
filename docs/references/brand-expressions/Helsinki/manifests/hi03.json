@@ -1,0 +1,25 @@
+{
+  "id": "HI03",
+  "title": "Original collages / City, neighbourhood and everyday life",
+  "image": "hi03.png",
+  "source": "../sources/illustration-examples.pdf",
+  "location": {
+    "page": 3,
+    "series": "Helsinki illustration examples — PDF derived from the official PowerPoint deck with LibreOffice",
+    "order": 193
+  },
+  "slide_intent": "Show related scenes together so viewers can judge how one visual language accommodates different city experiences.",
+  "strategic_value": "Repeated linework and a limited set of colors can make Helsinki’s different subjects feel like one family.",
+  "demonstration": "Three portrait collages sit side by side on a pale-blue field, combining construction and water, neighbourhood life, and everyday activities.",
+  "category": "Imagery",
+  "practical_value": "Compare density and subject variety across complete collages before extracting individual motifs.",
+  "content_islands": [
+    {
+      "name": "Three original compositions",
+      "spec": "Align the portrait sheets at equal height with consistent blue gutters."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The three collages share outlined figures, architectural fragments and flat-color accents."
+  }
+}

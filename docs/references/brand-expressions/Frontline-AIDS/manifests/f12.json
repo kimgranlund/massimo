@@ -1,0 +1,24 @@
+{
+  "id": "F12",
+  "title": "Our strapline",
+  "image": "f12.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 12
+  },
+  "slide_intent": "Teach how a short invitation can move a reader from recognition toward participation. A second imperative makes the intended outcome part of the same phrase.",
+  "strategic_value": "Frontline AIDS can give different campaigns one compact verbal sign-off that joins an audience invitation to the organization’s purpose.",
+  "demonstration": "The strapline occupies a large clear pink field. A white hand-drawn underline emphasizes its ending.",
+  "category": "Voice",
+  "practical_value": "Use the two imperatives together when a piece needs a concise sign-off or call to participate.",
+  "content_islands": [
+    {
+      "name": "Heading and explanation",
+      "spec": "Place the brand-section rail, heading and small explanation along the upper left."
+    },
+    {
+      "name": "Strapline specimen",
+      "spec": "Set the complete line in heavy black type across the open field. Underline the final phrase with the white gesture."
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "id": "DB1011",
+  "title": "Dos & Don'ts / Schwelle",
+  "image": "db1011.png",
+  "source": "../sources/page-10.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 10,
+    "section": 11,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Schwelle"
+  },
+  "slide_intent": "Make permitted changes explicit so the signature stays recognizable across varied uses.",
+  "strategic_value": "A concise comparison can prevent DB’s bar element from drifting into unrelated shapes.",
+  "demonstration": "Five positive/negative pairs cover orientation, edge shape, stretching, color and the number of elements.",
+  "category": "Geometry",
+  "practical_value": "Check cardinal orientation, straight edges, allowed stretching/colors and one-element usage.",
+  "content_islands": [
+    {
+      "name": "Orientation and edges",
+      "spec": "Contrast horizontal/vertical straight bars with crossed-out diagonal and softened versions."
+    },
+    {
+      "name": "Stretch and color",
+      "spec": "Compare allowed extension and defined colors with compressed or off-palette treatments."
+    },
+    {
+      "name": "Quantity",
+      "spec": "Compare a single sequence with an additional subtle background sequence."
+    }
+  ],
+  "reference_purposes": {
+    "Constraint": "Only horizontal/vertical placement, straight edges and defined colors are allowed; length may stretch to 200% but not compress; at most one Schwelle per layout or viewport.",
+    "Application": "Positive and crossed-out specimens make each restriction directly comparable."
+  }
+}

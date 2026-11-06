@@ -1,0 +1,28 @@
+{
+  "id": "HE060",
+  "title": "Electronic services",
+  "image": "he060.png",
+  "source": "../sources/visual-storytelling.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Electronic services",
+    "order": 82,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/visual-storytelling#electronic-services",
+    "original_html": "../sources/visual-storytelling.html"
+  },
+  "slide_intent": "Distinguish a static map from an interactive service so people receive the interaction and information they need.",
+  "strategic_value": "Choosing the appropriate map integration can keep Helsinki digital services coherent with their purpose.",
+  "demonstration": "This expanded webpage-section capture lists screenshot, embedded-map and geospatial-interface routes in increasing implementation complexity.",
+  "category": "Imagery",
+  "practical_value": "Choose screenshot, Export/Share embed or data interface according to whether the map must be static, interactive or integrated.",
+  "content_islands": [
+    {
+      "name": "Three delivery routes",
+      "spec": "Keep the acquisition choices in a sequential bullet list with interface contacts attached to the final option."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The section explains screenshots, Export/Share embeds and interface-based map use.",
+    "Constraint": "It states that using a geospatial data interface requires an agreement with City Survey Services."
+  }
+}

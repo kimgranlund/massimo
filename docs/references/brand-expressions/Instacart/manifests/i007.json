@@ -1,0 +1,24 @@
+{
+  "id": "I007",
+  "title": "Logo",
+  "image": "i007.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 7
+  },
+  "slide_intent": "Mark the start of a chapter so readers can distinguish a concept from its visual signature.",
+  "strategic_value": "Repeating the dark divider format can turn the chapter sequence into a familiar navigation cue.",
+  "demonstration": "The word Logo fills the left side of a dark green field beneath small running labels.",
+  "category": "Layout",
+  "practical_value": "Use the divider to locate the beginning of the logo guidance when reviewing the book.",
+  "content_islands": [
+    {
+      "name": "Running labels",
+      "spec": "Maintain the small book and folio treatment."
+    },
+    {
+      "name": "Chapter title",
+      "spec": "Set Logo in pale type against green; leave the rest of the canvas open."
+    }
+  ]
+}

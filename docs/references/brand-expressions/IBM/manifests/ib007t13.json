@@ -1,0 +1,38 @@
+{
+  "id": "IB007T13",
+  "title": "Color / Full palette — PMS specifications",
+  "image": "ib007t13.png",
+  "source": "../sources/alternate-tabs.json",
+  "location": {
+    "series": "IBM Design Language / alternate tab states",
+    "parent": "IB007",
+    "group": 1,
+    "tab": 3,
+    "label": "PMS",
+    "url": "https://www.ibm.com/design/language/color/",
+    "order": 7113
+  },
+  "slide_intent": "Connect digital color names to print references, because the same brand color needs to remain identifiable when the production method changes.",
+  "strategic_value": "Mapping IBM’s named swatches to Pantone references can give print partners a common starting point for color reproduction.",
+  "demonstration": "The PMS tab replaces channel numbers with Pantone references across the same hue and neutral swatch families; White is shown with a dash.",
+  "category": "Color",
+  "practical_value": "Find the listed Pantone reference for a named IBM grade rather than substituting an unrecorded screen-to-print conversion.",
+  "content_islands": [
+    {
+      "name": "Print-reference selector",
+      "spec": "Show PMS selected among the four encoding tabs."
+    },
+    {
+      "name": "Chromatic references",
+      "spec": "Pair the seven hue families with Pantone names or numbers, including Blue 60 with 2132."
+    },
+    {
+      "name": "Neutral references",
+      "spec": "List cool, neutral and warm gray mappings with Black 6 and dash entries for White."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The palette retains its family and tonal organization while displaying print references.",
+    "Application": "The selected tab supplies Pantone mappings for the named IBM colors; the accompanying page identifies these as print specifications."
+  }
+}

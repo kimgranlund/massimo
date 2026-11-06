@@ -1,0 +1,24 @@
+{
+  "id": "F79",
+  "title": "Examples we love",
+  "image": "f79.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 79
+  },
+  "slide_intent": "Introduce the range of media a designer will compare. An overview helps readers choose the application closest to their communication problem.",
+  "strategic_value": "Repeated assets across print, digital and physical pieces can establish continuity while allowing each format its own composition.",
+  "demonstration": "A cyan page gathers a tote, publications, digital screens and campaign fragments around the introduction. The left index names the application types covered in the following pages.",
+  "category": "Application",
+  "practical_value": "Use the medium list to move from a general brand question to a relevant worked application.",
+  "content_islands": [
+    {
+      "name": "Application index",
+      "spec": "Use the chapter rail to list advertising, digital, social, event, print, correspondence and presentation pages."
+    },
+    {
+      "name": "Example montage",
+      "spec": "Keep the intro clear at upper left, then distribute the tote and varied rectangular pieces across the cyan field at different sizes."
+    }
+  ]
+}

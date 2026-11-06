@@ -1,0 +1,40 @@
+{
+  "id": "DBV34",
+  "title": "Logo_Ending-simple-1c",
+  "image": "dbv34.png",
+  "source": "../sources/media/dbv34.mp4",
+  "location": {
+    "series": "DB new design / motion demonstrations",
+    "source_page": 15,
+    "section": "Bewegtbild-14021636",
+    "source_url": "https://ecm-mediathek-cdn.deutschebahn.com/cdnenhancedecmvidhls/db306438/2881077/video_config.json",
+    "capture_date": "2026-11-05"
+  },
+  "slide_intent": "Reduce the closing transition when the content needs a simpler ending so identification remains clear.",
+  "strategic_value": "A restrained wipe can provide a DB signature without adding the full expressive plane sequence.",
+  "demonstration": "Train footage transitions through a simpler plane wipe to a centered red DB logo on white.",
+  "category": "Motion",
+  "practical_value": "Choose the reduced ending when a simpler treatment fits the format or message.",
+  "content_islands": [
+    {
+      "name": "Simple transition",
+      "spec": "Cover the train scene with the reduced wipe."
+    },
+    {
+      "name": "Closing logo",
+      "spec": "Hold the centered red mark on the white field."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Train footage transitions through a simpler plane wipe to a centered red DB logo on white.",
+    "Application": "The source provides a playable demonstration of this repeatable sequence: Train footage transitions through a simpler plane wipe to a centered red DB logo on white.",
+    "Constraint": "The source prefers the primary logo ending and provides reduced variants for a simpler treatment."
+  },
+  "motion": "../sources/media/dbv34.mp4",
+  "ingredient": {
+    "name": "Logo ending",
+    "role": "Close audiovisual content with a recognizable DB signature.",
+    "application": "Prefer the primary ending; use a reduced variant for a simpler treatment.",
+    "scope": "Official DB new-design web guidance, undated live edition captured 2026-11-05; applies to the demonstrated motion context. This record describes visible motion; it does not analyze the soundtrack."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "HX09",
+  "title": "Brand visual storytelling matrix",
+  "image": "hx09.png",
+  "source": "../sources/visual-storytelling.offline.html",
+  "location": {
+    "series": "Web guideline introduction/component",
+    "order": 38,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/visual-storytelling",
+    "original_html": "../sources/visual-storytelling.html"
+  },
+  "slide_intent": "Translate strategic themes into image choices because a city’s character becomes tangible through the scenes it presents.",
+  "strategic_value": "Helsinki can balance charm with confidence by pairing urban freedom and unusual experiences with sustainable, functional life.",
+  "demonstration": "This webpage board places photographs, illustrations and information graphics in a matrix headed Brands’ visual storytelling, with Charm/Convince axes and Wildly Urban, Free, Extraordinary, Sustainable and Functional labels.",
+  "category": "Imagery",
+  "practical_value": "Use the named themes to compare the story carried by proposed images.",
+  "content_islands": [
+    {
+      "name": "Storytelling matrix",
+      "spec": "Keep the orange upper themes and blue lower themes aligned with their image groups and the credit caption."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The labeled collage combines urban life, nature, residents, illustration and data imagery.",
+    "Application": "The matrix relates example imagery to named storytelling themes."
+  }
+}

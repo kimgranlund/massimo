@@ -1,0 +1,32 @@
+{
+  "id": "N40",
+  "title": "Interior Grid Formats: Leaflets & Folders",
+  "image": "n40.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 40
+  },
+  "slide_intent": "Teach designers to coordinate a sequence of narrow pages. A stable track for pictures and captions lets a reader follow changes across a folded publication.",
+  "strategic_value": "NASA can vary a leaflet’s rhythm while retaining the order that makes a small publication easy to use.",
+  "demonstration": "Three rows show alternative one-column systems. Captions occupy a bottom margin in a, photographs run along a lower track in b, and full-bleed images alternate with lower-half text in c.",
+  "category": "Layout",
+  "practical_value": "Choose a grid by the amount of image and caption material. Test consecutive pages together so each repeated track carries the intended content.",
+  "content_islands": [
+    {
+      "name": "Three grid descriptions",
+      "spec": "Place the heading and the three lettered descriptions in the upper columns."
+    },
+    {
+      "name": "Bottom caption margin",
+      "spec": "Diagram option a with headings at the top, substantial text or image fields and captions across the lower margin."
+    },
+    {
+      "name": "Lower photo track",
+      "spec": "Diagram option b with heads and text aligned at the top and pictures on a lower track with captions above."
+    },
+    {
+      "name": "Full-bleed image pages",
+      "spec": "Diagram option c with alternating full-height image pages and text confined to the lower half of the adjoining pages. Retain red guides through the sequence."
+    }
+  ]
+}

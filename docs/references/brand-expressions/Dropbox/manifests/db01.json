@@ -1,0 +1,30 @@
+{
+  "id": "DB01",
+  "title": "White symbol on blue",
+  "image": "db01.png",
+  "source": "../sources/db01.jpg",
+  "location": {
+    "series": "COLLINS / Dropbox / 2017 identity case study",
+    "item": 1,
+    "section": "Cover",
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Establish a clear visual anchor because recognition often begins before a viewer reads a name.",
+  "strategic_value": "The isolated white diamonds can preserve Dropbox recognition amid the more varied imagery shown elsewhere.",
+  "demonstration": "A white five-part symbol sits centrally in a saturated blue portrait field.",
+  "category": "Brand",
+  "practical_value": "Compare the mark alone with the named signature in DB09.",
+  "content_islands": [
+    {
+      "name": "Symbol",
+      "spec": "Center the white diamond assembly with a narrow gap above its lowest part."
+    },
+    {
+      "name": "Blue field",
+      "spec": "Extend the blue ground to all four edges and retain generous space around the mark."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A white five-part symbol sits centrally in a saturated blue portrait field."
+  }
+}

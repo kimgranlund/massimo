@@ -1,0 +1,29 @@
+{
+  "id": "LH40",
+  "title": "Material palette in review",
+  "image": "lh40.png",
+  "source": "../sources/lh40.jpg",
+  "location": {
+    "series": "HvD Fonts / Lufthansa 2018",
+    "item": 19,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Compare finishes in the same light because color relationships shift across textiles, paper and hard surfaces.",
+  "strategic_value": "A coordinated blue and neutral material family can carry Lufthansa’s identity into tactile experiences.",
+  "demonstration": "An angled tabletop photograph shows stacked blue swatches, crane tiles, neutral chips and wood-like samples.",
+  "category": "Color",
+  "practical_value": "Review actual material combinations alongside graphic identity samples.",
+  "content_islands": [
+    {
+      "name": "Material spread",
+      "spec": "Retain the angled arrangement of blue, yellow and neutral samples."
+    },
+    {
+      "name": "Graphic anchors",
+      "spec": "Keep the crane and wordmark specimens among the physical finishes."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "An angled tabletop photograph shows stacked blue swatches, crane tiles, neutral chips and wood-like samples."
+  }
+}

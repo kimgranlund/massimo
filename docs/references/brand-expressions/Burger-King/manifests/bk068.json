@@ -1,0 +1,40 @@
+{
+  "id": "BK068",
+  "title": "Typeface Overview",
+  "image": "bk068.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 68
+  },
+  "slide_intent": "Assign different voices to headline, support and detail so readers can distinguish the main invitation from information that follows.",
+  "strategic_value": "A shared Flame family can preserve Burger King’s personality across a loud headline and routine explanatory copy.",
+  "demonstration": "Three stacked roles pair Flame Bold with Eat Loud, Flame Regular with a delivery line, and Flame Sans with a body paragraph.",
+  "category": "Typography",
+  "practical_value": "Choose Bold for headlines, Regular for subheads and Sans for body copy using these role specimens.",
+  "content_islands": [
+    {
+      "name": "Family explanation",
+      "spec": "Place the explanatory column at left, including the restriction on modifying the font."
+    },
+    {
+      "name": "Role specimens",
+      "spec": "Stack the three labeled type roles in the middle with their specimens to the right."
+    },
+    {
+      "name": "Example qualification",
+      "spec": "Retain the small legal-review note beneath the specimens."
+    }
+  ],
+  "ingredient": {
+    "name": "Flame family roles",
+    "role": "Separate emphasis from supporting information while retaining a common voice.",
+    "application": "Use Flame Bold for headlines, Flame Regular for subheads and Flame Sans for body copy. Do not modify the font without BKC legal approval.",
+    "scope": "Historical 2020 partner guidelines, PDF produced January 2021. Printed examples require BK legal trademark clearance and local legal review before use."
+  },
+  "reference_purposes": {
+    "Intent": "The copy explains that three styles allow a flexible voice while keeping one consistent brand impression.",
+    "Expression": "The three actual phrases demonstrate Bold, Regular and Sans.",
+    "Application": "Headline, subhead and body labels assign each style a role.",
+    "Constraint": "Modification or adaptation of Flame requires BKC legal approval; examples carry a legal-review qualification."
+  }
+}

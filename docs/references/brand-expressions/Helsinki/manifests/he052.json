@@ -1,0 +1,39 @@
+{
+  "id": "HE052",
+  "title": "1/3 screen overlays",
+  "image": "he052.png",
+  "source": "../sources/visual-storytelling.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "1/3 screen overlays",
+    "order": 72,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/visual-storytelling#1-3-screen-overlays",
+    "original_html": "../sources/visual-storytelling.html"
+  },
+  "slide_intent": "Reserve only the space needed for explanation so the image can remain the main subject.",
+  "strategic_value": "A compact third-width panel can carry Helsinki information while keeping more of the scene visible.",
+  "demonstration": "This expanded webpage-section capture compares an upper-left green text panel with a centered orange panel on the right of photographic footage.",
+  "category": "Layout",
+  "practical_value": "Use a one-third panel when a short explanation must coexist with a larger image.",
+  "content_islands": [
+    {
+      "name": "Placement rule",
+      "spec": "State protected-area, side and color options before the examples."
+    },
+    {
+      "name": "Two third-width examples",
+      "spec": "Pair each left or right panel with its alignment and type-size note."
+    }
+  ],
+  "ingredient": {
+    "name": "One-third video overlay",
+    "role": "Support footage with concise text.",
+    "application": "Place a color panel left or right with centered or upper-left text inside the safe area.",
+    "scope": "One-third overlays; templates use 80 px text and 96 px line spacing."
+  },
+  "reference_purposes": {
+    "Application": "The two templates show a left upper-aligned panel and a right centered panel.",
+    "Constraint": "Text remains inside the protected area.",
+    "Expression": "Green and orange color blocks frame white or dark text beside city imagery."
+  }
+}

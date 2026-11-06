@@ -1,0 +1,34 @@
+{
+  "id": "DB23",
+  "title": "Boundless-energy wall advertisement",
+  "image": "db23.png",
+  "source": "../sources/db23.jpg",
+  "location": {
+    "series": "COLLINS / Dropbox / 2017 identity case study",
+    "item": 23,
+    "section": "Gallery",
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Test a campaign at architectural scale because attention and reading order change across a street.",
+  "strategic_value": "A large image pair and short text block can make Dropbox’s creative proposition visible at a distance.",
+  "demonstration": "A painted wall advertisement pairs burgundy copy with abstract pink-and-dark imagery and a small signature; pedestrians and road markings supply scale.",
+  "category": "Application",
+  "practical_value": "Compare headline prominence with the image and signature in a street setting.",
+  "content_islands": [
+    {
+      "name": "Message block",
+      "spec": "Place the short headline on the burgundy left panel."
+    },
+    {
+      "name": "Image pair and signature",
+      "spec": "Join the abstract images to its right and retain the signature at the far edge."
+    },
+    {
+      "name": "Street scale",
+      "spec": "Keep pedestrians and roadway in view."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "A painted wall advertisement pairs burgundy copy with abstract pink-and-dark imagery and a small signature; pedestrians and road markings supply scale."
+  }
+}

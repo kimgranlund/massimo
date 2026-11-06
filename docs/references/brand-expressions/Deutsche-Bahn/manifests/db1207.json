@@ -1,0 +1,31 @@
+{
+  "id": "DB1207",
+  "title": "Farbigkeit / light backgrounds",
+  "image": "db1207.png",
+  "source": "../sources/page-12.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 12,
+    "section": 7,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Signature-Graphics"
+  },
+  "slide_intent": "Distinguish accents from quiet background graphics so color signals the intended role.",
+  "strategic_value": "Red or lilac emphasis can remain connected to DB while gray supports background context.",
+  "demonstration": "The light-background tab compares red, lilac and gray striped swatches beneath the color guidance.",
+  "category": "Color",
+  "practical_value": "Prefer DB Red and Transitional Lilac; use defined gray for subtle backgrounds and reserve white/Cold Black for exceptions.",
+  "content_islands": [
+    {
+      "name": "Color guidance",
+      "spec": "Place preferred colors and exceptions above the tabs."
+    },
+    {
+      "name": "Light-ground specimens",
+      "spec": "Show the three colored striped swatches with role labels on a light background."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The selected tab demonstrates brand, expressive and background color roles.",
+    "Constraint": "Clear White and Cold Black are exceptions such as transparent-surface decals; subtle backgrounds use defined grays."
+  }
+}

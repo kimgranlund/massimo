@@ -1,0 +1,31 @@
+{
+  "id": "DB1117",
+  "title": "Ausrichtung",
+  "image": "db1117.png",
+  "source": "../sources/page-11.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 11,
+    "section": 17,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Icons"
+  },
+  "slide_intent": "Center by perceived weight so a symbol feels balanced within its control.",
+  "strategic_value": "Optical adjustment can keep DB icons aligned in use even when geometry is asymmetric.",
+  "demonstration": "A play-symbol comparison distinguishes geometric centering from optical centering with construction overlays.",
+  "category": "Geometry",
+  "practical_value": "Judge the visible center of mass rather than relying only on a bounding box.",
+  "content_islands": [
+    {
+      "name": "Alignment rule",
+      "spec": "State optical centering above the comparison."
+    },
+    {
+      "name": "Centered pair",
+      "spec": "Place geometric and optical versions side by side with captions."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The two versions demonstrate centering from visual weight.",
+    "Constraint": "The source directs icons to be optically centered on their base area."
+  }
+}

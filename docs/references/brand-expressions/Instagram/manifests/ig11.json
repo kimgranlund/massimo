@@ -1,0 +1,37 @@
+{
+  "id": "IG11",
+  "title": "Expressive range / Dialed up",
+  "image": "ig11.png",
+  "source": "../sources/ig11.png",
+  "location": {
+    "series": "Elvis Dinh / Instagram brand design system / project year 2022",
+    "item": 11,
+    "extent": "whole source artwork"
+  },
+  "slide_intent": "Increase expressive variety when the occasion needs a distinct cultural voice.",
+  "strategic_value": "An expanded range can let Instagram celebrate different communities while retaining familiar marks.",
+  "demonstration": "A collage combines an emotional photo message, a bright illustrated Spanish-language panel, a skate image and a Pride composition.",
+  "category": "Color",
+  "practical_value": "Choose additional colors and treatments because of the cultural moment rather than treating expansion as the default.",
+  "content_islands": [
+    {
+      "name": "Large upper example",
+      "spec": "Give the soft-focus photographic message the largest area."
+    },
+    {
+      "name": "Cultural examples",
+      "spec": "Arrange the illustration, skate-day and Pride examples beneath it."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The adjacent text says dialing up celebrates cultural and special moments.",
+    "Expression": "The examples introduce more varied colors, illustration and headline treatments.",
+    "Application": "The collection demonstrates the expressive mode across cultural topics."
+  },
+  "ingredient": {
+    "name": "Expanded color mode",
+    "role": "Give special moments a wider expressive range.",
+    "application": "Introduce more of the extended colors, as the source describes.",
+    "scope": "The dialed-up mode for cultural or special moments; it does not replace the core starting point."
+  }
+}

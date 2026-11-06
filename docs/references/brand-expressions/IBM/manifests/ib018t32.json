@@ -1,0 +1,46 @@
+{
+  "id": "IB018T32",
+  "title": "People illustration / Rose and Almond — RGB palette",
+  "image": "ib018t32.png",
+  "source": "../sources/alternate-tabs.json",
+  "location": {
+    "series": "IBM Design Language / alternate tab states",
+    "parent": "IB018",
+    "group": 3,
+    "tab": 2,
+    "label": "RGB",
+    "url": "https://www.ibm.com/design/language/illustration/people/",
+    "order": 18132
+  },
+  "slide_intent": "Represent people with a deliberately scoped palette, because human diversity requires more than reusing the main brand’s accent colors.",
+  "strategic_value": "Two organized skin-tone families can help IBM portray people consistently while keeping human representation distinct from its general palette.",
+  "demonstration": "The RGB tab shows two dark-to-light columns, Rose and Almond, each with ten named grades and channel values.",
+  "category": "Color",
+  "practical_value": "Select RGB skin, hair or nail colors from the people palette while retaining the source’s limited application scope.",
+  "content_islands": [
+    {
+      "name": "Encoding selector",
+      "spec": "Show RGB selected beside HEX and CMYK."
+    },
+    {
+      "name": "Rose family",
+      "spec": "Arrange Rose 100 through Rose 10 in the left column with red/green/blue values."
+    },
+    {
+      "name": "Almond family",
+      "spec": "Align Almond 100 through Almond 10 in the right column with matching grade order."
+    }
+  ],
+  "ingredient": {
+    "name": "Rose and Almond people palette",
+    "role": "Represent varied human appearances within IBM illustration.",
+    "application": "Choose the relevant Rose or Almond grade for skin, hair and nails; use the listed RGB values for digital work.",
+    "scope": "The People page explicitly limits this palette to skin, hair and nails. Do not generalize it into a main-brand accent palette."
+  },
+  "reference_purposes": {
+    "Intent": "The accompanying People palette text connects the two families to ethnic and geographic diversity.",
+    "Expression": "Rose and Almond provide a structured warm-toned range separate from the main IBM palette.",
+    "Application": "The RGB values make the people palette usable in digital illustrations.",
+    "Constraint": "The accompanying text reserves this palette for skin, hair and nails and says it is not an extension of the main palette."
+  }
+}

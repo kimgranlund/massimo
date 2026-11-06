@@ -1,0 +1,39 @@
+{
+  "id": "BK079",
+  "title": "Typography Don’ts",
+  "image": "bk079.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 79
+  },
+  "slide_intent": "Show the boundary of acceptable variation because recognizable voice can erode through many small production changes.",
+  "strategic_value": "Contrasting crossed-out mistakes can help Burger King teams retain the shared type character across messages and prices.",
+  "demonstration": "Seven crossed-out examples illustrate unapproved fonts, excessive tracking or leading, effects, a different pricing face, a long uppercase headline and a previous identity typeface.",
+  "category": "Typography",
+  "practical_value": "Check a composition against the specific failure modes instead of judging consistency only by color.",
+  "content_islands": [
+    {
+      "name": "Consistency explanation",
+      "spec": "Place the reason for avoiding modification at left."
+    },
+    {
+      "name": "Mistake grid",
+      "spec": "Arrange seven captioned crossed-out specimens in three columns on cream."
+    },
+    {
+      "name": "Example qualification",
+      "spec": "Keep the small legal-review note below."
+    }
+  ],
+  "ingredient": {
+    "name": "Typographic consistency checks",
+    "role": "Protect the recognizable type voice from off-brand alterations.",
+    "application": "Retain approved faces, compact spacing and unaltered forms; do not use a separate pricing face or an all-caps headline longer than three words.",
+    "scope": "Historical 2020 partner guidelines, PDF produced January 2021. The printed all-caps cross-reference points to page 72; page 73 contains the specific 75% leading and three-word rule. Printed examples require BK legal trademark clearance and local legal review before use."
+  },
+  "reference_purposes": {
+    "Intent": "The text explicitly ties these prohibitions to consistency throughout the visual identity.",
+    "Constraint": "Captions prohibit unapproved/replaced fonts, wide tracking, excessive leading, effects, a different pricing font, uppercase beyond three words and the previous identity font.",
+    "Application": "Each prohibition is paired with a visible example to check against."
+  }
+}

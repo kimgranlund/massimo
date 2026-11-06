@@ -1,0 +1,42 @@
+{
+  "id": "DB0811",
+  "title": "Barrierefreiheit / DB Red and DB Red 500",
+  "image": "db0811.png",
+  "source": "../sources/page-08.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 8,
+    "section": 11,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Markenfarben"
+  },
+  "slide_intent": "Separate identity red from functional contrast needs so recognition and readable interaction can coexist.",
+  "strategic_value": "Context-specific red choices can help DB retain its identity while making text and controls easier to read.",
+  "demonstration": "Logo/sleeper identity specimens use DB Red; a darker DB Red 500 accompanies button and label specimens, followed by three stated contrast pairings.",
+  "category": "Color",
+  "practical_value": "Choose the red by foreground/background role and add a noncolor cue to links, warnings and notices.",
+  "content_islands": [
+    {
+      "name": "Identity red",
+      "spec": "Pair the DB logo and sleeper with the #FF002B swatch."
+    },
+    {
+      "name": "Functional red",
+      "spec": "Pair the UI specimens with DB Red 500 #EC0016 and its contrasting-use explanation."
+    },
+    {
+      "name": "Contrast and coding",
+      "spec": "Compare the three Aa pairings with their printed ratios and the double-coding instruction below."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source explicitly connects color decisions to access, legibility and contrast.",
+    "Application": "The page compares DB Red on Cold Black, DB Red 500 on White and White on DB Red 500.",
+    "Constraint": "Red text is limited to links, warnings and notices and must have an additional visual cue; White text on red uses DB Red 500."
+  },
+  "ingredient": {
+    "name": "Identity and interface red",
+    "role": "Retain red recognition while providing context-appropriate text contrast.",
+    "application": "Use #EC0016 for the stated red UI grounds and red-on-white text, and #FF002B for red text on Cold Black; supplement color with another cue.",
+    "scope": "Source reports contrast ratios 4.8:1 and 4.6:1. Its limited red-text permission differs from the later general do/don’t wording; preserve the specific UI context rather than extending it to campaign typography."
+  }
+}

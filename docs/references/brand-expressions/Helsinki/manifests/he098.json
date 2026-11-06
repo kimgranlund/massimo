@@ -1,0 +1,31 @@
+{
+  "id": "HE098",
+  "title": "Teams backgrounds",
+  "image": "he098.png",
+  "source": "../sources/design-and-create.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Teams backgrounds",
+    "order": 132,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/design-and-create#teams-backgrounds",
+    "original_html": "../sources/design-and-create.html"
+  },
+  "slide_intent": "Choose a video-call background around the person so a branded scene does not obscure the speaker.",
+  "strategic_value": "Appropriate contrast and seasonal Helsinki photography can support recognition without reducing facial visibility.",
+  "demonstration": "Expanded webpage section: bullets explain where Teams backgrounds appear, their meeting contexts and contrast considerations.",
+  "category": "Imagery",
+  "practical_value": "Select a background using lighting and the speaker’s hair, skin and clothing contrast.",
+  "content_islands": [
+    {
+      "name": "Background access and contexts",
+      "spec": "First bullets locate the images and distinguish meeting types."
+    },
+    {
+      "name": "Selection criteria",
+      "spec": "Later bullets give person-dependent contrast and seasonal-update guidance."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The source tells users to choose backgrounds based on lighting and contrast with hair, skin and clothing."
+  }
+}

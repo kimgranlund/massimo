@@ -1,0 +1,29 @@
+{
+  "id": "C418",
+  "title": "Leading layout / New season",
+  "image": "c418.png",
+  "source": "../sources/c418.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 masterbrand / 2023",
+    "item": 18,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Separate attribution and release information from expressive title scale so viewers can read both quickly.",
+  "strategic_value": "The small green 4 and date can identify Channel 4 even when oversized show lettering dominates.",
+  "demonstration": "A cropped red-and-pink poster detail places the green 4 at upper left, The new season / 30 August beside it, and oversized pink title letters below.",
+  "category": "Layout",
+  "practical_value": "Keep essential release information legible when the main title is deliberately cropped.",
+  "content_islands": [
+    {
+      "name": "Identity and date",
+      "spec": "Align the small mark with the compact new-season date block."
+    },
+    {
+      "name": "Oversized title",
+      "spec": "Let the large pink lettering extend beyond the lower and right edges."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The poster detail applies a leading identity and date above oversized show typography."
+  }
+}

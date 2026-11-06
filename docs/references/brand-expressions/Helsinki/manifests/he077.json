@@ -1,0 +1,28 @@
+{
+  "id": "HE077",
+  "title": "Utilise existing resources",
+  "image": "he077.png",
+  "source": "../sources/design-and-create.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Utilise existing resources",
+    "order": 105,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/design-and-create#utilise-existing-resources",
+    "original_html": "../sources/design-and-create.html"
+  },
+  "slide_intent": "Reuse a shared visual resource when it fits so separate teams contribute to one recognizable city.",
+  "strategic_value": "Existing indoor and outdoor event elements can support coherence without requiring each Helsinki team to start again.",
+  "demonstration": "This expanded webpage-section capture explains shared event resources and directs readers to employee and download sections.",
+  "category": "Application",
+  "practical_value": "Check the existing resource pool before commissioning new event elements.",
+  "content_islands": [
+    {
+      "name": "Shared-resource guidance",
+      "spec": "Keep the coherence rationale and the two resource destinations in one text block."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text connects consistent identity to coherent designs by multiple creators.",
+    "Application": "It directs designers to shared event resources and downloadable materials."
+  }
+}

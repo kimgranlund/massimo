@@ -1,0 +1,27 @@
+{
+  "id": "DB1201",
+  "title": "SIGNATURE GRAPHICS",
+  "image": "db1201.png",
+  "source": "../sources/page-12.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 12,
+    "section": 1,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Signature-Graphics"
+  },
+  "slide_intent": "Give illustration a recognizable construction so expressive imagery remains connected to the identity.",
+  "strategic_value": "Deriving imagery from the Schwelle can make DB graphics distinctive without relying on the logo alone.",
+  "demonstration": "A heading and short paragraph introduce signature graphics as illustrative derivatives of the Schwelle.",
+  "category": "Geometry",
+  "practical_value": "Judge a graphic’s connection to the bar-based construction and its clarity.",
+  "content_islands": [
+    {
+      "name": "Definition",
+      "spec": "Place the uppercase heading above the role and construction explanation."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source explicitly links the unique style to high recognition.",
+    "Application": "It defines the graphics as illustrative variations of the Schwelle."
+  }
+}

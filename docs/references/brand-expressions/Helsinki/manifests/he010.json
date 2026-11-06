@@ -1,0 +1,47 @@
+{
+  "id": "HE010",
+  "title": "Names next to the logo",
+  "image": "he010.png",
+  "source": "../sources/use-basic-elements.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Names next to the logo",
+    "order": 14,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/use-basic-elements#names-next-to-the--logo",
+    "original_html": "../sources/use-basic-elements.html"
+  },
+  "slide_intent": "Give service names their own readable prominence while keeping ownership visibly connected to the city.",
+  "strategic_value": "A shared name-setting method can reduce fragmentation without making every Helsinki operator use an identical composition.",
+  "demonstration": "This expanded webpage section explains operator-name typography, pairs names with framed-logo placements and shows prohibited name treatments.",
+  "category": "Typography",
+  "practical_value": "Set an operator’s name with the prescribed type rules, then place it away from the city signature at a suitable size.",
+  "content_islands": [
+    {
+      "name": "Operator applications",
+      "spec": "Follow the initial ownership rules with posters and signage showing operator names alongside the framed city logo."
+    },
+    {
+      "name": "Name rules",
+      "spec": "Place font, case, spacing and line-break instructions with annotated specimens."
+    },
+    {
+      "name": "Logo relationship",
+      "spec": "Show arrangements that separate operator names from the framed logo."
+    },
+    {
+      "name": "Incorrect names",
+      "spec": "Finish with prohibited styling and color examples."
+    }
+  ],
+  "ingredient": {
+    "name": "Operator name",
+    "role": "Distinguish a service while retaining visible city ownership.",
+    "application": "Use Helsinki Grotesk Bold or Medium; Black is allowed for names shorter than ten letters. Use initial capitalization, tracking −25, leading 100%, and left-aligned 2–3 lines for multiword names without syllable breaks.",
+    "scope": "No fixed name-to-logo size ratio is specified; matching the Helsinki word’s type size is the recommended minimum. Names always accompany the city logo and must not use light text colors."
+  },
+  "reference_purposes": {
+    "Intent": "The name/color guidance explicitly invokes accessibility for avoiding light text.",
+    "Application": "Examples show name setting and arrangements with the city mark.",
+    "Constraint": "Operators must include the city logo and cannot create their own; specified font, case and spacing rules apply."
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "IBT06",
+  "title": "Trademark clarity and context",
+  "image": "ibt06.png",
+  "source": "../sources/ibm-logo-third-parties.pdf",
+  "location": {
+    "page": 6,
+    "series": "IBM Logo and Brand Guidelines for Third Parties / copyright 2022",
+    "order": 100006
+  },
+  "slide_intent": "Keep the source of a message distinct from the organizations it mentions, because viewers need to understand who is responsible for the offering.",
+  "strategic_value": "Explicit attribution can protect IBM’s identity from implying a larger role than its actual contribution.",
+  "demonstration": "A short explanation of potential source confusion leads into two requirements about IBM’s contribution and the communication’s source.",
+  "category": "Brand",
+  "practical_value": "Assess whether the mark and accompanying text identify both the sender and IBM’s actual role.",
+  "content_islands": [
+    {
+      "name": "Context heading",
+      "spec": "Place the two-line heading in the left column."
+    },
+    {
+      "name": "Explanation and checks",
+      "spec": "Place the paragraph above two dash-led requirements in the neighboring column."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The paragraph explains that viewers must understand the responsibilities and contributions of all parties.",
+    "Constraint": "The source prohibits use that causes confusion about origin and requires clarity about contribution and communication source."
+  }
+}

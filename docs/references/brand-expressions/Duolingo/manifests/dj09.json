@@ -1,0 +1,31 @@
+{
+  "id": "DJ09",
+  "title": "Messaging and illustration quartet",
+  "image": "dj09.png",
+  "source": "../sources/johnson-banks/Duolingo_typography6-by-Johnson-Banks.jpg",
+  "location": {
+    "series": "Johnson Banks / Everyone can Duolingo / 2019",
+    "item": 9,
+    "extent": "Whole published artwork",
+    "order": 2009
+  },
+  "slide_intent": "Compare several ways of expressing one promise because a brand needs variation without losing its recognizable voice.",
+  "strategic_value": "Repeated green, rounded type and character imagery can hold Duolingo’s encouraging messages together.",
+  "demonstration": "Four rounded tiles pair brief language-learning phrases with green fields, Duo poses and gray supporting text.",
+  "category": "Voice",
+  "practical_value": "Compare the balance of headline, mascot and supporting copy across a small message family.",
+  "content_islands": [
+    {
+      "name": "Upper tiles",
+      "spec": "Pair the text-only “go further” sequence with the “Language never stands still” tile and cropped Duo."
+    },
+    {
+      "name": "Lower tiles",
+      "spec": "Pair the waving Duo and “Goodbye language barriers” with the green “as easy as uno dos tres” tile."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Four tiles vary language and character placement while repeating green and rounded typography.",
+    "Application": "The artwork demonstrates several composed message tiles using the identity."
+  }
+}

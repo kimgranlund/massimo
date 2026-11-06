@@ -1,0 +1,24 @@
+{
+  "id": "F16",
+  "title": "Taking a stand",
+  "image": "f16.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 16
+  },
+  "slide_intent": "Explain how the form of a logo can express an organizational attitude. Bringing the printed mark into an environment helps a reader see its intended scale and presence.",
+  "strategic_value": "Frontline AIDS can combine the compact block lettering and gestural symbol to convey the directness of its activist voice.",
+  "demonstration": "Editorial text about the wordmark and symbol sits beside a photograph of layered colored sheets, dominated by a large black logo on cyan.",
+  "category": "Brand",
+  "practical_value": "Use the example to evaluate whether the two logo components still read together over a colored field.",
+  "content_islands": [
+    {
+      "name": "Logo introduction",
+      "spec": "Place the heading and several short paragraphs in a narrow column beside the rail."
+    },
+    {
+      "name": "Photographed logo",
+      "spec": "Fill the right-hand field with the large logo on the cyan sheet. Retain the neighboring colors and partial symbols to establish the context."
+    }
+  ]
+}

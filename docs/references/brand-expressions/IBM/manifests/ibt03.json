@@ -1,0 +1,29 @@
+{
+  "id": "IBT03",
+  "title": "Contents",
+  "image": "ibt03.png",
+  "source": "../sources/ibm-logo-third-parties.pdf",
+  "location": {
+    "page": 3,
+    "series": "IBM Logo and Brand Guidelines for Third Parties / copyright 2022",
+    "order": 100003
+  },
+  "slide_intent": "Make the rules easy to locate, because designers need to find the relevant condition before producing an application.",
+  "strategic_value": "A concise numbered index can make IBM’s third-party guidance easier to use during production and review.",
+  "demonstration": "A left-aligned Contents label sits beside a vertical list of topics and page numbers 04 through 16.",
+  "category": "Layout",
+  "practical_value": "Navigate directly to placement, color, merchandise or review guidance for the intended use.",
+  "content_islands": [
+    {
+      "name": "Contents label",
+      "spec": "Place the short heading at the top left."
+    },
+    {
+      "name": "Page-topic list",
+      "spec": "Align page numbers in a narrow column beside the 13 topic labels, from trademark usage through creative review."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The page provides a numbered route to the guide’s usage rules and examples."
+  }
+}

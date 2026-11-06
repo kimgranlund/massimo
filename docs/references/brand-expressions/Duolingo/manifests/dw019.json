@@ -1,0 +1,39 @@
+{
+  "id": "DW019",
+  "title": "Color / Neutrals",
+  "image": "dw019.png",
+  "source": "../sources/pages/identity-color.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/identity/color",
+    "section": "Neutrals",
+    "item": 19,
+    "order": 190
+  },
+  "slide_intent": "Separate quiet utility from expressive color because hierarchy needs supporting tones that do not compete for attention.",
+  "strategic_value": "A neutral scale can help Duolingo organize information while leaving recognition and emphasis to its brighter colors.",
+  "demonstration": "Six neutral swatches run from Eel through Wolf, Hare, Swan and Polar to Snow, each with values, beside a role statement.",
+  "category": "Color",
+  "practical_value": "Choose a supporting neutral when the task is utility or hierarchy rather than expressive emphasis.",
+  "content_islands": [
+    {
+      "name": "Neutral scale",
+      "spec": "Keep the six named swatches and supplied values in the left area."
+    },
+    {
+      "name": "Functional role",
+      "spec": "Place the heading and explanation of utility, hierarchy and noncompetition at right."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The copy explicitly says neutrals provide utility and hierarchy without competing with core and secondary colors.",
+    "Expression": "The six swatches show the available neutral range.",
+    "Application": "The role statement distinguishes neutral use from expressive palette use."
+  },
+  "ingredient": {
+    "name": "Neutral palette",
+    "role": "Support hierarchy without competing with brand colors.",
+    "application": "Use the supplied neutral range for utility and hierarchy.",
+    "scope": "Historical archived guidelines. Historical neutral specification. Preserve the printed values as source evidence rather than recalculating print conversions."
+  }
+}

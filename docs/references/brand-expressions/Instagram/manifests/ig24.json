@@ -1,0 +1,41 @@
+{
+  "id": "IG24",
+  "title": "Motion / Spatiality and Z-space",
+  "image": "ig24.png",
+  "source": "../sources/ig24.gif",
+  "location": {
+    "series": "Elvis Dinh / Instagram brand design system / project year 2022",
+    "item": 24,
+    "extent": "whole source artwork",
+    "poster_frame": 75,
+    "poster_seconds": 2.25,
+    "duration_seconds": 4.5
+  },
+  "slide_intent": "Use depth and rotation to give flat interface elements a more expressive physical presence.",
+  "strategic_value": "Familiar conversation bubbles can carry Instagram’s motion character without losing their product association.",
+  "demonstration": "Three chat bubbles tilt and turn in depth while their messages remain attached to the same colored surfaces.",
+  "category": "Motion",
+  "practical_value": "Compare depth changes with readability before using the treatment for longer text.",
+  "content_islands": [
+    {
+      "name": "Conversation stack",
+      "spec": "Arrange three bubbles vertically, alternating violet and light gray."
+    },
+    {
+      "name": "Depth movement",
+      "spec": "Rotate and shift the bubble surfaces while keeping the message order stable."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The adjacent case-study text says motion draws inspiration from how users move through the app.",
+    "Expression": "The bubbles demonstrate a spatial motion treatment.",
+    "Application": "The movement is applied to recognizable chat elements."
+  },
+  "ingredient": {
+    "name": "Chat bubble depth",
+    "role": "Give a conversation an expressive spatial presence.",
+    "application": "Preserve the reading sequence as the bubbles turn in depth.",
+    "scope": "This motion demonstration only; it does not define production easing, duration or a requirement for everyday chat UI."
+  },
+  "motion": "../sources/ig24.mp4"
+}

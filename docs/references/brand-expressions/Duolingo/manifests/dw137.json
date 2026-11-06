@@ -1,0 +1,43 @@
+{
+  "id": "DW137",
+  "title": "Marketing / Cast of characters",
+  "image": "dw137.png",
+  "source": "../sources/pages/marketing-assets.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/marketing/assets",
+    "section": "Cast of characters",
+    "item": 137,
+    "order": 1370
+  },
+  "slide_intent": "Use a varied cast with distinct poses because inclusion and personality are communicated through who appears and how they act.",
+  "strategic_value": "A diverse group of recognizable app characters can extend Duolingo’s invitation into marketing.",
+  "demonstration": "Ten characters with distinct clothing, proportions and expressions appear in two rows beside guidance on grouping and posing.",
+  "category": "Imagery",
+  "practical_value": "Choose individuals, pairs or the whole cast according to the message and preserve each character’s personality.",
+  "content_islands": [
+    {
+      "name": "Character repertoire",
+      "spec": "Arrange the ten posed figures in two rows of five, retaining their individual gestures and shadows."
+    },
+    {
+      "name": "Inclusion and grouping",
+      "spec": "Explain the cast’s ambassador role and permitted group sizes at upper right."
+    },
+    {
+      "name": "Expression guidance",
+      "spec": "Explain why posing matters and why expressionless figures feel lifeless below."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source links the cast’s diversity to the message that everyone can use Duolingo and says posing reveals personality.",
+    "Application": "Characters may appear all together, in pairs or individually.",
+    "Constraint": "The source advises avoiding static, expressionless character use."
+  },
+  "ingredient": {
+    "name": "Marketing cast",
+    "role": "Express inclusion and personality through recurring characters.",
+    "application": "Use the whole cast, pairs or individuals; choose expressive poses that convey character.",
+    "scope": "Historical app cast and marketing guidance; the figures are not asserted to be the current cast."
+  }
+}

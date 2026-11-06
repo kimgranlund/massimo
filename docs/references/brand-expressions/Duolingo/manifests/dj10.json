@@ -1,0 +1,35 @@
+{
+  "id": "DJ10",
+  "title": "Brand guideline overview",
+  "image": "dj10.png",
+  "source": "../sources/johnson-banks/Duolingo_brand_guidelines-by-Johnson-Banks.jpg",
+  "location": {
+    "series": "Johnson Banks / Everyone can Duolingo / 2019",
+    "item": 10,
+    "extent": "Whole published artwork",
+    "order": 2010
+  },
+  "slide_intent": "Show how guidance covers a whole identity because designers need to connect individual ingredients with their use in communication.",
+  "strategic_value": "A shared guide covering marks, voice, color, portraits and layouts can help Duolingo extend beyond its app consistently.",
+  "demonstration": "Nine miniature guideline pages form a three-by-three overview on green, covering story, logo variants and use, Plus, voice, secondary colors, portraits, movement and one-word headlines.",
+  "category": "Brand",
+  "practical_value": "Use the overview to identify the subjects a complete brand guide needs; consult full pages for detailed rules.",
+  "content_islands": [
+    {
+      "name": "Identity row",
+      "spec": "Place story, logo overview and logotype-use pages across the top."
+    },
+    {
+      "name": "Ingredient row",
+      "spec": "Place Plus, Duo’s voice and secondary colors across the middle."
+    },
+    {
+      "name": "Application row",
+      "spec": "Place portrait photography, illustrated movement and one-word headline layouts across the bottom."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The accompanying case study says a clear set of guidelines brought new elements together for use away from the app.",
+    "Application": "The contact sheet shows guidance spanning ingredients and applied layouts; it is an overview, not a substitute for full guideline pages."
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "DW057",
+  "title": "Writing / Voice / Playful",
+  "image": "dw057.png",
+  "source": "../sources/pages/writing-voice.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/voice",
+    "section": "Playful",
+    "item": 57,
+    "order": 570
+  },
+  "slide_intent": "Make playfulness supportive and concise so a small creative surprise helps rather than distracts the reader.",
+  "strategic_value": "Short language jokes and friendly celebration can give Duolingo character without turning every line into a performance.",
+  "demonstration": "The page compares jolly, creative and briefly clever examples with smug, dry or overworked alternatives.",
+  "category": "Voice",
+  "practical_value": "Choose a small relevant verbal twist and remove sarcasm or excessive cleverness.",
+  "content_islands": [
+    {
+      "name": "Guidance column",
+      "spec": "Place the Playful heading, energy rationale and positive/negative trait lists at left."
+    },
+    {
+      "name": "Worked examples",
+      "spec": "Arrange Jolly, Creative and Clever in quick doses comparisons at right, with checked preferred copy above alternatives."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source describes playful language as a burst of creative energy in a learner’s day.",
+    "Expression": "Multilingual wordplay and friendly congratulations demonstrate the intended character.",
+    "Application": "Paired samples distinguish useful creativity from dry or overworked copy.",
+    "Constraint": "The trait list excludes sarcasm, smugness and excessive intellectual display."
+  },
+  "ingredient": {
+    "name": "Playful voice",
+    "role": "Add lightness without excluding the reader.",
+    "application": "Use friendly creativity and short doses of wit; avoid sarcasm or smugness.",
+    "scope": "Historical official guidelines from the 2024–2025 archived snapshot; this records the displayed guidance, not current Duolingo product behavior."
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "id": "DW127",
+  "title": "Illustration / Characters / Mouths",
+  "image": "dw127.png",
+  "source": "../sources/pages/illustration-characters.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/illustration/characters",
+    "section": "Mouths",
+    "item": 127,
+    "order": 1270
+  },
+  "slide_intent": "Allow controlled asymmetry in a mouth so a simple character can communicate a more lifelike emotion.",
+  "strategic_value": "A varied mouth family can help Duolingo expand expression while retaining the same basic head construction.",
+  "demonstration": "Twelve faces in four rows compare mouths of different shapes, sizes and positions, accompanied by a note about asymmetry.",
+  "category": "Imagery",
+  "practical_value": "Try a mouth that favors one side when a symmetrical treatment feels emotionally flat.",
+  "content_islands": [
+    {
+      "name": "Mouth-expression grid",
+      "spec": "Arrange twelve repeated head shapes in three columns at left, varying the mouth while retaining a comparable facial framework."
+    },
+    {
+      "name": "Asymmetry rationale",
+      "spec": "Place the Mouths heading and explanation at right, connecting less geometric forms with emotion."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text says asymmetry is more lifelike and brings more emotion to the face.",
+    "Expression": "The grid demonstrates varied expressive mouth shapes.",
+    "Application": "The examples show how mouth position and shape change the same simple face."
+  },
+  "ingredient": {
+    "name": "Asymmetric mouths",
+    "role": "Give a simple face a stronger emotional reading.",
+    "application": "Allow mouth shapes to favor one side and use less rigid geometry when it serves expression.",
+    "scope": "Historical official Duolingo illustration guidance from the 2024–2025 archived snapshot. The source says most mouths favor one side; it does not require asymmetry in every mouth."
+  }
+}

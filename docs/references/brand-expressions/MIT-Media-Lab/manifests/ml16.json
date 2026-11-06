@@ -1,0 +1,40 @@
+{
+  "id": "ML16",
+  "title": "Institutional social profile",
+  "image": "ml16.png",
+  "source": "../sources/ml16.jpg",
+  "location": {
+    "series": "Pentagram / MIT Media Lab / 2014 identity",
+    "item": 16,
+    "extent": "Published lightbox artwork"
+  },
+  "slide_intent": "Keep the institution identifiable within a third-party interface because audiences encounter brands beyond owned websites.",
+  "strategic_value": "A recognizable avatar can carry lab recognition into a platform’s fixed layout.",
+  "demonstration": "A Facebook-style page combines a building cover photograph, lab monogram avatar and platform feed columns.",
+  "category": "Application",
+  "practical_value": "Evaluate the distinct jobs of avatar and cover image.",
+  "content_islands": [
+    {
+      "name": "Cover image",
+      "spec": "A wide architectural photograph spans the top."
+    },
+    {
+      "name": "Avatar",
+      "spec": "The lab symbol overlaps the lower edge of the cover."
+    },
+    {
+      "name": "Platform content",
+      "spec": "Feed, information and interface panels remain below."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A Facebook-style page combines a building cover photograph, lab monogram avatar and platform feed columns.",
+    "Application": "A Facebook-style page combines a building cover photograph, lab monogram avatar and platform feed columns."
+  },
+  "ingredient": {
+    "name": "Institutional social profile",
+    "role": "Keep the institution identifiable within a third-party interface because audiences encounter brands beyond owned websites.",
+    "application": "Evaluate the distinct jobs of avatar and cover image.",
+    "scope": "Observed in this historical case-study artwork; not a mandatory usage rule or a current brand standard."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "DJ13",
+  "title": "Portrait campaign pair",
+  "image": "dj13.png",
+  "source": "../sources/johnson-banks/Duolingo_poster2-by-Johnson-Banks.jpg",
+  "location": {
+    "series": "Johnson Banks / Everyone can Duolingo / 2019",
+    "item": 13,
+    "extent": "Whole published artwork",
+    "order": 2013
+  },
+  "slide_intent": "Make real people central to the promise because representation can help a broad audience see a place for themselves.",
+  "strategic_value": "Portraits with short language-based headlines can connect Duolingo’s mission to individual lives.",
+  "demonstration": "Two poster designs pair male portraits with the white headlines “c’est possible” and “ciao world”; green and white frames carry the signature and small app badges.",
+  "category": "Imagery",
+  "practical_value": "Compare how a photographic portrait can carry a headline while retaining a clear branded footer.",
+  "content_islands": [
+    {
+      "name": "Left portrait poster",
+      "spec": "Place the hat-wearing portrait in a rounded frame on green with the large white headline near its lower edge."
+    },
+    {
+      "name": "Right portrait poster",
+      "spec": "Place the red-cap portrait on white with its headline over the lower part of the photo; keep the footer below."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The case study says Niall McDiarmid’s portraits of street characters and community members were commissioned to reflect the mission and its impact on people.",
+    "Application": "The two posters demonstrate portrait photography combined with headline, signature and app badges."
+  }
+}

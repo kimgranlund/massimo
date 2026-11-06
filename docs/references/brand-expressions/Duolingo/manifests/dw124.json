@@ -1,0 +1,38 @@
+{
+  "id": "DW124",
+  "title": "Illustration / Characters / Noses",
+  "image": "dw124.png",
+  "source": "../sources/pages/illustration-characters.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/illustration/characters",
+    "section": "Noses",
+    "item": 124,
+    "order": 1240
+  },
+  "slide_intent": "Construct and color a nose as part of the face so it adds definition without becoming a distracting feature.",
+  "strategic_value": "Simple forms with controlled color relationships can help Duolingo preserve legible faces across its varied cast.",
+  "demonstration": "Three approved face examples appear above two rejected nose-color examples in crossed frames; the right column describes form, size and profile color.",
+  "category": "Geometry",
+  "practical_value": "Use 1–2 rounded rectangles, choose size for the character and evaluate darkness together with saturation.",
+  "content_islands": [
+    {
+      "name": "Nose-color comparisons",
+      "spec": "Place three faces with different skin and nose colors across the top left; put two rejected color treatments below inside red crossed frames."
+    },
+    {
+      "name": "Construction and color guidance",
+      "spec": "Place the Noses heading and paragraph at right, including the profile-view skin-color condition."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The face specimens compare nose treatments across different skin colors.",
+    "Constraint": "The source specifies 1–2 rounded rectangles, leaves size to the character, ties saturation to darkness qualitatively and makes the nose match the base skin tone in profile."
+  },
+  "ingredient": {
+    "name": "Simple nose construction",
+    "role": "Define the face without introducing an unrelated visual accent.",
+    "application": "Build the nose from 1–2 rounded rectangles; choose size for the character, balance saturation with darkness, and match base skin tone in profile.",
+    "scope": "Historical official Duolingo illustration guidance from the 2024–2025 archived snapshot. The saturation-versus-darkness instruction is qualitative; the source gives no numeric color ratio."
+  }
+}

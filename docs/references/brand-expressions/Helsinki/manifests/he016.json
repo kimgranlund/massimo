@@ -1,0 +1,39 @@
+{
+  "id": "HE016",
+  "title": "Text and accessibility",
+  "image": "he016.png",
+  "source": "../sources/use-basic-elements.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Text and accessibility",
+    "order": 21,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/use-basic-elements#text-and-accessibility",
+    "original_html": "../sources/use-basic-elements.html"
+  },
+  "slide_intent": "Make contrast and hierarchy explicit because readers need to distinguish information levels and read the words themselves.",
+  "strategic_value": "Clear type hierarchy can make Helsinki communication usable across services and viewing situations.",
+  "demonstration": "This expanded webpage section presents text-only guidance on size, color contrast, sign text and distinct heading/body/caption roles.",
+  "category": "Typography",
+  "practical_value": "Check contrast and separate type roles before evaluating decorative expression.",
+  "content_islands": [
+    {
+      "name": "Readability guidance",
+      "spec": "Place size, contrast and sign-color instructions first."
+    },
+    {
+      "name": "Hierarchy guidance",
+      "spec": "Follow with the requirement to distinguish titles, subheadings, body and captions."
+    }
+  ],
+  "ingredient": {
+    "name": "Readable text hierarchy",
+    "role": "Make information levels identifiable and text legible.",
+    "application": "Use sufficient size/contrast and clearly separate title, subheading, body and caption roles.",
+    "scope": "The black-or-white text restriction here applies specifically to signs, not every city communication."
+  },
+  "reference_purposes": {
+    "Intent": "The source explicitly connects adequate size and contrast to readability and clear hierarchy to accessibility.",
+    "Application": "It identifies four text roles that must be clearly separated.",
+    "Constraint": "Signs always use black or white text; light text on light/white backgrounds is rejected."
+  }
+}

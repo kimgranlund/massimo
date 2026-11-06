@@ -1,0 +1,28 @@
+{
+  "id": "C07",
+  "title": "Basic Elements of Design",
+  "image": "c07.png",
+  "source": "../csail-branding-short-guide.pdf",
+  "location": {
+    "page": 7
+  },
+  "slide_intent": "Name the elements that must work together so a reader can recognize the identity across uses.",
+  "strategic_value": "A compact inventory can help CSAIL authors carry the same identifier, verbal phrase and palette into new communications.",
+  "demonstration": "The right panel stacks the lockup, three-word tagline and three labeled color cards, separated by rules.",
+  "category": "Brand",
+  "practical_value": "Check whether a proposed piece uses the appropriate signature, verbal cue and colors for its audience.",
+  "content_islands": [
+    {
+      "name": "Introduction",
+      "spec": "Keep the purpose of the elements in a narrow left column."
+    },
+    {
+      "name": "Identifier and tagline",
+      "spec": "Center the full lab signature above a ruled band containing the tagline."
+    },
+    {
+      "name": "Palette",
+      "spec": "Place rust, gold and gray swatches in a single row beneath the second rule. Label each with its Pantone reference."
+    }
+  ]
+}

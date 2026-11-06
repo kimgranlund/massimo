@@ -1,0 +1,31 @@
+{
+  "id": "HE110",
+  "title": "Verbalised Helsinki logo combinations",
+  "image": "he110.png",
+  "source": "../sources/download-elements.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Verbalised Helsinki logo combinations",
+    "order": 147,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/download-elements#verbalised-helsinki-logo-combinations",
+    "original_html": "../sources/download-elements.html"
+  },
+  "slide_intent": "Use a prepared endorsement lockup so the relationship with the city is communicated consistently.",
+  "strategic_value": "Language-specific files can keep Helsinki’s partnership signatures coherent.",
+  "demonstration": "Expanded webpage section: a short paragraph lists Finnish, Swedish and English and differentiates PDF and PNG before the download link.",
+  "category": "Brand",
+  "practical_value": "Retrieve the corresponding language and medium for the verbalised signature.",
+  "content_islands": [
+    {
+      "name": "Language and formats",
+      "spec": "The note names three languages and print/screen file types."
+    },
+    {
+      "name": "Asset access",
+      "spec": "A link points to the verbalised framed-logo collection."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The source lists Finnish, Swedish and English verbalised logos with PDF print and PNG screen files."
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "id": "HE030",
+  "title": "Content of photographs – what is being depicted?",
+  "image": "he030.png",
+  "source": "../sources/visual-storytelling.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Content of photographs – what is being depicted?",
+    "order": 42,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/visual-storytelling#content-of-photographs---what-is-being-depicted-",
+    "original_html": "../sources/visual-storytelling.html"
+  },
+  "slide_intent": "Choose photographic subjects that reveal a particular city and its people because familiar clichés can conceal what makes a place distinctive.",
+  "strategic_value": "Inclusive subjects, nearby nature and everyday resilience can make Helsinki’s stated character concrete.",
+  "demonstration": "This expanded webpage section compares captioned photo pairs covering freedom, urban nature, extraordinary conditions and a functional city, with crosses marking less suitable examples in the illustrated context.",
+  "category": "Imagery",
+  "practical_value": "Select subjects for the story they tell about Helsinki and assess context rather than treating a crossed example as universally forbidden.",
+  "content_islands": [
+    {
+      "name": "Selection premise",
+      "spec": "Explain freedom, equality and the contextual meaning of crossed examples."
+    },
+    {
+      "name": "People and nature pairs",
+      "spec": "Compare diverse activity scenes and urban/natural connections."
+    },
+    {
+      "name": "Atmosphere pairs",
+      "spec": "Contrast distinctive light, weather and city character with generic scenes."
+    },
+    {
+      "name": "Functionality pairs",
+      "spec": "Finish with events and everyday operation in challenging conditions."
+    }
+  ],
+  "ingredient": {
+    "name": "Photographic subject selection",
+    "role": "Make city values tangible through recognizable situations.",
+    "application": "Choose diverse people, distinctive Helsinki settings and stories linking urban life with nature or functionality.",
+    "scope": "Crossed photographs are contextual comparisons; the source explicitly says they could work in the right context."
+  },
+  "reference_purposes": {
+    "Intent": "The text connects photographs to freedom, equality, wildly urban character and sustainable functionality.",
+    "Application": "Captioned comparisons explain why particular subjects tell a stronger Helsinki story."
+  }
+}

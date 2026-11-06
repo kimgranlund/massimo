@@ -1,0 +1,33 @@
+{
+  "id": "FG01",
+  "title": "Collaborative logo assembly",
+  "image": "fg01.png",
+  "source": "../sources/fg01.mp4",
+  "location": {
+    "series": "COLLINS / Figma / Nothing Great Is Made Alone case study",
+    "item": 1,
+    "section": "Cover film",
+    "extent": "Complete clip; PNG is midpoint poster",
+    "poster_seconds": 2.06
+  },
+  "slide_intent": "Make participation visible in an identity reveal because the way a symbol appears can explain what a product enables.",
+  "strategic_value": "Several cursors assembling the Figma mark can make shared authorship recognizable before any explanatory copy appears.",
+  "demonstration": "A cursor selects the Figma wordmark; several colored cursors then move separated logo components into the familiar vertical mark.",
+  "category": "Motion",
+  "practical_value": "Use an identity reveal to demonstrate the product’s collaborative behavior.",
+  "content_islands": [
+    {
+      "name": "Wordmark selection",
+      "spec": "Begin with black lettering on white and a blue selection box controlled by a cursor."
+    },
+    {
+      "name": "Shared construction",
+      "spec": "Move separate colored symbol parts with several cursors before resolving the complete mark."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The clip uses colored pointers and selection handles to assemble the Figma symbol.",
+    "Intent": "The accompanying case study explains that the campaign invites people beyond designers to collaborate on Figma."
+  },
+  "motion": "../sources/fg01.mp4"
+}

@@ -1,0 +1,40 @@
+{
+  "id": "ML14",
+  "title": "Institutional website",
+  "image": "ml14.png",
+  "source": "../sources/ml14.jpg",
+  "location": {
+    "series": "Pentagram / MIT Media Lab / 2014 identity",
+    "item": 14,
+    "extent": "Published lightbox artwork"
+  },
+  "slide_intent": "Hold diverse research content within a stable editorial structure so readers can explore without losing institutional context.",
+  "strategic_value": "A consistent header and content grid can connect changing research stories to the lab.",
+  "demonstration": "A browser view combines the lab signature, navigation, an orange lead story and multiple text columns.",
+  "category": "Layout",
+  "practical_value": "Study how a restrained identity supports varied imagery and information density.",
+  "content_islands": [
+    {
+      "name": "Header",
+      "spec": "Small signature and horizontal navigation identify the institution."
+    },
+    {
+      "name": "Lead story",
+      "spec": "An orange circular image and dark text panel form the main banner."
+    },
+    {
+      "name": "Content columns",
+      "spec": "News and research material sit below in aligned groups."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A browser view combines the lab signature, navigation, an orange lead story and multiple text columns.",
+    "Application": "A browser view combines the lab signature, navigation, an orange lead story and multiple text columns."
+  },
+  "ingredient": {
+    "name": "Institutional website",
+    "role": "Hold diverse research content within a stable editorial structure so readers can explore without losing institutional context.",
+    "application": "Study how a restrained identity supports varied imagery and information density.",
+    "scope": "Observed in this historical case-study artwork; not a mandatory usage rule or a current brand standard."
+  }
+}

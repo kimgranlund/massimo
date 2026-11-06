@@ -1,0 +1,39 @@
+{
+  "id": "DB17",
+  "title": "How to Use Color / photographed spread",
+  "image": "db17.png",
+  "source": "../sources/db17.jpg",
+  "location": {
+    "series": "COLLINS / Dropbox / 2017 identity case study",
+    "item": 17,
+    "section": "Gallery",
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Explain contrasting color relationships because variety needs a repeatable way to remain discernible.",
+  "strategic_value": "A two-axis palette can give Dropbox unexpected combinations while retaining visual contrast.",
+  "demonstration": "The spread pairs explanatory copy with sixteen named circular colors organized by light/dark and warm/cool quadrants.",
+  "category": "Color",
+  "practical_value": "Select two colors from diagonally opposite quadrants as described for this historical palette.",
+  "content_islands": [
+    {
+      "name": "Instruction page",
+      "spec": "Place the heading and explanation on the left, with the two-axis pairing method below."
+    },
+    {
+      "name": "Palette map",
+      "spec": "Retain all sixteen named swatches and the four directional labels on the right."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The printed explanation links the two-axis pairing method to dynamic combinations with discernible contrast.",
+    "Expression": "The spread pairs explanatory copy with sixteen named circular colors organized by light/dark and warm/cool quadrants.",
+    "Application": "The spread pairs explanatory copy with sixteen named circular colors organized by light/dark and warm/cool quadrants.",
+    "Constraint": "The photographed historical guide specifies diagonally opposite quadrants for its two-color pairings; three-color guidance is deferred to pages not shown."
+  },
+  "ingredient": {
+    "name": "Two-axis color pairing",
+    "role": "Keep unexpected color combinations visibly distinct.",
+    "application": "Select two colors from diagonally opposite quadrants as described for this historical palette.",
+    "scope": "Photographed historical guide, printed pages 036–037, two-color pairings only. Three-color guidance is not supplied in this image. No color percentages or production values are inferred."
+  }
+}

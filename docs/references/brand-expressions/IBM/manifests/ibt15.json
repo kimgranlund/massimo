@@ -1,0 +1,30 @@
+{
+  "id": "IBT15",
+  "title": "Attribution",
+  "image": "ibt15.png",
+  "source": "../sources/ibm-logo-third-parties.pdf",
+  "location": {
+    "page": 15,
+    "series": "IBM Logo and Brand Guidelines for Third Parties / copyright 2022",
+    "order": 100015
+  },
+  "slide_intent": "Give trademark ownership an explicit textual form, so audiences can distinguish a referenced brand from the owner of the communication.",
+  "strategic_value": "A consistent attribution statement can preserve clear IBM ownership alongside third-party messaging.",
+  "demonstration": "The Attribution heading sits beside a short placement instruction and a labeled template statement with an IBM Brand placeholder.",
+  "category": "Brand",
+  "practical_value": "Place the supplied attribution in the communication or its legal section where space permits.",
+  "content_islands": [
+    {
+      "name": "Attribution heading",
+      "spec": "Set the heading in the left column."
+    },
+    {
+      "name": "Placement and template",
+      "spec": "Place the space-qualified instruction above the Proper attribution statement label and the bracketed brand-name template."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The page supplies an attribution template and two possible locations for it.",
+    "Constraint": "The instruction is explicitly qualified by where space permits; the template identifies IBM Corp. ownership in the US or other countries or both."
+  }
+}

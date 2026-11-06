@@ -1,0 +1,28 @@
+{
+  "id": "N22",
+  "title": "Large Envelopes and Mailing Labels",
+  "image": "n22.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 22
+  },
+  "slide_intent": "Teach designers to preserve the order of sender, postal mark and recipient when the available mailing surface changes.",
+  "strategic_value": "NASA can keep its headquarters and centers recognizable on a large envelope and on a small adhesive label.",
+  "demonstration": "The large envelope uses black ink. Two 3 × 5 inch labels below show the red-logo and one-color alternatives with different sender details.",
+  "category": "Application",
+  "practical_value": "Specify black ink on white or Kraft stock for the large envelope. Use the label examples when fitting a sender identity and an address into the smaller format.",
+  "content_islands": [
+    {
+      "name": "Format specifications",
+      "spec": "Set the heading and short sections for large envelopes and mailing labels across the top. Retain dimensions, type settings, stock and color instructions."
+    },
+    {
+      "name": "Large envelope",
+      "spec": "Show a single wide envelope with identification at upper left, postal information at upper right and the recipient nearer the center."
+    },
+    {
+      "name": "Label alternatives",
+      "spec": "Align two samples side by side beneath the envelope. Keep the postal block and typed delivery address visible in each."
+    }
+  ]
+}

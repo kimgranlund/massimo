@@ -1,0 +1,30 @@
+{
+  "id": "GP11",
+  "title": "Product Sans / Product Lockups",
+  "image": "gp11.png",
+  "source": "../product-sans-specimen.pdf",
+  "location": {
+    "page": 11,
+    "printed_page": "P–11"
+  },
+  "slide_intent": "Test the face with real names so letter spacing and word rhythm can be assessed in the intended branding context.",
+  "strategic_value": "Consistent treatment of Gmail, Search, Calendar and Drive can connect separate products within Google’s identity.",
+  "demonstration": "Four oversized white product names form a centered vertical stack on red, with a lower-left note about kerning for lockups.",
+  "category": "Typography",
+  "practical_value": "Compare spacing across names with different letter combinations before assuming a single isolated word proves the typeface works.",
+  "content_islands": [
+    {
+      "name": "Product-name stack",
+      "spec": "Center Gmail, Search, Calendar and Drive in four large lines."
+    },
+    {
+      "name": "Kerning rationale",
+      "spec": "Place the small explanation at lower left below the names."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The caption explains that the typeface is kerned to support product names in lockups at different sizes.",
+    "Expression": "The four real names demonstrate the face’s rhythm.",
+    "Application": "The specimens test Product Sans on named Google products."
+  }
+}

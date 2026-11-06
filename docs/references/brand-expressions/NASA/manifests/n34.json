@@ -1,0 +1,28 @@
+{
+  "id": "N34",
+  "title": "Cover Design: Quality Publications",
+  "image": "n34.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 34
+  },
+  "slide_intent": "Teach designers to plan the front and back as one visual package. A cover image can invite a reader into the subject before the text begins.",
+  "strategic_value": "NASA can give major publications a distinctive presence while crediting the agency and mission separately.",
+  "demonstration": "Two large cover examples use dense equation imagery and an illuminated planetary crescent. A smaller pair shows the back and front together. The note specifies four-color originals, although the manual reproduces these illustrations in monochrome.",
+  "category": "Imagery",
+  "practical_value": "Review a proposed image at cover scale, then inspect the front and back together to decide where the mission patch and agency identification belong.",
+  "content_islands": [
+    {
+      "name": "Cover concept guidance",
+      "spec": "Use the top columns for image quality, front/back planning and the note about the monochrome reproduction."
+    },
+    {
+      "name": "Large cover treatments",
+      "spec": "Pair two images at equal scale to show how a dense surface or a mostly dark field can support a title and identification."
+    },
+    {
+      "name": "Front and back pair",
+      "spec": "Below the main examples, label the smaller back and front covers. Keep the patch, signature and image placements visible in relation to the whole package."
+    }
+  ]
+}

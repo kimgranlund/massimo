@@ -1,0 +1,38 @@
+{
+  "id": "HE015",
+  "title": "Do not illustrate text",
+  "image": "he015.png",
+  "source": "../sources/use-basic-elements.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Do not illustrate text",
+    "order": 20,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/use-basic-elements#do-not-illustrate-text",
+    "original_html": "../sources/use-basic-elements.html"
+  },
+  "slide_intent": "Protect the distinction between text and illustration so decorative lettering does not replace the city’s typographic voice.",
+  "strategic_value": "A controlled exception process can preserve Helsinki’s identity while permitting small illustrative uses when appropriate.",
+  "demonstration": "This expanded webpage section states the restriction and permission exception, then contrasts a crossed-out decorative headline with prescribed typography in an illustrated poster.",
+  "category": "Typography",
+  "practical_value": "Keep important words typographic; seek the specified review for an incidental word inside an illustration.",
+  "content_islands": [
+    {
+      "name": "Rule and exception",
+      "spec": "Explain the restriction and individual-permission condition."
+    },
+    {
+      "name": "Headline comparison",
+      "spec": "Place the decorative-lettering poster at left with a red strike and the conventional-type alternative at right."
+    }
+  ],
+  "ingredient": {
+    "name": "Text versus illustration",
+    "role": "Keep the main verbal message in the prescribed typography.",
+    "application": "Do not illustrate titles or words; consult city brand/design experts for the stated incidental-text exception.",
+    "scope": "Approval may apply when text is integral to an illustration and does not play a significant role in the application."
+  },
+  "reference_purposes": {
+    "Application": "The section supplies an illustrated-word example against its policy.",
+    "Constraint": "Illustrated titles, words and text are not allowed except individually approved, integral and insignificant illustrative text."
+  }
+}

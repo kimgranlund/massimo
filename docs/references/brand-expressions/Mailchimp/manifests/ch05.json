@@ -1,0 +1,35 @@
+{
+  "id": "CH05",
+  "title": "Verbal System / Growing up",
+  "image": "ch05.png",
+  "source": "../sources/ch05.jpg",
+  "location": {
+    "series": "COLLINS / Mailchimp case study",
+    "item": 5,
+    "extent": "Complete published artwork",
+    "section": "Verbal System"
+  },
+  "slide_intent": "Use a familiar phrase with an unexpected turn because a message can express personality while explaining growth.",
+  "strategic_value": "The poster’s refusal to equate growth with formality can preserve Mailchimp’s independent character as it expands.",
+  "demonstration": "An oversized serif headline fills a white poster on foliage, with unusual black-and-yellow drawings inserted between lines.",
+  "category": "Voice",
+  "practical_value": "Compare how wordplay and illustration support the same attitude.",
+  "content_islands": [
+    {
+      "name": "Headline",
+      "spec": "Let the large multiline headline dominate the tilted white poster."
+    },
+    {
+      "name": "Drawings",
+      "spec": "Insert surreal objects between headline lines and near the foot without replacing the words."
+    },
+    {
+      "name": "Setting",
+      "spec": "Retain the surrounding foliage as the photographed context."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The poster combines a conversational growth message with unusual drawings.",
+    "Application": "The verbal system is demonstrated on a physical poster."
+  }
+}

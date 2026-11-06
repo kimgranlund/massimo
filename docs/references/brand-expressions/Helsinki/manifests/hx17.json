@@ -1,0 +1,33 @@
+{
+  "id": "HX17",
+  "title": "Icons",
+  "image": "hx17.png",
+  "source": "../sources/visual-storytelling.offline.html",
+  "location": {
+    "series": "Web guideline introduction/component",
+    "order": 58,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/visual-storytelling",
+    "original_html": "../sources/visual-storytelling.html"
+  },
+  "slide_intent": "Match icons to their function because a decorative symbol may fail when someone relies on it to navigate or operate a service.",
+  "strategic_value": "Purpose-specific icon families can keep Helsinki communication coherent without sacrificing functional clarity.",
+  "demonstration": "This webpage introduction distinguishes three icon purposes and says all types may illustrate, but signage and user-interface functions require icons designed for those roles.",
+  "category": "Geometry",
+  "practical_value": "Choose the icon family by intended function before choosing its subject.",
+  "content_islands": [
+    {
+      "name": "Icon roles",
+      "spec": "Keep the simplified-message premise and three-purpose boundary together."
+    }
+  ],
+  "ingredient": {
+    "name": "Purpose-specific icons",
+    "role": "Communicate simplified messages appropriate to the task.",
+    "application": "Use any type for illustration, but use designated signage or UI icons for those functions.",
+    "scope": "Three icon purposes; permission for illustration does not extend to functional substitution."
+  },
+  "reference_purposes": {
+    "Intent": "The text connects icons to simplified messages, scalability and consistent style.",
+    "Constraint": "Only icons designed for signage or user interfaces may serve those respective purposes."
+  }
+}

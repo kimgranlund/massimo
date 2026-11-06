@@ -1,0 +1,33 @@
+{
+  "id": "HX06",
+  "title": "Colours",
+  "image": "hx06.png",
+  "source": "../sources/use-basic-elements.offline.html",
+  "location": {
+    "series": "Web guideline introduction/component",
+    "order": 23,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/use-basic-elements",
+    "original_html": "../sources/use-basic-elements.html"
+  },
+  "slide_intent": "Connect a palette to recognizable surroundings because familiar city references can make abstract colors meaningful.",
+  "strategic_value": "Engel yellow, Metro orange and Bus blue can connect Helsinki communications to everyday urban experience.",
+  "demonstration": "This webpage introduction names urban color references and states that the palette contains 14 colors with no additions allowed.",
+  "category": "Color",
+  "practical_value": "Select from the defined palette instead of inventing a campaign color.",
+  "content_islands": [
+    {
+      "name": "Palette premise",
+      "spec": "Place the city-derived examples and 14-color boundary beneath the heading."
+    }
+  ],
+  "ingredient": {
+    "name": "Helsinki palette",
+    "role": "Connect communications with recognizable urban colors.",
+    "application": "Choose from the 14 defined colors; do not add new colors.",
+    "scope": "City visual-identity palette; the introduction does not specify proportions or color values."
+  },
+  "reference_purposes": {
+    "Intent": "The text connects palette colors to recognizable elements of Helsinki.",
+    "Constraint": "The text specifies 14 colors and prohibits other or new colors."
+  }
+}

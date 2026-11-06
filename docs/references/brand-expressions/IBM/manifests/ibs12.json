@@ -1,0 +1,34 @@
+{
+  "id": "IBS12",
+  "title": "Representation",
+  "image": "ibs12.png",
+  "source": "../sources/ibm-logo-strategic-partners.pdf",
+  "location": {
+    "page": 12,
+    "series": "IBM Logo Guidelines for Strategic Partners / Version 1.2 / copyright 2023",
+    "order": 200012
+  },
+  "slide_intent": "Choose the level of attribution that suits the space so IBM’s relationship remains understandable even without a logo.",
+  "strategic_value": "Flexible text and logo options can help partners acknowledge IBM clearly across different formats.",
+  "demonstration": "Four quadrants compare text-only attribution, logo alone, partner-logo grouping and logo with a relationship statement.",
+  "category": "Brand",
+  "practical_value": "Choose a representation based on whether the surrounding content already explains IBM’s role and whether space permits the logo.",
+  "content_islands": [
+    {
+      "name": "Representation guidance",
+      "spec": "Place the four named options and their conditions in the left column."
+    },
+    {
+      "name": "Text and logo alone",
+      "spec": "Show text-only attribution and the isolated IBM logo in the upper quadrants."
+    },
+    {
+      "name": "Partner grouping and statement",
+      "spec": "Use the lower quadrants for a partner-logo group and an IBM mark with relationship copy."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The page offers four representation modes and explains when each works, including text-only for small spaces.",
+    "Constraint": "IBM’s role must always be clear; the logo must not occupy a signature position implying IBM authored the partner communication, and clear space remains required."
+  }
+}

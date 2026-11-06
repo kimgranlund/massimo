@@ -1,0 +1,32 @@
+{
+  "id": "HE074",
+  "title": "Worksite and park signage",
+  "image": "he074.png",
+  "source": "../sources/design-and-create.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Worksite and park signage",
+    "order": 101,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/design-and-create#worksite-and-park-signage",
+    "original_html": "../sources/design-and-create.html"
+  },
+  "slide_intent": "Make information visible at the scale of the site so residents can understand work and use public spaces.",
+  "strategic_value": "Related worksite and park sign families can connect Helsinki projects with practical public information.",
+  "demonstration": "This expanded webpage-section capture pairs links and explanations with two scaled rows of worksite and park signs beside human silhouettes.",
+  "category": "Application",
+  "practical_value": "Consult the dedicated sign-type guide and use the scale comparisons to judge information density and mounting format.",
+  "content_islands": [
+    {
+      "name": "Worksite signs",
+      "spec": "Place the project-information explanation and guide link above the orange/blue sign range."
+    },
+    {
+      "name": "Park signs",
+      "spec": "Follow with park guidance links and the green-topped sign family at human scale."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text calls a worksite sign the main communication source about the project and further information.",
+    "Application": "The two examples show worksite and park sign systems and link to their dedicated guidance."
+  }
+}

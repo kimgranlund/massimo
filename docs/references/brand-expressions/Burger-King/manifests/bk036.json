@@ -1,0 +1,28 @@
+{
+  "id": "BK036",
+  "title": "Primary Logo with Background / Signage example",
+  "image": "bk036.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 36
+  },
+  "slide_intent": "Test a mark in its physical setting because recognition depends on distance, angle and surrounding light.",
+  "strategic_value": "The bright backed logo can make a roadside Burger King sign identifiable against the sky.",
+  "demonstration": "A full-page photograph shows an elevated rounded burger-shaped sign from below against blue sky and a white cloud.",
+  "category": "Application",
+  "practical_value": "Compare the backed logo’s visibility and edge separation on a freestanding sign.",
+  "content_islands": [
+    {
+      "name": "Elevated sign",
+      "spec": "Place the large sign left of center, angled upward on a metal pole with its white perimeter visible."
+    },
+    {
+      "name": "Sky and cloud",
+      "spec": "Let the sky fill the remaining field so the sign’s silhouette and contrast can be judged."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Orange buns, red lettering and a light backing remain visible on the photographed sign.",
+    "Application": "The logo is shown on a fabricated elevated outdoor sign."
+  }
+}

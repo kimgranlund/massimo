@@ -1,0 +1,31 @@
+{
+  "id": "HX18",
+  "title": "Digital Helsinki information graphic",
+  "image": "hx18.png",
+  "source": "../sources/visual-storytelling.offline.html",
+  "location": {
+    "series": "Web guideline introduction/component",
+    "order": 59,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/visual-storytelling",
+    "original_html": "../sources/visual-storytelling.html"
+  },
+  "slide_intent": "Combine summary and human examples because abstract digital services become easier to understand when connected to people.",
+  "strategic_value": "Helsinki can present digital development as a citywide service with concrete personal benefits.",
+  "demonstration": "This webpage artwork pairs a blue Digitaalinen Helsinki headline and numbered benefits with a yellow lower area of three illustrated people and service boxes, divided by a wave.",
+  "category": "Application",
+  "practical_value": "Compare overview information and person-specific explanations within one graphic.",
+  "content_islands": [
+    {
+      "name": "City overview",
+      "spec": "Place the title, prominent number and four icon-supported benefits in the blue upper field."
+    },
+    {
+      "name": "Personal examples",
+      "spec": "Follow the wave boundary with three illustrated people and white service boxes on yellow; retain the caption."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The graphic combines the blue/yellow palette, wave division, icons and illustrated characters.",
+    "Application": "The caption identifies the joint use of several icon types and illustrations in an information graphic."
+  }
+}

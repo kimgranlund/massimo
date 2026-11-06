@@ -1,0 +1,28 @@
+{
+  "id": "F26",
+  "title": "Sizing & clearspace",
+  "image": "f26.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 26
+  },
+  "slide_intent": "Show how a feature of the symbol can set its own clearance. A repeatable measurement keeps surrounding elements from crowding the person.",
+  "strategic_value": "Frontline AIDS can preserve the figure’s silhouette on small items and allow partners to size it from the artwork itself.",
+  "demonstration": "Pale circles repeat the head-height measurement around the black symbol. Magenta rules mark the surrounding enclosure and a separate sample shows the minimum size.",
+  "category": "Geometry",
+  "practical_value": "Leave at least two head heights of space and check the specified minima of 5 mm wide in print or 25 px on screen.",
+  "content_islands": [
+    {
+      "name": "Rule and explanation",
+      "spec": "Use the narrow text column to explain the head-height clearance rule and the role of the minimum size."
+    },
+    {
+      "name": "Clearance construction",
+      "spec": "Center a black symbol in a large annotated rectangle. Repeat the head as pale circles to show how two head heights measure the perimeter."
+    },
+    {
+      "name": "Small-size specimen",
+      "spec": "Place a tiny reproduction beneath the diagram with separate print and screen values."
+    }
+  ]
+}

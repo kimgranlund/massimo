@@ -1,0 +1,32 @@
+{
+  "id": "DB1106",
+  "title": "Varianten / icon sizes",
+  "image": "db1106.png",
+  "source": "../sources/page-11.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 11,
+    "section": 6,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Icons"
+  },
+  "slide_intent": "Choose a purpose-built size so small icons retain crisp detail.",
+  "strategic_value": "Three defined sizes can maintain DB icon clarity at normal display scale.",
+  "demonstration": "Camera icons labeled Large 32×32, Medium 24×24 and Small 20×20 dp compare the supplied variants.",
+  "category": "Geometry",
+  "practical_value": "Choose the intended size rather than arbitrarily scaling a single drawing.",
+  "content_islands": [
+    {
+      "name": "Size guidance",
+      "spec": "Place the explanation above the three-size comparison."
+    },
+    {
+      "name": "Camera variants",
+      "spec": "Align three labeled camera icons at their relative sizes."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source specifies pixel-perfect rendering at 100% scale as the reason for size selection.",
+    "Constraint": "The defined sizes are 32×32, 24×24 and 20×20 dp.",
+    "Application": "The camera specimens make the size options comparable."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "F18",
+  "title": "Logo colourways",
+  "image": "f18.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 18
+  },
+  "slide_intent": "Choose a logo color in relation to the background it will occupy. The actual pairing determines whether the mark has sufficient visual separation.",
+  "strategic_value": "Frontline AIDS can keep black as the familiar default mark while allowing a controlled set of alternatives for photography and colored fields.",
+  "demonstration": "Columns compare black, white, blue, pink and green logo treatments. The black and white columns show several backgrounds, and the colored logos are presented on black.",
+  "category": "Color",
+  "practical_value": "Use the matrix to select an approved foreground and background pair. Check the special instruction about white on black.",
+  "content_islands": [
+    {
+      "name": "Guidance",
+      "spec": "Place the heading and explanation of the predominant black mark in the left text column."
+    },
+    {
+      "name": "Pairing matrix",
+      "spec": "Label each logo color above a column of specimen tiles. Align matching background treatments by row, including photographs under the black and white variants."
+    },
+    {
+      "name": "Restrictions",
+      "spec": "Keep the warning about the white-on-black pairing beside the colored specimens. Place the note applying these pairings to secondary logo and symbol near the left column."
+    }
+  ]
+}

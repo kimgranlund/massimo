@@ -1,0 +1,66 @@
+{
+  "id": "IB037",
+  "title": "App icons / Usage",
+  "image": "ib037.png",
+  "source": "../sources/iconography-app-icons-usage.txt",
+  "location": {
+    "series": "IBM Design Language / public web guidelines",
+    "item": 37,
+    "extent": "Complete webpage content area, default interactive state",
+    "url": "https://www.ibm.com/design/language/iconography/app-icons/usage/",
+    "order": 37000
+  },
+  "slide_intent": "Separate product recognition from corporate authorship so people understand both what an app is and who provides it.",
+  "strategic_value": "Context-specific icon sizing and clear separation from the IBM mark can prevent product symbols from competing with the master brand.",
+  "demonstration": "Sizing specimens, containers, color-theme comparisons and explicit icon-versus-logo examples lead into product and marketing applications.",
+  "category": "Application",
+  "practical_value": "Choose icon size and background theme for the context, then check that the icon is not being used as a logo.",
+  "content_islands": [
+    {
+      "name": "Sizing and alignment",
+      "spec": "Place productive and expressive size specimens before optical-centering examples; the specification table is captured separately."
+    },
+    {
+      "name": "Containers and clearance",
+      "spec": "Compare accepted circular or square containers with rejected shapes, then show operating-system cases and quarter-grid padding."
+    },
+    {
+      "name": "Color themes",
+      "spec": "Use four backgrounds and a lookup table to distinguish light, dark and monochromatic themes."
+    },
+    {
+      "name": "Icon versus logo",
+      "spec": "Pair permitted and rejected lockups, product headers, slides, communications and merchandise."
+    },
+    {
+      "name": "Applications",
+      "spec": "Close with product, app-store and marketing examples."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source requires communications featuring app icons to remain visibly authored by the IBM master brand.",
+    "Expression": "The icon family adapts between luminous and monochrome treatments on different backgrounds.",
+    "Application": "Examples show native-OS containers, marketing hero use and context-specific sizes.",
+    "Constraint": "App icons are not logos; the guide rejects icon-name lockups, product headers and intro/outro sign-offs, while allowing hero graphics."
+  },
+  "ingredient": {
+    "name": "App icon versus logo",
+    "role": "Identify a product without creating a competing brand signature.",
+    "application": "Keep icon and product name visually separate; retain clear hierarchy when both an icon and the IBM logo appear. Use approved themes for the background.",
+    "scope": "Rules distinguish product/marketplace identification, marketing hero graphics and native-OS containers. App icons must not replace logos or become sign-offs."
+  },
+  "motion_assets": [
+    {
+      "title": "Native-OS adaptive container",
+      "file": "../sources/media/adb35f04b633.mp4",
+      "poster": "../sources/media/adb35f04b633-poster.png",
+      "duration_seconds": 7.2,
+      "source_url": "https://www.ibm.com/design/language/8d1107f81ab8038a0c6e9ea18c960cd1/2_3-11_Containers_NativeOS_Adapticon.gif",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    }
+  ]
+}

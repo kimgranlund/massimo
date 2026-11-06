@@ -1,0 +1,31 @@
+{
+  "id": "DB1009",
+  "title": "Weitere Ausprägungen der Schwelle",
+  "image": "db1009.png",
+  "source": "../sources/page-10.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 10,
+    "section": 9,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Schwelle"
+  },
+  "slide_intent": "Extend a recognizable construction into new roles without duplicating its signal unnecessarily.",
+  "strategic_value": "Signature graphics and infographics can expand DB’s visual vocabulary from one underlying rhythm.",
+  "demonstration": "A red gate illustration and a circular bar diagram illustrate two derivatives of the Schwelle system.",
+  "category": "Geometry",
+  "practical_value": "Replace the standalone Schwelle when using a signature graphic; use individual bars within infographics as shown.",
+  "content_islands": [
+    {
+      "name": "Extension rules",
+      "spec": "Place the two derivative descriptions above the artwork."
+    },
+    {
+      "name": "Derived forms",
+      "spec": "Pair the gate-shaped signature graphic with the radial infographic."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The source identifies signature graphics and infographics as permitted extensions.",
+    "Constraint": "This Schwelle section says a signature graphic replaces it completely. The later Signature Graphics chapter gives differing co-placement guidance, including a subtle-background exception."
+  }
+}

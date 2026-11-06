@@ -1,0 +1,39 @@
+{
+  "id": "HE053",
+  "title": "Overlays with names",
+  "image": "he053.png",
+  "source": "../sources/visual-storytelling.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Overlays with names",
+    "order": 73,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/visual-storytelling#overlays-with-names",
+    "original_html": "../sources/visual-storytelling.html"
+  },
+  "slide_intent": "Identify a speaker without obscuring the subject or subtitles so the viewer can connect a name to a person.",
+  "strategic_value": "Consistent name overlays can make Helsinki interviews easier to follow across different footage.",
+  "demonstration": "This expanded webpage-section capture compares names directly over footage, names above subtitles, and names on full-width or compact color backgrounds.",
+  "category": "Layout",
+  "practical_value": "Choose placement, contrast and background extent after checking the footage and subtitle area.",
+  "content_islands": [
+    {
+      "name": "Name-placement guidance",
+      "spec": "Introduce corner options and the preference for text directly on footage."
+    },
+    {
+      "name": "Five examples",
+      "spec": "Stack white and colored names, subtitle-aware placement and two background treatments with captions."
+    }
+  ],
+  "ingredient": {
+    "name": "Name overlay",
+    "role": "Identify the person speaking.",
+    "application": "Normally place text directly on video; add a color background when needed. Position the lower-third name above subtitles.",
+    "scope": "Video name overlays; direct-text examples use 150/180 px type/leading, background example 100/120 px."
+  },
+  "reference_purposes": {
+    "Application": "Examples show direct text, subtitle-aware lower thirds and background panels.",
+    "Constraint": "Name overlays remain in the protected area.",
+    "Expression": "The static specimens compare names on interiors, outdoor scenes and green panels."
+  }
+}

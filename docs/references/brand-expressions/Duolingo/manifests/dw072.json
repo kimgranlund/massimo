@@ -1,0 +1,38 @@
+{
+  "id": "DW072",
+  "title": "Writing / Style / Colons",
+  "image": "dw072.png",
+  "source": "../sources/pages/writing-style.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/style",
+    "section": "Colons",
+    "item": 72,
+    "order": 720
+  },
+  "slide_intent": "Use capitalization to signal whether a colon introduces a fragment or sentence so readers can recognize the structure.",
+  "strategic_value": "A two-example distinction can help Duolingo writers apply a small grammatical convention consistently.",
+  "demonstration": "Two checked lesson descriptions show lowercase after a colon before a fragment and uppercase before a complete sentence.",
+  "category": "Voice",
+  "practical_value": "Classify the text after the colon before choosing its initial capitalization.",
+  "content_islands": [
+    {
+      "name": "Guidance column",
+      "spec": "Place the topic heading, its parent label and the written convention in the narrow left column."
+    },
+    {
+      "name": "Worked examples",
+      "spec": "Place the worked copy in the pale right panel, keeping preference labels and green checks with their examples."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The same lesson description appears in fragment and complete-sentence forms after the colon.",
+    "Constraint": "After a colon, begin a fragment with lowercase and a complete sentence with a capital."
+  },
+  "ingredient": {
+    "name": "Colons convention",
+    "role": "Readers can recognize the structure.",
+    "application": "After a colon, begin a fragment with lowercase and a complete sentence with a capital.",
+    "scope": "Historical official guidelines from the 2024–2025 archived snapshot; this records the displayed guidance, not current Duolingo product behavior."
+  }
+}

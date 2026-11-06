@@ -1,0 +1,38 @@
+{
+  "id": "BK050",
+  "title": "Wordmark Color Usage",
+  "image": "bk050.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 50
+  },
+  "slide_intent": "Limit wordmark colors by context so the name stays connected to core brand recognition while signs remain fabricable.",
+  "strategic_value": "Primary-color lettering and a controlled light reversal can keep the Burger King name coherent across print and signage.",
+  "demonstration": "Three large wordmarks show Fiery Red, Flaming Orange and BBQ Brown on pale; two light versions sit in a brown block, with the white version labeled restaurant signage only.",
+  "category": "Color",
+  "practical_value": "Use primary palette colors or Mayo Egg White reversal, and handle fabricated signage with the specified white material and softer lighting.",
+  "content_islands": [
+    {
+      "name": "Wordmark color rules",
+      "spec": "Place the palette restriction and fabrication note at left."
+    },
+    {
+      "name": "Primary-color specimens",
+      "spec": "Stack red, orange and brown wordmarks at upper right."
+    },
+    {
+      "name": "Light reversals",
+      "spec": "Stack Mayo Egg White and signage-only white wordmarks on a brown rectangle below."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The page lists Fiery Red, Flaming Orange and BBQ Brown, plus Mayo Egg White reversal from a primary color.",
+    "Constraint": "Wordmark use is limited to primary palette colors and the specified reversal; fabricated acrylic/plastic signage uses white with softer lighting to emulate Mayo Egg White."
+  },
+  "ingredient": {
+    "name": "Wordmark color",
+    "role": "Keep the name within the core identity palette.",
+    "application": "Use Fiery Red, Flaming Orange or BBQ Brown; reverse in Mayo Egg White from a primary color.",
+    "scope": "Historical guide; acrylic/plastic restaurant signage uses white material and softer lighting to emulate Mayo Egg White."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "BK017",
+  "title": "3. Playfully Irreverent",
+  "image": "bk017.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 17
+  },
+  "slide_intent": "Give humor a visible expression so a playful personality can be recognized before the copy is read.",
+  "strategic_value": "The face-like Chicken Fries pack can make Burger King’s warmth and irreverence tangible.",
+  "demonstration": "Cream principle copy sits at left on orange while a tilted open Chicken Fries carton fills the right.",
+  "category": "Brand",
+  "practical_value": "Look for ways product packaging can carry personality while remaining identifiable.",
+  "content_islands": [
+    {
+      "name": "Principle copy",
+      "spec": "Place the heading and personality paragraph in the left half."
+    },
+    {
+      "name": "Characterful packaging",
+      "spec": "Place the tilted orange carton with eyes and a beak at right, open to reveal the food."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source defines warmth, wit and disruption as parts of its personality.",
+    "Application": "Chicken Fries packaging demonstrates the principle through a face-like carton."
+  }
+}

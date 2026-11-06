@@ -1,0 +1,31 @@
+{
+  "id": "HE102",
+  "title": "How to apply a chart template to an existing chart",
+  "image": "he102.png",
+  "source": "../sources/design-and-create.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "How to apply a chart template to an existing chart",
+    "order": 137,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/design-and-create#how-to-apply-a-chart-template-to-an-existing-chart",
+    "original_html": "../sources/design-and-create.html"
+  },
+  "slide_intent": "Restore a shared chart structure after data changes so content edits do not leave inconsistent styling.",
+  "strategic_value": "Reapplying templates can reduce visual drift in Helsinki charts maintained over time.",
+  "demonstration": "Expanded webpage section: two alternative menu paths appear above an Excel template chooser and a repeated reset explanation.",
+  "category": "Application",
+  "practical_value": "Reapply the chart template when changed data or series make the existing chart no longer fit.",
+  "content_islands": [
+    {
+      "name": "Alternative paths",
+      "spec": "A and B routes reach Change Chart Type and Templates."
+    },
+    {
+      "name": "Reset example",
+      "spec": "The screenshot and repeated paragraph explain reapplying the template."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The source gives two routes to Change Chart Type and recommends resetting after certain data edits."
+  }
+}

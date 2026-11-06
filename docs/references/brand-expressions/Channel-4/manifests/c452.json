@@ -1,0 +1,31 @@
+{
+  "id": "C452",
+  "title": "Stream now / Digital original",
+  "image": "c452.png",
+  "source": "../sources/c452.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 / 2023 masterbrand case study",
+    "item": 52,
+    "extent": "Full published artwork"
+  },
+  "slide_intent": "Differentiate immediate action from content classification, because a viewer needs to know both what to do and what is being offered.",
+  "strategic_value": "The bold italic action word and outlined hatching icon can make Channel 4’s digital-original label recognizable without a separate sub-brand.",
+  "demonstration": "Two black lines read Stream now and Digital original with a hatching-egg icon, over a pink and red recessed gradient beside a blue strip.",
+  "category": "Typography",
+  "practical_value": "Compare an action line with a content-type line when the composition has only a few words.",
+  "content_islands": [
+    {
+      "name": "Action and classification",
+      "spec": "Stack the two lines at the upper left, emphasize Stream and attach the egg icon to Digital original."
+    },
+    {
+      "name": "Color setting",
+      "spec": "Keep the pink/red room-like field dominant with a narrow blue world at left."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "Pentagram’s accompanying case study says the graphic system combines clear hierarchy with playful icons integrated into the brand typefaces.",
+    "Expression": "Two black lines read Stream now and Digital original with a hatching-egg icon, over a pink and red recessed gradient beside a blue strip.",
+    "Application": "The specimen separates the viewing action from the Digital original classification and adds an inline hatching-egg icon."
+  }
+}

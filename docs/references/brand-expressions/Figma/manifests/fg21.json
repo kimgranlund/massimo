@@ -1,0 +1,34 @@
+{
+  "id": "FG21",
+  "title": "Workspace identity wall",
+  "image": "fg21.png",
+  "source": "../sources/fg21.jpg",
+  "location": {
+    "series": "COLLINS / Figma / Nothing Great Is Made Alone case study",
+    "item": 21,
+    "section": "Gallery",
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Make a shared belief part of a place because repeated physical encounters can connect a team to its purpose.",
+  "strategic_value": "A large collaboration statement surrounded by editing motifs can carry Figma’s campaign into the workspace.",
+  "demonstration": "A frontal room view shows a pegboard wall with black campaign lettering, multicolor stars, cursors, selection frame and the Figma mark above.",
+  "category": "Application",
+  "practical_value": "Test whether the digital identity’s symbols remain clear at architectural scale.",
+  "content_islands": [
+    {
+      "name": "Wall statement",
+      "spec": "Center large three-line black lettering on the perforated wood wall."
+    },
+    {
+      "name": "Identity motifs",
+      "spec": "Surround and overlap the letters with stars, pointers and a blue selection frame; place the logo above."
+    },
+    {
+      "name": "Room setting",
+      "spec": "Retain seating and table in front to establish environmental scale."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The room image applies the campaign line and editing motifs to a large physical wall."
+  }
+}

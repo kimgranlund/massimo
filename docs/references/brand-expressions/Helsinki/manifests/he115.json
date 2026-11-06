@@ -1,0 +1,37 @@
+{
+  "id": "HE115",
+  "title": "Individual image themes",
+  "image": "he115.png",
+  "source": "../sources/download-elements.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Individual image themes",
+    "order": 158,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/download-elements#individual-image-themes",
+    "original_html": "../sources/download-elements.html"
+  },
+  "slide_intent": "Distinguish reusable screen assets from print originals so convenient files are not misapplied in production.",
+  "strategic_value": "Transparent individual illustrations can help Helsinki staff build presentations while retaining a clear medium boundary.",
+  "demonstration": "Expanded webpage section: a paragraph describes 149 background-free PNG items from nine sheets and a ZIP download button.",
+  "category": "Imagery",
+  "practical_value": "Use the transparent PNG package for screen presentations; obtain suitable originals for print.",
+  "content_islands": [
+    {
+      "name": "Package description",
+      "spec": "Text gives the item count, transparency and PowerPoint use."
+    },
+    {
+      "name": "Limit and download",
+      "spec": "The print warning precedes the 5.4 MB ZIP button."
+    }
+  ],
+  "reference_purposes": {
+    "Constraint": "The source explicitly says these PNG images are not suitable for printing."
+  },
+  "ingredient": {
+    "name": "Transparent illustration PNGs",
+    "role": "Let staff reuse individual illustrations in screen presentations.",
+    "application": "Use the 149 background-free PNG items in presentation compositions; obtain suitable production originals for printing.",
+    "scope": "This specific package from the nine shared theme sheets. The source explicitly excludes printing."
+  }
+}

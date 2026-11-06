@@ -1,0 +1,30 @@
+{
+  "id": "DB0610",
+  "title": "Factual applications / presentation and metric",
+  "image": "db0610.png",
+  "source": "../sources/page-06.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 6,
+    "section": 10,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Designprinzipien"
+  },
+  "slide_intent": "Give informational content enough visual structure to remain readable and recognizable.",
+  "strategic_value": "Light space, a red mark and a clear metric can connect DB’s presentation and performance communication.",
+  "demonstration": "A white presentation title slide sits beside a punctuality infographic with a rail icon, partial gauge and change figure.",
+  "category": "Application",
+  "practical_value": "Compare when a simple text hierarchy is sufficient and when a metric needs a graphic.",
+  "content_islands": [
+    {
+      "name": "Presentation cover",
+      "spec": "Keep the red mark, title and secondary details on a spacious white field."
+    },
+    {
+      "name": "Metric panel",
+      "spec": "Pair the punctuality heading with the gauge, train icon and +3.4% example."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The two specimens apply the factual design range to a title slide and performance metric."
+  }
+}

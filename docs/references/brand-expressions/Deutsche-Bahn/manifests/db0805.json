@@ -1,0 +1,38 @@
+{
+  "id": "DB0805",
+  "title": "Basisfarben",
+  "image": "db0805.png",
+  "source": "../sources/page-08.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 8,
+    "section": 5,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Markenfarben"
+  },
+  "slide_intent": "Separate backgrounds from text colors so hierarchy and legibility remain predictable.",
+  "strategic_value": "A stable neutral foundation can keep DB messages clear while leaving room for red and Lilac accents.",
+  "demonstration": "Two subsections pair White/Cold Black background swatches with White/Black type swatches and describe the Cold Black exception.",
+  "category": "Color",
+  "practical_value": "Choose the neutral field and its contrasting text color before adding expressive accents.",
+  "content_islands": [
+    {
+      "name": "Background roles",
+      "spec": "Present Cold Black and White as the layout-surface pair under the first subheading."
+    },
+    {
+      "name": "Typography roles",
+      "spec": "Present White and Black below, with Cold Black described as an alternative for large expressive text."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text connects the neutral and type roles to clarity and contrast.",
+    "Application": "It assigns surface colors and opposing light/dark text choices.",
+    "Constraint": "Cold Black is presented as an alternative to Black for large text and expressive advertising, not a universal text replacement."
+  },
+  "ingredient": {
+    "name": "Neutral color roles",
+    "role": "Support readable hierarchy without competing with identity accents.",
+    "application": "Use White/Cold Black for surfaces and White/Black for type; consider Cold Black for the stated large expressive text use.",
+    "scope": "General base-color guidance; more restrictive headline wording appears in the later do/don’t section."
+  }
+}

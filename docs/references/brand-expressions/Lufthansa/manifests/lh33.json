@@ -1,0 +1,29 @@
+{
+  "id": "LH33",
+  "title": "Aircraft marking specification overview",
+  "image": "lh33.png",
+  "source": "../sources/lh33.jpg",
+  "location": {
+    "series": "HvD Fonts / Lufthansa 2018",
+    "item": 12,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Connect identity to exact positions on an object because production depends on more than an attractive rendering.",
+  "strategic_value": "Annotated livery views can help Lufthansa carry the intended identity into physical markings.",
+  "demonstration": "Two aircraft side views are surrounded by leaders, labels, type samples and color swatches.",
+  "category": "Application",
+  "practical_value": "Use annotated orthographic views to coordinate mark placement and production discussion.",
+  "content_islands": [
+    {
+      "name": "Paired aircraft",
+      "spec": "Stack the two side views."
+    },
+    {
+      "name": "Annotations and specimens",
+      "spec": "Keep leaders, colors and letter samples next to the areas they explain."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "Two aircraft side views are surrounded by leaders, labels, type samples and color swatches."
+  }
+}

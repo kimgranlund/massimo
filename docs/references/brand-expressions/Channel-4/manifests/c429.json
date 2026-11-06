@@ -1,0 +1,31 @@
+{
+  "id": "C429",
+  "title": "Optical transitions between programmes",
+  "image": "c429.png",
+  "source": "../sources/c429.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 masterbrand / 2023",
+    "item": 29,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Make transitions recognizable without requiring every programme image to share a style.",
+  "strategic_value": "Recurring gradient rooms and the green 4 can join Channel 4’s varied entertainment footage.",
+  "demonstration": "The sequence alternates gradient-room logo moments with clips from multiple programmes, using horizontal and vertical panel movement.",
+  "category": "Motion",
+  "practical_value": "Compare how a repeated transition joins footage with different lighting, subject and pace.",
+  "content_islands": [
+    {
+      "name": "Brand intervals",
+      "spec": "Insert green-logo gradient rooms between footage segments."
+    },
+    {
+      "name": "Programme intervals",
+      "spec": "Allow the footage to fill the frame before moving into another world."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The reel repeats a spatial transition vocabulary across different programme clips.",
+    "Intent": "Pentagram describes adjoining-world glimpses as a reminder that more content is available."
+  },
+  "motion": "../sources/c429.mp4"
+}

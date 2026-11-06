@@ -1,0 +1,24 @@
+{
+  "id": "F52",
+  "title": "Leading with photography",
+  "image": "f52.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 52
+  },
+  "slide_intent": "Show when a strong photograph should determine the visual hierarchy. Readers need room to see the subject even when a campaign headline is present.",
+  "strategic_value": "Frontline AIDS can vary the intensity of its graphics while retaining recognition through its headline treatments.",
+  "demonstration": "A diagonal montage of communications pairs large photographs with compact colored headline strips. The note at left ties the approach to the image and message.",
+  "category": "Application",
+  "practical_value": "Try the image at full size with a short headline before introducing additional devices. Check that its key gesture or subject stays visible.",
+  "content_islands": [
+    {
+      "name": "Selection principle",
+      "spec": "Use a white introductory column with the heading and guidance; place the pink reminder about image and topic lower down."
+    },
+    {
+      "name": "Campaign montage",
+      "spec": "On the right, angle a grid of photographic layouts against black gutters. Give the pictures generous area and keep their headline strips close to each image."
+    }
+  ]
+}

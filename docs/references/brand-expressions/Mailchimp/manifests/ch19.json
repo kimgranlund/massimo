@@ -1,0 +1,30 @@
+{
+  "id": "CH19",
+  "title": "The Trailblazer cover",
+  "image": "ch19.png",
+  "source": "../sources/ch19.jpg",
+  "location": {
+    "series": "COLLINS / Mailchimp case study",
+    "item": 19,
+    "extent": "Complete published artwork",
+    "section": "Gallery"
+  },
+  "slide_intent": "Give an editorial object a distinct cover hierarchy because a reader must recognize its title before exploring its imagery.",
+  "strategic_value": "A yellow frame and unusual lifestyle image can make a Mailchimp publication recognizable at a glance.",
+  "demonstration": "A yellow publication cover hangs among leaves, with its title above a rectangular colorful image and small footer details.",
+  "category": "Application",
+  "practical_value": "Compare title, image and brand color as separate levels of an editorial cover.",
+  "content_islands": [
+    {
+      "name": "Cover",
+      "spec": "Keep the title above the central image within the tilted yellow rectangle."
+    },
+    {
+      "name": "Setting",
+      "spec": "Retain the surrounding green leaves and white wall as the physical presentation."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The source demonstrates a branded publication cover in a photographed setting."
+  }
+}

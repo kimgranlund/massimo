@@ -1,0 +1,28 @@
+{
+  "id": "F69",
+  "title": "Dos & don'ts",
+  "image": "f69.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 69
+  },
+  "slide_intent": "Teach a partner to choose the identifier that describes the relationship accurately. A viewer should be able to tell whose channel they are visiting and when Frontline AIDS shares responsibility for a project.",
+  "strategic_value": "The partner stamp can signal affiliation while leaving the host organization identifiable. A masterbrand lockup can name Frontline AIDS where it has a direct role.",
+  "demonstration": "Five annotated website and social examples compare the partner stamp on a header or footer with uses of the masterbrand on joint work and partner lists. Pink notes flag unsuitable placements.",
+  "category": "Brand",
+  "practical_value": "Use the stamp in a partner’s visible header or footer. For a joint project or list of partner organizations, use the masterbrand alongside the other names.",
+  "content_islands": [
+    {
+      "name": "Section rail and heading",
+      "spec": "Mark Dos & Don'ts under the partner-stamp section. Place the partner badge kicker above the heading."
+    },
+    {
+      "name": "Stamp placements",
+      "spec": "Arrange the social header, website header and footer across the first row. Pair each image with short allowed and disallowed treatments."
+    },
+    {
+      "name": "Masterbrand placements",
+      "spec": "Place the joint project and partner list in the lower row. Match the notes to the examples so the reader can distinguish the two marks’ roles."
+    }
+  ]
+}

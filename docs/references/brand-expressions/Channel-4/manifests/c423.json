@@ -1,0 +1,30 @@
+{
+  "id": "C423",
+  "title": "Earth Day world",
+  "image": "c423.png",
+  "source": "../sources/c423.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 masterbrand / 2023",
+    "item": 23,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Give a themed collection its own image language so viewers can understand the topic before reading supporting copy.",
+  "strategic_value": "The illustrated environment can make Channel 4’s Earth Day collection distinct within the shared world concept.",
+  "demonstration": "Bold white EARTH DAY lettering crosses a colorful illustrated landscape of plants, trees and abstract natural forms.",
+  "category": "Imagery",
+  "practical_value": "Compare how the subject’s visual vocabulary can fill a branded content world.",
+  "content_islands": [
+    {
+      "name": "Illustrated environment",
+      "spec": "Build the whole field from overlapping plant-like shapes and landscape layers."
+    },
+    {
+      "name": "Collection title",
+      "spec": "Place the compact white title across the center in front of the illustration."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "An illustrated natural scene and bold title establish the Earth Day world.",
+    "Application": "The artwork applies the world concept to a themed collection."
+  }
+}

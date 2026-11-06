@@ -1,0 +1,34 @@
+{
+  "id": "IBS17",
+  "title": "Examples / Presentations",
+  "image": "ibs17.png",
+  "source": "../sources/ibm-logo-strategic-partners.pdf",
+  "location": {
+    "page": 17,
+    "series": "IBM Logo Guidelines for Strategic Partners / Version 1.2 / copyright 2023",
+    "order": 200017
+  },
+  "slide_intent": "Separate acknowledgement from authorship so an audience can recognize contributors while remembering whose presentation it is.",
+  "strategic_value": "Partner-led slide layouts can credit IBM without turning support into an apparent joint brand.",
+  "demonstration": "An acknowledgement slide groups partner cards beside text; an end slide places the partner identity in a large left field and IBM within the right content area.",
+  "category": "Application",
+  "practical_value": "Choose a contributor grid for several partners or a supporting IBM acknowledgement on the closing slide.",
+  "content_islands": [
+    {
+      "name": "Acknowledgement slide",
+      "spec": "Show the partner mark and text at left of a four-card contributor grid, with IBM as one card."
+    },
+    {
+      "name": "End slide",
+      "spec": "Show a large partner-brand field next to content and a smaller IBM mark."
+    },
+    {
+      "name": "Scope note",
+      "spec": "Retain the statement that the examples do not exhaust layout options."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The two slide schematics distinguish multi-party acknowledgement from a partner-led end slide.",
+    "Constraint": "The page qualifies these as suggested layouts rather than mandatory templates."
+  }
+}

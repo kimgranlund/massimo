@@ -1,0 +1,42 @@
+{
+  "id": "DW104",
+  "title": "Illustration / Shape language / Simplicity",
+  "image": "dw104.png",
+  "source": "../sources/pages/illustration-shape-language.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/illustration/shape-language",
+    "section": "Simplicity",
+    "item": 104,
+    "order": 1040
+  },
+  "slide_intent": "Keep enough detail for recognition while removing unnecessary parts because both abstraction and clutter can obscure a subject.",
+  "strategic_value": "A restrained shape count can make Duolingo illustrations recognizable and practical to produce.",
+  "demonstration": "Three cat constructions are labeled six, fifteen and thirty shapes, with the middle example approved and the others criticized.",
+  "category": "Geometry",
+  "practical_value": "Judge what each shape contributes rather than adopting the example’s count as a universal target.",
+  "content_islands": [
+    {
+      "name": "Three cat specimens",
+      "spec": "Arrange the simplified, balanced and detailed cats from left to right on the pale panel."
+    },
+    {
+      "name": "Counts and judgments",
+      "spec": "Keep each numerical shape count with its blue or red evaluative caption."
+    },
+    {
+      "name": "Simplicity rationale",
+      "spec": "Place the explanation of making each shape matter at right."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source says each shape should strengthen the illustration and calls simplicity both stylistically and practically necessary.",
+    "Application": "The three cat examples show too little, sufficient and excessive detail."
+  },
+  "ingredient": {
+    "name": "Illustration detail",
+    "role": "Make the subject legible without unnecessary construction.",
+    "application": "Use the fewest shapes that still communicate the subject and its character.",
+    "scope": "The six/fifteen/thirty counts describe these cat examples; fifteen is not a universal limit or prescribed count."
+  }
+}

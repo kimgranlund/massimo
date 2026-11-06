@@ -1,0 +1,28 @@
+{
+  "id": "HT05",
+  "title": "Helsinki Grotesk Pro / Language Support",
+  "image": "ht05.png",
+  "source": "../sources/helsinki-grotesk-pro-2025.pdf",
+  "location": {
+    "page": 5,
+    "order": 183
+  },
+  "slide_intent": "Make language coverage inspectable so a consistent visual voice does not exclude a needed language.",
+  "strategic_value": "An explicit language list can help Helsinki plan multilingual typography and identify fallback needs.",
+  "demonstration": "Narrow columns list Latin-script languages and a shorter Cyrillic-script group under the Language Support title.",
+  "category": "Typography",
+  "practical_value": "Verify that a target language is listed and check its actual required glyphs.",
+  "content_islands": [
+    {
+      "name": "Latin language inventory",
+      "spec": "Multiple narrow columns carry the long alphabetical list."
+    },
+    {
+      "name": "Cyrillic language inventory",
+      "spec": "A separate labeled group at right lists supported Cyrillic languages."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Narrow columns list Latin-script languages and a shorter Cyrillic-script group under the Language Support title."
+  }
+}

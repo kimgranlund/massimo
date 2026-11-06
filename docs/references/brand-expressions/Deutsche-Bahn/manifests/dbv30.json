@@ -1,0 +1,35 @@
+{
+  "id": "DBV30",
+  "title": "UI_Infographic",
+  "image": "dbv30.png",
+  "source": "../sources/media/dbv30.mp4",
+  "location": {
+    "series": "DB new design / motion demonstrations",
+    "source_page": 15,
+    "section": "Animation-14021536",
+    "source_url": "https://ecm-mediathek-cdn.deutschebahn.com/cdnenhancedecmvidhls/db306429/2881009/video_config.json",
+    "capture_date": "2026-11-05"
+  },
+  "slide_intent": "Make interaction feedback visible at the point of change so a user can connect input and result.",
+  "strategic_value": "A traveling emphasis within the Schwelle can turn a DB motif into a readable live response.",
+  "demonstration": "A gray triangular marker tracks above a horizontal red bar group as the thickened cluster changes position.",
+  "category": "Motion",
+  "practical_value": "Compare the marker and bar emphasis when deciding how to show live position or feedback.",
+  "content_islands": [
+    {
+      "name": "Indicator",
+      "spec": "Place the gray triangle above the active portion of the red bar row."
+    },
+    {
+      "name": "Response",
+      "spec": "Move the thicker bars with the selected position while other bars remain thin."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A gray triangular marker tracks above a horizontal red bar group as the thickened cluster changes position.",
+    "Application": "The source provides a playable demonstration of this repeatable sequence: A gray triangular marker tracks above a horizontal red bar group as the thickened cluster changes position.",
+    "Intent": "Accompanying Icons, Signature Graphics, or Animation im UI prose explains that animation directs focus, makes relationships understandable, and adds expression.",
+    "Constraint": "The accompanying guidance says animation is deliberate and never disturbing or complex."
+  },
+  "motion": "../sources/media/dbv30.mp4"
+}

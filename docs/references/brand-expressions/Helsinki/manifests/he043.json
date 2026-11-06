@@ -1,0 +1,47 @@
+{
+  "id": "HE043",
+  "title": "User interface icons",
+  "image": "he043.png",
+  "source": "../sources/visual-storytelling.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "User interface icons",
+    "order": 61,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/visual-storytelling#user-interface-icons",
+    "original_html": "../sources/visual-storytelling.html"
+  },
+  "slide_intent": "Give an interface icon a clear meaning and context because a familiar-looking symbol can still be ambiguous.",
+  "strategic_value": "Consistent icon/text relationships can help Helsinki digital services remain understandable and accessible.",
+  "demonstration": "This expanded webpage section lists eight HDS icon categories, explains label recommendations and exceptions, and shows icons in a digital-service context.",
+  "category": "Application",
+  "practical_value": "Use a matching text label unless the icon is generally understood or its context makes its meaning clear.",
+  "content_islands": [
+    {
+      "name": "Interface specimens",
+      "spec": "Begin with eight large black icons, then group the broader icon family into eight numbered rows below the category list."
+    },
+    {
+      "name": "Library categories",
+      "spec": "List eight functional groups and link to HDS definitions."
+    },
+    {
+      "name": "Meaning and labels",
+      "spec": "Explain clear purpose, label recommendation and qualified exceptions."
+    },
+    {
+      "name": "Contextual use",
+      "spec": "Show the digital-service example with its caption."
+    }
+  ],
+  "ingredient": {
+    "name": "Interface icon with label",
+    "role": "Make a digital action or content meaning identifiable.",
+    "application": "Use HDS icons with a matching label; omit labels only for generally known or contextually clear meanings.",
+    "scope": "Applies to digital-service icons; the section also permits their use as illustration icons but discourages purely decorative UI use."
+  },
+  "reference_purposes": {
+    "Intent": "The source explicitly explains that text labels clarify ambiguous icons and contradictory meanings harm usability/accessibility.",
+    "Application": "It provides label guidance and the familiar video-volume example.",
+    "Constraint": "Icons should have a clear purpose and must agree in meaning with their associated text/content."
+  }
+}

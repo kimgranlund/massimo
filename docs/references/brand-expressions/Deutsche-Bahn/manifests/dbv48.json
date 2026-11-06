@@ -1,0 +1,35 @@
+{
+  "id": "DBV48",
+  "title": "Don_t_Layout",
+  "image": "dbv48.png",
+  "source": "../sources/media/dbv48.mp4",
+  "location": {
+    "series": "DB new design / motion demonstrations",
+    "source_page": 15,
+    "section": "Do-s-und-Don-ts-14021640",
+    "source_url": "https://ecm-mediathek-cdn.deutschebahn.com/cdnenhancedecmvidhls/db306514/2881231/video_config.json",
+    "capture_date": "2026-11-05"
+  },
+  "slide_intent": "Reject competing entrances because viewers need a comprehensible order for reading a composition.",
+  "strategic_value": "The overloaded counterexample can help DB teams judge the sequence independently of an otherwise correct final layout.",
+  "demonstration": "The white-card employee composition uses overlapping or disordered arrivals and carries a cyan diagonal rejection line.",
+  "category": "Motion",
+  "practical_value": "Compare the order of events with DBV47; an acceptable final arrangement does not establish an acceptable animation.",
+  "content_islands": [
+    {
+      "name": "Competing entrances",
+      "spec": "Observe the card and contents arriving without the positive example’s clear sequence."
+    },
+    {
+      "name": "Rejection mark",
+      "spec": "Keep the cyan diagonal source annotation visible throughout the negative example."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The white-card employee composition uses overlapping or disordered arrivals and carries a cyan diagonal rejection line.",
+    "Application": "The source provides a playable rejected counterexample of this repeatable sequence: The white-card employee composition uses overlapping or disordered arrivals and carries a cyan diagonal rejection line.",
+    "Intent": "The positive caption says structured animation sequences create orientation; the negative caption identifies an incomprehensible sequence and overloaded composition.",
+    "Constraint": "The source rejects the sequence without comprehensible order shown in the negative example."
+  },
+  "motion": "../sources/media/dbv48.mp4"
+}

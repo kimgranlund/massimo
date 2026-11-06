@@ -1,0 +1,30 @@
+{
+  "id": "DB13",
+  "title": "Illustration in print and material",
+  "image": "db13.png",
+  "source": "../sources/db13.jpg",
+  "location": {
+    "series": "COLLINS / Dropbox / 2017 identity case study",
+    "item": 13,
+    "section": "Gallery",
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Compare an image language across surfaces because an expressive style should survive changes in texture and scale.",
+  "strategic_value": "Line-drawn characters and patterned material can bring Dropbox’s illustration world into physical spaces.",
+  "demonstration": "A paired photograph shows framed animal drawings above an orange sofa at left and layered colored patterned material at right.",
+  "category": "Imagery",
+  "practical_value": "Compare line-led illustration with a dense material treatment.",
+  "content_islands": [
+    {
+      "name": "Interior display",
+      "spec": "Keep the framed drawings and sofa together in the left image."
+    },
+    {
+      "name": "Material close-up",
+      "spec": "Use the right image to show overlapping textures, patterns and colors."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A paired photograph shows framed animal drawings above an orange sofa at left and layered colored patterned material at right."
+  }
+}

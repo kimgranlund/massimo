@@ -1,0 +1,39 @@
+{
+  "id": "BK046",
+  "title": "Logo Color",
+  "image": "bk046.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 46
+  },
+  "slide_intent": "Control the relationship between mark and background so color flexibility does not dilute recognition.",
+  "strategic_value": "The two core colors and Mayo Egg White reversal can keep Burger King recognizable across contrasting fields.",
+  "demonstration": "The full-color logo sits on a pale field beside a Mayo Egg White logo reversed out of a tall Fiery Red panel.",
+  "category": "Color",
+  "practical_value": "Compare the normal two-color logo with the light reversed version before selecting a background.",
+  "content_islands": [
+    {
+      "name": "Color rationale",
+      "spec": "Place the consistency rationale at upper left."
+    },
+    {
+      "name": "Core-color logo",
+      "spec": "Show the orange-and-red logo in the broad pale field."
+    },
+    {
+      "name": "Reversed logo",
+      "spec": "Place the Mayo Egg White logo centered in the red panel at right."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text explains that regulated color pairings maintain a consistent brand impression.",
+    "Expression": "The side-by-side logos demonstrate core colors and a pale reversal.",
+    "Application": "The page identifies the primary two-color appearance and Mayo Egg White reversal on colored backgrounds."
+  },
+  "ingredient": {
+    "name": "Logo color relationship",
+    "role": "Retain recognition on different colored fields.",
+    "application": "Prefer the two core logo colors; use the specified Mayo Egg White reversal on a colored background.",
+    "scope": "Historical guide; exact permitted combinations are further distinguished on the following usage pages."
+  }
+}

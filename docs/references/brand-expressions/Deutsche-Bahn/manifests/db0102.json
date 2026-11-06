@@ -1,0 +1,26 @@
+{
+  "id": "DB0102",
+  "title": "DIE MACHER:INNEN",
+  "image": "db0102.png",
+  "source": "../sources/page-01.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 1,
+    "section": 2,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design"
+  },
+  "slide_intent": "Connect a brand personality to design principles so visual decisions have a shared reason.",
+  "strategic_value": "A responsible, performance-focused and customer-oriented stance can organize DB’s many touchpoints.",
+  "demonstration": "The text links the Macher:innen personality to clarity, constant movement and universal connection.",
+  "category": "Brand",
+  "practical_value": "Use the three principles to discuss whether a composition expresses the intended personality.",
+  "content_islands": [
+    {
+      "name": "Personality statement",
+      "spec": "Place the bold title above three paragraphs that move from identity continuity to personality and consistent applications."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The prose says the visual language translates the Macher:innen stance into recognizable form."
+  }
+}

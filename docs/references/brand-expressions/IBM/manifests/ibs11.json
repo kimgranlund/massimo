@@ -1,0 +1,37 @@
+{
+  "id": "IBS11",
+  "title": "Logo relationships",
+  "image": "ibs11.png",
+  "source": "../sources/ibm-logo-strategic-partners.pdf",
+  "location": {
+    "page": 11,
+    "series": "IBM Logo Guidelines for Strategic Partners / Version 1.2 / copyright 2023",
+    "order": 200011
+  },
+  "slide_intent": "Clarify who is communicating and providing the offer so audiences do not mistake a partner message for an IBM message.",
+  "strategic_value": "A visibly subordinate IBM role can support partnership recognition without obscuring the partner’s ownership.",
+  "demonstration": "The text-only page states source-of-communication principles, CTA ownership and the requirement to explain IBM’s role.",
+  "category": "Brand",
+  "practical_value": "Set the partner brand as the communication owner, including the destination of calls to action.",
+  "content_islands": [
+    {
+      "name": "Heading",
+      "spec": "Keep Logo relationships at left."
+    },
+    {
+      "name": "Clarity and context",
+      "spec": "Place the main explanation under its bold subheading, followed by the two explicit clarity requirements and the conceptual-example note."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source explains that the audience needs to know who it is doing business with and avoid confusion over the source of goods.",
+    "Application": "Use the partner’s visual system and direct CTAs to the partner’s website or telephone number.",
+    "Constraint": "IBM must occupy a subordinate position, and the scope of its contribution and the source of the communication must both be clear."
+  },
+  "ingredient": {
+    "name": "Partner-led brand hierarchy",
+    "role": "Identify the communication owner while acknowledging IBM’s contribution.",
+    "application": "Lead with the partner identity and route CTAs to the partner; position IBM subordinately and explain its role.",
+    "scope": "Marketing materials produced by strategic partners under this guide, not an instruction for IBM-owned communications."
+  }
+}

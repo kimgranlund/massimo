@@ -1,0 +1,32 @@
+{
+  "id": "DB15",
+  "title": "Whoa / animated typographic texture",
+  "image": "db15.png",
+  "source": "../sources/db15.mp4",
+  "location": {
+    "series": "COLLINS / Dropbox / 2017 identity case study",
+    "item": 15,
+    "section": "Gallery",
+    "extent": "Complete published clip; PNG is a frame at 0.5 seconds",
+    "duration_seconds": 4.05
+  },
+  "slide_intent": "Show variation through repetition because changing letter width and weight can make a phrase visually energetic.",
+  "strategic_value": "An all-type surface can convey creative energy without additional illustration.",
+  "demonstration": "Rows of orange-red Whoa specimens shift between narrow, broad, light and heavy forms on a pale portrait field.",
+  "category": "Typography",
+  "practical_value": "Assess how dense typographic repetition changes emphasis as individual words expand.",
+  "content_islands": [
+    {
+      "name": "Repeated word field",
+      "spec": "Fill the portrait with aligned rows of the same word in varied proportions."
+    },
+    {
+      "name": "Animated emphasis",
+      "spec": "Observe which specimens widen or thicken over the complete loop."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Rows of orange-red Whoa specimens shift between narrow, broad, light and heavy forms on a pale portrait field."
+  },
+  "motion": "../sources/db15.mp4"
+}

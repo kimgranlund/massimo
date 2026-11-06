@@ -1,0 +1,41 @@
+{
+  "id": "DBV14",
+  "title": "Schwelle_Loop",
+  "image": "dbv14.png",
+  "source": "../sources/media/dbv14.mp4",
+  "location": {
+    "series": "DB new design / motion demonstrations",
+    "source_page": 15,
+    "section": "Animation-14021536",
+    "source_url": "https://ecm-mediathek-cdn.deutschebahn.com/cdnenhancedecmvidhls/db306404/2880833/video_config.json",
+    "capture_date": "2026-11-05"
+  },
+  "slide_intent": "Design a loop as a continuous pattern so repetition does not feel like an unrelated restart.",
+  "strategic_value": "The traveling thickness pattern can keep DB’s Schwelle recognizable during sustained movement.",
+  "demonstration": "A wave of changing red bar widths travels through the horizontal Schwelle and returns to its progression.",
+  "category": "Motion",
+  "practical_value": "Choose the loop when the Schwelle must continue moving beyond a single entrance and exit.",
+  "content_islands": [
+    {
+      "name": "Moving bar group",
+      "spec": "Shift the thickness progression through the red bars."
+    },
+    {
+      "name": "Loop return",
+      "spec": "Return to the recognizable progression on the pale field."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A wave of changing red bar widths travels through the horizontal Schwelle and returns to its progression.",
+    "Application": "The source provides a playable demonstration of this repeatable sequence: A wave of changing red bar widths travels through the horizontal Schwelle and returns to its progression.",
+    "Intent": "Accompanying Schwelle prose identifies this directional motif with progress and movement.",
+    "Constraint": "The source states that the Schwelle follows a fixed movement sequence."
+  },
+  "motion": "../sources/media/dbv14.mp4",
+  "ingredient": {
+    "name": "Schwelle motion",
+    "role": "Express direction and progress through the bar pattern.",
+    "application": "Follow the demonstrated loop sequence.",
+    "scope": "Official DB new-design web guidance, undated live edition captured 2026-11-05; applies to the demonstrated motion context. The source provides the visual sequence, not a numeric timing specification."
+  }
+}

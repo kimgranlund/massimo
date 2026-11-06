@@ -1,0 +1,38 @@
+{
+  "id": "DW098",
+  "title": "Writing / Glossary / Definitions",
+  "image": "dw098.png",
+  "source": "../sources/pages/writing-glossary.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/glossary",
+    "section": "Definitions",
+    "item": 98,
+    "order": 980
+  },
+  "slide_intent": "Define related product terms distinctly so readers can understand the learning structure and available services.",
+  "strategic_value": "A shared vocabulary from courses through exercises can help Duolingo explain its product without inconsistent labels.",
+  "demonstration": "A tall two-column glossary pairs fifteen terms with definitions, including product names, learning units, XP, streaks and supporting services.",
+  "category": "Voice",
+  "practical_value": "Use the historical definitions to study naming relationships; verify current product structure before reusing factual descriptions.",
+  "content_islands": [
+    {
+      "name": "Guidance column",
+      "spec": "Place Definitions and the permission to reuse or consult the entries at left."
+    },
+    {
+      "name": "Worked examples",
+      "spec": "Stack term-definition rows at right, retaining the progression from company and subscription to learning units and related services."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The page supplies reusable definitions for fifteen terms.",
+    "Constraint": "It specifies capitalized Duolingo in print, learners rather than users, and XP rather than points."
+  },
+  "ingredient": {
+    "name": "Shared product vocabulary",
+    "role": "Keep product explanations consistent.",
+    "application": "Use agreed term meanings and the preferred learner and XP labels.",
+    "scope": "Historical official guidelines from the 2024–2025 archived snapshot; this records the displayed guidance, not current Duolingo product behavior. Historical quantities, service durations, subscription benefits and course structure are source-period statements, not verified current facts."
+  }
+}

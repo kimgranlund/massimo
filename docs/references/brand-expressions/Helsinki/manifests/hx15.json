@@ -1,0 +1,27 @@
+{
+  "id": "HX15",
+  "title": "Visualising information",
+  "image": "hx15.png",
+  "source": "../sources/visual-storytelling.offline.html",
+  "location": {
+    "series": "Web guideline introduction/component",
+    "order": 56,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/visual-storytelling",
+    "original_html": "../sources/visual-storytelling.html"
+  },
+  "slide_intent": "Make information clear and concise because visual complexity can prevent people from finding the point.",
+  "strategic_value": "Consistent information graphics can let Helsinki explain evidence while retaining its identity.",
+  "demonstration": "This webpage introduction states the clarity and brand-consistency aims for visualising information and provides a related guide link.",
+  "category": "Layout",
+  "practical_value": "Use the linked guidance when turning information into a graphic.",
+  "content_islands": [
+    {
+      "name": "Information premise",
+      "spec": "Place the short statement above the supporting guide link."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text calls for clear, concise visualisations consistent with the city brand.",
+    "Application": "The link routes designers to information-visualisation guidance."
+  }
+}

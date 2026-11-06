@@ -1,0 +1,39 @@
+{
+  "id": "DW003",
+  "title": "Logos / Logotype",
+  "image": "dw003.png",
+  "source": "../sources/pages/identity-logos.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/identity/logos",
+    "section": "Logotype",
+    "item": 3,
+    "order": 30
+  },
+  "slide_intent": "Tie a signature to existing recognition because inherited visual features can connect different parts of an identity.",
+  "strategic_value": "The eyebrow-like g and Duo-derived curves can carry Duolingo’s character even without the full mascot.",
+  "demonstration": "The logotype specimen accompanies an explanation of its mascot-derived letterforms and permitted colors.",
+  "category": "Brand",
+  "practical_value": "Select an approved wordmark color and preserve its custom drawing.",
+  "content_islands": [
+    {
+      "name": "Logotype specimen",
+      "spec": "Show the supplied signature in the large panel at left, with its display controls beneath."
+    },
+    {
+      "name": "Origin and colors",
+      "spec": "Place the heading and explanation of Duo-inspired forms and the three approved colors in the right column."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The copy explains the relationship between letterforms and Duo’s curves and expressive eyebrows.",
+    "Expression": "The custom lowercase signature is presented as a specimen.",
+    "Constraint": "The source allows the logotype in Feather Green, white or gray."
+  },
+  "ingredient": {
+    "name": "Duolingo logotype",
+    "role": "Identify the brand through custom lettering.",
+    "application": "Use the supplied drawing in Feather Green, white or gray.",
+    "scope": "Historical archived guidelines. Applies to the historical logotype; no other colors are authorized by this section."
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "I077",
+  "title": "Grid Usage",
+  "image": "i077.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 77,
+    "printed_page": 77
+  },
+  "slide_intent": "Show how alignment and empty space separate jobs so a reader can find the message, action and image quickly.",
+  "strategic_value": "The same grid can hold recognizable Instacart elements while allowing different content to lead each communication.",
+  "demonstration": "The construction grid sits underneath a logo, eyebrow, headline and call to action on the left. A single content frame fills the right side.",
+  "category": "Layout",
+  "practical_value": "Group the headline and eyebrow, align the action beneath them and give the image its own block before adding final content.",
+  "content_islands": [
+    {
+      "name": "Grouping rule",
+      "spec": "Use the left rail to name the four groups and explain the space between them."
+    },
+    {
+      "name": "Aligned example",
+      "spec": "Keep the blue grid visible behind the wireframe. Place the logo at the upper left, the text group and outlined action below, and the gray image placeholder opposite."
+    }
+  ]
+}

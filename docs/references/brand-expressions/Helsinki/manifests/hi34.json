@@ -1,0 +1,36 @@
+{
+  "id": "HI34",
+  "title": "Illustration use / Four numbered topics",
+  "image": "hi34.png",
+  "source": "../sources/illustration-examples.pdf",
+  "location": {
+    "page": 34,
+    "series": "Helsinki illustration examples — PDF derived from the official PowerPoint deck with LibreOffice",
+    "order": 224
+  },
+  "slide_intent": "Make sequence explicit so viewers can distinguish and remember several related topics.",
+  "strategic_value": "Numbered circles beneath expressive figures can let Helsinki organize information without abandoning its illustration voice.",
+  "demonstration": "Four character groups run across an orange page above four green circles containing numbered placeholder labels; a small heading sits at upper left.",
+  "category": "Layout",
+  "practical_value": "Use a repeated numbered shape to anchor a row of illustrated topics.",
+  "content_islands": [
+    {
+      "name": "Section heading",
+      "spec": "Place the small white heading above the illustrated row."
+    },
+    {
+      "name": "Four topic units",
+      "spec": "Align each character group with one green numbered circle beneath it."
+    }
+  ],
+  "ingredient": {
+    "name": "Numbered topic circles",
+    "role": "Make the order of related topics visible.",
+    "application": "Align each illustration with a repeated numbered label.",
+    "scope": "Observed four-topic layout; the page does not establish a required circle size or item count."
+  },
+  "reference_purposes": {
+    "Application": "The page organizes four illustrated topics with numbers and matching circular labels.",
+    "Expression": "Orange and green fields frame varied people through a repeated geometry."
+  }
+}

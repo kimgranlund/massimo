@@ -1,0 +1,24 @@
+{
+  "id": "F81",
+  "title": "Advertising",
+  "image": "f81.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 81
+  },
+  "slide_intent": "Teach how to order an outdoor message within a single display frame. A passerby needs to connect a short statement to a subject quickly.",
+  "strategic_value": "Frontline AIDS can use its boxed typography and a partially revealed image as complementary ways into the same campaign message.",
+  "demonstration": "One framed advertisement fills the view. A pink headline and larger black-and-cyan statement cross a cropped photographic treatment. A globe illustration, dots and an arrow add secondary accents.",
+  "category": "Application",
+  "practical_value": "Choose a compact headline, verify its reading order against the photograph, and leave the signature a clear position in the corner.",
+  "content_islands": [
+    {
+      "name": "Display context",
+      "spec": "Show the whole framed panel within its physical setting, retaining the translucent navigation rail."
+    },
+    {
+      "name": "Poster hierarchy",
+      "spec": "On cyan, group the pink and black message blocks around the image openings. Position the small brand signature at upper right and distribute secondary graphics around the message."
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "HE093",
+  "title": "Welcome to the City’s UX network!",
+  "image": "he093.png",
+  "source": "../sources/design-and-create.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Welcome to the City’s UX network!",
+    "order": 125,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/design-and-create#welcome-to-the-city-s-ux-network-",
+    "original_html": "../sources/design-and-create.html"
+  },
+  "slide_intent": "Give interface contributors access to shared tools and review so separate teams can produce a consistent customer experience.",
+  "strategic_value": "A common UX network can help Helsinki coordinate cross-service decisions.",
+  "demonstration": "Expanded webpage section: a short invitation precedes a three-step onboarding checklist for fonts, tools, channels and review participation.",
+  "category": "Application",
+  "practical_value": "Check access to the font package, design tools and UX review before beginning interface work.",
+  "content_islands": [
+    {
+      "name": "UX network purpose",
+      "spec": "The introduction names harmonization and fortnightly review."
+    },
+    {
+      "name": "Onboarding checklist",
+      "spec": "Three numbered items list required access and participation."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source states that the network aims to harmonise UX work towards a consistent customer experience."
+  }
+}

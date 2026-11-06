@@ -1,0 +1,36 @@
+{
+  "id": "HI32",
+  "title": "Illustration use / Three equal items",
+  "image": "hi32.png",
+  "source": "../sources/illustration-examples.pdf",
+  "location": {
+    "page": 32,
+    "series": "Helsinki illustration examples — PDF derived from the official PowerPoint deck with LibreOffice",
+    "order": 222
+  },
+  "slide_intent": "Give parallel ideas equal visual weight so viewers can compare them without searching for the structure.",
+  "strategic_value": "A shared illustrated three-column format can make Helsinki lists feel approachable and ordered.",
+  "demonstration": "A heading spans the upper left on green; three food-related figures sit above matching placeholder captions, separated by thin vertical dotted lines; a small logo sits below.",
+  "category": "Layout",
+  "practical_value": "Use repeated illustration-and-caption columns when the content consists of three comparable items.",
+  "content_islands": [
+    {
+      "name": "Heading and signature",
+      "spec": "Place the heading at upper left and framed logo near the lower left edge."
+    },
+    {
+      "name": "Three-column comparison",
+      "spec": "Center one food figure and caption in each column, with dotted dividers between."
+    }
+  ],
+  "ingredient": {
+    "name": "Parallel illustrated columns",
+    "role": "Make comparable items easy to scan.",
+    "application": "Repeat the illustration-caption structure with aligned columns and restrained dividers.",
+    "scope": "Observed three-item placeholder example; no prescribed maximum item count is stated."
+  },
+  "reference_purposes": {
+    "Application": "The composition assigns equal columns to three illustrated items.",
+    "Expression": "Green background and three serving/eating figures give the comparison a shared character."
+  }
+}

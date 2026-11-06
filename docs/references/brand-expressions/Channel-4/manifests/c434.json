@@ -1,0 +1,33 @@
+{
+  "id": "C434",
+  "title": "YouTube end screen",
+  "image": "c434.png",
+  "source": "../sources/c434.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 masterbrand / 2023",
+    "item": 34,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Make an ending offer further choices so the viewing path continues without hiding its source.",
+  "strategic_value": "A branded end screen can connect Channel 4’s sport clips with other material on an external platform.",
+  "demonstration": "A YouTube page shows a gradient end screen with a 4 Sport roundel at left, Subscribe above and two video suggestions at right.",
+  "category": "Application",
+  "practical_value": "Balance a subscription request with specific next-video choices.",
+  "content_islands": [
+    {
+      "name": "Brand and invitation",
+      "spec": "Keep the roundel and Subscribe prompt within the gradient field."
+    },
+    {
+      "name": "Suggested videos",
+      "spec": "Stack two recommendation thumbnails on the right inside the player."
+    },
+    {
+      "name": "Platform context",
+      "spec": "Retain the browser and YouTube chrome to show the external setting."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The brand is applied to a YouTube subscription and recommendation end screen."
+  }
+}

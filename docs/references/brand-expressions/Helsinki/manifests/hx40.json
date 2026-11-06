@@ -1,0 +1,26 @@
+{
+  "id": "HX40",
+  "title": "Six Helsinki wave motif profiles",
+  "image": "hx40.png",
+  "source": "../sources/download-elements.offline.html",
+  "location": {
+    "series": "Web guideline introduction/component",
+    "order": 152,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/download-elements",
+    "original_html": "../sources/download-elements.html"
+  },
+  "slide_intent": "Compare edge rhythms directly because small changes in a boundary alter the visual character of a divided surface.",
+  "strategic_value": "The six black specimens can help Helsinki creators distinguish the wave family without color or imagery interfering.",
+  "demonstration": "This webpage artwork presents six numbered black horizontal shapes in two columns and three rows, comparing a flat edge with different rounded and angular repeated edges.",
+  "category": "Geometry",
+  "practical_value": "Compare variant shapes against the adjacent numbered name key before choosing an asset.",
+  "content_islands": [
+    {
+      "name": "Wave comparison",
+      "spec": "Keep the six numbered specimens in their two-column matrix."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The artwork displays six distinct Helsinki edge profiles as black specimens."
+  }
+}

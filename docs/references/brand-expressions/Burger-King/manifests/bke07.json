@@ -1,0 +1,29 @@
+{
+  "id": "BKE07",
+  "title": "Whopper wrapper / Ingredient field",
+  "image": "bke07.png",
+  "source": "../sources/bke07.webp",
+  "location": {
+    "series": "JKR / Burger King identity case study",
+    "item": 7,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Use ingredient illustration to connect packaging with its contents so the wrapper participates in the food story.",
+  "strategic_value": "Tomato, pickle and lettuce motifs can make Burger King’s wrapping recognizable even when folded.",
+  "demonstration": "A wrapped burger sits over an opened illustrated sheet; large vegetables surround the center logo and vertical Whopper labels.",
+  "category": "Application",
+  "practical_value": "Compare how a flat pattern survives folding around a product.",
+  "content_islands": [
+    {
+      "name": "Open wrapper",
+      "spec": "Fill the ground with oversized ingredient illustrations and edge product labels."
+    },
+    {
+      "name": "Wrapped burger",
+      "spec": "Place the folded product near the center with the primary logo still visible."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The paired flat and folded wrapper demonstrates the same ingredient artwork before and after use."
+  }
+}

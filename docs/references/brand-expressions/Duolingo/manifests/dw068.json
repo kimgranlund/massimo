@@ -1,0 +1,40 @@
+{
+  "id": "DW068",
+  "title": "Writing / Style / Emoji",
+  "image": "dw068.png",
+  "source": "../sources/pages/writing-style.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/style",
+    "section": "Emoji",
+    "item": 68,
+    "order": 680
+  },
+  "slide_intent": "Use emoji selectively and by channel so their attention value is preserved and the message remains clear.",
+  "strategic_value": "Channel-specific guidance can help Duolingo use a playful cue without making every notification equally noisy.",
+  "demonstration": "The long right panel divides guidance into push notifications, email subject lines and social media, with screenshots illustrating each.",
+  "category": "Voice",
+  "practical_value": "Choose placement and frequency for the channel and test subject lines rather than assuming emoji always help.",
+  "content_islands": [
+    {
+      "name": "Guidance column",
+      "spec": "Place the Emoji heading and attention-versus-restraint rationale at left."
+    },
+    {
+      "name": "Worked examples",
+      "spec": "Stack push rules and three notifications, email rules and subject lines, then social guidance and a tweet screenshot."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The introductory note says emoji convey information and attract attention but should be used sparingly.",
+    "Expression": "The notification, email and social examples show playful emoji in actual communications.",
+    "Application": "The page gives channel-specific placement and testing instructions.",
+    "Constraint": "Push guidance usually limits a message to one emoji, allows justified exceptions and omits emoji about half the time; email uses emoji then a space before copy, while social rules are looser."
+  },
+  "ingredient": {
+    "name": "Channel-specific emoji",
+    "role": "Add a selective cue that draws attention.",
+    "application": "For pushes, usually use one emoji at either end of title or body and omit it about half the time; use justified exceptions. Start emoji-bearing email subjects with emoji plus space and A/B test. Adapt social use to the message.",
+    "scope": "Historical official guidelines from the 2024–2025 archived snapshot; this records the displayed guidance, not current Duolingo product behavior."
+  }
+}

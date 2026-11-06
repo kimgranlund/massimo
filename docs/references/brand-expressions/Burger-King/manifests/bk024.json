@@ -1,0 +1,43 @@
+{
+  "id": "BK024",
+  "title": "2. Confident",
+  "image": "bk024.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 24
+  },
+  "slide_intent": "Define the limits of confidence so writers can express personality without creating the wrong impression.",
+  "strategic_value": "Grounded claims about heritage and food can give Burger King confidence without alienating customers.",
+  "demonstration": "Bold, proud and challenging language is bounded by cautions against flashy, vain and confrontational expression. The right column compares familiar brand claims and invitations with regal boasting and confrontation.",
+  "category": "Voice",
+  "practical_value": "Check that pride rests on a recognizable product truth rather than a boast or threat.",
+  "content_islands": [
+    {
+      "name": "Trait and explanation",
+      "spec": "Place the numbered Confident heading and explanatory paragraph in the wide left area."
+    },
+    {
+      "name": "Boundaries",
+      "spec": "Stack three contrasting statements below, highlighting the limiting word in orange."
+    },
+    {
+      "name": "Do and do not examples",
+      "spec": "Use the narrower right column for paired examples with explanatory notes."
+    },
+    {
+      "name": "Review notice",
+      "spec": "Retain the bottom qualification requiring trademark and local legal review of example lines."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The explanatory paragraph describes the role of confidence in Burger King’s voice.",
+    "Application": "The right column compares familiar brand claims and invitations with regal boasting and confrontation.",
+    "Constraint": "The page specifies bold but not flashy, proud but not vain, challenging but not in-your-face; its example lines remain subject to trademark and local legal review."
+  },
+  "ingredient": {
+    "name": "Confident voice",
+    "role": "Express confidence while avoiding a misleading or alienating tone.",
+    "application": "Check that pride rests on a recognizable product truth rather than a boast or threat.",
+    "scope": "Historical partner voice guide. Preserve the named boundaries and source review qualification; examples are not blanket approval to publish claims."
+  }
+}

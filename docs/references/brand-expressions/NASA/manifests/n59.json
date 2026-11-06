@@ -1,0 +1,28 @@
+{
+  "id": "N59",
+  "title": "NASA Vinylcals and Decals",
+  "image": "n59.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 59
+  },
+  "slide_intent": "Teach designers to specify an identification graphic together with its ground and measurement reference. The width of a label and the width of the printed mark describe two different products.",
+  "strategic_value": "NASA can maintain legible markings on varied equipment and doors by matching the material and background to the surface.",
+  "demonstration": "A rounded white vinylcal carries a red logo and black agency name. A separate decal diagram presents the logo alone. Dimension lines span the vinylcal’s white field in one example and the mark’s baseline width in the other.",
+  "category": "Application",
+  "practical_value": "Choose the white-field label for general surfaces and the freestanding decal for a transparent surface. Specify which dimension is being measured before ordering.",
+  "content_islands": [
+    {
+      "name": "Identification methods",
+      "spec": "Set the section heading and introduction in the upper band. Distinguish adhesive-backed vinyl from a wet-applied decal."
+    },
+    {
+      "name": "Vinylcal specification",
+      "spec": "Pair the upper specimen with its field-width dimension and size notes. Preserve the rounded white ground and stacked agency name."
+    },
+    {
+      "name": "Decal specification",
+      "spec": "Place the isolated mark beneath the second divider with its baseline measurement. Keep the color, clearance and size instructions beside it."
+    }
+  ]
+}

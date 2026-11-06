@@ -1,0 +1,25 @@
+{
+  "id": "I026",
+  "title": "Imagery as Color",
+  "image": "i026.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 26,
+    "printed_page": 26
+  },
+  "slide_intent": "Teach designers to let a consistent ground support the less predictable hues in food. A viewer can recognize the brand and still experience the variety of what it sells.",
+  "strategic_value": "Kale and Cashew can give Instacart a visual signature while a changing cast of meals and drawings supplies the color of each story.",
+  "demonstration": "Three overlapping columns of circles set brand swatches beside photographic details and illustrations. Plus signs join the columns into a visual equation.",
+  "category": "Color",
+  "practical_value": "Choose a core ground and let the subject introduce the remaining colors before reaching for a secondary swatch.",
+  "content_islands": [
+    {
+      "name": "Principle",
+      "spec": "Keep the heading and explanation in a narrow left column on white."
+    },
+    {
+      "name": "Color equation",
+      "spec": "Align a stack of flat core colors with two stacks of circular image crops. Distinguish photographs from illustrations and separate the three sources with plus signs."
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "id": "DBV46",
+  "title": "Don_t_Axis",
+  "image": "dbv46.png",
+  "source": "../sources/media/dbv46.mp4",
+  "location": {
+    "series": "DB new design / motion demonstrations",
+    "source_page": 15,
+    "section": "Do-s-und-Don-ts-14021640",
+    "source_url": "https://ecm-mediathek-cdn.deutschebahn.com/cdnenhancedecmvidhls/db306490/2881181/video_config.json",
+    "capture_date": "2026-11-05"
+  },
+  "slide_intent": "Reject diagonal travel when a system relies on clear axes because mixed paths weaken orientation.",
+  "strategic_value": "The marked counterexample can keep DB’s direction of movement consistent across layouts.",
+  "demonstration": "The photograph enters diagonally beside the same dark message panel, and a cyan diagonal line marks the example as rejected.",
+  "category": "Motion",
+  "practical_value": "Compare the image trajectory with DBV45 and keep new animations on the defined straight axes.",
+  "content_islands": [
+    {
+      "name": "Diagonal entrance",
+      "spec": "Observe the photograph approaching its right-hand position off the horizontal axis."
+    },
+    {
+      "name": "Rejection mark",
+      "spec": "Retain the cyan strike that identifies the movement as disallowed."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The photograph enters diagonally beside the same dark message panel, and a cyan diagonal line marks the example as rejected.",
+    "Application": "The source provides a playable rejected counterexample of this repeatable sequence: The photograph enters diagonally beside the same dark message panel, and a cyan diagonal line marks the example as rejected.",
+    "Constraint": "The source says all movement follows clear axes and diagonal animations are never used."
+  },
+  "motion": "../sources/media/dbv46.mp4"
+}

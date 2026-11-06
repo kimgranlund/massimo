@@ -1,0 +1,39 @@
+{
+  "id": "IB006T13",
+  "title": "Typography / Large-format scale — 8x table",
+  "image": "ib006t13.png",
+  "source": "../sources/alternate-tabs.json",
+  "location": {
+    "series": "IBM Design Language / alternate tab states",
+    "parent": "IB006",
+    "group": 1,
+    "tab": 3,
+    "label": "8x",
+    "url": "https://www.ibm.com/design/language/typography/type-scale/",
+    "order": 6113
+  },
+  "slide_intent": "Match typography to a substantially larger presentation while retaining script proportions, because readable scale depends on how the work is encountered.",
+  "strategic_value": "An 8x extension of the same system can keep IBM signage and larger digital artwork consistent with smaller communications.",
+  "demonstration": "The selected 8x tab presents default sizes 48–2400, 95% adjusted values and line heights through 2640 in a complete three-column table.",
+  "category": "Typography",
+  "practical_value": "Select 8x only after identifying the relevant format, then use the corresponding line-height value rather than sizing text independently.",
+  "content_islands": [
+    {
+      "name": "Multiplier selector",
+      "spec": "Show 8x selected after 1x and 4x."
+    },
+    {
+      "name": "Default and adjusted columns",
+      "spec": "Pair the larger default sizes with the corresponding 95% script-adjusted sizes."
+    },
+    {
+      "name": "Line-height column",
+      "spec": "Align each line-height value or alternative with its type-size row."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The accompanying page ties large-format scaling to artboard size and viewing distance.",
+    "Application": "The 8x table supplies the coordinated type-size and line-height values for that multiplier.",
+    "Constraint": "The parent guidance gives human-scale print and 16K digital artboards as 8x examples and says these rules assume 100% artwork scale."
+  }
+}

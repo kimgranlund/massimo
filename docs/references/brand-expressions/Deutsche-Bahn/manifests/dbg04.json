@@ -1,0 +1,27 @@
+{
+  "id": "DBG04",
+  "title": "Bar indicator / Live feedback",
+  "image": "dbg04.png",
+  "source": "../sources/media/4f72b3e17456-Bild_04-data.gif",
+  "location": {
+    "series": "DB new design / original GIF demonstrations",
+    "source_page": 15,
+    "section": 3,
+    "url": "https://marketingportal.extranet.deutschebahn.com/resource/blob/14025280/5a934c2693b871ff0b164af8bedc9a73/Bild_04-data.gif"
+  },
+  "slide_intent": "Make a changing position visible because users need to track the relationship between a marker and a value.",
+  "strategic_value": "Animating Schwelle-derived bars can connect functional feedback to DB’s broader visual system.",
+  "demonstration": "A white downward triangle travels above a long red bar sequence; a cluster of thicker bars follows it across the dark field.",
+  "category": "Motion",
+  "practical_value": "Assess whether the moving marker and local bar emphasis remain easy to follow at the intended UI size.",
+  "content_islands": [
+    {
+      "name": "Indicator track",
+      "spec": "Align the triangular marker above the bars and keep both changes coordinated."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The demonstration uses a marker and changing bar weights to show live feedback."
+  },
+  "motion": "../sources/media/dbg04.mp4"
+}

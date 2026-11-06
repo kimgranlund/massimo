@@ -1,0 +1,25 @@
+{
+  "id": "I097",
+  "title": "Emails",
+  "image": "i097.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 97,
+    "printed_page": 103
+  },
+  "slide_intent": "Demonstrate how to organize a narrow email around a shopping decision while retaining recognizable brand ingredients across product categories.",
+  "strategic_value": "An offer-led food email and a beauty email can use different palettes and image treatments under the same identity.",
+  "demonstration": "Two tall email mockups pair headline, imagery and shopping actions differently. The first uses a green offer button and a food photograph. The second uses a berry-colored arrow above beauty products and outlined actions.",
+  "category": "Application",
+  "practical_value": "Choose a single prominent offer or a set of product choices according to the job of the message.",
+  "content_islands": [
+    {
+      "name": "Food offer",
+      "spec": "Place the cream email at left with a small wordmark, prominent offer, dark action and food image."
+    },
+    {
+      "name": "Beauty selection",
+      "spec": "Place the second email beside it. Use the arrow and hero product at the top, then group product thumbnails with their individual actions."
+    }
+  ]
+}

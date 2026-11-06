@@ -1,0 +1,24 @@
+{
+  "id": "N56",
+  "title": "NASA Spacecraft Markings",
+  "image": "n56.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 56
+  },
+  "slide_intent": "Teach designers to place identification where it remains visible across viewing angles without interfering with the craft’s mission or maintenance.",
+  "strategic_value": "NASA can make a spacecraft identifiable during launch and flight while treating the areas approved by engineers as the limits of the graphic design.",
+  "demonstration": "Two views of the Space Shuttle Orbiter place the national and agency identifiers on different faces. The instructions use a gray NASA mark beside the flag and relate flag height to capital-letter height.",
+  "category": "Application",
+  "practical_value": "Check the allotted surfaces and viewing angles before choosing identifiers. Compare side and plan views to see whether a mark is still legible from another direction.",
+  "content_islands": [
+    {
+      "name": "Operational and graphic constraints",
+      "spec": "Set the heading and notes across the top. Explain the limited marking areas, choice of gray and relative size of flag and type."
+    },
+    {
+      "name": "Orbiter views",
+      "spec": "Give the side elevation the largest field and place the smaller plan view below at right. Show the mark, flag and lettering against the contours and dark areas of each face."
+    }
+  ]
+}

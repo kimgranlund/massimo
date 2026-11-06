@@ -1,0 +1,31 @@
+{
+  "id": "DB1306",
+  "title": "Flexible Textausrichtung",
+  "image": "db1306.png",
+  "source": "../sources/page-13.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 13,
+    "section": 6,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Layout"
+  },
+  "slide_intent": "Coordinate text with the identity anchor so flexible positioning still feels organized.",
+  "strategic_value": "A stable relationship to the DB mark can unify different headline alignments.",
+  "demonstration": "Three portrait diagrams compare left, centered and right-aligned text with corresponding logo positions and lower Schwellen.",
+  "category": "Layout",
+  "practical_value": "Align text according to the logo while allowing the Schwelle to occupy a flexible position.",
+  "content_islands": [
+    {
+      "name": "Alignment rule",
+      "spec": "Place the relationship statement above the specimens."
+    },
+    {
+      "name": "Three alignments",
+      "spec": "Compare left, center and right arrangements side by side."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The three diagrams demonstrate alignment options.",
+    "Constraint": "The source states that text follows the logo’s alignment while Schwelle placement remains flexible."
+  }
+}

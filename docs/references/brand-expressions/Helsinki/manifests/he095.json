@@ -1,0 +1,31 @@
+{
+  "id": "HE095",
+  "title": "Accessibility",
+  "image": "he095.png",
+  "source": "../sources/design-and-create.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Accessibility",
+    "order": 128,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/design-and-create#accessibility",
+    "original_html": "../sources/design-and-create.html"
+  },
+  "slide_intent": "Make physical services usable so civic identity supports people navigating real places.",
+  "strategic_value": "Linking visual guidance to Helsinki for All can connect graphic decisions with physical access.",
+  "demonstration": "Expanded webpage section: one sentence explains access in city-run spaces above a Helsinki for All guidelines link.",
+  "category": "Application",
+  "practical_value": "Consult the physical accessibility guidance when identity appears in spaces.",
+  "content_islands": [
+    {
+      "name": "Purpose and onward guidance",
+      "spec": "A short explanation and linked guideline occupy one compact block."
+    },
+    {
+      "name": "Section control",
+      "spec": "The title sits above the text and the close control below."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source says accessibility enables people to move around and use services smoothly in city spaces."
+  }
+}

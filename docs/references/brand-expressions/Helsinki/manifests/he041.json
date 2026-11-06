@@ -1,0 +1,35 @@
+{
+  "id": "HE041",
+  "title": "The City’s shared illustrations",
+  "image": "he041.png",
+  "source": "../sources/visual-storytelling.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "The City’s shared illustrations",
+    "order": 55,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/visual-storytelling#the-city-s-shared-illustrations",
+    "original_html": "../sources/visual-storytelling.html"
+  },
+  "slide_intent": "Make shared illustration reusable because one visual vocabulary can support different messages without requiring new artwork every time.",
+  "strategic_value": "Reusable pieces can help Helsinki connect resident information, presentations and marketing.",
+  "demonstration": "This expanded webpage section lists uses for shared illustrations, links the library and encourages combining pieces or using individual elements.",
+  "category": "Imagery",
+  "practical_value": "Choose whether a whole composition or a single shared element best supports the communication.",
+  "content_islands": [
+    {
+      "name": "Library access",
+      "spec": "Begin with the shared-illustration download route."
+    },
+    {
+      "name": "Use contexts",
+      "spec": "List presentations, news, websites, instructions and marketing."
+    },
+    {
+      "name": "Combination guidance",
+      "spec": "Explain creative combination and individual-element use."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The source identifies reusable contexts and explicitly allows combining illustrations and using single elements."
+  }
+}

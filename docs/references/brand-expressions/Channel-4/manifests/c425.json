@@ -1,0 +1,36 @@
+{
+  "id": "C425",
+  "title": "Gradient worlds palette",
+  "image": "c425.png",
+  "source": "../sources/c425.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 masterbrand / 2023",
+    "item": 25,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Compare color relationships as environments rather than isolated chips so their scale and contrast are visible.",
+  "strategic_value": "A varied but recurring spatial treatment can express Channel 4’s eclectic programming while keeping the backgrounds related.",
+  "demonstration": "An edge-to-edge grid compares many recessed gradient rooms, with warm, cool, pale and dark combinations.",
+  "category": "Color",
+  "practical_value": "Select a gradient relationship by comparing the mood and depth of complete fields.",
+  "content_islands": [
+    {
+      "name": "Comparison grid",
+      "spec": "Fill the board with adjacent room-shaped gradients at matching tile sizes."
+    },
+    {
+      "name": "Color variation",
+      "spec": "Preserve the changes in hue, contrast and light placement across the grid."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The grid demonstrates a broad range of colored gradient rooms.",
+    "Intent": "Pentagram says the eclectic gradient spectrum expresses Channel 4’s diversity and mischievous character."
+  },
+  "ingredient": {
+    "name": "Gradient world palette",
+    "role": "Provide varied environments with a shared spatial form.",
+    "application": "Compare complete gradient rooms rather than treating the displayed colors as flat swatches.",
+    "scope": "These are case-study examples, not a numbered palette or prescribed usage ratio."
+  }
+}

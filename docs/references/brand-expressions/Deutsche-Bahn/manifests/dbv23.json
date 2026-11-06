@@ -1,0 +1,34 @@
+{
+  "id": "DBV23",
+  "title": "Layout_03",
+  "image": "dbv23.png",
+  "source": "../sources/media/dbv23.mp4",
+  "location": {
+    "series": "DB new design / motion demonstrations",
+    "source_page": 15,
+    "section": "Animation-14021536",
+    "source_url": "https://ecm-mediathek-cdn.deutschebahn.com/cdnenhancedecmvidhls/db306418/2880945/video_config.json",
+    "capture_date": "2026-11-05"
+  },
+  "slide_intent": "Use a clear split between picture and message so the viewer understands their separate roles.",
+  "strategic_value": "A full-height white panel can give DB copy a stable reading surface while retaining a large human image.",
+  "demonstration": "The frame divides into an employee image on the left and a white message panel on the right, with a vertical red Schwelle at the outer edge.",
+  "category": "Motion",
+  "practical_value": "Choose an edge-to-edge panel when the composition calls for a strong image-and-information division.",
+  "content_islands": [
+    {
+      "name": "Image area",
+      "spec": "Keep the employee photograph in the left portion."
+    },
+    {
+      "name": "Message panel",
+      "spec": "Animate the white right-hand panel with red logo, black text, and red bars at the right edge."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The frame divides into an employee image on the left and a white message panel on the right, with a vertical red Schwelle at the outer edge.",
+    "Application": "The source provides a playable demonstration of this repeatable sequence: The frame divides into an employee image on the left and a white message panel on the right, with a vertical red Schwelle at the outer edge.",
+    "Intent": "Accompanying Layout prose says animation can direct focus and clarify structure through clear, precise, comprehensible movements."
+  },
+  "motion": "../sources/media/dbv23.mp4"
+}

@@ -1,0 +1,40 @@
+{
+  "id": "BK037",
+  "title": "Primary Logo QR Code",
+  "image": "bk037.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 37
+  },
+  "slide_intent": "Preserve the function of a branded code because a recognizable graphic is useful only if people can scan it.",
+  "strategic_value": "The custom burger-shaped code can carry Burger King personality into a digital access point.",
+  "demonstration": "A brown QR-code logo is paired with a circle-based clearance diagram and a smaller minimum-size specimen.",
+  "category": "Geometry",
+  "practical_value": "Keep one QR circle diameter clear around the code and respect the stated print and digital minimum recommendations.",
+  "content_islands": [
+    {
+      "name": "QR purpose and rules",
+      "spec": "Use the left column for the rationale, clearance rule and minimum-size rule."
+    },
+    {
+      "name": "Code and clearspace",
+      "spec": "Stack the large code above its shaded clearance diagram in the center, using the code’s circle as the measuring unit."
+    },
+    {
+      "name": "Minimum-size specimen",
+      "spec": "Place a small code at right with 1 inch print width and 96 pixels digital width captions."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source says the design combines brand personality with functionality and minimum size is essential to scanning.",
+    "Expression": "The code forms a Burger King silhouette and lettering in brown.",
+    "Application": "The circle diameter defines clearspace; the recommended minimum is 1 inch wide in print and 96 pixels on screen.",
+    "Constraint": "The specified clearance separates the outer code edge from other visual and verbal elements."
+  },
+  "ingredient": {
+    "name": "Branded QR code",
+    "role": "Provide a recognizable route to the brand’s digital presence.",
+    "application": "Reserve one code-circle diameter around the outer edge; use at least the recommended 1-inch print width or 96-pixel screen width.",
+    "scope": "Historical partner guide. The page states recommended minimum size; it does not establish verified scanning performance for every surface."
+  }
+}

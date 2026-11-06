@@ -1,0 +1,28 @@
+{
+  "id": "F31",
+  "title": "Activism for everyone",
+  "image": "f31.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 31
+  },
+  "slide_intent": "Show how to leave a symbol simple enough for a participant to draw. A few memorable strokes let people contribute without production tools.",
+  "strategic_value": "Frontline AIDS can give partners and communities a way to express participation on a wall, placard or other informal surface.",
+  "demonstration": "A numbered three-stroke drawing sits beside two photographs of the figure drawn large on walls. The guidance distinguishes these marks from the official logo.",
+  "category": "Application",
+  "practical_value": "Offer the three-stroke sequence for participation and reserve the supplied mark for formal brand identification.",
+  "content_islands": [
+    {
+      "name": "Participation brief",
+      "spec": "Place the invitation and the note about official usage together in the left text column."
+    },
+    {
+      "name": "Stroke diagram",
+      "spec": "Show the figure below the explanation with three pink numbers and guides indicating the order of the strokes."
+    },
+    {
+      "name": "Wall examples",
+      "spec": "Stack two documentary photographs at right. Show the drawn symbol in each physical setting and retain surrounding details that indicate scale."
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "HE092",
+  "title": "Visual appearance of websites",
+  "image": "he092.png",
+  "source": "../sources/design-and-create.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Visual appearance of websites",
+    "order": 124,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/design-and-create#visual-appearance-of-websites",
+    "original_html": "../sources/design-and-create.html"
+  },
+  "slide_intent": "Adapt a broad identity to a website’s needs so recurring public information remains recognizable and readable.",
+  "strategic_value": "Seasonal imagery within a defined website concept can keep Helsinki current without losing consistency.",
+  "demonstration": "Expanded webpage section: three bullets define selected color combinations, seasonal themes and everyday-life photography, followed by a registration-required documentation link.",
+  "category": "Imagery",
+  "practical_value": "Use website-specific palettes and photography rules rather than assuming every brand option applies.",
+  "content_islands": [
+    {
+      "name": "Website-specific choices",
+      "spec": "Bullets describe accessible palette selections and seasonal changes."
+    },
+    {
+      "name": "Imagery and detail source",
+      "spec": "The last bullet requires photographs for covers; a link points to fuller registered guidance."
+    }
+  ],
+  "reference_purposes": {
+    "Constraint": "The source says all cover images use photographs rather than illustrations."
+  }
+}

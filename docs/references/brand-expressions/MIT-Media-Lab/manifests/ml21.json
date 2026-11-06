@@ -1,0 +1,36 @@
+{
+  "id": "ML21",
+  "title": "Patterned adhesive tape",
+  "image": "ml21.png",
+  "source": "../sources/ml21.jpg",
+  "location": {
+    "series": "Pentagram / MIT Media Lab / 2014 identity",
+    "item": 21,
+    "extent": "Published lightbox artwork"
+  },
+  "slide_intent": "Make a repeated utility surface recognizable because routine materials create repeated brand encounters.",
+  "strategic_value": "A glyph pattern can turn packaging tape into an expression of the research community.",
+  "demonstration": "A roll of white tape unwinds diagonally with repeated black angular forms.",
+  "category": "Geometry",
+  "practical_value": "Study how a family of symbols becomes a continuous strip.",
+  "content_islands": [
+    {
+      "name": "Tape roll",
+      "spec": "The source roll begins at the upper left."
+    },
+    {
+      "name": "Unrolled pattern",
+      "spec": "Dense glyphs continue along the curved white strip."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A roll of white tape unwinds diagonally with repeated black angular forms.",
+    "Application": "A roll of white tape unwinds diagonally with repeated black angular forms."
+  },
+  "ingredient": {
+    "name": "Patterned adhesive tape",
+    "role": "Make a repeated utility surface recognizable because routine materials create repeated brand encounters.",
+    "application": "Study how a family of symbols becomes a continuous strip.",
+    "scope": "Observed in this historical case-study artwork; not a mandatory usage rule or a current brand standard."
+  }
+}

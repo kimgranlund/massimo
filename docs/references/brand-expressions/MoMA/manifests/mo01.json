@@ -1,0 +1,30 @@
+{
+  "id": "MO01",
+  "title": "Façade banner sequence",
+  "image": "mo01.png",
+  "source": "../sources/mo01.jpg",
+  "location": {
+    "series": "Pentagram / MoMA / 2009 identity case study",
+    "item": 1,
+    "extent": "Publisher hero crop"
+  },
+  "slide_intent": "Show how repetition links different exhibitions, because a passerby should recognize the institution before reading each programme.",
+  "strategic_value": "Alternating large names and MoMA signatures can give a changing exhibition programme a stable public presence.",
+  "demonstration": "A façade carries a row of narrow banners combining large artist names, black MoMA lettering and colored fields.",
+  "category": "Application",
+  "practical_value": "Compare recognition across a sequence rather than judging each banner in isolation.",
+  "content_islands": [
+    {
+      "name": "Banner row",
+      "spec": "Place the alternating exhibition names and MoMA signatures across the upper wall; retain their vertical orientation and contrasting color fields."
+    },
+    {
+      "name": "Architectural context",
+      "spec": "Keep the surrounding façade visible so the scale and mounting of the sequence remain apparent."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Large alternating names, colored fields and black signatures create a repeated visual rhythm.",
+    "Application": "The identity appears as a multi-banner installation on the museum exterior."
+  }
+}

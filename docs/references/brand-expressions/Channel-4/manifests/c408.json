@@ -1,0 +1,30 @@
+{
+  "id": "C408",
+  "title": "Bucket hat with 4 and smile",
+  "image": "c408.png",
+  "source": "../sources/c408.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 masterbrand / 2023",
+    "item": 8,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Test how a symbol and a small playful detail communicate at wearable scale.",
+  "strategic_value": "A green signature beside a smile can make Channel 4 merchandise recognizable without a large slogan.",
+  "demonstration": "A rear view of a black bucket hat shows a small green 4 and an outlined smiling face.",
+  "category": "Application",
+  "practical_value": "Compare the scale and spacing of a brand mark with a companion icon on fabric.",
+  "content_islands": [
+    {
+      "name": "Hat graphics",
+      "spec": "Place the small green 4 and smile apart on the black hat."
+    },
+    {
+      "name": "Wearer",
+      "spec": "Keep the person and pale background to show how the embroidery reads when worn."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The 4 and smile icon appear on a worn bucket hat.",
+    "Expression": "Small green graphics contrast with the black fabric."
+  }
+}

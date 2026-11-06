@@ -1,0 +1,29 @@
+{
+  "id": "LH26",
+  "title": "Existing aircraft typography",
+  "image": "lh26.png",
+  "source": "../sources/lh26.jpg",
+  "location": {
+    "series": "HvD Fonts / Lufthansa 2018",
+    "item": 5,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Study the inherited wordmark in context because a refresh must account for what people already recognize.",
+  "strategic_value": "The familiar aircraft lettering can anchor decisions about the next Lufthansa typeface.",
+  "demonstration": "A photograph shows a large Lufthansa aircraft at an airport gate with its existing fuselage lettering visible.",
+  "category": "Typography",
+  "practical_value": "Use a real application to establish the starting point of a typographic refresh.",
+  "content_islands": [
+    {
+      "name": "Aircraft and lettering",
+      "spec": "Keep the fuselage wordmark prominent at right."
+    },
+    {
+      "name": "Airport context",
+      "spec": "Retain ground equipment and neighboring aircraft as scale references."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A photograph shows a large Lufthansa aircraft at an airport gate with its existing fuselage lettering visible."
+  }
+}

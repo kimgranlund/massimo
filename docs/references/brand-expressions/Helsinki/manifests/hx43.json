@@ -1,0 +1,24 @@
+{
+  "id": "HX43",
+  "title": "City’s shared illustrations",
+  "image": "hx43.png",
+  "source": "../sources/download-elements.offline.html",
+  "location": {
+    "series": "Web guideline introduction/component",
+    "order": 155,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/download-elements",
+    "original_html": "../sources/download-elements.html"
+  },
+  "slide_intent": "Provide a clear entry to city’s shared illustrations because contributors need to locate the correct source assets.",
+  "strategic_value": "The named section can help Helsinki contributors find the appropriate asset family.",
+  "demonstration": "This webpage component contains only the City’s shared illustrations heading and an Open all control. No asset specimen or detailed rule is visible.",
+  "category": "Imagery",
+  "practical_value": "Use the City’s shared illustrations heading to locate its download group; the heading itself supplies no asset-use rules.",
+  "content_islands": [
+    {
+      "name": "Section header",
+      "spec": "Retain the heading and expansion control together."
+    }
+  ],
+  "reference_purposes": {}
+}

@@ -1,0 +1,39 @@
+{
+  "id": "DW037",
+  "title": "Imagery / Photography",
+  "image": "dw037.png",
+  "source": "../sources/pages/identity-imagery.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/identity/imagery",
+    "section": "Photography",
+    "item": 37,
+    "order": 370
+  },
+  "slide_intent": "Ground a brand story in real people because authentic experience can give a broad promise personal meaning.",
+  "strategic_value": "People-led photographs with a sense of place can connect Duolingo to learners’ lives beyond the app.",
+  "demonstration": "A photographic example is beside guidance to show authentic people, their stories and personalities, with references to ordinary activities and environments.",
+  "category": "Imagery",
+  "practical_value": "Select photographs for the person and story they reveal, rather than treating them as interchangeable decoration.",
+  "content_islands": [
+    {
+      "name": "Environmental portrait",
+      "spec": "Place the photograph of a woman in a green hat beside a colorful wall in the left panel."
+    },
+    {
+      "name": "Photography guidance",
+      "spec": "Place the heading and people, story and everyday-setting guidance in the right column."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source says photographs reflect the company’s character and the people it wants to accompany.",
+    "Application": "The copy directs photography toward learners, personalities and real-life situations.",
+    "Expression": "The photograph demonstrates the source’s people-led approach."
+  },
+  "ingredient": {
+    "name": "Brand photography",
+    "role": "Connect the identity with real people and places.",
+    "application": "Choose images led by people who use Duolingo and reveal their stories or personalities.",
+    "scope": "Historical archived guidelines. Historical photography guidance. The source’s final environment sentence is grammatically incomplete; no extra rule is inferred from that defect."
+  }
+}

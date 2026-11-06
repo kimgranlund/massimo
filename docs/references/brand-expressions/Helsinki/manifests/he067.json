@@ -1,0 +1,39 @@
+{
+  "id": "HE067",
+  "title": "Language policies for signage",
+  "image": "he067.png",
+  "source": "../sources/design-and-create.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Language policies for signage",
+    "order": 94,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/design-and-create#language-policies-for-signage",
+    "original_html": "../sources/design-and-create.html"
+  },
+  "slide_intent": "Make language presence deliberate so residents can recognize their place in public communications.",
+  "strategic_value": "Consistent bilingual identification can make Helsinki’s shared civic role visible at entrances.",
+  "demonstration": "This expanded webpage-section capture pairs language-policy guidance with a photograph of multilingual information on a building entrance.",
+  "category": "Application",
+  "practical_value": "Select logo languages for the operator and visitors while ensuring Swedish presence in bilingual or multilingual resident communications.",
+  "content_islands": [
+    {
+      "name": "Language policy",
+      "spec": "Keep audience choice with the equal-standing requirement."
+    },
+    {
+      "name": "Entrance application",
+      "spec": "Place the photographed door and facade information below the policy."
+    }
+  ],
+  "ingredient": {
+    "name": "Public-space logo language",
+    "role": "Identify the city inclusively.",
+    "application": "Use the bilingual framed logo or equal-height Helsinki and Helsingfors logos sufficiently far apart.",
+    "scope": "Public spaces; preserve Swedish-logo presence in bilingual and multilingual resident communications."
+  },
+  "reference_purposes": {
+    "Intent": "The text states that Finnish and Swedish have equal standing in public areas.",
+    "Constraint": "Public-space use requires the bilingual logo or equal-height Helsinki and Helsingfors logos placed sufficiently apart.",
+    "Application": "It connects logo-language selection to the operator and visitor target group."
+  }
+}

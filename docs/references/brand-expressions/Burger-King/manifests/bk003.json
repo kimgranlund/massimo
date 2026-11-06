@@ -1,0 +1,32 @@
+{
+  "id": "BK003",
+  "title": "Table of Contents",
+  "image": "bk003.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 3
+  },
+  "slide_intent": "Make a large identity system navigable so readers can find the rule that answers their immediate question.",
+  "strategic_value": "Numbered sections can connect Burger King’s strategic story to detailed production guidance.",
+  "demonstration": "Three columns list sections and subtopics with page numbers; orange headings stand apart from cream entries on brown.",
+  "category": "Layout",
+  "practical_value": "Organize a brand book by decisions and preserve direct page references.",
+  "content_islands": [
+    {
+      "name": "First column",
+      "spec": "Group introduction, voice and logo topics at left."
+    },
+    {
+      "name": "Second column",
+      "spec": "Group lockups, color, type, layouts and illustration in the middle."
+    },
+    {
+      "name": "Final column",
+      "spec": "Place legal standards, file naming and contacts at right."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The contents use page numbers and grouped subtopics to locate guidance.",
+    "Expression": "Orange section names and cream subordinate entries establish a visible hierarchy."
+  }
+}

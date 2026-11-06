@@ -1,0 +1,30 @@
+{
+  "id": "DB1503",
+  "title": "Motion Branding / Interface overview",
+  "image": "db1503.png",
+  "source": "../sources/page-15.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 15,
+    "section": 3,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Motion-Branding"
+  },
+  "slide_intent": "Connect small feedback signals to the wider identity because interface actions are also brand encounters.",
+  "strategic_value": "A telephone icon beside a bar-based indicator can extend DB character into functional feedback.",
+  "demonstration": "A telephone outline occupies the left panel; a red bar sequence with a white triangular marker occupies a wider dark panel at right. The PNG is a captured animation state.",
+  "category": "Motion",
+  "practical_value": "Compare an icon attention cue with a continuous-value indicator before assigning movement to an interface.",
+  "content_islands": [
+    {
+      "name": "Telephone",
+      "spec": "Keep the dark telephone outline centered on its pale square field."
+    },
+    {
+      "name": "Indicator",
+      "spec": "Place the red bars and downward white marker on the wider dark field."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The paired interface artwork uses the icon style and Schwelle-derived bars as two distinct feedback expressions."
+  }
+}

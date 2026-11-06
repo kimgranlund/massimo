@@ -1,0 +1,27 @@
+{
+  "id": "HX36",
+  "title": "Pasila Library facade banner",
+  "image": "hx36.png",
+  "source": "../sources/download-elements.offline.html",
+  "location": {
+    "series": "Web guideline introduction/component",
+    "order": 142,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/download-elements",
+    "original_html": "../sources/download-elements.html"
+  },
+  "slide_intent": "Use a building surface to welcome people because identity can make a public service’s entrance more approachable and identifiable.",
+  "strategic_value": "The wave division, three-language welcome and icon line can make Helsinki’s library presence visible at street scale.",
+  "demonstration": "This webpage photograph shows a tall yellow-and-blue banner on Pasila Library’s brick facade, with Finnish, Swedish and English welcome text, icons and a Helsinki logo.",
+  "category": "Application",
+  "practical_value": "Compare how type, color and imagery carry a welcome at facade scale.",
+  "content_islands": [
+    {
+      "name": "Library banner",
+      "spec": "Retain the complete banner, building context and credit caption."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The photograph places the branded welcome on Pasila Library’s facade.",
+    "Expression": "The banner combines yellow/blue surfaces, a wave boundary, line icons and multilingual type."
+  }
+}

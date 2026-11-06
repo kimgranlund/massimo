@@ -1,0 +1,28 @@
+{
+  "id": "B20",
+  "title": "Type color use cases",
+  "image": "b20.png",
+  "source": "../bolt-brand-guidelines-2025-12.pdf",
+  "location": {
+    "page": 20
+  },
+  "slide_intent": "Teach designers to judge lettering together with its ground. Repeating one phrase at the same scale lets the reader compare the effect of the color pair alone.",
+  "strategic_value": "Bolt can establish recognizable combinations for campaign headlines while giving designers alternatives for light, dark and blue surfaces.",
+  "demonstration": "The page repeats the same headline across eight horizontal specimens. The first three rows pair two text colors on each ground. The final two rows span the grid with dark text on progressively lighter grounds.",
+  "category": "Color",
+  "practical_value": "Use the specimens to select a starting foreground and background for a headline, then test the text at the size and contrast required by the application.",
+  "content_islands": [
+    {
+      "name": "Section rail and introduction",
+      "spec": "Keep the running rail at left. Place the title and text about foreground and background legibility in the next column."
+    },
+    {
+      "name": "Paired comparisons",
+      "spec": "Align three rows of two rounded specimens. Compare light and dark text on blue, light and blue text on dark, then light and dark text on the same mid-value gray. Keep the phrase, scale and left inset consistent."
+    },
+    {
+      "name": "Light-ground comparisons",
+      "spec": "Finish with two full-width bars under the pairs. Hold the dark lettering steady and lighten the ground in the last row."
+    }
+  ]
+}

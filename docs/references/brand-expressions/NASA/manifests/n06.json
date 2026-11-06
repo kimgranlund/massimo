@@ -1,0 +1,28 @@
+{
+  "id": "N06",
+  "title": "Agency and Center Identification",
+  "image": "n06.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 6
+  },
+  "slide_intent": "Teach designers to distinguish an institution from one of its centers. A reader should be able to identify both the parent organization and the specific local sender.",
+  "strategic_value": "NASA can give a center prominence through typographic weight while keeping the agency identity intact.",
+  "demonstration": "The upper configuration pairs the mark with the agency name in Helvetica Light. The lower configuration retains both and adds John F. Kennedy Space Center in Helvetica Medium.",
+  "category": "Typography",
+  "practical_value": "Select the two-part agency configuration for NASA as a whole. Add the center name in the prescribed heavier weight when identifying that center.",
+  "content_islands": [
+    {
+      "name": "Configuration guidance",
+      "spec": "Arrange the title and explanatory text across the upper band. Keep the agency and center descriptions distinct."
+    },
+    {
+      "name": "Agency identification",
+      "spec": "Below the first rule, stack the logotype and two-line agency name on a common left edge."
+    },
+    {
+      "name": "Center identification",
+      "spec": "Repeat the upper group below a second rule and add the center name as the final, heavier line."
+    }
+  ]
+}

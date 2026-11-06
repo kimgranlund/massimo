@@ -1,0 +1,47 @@
+{
+  "id": "ML29",
+  "title": "Animated family of research identities",
+  "image": "ml29.png",
+  "source": "../sources/ml29.mp4",
+  "location": {
+    "series": "Pentagram / MIT Media Lab / 2014 identity",
+    "item": 29,
+    "extent": "Complete source film",
+    "source_order": 0,
+    "poster_seconds": 45
+  },
+  "slide_intent": "Reveal how different marks share one construction logic because temporal comparison can teach a family relationship more clearly than a single logo.",
+  "strategic_value": "The film can express individual research identities and their membership in one institution.",
+  "demonstration": "White orthogonal strokes enter and resolve into marks on black; the film alternates a multi-glyph array with enlarged named group signatures, then resolves to the lab identity.",
+  "category": "Motion",
+  "practical_value": "Study transitions between the collective array, individual groups and the institutional signature.",
+  "content_islands": [
+    {
+      "name": "Opening construction",
+      "spec": "Moving white strokes assemble against black."
+    },
+    {
+      "name": "Collective array",
+      "spec": "Related group marks occupy a regular multi-row field."
+    },
+    {
+      "name": "Named group sequences",
+      "spec": "Enlarged glyphs pair with group names including Object-Based Media, Biomechatronics, Social Machines and Camera Culture."
+    },
+    {
+      "name": "Lab resolution",
+      "spec": "The ML signature closes the sequence; the PNG is a poster from the film, not a separate source slide."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "White orthogonal strokes enter and resolve into marks on black; the film alternates a multi-glyph array with enlarged named group signatures, then resolves to the lab identity.",
+    "Intent": "The accompanying Pentagram project text explains that the related glyphs give the institution a stable identity while representing the distinct research groups."
+  },
+  "ingredient": {
+    "name": "Animated group glyphs",
+    "role": "Reveal how different marks share one construction logic because temporal comparison can teach a family relationship more clearly than a single logo.",
+    "application": "Study transitions between the collective array, individual groups and the institutional signature.",
+    "scope": "Observed in this historical case-study artwork; not a mandatory usage rule or a current brand standard."
+  },
+  "motion": "../sources/ml29.mp4"
+}

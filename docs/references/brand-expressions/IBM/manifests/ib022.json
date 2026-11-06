@@ -1,0 +1,45 @@
+{
+  "id": "IB022",
+  "title": "Data visualization / Charts",
+  "image": "ib022.png",
+  "source": "../sources/data-visualization-charts.txt",
+  "location": {
+    "series": "IBM Design Language / public web guidelines",
+    "item": 22,
+    "extent": "Complete webpage content-area capture; visible default tab states",
+    "url": "https://www.ibm.com/design/language/data-visualization/charts/",
+    "order": 22000
+  },
+  "slide_intent": "Choose a chart according to the comparison a person needs to make so visual form supports the question rather than merely decorating data.",
+  "strategic_value": "A shared taxonomy of chart purposes can make IBM information displays more consistent and easier to interpret across contexts.",
+  "demonstration": "Six sections group blue chart thumbnails by comparisons, trends, part-to-whole, correlations, relationships and connections, and maps, with names and implementation links.",
+  "category": "Application",
+  "practical_value": "Match a data question to a chart family and compare the specific alternatives within that family.",
+  "content_islands": [
+    {
+      "name": "Comparisons",
+      "spec": "Begin the chart catalog with a grid of bars, lollipop, bubble, radar and word-cloud specimens under the comparison rationale."
+    },
+    {
+      "name": "Trends",
+      "spec": "Follow with line, area, boxplot, histogram and stream examples tied to change over time."
+    },
+    {
+      "name": "Part to whole",
+      "spec": "Place circular, stacked and nested shapes together to compare ways to express subdivision."
+    },
+    {
+      "name": "Correlations",
+      "spec": "Group scatterplot, heatmap and parallel coordinates under multidimensional comparison."
+    },
+    {
+      "name": "Relationships and maps",
+      "spec": "Close with flow/network/tree specimens followed by choropleth, proportional-symbol and connecting-line maps; preserve design-only labels where shown."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "Each section explains the perceptual or informational reason to use its family, such as alignment for comparison or position for geographic patterns.",
+    "Expression": "The specimen cards use a coordinated blue visual treatment across many chart structures.",
+    "Application": "Named examples and contextual descriptions help match comparison, trend, composition, correlation, relationship or geographic questions to chart types."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "id": "HE002",
+  "title": "Helsinki’s visual identity",
+  "image": "he002.png",
+  "source": "../sources/discover-the-visual-identity.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Helsinki’s visual identity",
+    "order": 3,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/discover-the-visual-identity#helsinki-s-visual-identity",
+    "original_html": "../sources/discover-the-visual-identity.html"
+  },
+  "slide_intent": "Explain why shared recognition matters when residents need to identify which services belong to their city.",
+  "strategic_value": "A common identity can make Helsinki’s many operators easier to recognize as one civic organization.",
+  "demonstration": "This expanded webpage section pairs five reasons for consistency with a collage of formerly separate agency marks and a caption describing residents’ confusion.",
+  "category": "Brand",
+  "practical_value": "Use the former-logo collage to assess whether an identity system makes service ownership recognizable.",
+  "content_islands": [
+    {
+      "name": "Consistency rationale",
+      "spec": "Place the five benefits at the top."
+    },
+    {
+      "name": "Former identities",
+      "spec": "Show the mixed logo collage below, followed by the explanation of fragmented recognition."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text explicitly connects consistency to clearer service recognition, harmony and coherent messages.",
+    "Expression": "The collage demonstrates the visual diversity of the former agency identities."
+  }
+}

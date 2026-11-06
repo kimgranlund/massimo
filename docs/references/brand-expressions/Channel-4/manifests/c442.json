@@ -1,0 +1,34 @@
+{
+  "id": "C442",
+  "title": "40 Years of British Cinema",
+  "image": "c442.png",
+  "source": "../sources/c442.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 / 2023 masterbrand case study",
+    "item": 42,
+    "extent": "Full published artwork"
+  },
+  "slide_intent": "Keep a recognizable publisher present while allowing archival content to lead, because readers need to understand both the subject and its source.",
+  "strategic_value": "The small green 4 beside monochrome film images can link Channel 4’s cinema heritage to its renewed identity.",
+  "demonstration": "A dark book cover combines stacked film photographs, a green 4 at upper left and a white title across the middle.",
+  "category": "Application",
+  "practical_value": "Compare the prominence of the publisher mark with the film imagery on a commemorative cover.",
+  "content_islands": [
+    {
+      "name": "Publisher signature",
+      "spec": "Place the green 4 at the upper-left corner of the dark cover."
+    },
+    {
+      "name": "Cinema archive",
+      "spec": "Stack muted photographic bands behind the white title, with small captions retained beside their images."
+    },
+    {
+      "name": "Object view",
+      "spec": "Show the complete book against a pale textured surface so its printed scale and edges remain visible."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A dark book cover combines stacked film photographs, a green 4 at upper left and a white title across the middle.",
+    "Application": "The source demonstrates this treatment in a commemorative book cover."
+  }
+}

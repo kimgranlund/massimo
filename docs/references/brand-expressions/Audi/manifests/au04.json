@@ -1,0 +1,43 @@
+{
+  "id": "AU04",
+  "title": "Identity principles — portrait arrangement",
+  "image": "au04.png",
+  "source": "../sources/04-kms-team-audi-principles_9-16.mov",
+  "location": {
+    "series": "KMS TEAM / Audi and Audi Sport identity case study",
+    "item": 4,
+    "extent": "Complete source media",
+    "poster_time_seconds": 0
+  },
+  "slide_intent": "Reorganize an explanatory system for a narrow frame so a viewer can still compare its ingredients without shrinking everything into one row.",
+  "strategic_value": "A two-column portrait arrangement can keep Audi’s principles legible on a tall display.",
+  "demonstration": "Eight animated principle tiles form four rows on black: moving presence/rings, colors/icons, imagery/proportions and typography/logo ending.",
+  "category": "Layout",
+  "practical_value": "Compare this portrait reflow with the landscape arrangement AU05.",
+  "content_islands": [
+    {
+      "name": "Top pair",
+      "spec": "Place moving presence beside the ring-placement example."
+    },
+    {
+      "name": "Middle pairs",
+      "spec": "Stack palette and icons above imagery and proportions."
+    },
+    {
+      "name": "Bottom pair",
+      "spec": "Close with flexible typography and the animated logo ending, retaining captions beneath each tile."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The tiles demonstrate ring placement, typography, color, imagery and motion.",
+    "Application": "The source supplies this portrait version alongside a differently arranged landscape version.",
+    "Intent": "Accompanying KMS prose explains that simplified ingredients and overarching principles enable flexible but consistent communication."
+  },
+  "motion": "../sources/au04.mp4",
+  "ingredient": {
+    "name": "Principle-based identity ingredients",
+    "role": "Keep varied expressions recognizable without one fixed composition.",
+    "application": "Compare ring placement, flexible type, color, imagery and proportions as coordinated choices. The source explicitly allows free logo placement and describes equally weighted brand colors; it does not mandate identical color area in every composition.",
+    "scope": "Historical KMS TEAM Audi case study; portrait and landscape overviews of the same system, not a complete current Audi manual."
+  }
+}

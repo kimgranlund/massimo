@@ -1,0 +1,40 @@
+{
+  "id": "IG17",
+  "title": "Illuminate connections / comment interaction",
+  "image": "ig17.png",
+  "source": "../sources/ig17.gif",
+  "location": {
+    "series": "Elvis Dinh / Instagram brand design system / project year 2022",
+    "item": 17,
+    "extent": "whole source artwork",
+    "poster_frame": 50,
+    "poster_seconds": 1.5,
+    "duration_seconds": 3.0
+  },
+  "slide_intent": "Use a brief visual change to make a small social interaction noticeable.",
+  "strategic_value": "A gradient response can connect Instagram’s brand colors with a recognizable product action.",
+  "demonstration": "A comment begins in black with an outline heart, gains a gradient emphasis and filled heart with one like, then returns to plain text while retaining the liked state.",
+  "category": "Motion",
+  "practical_value": "Separate temporary emphasis from the persistent state that tells the person an action occurred.",
+  "content_islands": [
+    {
+      "name": "Comment block",
+      "spec": "Center the avatar, account name and two-line comment on white."
+    },
+    {
+      "name": "Interaction state",
+      "spec": "Animate the text emphasis and heart while retaining the small time, like and reply row."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The comment briefly takes on a brand-gradient treatment.",
+    "Application": "The sequence applies the visual emphasis to a specific like interaction."
+  },
+  "ingredient": {
+    "name": "Temporary gradient emphasis",
+    "role": "Draw attention to a connection while preserving the underlying comment.",
+    "application": "Use the short emphasis separately from the persistent filled-heart and like-count state shown.",
+    "scope": "This illustrative animation; no production timing, easing or universal UI requirement is specified."
+  },
+  "motion": "../sources/ig17.mp4"
+}

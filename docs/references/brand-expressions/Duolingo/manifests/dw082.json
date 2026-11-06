@@ -1,0 +1,38 @@
+{
+  "id": "DW082",
+  "title": "Writing / Style / Bold",
+  "image": "dw082.png",
+  "source": "../sources/pages/writing-style.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/style",
+    "section": "Bold",
+    "item": 82,
+    "order": 820
+  },
+  "slide_intent": "Mark named interface targets within prose so readers can identify what to select or visit.",
+  "strategic_value": "Bold UI references can help Duolingo connect explanatory sentences to visible product actions.",
+  "demonstration": "Two checked instructions emphasize the interface names View more and Achievements within otherwise regular-weight sentences.",
+  "category": "Voice",
+  "practical_value": "Bold the actual UI element or action being referenced in an instruction.",
+  "content_islands": [
+    {
+      "name": "Guidance column",
+      "spec": "Place the topic heading, its parent label and the written convention in the narrow left column."
+    },
+    {
+      "name": "Worked examples",
+      "spec": "Place the worked copy in the pale right panel, keeping preference labels and green checks with their examples."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The examples emphasize the named interface targets inside complete instructions.",
+    "Constraint": "Use bold for references to UI elements or actions."
+  },
+  "ingredient": {
+    "name": "Bold convention",
+    "role": "Readers can identify what to select or visit.",
+    "application": "Use bold for references to UI elements or actions.",
+    "scope": "Historical official guidelines from the 2024–2025 archived snapshot; this records the displayed guidance, not current Duolingo product behavior."
+  }
+}

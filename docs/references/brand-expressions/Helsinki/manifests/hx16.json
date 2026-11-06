@@ -1,0 +1,27 @@
+{
+  "id": "HX16",
+  "title": "Helsinki information graphics in print",
+  "image": "hx16.png",
+  "source": "../sources/visual-storytelling.offline.html",
+  "location": {
+    "series": "Web guideline introduction/component",
+    "order": 57,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/visual-storytelling",
+    "original_html": "../sources/visual-storytelling.html"
+  },
+  "slide_intent": "Organize data with several complementary forms because readers compare quantities, facts and categories in different ways.",
+  "strategic_value": "The shared colors and type can make Helsinki’s dense civic information recognizable across a publication.",
+  "demonstration": "This webpage photograph shows an open publication with icons, prominent figures, donut and bar charts on the left and blue tabular rows on the right.",
+  "category": "Layout",
+  "practical_value": "Match data type to chart, callout or table while preserving a shared page hierarchy.",
+  "content_islands": [
+    {
+      "name": "Publication spread",
+      "spec": "Keep the full two-page comparison and caption together."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The spread displays a coordinated blue-led information design.",
+    "Application": "The caption identifies city house style applied to information graphics in print."
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "N03",
+  "title": "Index",
+  "image": "n03.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 3
+  },
+  "slide_intent": "Carry a directory across a page break without changing its reading convention. Readers looking for a physical application need the same lookup pattern as readers looking for a publication rule.",
+  "strategic_value": "NASA can connect publication grids, signage, vehicles and supplementary guides within a single numbering system. The vehicle entries point separately to construction rules and worked examples.",
+  "demonstration": "The second index page continues the publication listings and then introduces sections 6–9. The vehicle entries extend from 7.1 to 7.8.",
+  "category": "Layout",
+  "practical_value": "Locate a demonstration such as 7.6 directly, or trace it back to the earlier vehicle rule in 7.1.",
+  "content_islands": [
+    {
+      "name": "Index heading and scope",
+      "spec": "Repeat the Index label and effective-date notice in the same positions as the preceding page."
+    },
+    {
+      "name": "Continuation and application groups",
+      "spec": "Resume the publication entries in the title column. Introduce Signage, Vehicles, Miscellaneous and Supplementary Guides with ruled group boundaries and aligned locators."
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "DB1205",
+  "title": "Einsatz / Signature Graphics",
+  "image": "db1205.png",
+  "source": "../sources/page-12.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 12,
+    "section": 5,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Signature-Graphics"
+  },
+  "slide_intent": "Choose a graphic’s scale and density according to its job so accents and backgrounds do not compete.",
+  "strategic_value": "A controlled range can let DB graphics support both concise and expansive layouts.",
+  "demonstration": "Two layout diagrams compare a single lilac accent with a pale skyline containing one red focal landmark.",
+  "category": "Layout",
+  "practical_value": "Use graphics as a single accent or combined background; preserve equal scaling when several share one surface.",
+  "content_islands": [
+    {
+      "name": "Usage rules",
+      "spec": "Place the placement, cropping and scaling instructions above the examples."
+    },
+    {
+      "name": "Accent and field",
+      "spec": "Pair the single-graphic layout with the multi-graphic background layout."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The examples demonstrate accent and full-surface use, including cropped placement.",
+    "Constraint": "Multiple signature graphics on one surface must use the same scale."
+  }
+}

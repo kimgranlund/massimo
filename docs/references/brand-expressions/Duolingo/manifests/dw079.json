@@ -1,0 +1,31 @@
+{
+  "id": "DW079",
+  "title": "Writing / Style / Formatting",
+  "image": "dw079.png",
+  "source": "../sources/pages/writing-style.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/style",
+    "section": "Formatting",
+    "item": 79,
+    "order": 790
+  },
+  "slide_intent": "Introduce formatting as a visual choice so writers recognize that presentation changes how copy is read.",
+  "strategic_value": "Separating visual treatment from grammar can help Duolingo explain why its formatting conventions are brand-specific.",
+  "demonstration": "A narrow separator pairs the Formatting heading at left with a short explanation at right; it contains no worked examples.",
+  "category": "Voice",
+  "practical_value": "Distinguish a presentation convention from a grammatical requirement before applying the following rules.",
+  "content_islands": [
+    {
+      "name": "Section heading",
+      "spec": "Place Formatting at left."
+    },
+    {
+      "name": "Framing sentence",
+      "spec": "Align the brief explanation at right, describing formatting as visual design for copy."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The sentence explicitly frames formatting as the visual treatment of copy rather than grammar."
+  }
+}

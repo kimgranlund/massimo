@@ -1,0 +1,28 @@
+{
+  "id": "I072",
+  "title": "Incorrect Usage",
+  "image": "i072.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 72
+  },
+  "slide_intent": "Recognize which small changes can make an icon look soft or excessively pointed. Checking the enlarged contour reveals why the reduced silhouette has changed.",
+  "strategic_value": "Instacart can keep the pin and flag in the same geometric family as the symbol by correcting the particular corner that drifts.",
+  "demonstration": "The symbol remains the reference on the first grid. Red rings identify rounding at the point of the pin, rounding at a right angle and an overly sharp flag angle. Small red specimens repeat the altered forms below.",
+  "category": "Geometry",
+  "practical_value": "Mark the exact contour that needs correction. Check the tip, right-angle transitions and angle of the flag cut at display size.",
+  "content_islands": [
+    {
+      "name": "Reference and brief",
+      "spec": "Place the corner guidance at left and retain the enlarged original symbol on the first grid."
+    },
+    {
+      "name": "Marked deviations",
+      "spec": "Put the pin and flag beside the symbol. Circle each problem in red and tie its caption to that contour."
+    },
+    {
+      "name": "Reduced examples",
+      "spec": "Repeat the neutral symbol and the altered icons below their corresponding grids, using red for the incorrect examples."
+    }
+  ]
+}

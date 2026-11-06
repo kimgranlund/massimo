@@ -1,0 +1,24 @@
+{
+  "id": "I017",
+  "title": "Incorrect Usage",
+  "image": "i017.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 17
+  },
+  "slide_intent": "Make common signature alterations easy to spot before artwork leaves the studio.",
+  "strategic_value": "Comparison can protect the stable relationship between the arrow, root and letters.",
+  "demonstration": "Twelve labeled examples show changed positions, shapes, colors, effects and wording in a grid with red crosses.",
+  "category": "Brand",
+  "practical_value": "Compare a proposed lockup against the closest pictured misuse, including rotation, added text or an isolated arrow.",
+  "content_islands": [
+    {
+      "name": "Page heading",
+      "spec": "Set the small Incorrect Usage label above the grid."
+    },
+    {
+      "name": "Misuse matrix",
+      "spec": "Arrange twelve compact examples in three rows of four. Attach one red cross and a short caption directly to each altered mark."
+    }
+  ]
+}

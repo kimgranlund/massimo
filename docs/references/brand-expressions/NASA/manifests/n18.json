@@ -1,0 +1,34 @@
+{
+  "id": "N18",
+  "title": "NASA Red",
+  "image": "n18.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 18
+  },
+  "slide_intent": "Give suppliers a portable color reference. A repeated, individually labeled swatch can travel with a job and still identify the target it represents.",
+  "strategic_value": "NASA can specify the same named red to printers and producers working with inks, paints or dyes.",
+  "demonstration": "Four columns across five rows repeat a red field with its matching instruction. Each specimen carries its own description.",
+  "category": "Color",
+  "practical_value": "Use the labeled physical swatch for a production match. The scan records the layout and wording, while its displayed hue depends on the reproduction and display.",
+  "content_islands": [
+    {
+      "name": "Swatch array",
+      "spec": "Fill the sheet with a regular four-by-five array. Keep the red fields consistent in size and position."
+    },
+    {
+      "name": "Swatch labels",
+      "spec": "Attach the short NASA Red matching instruction above each field so a separated specimen retains its identity and purpose."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Twenty repeated red specimens make the named color visible across the sheet.",
+    "Application": "Each specimen includes instructions to match NASA Red in inks, paints, dyes or other pigments when it is specified."
+  },
+  "ingredient": {
+    "name": "Portable NASA Red swatch",
+    "role": "Keep the color name and matching instruction attached to a separated physical sample.",
+    "application": "Use an original printed specimen as the visual matching target when NASA Red is specified in inks, paints, dyes or other pigments.",
+    "scope": "The manual’s physical swatch sheet. The digital scan documents its construction and instructions but is not a calibrated production target."
+  }
+}

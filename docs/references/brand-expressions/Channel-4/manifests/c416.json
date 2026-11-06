@@ -1,0 +1,37 @@
+{
+  "id": "C416",
+  "title": "Leading layout across aspect ratios",
+  "image": "c416.png",
+  "source": "../sources/c416.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 masterbrand / 2023",
+    "item": 16,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Keep the starting point of a composition consistent so viewers can orient themselves across changing formats.",
+  "strategic_value": "A leading 4 and adjacent action text can connect Channel 4 portrait and landscape promotions.",
+  "demonstration": "Outlined portrait, square and wide frames change around a top-left green 4 with small action copy to its right.",
+  "category": "Layout",
+  "practical_value": "Check whether the identity and action retain their relationship when the canvas changes shape.",
+  "content_islands": [
+    {
+      "name": "Format boundary",
+      "spec": "Animate the thin outline between portrait, square and landscape formats."
+    },
+    {
+      "name": "Leading pair",
+      "spec": "Keep the mark near the upper-left corner and action text immediately to its right."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The animation compares the leading identity and text across aspect ratios.",
+    "Intent": "Pentagram says consistent layout hierarchy keeps 4 in a leading position across outputs."
+  },
+  "motion": "../sources/c416.mp4",
+  "ingredient": {
+    "name": "Leading identity and action",
+    "role": "Orient viewers before programme-specific content.",
+    "application": "Retain the upper-left mark and adjacent action relationship across the demonstrated formats.",
+    "scope": "Observed format examples in the 2023 case study; no fixed pixel offsets are stated."
+  }
+}

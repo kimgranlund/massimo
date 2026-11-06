@@ -1,0 +1,32 @@
+{
+  "id": "B18",
+  "title": "Secondary type",
+  "image": "b18.png",
+  "source": "../bolt-brand-guidelines-2025-12.pdf",
+  "location": {
+    "page": 18
+  },
+  "slide_intent": "Teach designers to choose a face for sustained reading and everyday digital work. Showing the same line as the primary-type page helps a reader hear the change in emphasis.",
+  "strategic_value": "Bolt can use Inter for body copy and choose available Google-tool substitutes while keeping a distinction between headlines and explanatory text.",
+  "demonstration": "The text assigns Inter to body and digital use and specifies Google-tool substitutions. The specimen identifies Inter Tight by Rasmus Andersson, repeats the checkout line and compares Medium with Semi Bold.",
+  "category": "Typography",
+  "practical_value": "Use Inter where body copy and digital labels need clarity. For a Google document or slide, consult the separate instructions for headline and body weights.",
+  "content_islands": [
+    {
+      "name": "Section rail",
+      "spec": "Place the wordmark at the top of the dark rail, highlight the current topic in the navigation and set the small folio at the foot."
+    },
+    {
+      "name": "Role and substitution notes",
+      "spec": "Set the role guidance and Google-tool instructions in a narrow text column. Name the headline, body and emphasis weights there."
+    },
+    {
+      "name": "Letterform and headline specimens",
+      "spec": "Use the dark stacked cards from the primary-type page. Credit Inter Tight at the top, enlarge AaBbCc, then set the matching checkout line on the second card."
+    },
+    {
+      "name": "Weight comparison",
+      "spec": "Set matched character sets in two columns across the bottom card and identify them as Medium and Semi Bold."
+    }
+  ]
+}

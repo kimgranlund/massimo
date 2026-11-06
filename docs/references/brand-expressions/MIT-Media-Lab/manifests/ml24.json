@@ -1,0 +1,36 @@
+{
+  "id": "ML24",
+  "title": "Subtle notebook surfaces",
+  "image": "ml24.png",
+  "source": "../sources/ml24.jpg",
+  "location": {
+    "series": "Pentagram / MIT Media Lab / 2014 identity",
+    "item": 24,
+    "extent": "Published lightbox artwork"
+  },
+  "slide_intent": "Test the identity on a quiet tactile object because not every encounter requires a dominant graphic.",
+  "strategic_value": "A restrained notebook treatment can extend the brand to personal working tools.",
+  "demonstration": "Two overlapping dark and pale notebooks show understated surface detail in raking light.",
+  "category": "Application",
+  "practical_value": "Assess material and tonal expression without inferring an unprovided production specification.",
+  "content_islands": [
+    {
+      "name": "Pale notebook",
+      "spec": "The pale foreground cover carries a subtle field of angular glyphs pressed into the surface."
+    },
+    {
+      "name": "Dark notebook",
+      "spec": "A darker object sits behind with a subtle patterned surface."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Two overlapping dark and pale notebooks show understated surface detail in raking light.",
+    "Application": "Two overlapping dark and pale notebooks show understated surface detail in raking light."
+  },
+  "ingredient": {
+    "name": "Subtle notebook surfaces",
+    "role": "Test the identity on a quiet tactile object because not every encounter requires a dominant graphic.",
+    "application": "Assess material and tonal expression without inferring an unprovided production specification.",
+    "scope": "Observed in this historical case-study artwork; not a mandatory usage rule or a current brand standard."
+  }
+}

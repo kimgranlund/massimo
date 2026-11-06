@@ -1,0 +1,29 @@
+{
+  "id": "IG29",
+  "title": "Notes campaign / street-wide sequence",
+  "image": "ig29.png",
+  "source": "../sources/ig29.jpg",
+  "location": {
+    "series": "Elvis Dinh / Instagram brand design system / project year 2022",
+    "item": 29,
+    "extent": "whole source artwork"
+  },
+  "slide_intent": "Evaluate an installation from its approach view so separate panels read as one environment.",
+  "strategic_value": "Repeated gradient and glyph cues can link multiple Instagram messages along the street.",
+  "demonstration": "A wider street view adds a photographic panel to the message and gradient walls, with road markings and barriers in the foreground.",
+  "category": "Application",
+  "practical_value": "Use a distant view to assess recognition across the full sequence rather than judging each panel alone.",
+  "content_islands": [
+    {
+      "name": "Wall sequence",
+      "spec": "Retain the photographic panel, message panel and elevated glyph wall together."
+    },
+    {
+      "name": "Approach context",
+      "spec": "Keep the street and barriers visible to establish distance and interruptions."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The wider view demonstrates how the wall series is encountered from across the road."
+  }
+}

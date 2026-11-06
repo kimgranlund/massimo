@@ -1,0 +1,30 @@
+{
+  "id": "HI31",
+  "title": "Illustration use / Maritime scenes beside text",
+  "image": "hi31.png",
+  "source": "../sources/illustration-examples.pdf",
+  "location": {
+    "page": 31,
+    "series": "Helsinki illustration examples — PDF derived from the official PowerPoint deck with LibreOffice",
+    "order": 221
+  },
+  "slide_intent": "Keep a text column stable while varying the image side so related pages can feel coherent without repeating the same composition.",
+  "strategic_value": "Maritime fragments on yellow can give Helsinki copy a lively local context while retaining readable hierarchy.",
+  "demonstration": "Waterfront and boat illustrations occupy the left; a heading and two paragraphs sit in a right-hand column on yellow.",
+  "category": "Layout",
+  "practical_value": "Reverse the illustration/text balance when a sequence needs variation, keeping a clear column for reading.",
+  "content_islands": [
+    {
+      "name": "Maritime image field",
+      "spec": "Group terrace, water scene, people, sheep and boat on the left."
+    },
+    {
+      "name": "Right text column",
+      "spec": "Place the heading above two paragraphs at right with generous surrounding yellow space."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The slide demonstrates an image-left, text-right composition.",
+    "Expression": "Yellow background and blue maritime fragments create the page’s visual contrast."
+  }
+}

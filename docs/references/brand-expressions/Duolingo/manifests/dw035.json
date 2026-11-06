@@ -1,0 +1,39 @@
+{
+  "id": "DW035",
+  "title": "Imagery / Communication",
+  "image": "dw035.png",
+  "source": "../sources/pages/identity-imagery.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/identity/imagery",
+    "section": "Communication",
+    "item": 35,
+    "order": 350
+  },
+  "slide_intent": "Make an abstract service benefit visible because simple symbolic scenes can communicate relationships before a viewer reads detailed copy.",
+  "strategic_value": "Communication-themed illustration can connect Duolingo marketing with its purpose of helping people form relationships.",
+  "demonstration": "Four illustration examples accompany guidance permitting communication imagery on white or Feather Green backgrounds.",
+  "category": "Imagery",
+  "practical_value": "Choose a simple communication motif and one of the stated background treatments.",
+  "content_islands": [
+    {
+      "name": "Communication examples",
+      "spec": "Arrange clasped hands, a noodle bowl, a Korean heart gesture and a phone user in a two-by-two grid at left."
+    },
+    {
+      "name": "Purpose and backgrounds",
+      "spec": "Place the heading, relationship rationale and white-or-feather-green background guidance at right."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source links these illustrations to Duolingo connecting people and enabling relationships.",
+    "Application": "The text permits simple communication illustrations in marketing on white or Feather Green.",
+    "Expression": "The examples present the communication theme in the illustration language."
+  },
+  "ingredient": {
+    "name": "Communication illustration",
+    "role": "Make connection through language visible.",
+    "application": "Use simple communication-themed illustrations on white or Feather Green backgrounds in marketing.",
+    "scope": "Historical archived guidelines. Historical guidance for this illustration theme; it does not set the background rule for every image type."
+  }
+}

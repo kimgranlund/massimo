@@ -1,0 +1,30 @@
+{
+  "id": "LH07",
+  "title": "Color and material board",
+  "image": "lh07.png",
+  "source": "../sources/lh07.jpg",
+  "location": {
+    "series": "Mona Franz / Lufthansa 2018",
+    "item": 7,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Evaluate color on actual materials because texture and finish alter perceived identity.",
+  "strategic_value": "Deep blues with restrained yellow and neutral materials can connect printed color to cabin and service objects.",
+  "demonstration": "Blue textiles, neutral chips, yellow accents and crane specimens form an ordered material board.",
+  "category": "Color",
+  "practical_value": "Compare hue and finish together when translating a palette into physical environments.",
+  "content_islands": [
+    {
+      "name": "Blue family",
+      "spec": "Arrange blue swatches and the crane tile across the upper area."
+    },
+    {
+      "name": "Supporting materials",
+      "spec": "Place neutral, yellow, wood and textured samples below."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Blue textiles, neutral chips, yellow accents and crane specimens form an ordered material board.",
+    "Intent": "Mona Franz assigns depth and spaciousness to the revised blue, and orientation and action to yellow."
+  }
+}

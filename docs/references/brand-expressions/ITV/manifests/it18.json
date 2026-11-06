@@ -1,0 +1,31 @@
+{
+  "id": "IT18",
+  "title": "ITVX / Drama through spacing",
+  "image": "it18.png",
+  "source": "../sources/1782130923-lqk30iykr3gtolqy3potfq-itv_11-4.webp",
+  "location": {
+    "series": "DixonBaxi / ITV case-study artwork series",
+    "item": 18,
+    "extent": "Whole source artwork",
+    "source_asset_index": 32
+  },
+  "slide_intent": "Use spacing, scale and placement to build emotional progression over a portrait, because letterforms shape the tone and reading emphasis of a message.",
+  "strategic_value": "This approach can strengthen a recognizable voice across different programme moods.",
+  "demonstration": "A close portrait of a tearful woman carries widely spaced words at separate heights, including ROMANCE and BETRAYAL. The lower yellow word is cropped at both sides.",
+  "category": "Typography",
+  "practical_value": "Use spacing, scale and placement to build emotional progression over a portrait.",
+  "content_islands": [
+    {
+      "name": "Portrait",
+      "spec": "The face fills the narrow image."
+    },
+    {
+      "name": "Text levels",
+      "spec": "Small upper copy, a middle white word and a larger yellow lower word create progression."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A close portrait of a tearful woman carries widely spaced words at separate heights, including ROMANCE and BETRAYAL. The lower yellow word is cropped at both sides.",
+    "Intent": "The case-study section Type That Speaks Every Voice says the custom serif and sans families express ITV’s range of voices and scale from billboards to on-screen detail."
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "DB0703",
+  "title": "Logo / interface and campaign variants",
+  "image": "db0703.png",
+  "source": "../sources/page-07.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 7,
+    "section": 3,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Logo_neu"
+  },
+  "slide_intent": "Compare a mark across small interfaces and image-led messages so scale changes remain legible.",
+  "strategic_value": "Consistent DB contours can connect digital service and advertising encounters.",
+  "demonstration": "A phone with a centered red mark sits beside a photographed campaign with a white mark; two isolated red variants appear at right.",
+  "category": "Application",
+  "practical_value": "Check whether the selected variant remains clear on a device, photograph and flat field.",
+  "content_islands": [
+    {
+      "name": "Device specimen",
+      "spec": "Show the red mark on a sparse phone screen at left."
+    },
+    {
+      "name": "Campaign specimen",
+      "spec": "Place the white mark on the portrait photograph in the middle."
+    },
+    {
+      "name": "Variant swatches",
+      "spec": "Stack red-logo specimens on dark and light fields at right."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The source compares device, campaign and flat-background logo uses."
+  }
+}

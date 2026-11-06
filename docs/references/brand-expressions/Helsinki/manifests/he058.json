@@ -1,0 +1,32 @@
+{
+  "id": "HE058",
+  "title": "Printed maps",
+  "image": "he058.png",
+  "source": "../sources/visual-storytelling.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Printed maps",
+    "order": 80,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/visual-storytelling#printed-maps",
+    "original_html": "../sources/visual-storytelling.html"
+  },
+  "slide_intent": "Specify geographic coverage and final size before ordering a map so its detail fits the printed use.",
+  "strategic_value": "A clear print-map brief can help Helsinki produce legible, appropriately detailed communications.",
+  "demonstration": "This expanded webpage-section capture separates layered PDF/AI map availability from ordering guidance about area, final size and custom boundaries.",
+  "category": "Imagery",
+  "practical_value": "Define the print area and final dimensions before choosing or customizing a map.",
+  "content_islands": [
+    {
+      "name": "Vector options",
+      "spec": "Describe available layered CMYK map formats first."
+    },
+    {
+      "name": "Order parameters",
+      "spec": "Place coverage, final-size and customization guidance in the lower block."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text says area and final printed size help choose the correct map product.",
+    "Application": "It identifies PDF/AI CMYK options and describes custom boundaries and data transfer."
+  }
+}

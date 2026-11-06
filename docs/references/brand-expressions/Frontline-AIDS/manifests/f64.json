@@ -1,0 +1,28 @@
+{
+  "id": "F64",
+  "title": "Patterns",
+  "image": "f64.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 64
+  },
+  "slide_intent": "Teach designers to give pattern a specific editorial function. A repeat can emphasize a number, divide a section or point toward a conclusion.",
+  "strategic_value": "Frontline AIDS can add energy to dense reports while keeping patterns distinctive by using them selectively.",
+  "demonstration": "Three pattern samples introduce dots, diagonal stripes and chevrons. The applications beneath show them behind a statistic, on a divider and in a report layout.",
+  "category": "Imagery",
+  "practical_value": "Pick the pattern according to the reader’s task, then check whether the information above it still has enough contrast and space.",
+  "content_islands": [
+    {
+      "name": "Pattern guidance",
+      "spec": "Place the rationale and sparing-use reminder at left."
+    },
+    {
+      "name": "Three pattern specimens",
+      "spec": "Label the dotted, striped and chevron samples across the top of the gray field, with the purpose above each."
+    },
+    {
+      "name": "Pattern applications",
+      "spec": "Position the three corresponding editorial examples below, preserving the foreground headlines, imagery and data."
+    }
+  ]
+}

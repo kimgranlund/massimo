@@ -1,0 +1,75 @@
+{
+  "id": "IB004",
+  "title": "Typography / Typeface",
+  "image": "ib004.png",
+  "source": "../sources/typography-typeface.txt",
+  "location": {
+    "series": "IBM Design Language / public web guidelines",
+    "item": 4,
+    "extent": "Complete webpage content-area capture; interactive elements retain their captured state",
+    "url": "https://www.ibm.com/design/language/typography/typeface/",
+    "order": 4000
+  },
+  "slide_intent": "Choose a type family with a coherent voice across roles and languages, so readers encounter continuity without losing the needs of a particular script.",
+  "strategic_value": "Plex’s related subfamilies and multilingual specimens can connect IBM’s technical and human character across its global communications.",
+  "demonstration": "The long webpage combines film states, subfamily and weight specimens, an interactive tester, feature tiles, monospaced comparisons, language lists and non-Latin specimens.",
+  "category": "Typography",
+  "practical_value": "Compare Plex subfamilies, features and script support before selecting a face for content and language.",
+  "content_islands": [
+    {
+      "name": "Typeface introduction",
+      "spec": "Open with the black title, introductory statement, section links, a blue video state and resource cards."
+    },
+    {
+      "name": "Family and weights",
+      "spec": "Show the IBM film poster and the subfamily tabs above a weight specimen ranging from Thin to Bold with italics."
+    },
+    {
+      "name": "Tester and features",
+      "spec": "Place the captured Heavy boxes tester above six feature tiles covering ligatures, alternates, fractions, currency and arrows."
+    },
+    {
+      "name": "Spacing comparison",
+      "spec": "Compare Mono and Sans with the word Quill over individual glyph cells."
+    },
+    {
+      "name": "Language range",
+      "spec": "Follow the language list with large specimens for Arabic, Traditional Chinese, Cyrillic, Devanagari, Greek, Hebrew, Japanese, Korean and Thai."
+    },
+    {
+      "name": "Math and stewardship",
+      "spec": "Close with a mathematical specimen, license and distribution links, design-team credits, awards and contact guidance."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The introduction says Plex reflects IBM’s roots, brand spirit, beliefs and design principles.",
+    "Expression": "Related family weights, feature tiles and multilingual specimens demonstrate Plex’s typographic character.",
+    "Application": "The page distinguishes family styles, language coverage and typographic features for selection."
+  },
+  "motion_assets": [
+    {
+      "title": "IBM Plex introduction",
+      "file": "../sources/media/304d6ea3953b.mp4",
+      "poster": "../sources/media/304d6ea3953b-poster.png",
+      "duration_seconds": 93.06,
+      "source_url": "https://www.ibm.com/design/language/static/337384869-9e059fc6d3386d85631b5d9cf720a55d.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Plex details and the IBM wordmark",
+      "file": "../sources/media/81497b8de446.mp4",
+      "poster": "../sources/media/81497b8de446-poster.png",
+      "duration_seconds": 14.18,
+      "source_url": "https://www.ibm.com/design/language/videos/typeface_02.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    }
+  ]
+}

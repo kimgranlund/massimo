@@ -1,0 +1,32 @@
+{
+  "id": "F56",
+  "title": "Creating our illustrations",
+  "image": "f56.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 56
+  },
+  "slide_intent": "Teach designers how to extend an illustration family when the subject is new. Shared construction rules let different drawings retain a recognizable outline at the sizes where readers encounter them.",
+  "strategic_value": "Frontline AIDS can depict a missing subject with colors appropriate to it while keeping the line weight and footprint consistent with existing illustrations.",
+  "demonstration": "A gridded pink heart makes the outline and safe zone visible. The guide specifies a 31-square grid, one pixel per square, a one-square outline and a maximum of three colors. A separate size comparison labels the minimum height as 70 px.",
+  "category": "Geometry",
+  "practical_value": "Construct a new shape on the supplied grid with a one-square outline. Limit the palette to three colors, then check the illustration’s minimum height before counting any added sticker border.",
+  "content_islands": [
+    {
+      "name": "Section rail and introduction",
+      "spec": "Mark Creating our illustrations in the rail. Place the two-line heading and introductory copy at upper left. Explain when to draw a new image, how to limit its colors and when a containing circle is appropriate."
+    },
+    {
+      "name": "Construction notes",
+      "spec": "Align a narrow column of three notes beside the introduction. Distinguish the grid unit, outline thickness and use of additional colors for context."
+    },
+    {
+      "name": "Grid specimen",
+      "spec": "Give the right half to a pink heart with a black edge on a fine blue square grid. Frame the whole specimen and point to the safe zone outside the inner grid."
+    },
+    {
+      "name": "Minimum-height comparison",
+      "spec": "Align the small examples along a common baseline beneath the grid. Mark the 70 px minimum height and attach the pink note about measuring the original art when adding a sticker edge."
+    }
+  ]
+}

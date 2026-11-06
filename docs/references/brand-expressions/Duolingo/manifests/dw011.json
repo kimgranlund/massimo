@@ -1,0 +1,32 @@
+{
+  "id": "DW011",
+  "title": "Landscape lockup / Please don’t",
+  "image": "dw011.png",
+  "source": "../sources/pages/identity-logos.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/identity/logos",
+    "section": "Please don't...",
+    "item": 11,
+    "order": 110
+  },
+  "slide_intent": "Identify invalid recombinations because a fixed lockup loses consistency when its parts are treated as independent decorations.",
+  "strategic_value": "Preventing pose and placement changes can preserve Duolingo’s supplied mascot-name relationship.",
+  "demonstration": "Three misuse examples prohibit changing Duo’s scale or position, letting Duo touch or sit on the wordmark, and using alternative poses.",
+  "category": "Geometry",
+  "practical_value": "Check the supplied lockup rather than constructing a new combination.",
+  "content_islands": [
+    {
+      "name": "Misuse specimens",
+      "spec": "Arrange three crossed-out mascot and wordmark combinations in the left panel."
+    },
+    {
+      "name": "Prohibitions",
+      "spec": "Keep the three scale, position and pose prohibitions beneath the heading in the right column."
+    }
+  ],
+  "reference_purposes": {
+    "Constraint": "The section prohibits changes to Duo’s scale or position, contact with the wordmark and alternative mascot poses.",
+    "Application": "Pictured wrong examples make these relationship errors inspectable."
+  }
+}

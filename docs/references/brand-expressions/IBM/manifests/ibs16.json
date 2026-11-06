@@ -1,0 +1,34 @@
+{
+  "id": "IBS16",
+  "title": "Examples / Collateral",
+  "image": "ibs16.png",
+  "source": "../sources/ibm-logo-strategic-partners.pdf",
+  "location": {
+    "page": 16,
+    "series": "IBM Logo Guidelines for Strategic Partners / Version 1.2 / copyright 2023",
+    "order": 200016
+  },
+  "slide_intent": "Place acknowledgement where it supports the document’s message so readers can distinguish publisher from partner across one or more sides.",
+  "strategic_value": "A consistent division between partner ownership and IBM contribution can carry through printed collateral.",
+  "demonstration": "A one-sided layout is compared with overlapping front/back layouts; green partner branding leads while smaller IBM attribution sits within content.",
+  "category": "Application",
+  "practical_value": "Decide whether the IBM acknowledgement belongs on the primary face or a supporting content face without changing who owns the piece.",
+  "content_islands": [
+    {
+      "name": "One-sided collateral",
+      "spec": "Place the single tall layout at left with partner mark at top and a smaller IBM mark among the text elements."
+    },
+    {
+      "name": "Two-sided collateral",
+      "spec": "Place the overlapping front and back layouts at right, with relationship copy near IBM on the rear face."
+    },
+    {
+      "name": "Example status",
+      "spec": "Keep the nonexclusive-layout note below the comparison."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The page demonstrates partner and IBM placement across one-sided and two-sided collateral.",
+    "Constraint": "The source says the layout options are not restricted to the examples shown."
+  }
+}

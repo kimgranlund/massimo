@@ -1,0 +1,31 @@
+{
+  "id": "DW039",
+  "title": "Identity / Brand family introduction",
+  "image": "dw039.png",
+  "source": "../sources/pages/identity-brand-family.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/identity/brand-family",
+    "section": "Brand family",
+    "item": 39,
+    "order": 390
+  },
+  "slide_intent": "Define a common family structure because growth can make related products look disconnected.",
+  "strategic_value": "A clear architecture can let Duolingo add products while supporting recognition of the master brand.",
+  "demonstration": "The brand-family introduction explains the need for a shared system as languages and products expand.",
+  "category": "Brand",
+  "practical_value": "Check whether a new product identity strengthens the family before introducing a separate treatment.",
+  "content_islands": [
+    {
+      "name": "Family introduction",
+      "spec": "Place the white title and growth rationale on the left of the green header."
+    },
+    {
+      "name": "Product illustration",
+      "spec": "Show Duo in a blue space suit at right, extending beyond the lower edge."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source explicitly aims to support the master brand rather than dilute it as the family expands."
+  }
+}

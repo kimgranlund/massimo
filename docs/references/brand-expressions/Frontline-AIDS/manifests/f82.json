@@ -1,0 +1,28 @@
+{
+  "id": "F82",
+  "title": "Digital",
+  "image": "f82.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 82
+  },
+  "slide_intent": "Show how hierarchy changes between an email, a website, video and an app. Each surface offers a different amount of space for a story and a next action.",
+  "strategic_value": "Photography, type strips and color can link editorial and promotional touchpoints while making room for the controls each medium needs.",
+  "demonstration": "A tall newsletter and broad website window sit beside two video thumbnails and a tablet-shaped app specimen on a cyan field.",
+  "category": "Application",
+  "practical_value": "Compare how the same assets behave in a single newsletter column, a website story grid and a video title card before specifying a digital format.",
+  "content_islands": [
+    {
+      "name": "Newsletter",
+      "spec": "Keep its title with a narrow scrolling composition of image, headline and copy."
+    },
+    {
+      "name": "Website",
+      "spec": "Give the largest central area to the browser window, including navigation, lead story and a row of related stories."
+    },
+    {
+      "name": "Video and app",
+      "spec": "Stack the two video examples above the app screen in the right column; keep all format labels attached."
+    }
+  ]
+}

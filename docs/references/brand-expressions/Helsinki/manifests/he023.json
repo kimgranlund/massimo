@@ -1,0 +1,43 @@
+{
+  "id": "HE023",
+  "title": "Wave motifs",
+  "image": "he023.png",
+  "source": "../sources/use-basic-elements.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Wave motifs",
+    "order": 30,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/use-basic-elements#wave-motifs-2",
+    "original_html": "../sources/use-basic-elements.html"
+  },
+  "slide_intent": "Define a small family of supplied forms so variation remains recognizable instead of becoming arbitrary redrawing.",
+  "strategic_value": "Six wave motifs can let Helsinki vary rhythm while preserving shared construction.",
+  "demonstration": "This expanded webpage section lists Basic, Calm, Pulse, Beat, Vibration and Wave and presents the motif family with an original-file download link.",
+  "category": "Geometry",
+  "practical_value": "Select a supplied motif instead of drawing a new approximation.",
+  "content_islands": [
+    {
+      "name": "Family list",
+      "spec": "Name the six motif choices."
+    },
+    {
+      "name": "Motif specimen",
+      "spec": "Present the six forms for comparison."
+    },
+    {
+      "name": "Source files",
+      "spec": "Place original-file and animated-availability guidance with the download link."
+    }
+  ],
+  "ingredient": {
+    "name": "Six wave motifs",
+    "role": "Provide controlled variation in surface division.",
+    "application": "Choose Basic, Calm, Pulse, Beat, Vibration or Wave from the supplied originals.",
+    "scope": "Animated forms are available according to the text; this static capture alone does not demonstrate their movement."
+  },
+  "reference_purposes": {
+    "Expression": "The motif specimen compares six distinct rhythms.",
+    "Application": "The section directs designers to supplied vector and animated forms.",
+    "Constraint": "Use original vector files; do not recreate or modify the motifs."
+  }
+}

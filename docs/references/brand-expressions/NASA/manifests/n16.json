@@ -1,0 +1,24 @@
+{
+  "id": "N16",
+  "title": "Reproduction Art",
+  "image": "n16.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 16
+  },
+  "slide_intent": "Show how a sender can remain identifiable down to a specific facility and address. The reader needs to distinguish agency, center and contact details in a compact block.",
+  "strategic_value": "NASA can maintain a consistent signature while allowing the Kennedy Space Center to identify itself and supply return contact information.",
+  "demonstration": "The two columns carry repeated John F. Kennedy Space Center lockups at descending sizes. Each adds center name, address and telephone information beneath the agency signature.",
+  "category": "Typography",
+  "practical_value": "Select a prepared center master at the required size to keep the local name, address and mark in their prescribed relationship.",
+  "content_islands": [
+    {
+      "name": "Production instructions",
+      "spec": "Place the title and instruction to use the shown sizes above the specimens."
+    },
+    {
+      "name": "Center masters",
+      "spec": "Arrange the marked address blocks in paired columns and descending rows. Keep the center name prominent above its smaller address and telephone lines."
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "id": "BK063",
+  "title": "Primary Palette",
+  "image": "bk063.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 63
+  },
+  "slide_intent": "Repeat colors that carry recognition because a stable core helps people identify the brand across changing applications.",
+  "strategic_value": "Fiery Red, Flaming Orange and BBQ Brown can preserve Burger King equity and its flame-grilling association.",
+  "demonstration": "Three full-height fields show red, orange and brown with production values; text on red explains their required presence and a plant-based exception.",
+  "category": "Color",
+  "practical_value": "Include at least one primary color in a branded application, preserving the stated occasional exception for plant-based products.",
+  "content_islands": [
+    {
+      "name": "Primary-color rationale",
+      "spec": "Place the flame-grilling and brand-equity explanation in the upper red field."
+    },
+    {
+      "name": "Three primary swatches",
+      "spec": "Use broad red, orange and brown columns with named Pantone, HEX, RGB and CMYK definitions near the bottom."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source says the primary palette is inspired by flame grilling and holds brand equity and differentiation.",
+    "Expression": "The three large warm color fields demonstrate the core palette.",
+    "Application": "Each primary hue includes production specifications.",
+    "Constraint": "At least one primary color appears in a branded application; plant-based products can sometimes be an exception."
+  },
+  "ingredient": {
+    "name": "Primary palette",
+    "role": "Carry recognition and the flame-grilling association.",
+    "application": "Include at least one of Fiery Red, Flaming Orange or BBQ Brown in each branded application.",
+    "scope": "Historical guide; plant-based products can sometimes be excepted. Printed Fiery Red HEX #D62300 and RGB R215 G35 B0 differ by one red-channel unit."
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "id": "IT21",
+  "title": "ITV / Channel bumper sequence",
+  "image": "it21.png",
+  "source": "../sources/1782130930-qdhbmcgjtsynvifbd69alw-itv-bumpers.mp4",
+  "location": {
+    "series": "DixonBaxi / ITV case-study artwork series",
+    "item": 21,
+    "extent": "Whole original clip; PNG is one representative frame",
+    "source_asset_index": 21,
+    "duration_seconds": 14.5,
+    "representative_timestamp_seconds": 4.142857142857143,
+    "reviewed_timestamps_seconds": [
+      0.1,
+      2.0714285714285716,
+      4.142857142857143,
+      6.214285714285714,
+      8.285714285714286,
+      10.357142857142858,
+      12.428571428571429,
+      14.4
+    ]
+  },
+  "slide_intent": "Give channels distinct motion behaviours while returning each sequence to a recognizable name, because change over time can orient attention and distinguish channels.",
+  "strategic_value": "This approach can strengthen recognition and navigation across the network.",
+  "demonstration": "The clip advances through ITV1 repetition, a dimensional pink ITV2 ribbon, blurred ITV3 lettering, angular green ITV4 forms and ITVBe circles and separated letters.",
+  "category": "Motion",
+  "practical_value": "Give channels distinct motion behaviours while returning each sequence to a recognizable name.",
+  "content_islands": [
+    {
+      "name": "ITV1",
+      "spec": "Numeral repetition produces depth across the frame."
+    },
+    {
+      "name": "ITV2 and ITV3",
+      "spec": "Ribbon-like dimensional form contrasts with softened lettering."
+    },
+    {
+      "name": "ITV4 and ITVBe",
+      "spec": "Angular green geometry contrasts with circles and movable Be letters."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The clip advances through ITV1 repetition, a dimensional pink ITV2 ribbon, blurred ITV3 lettering, angular green ITV4 forms and ITVBe circles and separated letters.",
+    "Intent": "The case-study section Bringing ITV to Life says motion adds energy and clarity, amplifies stories and guides audiences through the channel ecosystem."
+  },
+  "motion": "../sources/1782130930-qdhbmcgjtsynvifbd69alw-itv-bumpers.mp4"
+}

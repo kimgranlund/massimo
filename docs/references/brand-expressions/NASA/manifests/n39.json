@@ -1,0 +1,32 @@
+{
+  "id": "N39",
+  "title": "Relating Cover & Interior Formats",
+  "image": "n39.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 39
+  },
+  "slide_intent": "Teach designers to plan a cover and its interior together so readers can see a relationship as they turn the page.",
+  "strategic_value": "NASA can use a publication’s own structure to give the cover a recognizable connection to the contents.",
+  "demonstration": "Three labeled rows pair a cover with a facing interior spread. Red lines connect a square-image alignment, a top-hanging arrangement and a horizontal center-line arrangement.",
+  "category": "Layout",
+  "practical_value": "Choose the interior’s strongest alignment, then carry it onto the cover. Compare both side by side before finalizing either layout.",
+  "content_islands": [
+    {
+      "name": "Relationship guidance",
+      "spec": "Place the heading at upper left and describe the three alignment alternatives across the top."
+    },
+    {
+      "name": "Square-image alignment",
+      "spec": "Pair the cover with its spread in row a. Extend the guides across the gap so the cover image shares visible alignments with interior elements."
+    },
+    {
+      "name": "Top alignment",
+      "spec": "Use row b to hang heads and text from the top and hold photographs at the bottom."
+    },
+    {
+      "name": "Center-line alignment",
+      "spec": "Use row c to extend a horizontal center line across cover and spread, with images and text breaking above and below it."
+    }
+  ]
+}

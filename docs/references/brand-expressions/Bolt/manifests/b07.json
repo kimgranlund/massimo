@@ -1,0 +1,32 @@
+{
+  "id": "B07",
+  "title": "Clearspace",
+  "image": "b07.png",
+  "source": "../bolt-brand-guidelines-2025-12.pdf",
+  "location": {
+    "page": 7
+  },
+  "slide_intent": "Teach designers to reserve space around a logo and check it at small sizes. Both choices help a viewer distinguish the mark from nearby information.",
+  "strategic_value": "A shared clearance rule can preserve the prominence of the Bolt wordmark on crowded screens.",
+  "demonstration": "A large diagram marks the surrounding area in units of 1x and includes a small mark labeled 30 pt. Two lower examples place the mark in dark and light interface contexts.",
+  "category": "Geometry",
+  "practical_value": "Measure the clearance against the indicated unit and check the small-size example before inserting the mark into a narrow header.",
+  "content_islands": [
+    {
+      "name": "Section rail",
+      "spec": "Place the wordmark at the top of the dark rail, highlight the current topic in the navigation and set the small folio at the foot."
+    },
+    {
+      "name": "Size and space guidance",
+      "spec": "Set short Minimum Size and Clear Space notes beneath the page title in the left text column."
+    },
+    {
+      "name": "Measurement diagram",
+      "spec": "Center a blue wordmark in a pale field, show the bounding and clearance lines around it and set the minimum-size example at the lower right."
+    },
+    {
+      "name": "Interface examples",
+      "spec": "Place two equal-sized application details below. Keep their frame edges and the wordmarks visible so the spacing can be compared."
+    }
+  ]
+}

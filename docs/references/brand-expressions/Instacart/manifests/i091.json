@@ -1,0 +1,25 @@
+{
+  "id": "I091",
+  "title": "Wayfinding",
+  "image": "i091.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 91,
+    "printed_page": 97
+  },
+  "slide_intent": "Teach a designer to turn a brand cue into a wayfinding cue. A person approaching a pickup point needs a destination they can recognize quickly.",
+  "strategic_value": "The carrot’s green form can read as an arrow while the wordmark and orange panel identify the pickup service.",
+  "demonstration": "A photograph places one tall sign against landscaping. The upper field carries the wordmark and a downward green cue, and the orange lower field says Pick Up.",
+  "category": "Application",
+  "practical_value": "Give the destination words and symbol enough scale to read against the surroundings, then test the sign in a location photograph.",
+  "content_islands": [
+    {
+      "name": "Environmental setting",
+      "spec": "Use the outdoor scene across the page and keep the guide label unobtrusive."
+    },
+    {
+      "name": "Pickup sign",
+      "spec": "Stack the wordmark, green downward form and two-line pickup message inside one vertical frame. Use the orange field for the destination."
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "id": "DB25",
+  "title": "Fierce / billboard sequence",
+  "image": "db25.png",
+  "source": "../sources/db25.jpg",
+  "location": {
+    "series": "COLLINS / Dropbox / 2017 identity case study",
+    "item": 25,
+    "section": "Gallery",
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Match verbal energy with visual emphasis because a word’s typography can reinforce how it should be heard.",
+  "strategic_value": "A large assertive adjective alongside stylized portraits can position Dropbox as a supporter of expressive work.",
+  "demonstration": "A roadside billboard sequence places an oversized blue adjective on yellow between colorful portrait panels, with supporting copy and cars below.",
+  "category": "Voice",
+  "practical_value": "Compare the dominant word with its smaller supporting statement and adjacent faces.",
+  "content_islands": [
+    {
+      "name": "Headline panel",
+      "spec": "Use the yellow central panel for the oversized blue word and small supporting copy."
+    },
+    {
+      "name": "Portrait neighbors",
+      "spec": "Keep the colorful portraits on either side."
+    },
+    {
+      "name": "Road context",
+      "spec": "Retain the cars and billboard structure to show viewing scale."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A roadside billboard sequence places an oversized blue adjective on yellow between colorful portrait panels, with supporting copy and cars below."
+  }
+}

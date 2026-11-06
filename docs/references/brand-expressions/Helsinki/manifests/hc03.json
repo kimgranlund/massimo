@@ -1,0 +1,30 @@
+{
+  "id": "HC03",
+  "title": "Vaakuna / Color, protection and examples",
+  "image": "hc03.png",
+  "source": "../sources/coat-of-arms-2019.pdf",
+  "location": {
+    "page": 3,
+    "order": 178
+  },
+  "slide_intent": "Protect a civic emblem from competing content so its authority and shape remain clear.",
+  "strategic_value": "A measurable exclusion area can keep Helsinki’s heraldic symbol legible across applications.",
+  "demonstration": "A five-color Pantone table sits above Finnish usage notes, colored and outline crests, and two clearspace diagrams.",
+  "category": "Geometry",
+  "practical_value": "Measure the coat of arms clearspace from half its shield width, rather than borrowing the framed-logo H unit.",
+  "content_islands": [
+    {
+      "name": "Color and original-file notes",
+      "spec": "Place the Pantone table and source guidance above the emblem specimens."
+    },
+    {
+      "name": "Emblem and protection diagrams",
+      "spec": "Compare crowned color and uncrowned outline versions, then show protected space below."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The text and diagrams set exclusion space at half the shield width and show colored and outline versions.",
+    "Constraint": "The text sets clearspace at half the shield width on each side and forbids changing shape, color or proportions or placing other elements over it.",
+    "Intent": "The source explicitly says the protected area ensures sufficient distinction from surrounding content."
+  }
+}

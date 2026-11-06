@@ -1,0 +1,29 @@
+{
+  "id": "C431",
+  "title": "Speaking now / Up next",
+  "image": "c431.png",
+  "source": "../sources/c431.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 masterbrand / 2023",
+    "item": 31,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Apply the same hierarchy to a live event so attendees can distinguish the current speaker from the next one.",
+  "strategic_value": "Channel 4’s adjacent-world idea can connect internal presentation materials to its broadcast identity.",
+  "demonstration": "A presentation screen pairs Speaking now / Emily Todd above Up next / Faizan Sherman, with a small leading 4 and two horizontal gradient regions.",
+  "category": "Application",
+  "practical_value": "Separate current and upcoming information with spatial hierarchy rather than adding unrelated graphic devices.",
+  "content_islands": [
+    {
+      "name": "Current speaker",
+      "spec": "Place the larger upper gradient region behind the current speaker information and leading mark."
+    },
+    {
+      "name": "Next speaker",
+      "spec": "Reserve the shallower lower region for the upcoming speaker."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The gradient-panel system is applied to current and next speakers in a presentation."
+  }
+}

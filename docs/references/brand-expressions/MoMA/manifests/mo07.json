@@ -1,0 +1,34 @@
+{
+  "id": "MO07",
+  "title": "Film programme subway poster",
+  "image": "mo07.png",
+  "source": "../sources/mo07.jpg",
+  "location": {
+    "series": "Pentagram / MoMA / 2009 identity case study",
+    "item": 7,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Distinguish promotional voice from supporting information, because a busy setting requires a strong first read and a useful second read.",
+  "strategic_value": "The large MoMA signature and pale vertical FILM lettering can create recognition while compact programme copy supplies detail.",
+  "demonstration": "A framed subway poster pairs a blue-suited performer with a vertical MoMA signature, pale FILM lettering and small black and magenta programme text.",
+  "category": "Typography",
+  "practical_value": "Evaluate how title, signature and secondary copy compete with a large figure in an installed poster.",
+  "content_islands": [
+    {
+      "name": "Programme text",
+      "spec": "Place the compact programme list above the performer and the magenta secondary copy at the upper right."
+    },
+    {
+      "name": "Figure and lettering",
+      "spec": "Keep the blue-suited figure prominent at left, with pale vertical FILM lettering beside the black MoMA signature."
+    },
+    {
+      "name": "Installed frame",
+      "spec": "Retain the black frame, tiled wall and partial neighboring poster to show the viewing context."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Heavy black MoMA type and pale oversized FILM lettering sit beside a photographic figure.",
+    "Application": "The framed poster is shown installed against subway tiles."
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "id": "BK042",
+  "title": "Chinese Wordmark and Primary Logo Lockup Clearspace",
+  "image": "bk042.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 42
+  },
+  "slide_intent": "Measure localized signatures from their own forms so spacing remains coherent across different scripts and lockup heights.",
+  "strategic_value": "Character-based clearance can protect the Chinese Burger King identity without forcing an unrelated Latin unit.",
+  "demonstration": "Two shaded diagrams show the Chinese wordmark and combined logo lockup with repeated Chinese character measuring units.",
+  "category": "Geometry",
+  "practical_value": "Use the specified Chinese-character width, measuring vertical clearance of the lockup from the logo’s outer edges.",
+  "content_islands": [
+    {
+      "name": "Clearspace rule",
+      "spec": "Place the definition and vertical measurement note at left."
+    },
+    {
+      "name": "Wordmark diagram",
+      "spec": "Place the standalone Chinese wordmark inside a shaded clearspace rectangle at upper right."
+    },
+    {
+      "name": "Lockup diagram",
+      "spec": "Place the combined primary logo and Chinese wordmark in the lower diagram, with vertical clearance measured from the taller logo."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The Chinese character width defines minimum clearspace for both wordmark and lockup.",
+    "Constraint": "Top and bottom clearspace of the combined lockup is measured from the logo element’s edges."
+  },
+  "ingredient": {
+    "name": "Chinese signature clearspace",
+    "role": "Maintain separation around localized identification.",
+    "application": "Reserve the stated Chinese-character width; measure top and bottom of the lockup from the primary logo edges.",
+    "scope": "Historical guide; the local character replaces the Burger U measurement used for Latin signatures."
+  }
+}

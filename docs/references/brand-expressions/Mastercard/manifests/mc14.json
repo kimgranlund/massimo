@@ -1,0 +1,29 @@
+{
+  "id": "MC14",
+  "title": "Priceless Cities mobile family",
+  "image": "mc14.png",
+  "source": "../sources/mc14.jpg",
+  "location": {
+    "series": "Pentagram / Mastercard / 2016 identity case study",
+    "item": 14,
+    "extent": "Full published artwork"
+  },
+  "slide_intent": "Compare varied imagery within one service because a digital experience needs both changing content and stable identity cues.",
+  "strategic_value": "Recurring circle treatments and signatures can connect different photographic stories.",
+  "demonstration": "Three white phones on a dark ground show monochrome photographs, curved outlines or crops, and Priceless Cities signatures.",
+  "category": "Application",
+  "practical_value": "Compare how imagery varies while device framing and identity remain consistent.",
+  "content_islands": [
+    {
+      "name": "Device row",
+      "spec": "Place three white phones side by side on the dark background."
+    },
+    {
+      "name": "Screen treatments",
+      "spec": "Preserve each distinct monochrome photograph and circular crop or outline; retain the signatures near each screen bottom."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The source caption identifies Priceless Cities on mobile."
+  }
+}

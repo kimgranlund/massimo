@@ -1,0 +1,28 @@
+{
+  "id": "I064",
+  "title": "Style Concept",
+  "image": "i064.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 64
+  },
+  "slide_intent": "Distinguish the gesture of shopping from the goods it brings within reach. Changes in line and mass let viewers tell action from object.",
+  "strategic_value": "Instacart can make its Shop and Savor framework visible inside a drawing through light active contours and substantial filled forms.",
+  "demonstration": "A hand drawn in a thin line sits below Shop. Overlapping colored grocery forms sit below Savor. Separate arrows point from the captions to each example.",
+  "category": "Imagery",
+  "practical_value": "Use a light contour for movement and filled forms for groceries. Check that each treatment supports what the object or gesture is doing in the scene.",
+  "content_islands": [
+    {
+      "name": "Framework note",
+      "spec": "Place the title and short explanation at left on the pale field."
+    },
+    {
+      "name": "Shop specimen",
+      "spec": "Position the outlined hand under the Shop label and light-line caption. Connect caption and hand with a fine vertical arrow."
+    },
+    {
+      "name": "Savor specimen",
+      "spec": "Give the filled produce group a matching caption position and arrow, preserving its overlap and sense of volume."
+    }
+  ]
+}

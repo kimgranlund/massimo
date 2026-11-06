@@ -1,0 +1,25 @@
+{
+  "id": "I038",
+  "title": "Instacart Contrast",
+  "image": "i038.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 38,
+    "printed_page": 38
+  },
+  "slide_intent": "Show how stroke contrast changes the voice of a large headline. Comparing specimens lets designers judge how much emphasis a particular occasion needs.",
+  "strategic_value": "Instacart can express appetite with a more modulated face while retaining optical sizes for smaller headlines.",
+  "demonstration": "Four increasingly heavy versions of Deliciously form a display column. Each is paired with uppercase, lowercase and numeral samples on the right.",
+  "category": "Typography",
+  "practical_value": "Choose a headline treatment by inspecting how much the strokes vary and how legible the smaller forms remain at the intended size.",
+  "content_islands": [
+    {
+      "name": "Face description",
+      "spec": "Place the Instacart Contrast heading and its explanation of expressive and smaller headline uses in the left column."
+    },
+    {
+      "name": "Display range",
+      "spec": "Keep the large word consistent across four specimens and align an alphabet block with each. Leave the page ground white."
+    }
+  ]
+}

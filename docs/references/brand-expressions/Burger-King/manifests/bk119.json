@@ -1,0 +1,27 @@
+{
+  "id": "BK119",
+  "title": "Legal Standards",
+  "image": "bk119.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 119
+  },
+  "slide_intent": "Make the shift from design examples to use conditions visible so readers know the following pages govern implementation.",
+  "strategic_value": "A clear chapter boundary can help Burger King partners find the legal and approval context that accompanies the visual system.",
+  "demonstration": "An orange Legal Standards heading spans two lines near the top left of a brown page with small running labels and legal footer.",
+  "category": "Brand",
+  "practical_value": "Locate the guide’s legal-standards section before interpreting the following historical conditions.",
+  "content_islands": [
+    {
+      "name": "Section title",
+      "spec": "Place the large orange two-line Legal Standards heading on the brown field."
+    },
+    {
+      "name": "Running information",
+      "spec": "Keep the header, folio and copyright notice small and peripheral."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The divider uses the guide’s rounded display face with orange on brown."
+  }
+}

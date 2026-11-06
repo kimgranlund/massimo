@@ -1,0 +1,31 @@
+{
+  "id": "DW002",
+  "title": "Identity / Logos introduction",
+  "image": "dw002.png",
+  "source": "../sources/pages/identity-logos.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/identity/logos",
+    "section": "Logos",
+    "item": 2,
+    "order": 20
+  },
+  "slide_intent": "Explain why a signature needs consistent treatment because people use familiar marks to identify and trust a service.",
+  "strategic_value": "A consistent Duolingo signature can connect tiny screen encounters with large physical placements.",
+  "demonstration": "A logo-section heading and introduction connect name and symbols with recognition at different scales.",
+  "category": "Brand",
+  "practical_value": "Evaluate a logo treatment as an identification cue before making decorative choices.",
+  "content_islands": [
+    {
+      "name": "Logo introduction",
+      "spec": "Place the white Logos title and recognition rationale at left on green."
+    },
+    {
+      "name": "Mascot construction",
+      "spec": "Place the large tilted outline of Duo and its geometric guides at right."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The introduction explicitly links how marks appear with customers and partners finding and trusting Duolingo."
+  }
+}

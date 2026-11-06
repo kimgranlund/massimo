@@ -1,0 +1,31 @@
+{
+  "id": "BK013",
+  "title": "Creative Idea / Your Way, Way Better",
+  "image": "bk013.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 13
+  },
+  "slide_intent": "Connect the creative idea to a perception problem so execution addresses what audiences need to reconsider.",
+  "strategic_value": "The food-improvement story can help Burger King frame its visual change as meaningful rather than cosmetic.",
+  "demonstration": "A large creative phrase is followed by two paragraphs contrasting fast-food perceptions with the brand’s stated food changes.",
+  "category": "Brand",
+  "practical_value": "Explain which perception a design change is intended to shift, without claiming that shift has been measured.",
+  "content_islands": [
+    {
+      "name": "Creative phrase",
+      "spec": "Place Your Way, Way Better at the top of the right column."
+    },
+    {
+      "name": "Perception gap",
+      "spec": "Set the rationale below, followed by the source’s food-improvement claims."
+    },
+    {
+      "name": "Topic label",
+      "spec": "Keep Creative Idea at left."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source explicitly frames design as a way to close a gap between negative perceptions and its food story."
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "id": "DB1005",
+  "title": "Anwendung / Schwelle scaling",
+  "image": "db1005.png",
+  "source": "../sources/page-10.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 10,
+    "section": 5,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Schwelle"
+  },
+  "slide_intent": "Allow useful adaptation while fixing defining relationships so flexibility does not destroy recognition.",
+  "strategic_value": "Controlled scaling can fit DB’s signature to different compositions without arbitrary rebuilding.",
+  "demonstration": "Text specifies permitted height and length changes above a red sequence with blue dimension arrows.",
+  "category": "Geometry",
+  "practical_value": "Scale or extend the complete element; do not compress or change its bar count, order or composition.",
+  "content_islands": [
+    {
+      "name": "Scaling rules",
+      "spec": "Place the height, length and fixed-order requirements above the illustration."
+    },
+    {
+      "name": "Dimension diagram",
+      "spec": "Show extension arrows around the intact red sequence."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The section permits proportional height scaling or vertical extension and length stretching.",
+    "Constraint": "Length may stretch to at most 200%; compression and bar additions, removals or reordering are prohibited; only one Schwelle is used per layout or viewport."
+  },
+  "ingredient": {
+    "name": "Schwelle scaling",
+    "role": "Fit a recognizable progression to available space.",
+    "application": "Scale the complete element or stretch its length to at most 200%; retain bar count and order.",
+    "scope": "Official DB new-design website captured 2026-11-05; edition date unstated. No compression. One Schwelle per layout or viewport."
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "IG25",
+  "title": "Motion / Gravity and weight",
+  "image": "ig25.png",
+  "source": "../sources/ig25.gif",
+  "location": {
+    "series": "Elvis Dinh / Instagram brand design system / project year 2022",
+    "item": 25,
+    "extent": "whole source artwork",
+    "poster_frame": 45,
+    "poster_seconds": 1.35,
+    "duration_seconds": 2.7
+  },
+  "slide_intent": "Make graphic elements respond to implied physical forces so movement has character.",
+  "strategic_value": "A familiar heart and account label can carry Instagram recognition through changes in scale and position.",
+  "demonstration": "A dark account label and a gradient heart enter, tilt and change position against white; the heart shifts shape and color as the sequence progresses.",
+  "category": "Motion",
+  "practical_value": "Use the example to compare perceived weight and movement without extracting an unsupported easing formula.",
+  "content_islands": [
+    {
+      "name": "Account label",
+      "spec": "Introduce the dark name label as a separate moving object."
+    },
+    {
+      "name": "Heart object",
+      "spec": "Give the larger gradient heart room to move and tilt against white."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The accompanying section attributes motion inspiration to users’ movements through the app.",
+    "Expression": "The sequence gives the label and heart a sense of gravity and weight."
+  },
+  "motion": "../sources/ig25.mp4"
+}

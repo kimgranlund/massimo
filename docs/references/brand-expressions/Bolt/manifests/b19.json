@@ -1,0 +1,32 @@
+{
+  "id": "B19",
+  "title": "Type hierarchy",
+  "image": "b19.png",
+  "source": "../bolt-brand-guidelines-2025-12.pdf",
+  "location": {
+    "page": 19
+  },
+  "slide_intent": "Teach designers to give a reader an entry point, an explanation and an action through a change in type role. Weight, scale and spacing make the order visible before the reader finishes the copy.",
+  "strategic_value": "A large Agrandir headline can give Bolt’s short promise a distinctive voice while Inter gives longer explanations and controls a quieter texture.",
+  "demonstration": "One pale specimen panel stacks a headline, subline, body paragraph, annotation and button. Each example has a small role label and typeface name. The headline and subline use Agrandir, and the remaining roles use Inter.",
+  "category": "Typography",
+  "practical_value": "Choose type roles for a message containing both a claim and an action. Compare the relative scale and spacing of the specimens before setting the copy.",
+  "content_islands": [
+    {
+      "name": "Section rail and guidance",
+      "spec": "Use the black rail and a white introduction column. Mark Typography in the rail and place the title above the short guidance."
+    },
+    {
+      "name": "Headline and subline",
+      "spec": "Give the wide pale panel a common left margin. Label and set the largest Agrandir headline on one line, then place the smaller two-line subline below with its own label."
+    },
+    {
+      "name": "Body and annotation",
+      "spec": "Set the Inter paragraph below the subline with a narrower measure. Leave space before the small annotation and its one-line example."
+    },
+    {
+      "name": "Action specimen",
+      "spec": "End the sequence with a labeled dark checkout button aligned to the same left edge."
+    }
+  ]
+}

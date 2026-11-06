@@ -1,0 +1,25 @@
+{
+  "id": "LH02",
+  "title": "Crane evolution",
+  "image": "lh02.png",
+  "source": "../sources/lh02.jpg",
+  "location": {
+    "series": "Mona Franz / Lufthansa 2018",
+    "item": 2,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Identify what survives an identity refresh because inherited shapes can carry recognition across generations.",
+  "strategic_value": "A sequence of related cranes can position the new mark as a continuation of Lufthansa history.",
+  "demonstration": "Five crane marks form a horizontal chronology with designer and date captions beneath.",
+  "category": "Brand",
+  "practical_value": "Separate durable silhouette features from details that can change in a refresh.",
+  "content_islands": [
+    {
+      "name": "Historical sequence",
+      "spec": "Align five crane specimens across the white field and keep each attribution underneath."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Five crane marks form a horizontal chronology with designer and date captions beneath."
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "BK064",
+  "title": "Secondary Palette",
+  "image": "bk064.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 64
+  },
+  "slide_intent": "Limit supporting hues so useful variety does not replace the colors people associate most strongly with the brand.",
+  "strategic_value": "Mayo Egg White, Crunchy Green and Melty Yellow can support ingredient expression while retaining Burger King’s primary-color identity.",
+  "demonstration": "A broad Mayo Egg White field with guidance sits beside green and yellow fields, each labeled with production specifications.",
+  "category": "Color",
+  "practical_value": "Use secondary colors with the primary palette, primarily in illustration or the specified limited applications.",
+  "content_islands": [
+    {
+      "name": "Secondary-color guidance",
+      "spec": "Place the limited-use and ownability explanation in the large pale field at left."
+    },
+    {
+      "name": "Secondary specimens",
+      "spec": "Retain the pale, green and yellow color fields with Pantone, HEX, RGB and CMYK labels at their lower edges."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source explains that secondary colors are less ownable than the primary palette.",
+    "Expression": "The page presents the light neutral and two ingredient-related accents.",
+    "Application": "Secondary colors are primarily used in illustration or certain applications combined with primary colors.",
+    "Constraint": "Secondary colors cannot be used on their own and enhance applications only under limited circumstances."
+  },
+  "ingredient": {
+    "name": "Secondary palette",
+    "role": "Support variety without displacing the brand’s more ownable hues.",
+    "application": "Combine secondary colors with primary colors, primarily within illustration or the specified limited applications.",
+    "scope": "Historical guide; this page does not enumerate every permitted application, so it does not establish general standalone permission."
+  }
+}

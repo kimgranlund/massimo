@@ -1,0 +1,27 @@
+{
+  "id": "BK019",
+  "title": "Verbal Identity",
+  "image": "bk019.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 19
+  },
+  "slide_intent": "Use a distinct chapter opening to give language its own recognizable chapter, helping readers keep the kinds of guidance apart.",
+  "strategic_value": "The repeated display style can make verbal identity feel part of one Burger King document.",
+  "demonstration": "A large Verbal Identity title sits on a flat field with small running labels and notices.",
+  "category": "Voice",
+  "practical_value": "Use this divider to identify where verbal identity guidance begins without interpreting it as a standalone application rule.",
+  "content_islands": [
+    {
+      "name": "Chapter title",
+      "spec": "Place the oversized Verbal Identity title at upper left, orange on brown, leaving an open field below."
+    },
+    {
+      "name": "Navigation and notices",
+      "spec": "Retain the small top navigation, page number and bottom publication notice."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The Verbal Identity divider uses large rounded display type and the warm orange on brown treatment."
+  }
+}

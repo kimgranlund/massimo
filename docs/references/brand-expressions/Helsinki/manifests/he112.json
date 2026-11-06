@@ -1,0 +1,37 @@
+{
+  "id": "HE112",
+  "title": "Decal colour definitions",
+  "image": "he112.png",
+  "source": "../sources/download-elements.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Decal colour definitions",
+    "order": 150,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/download-elements#decal-colour-definitions",
+    "original_html": "../sources/download-elements.html"
+  },
+  "slide_intent": "Account for material limitations so a specified brand color does not imply an exact match in every film.",
+  "strategic_value": "Recognizing difficult decal colors can help Helsinki maintain more reliable physical reproduction.",
+  "demonstration": "Expanded webpage section: a paragraph names four manufacturers, warns of differing shades and identifies Engel and Copper as difficult colors.",
+  "category": "Color",
+  "practical_value": "Check available films and commission special Engel or Copper decals when required.",
+  "content_islands": [
+    {
+      "name": "Material limits",
+      "spec": "The paragraph distinguishes manufacturer ranges from exact color matches."
+    },
+    {
+      "name": "Definitions link",
+      "spec": "The PDF download link follows the warning."
+    }
+  ],
+  "reference_purposes": {
+    "Constraint": "The source says exact films do not exist for every color and advises specially made decals for Engel and Copper."
+  },
+  "ingredient": {
+    "name": "Decal color matching",
+    "role": "Carry recognizable colors onto physical materials.",
+    "application": "Check manufacturer-specific matches; specially produce Engel and Copper decals when needed.",
+    "scope": "The download section names Avery, ImagePerfect, 3M and Oracal and warns that exact films do not exist for every brand color."
+  }
+}

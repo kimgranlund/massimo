@@ -1,0 +1,24 @@
+{
+  "id": "N55",
+  "title": "NASA Aircraft Markings",
+  "image": "n55.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 55
+  },
+  "slide_intent": "Teach designers to identify a structural reference for each airframe. Windows, engine inlets or wing edges can align a common stripe even when the outlines differ.",
+  "strategic_value": "NASA can carry one fleet identity across passenger aircraft, research jets and a helicopter while respecting the usable surfaces on each machine.",
+  "demonstration": "Eight labeled side elevations compare approved schemes. The Gulfstream uses its windows to locate the stripe, while the helicopter carries the stripe up its tail and places the horizontal mark and numerals below the door windows.",
+  "category": "Application",
+  "practical_value": "Find the aircraft with the closest structural constraint and compare the stripe, logo and number against those features before adapting the scheme.",
+  "content_islands": [
+    {
+      "name": "Aircraft-specific notes",
+      "spec": "Use the top band for keyed notes a–h. Identify the relevant structural landmark for each example."
+    },
+    {
+      "name": "Fleet elevations",
+      "spec": "Place four profiles in each of two columns. Give every aircraft its name and letter, and keep its blue stripe, red mark and numeral placement visible against its outline."
+    }
+  ]
+}

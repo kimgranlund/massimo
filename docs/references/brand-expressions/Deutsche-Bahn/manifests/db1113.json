@@ -1,0 +1,37 @@
+{
+  "id": "DB1113",
+  "title": "Strichstärken & Abstände",
+  "image": "db1113.png",
+  "source": "../sources/page-11.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 11,
+    "section": 13,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Icons"
+  },
+  "slide_intent": "Keep stroke and gap relationships consistent so small symbols do not lose their internal structure.",
+  "strategic_value": "A shared 2 dp construction can align DB icon weight across subjects.",
+  "demonstration": "Magnifier and calendar diagrams label stroke thickness and minimum spacing beneath a rule paragraph.",
+  "category": "Geometry",
+  "practical_value": "Use 2 dp strokes and gaps; simplify before reducing a gap to 1 dp when no further simplification is possible.",
+  "content_islands": [
+    {
+      "name": "Rule paragraph",
+      "spec": "State the default and the order of small-size exceptions above the examples."
+    },
+    {
+      "name": "Dimension examples",
+      "spec": "Pair the magnifier stroke callout with calendar gap callouts."
+    }
+  ],
+  "reference_purposes": {
+    "Constraint": "Stroke is 2 dp and minimum gap 2 dp; reduce complexity first, then allow 1 dp gap only if further reduction is impossible.",
+    "Application": "Two labeled examples show where thickness and spacing are measured."
+  },
+  "ingredient": {
+    "name": "Icon stroke and gap",
+    "role": "Maintain even weight and open internal spaces.",
+    "application": "Use 2 dp strokes and 2 dp minimum gaps; reduce complexity before a 1 dp gap exception.",
+    "scope": "Official DB new-design website captured 2026-11-05; edition date unstated. The 1 dp exception applies only when the icon cannot be simplified further."
+  }
+}

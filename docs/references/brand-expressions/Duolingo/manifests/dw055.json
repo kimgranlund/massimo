@@ -1,0 +1,32 @@
+{
+  "id": "DW055",
+  "title": "Writing / Voice / Voice qualities",
+  "image": "dw055.png",
+  "source": "../sources/pages/writing-voice.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/voice",
+    "section": "Voice qualities",
+    "item": 55,
+    "order": 550
+  },
+  "slide_intent": "Combine complementary voice qualities so a brand sounds human rather than repeating one exaggerated trait.",
+  "strategic_value": "The four-part description can help Duolingo pair energy with support and broad cultural awareness.",
+  "demonstration": "Four rows define Expressive, Playful, Embracing and Worldly beside a short explanation of how they work together.",
+  "category": "Voice",
+  "practical_value": "Evaluate a draft against the four qualities together instead of maximizing only playfulness.",
+  "content_islands": [
+    {
+      "name": "Guidance column",
+      "spec": "Place the Voice Qualities title and combined-effect rationale at left."
+    },
+    {
+      "name": "Worked examples",
+      "spec": "Set four labels with concise definitions in the pale right panel."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source states that the four qualities work together to make the writing recognizable.",
+    "Application": "Each quality has a brief verbal definition that writers can use to evaluate copy."
+  }
+}

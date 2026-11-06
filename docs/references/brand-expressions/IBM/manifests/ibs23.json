@@ -1,0 +1,40 @@
+{
+  "id": "IBS23",
+  "title": "Merchandise",
+  "image": "ibs23.png",
+  "source": "../sources/ibm-logo-strategic-partners.pdf",
+  "location": {
+    "page": 23,
+    "series": "IBM Logo Guidelines for Strategic Partners / Version 1.2 / copyright 2023",
+    "order": 200023
+  },
+  "slide_intent": "Treat the object and the relationship statement as part of brand use so a logo is not placed on an unsuitable or misleading giveaway.",
+  "strategic_value": "Controlled merchandise use can keep IBM identification consistent with the approved partnership and object context.",
+  "demonstration": "A rule column sits beside shirt and tote examples, with crossed disposable-cup and plug-in-device examples at right.",
+  "category": "Application",
+  "practical_value": "Check object eligibility, relationship wording and artwork approval before producing partner merchandise.",
+  "content_islands": [
+    {
+      "name": "Rules",
+      "spec": "Place eligibility, prohibited-object, registration-mark and approval guidance in the left column."
+    },
+    {
+      "name": "Reusable examples",
+      "spec": "Show shirt front/back and tote concepts in the central column, with the relationship-tagline requirement above."
+    },
+    {
+      "name": "Rejected objects",
+      "spec": "Show a disposable cup and wall-powered device crossed in red at right."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The examples show partner-led shirts and a tote with supporting logos and relationship wording.",
+    "Constraint": "Artwork requires approval; authorized use is limited to reusable items, excludes disposable and for-profit event merchandise, wireless/Bluetooth devices, lithium-battery items and wall-powered items. Two or more logos require a relationship tagline."
+  },
+  "ingredient": {
+    "name": "IBM mark on partner merchandise",
+    "role": "Acknowledge the partnership on suitable reusable objects.",
+    "application": "Use approved artwork only on eligible reusable items and include a relationship tagline whenever two or more logos appear.",
+    "scope": "Version1.2 strategic-partner merchandise guidance. The source excludes disposable, event-for-profit, wireless/Bluetooth, lithium-battery and wall-powered items; registration marks are omitted on clothing and illegibly small applications."
+  }
+}

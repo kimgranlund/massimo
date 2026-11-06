@@ -1,0 +1,38 @@
+{
+  "id": "DW116",
+  "title": "Illustration / Duo / Please don’t",
+  "image": "dw116.png",
+  "source": "../sources/pages/illustration-duo.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/illustration/duo",
+    "section": "Please don't...",
+    "item": 116,
+    "order": 1160
+  },
+  "slide_intent": "Set limits on expressive variation because small alterations can change a mascot’s personality or construction.",
+  "strategic_value": "Avoiding centered pupils, fingers and unnecessary wing shading can preserve Duo’s familiar expression and flat form.",
+  "demonstration": "Three crossed-out figures illustrate the three corresponding prohibitions listed at right.",
+  "category": "Imagery",
+  "practical_value": "Check eye placement, wing silhouette and color before approving a new Duo pose.",
+  "content_islands": [
+    {
+      "name": "Rejected poses",
+      "spec": "Align the centered-pupil owl, fingered wing and darkened wing in three pink rejection frames."
+    },
+    {
+      "name": "Specific prohibitions",
+      "spec": "Align the explanatory list at right, keeping the reason for each rule where supplied."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source says centered pupils look creepy and correct posing makes extra wing color unnecessary.",
+    "Constraint": "Do not center pupils, give Duo fingers or darken wings merely because they overlap or sit behind the body."
+  },
+  "ingredient": {
+    "name": "Duo drawing limits",
+    "role": "Protect the mascot’s expression and flat construction.",
+    "application": "Avoid centered pupils, fingers and extra dark wing colors used to indicate depth.",
+    "scope": "Historical Duo-specific limits; other characters have their own hand and eye guidance."
+  }
+}

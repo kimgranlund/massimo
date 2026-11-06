@@ -1,0 +1,24 @@
+{
+  "id": "F71",
+  "title": "Tone of voice",
+  "image": "f71.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 71
+  },
+  "slide_intent": "Introduce voice as a set of writing judgments. Readers need to understand both the purpose of a message and the manner in which it addresses them.",
+  "strategic_value": "The five named principles can give different writers a shared vocabulary for discussing whether a message sounds like Frontline AIDS.",
+  "demonstration": "A tight photograph of red lips fills the page. Five colored phrases on black strips cross the image, accompanied by a cyan loop and arrow.",
+  "category": "Voice",
+  "practical_value": "Choose the relevant voice principle before drafting. Consult its following page for specific practices and limits.",
+  "content_islands": [
+    {
+      "name": "Chapter introduction",
+      "spec": "Place the Tone of voice navigation and a brief definition in small type at the upper left over the photograph."
+    },
+    {
+      "name": "Five principles",
+      "spec": "Stack straight-talking, confident, urgent, empowering and provocative in offset strips across the lips. Use marker strokes to draw attention to the stack."
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "id": "HX19",
+  "title": "Moving images",
+  "image": "hx19.png",
+  "source": "../sources/visual-storytelling.offline.html",
+  "location": {
+    "series": "Web guideline introduction/component",
+    "order": 63,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/visual-storytelling",
+    "original_html": "../sources/visual-storytelling.html"
+  },
+  "slide_intent": "Keep the same visual vocabulary in video because recognition should survive a change of medium.",
+  "strategic_value": "Helsinki can connect moving-image communications with its static identity through the logo, colors, type and waves.",
+  "demonstration": "This webpage introduction lists four identity elements, recommends avoiding other graphic elements, and states that supplied instructions and templates use UHD and need adapting for other formats. No movement is shown.",
+  "category": "Motion",
+  "practical_value": "Start with the four elements and check format adaptation before using a video template.",
+  "content_islands": [
+    {
+      "name": "Identity ingredients",
+      "spec": "Place the four-item list beneath the heading."
+    },
+    {
+      "name": "Production scope",
+      "spec": "Follow with the recommendation and UHD/template-availability notes."
+    }
+  ],
+  "ingredient": {
+    "name": "Video graphic vocabulary",
+    "role": "Carry city recognition into moving images.",
+    "application": "Use logo, palette, type and wave motifs; the text recommends avoiding other graphic elements. Adapt UHD instructions to the required format.",
+    "scope": "Moving-image guidance; recommendation strength and template availability must remain explicit."
+  },
+  "reference_purposes": {
+    "Intent": "The text links the recommended element set to a uniform, distinctive and clear result.",
+    "Application": "It instructs adaptation from UHD to other formats.",
+    "Constraint": "Avoiding other elements is a recommendation; templates are not available for every format."
+  }
+}

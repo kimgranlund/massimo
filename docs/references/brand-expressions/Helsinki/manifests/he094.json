@@ -1,0 +1,31 @@
+{
+  "id": "HE094",
+  "title": "Digital accessibility",
+  "image": "he094.png",
+  "source": "../sources/design-and-create.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Digital accessibility",
+    "order": 127,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/design-and-create#digital-accessibility",
+    "original_html": "../sources/design-and-create.html"
+  },
+  "slide_intent": "Treat access as equal participation so visual identity does not become a barrier to public services.",
+  "strategic_value": "A stated accessibility model can connect Helsinki’s digital appearance to civic inclusion.",
+  "demonstration": "Expanded webpage section: a brief equality statement precedes two bullets and a link to the accessibility model.",
+  "category": "Application",
+  "practical_value": "Use the accessibility model alongside graphic guidance; treat the listed WCAG level as the source’s claim.",
+  "content_islands": [
+    {
+      "name": "Equality rationale",
+      "spec": "The opening sentence connects digital accessibility to justice."
+    },
+    {
+      "name": "Claim and guidance",
+      "spec": "Bullets claim WCAG 2.1 AA for shared hel.fi solutions and mention inclusive images and terminology."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source explicitly describes accessibility as justice and equality in digital services."
+  }
+}

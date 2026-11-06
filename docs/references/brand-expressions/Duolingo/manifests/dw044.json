@@ -1,0 +1,39 @@
+{
+  "id": "DW044",
+  "title": "Sub-brands / Construction",
+  "image": "dw044.png",
+  "source": "../sources/pages/identity-brand-family.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/identity/brand-family",
+    "section": "Construction",
+    "item": 44,
+    "order": 440
+  },
+  "slide_intent": "Use a shared measure and a clear hierarchy because related names need to read together without competing equally.",
+  "strategic_value": "A common x-height and counter-based gap can make Duolingo’s sub-brand signatures consistent.",
+  "demonstration": "A construction diagram pairs the core wordmark and sub-brand title at shared x-height, separated by the o-counter width, with weight providing hierarchy.",
+  "category": "Geometry",
+  "practical_value": "Check shared x-height, gap and weight contrast in a generic sub-brand signature.",
+  "content_islands": [
+    {
+      "name": "Construction specimen",
+      "spec": "Keep the wordmark, generic sub-brand title and alignment/spacing guides in the left panel."
+    },
+    {
+      "name": "Hierarchy explanation",
+      "spec": "Place the heading, common x-height, counter-width gap and weight rationale in the right column."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source explains that weight supplies hierarchy because the elements have essentially the same size.",
+    "Application": "The diagram specifies common x-height and an o-counter-width gap.",
+    "Constraint": "The source states those size and spacing relationships for the generic construction."
+  },
+  "ingredient": {
+    "name": "Generic lockup geometry",
+    "role": "Make master name and sub-brand read as a coherent hierarchy.",
+    "application": "Match x-height, separate the elements by the o-counter width and use weight to distinguish hierarchy.",
+    "scope": "Historical archived guidelines. Historical generic sub-brand construction, excluding products with their own rules."
+  }
+}

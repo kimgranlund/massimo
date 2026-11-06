@@ -1,0 +1,36 @@
+{
+  "id": "DB0602",
+  "title": "Entschlossene Klarheit / Konstante Bewegung / Universelle Verbindung",
+  "image": "db0602.png",
+  "source": "../sources/page-06.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 6,
+    "section": 2,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Designprinzipien"
+  },
+  "slide_intent": "Connect each principle to observable choices so a designer can evaluate how a composition communicates.",
+  "strategic_value": "Specific treatments of space, color, hierarchy and symbols can give DB’s personality repeatable expression.",
+  "demonstration": "Three alternating image-and-text groups pair clarity with a modular frame, movement with red sleepers and connection with a framed figure.",
+  "category": "Brand",
+  "practical_value": "Select visible choices from the principle that matters to the communication task.",
+  "content_islands": [
+    {
+      "name": "Clarity",
+      "spec": "Pair the dark-and-white frame with hierarchy, space, contrast and short-headline guidance."
+    },
+    {
+      "name": "Movement",
+      "spec": "Pair the red sleeper image with variable type, layout, accents and motion guidance."
+    },
+    {
+      "name": "Connection",
+      "spec": "Pair the figure and frame with modularity, accessible reading and familiar symbols."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "Each principle states its intended effect: focus, felt change, or orientation and coherence.",
+    "Application": "The visual-implementation lists translate the principles into design choices.",
+    "Expression": "The three specimens give the principles distinct visible forms."
+  }
+}

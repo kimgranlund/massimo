@@ -1,0 +1,78 @@
+{
+  "id": "IB032",
+  "title": "Iconography / UI icons — Design",
+  "image": "ib032.png",
+  "source": "../sources/iconography-ui-icons-design.txt",
+  "location": {
+    "series": "IBM Design Language / public web guidelines",
+    "item": 32,
+    "extent": "Complete webpage content-area capture; visible default tab states",
+    "url": "https://www.ibm.com/design/language/iconography/ui-icons/design/",
+    "order": 32000
+  },
+  "slide_intent": "Construct small symbols consistently so viewers can recognize meaning quickly without visual weight or shape differences becoming distractions.",
+  "strategic_value": "Shared grid construction and details related to IBM Plex can make interface icons feel like part of the same IBM visual language.",
+  "demonstration": "The webpage specifies the UI-icon grid, padding, key shapes, style, strokes, perspective, corners and angles, with explanatory text and green/red comparison panels.",
+  "category": "Geometry",
+  "practical_value": "Draw an icon on the 32px grid, then check weight, clearance and metaphor-specific geometry instead of forcing every shape into one outline.",
+  "content_islands": [
+    {
+      "name": "Introduction and resources",
+      "spec": "Place the icon-purpose statement and starter/library cards above the foundation explanation and video area."
+    },
+    {
+      "name": "Grid and padding",
+      "spec": "Follow the 32px grid with alignment and arrow-point comparisons, then the 2px padding diagram and related comparisons."
+    },
+    {
+      "name": "Key shapes and style",
+      "spec": "Place proportion guidance before the style film and characteristic labels connecting icons with Plex letterforms."
+    },
+    {
+      "name": "Strokes and perspective",
+      "spec": "Pair uniform-weight and objective-viewpoint guidance with accepted/rejected specimen fields."
+    },
+    {
+      "name": "Corners and angles",
+      "spec": "End with printer, arrow and scissors-related comparisons illustrating shape-specific corners and angle decisions."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The introduction explains at-a-glance communication; foundation text connects a shared grid to consistent proportions and positioning.",
+    "Application": "The page specifies a 32px grid, 2px padding, default 2px strokes and corners, plus angle guidance and metaphor-specific adjustments.",
+    "Constraint": "Mixed stroke weights within one icon are rejected; dimensional perspective is avoided. Complex/dense icons may justify stroke exceptions, and corner radii can increase in multiples of two.",
+    "Expression": "Black-and-white icon specimens, blue construction grids and enlarged letterform-related details show the system’s consistent geometry and stroke character."
+  },
+  "ingredient": {
+    "name": "UI icon construction",
+    "role": "Maintain legible, balanced symbols at small sizes.",
+    "application": "Use the 32px grid, 2px padding and default 2px stroke; preserve uniform visual weight while allowing the stated dense-icon and metaphor-specific exceptions.",
+    "scope": "IBM UI icons, not app icons or pictograms. The page permits limited padding extensions for required detail or visual weight and does not require 45° angles for every shape."
+  },
+  "motion_assets": [
+    {
+      "title": "UI icon grid construction",
+      "file": "../sources/media/899411c75af4.mp4",
+      "poster": "../sources/media/899411c75af4-poster.png",
+      "duration_seconds": 12.42,
+      "source_url": "https://www.ibm.com/design/language/6699979c0d256d4b903f878a9bb971ea/01-idl-iconography-ui-icons-design.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "UI icons and Plex details",
+      "file": "../sources/media/1ae34e5dc720.mp4",
+      "poster": "../sources/media/1ae34e5dc720-poster.png",
+      "duration_seconds": 10.97,
+      "source_url": "https://www.ibm.com/design/language/b1612902a8acc365785ba65cde794ed4/19-idl-iconography-ui-icons-design.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    }
+  ]
+}

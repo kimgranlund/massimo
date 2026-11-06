@@ -1,0 +1,42 @@
+{
+  "id": "C449",
+  "title": "4moji construction and icon field",
+  "image": "c449.png",
+  "source": "../sources/c449.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 / 2023 masterbrand case study",
+    "item": 49,
+    "extent": "Published video poster; complete local video linked"
+  },
+  "slide_intent": "Connect playful symbols through a shared drawing language, because varied meanings still need to feel like one family.",
+  "strategic_value": "The gridded devil face and repeated outlined icons can extend Channel 4’s mischievous character beyond its main logo.",
+  "demonstration": "The four-second clip moves from a close view of a devil-face icon on construction guides to rows of outlined icons on green and white fields; New and Stream appear among the icons near the end.",
+  "category": "Geometry",
+  "practical_value": "Compare construction consistency and inline word/icon relationships before expanding an expressive icon family.",
+  "content_islands": [
+    {
+      "name": "Construction reveal",
+      "spec": "Begin with the devil-face details and reveal the full face over blue guides and a gray grid."
+    },
+    {
+      "name": "Icon field",
+      "spec": "Move through rows of black outlined symbols on green, then white backgrounds."
+    },
+    {
+      "name": "Type integration",
+      "spec": "Insert New and Stream among the final icon rows to show the symbols sharing space with text."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "Pentagram’s accompanying case study identifies 4mojis as playful moments integrated into the brand typefaces so functionality does not drown out its mischievousness.",
+    "Expression": "The four-second clip moves from a close view of a devil-face icon on construction guides to rows of outlined icons on green and white fields; New and Stream appear among the icons near the end.",
+    "Application": "The source demonstrates this treatment in a construction-and-use sequence that places icons beside words."
+  },
+  "motion": "../sources/c449.mp4",
+  "ingredient": {
+    "name": "4moji icons",
+    "role": "Add expressive cues within the brand’s functional graphic language.",
+    "application": "Keep the illustrated symbols visually coordinated and compare them beside words as the clip does.",
+    "scope": "Observed construction and use in the 2023 case study. The construction grid is shown without a transferable numeric specification."
+  }
+}

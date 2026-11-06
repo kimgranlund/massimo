@@ -1,0 +1,48 @@
+{
+  "id": "HE018",
+  "title": "Helsinki’s colour palette",
+  "image": "he018.png",
+  "source": "../sources/use-basic-elements.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Helsinki’s colour palette",
+    "order": 24,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/use-basic-elements#helsinki-s-colour-palette",
+    "original_html": "../sources/use-basic-elements.html"
+  },
+  "slide_intent": "Specify color by production medium because a familiar hue can shift when ink, paint and screens reproduce it differently.",
+  "strategic_value": "Pairing named colors with familiar buildings, transport and materials can connect Helsinki’s palette to lived experience while production notes preserve reproduction limits.",
+  "demonstration": "This expanded webpage section opens with production-system guidance and a city-photo/palette collage, then pairs twelve named color fields with urban photographs and their codes, ending with white and black definitions.",
+  "category": "Color",
+  "practical_value": "Choose the value for the actual medium and check the explicit RAL mismatches instead of assuming every code is equivalent.",
+  "content_islands": [
+    {
+      "name": "Production guidance",
+      "spec": "Explain print, screen, paint and decal systems and their approximation limits."
+    },
+    {
+      "name": "Palette and city collage",
+      "spec": "Pair urban details and color strips, then state metallic-use and digital-service qualifications."
+    },
+    {
+      "name": "Named colors",
+      "spec": "Stack twelve color entries with their codes and adjacent photographs: brickwork, tram, copper roof, metro, fog, bus, arms, summer, Engel, Suomenlinna, silver and gold."
+    },
+    {
+      "name": "Neutrals",
+      "spec": "Finish with White and Black definitions and a black/white specimen."
+    }
+  ],
+  "ingredient": {
+    "name": "Production color definitions",
+    "role": "Keep named city colors recognizable across media.",
+    "application": "Select the supplied medium-specific code or ASE palette; retain coated/uncoated and metallic distinctions.",
+    "scope": "Do not treat RAL approximations for Copper, Fog, Engel and Suomenlinna as exact matches. Digital services refer to separate HDS definitions."
+  },
+  "reference_purposes": {
+    "Intent": "The source says ready-made palettes reduce incorrect color-code use.",
+    "Expression": "City photographs are paired with twelve named color fields, followed by white and black definitions.",
+    "Application": "Each swatch supplies production-specific color values.",
+    "Constraint": "Copper, Fog, Engel and Suomenlinna RAL Classic values do not reproduce their true hues; digital-service colors have separate HDS guidance."
+  }
+}

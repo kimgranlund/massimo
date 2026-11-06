@@ -1,0 +1,41 @@
+{
+  "id": "CH06",
+  "title": "High Expressive Ratio / Mobile family",
+  "image": "ch06.png",
+  "source": "../sources/ch06.jpg",
+  "location": {
+    "series": "COLLINS / Mailchimp case study",
+    "item": 6,
+    "extent": "Complete published artwork",
+    "section": "High Expressive Ratio"
+  },
+  "slide_intent": "Compare variation within a repeated format so expressive range does not erase a recognizable family.",
+  "strategic_value": "Recurring type, yellow and line drawings can connect Mailchimp messages about different features.",
+  "demonstration": "Two rows of cropped mobile layouts combine yellow and pastel panels, serif headlines, teal actions and circled illustrations.",
+  "category": "Application",
+  "practical_value": "Identify which elements repeat while image, message and background vary.",
+  "content_islands": [
+    {
+      "name": "Upper row",
+      "spec": "Arrange the five tall page examples across the upper half, retaining their source crop."
+    },
+    {
+      "name": "Lower row",
+      "spec": "Place the second row beneath with illustration-led feature messages."
+    },
+    {
+      "name": "Comparison marks",
+      "spec": "Keep black circles around illustrations to emphasize variation within the common format."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "Multiple mobile layouts apply recurring identity elements to feature communications.",
+    "Expression": "The marked illustrations vary while the layouts retain related typography and color."
+  },
+  "ingredient": {
+    "name": "Mobile illustration family",
+    "role": "Differentiate feature stories within a recognizable interface.",
+    "application": "Pair a distinct illustration with each feature while retaining shared typographic and action treatments.",
+    "scope": "Observed examples; the repeated outer columns are part of the supplied comparison board."
+  }
+}

@@ -26,3 +26,6 @@ dist-ssr
 .claude/worktrees/
 docs/references/claude-artifacts-skills/web-artifacts-builder/
 .lighthouseci/
+
+# Brand source files stay local: too large for GitHub, and third-party
+docs/references/brand-expressions/**/sources/

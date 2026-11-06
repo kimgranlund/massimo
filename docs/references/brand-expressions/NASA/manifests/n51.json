@@ -1,0 +1,28 @@
+{
+  "id": "N51",
+  "title": "The Identification Configuration Without the Logotype",
+  "image": "n51.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 51
+  },
+  "slide_intent": "Teach designers to separate the mark from the door lettering when a different surface gives it a better display. The remaining door information must still read as a single identification.",
+  "strategic_value": "NASA can use more of a vehicle’s body for recognition without losing the government, agency and facility information on the front doors.",
+  "demonstration": "A small passenger-door inset places the text in context. The enlarged door diagram gives heights and spacing for the government and agency lines and center or facility name, all on a common left edge.",
+  "category": "Layout",
+  "practical_value": "Use the text-only door arrangement when the logotype is displayed elsewhere on the vehicle. Check both door hardware and the line breaks of a long facility name.",
+  "content_islands": [
+    {
+      "name": "Placement explanation",
+      "spec": "Use two short text columns beside the heading to state where the mark and remaining identification go."
+    },
+    {
+      "name": "Passenger-door inset",
+      "spec": "Draw the complete door at lower left and place the lettering in the clear area below the window."
+    },
+    {
+      "name": "Dimensioned lettering",
+      "spec": "Enlarge the door at right. Show the mirror, handle and text block with measurement marks, retaining the common left alignment through a multiline facility name."
+    }
+  ]
+}

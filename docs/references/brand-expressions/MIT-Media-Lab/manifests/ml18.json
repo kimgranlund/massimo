@@ -1,0 +1,40 @@
+{
+  "id": "ML18",
+  "title": "Dark publication covers",
+  "image": "ml18.png",
+  "source": "../sources/ml18.jpg",
+  "location": {
+    "series": "Pentagram / MIT Media Lab / 2014 identity",
+    "item": 18,
+    "extent": "Published lightbox artwork"
+  },
+  "slide_intent": "Explore identity through surface contrast because recognition can be quiet as well as high contrast.",
+  "strategic_value": "Tonal use can extend the lab’s vocabulary to more restrained printed materials.",
+  "demonstration": "Overlapping dark covers combine a white stacked name with a large low-contrast monogram.",
+  "category": "Color",
+  "practical_value": "Compare name legibility with a subtle graphic treatment.",
+  "content_islands": [
+    {
+      "name": "White title",
+      "spec": "The lab name sits near the cover’s upper left."
+    },
+    {
+      "name": "Tonal monogram",
+      "spec": "A large dark angular form occupies the cover field."
+    },
+    {
+      "name": "Overlapping covers",
+      "spec": "Multiple objects reveal the treatment across a print family."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Overlapping dark covers combine a white stacked name with a large low-contrast monogram.",
+    "Application": "Overlapping dark covers combine a white stacked name with a large low-contrast monogram."
+  },
+  "ingredient": {
+    "name": "Dark publication covers",
+    "role": "Explore identity through surface contrast because recognition can be quiet as well as high contrast.",
+    "application": "Compare name legibility with a subtle graphic treatment.",
+    "scope": "Observed in this historical case-study artwork; not a mandatory usage rule or a current brand standard."
+  }
+}

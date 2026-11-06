@@ -1,0 +1,34 @@
+{
+  "id": "DJ16",
+  "title": "Pocket T-shirt",
+  "image": "dj16.png",
+  "source": "../sources/johnson-banks/Duolingo_t-shirt2-by-Johnson-Banks.jpg",
+  "location": {
+    "series": "Johnson Banks / Everyone can Duolingo / 2019",
+    "item": 16,
+    "extent": "Whole published artwork",
+    "order": 2016
+  },
+  "slide_intent": "Use the physical object as part of the idea because a small character gesture can make merchandise memorable.",
+  "strategic_value": "Duo peeking from a pocket can translate Duolingo’s personality into an everyday object without filling the whole garment.",
+  "demonstration": "A model wears a white T-shirt with Duo’s eyes above the chest pocket and a green wordmark near the lower hem.",
+  "category": "Application",
+  "practical_value": "Consider how a garment feature can give a mascot a natural position.",
+  "content_islands": [
+    {
+      "name": "Pocket character",
+      "spec": "Place Duo at the pocket opening on the upper chest."
+    },
+    {
+      "name": "Hem signature",
+      "spec": "Place the green wordmark near the lower-left area of the shirt in the photograph."
+    },
+    {
+      "name": "Garment context",
+      "spec": "Keep the model and plain background to show placement and scale."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The merchandise visualization applies the mascot to a pocket and the signature near the hem."
+  }
+}

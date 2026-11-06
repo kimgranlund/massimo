@@ -1,0 +1,34 @@
+{
+  "id": "AU14",
+  "title": "NEVER EXPLAIN. NEVER APOLOGIZE.",
+  "image": "au14.png",
+  "source": "../sources/13-kms-team-audi-sport-CD02_3-2.jpg",
+  "location": {
+    "series": "KMS TEAM / Audi and Audi Sport identity case study",
+    "item": 14,
+    "extent": "Complete source media"
+  },
+  "slide_intent": "Align wording, scale and image attitude because a brand’s voice is experienced through their combination.",
+  "strategic_value": "A direct red statement beside an extreme portrait crop can give Audi Sport a confrontational, self-assured tone.",
+  "demonstration": "Four left-aligned lines of uppercase red text occupy a pale field beside a tightly cropped face at the right edge; the Audi Sport signature sits below the text.",
+  "category": "Voice",
+  "practical_value": "Compare how the portrait crop and line breaks change the force of a short statement.",
+  "content_islands": [
+    {
+      "name": "Statement",
+      "spec": "Stack the red text at left with its two sentence stops."
+    },
+    {
+      "name": "Signature",
+      "spec": "Place the red Audi Sport lockup directly beneath."
+    },
+    {
+      "name": "Portrait crop",
+      "spec": "Fill the right side with an extreme facial close-up, allowing the left image area to stay pale behind the text."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The terse wording, red capitals and tightly cropped portrait produce a distinctive campaign voice.",
+    "Application": "The identity is applied to a portrait-led Audi Sport statement."
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "id": "BK084",
+  "title": "Applying Headlines",
+  "image": "bk084.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 84
+  },
+  "slide_intent": "Adapt a headline to the available shape because the message must remain prominent without wasting the format.",
+  "strategic_value": "Shared edge alignment and format-specific sizing can keep Burger King headlines recognizable across banners and posters.",
+  "demonstration": "Three grid examples show a single-line banner, a headline within proportional columns and a vertical format with its longest line spanning the margins.",
+  "category": "Layout",
+  "practical_value": "Choose the sizing method by aspect ratio and align cap height, allowing ascenders to extend above the top margin.",
+  "content_islands": [
+    {
+      "name": "Placement guidance",
+      "spec": "Place the explanation and cap-height note at upper left."
+    },
+    {
+      "name": "Format examples",
+      "spec": "Arrange numbered banner and column-based layouts at center and a vertical layout at right."
+    },
+    {
+      "name": "Three use cases",
+      "spec": "Keep the numbered descriptions beneath the left-hand guidance."
+    }
+  ],
+  "ingredient": {
+    "name": "Headline placement",
+    "role": "Make the primary message fill the format appropriately.",
+    "application": "Fit wide-banner headlines to the available height; use proportional columns if a full-width headline would be too tall; let a vertical format’s longest line span the margins. Align cap height to the top margin.",
+    "scope": "Historical 2020 partner guidelines, PDF produced January 2021. Ascenders may extend above the top margin."
+  },
+  "reference_purposes": {
+    "Application": "The diagrams show vertical fitting for banners, proportional columns where needed and margin-to-margin longest lines for vertical formats.",
+    "Constraint": "The cap height touches the top margin; ascenders may protrude above it."
+  }
+}

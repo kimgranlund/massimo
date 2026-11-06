@@ -1,0 +1,36 @@
+{
+  "id": "ML22",
+  "title": "Lanyard identification badge",
+  "image": "ml22.png",
+  "source": "../sources/ml22.jpg",
+  "location": {
+    "series": "Pentagram / MIT Media Lab / 2014 identity",
+    "item": 22,
+    "extent": "Published lightbox artwork"
+  },
+  "slide_intent": "Identify a person and their institution together because access objects are also interpersonal introductions.",
+  "strategic_value": "An enlarged symbol can make a badge recognizable before its smaller text is read.",
+  "demonstration": "A clear badge holder on a dark lanyard contains a white card with large black monogram strokes and small text.",
+  "category": "Application",
+  "practical_value": "Evaluate the scale relationship between identity and personal information on a worn object.",
+  "content_islands": [
+    {
+      "name": "Lanyard and holder",
+      "spec": "Dark strap and transparent enclosure frame the card."
+    },
+    {
+      "name": "Badge face",
+      "spec": "Large angular graphics surround a small text area."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A clear badge holder on a dark lanyard contains a white card with large black monogram strokes and small text.",
+    "Application": "A clear badge holder on a dark lanyard contains a white card with large black monogram strokes and small text."
+  },
+  "ingredient": {
+    "name": "Lanyard identification badge",
+    "role": "Identify a person and their institution together because access objects are also interpersonal introductions.",
+    "application": "Evaluate the scale relationship between identity and personal information on a worn object.",
+    "scope": "Observed in this historical case-study artwork; not a mandatory usage rule or a current brand standard."
+  }
+}

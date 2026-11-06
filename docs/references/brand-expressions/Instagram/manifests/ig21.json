@@ -1,0 +1,30 @@
+{
+  "id": "IG21",
+  "title": "Bespoke title treatment / Earth Day",
+  "image": "ig21.png",
+  "source": "../sources/ig21.png",
+  "location": {
+    "series": "Elvis Dinh / Instagram brand design system / project year 2022",
+    "item": 21,
+    "extent": "whole source artwork"
+  },
+  "slide_intent": "Give a topic a distinctive typographic shape so the headline reinforces its meaning.",
+  "strategic_value": "Circular reuse language can make Instagram’s Earth Day communication recognizable and relevant to the occasion.",
+  "demonstration": "Lime Reduce Reuse Reshare lettering forms a ring over a portrait, with a small Earth Day message below.",
+  "category": "Typography",
+  "practical_value": "Use a shaped title when the form adds meaning and the supporting message remains easy to read.",
+  "content_islands": [
+    {
+      "name": "Portrait field",
+      "spec": "Fill the tall frame with the blue-clothed subject and flowers."
+    },
+    {
+      "name": "Circular title and support",
+      "spec": "Wrap the lime words in a ring around the subject and align the smaller message at lower left."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Circular lettering creates a bespoke title treatment.",
+    "Application": "The reuse phrase is applied to an Earth Day campaign."
+  }
+}

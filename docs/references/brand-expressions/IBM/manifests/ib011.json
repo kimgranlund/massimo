@@ -1,0 +1,55 @@
+{
+  "id": "IB011",
+  "title": "Iconography / Overview",
+  "image": "ib011.png",
+  "source": "../sources/iconography-overview.txt",
+  "location": {
+    "series": "IBM Design Language / public web guidelines",
+    "item": 11,
+    "extent": "Complete webpage content-area capture; interactive elements retain their captured state",
+    "url": "https://www.ibm.com/design/language/iconography/overview/",
+    "order": 11000
+  },
+  "slide_intent": "Match a symbol’s detail and role to its context, so people can distinguish an action, a product and a broader idea at a glance.",
+  "strategic_value": "A related family of UI icons, app icons and pictograms can give IBM recognizable visual continuity without forcing every task into one symbol style.",
+  "demonstration": "The page introduces three icon types through a blue media state, a comparison sheet, three principle rows and separate UI, app and pictogram specimen grids.",
+  "category": "Imagery",
+  "practical_value": "Choose UI icons for interface actions, app icons for product identification and pictograms for broader concepts.",
+  "content_islands": [
+    {
+      "name": "System introduction",
+      "spec": "Place the Overview heading and role explanation above the blue icon-film state."
+    },
+    {
+      "name": "Comparative vocabulary",
+      "spec": "Show UI icons, app icons and pictograms together before the Engineered, Clear and Nimble principle rows."
+    },
+    {
+      "name": "UI and app specimens",
+      "spec": "Present separate gridded examples with paragraphs describing functional actions and product identification."
+    },
+    {
+      "name": "Pictogram range",
+      "spec": "Close with the productive/expressive distinction and the captured productive pictogram tab."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source explains how icon types simplify messages and why different contexts need different detail.",
+    "Expression": "The three specimen sets show shared precision with different degrees of color and detail.",
+    "Application": "The text assigns UI icons to functional actions, app icons to product identification and pictograms to broader concepts."
+  },
+  "motion_assets": [
+    {
+      "title": "Iconography introduction",
+      "file": "../sources/media/8a0eae3d7e24.mp4",
+      "poster": "../sources/media/8a0eae3d7e24-poster.png",
+      "duration_seconds": 50.47,
+      "source_url": "https://www.ibm.com/design/language/static/281513611-8b691c9c231231c93404fb9a4431aae8.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    }
+  ]
+}

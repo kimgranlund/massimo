@@ -1,0 +1,32 @@
+{
+  "id": "HX42",
+  "title": "Photographs and videos",
+  "image": "hx42.png",
+  "source": "../sources/download-elements.offline.html",
+  "location": {
+    "series": "Web guideline introduction/component",
+    "order": 154,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/download-elements",
+    "original_html": "../sources/download-elements.html"
+  },
+  "slide_intent": "Select assets with both identity and permitted use in mind because a convenient photograph may be unsuitable for a specific communication.",
+  "strategic_value": "Helsinki’s own material banks can supply more distinctive city imagery than widely reused stock.",
+  "demonstration": "This webpage component lists four city image banks, asks users to check image-specific terms and consent information, and separately discusses Adobe Stock and Unsplash. Its broad Unsplash licensing statement is a source claim, not verified legal guidance.",
+  "category": "Imagery",
+  "practical_value": "Start with city banks, check each image’s terms and consent needs, and assess whether stock fits the brand.",
+  "content_islands": [
+    {
+      "name": "City image sources",
+      "spec": "Place the four image-bank links above terms and consent guidance."
+    },
+    {
+      "name": "Stock alternatives",
+      "spec": "Follow with the brand-fit caveat and Adobe Stock/Unsplash references."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source explains that stock may be widely reused and does not comply with the brand.",
+    "Application": "It identifies city image banks and directs users to terms attached to individual images and consent forms.",
+    "Constraint": "Adobe Stock availability is scoped to city employees with an Adobe software license; image use remains subject to the relevant terms."
+  }
+}

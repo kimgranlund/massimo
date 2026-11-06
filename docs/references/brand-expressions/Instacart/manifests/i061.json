@@ -1,0 +1,28 @@
+{
+  "id": "I061",
+  "title": "Illustration Range",
+  "image": "i061.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 61
+  },
+  "slide_intent": "Match illustration complexity to the amount of space and attention available. An isolated object can identify something quickly; a larger scene gives someone more to explore.",
+  "strategic_value": "Instacart can use both the efficient Shop and expressive Savor sides of its identity while retaining a recognizable drawing style.",
+  "demonstration": "Three specimen cards progress from small icon illustrations to a spot illustration of a hand pressing a button and a hero composition of goods. An arrow labels the continuum from Efficient to Savor.",
+  "category": "Imagery",
+  "practical_value": "Choose an icon illustration for a small cue, a spot for a single action and a hero for a larger story with several elements.",
+  "content_islands": [
+    {
+      "name": "Range introduction",
+      "spec": "Set the heading and brief in the left column. Explain that detail increases across the chart."
+    },
+    {
+      "name": "Three specimens",
+      "spec": "Give Icon, Spot and Hero Illustrations equal-width cream cards. Increase the number and interaction of objects from left to right."
+    },
+    {
+      "name": "Continuum",
+      "spec": "Run one thin arrow below all three examples. Label its ends Efficient and Savor."
+    }
+  ]
+}

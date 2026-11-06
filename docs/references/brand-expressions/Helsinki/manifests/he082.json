@@ -1,0 +1,33 @@
+{
+  "id": "HE082",
+  "title": "Commissioning illustrations",
+  "image": "he082.png",
+  "source": "../sources/design-and-create.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Commissioning illustrations",
+    "order": 111,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/design-and-create#commissioning-illustrations",
+    "original_html": "../sources/design-and-create.html"
+  },
+  "slide_intent": "Define the illustration’s purpose and future uses before commissioning it so the artwork can serve the intended audience and lifecycle.",
+  "strategic_value": "Clear briefs and retained originals can help Helsinki reuse coherent illustration across teams.",
+  "demonstration": "This expanded webpage-section capture presents a numbered commissioning questionnaire followed by agreement, modification, original-file and distribution checks.",
+  "category": "Imagery",
+  "practical_value": "Specify audience, emotional role, quantities, formats, animation needs, lifecycle and deadline, then agree reuse and modification rights.",
+  "content_islands": [
+    {
+      "name": "Brief questions",
+      "spec": "Keep the twelve purpose, content, production and lifecycle questions in order."
+    },
+    {
+      "name": "Commissioning checklist",
+      "spec": "Group rights, modification, originals and sharing conditions below the questionnaire."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text says a good brief supports accurate quotes and avoids misunderstanding or unnecessary work.",
+    "Application": "The questions define purpose, audience, style, usage, future animation and lifecycle.",
+    "Constraint": "An agreement is required; originals must be delivered and archived; modification permissions should be agreed, with the stated scope excluding additions."
+  }
+}

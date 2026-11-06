@@ -1,0 +1,35 @@
+{
+  "id": "ML03",
+  "title": "Director’s fellows program endorsement",
+  "image": "ml03.png",
+  "source": "../sources/ml03.jpg",
+  "location": {
+    "series": "Pentagram / MIT Media Lab / 2014 identity",
+    "item": 3,
+    "extent": "Published lightbox artwork"
+  },
+  "slide_intent": "Show affiliation and program identity together so a subprogram benefits from institutional recognition.",
+  "strategic_value": "A tiered lockup can make the fellows program distinct without fragmenting the lab identity.",
+  "demonstration": "The black lab signature is paired with a gray program descriptor beneath the name.",
+  "category": "Brand",
+  "practical_value": "Distinguish parent identification from a subordinate program label.",
+  "content_islands": [
+    {
+      "name": "Parent signature",
+      "spec": "The black symbol occupies the left and the lab name begins at upper right."
+    },
+    {
+      "name": "Program descriptor",
+      "spec": "Gray stacked text continues below the lab name."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The black lab signature is paired with a gray program descriptor beneath the name."
+  },
+  "ingredient": {
+    "name": "Director’s fellows program endorsement",
+    "role": "Show affiliation and program identity together so a subprogram benefits from institutional recognition.",
+    "application": "Distinguish parent identification from a subordinate program label.",
+    "scope": "Observed in this historical case-study artwork; not a mandatory usage rule or a current brand standard."
+  }
+}

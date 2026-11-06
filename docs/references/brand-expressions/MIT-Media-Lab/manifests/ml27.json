@@ -1,0 +1,40 @@
+{
+  "id": "ML27",
+  "title": "Oversized tote graphic",
+  "image": "ml27.png",
+  "source": "../sources/ml27.jpg",
+  "location": {
+    "series": "Pentagram / MIT Media Lab / 2014 identity",
+    "item": 27,
+    "extent": "Published lightbox artwork"
+  },
+  "slide_intent": "Use a practical object as a moving identity surface because repeated public use can build familiarity.",
+  "strategic_value": "An enlarged monogram can make the lab visible at a distance while the small name supports identification nearby.",
+  "demonstration": "A black tote worn at the shoulder carries a large white angular mark and a small stacked lab name.",
+  "category": "Application",
+  "practical_value": "Compare distance recognition from geometry with close reading of the name.",
+  "content_islands": [
+    {
+      "name": "Tote face",
+      "spec": "A bold white symbol fills most of the black fabric."
+    },
+    {
+      "name": "Small name",
+      "spec": "The lab name sits near the upper part of the bag."
+    },
+    {
+      "name": "Wearer",
+      "spec": "The body and strap show the scale and orientation in use."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A black tote worn at the shoulder carries a large white angular mark and a small stacked lab name.",
+    "Application": "A black tote worn at the shoulder carries a large white angular mark and a small stacked lab name."
+  },
+  "ingredient": {
+    "name": "Oversized tote graphic",
+    "role": "Use a practical object as a moving identity surface because repeated public use can build familiarity.",
+    "application": "Compare distance recognition from geometry with close reading of the name.",
+    "scope": "Observed in this historical case-study artwork; not a mandatory usage rule or a current brand standard."
+  }
+}

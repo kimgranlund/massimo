@@ -1,0 +1,31 @@
+{
+  "id": "DB1107",
+  "title": "Visuelle Sprache / icon roles",
+  "image": "db1107.png",
+  "source": "../sources/page-11.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 11,
+    "section": 7,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Icons"
+  },
+  "slide_intent": "Match symbol detail and scale to its role so controls stay clear within the surrounding information.",
+  "strategic_value": "A coherent icon style can make varied DB interface elements feel related.",
+  "demonstration": "An annotated interface groups small, large and medium icons beside heading, message and navigation contexts.",
+  "category": "Geometry",
+  "practical_value": "Compare icon scale against the text or control it supports.",
+  "content_islands": [
+    {
+      "name": "Explanation",
+      "spec": "Place the minimal-detail and consistency rationale above the specimen."
+    },
+    {
+      "name": "Interface diagram",
+      "spec": "Label icon roles and sizes within one light interface composition."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text connects known forms and reduced detail to recognition and a harmonious whole.",
+    "Application": "The annotated interface demonstrates size choices in context."
+  }
+}

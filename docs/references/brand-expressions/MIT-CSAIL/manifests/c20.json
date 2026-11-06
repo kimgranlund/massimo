@@ -1,0 +1,28 @@
+{
+  "id": "C20",
+  "title": "Color",
+  "image": "c20.png",
+  "source": "../csail-branding-short-guide.pdf",
+  "location": {
+    "page": 20
+  },
+  "slide_intent": "Explain how a built environment can supply an identity palette. A reader can connect the colors of an abstract mark to materials seen at the laboratory.",
+  "strategic_value": "CSAIL can preserve a link to the Stata Center while extending its palette for communications that require more colors than the logo.",
+  "demonstration": "Seven labeled swatches sit above a circular diagram of tints and shades. The left column identifies brick, glossy yellow and metallic grey as sources for the logo.",
+  "category": "Color",
+  "practical_value": "Use the primary three when the identity itself is at stake. Choose among the four supporting colors or their variations when a composition needs additional differentiation.",
+  "content_islands": [
+    {
+      "name": "Material origins",
+      "spec": "Place the heading and primary-versus-secondary explanation in a narrow white column."
+    },
+    {
+      "name": "Production swatches",
+      "spec": "Align seven square samples along the top of a dark field. Group Pantone, CMYK, RGB and HTML references beneath each."
+    },
+    {
+      "name": "Tints and shades",
+      "spec": "Center a segmented wheel below the samples, showing lighter inner areas and darker outer areas. Keep its definition nearby."
+    }
+  ]
+}

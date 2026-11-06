@@ -1,0 +1,26 @@
+{
+  "id": "CR09",
+  "title": "Top Tech feature",
+  "image": "cr09.png",
+  "source": "../sources/cr09.jpg",
+  "location": {
+    "series": "Cox Brand Collection — Lindsay Little / Periscope",
+    "item": 9,
+    "extent": "whole source image"
+  },
+  "slide_intent": "Show a product in retail, everyday use and close detail so the viewer can connect display and experience.",
+  "strategic_value": "The three views can make Cox’s accessory offer part of the same lifestyle story as its services.",
+  "demonstration": "A three-part board pairs a store display and a person using a tablet with a larger speaker still life on a colored field.",
+  "category": "Application",
+  "practical_value": "Use a comparison board to check whether retail presentation and campaign photography describe the same product world.",
+  "content_islands": [
+    {
+      "name": "Context pair",
+      "spec": "Stack the store photograph above the seated tablet user in a narrow left column."
+    },
+    {
+      "name": "Product hero",
+      "spec": "Place the speaker arrangement in a taller right panel with blue-green color above a pale ground."
+    }
+  ]
+}

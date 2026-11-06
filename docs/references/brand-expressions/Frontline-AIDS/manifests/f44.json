@@ -1,0 +1,28 @@
+{
+  "id": "F44",
+  "title": "Heavy-weight content",
+  "image": "f44.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 44
+  },
+  "slide_intent": "Teach designers to offer several entry points into a long publication. A reader may need the headline, summary, quotation or detail at different stages.",
+  "strategic_value": "Frontline AIDS can give long reports the urgency of its campaign work while retaining enough structure for extended reading.",
+  "demonstration": "A report cover with a portrait and boxed headline appears beside an annotated editorial spread. Leaders identify headings, standfirst, body copy, quote, captions, pullout and footnotes.",
+  "category": "Typography",
+  "practical_value": "Build a report hierarchy from cover headline through standfirst, paragraph and notes, then check which elements a reader can scan before reading in depth.",
+  "content_islands": [
+    {
+      "name": "Report-cover example",
+      "spec": "Place the portrait cover at lower left and label its principal type roles with leaders outside the image."
+    },
+    {
+      "name": "Interior spread",
+      "spec": "Give the annotated interior example the larger right area. Contrast the main title and text column with image, quotation and colored callout panels."
+    },
+    {
+      "name": "Type-role annotations",
+      "spec": "Align the named settings around the examples and use fine blue leaders to connect each note to its specimen."
+    }
+  ]
+}

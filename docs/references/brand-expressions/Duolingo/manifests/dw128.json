@@ -1,0 +1,39 @@
+{
+  "id": "DW128",
+  "title": "Illustration / Characters / Mouths / No boundaries",
+  "image": "dw128.png",
+  "source": "../sources/pages/illustration-characters.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/illustration/characters",
+    "section": "No boundaries",
+    "item": 128,
+    "order": 1280
+  },
+  "slide_intent": "Let expression exceed the facial outline while preserving internal alignment so an extreme emotion remains legible.",
+  "strategic_value": "A controlled exception to the head boundary can help Duolingo exaggerate emotion without making the mouth construction arbitrary.",
+  "demonstration": "Two accepted faces show mouths extending to or beyond the facial outline; a third face is crossed out, and the text distinguishes external freedom from centered internal details.",
+  "category": "Imagery",
+  "practical_value": "Allow a mouth to break the face frame for stronger emotion, then center its teeth and tongue within the mouth.",
+  "content_islands": [
+    {
+      "name": "Boundary examples",
+      "spec": "Place two accepted exaggerated mouths at left and a rejected example in a crossed frame beside them."
+    },
+    {
+      "name": "Internal alignment condition",
+      "spec": "Set the No Boundaries heading and two short statements at right, pairing the allowed extension with the centering requirement."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source permits breaking the face frame to convey more extreme emotions.",
+    "Application": "The comparison demonstrates exaggerated mouth placement.",
+    "Constraint": "Teeth and tongue must remain centered within the mouth."
+  },
+  "ingredient": {
+    "name": "Mouth boundary exception",
+    "role": "Amplify emotion while keeping the mouth understandable.",
+    "application": "The mouth may extend outside the face frame for extreme expression; always center the teeth and tongue inside the mouth.",
+    "scope": "Historical official Duolingo illustration guidance from the 2024–2025 archived snapshot. The permission concerns the mouth’s relationship to the face; it does not relax the stated internal alignment rule."
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "id": "DB1307",
+  "title": "Text auf Bild",
+  "image": "db1307.png",
+  "source": "../sources/page-13.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 13,
+    "section": 7,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Layout"
+  },
+  "slide_intent": "Adjust the image behind text so the message can be read without sacrificing the photograph’s role.",
+  "strategic_value": "Selective tonal support can preserve DB imagery and clear communication together.",
+  "demonstration": "Light and dark photo examples precede three comparison sliders for partial darkening, a dark gradient and a light gradient. The captured sliders expose part of each photographic scene and part of its tonal-support overlay artwork.",
+  "category": "Layout",
+  "practical_value": "Assess text contrast and consider local darkening or a subtle light/dark gradient behind the content.",
+  "content_islands": [
+    {
+      "name": "Initial comparison",
+      "spec": "Pair light and dark photographic examples below the introductory guidance."
+    },
+    {
+      "name": "Partial darkening",
+      "spec": "Show the first labeled slider with white text and a white logo."
+    },
+    {
+      "name": "Gradient options",
+      "spec": "Stack the dark-gradient and light-gradient comparison sliders with their explanations."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source frames adjustments as making text readable for all users.",
+    "Application": "It offers partial darkening and subtle light/dark gradient options.",
+    "Constraint": "The source cites WCAG 2.1 targets of at least 4.5:1 or 3:1 for large elements while also saying photographic contrast has no fixed measurement in the same way as graphics; retain that qualification."
+  },
+  "ingredient": {
+    "name": "Tonal support behind text",
+    "role": "Improve text separation from photographic detail.",
+    "application": "Use local darkening or subtle dark/light gradients where needed.",
+    "scope": "Official DB new-design website captured 2026-11-05; edition date unstated. The source cites 4.5:1 or 3:1 for large elements; photographic evaluation is described as context-dependent."
+  }
+}

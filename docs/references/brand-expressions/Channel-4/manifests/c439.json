@@ -1,0 +1,41 @@
+{
+  "id": "C439",
+  "title": "Full motion / Cropped motion",
+  "image": "c439.png",
+  "source": "../sources/c439.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 masterbrand / 2023",
+    "item": 39,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Compare complete and abbreviated transitions so designers can preserve character when an interaction has less time or space.",
+  "strategic_value": "Related motion treatments can connect Channel 4’s large brand moments with small browsing interactions.",
+  "demonstration": "The clip compares Full motion and Cropped motion using both gradient worlds and programme cards beside highlighted easing diagrams.",
+  "category": "Motion",
+  "practical_value": "Choose a motion treatment by comparing its context and the part of the curve used.",
+  "content_islands": [
+    {
+      "name": "World comparison",
+      "spec": "Show full and cropped travel between blue and pink rooms."
+    },
+    {
+      "name": "Interface comparison",
+      "spec": "Repeat the comparison with Taskmaster and Formula 1 cards."
+    },
+    {
+      "name": "Timing explanation",
+      "spec": "Keep the curve diagrams beside each specimen with the active segment highlighted."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "Explicit Full motion and Cropped motion labels compare two treatments in two contexts.",
+    "Intent": "Pentagram says motion principles extend from hero brand moments to the smallest digital interactions."
+  },
+  "motion": "../sources/c439.mp4",
+  "ingredient": {
+    "name": "Cropped motion",
+    "role": "Retain related behavior across different interaction scales.",
+    "application": "Compare the active curve segment and displacement in the full and cropped specimens.",
+    "scope": "This is the source’s illustrated comparison, not a claim that every short interaction must use one copied duration."
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "id": "DB1305",
+  "title": "Variable Flächenmodule",
+  "image": "db1305.png",
+  "source": "../sources/page-13.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 13,
+    "section": 5,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Layout"
+  },
+  "slide_intent": "Add a surface only when it helps content separate from an image so flexibility serves readability.",
+  "strategic_value": "Variable modules can let DB retain consistent elements across image-led and quieter communication.",
+  "demonstration": "Four diagrams compare full-image use, an inset dark module, a partial white module and an image placed on a white ground.",
+  "category": "Layout",
+  "practical_value": "Choose between direct image placement, a content panel or an image panel according to legibility and communicative emphasis.",
+  "content_islands": [
+    {
+      "name": "Module rationale",
+      "spec": "Place the readability and flexibility explanation above the diagrams."
+    },
+    {
+      "name": "Layout options",
+      "spec": "Arrange the four labeled module strategies in a two-by-two grid."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source introduces modules when content is not sufficiently readable over an image.",
+    "Application": "Four examples demonstrate alternative image/text surface relationships."
+  },
+  "ingredient": {
+    "name": "Variable layout surfaces",
+    "role": "Separate text and image when readability needs support.",
+    "application": "Adapt module size to content, or place the image in a module on a white background.",
+    "scope": "Official DB new-design website captured 2026-11-05; edition date unstated. Modules are a response to context and legibility, not mandatory in every layout."
+  }
+}

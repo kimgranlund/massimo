@@ -1,0 +1,30 @@
+{
+  "id": "DB16",
+  "title": "Identity overview / contents photograph",
+  "image": "db16.png",
+  "source": "../sources/db16.jpg",
+  "location": {
+    "series": "COLLINS / Dropbox / 2017 identity case study",
+    "item": 16,
+    "section": "Gallery",
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Make a system navigable because designers need to find the relevant ingredient before applying it.",
+  "strategic_value": "A clear contents hierarchy can make Dropbox’s substantial identity guidance usable.",
+  "demonstration": "An angled photograph shows a blue left page and a white contents page grouping logo, foundations and image topics with page numbers.",
+  "category": "Layout",
+  "practical_value": "Distinguish section headings from numbered ingredient topics in a guideline index.",
+  "content_islands": [
+    {
+      "name": "Contents hierarchy",
+      "spec": "Keep the grouped labels and aligned folios on the white page."
+    },
+    {
+      "name": "Book context",
+      "spec": "Retain the blue facing page, page angle and desk so this remains a photographed excerpt."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "An angled photograph shows a blue left page and a white contents page grouping logo, foundations and image topics with page numbers."
+  }
+}

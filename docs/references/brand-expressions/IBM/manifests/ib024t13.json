@@ -1,0 +1,41 @@
+{
+  "id": "IB024T13",
+  "title": "Technical diagrams / Large node — Color block",
+  "image": "ib024t13.png",
+  "source": "../sources/alternate-tabs.json",
+  "location": {
+    "series": "IBM Design Language / alternate tab states",
+    "parent": "IB024",
+    "group": 1,
+    "tab": 3,
+    "label": "Color block node",
+    "url": "https://www.ibm.com/design/language/infographics/technical-diagrams/design/",
+    "order": 24113
+  },
+  "slide_intent": "Separate an icon’s region from a longer label, because visual grouping can keep a node understandable as its text grows.",
+  "strategic_value": "A repeatable colored icon block can preserve IBM diagram structure while accommodating additional description.",
+  "demonstration": "A pale-blue large node contains a white person icon in a solid blue block at upper left, a multiline label at right and an inset Child node below. Its captions identify the container as expanded for nesting and state that the color block does not expand.",
+  "category": "Geometry",
+  "practical_value": "Use the color-block large-node treatment to distinguish the icon region while accommodating longer labels and nested nodes.",
+  "content_islands": [
+    {
+      "name": "Node-type selector",
+      "spec": "Show Color block node selected after the outlined and side-bar options."
+    },
+    {
+      "name": "Icon block",
+      "spec": "Place the white person icon within the solid blue left compartment."
+    },
+    {
+      "name": "Label region",
+      "spec": "Set the expanded-for-nesting label and the Color block does not expand explanation to the right of the icon block."
+    },
+    {
+      "name": "Nested node",
+      "spec": "Place a white outlined Child node inside the lower part of the expanded pale-blue container."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The paused specimen shows a nested Child node within the expanded container; the visible caption states that the color block does not expand."
+  }
+}

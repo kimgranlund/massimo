@@ -1,0 +1,24 @@
+{
+  "id": "F88",
+  "title": "Presentations",
+  "image": "f88.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 88
+  },
+  "slide_intent": "Teach how a presentation changes pace between an opening, divider, content slide and chart. The audience needs to recognize the level of information before reading the details.",
+  "strategic_value": "The brand can remain visible across a talk while a quiet white layout gives evidence and explanation the space they need.",
+  "demonstration": "Nine examples form a three-by-three grid on pink. Bright covers and section dividers sit alongside white text, image and chart slides and a photographic closing statement.",
+  "category": "Application",
+  "practical_value": "Use a divider treatment for a section change, a quieter page for dense copy, and a dedicated chart layout when the data is the main evidence.",
+  "content_islands": [
+    {
+      "name": "Title and divider examples",
+      "spec": "Keep the image-bearing covers and headline-led dividers at comparable thumbnail sizes so their role is apparent."
+    },
+    {
+      "name": "Content examples",
+      "spec": "Show text, photography, chart and closing examples in the same three-column grid. Retain gutters so the slide boundaries read clearly."
+    }
+  ]
+}

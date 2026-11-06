@@ -1,0 +1,37 @@
+{
+  "id": "HE096",
+  "title": "PowerPoint",
+  "image": "he096.png",
+  "source": "../sources/design-and-create.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "PowerPoint",
+    "order": 130,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/design-and-create#powerpoint",
+    "original_html": "../sources/design-and-create.html"
+  },
+  "slide_intent": "Match presentation density to how people encounter it so an oral talk and a distributed document remain understandable.",
+  "strategic_value": "Rhythm and a limited set of templates can make Helsinki presentations coherent without making every slide identical.",
+  "demonstration": "Expanded webpage section: bullets distinguish spoken, distributed and Teams presentations above a grid of slide examples.",
+  "category": "Layout",
+  "practical_value": "Use fewer layouts and visual pauses for a talk; use publication-like hierarchy for a deck sent to readers.",
+  "content_islands": [
+    {
+      "name": "Presentation advice",
+      "spec": "The upper list links templates and explains rhythm, density and delivery contexts."
+    },
+    {
+      "name": "Slide examples",
+      "spec": "A contact sheet below combines image, quote, diagram and text layouts."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The source contrasts oral presentations with distributed publications and recommends a limited set of templates with visual pauses."
+  },
+  "ingredient": {
+    "name": "Presentation rhythm",
+    "role": "Keep attention aligned with spoken or distributed content.",
+    "application": "Use a limited selection of slide templates and alternate dense content with images or pull quotes; design a distributed deck with publication-like hierarchy.",
+    "scope": "Advice for Helsinki PowerPoint presentations in the captured live guideline; delivery context changes the composition."
+  }
+}

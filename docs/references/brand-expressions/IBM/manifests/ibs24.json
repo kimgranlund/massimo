@@ -1,0 +1,40 @@
+{
+  "id": "IBS24",
+  "title": "Joint logo lockup",
+  "image": "ibs24.png",
+  "source": "../sources/ibm-logo-strategic-partners.pdf",
+  "location": {
+    "page": 24,
+    "series": "IBM Logo Guidelines for Strategic Partners / Version 1.2 / copyright 2023",
+    "order": 200024
+  },
+  "slide_intent": "Define a narrow exception to normal separation so a joint announcement does not become an unauthorized joint identity.",
+  "strategic_value": "Controlled lockup creation can let IBM announce partnerships while protecting the distinct roles of each brand.",
+  "demonstration": "The page explains rare lockup use, shows a Red Hat/IBM lockup and a phone-page example with a link to a live reference.",
+  "category": "Brand",
+  "practical_value": "Use an IBM-created lockup only for its approved announcement context rather than treating it as a reusable offering identity.",
+  "content_islands": [
+    {
+      "name": "Exception guidance",
+      "spec": "Place the rarity, authorship and intended-use explanation in the left column."
+    },
+    {
+      "name": "Lockup specimen",
+      "spec": "Center the Red Hat and IBM example in the middle column."
+    },
+    {
+      "name": "Context example",
+      "spec": "Place the phone-page mockup and live-example link at right."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The page shows a joint lockup in a partnership announcement context.",
+    "Constraint": "Only IBM’s brand design team creates these assets; typical use is official joint announcements or partnership messaging, and the lockup is not an identity for a joint offering."
+  },
+  "ingredient": {
+    "name": "Joint logo lockup",
+    "role": "Identify a specifically approved partnership announcement.",
+    "application": "Use the approved IBM-created artwork only within its intended announcement or partnership-message scope.",
+    "scope": "Rare exception in this partner guide. It does not authorize partners to make lockups or use one as the identity of a joint offering."
+  }
+}

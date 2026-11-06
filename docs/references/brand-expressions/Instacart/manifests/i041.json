@@ -1,0 +1,29 @@
+{
+  "id": "I041",
+  "title": "Type Hierarchy",
+  "image": "i041.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 41,
+    "printed_page": 41
+  },
+  "slide_intent": "Teach designers to size text roles in relation to a headline so readers can distinguish an invitation, supporting detail and legal copy.",
+  "strategic_value": "A proportional hierarchy can preserve Instacart’s emphasis as layouts change size, while a minimum legal size protects the smallest information.",
+  "demonstration": "A role specimen labels the eyebrow as one-sixth of headline size and the subheadline as one-third. Arrows connect the sample to tracking and leading notes still marked TBD.",
+  "category": "Typography",
+  "practical_value": "Set the headline first, calculate the supporting roles, then check the 8 pt minimum for legal copy. Treat the unresolved tracking and leading entries as draft values.",
+  "content_islands": [
+    {
+      "name": "Usage rules",
+      "spec": "Stack case, justification, proportions and tracking guidance in a narrow left column."
+    },
+    {
+      "name": "Role specimen",
+      "spec": "Compose an eyebrow, display headline, subheadline, body and legal copy in a central stack. Keep the relative size relationships visible."
+    },
+    {
+      "name": "Settings key",
+      "spec": "Run arrows to a right-hand column of role names and status notes; preserve the TBD labels for unresolved settings."
+    }
+  ]
+}

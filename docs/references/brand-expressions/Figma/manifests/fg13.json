@@ -1,0 +1,35 @@
+{
+  "id": "FG13",
+  "title": "Relativity / collaborators",
+  "image": "fg13.png",
+  "source": "../sources/fg13.png",
+  "location": {
+    "series": "COLLINS / Figma / Nothing Great Is Made Alone case study",
+    "item": 13,
+    "section": "Gallery",
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Represent intellectual work as shared contribution because invisible collaboration is otherwise easy to overlook.",
+  "strategic_value": "A scientific diagram with participant labels can broaden Figma’s campaign beyond the visual arts.",
+  "demonstration": "An illustrated space-time diagram on gray carries four colored names, tools and cyan editing controls inside a black border.",
+  "category": "Imagery",
+  "practical_value": "Adapt the collaboration motif to an abstract subject through recognizable diagrams and named contributors.",
+  "content_islands": [
+    {
+      "name": "Diagram",
+      "spec": "Center the double cone and plane with time and space axes."
+    },
+    {
+      "name": "Participants",
+      "spec": "Place Albert above, Emmy left, Marcel right and Michele below right, paired with tool symbols."
+    },
+    {
+      "name": "Editing controls",
+      "spec": "Highlight lines and the lower ellipse with cyan points and handles."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A scientific diagram receives the same participant labels and editing treatment as the art campaign.",
+    "Intent": "The source narrative describes using stories of how great things were made to challenge individual-genius myths."
+  }
+}

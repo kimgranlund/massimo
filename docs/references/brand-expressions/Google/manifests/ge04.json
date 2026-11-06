@@ -1,0 +1,38 @@
+{
+  "id": "GE04",
+  "title": "Understanding the System / Logotype",
+  "image": "ge04.png",
+  "source": "../sources/ge04.mp4",
+  "location": {
+    "series": "Evolving the Google Identity / 2015",
+    "item": 4,
+    "extent": "whole source",
+    "poster_seconds": 14.575,
+    "duration_seconds": 29.15
+  },
+  "slide_intent": "Connect letter construction to real reproduction conditions so geometric consistency does not replace optical judgment.",
+  "strategic_value": "A defined construction and spacing system can help Google’s teams reproduce the mark consistently across products.",
+  "demonstration": "The animation builds letter skeletons with circles and guide lines, reveals colored and monochrome wordmarks at changing sizes, and ends with a measured Google Maps lockup.",
+  "category": "Geometry",
+  "practical_value": "Review construction, size and adjacent product-name spacing as related decisions instead of judging only a large logo.",
+  "content_islands": [
+    {
+      "name": "Letter construction sequence",
+      "spec": "Build the centered wordmark from arcs and outlines between guide lines."
+    },
+    {
+      "name": "Reproduction comparisons",
+      "spec": "Replace the construction with colored and gray marks at different scales."
+    },
+    {
+      "name": "Lockup measurement",
+      "spec": "Finish with a Google Maps lockup and its surrounding spacing grid."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The article links geometric forms and schoolbook simplicity to an approachable style and explains testing for digital legibility.",
+    "Expression": "The sequence demonstrates the final logotype in color and monochrome.",
+    "Application": "Construction guides and the final product lockup illustrate reproduction and spacing considerations."
+  },
+  "motion": "../sources/ge04.mp4"
+}

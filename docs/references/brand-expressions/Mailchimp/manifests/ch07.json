@@ -1,0 +1,31 @@
+{
+  "id": "CH07",
+  "title": "Animated signature",
+  "image": "ch07.png",
+  "source": "../sources/ch07.gif",
+  "location": {
+    "series": "COLLINS / Mailchimp case study",
+    "item": 7,
+    "extent": "Complete published artwork",
+    "section": "Gallery"
+  },
+  "slide_intent": "Connect a symbol to its name over time because viewers may recognize one before the other.",
+  "strategic_value": "The Freddie-to-wordmark reveal can establish the relationship between Mailchimp’s character and name.",
+  "demonstration": "The short yellow-backed loop starts with Freddie alone and reveals the bold lowercase wordmark beside it.",
+  "category": "Motion",
+  "practical_value": "Compare a staged logo reveal with a static lockup.",
+  "content_islands": [
+    {
+      "name": "Symbol",
+      "spec": "Anchor the character at left during the reveal."
+    },
+    {
+      "name": "Name",
+      "spec": "Reveal the black wordmark to the right while the yellow field remains stable."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The loop changes from a character-only state to the full horizontal signature."
+  },
+  "motion": "../sources/ch07.mp4"
+}

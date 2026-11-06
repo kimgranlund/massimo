@@ -1,0 +1,42 @@
+{
+  "id": "DW108",
+  "title": "Illustration / Assigning color",
+  "image": "dw108.png",
+  "source": "../sources/pages/illustration-shape-language.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/illustration/shape-language",
+    "section": "Assigning color",
+    "item": 108,
+    "order": 1080
+  },
+  "slide_intent": "Choose expressive color deliberately because literal coloring can miss an opportunity to communicate personality.",
+  "strategic_value": "Unexpected blue and pink animals can make Duolingo illustrations feel playful and vibrant.",
+  "demonstration": "Brown and blue dogs sit above gray and pink rabbits, with each pair labeled acceptable and better.",
+  "category": "Color",
+  "practical_value": "Explore lively color alternatives while preserving recognition of the subject.",
+  "content_islands": [
+    {
+      "name": "Dog comparison",
+      "spec": "Place the brown dog beside the preferred blue dog with their captions."
+    },
+    {
+      "name": "Rabbit comparison",
+      "spec": "Repeat the comparison below with gray and pink rabbits."
+    },
+    {
+      "name": "Color direction",
+      "spec": "Place the short invitation to use playful vibrant color at right."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text explicitly seeks colorful, vibrant illustrations.",
+    "Application": "The two pairs prefer playful blue and pink alternatives while calling the literal treatments acceptable."
+  },
+  "ingredient": {
+    "name": "Expressive illustration color",
+    "role": "Give familiar subjects a playful character.",
+    "application": "Explore vibrant nonliteral colors as demonstrated by the blue dog and pink rabbit.",
+    "scope": "These comparisons express a preference; the left examples are explicitly acceptable, not prohibited."
+  }
+}

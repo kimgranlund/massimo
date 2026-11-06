@@ -1,0 +1,34 @@
+{
+  "id": "IBS18",
+  "title": "Examples / Displays",
+  "image": "ibs18.png",
+  "source": "../sources/ibm-logo-strategic-partners.pdf",
+  "location": {
+    "page": 18,
+    "series": "IBM Logo Guidelines for Strategic Partners / Version 1.2 / copyright 2023",
+    "order": 200018
+  },
+  "slide_intent": "Preserve source clarity at physical scale so visitors can identify the host while noticing supporting organizations.",
+  "strategic_value": "A partner-led display system can make IBM visible without competing with the event or booth owner.",
+  "demonstration": "A wide welcome sign with a viewer silhouette and partner-logo grid is compared with a narrow roll-up banner.",
+  "category": "Application",
+  "practical_value": "Adjust acknowledgement density and placement to the display format and expected viewing distance.",
+  "content_islands": [
+    {
+      "name": "Welcome signage",
+      "spec": "Place the wide display at left, with partner branding and message separated from the supporting-logo grid; include the human silhouette for scale."
+    },
+    {
+      "name": "Booth banner",
+      "spec": "Place the vertical roll-up at right with partner identity above a small IBM acknowledgement and a larger lower content field."
+    },
+    {
+      "name": "Qualification",
+      "spec": "Retain the nonexclusive-layout note below."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The page applies the hierarchy to a welcome sign and roll-up banner, including a human-scale reference.",
+    "Constraint": "The layouts are explicitly examples and do not prescribe all permitted display arrangements."
+  }
+}

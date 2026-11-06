@@ -1,0 +1,39 @@
+{
+  "id": "IB039T12",
+  "title": "Pictograms / Expressive application — Automation collateral",
+  "image": "ib039t12.png",
+  "source": "../sources/alternate-tabs.json",
+  "location": {
+    "series": "IBM Design Language / alternate tab states",
+    "parent": "IB039",
+    "group": 1,
+    "tab": 2,
+    "label": "Expressive",
+    "url": "https://www.ibm.com/design/language/iconography/pictograms/usage/",
+    "order": 39112
+  },
+  "slide_intent": "Coordinate a bold graphic with supporting explanation, because expressive imagery works best when it directs attention to a clear proposition.",
+  "strategic_value": "The gradient-path motif and supporting symbols can connect IBM’s automation message to its pictogram vocabulary.",
+  "demonstration": "The displayed collateral excerpt pairs an automation headline at upper left with broad blue-cyan paths and black circular nodes at upper right; text and three smaller benefit symbols sit below.",
+  "category": "Application",
+  "practical_value": "Compare the hero motif’s prominence with the supporting symbols before deciding how much expressive detail a communication needs.",
+  "content_islands": [
+    {
+      "name": "Type selector",
+      "spec": "Show Expressive selected beside Productive."
+    },
+    {
+      "name": "Headline and hero motif",
+      "spec": "Place the Robotic Process Automation label, headline and supporting line at left, balanced by thick gradient paths and circular nodes at right."
+    },
+    {
+      "name": "Supporting content",
+      "spec": "Below, divide a text column from three smaller symbol-and-caption groups; preserve the source excerpt’s lower crop."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The blue-cyan paths, black nodes and smaller line symbols demonstrate the expressive vocabulary in a marketing layout.",
+    "Application": "The source shows an IBM Robotic Process Automation collateral example pairing the graphic with a specific message.",
+    "Constraint": "The accompanying usage text says expressive pictograms should be used selectively and sparingly where strong graphic presence is needed."
+  }
+}

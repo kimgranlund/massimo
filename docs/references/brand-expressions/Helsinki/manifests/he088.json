@@ -1,0 +1,31 @@
+{
+  "id": "HE088",
+  "title": "A glossary of terms",
+  "image": "he088.png",
+  "source": "../sources/design-and-create.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "A glossary of terms",
+    "order": 119,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/design-and-create#a-glossary-of-terms",
+    "original_html": "../sources/design-and-create.html"
+  },
+  "slide_intent": "Define working terms so designers and commissioners can describe the same choices without ambiguity.",
+  "strategic_value": "A shared glossary can reduce misunderstandings in Helsinki identity briefs and reviews.",
+  "demonstration": "Expanded webpage section: a long single-column glossary pairs bold terms with definitions of identity, marks, typography, image production and printing.",
+  "category": "Voice",
+  "practical_value": "Consult a term before treating similar design or production concepts as interchangeable. The glossary’s older four-weight Helsinki Grotesk description differs from the linked 2025 six-weight Pro specimen.",
+  "content_islands": [
+    {
+      "name": "Identity vocabulary",
+      "spec": "The upper entries define guidelines, visual identity, wave motifs, icons and brand."
+    },
+    {
+      "name": "Production vocabulary",
+      "spec": "Subsequent entries explain type, image and print concepts in the same term-definition structure."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The glossary supplies definitions for recurring terms used throughout the visual identity guidance."
+  }
+}

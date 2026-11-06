@@ -1,0 +1,30 @@
+{
+  "id": "IG20",
+  "title": "Reels trend report / Your dose of good vibes",
+  "image": "ig20.png",
+  "source": "../sources/ig20.png",
+  "location": {
+    "series": "Elvis Dinh / Instagram brand design system / project year 2022",
+    "item": 20,
+    "extent": "whole source artwork"
+  },
+  "slide_intent": "Use a dominant field and a contrasting text accent to keep an illustrated message coherent.",
+  "strategic_value": "A yellow field with violet lettering can make a busy Instagram illustration read as one campaign asset.",
+  "demonstration": "A yellow vertical composition pairs a small report label, a beach illustration and the large phrase Your dose of good vibes.",
+  "category": "Color",
+  "practical_value": "Keep the field continuous around detailed imagery and reserve the accent block for a key word.",
+  "content_islands": [
+    {
+      "name": "Illustrated scene",
+      "spec": "Set the beach illustration in the upper half beneath the report label."
+    },
+    {
+      "name": "Headline block",
+      "spec": "Place the violet message below and reverse vibes from a violet rounded rectangle."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Yellow, violet and the playful illustration establish a vivid character.",
+    "Application": "The example shows background color carrying both illustration and headline."
+  }
+}

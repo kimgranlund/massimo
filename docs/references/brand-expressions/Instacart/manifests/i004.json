@@ -1,0 +1,24 @@
+{
+  "id": "I004",
+  "title": "Framework",
+  "image": "i004.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 4
+  },
+  "slide_intent": "Signal a change from navigation to positioning so the reader can follow the book’s argument.",
+  "strategic_value": "A consistent divider can distinguish strategic framing from specific instructions.",
+  "demonstration": "A single large Framework title sits on an otherwise open dark green page.",
+  "category": "Layout",
+  "practical_value": "Use the divider as the reference for introducing a new chapter at the same pace.",
+  "content_islands": [
+    {
+      "name": "Running labels",
+      "spec": "Set book, version and folio in small type across the top."
+    },
+    {
+      "name": "Section title",
+      "spec": "Place Framework below the labels at the left in pale display lettering on a dark field."
+    }
+  ]
+}

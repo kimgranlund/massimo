@@ -1,0 +1,31 @@
+{
+  "id": "CH27",
+  "title": "Figures reaching for stars",
+  "image": "ch27.png",
+  "source": "../sources/ch27.gif",
+  "location": {
+    "series": "COLLINS / Mailchimp case study",
+    "item": 27,
+    "extent": "Complete published artwork",
+    "section": "Gallery"
+  },
+  "slide_intent": "Coordinate a group’s small actions because shared movement can make an illustration feel socially connected.",
+  "strategic_value": "The lively cluster on yellow can give Mailchimp’s drawn world a celebratory character.",
+  "demonstration": "A short loop shows a stack of irregular figures shifting and reaching among stars beneath a crescent moon.",
+  "category": "Motion",
+  "practical_value": "Study how small pose changes animate a compact illustration without replacing its composition.",
+  "content_islands": [
+    {
+      "name": "Figure cluster",
+      "spec": "Center the linked figures and preserve the shifting poses within their shared silhouette."
+    },
+    {
+      "name": "Sky details",
+      "spec": "Place stars and crescent around the upper cluster on the continuous yellow field."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The loop animates a compact group of drawn figures against yellow."
+  },
+  "motion": "../sources/ch27.mp4"
+}

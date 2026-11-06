@@ -1,0 +1,52 @@
+{
+  "id": "IB016",
+  "title": "Illustration / Isometric style — Design",
+  "image": "ib016.png",
+  "source": "../sources/illustration-isometric-style-design.txt",
+  "location": {
+    "series": "IBM Design Language / public web guidelines",
+    "item": 16,
+    "extent": "Complete webpage content-area capture; interactive elements retain their captured state",
+    "url": "https://www.ibm.com/design/language/illustration/isometric-style/design/",
+    "order": 16000
+  },
+  "slide_intent": "Keep perspective, light and material cues coherent so viewers can understand spatial relationships without visual contradictions.",
+  "strategic_value": "A common isometric construction and restrained lighting can help IBM explain complex technology while retaining a sense of clarity and ease.",
+  "demonstration": "Spatial scenes are followed by primitive volumes, grid and angle construction, curve and radius examples, surface treatments and consistent versus conflicting shadows.",
+  "category": "Geometry",
+  "practical_value": "Choose isometric illustration when depth aids explanation, then keep grid alignment, light direction and shadow style consistent.",
+  "content_islands": [
+    {
+      "name": "Spatial examples",
+      "spec": "Introduce technology and human scenes with floating, thin and aligned objects."
+    },
+    {
+      "name": "Volumes and behavior",
+      "spec": "Show primitive solid families and their combination into a magnifying glass and book, followed by lightweight arrangements."
+    },
+    {
+      "name": "Grid and construction",
+      "spec": "Present the isometric grid, snapped-point comparisons, a laptop construction overlay and predefined angle diagram."
+    },
+    {
+      "name": "Curves and nested geometry",
+      "spec": "Compare circular and organic curves and aligned human forms, then nested radii."
+    },
+    {
+      "name": "Materials and illumination",
+      "spec": "Finish with gradients, transparency, single-source lighting and shadow-style comparisons, ending with an illuminated layered graphic."
+    }
+  ],
+  "ingredient": {
+    "name": "Isometric perspective and lighting",
+    "role": "Make spatial and material relationships readable.",
+    "application": "Ground primary objects in the isometric grid; use a single consistent light direction and a consistent shadow style within an illustration or related set.",
+    "scope": "IBM isometric illustrations. Organic curves are permitted but retain an isometric foundation; transparency is added only when necessary."
+  },
+  "reference_purposes": {
+    "Intent": "The source recommends isometric style when space and dimension improve explanation and connects lightweight arrangements to ease in human–technology relationships.",
+    "Expression": "The illustrated scenes demonstrate IBM’s spatial technology vocabulary.",
+    "Application": "Grid, volume and light diagrams explain how to construct and shade the style.",
+    "Constraint": "The source directs primary elements to isometric angles, requires a consistent single light source and shadow style, and permits off-grid anchors only when necessary."
+  }
+}

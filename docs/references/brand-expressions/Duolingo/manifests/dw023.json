@@ -1,0 +1,38 @@
+{
+  "id": "DW023",
+  "title": "Feather Bold / Usage",
+  "image": "dw023.png",
+  "source": "../sources/pages/identity-typography.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/identity/typography",
+    "section": "Usage",
+    "item": 23,
+    "order": 230
+  },
+  "slide_intent": "Set boundaries for expressive type because a distinctive voice still needs readable rhythm and scale.",
+  "strategic_value": "Controlled headline length, spacing and case can let Duolingo’s display face remain clear as well as recognizable.",
+  "demonstration": "Three examples show a short headline, a phrase containing the wordmark and a left-aligned list, beside size, spacing, length and case guidance.",
+  "category": "Typography",
+  "practical_value": "Check headline length, size, leading, case and alignment before applying Feather Bold.",
+  "content_islands": [
+    {
+      "name": "Usage examples",
+      "spec": "Stack the short headline, brand-name phrase and left-aligned list with their role captions in the left panel."
+    },
+    {
+      "name": "Setting rules",
+      "spec": "Place the heading and numerical settings, length, case, alignment and hyphenation conditions in the right column."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The examples demonstrate brief headlines, brand-name phrases and left-aligned lists.",
+    "Constraint": "The text specifies 100–110% leading, -20 tracking, its printed “0, optical” kerning instruction, minimum 30 pt/px and case/alignment restrictions with exceptions."
+  },
+  "ingredient": {
+    "name": "Feather Bold settings",
+    "role": "Maintain a readable expressive headline voice.",
+    "application": "Use 100–110% leading, tracking -20 and the source’s “0, optical” kerning instruction; never below 30 pt in print or 30 px onscreen. Use lowercase, with capitals allowed for person/place names; prefer left alignment, never fully justify or hyphenate. Longer than 10 words is a cue to consider DIN Next Rounded.",
+    "scope": "Historical archived guidelines. Historical display-face guidance. Above 80 pt in print or 80 px onscreen, leading may decrease as size increases; the source’s wording about long sentences is advisory."
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "id": "IB024T12",
+  "title": "Technical diagrams / Large node — Side bar",
+  "image": "ib024t12.png",
+  "source": "../sources/alternate-tabs.json",
+  "location": {
+    "series": "IBM Design Language / alternate tab states",
+    "parent": "IB024",
+    "group": 1,
+    "tab": 2,
+    "label": "Side bar node",
+    "url": "https://www.ibm.com/design/language/infographics/technical-diagrams/design/",
+    "order": 24112
+  },
+  "slide_intent": "Let a node’s structure accommodate its text and icon needs, because the label must remain the primary carrier of meaning in a complex diagram.",
+  "strategic_value": "A consistent side-bar variant can give IBM technical diagrams flexible content capacity without inventing unrelated containers.",
+  "demonstration": "Two pale-blue large nodes show expanded containers for nesting, one with a person icon and one without. Each contains a white Child node below its label; each caption states that the side bar expands with the text.",
+  "category": "Geometry",
+  "practical_value": "Use the side-bar large-node variant for longer labels and nested nodes, with or without an icon.",
+  "content_islands": [
+    {
+      "name": "Node-type selector",
+      "spec": "Show Side bar node selected between Outlined node and Color block node."
+    },
+    {
+      "name": "Icon-bearing node",
+      "spec": "Place the icon-bearing large node on the left, with its expanded-for-nesting label, side-bar explanation and inset Child node."
+    },
+    {
+      "name": "Text-only node",
+      "spec": "Place the icon-free large node on the right, repeating the expanded container, side-bar explanation and inset Child node."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The accompanying large-node text says larger containers serve longer names and descriptions where text carries the most meaning.",
+    "Application": "The paused specimen shows the side-bar treatment with and without an icon, with a nested Child node in each; its captions explicitly state that the side bar expands with the text."
+  }
+}

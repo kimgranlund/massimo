@@ -1,0 +1,29 @@
+{
+  "id": "IG01",
+  "title": "Brand system overview — video poster",
+  "image": "ig01.png",
+  "source": "../sources/ig01.jpg",
+  "location": {
+    "series": "Elvis Dinh / Instagram brand design system / project year 2022",
+    "item": 1,
+    "extent": "whole source artwork"
+  },
+  "slide_intent": "Use a familiar outline to organize different human moments so variety remains identifiable.",
+  "strategic_value": "The nested rounded frames can connect personal imagery with Instagram’s recognizable shape.",
+  "demonstration": "The supplied Vimeo poster layers portraits and everyday scenes inside nested rounded-square openings. The overview video is unavailable.",
+  "category": "Imagery",
+  "practical_value": "Compare how a recognizable mask can hold varied photographs without needing a separate frame around each.",
+  "content_islands": [
+    {
+      "name": "Nested image frames",
+      "spec": "Fill the landscape field with successive rounded-square photo crops."
+    },
+    {
+      "name": "Central moment",
+      "spec": "Keep the smallest everyday scene at the center as the sequence’s visual destination."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The poster combines human imagery with nested rounded-square masks."
+  }
+}

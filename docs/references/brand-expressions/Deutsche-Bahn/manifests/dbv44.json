@@ -1,0 +1,35 @@
+{
+  "id": "DBV44",
+  "title": "Don_t_Effekte",
+  "image": "dbv44.png",
+  "source": "../sources/media/dbv44.mp4",
+  "location": {
+    "series": "DB new design / motion demonstrations",
+    "source_page": 15,
+    "section": "Do-s-und-Don-ts-14021640",
+    "source_url": "https://ecm-mediathek-cdn.deutschebahn.com/cdnenhancedecmvidhls/db306497/2881211/video_config.json",
+    "capture_date": "2026-11-05"
+  },
+  "slide_intent": "Reject added effects that obscure form because a viewer needs to recognize the motif during motion.",
+  "strategic_value": "The blurred counterexample can help DB preserve the clarity of the Schwelle across production tools.",
+  "demonstration": "The Schwelle sequence includes blurred edges and is crossed by a cyan diagonal rejection line.",
+  "category": "Motion",
+  "practical_value": "Avoid the added motion-blur effect shown here and compare the crisp approved sequence in DBV43.",
+  "content_islands": [
+    {
+      "name": "Blurred movement",
+      "spec": "Observe the softened edges during the red bar animation."
+    },
+    {
+      "name": "Rejection mark",
+      "spec": "Preserve the cyan diagonal source annotation distinguishing this from an approved specimen."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The Schwelle sequence includes blurred edges and is crossed by a cyan diagonal rejection line.",
+    "Application": "The source provides a playable rejected counterexample of this repeatable sequence: The Schwelle sequence includes blurred edges and is crossed by a cyan diagonal rejection line.",
+    "Intent": "The source says animating fewer parameters produces consistent motion that is straightforward to implement, and excluding effects preserves clarity.",
+    "Constraint": "The source states that effects such as motion blur are not intended."
+  },
+  "motion": "../sources/media/dbv44.mp4"
+}

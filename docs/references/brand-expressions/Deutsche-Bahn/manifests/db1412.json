@@ -1,0 +1,42 @@
+{
+  "id": "DB1412",
+  "title": "Bilder für die interne Kommunikation",
+  "image": "db1412.png",
+  "source": "../sources/page-14.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 14,
+    "section": 12,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Bildwelt"
+  },
+  "slide_intent": "Adapt professional principles to everyday capture so useful authentic images do not depend on a full production crew.",
+  "strategic_value": "Simple guidance can help DB staff document real work clearly in internal communication.",
+  "demonstration": "Expanded text sections provide five basic principles and subject-specific advice for employees, leaders, vehicles and infrastructure.",
+  "category": "Imagery",
+  "practical_value": "For spontaneous internal photographs, prioritize real activity, visible context, one clear focus and usable light over strict campaign styling.",
+  "content_islands": [
+    {
+      "name": "Internal scope",
+      "spec": "Explain why smartphone and spontaneous internal images prioritize authentic relevant content."
+    },
+    {
+      "name": "Five principles",
+      "spec": "Expand the guidance on work, context, focus, light and color."
+    },
+    {
+      "name": "Subject guidance",
+      "spec": "Expand separate advice and examples for employees, leaders, vehicles and infrastructure."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source explains that internal images are often spontaneous and prioritizes clear relevant content over strict stylistic reproduction.",
+    "Application": "Five principles and four subject guides provide concrete capture decisions.",
+    "Constraint": "Avoid staged poses, obscured faces, unnatural colors and isolated catalog-like vehicle images in this stated internal context."
+  },
+  "ingredient": {
+    "name": "Internal photography guidance",
+    "role": "Make everyday work clear and credible.",
+    "application": "Show real activities with their setting; keep one clear focus, readable natural light and differentiated color.",
+    "scope": "Official DB new-design website captured 2026-11-05; edition date unstated. Internal spontaneous photography has a lighter stylistic requirement than campaign, image and brand photography."
+  }
+}

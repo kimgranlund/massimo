@@ -1,0 +1,24 @@
+{
+  "id": "N41",
+  "title": "Interior Grid Formats: Journals and Technical Publications",
+  "image": "n41.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 41
+  },
+  "slide_intent": "Teach editors to give dense technical material breathing space. Readers need to find a figure, its caption and the text that explains it within a crowded spread.",
+  "strategic_value": "NASA can accommodate a large volume of technical information while giving readers recurring places to look for headings and figures.",
+  "demonstration": "Three rows compare pairs of spread diagrams. Red guides carry through the article columns. Open header bands, outlined figures and a division into six rectangular fields provide different ways to interrupt the text.",
+  "category": "Layout",
+  "practical_value": "Plan where a long article will yield space to a heading, diagram or caption before fitting the copy into the two-column layout.",
+  "content_islands": [
+    {
+      "name": "Format notes",
+      "spec": "Place the title at upper left and describe the three lettered options beside it."
+    },
+    {
+      "name": "Three spread comparisons",
+      "spec": "Stack rows a–c. In a, reserve an open band above the text. In b, run copy from top to bottom around outlined diagrams, with rules between articles. In c, align headings and text at the top of rectangular fields and place captions under photographs. Draw the underlying guides across each specimen."
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "id": "C445",
+  "title": "Temporary content interruption",
+  "image": "c445.png",
+  "source": "../sources/c445.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 / 2023 masterbrand case study",
+    "item": 45,
+    "extent": "Published video poster; complete local video linked"
+  },
+  "slide_intent": "Keep an operational message stable while the identity moves, because viewers need time to read why their programme is unavailable.",
+  "strategic_value": "The fixed black message over a shifting gradient can maintain Channel 4’s visual continuity during a service interruption.",
+  "demonstration": "Across the 24-second clip, a four-line notice about unavailable +1 content remains fixed near the upper left while the pink and lavender room-like gradient shifts; a narrow green field stays at the left edge.",
+  "category": "Motion",
+  "practical_value": "Decide which information must remain stationary when ambient brand motion continues behind it.",
+  "content_islands": [
+    {
+      "name": "Service notice",
+      "spec": "Hold the black notice near the upper left with consistent line breaks throughout the clip."
+    },
+    {
+      "name": "Moving background",
+      "spec": "Shift the pink and lavender recessed gradient behind the text while retaining the green strip at left."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "Pentagram’s accompanying case study explains that the worlds transform to contain functional content as well as narrative idents.",
+    "Expression": "Across the 24-second clip, a four-line notice about unavailable +1 content remains fixed near the upper left while the pink and lavender room-like gradient shifts; a narrow green field stays at the left edge.",
+    "Application": "The source demonstrates this treatment in an on-screen service-interruption notice."
+  },
+  "motion": "../sources/c445.mp4"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "HT01",
+  "title": "Helsinki Grotesk Pro",
+  "image": "ht01.png",
+  "source": "../sources/helsinki-grotesk-pro-2025.pdf",
+  "location": {
+    "page": 1,
+    "order": 179
+  },
+  "slide_intent": "Introduce a custom typeface as an identifiable voice so designers can connect technical font choices with a civic identity.",
+  "strategic_value": "A named custom family can give Helsinki a consistent typographic reference across suppliers.",
+  "demonstration": "A dark cover splits the large Helsinki Grotesk Pro name across lines beside the Gräbenbach lineage, copyright and Camelot contact information.",
+  "category": "Typography",
+  "practical_value": "Identify the family and its publisher before selecting or licensing font files.",
+  "content_islands": [
+    {
+      "name": "Typeface title",
+      "spec": "Large white lettering occupies the left of the dark field."
+    },
+    {
+      "name": "Provenance and contact",
+      "spec": "Smaller white information sits at upper and lower right separated by a rule."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A dark cover splits the large Helsinki Grotesk Pro name across lines beside the Gräbenbach lineage, copyright and Camelot contact information."
+  }
+}

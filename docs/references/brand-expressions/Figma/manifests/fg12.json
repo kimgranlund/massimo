@@ -1,0 +1,37 @@
+{
+  "id": "FG12",
+  "title": "Nothing Great Is Imagined Alone",
+  "image": "fg12.png",
+  "source": "../sources/fg12.png",
+  "location": {
+    "series": "COLLINS / Figma / Nothing Great Is Made Alone case study",
+    "item": 12,
+    "section": "Gallery",
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Separate the attention-getting claim from the supporting explanation because viewers encounter a poster at different reading distances.",
+  "strategic_value": "A large promise and small invitation can draw people into Figma’s collaboration story without requiring them to read everything at once.",
+  "demonstration": "Large black uppercase text fills the upper yellow field; a smaller paragraph and campaign URL sit near the bottom.",
+  "category": "Typography",
+  "practical_value": "Set two reading levels: a short claim for scanning and a concrete reason to continue.",
+  "content_islands": [
+    {
+      "name": "Headline",
+      "spec": "Stack the oversized campaign line at upper left across four tight lines."
+    },
+    {
+      "name": "Supporting invitation",
+      "spec": "Place the smaller Einstein-related explanation and URL at lower left, separated by open space."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The portrait artwork separates a large campaign statement from smaller explanatory copy and URL.",
+    "Intent": "The printed supporting text invites a team to learn from a story of collaborative discovery."
+  },
+  "ingredient": {
+    "name": "Two-level campaign typography",
+    "role": "Provide a quick claim and a slower explanation.",
+    "application": "Use a large compact headline, a broad pause and a smaller supporting paragraph with destination.",
+    "scope": "Observed portrait campaign layout; no numeric type sizes or universal spacing ratio are supplied."
+  }
+}

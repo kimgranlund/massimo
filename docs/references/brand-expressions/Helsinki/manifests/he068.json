@@ -1,0 +1,38 @@
+{
+  "id": "HE068",
+  "title": "One font weight in signs",
+  "image": "he068.png",
+  "source": "../sources/design-and-create.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "One font weight in signs",
+    "order": 95,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/design-and-create#one-font-weight-in-signs",
+    "original_html": "../sources/design-and-create.html"
+  },
+  "slide_intent": "Fix one signage weight so visitors see a stable hierarchy rather than unnecessary stylistic variation.",
+  "strategic_value": "Medium lettering can give Helsinki wayfinding a consistent voice across locations.",
+  "demonstration": "This expanded webpage-section capture states the Medium-only rule above a comparison that shows Medium in black and other weights in pale gray.",
+  "category": "Typography",
+  "practical_value": "Use Helsinki Grotesk Medium for signs instead of choosing a weight by visual preference.",
+  "content_islands": [
+    {
+      "name": "Weight rule",
+      "spec": "State the exclusive signage weight above the specimen."
+    },
+    {
+      "name": "Weight contrast",
+      "spec": "Emphasize Medium while fading Regular, Bold and Black."
+    }
+  ],
+  "ingredient": {
+    "name": "Signage type weight",
+    "role": "Keep wayfinding text consistent.",
+    "application": "Use Helsinki Grotesk Medium only.",
+    "scope": "Signs; this restriction does not replace the different video weight rule."
+  },
+  "reference_purposes": {
+    "Constraint": "Signs must use only Helsinki Grotesk Medium.",
+    "Expression": "The specimen contrasts Medium against three faded alternatives."
+  }
+}

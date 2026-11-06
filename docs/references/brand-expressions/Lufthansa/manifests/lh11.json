@@ -1,0 +1,40 @@
+{
+  "id": "LH11",
+  "title": "Spacing, stroke contrast and geometry",
+  "image": "lh11.png",
+  "source": "../sources/lh11.jpg",
+  "location": {
+    "series": "Mona Franz / Lufthansa 2018",
+    "item": 11,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Explain density through concrete letter details because a typeface voice depends on more than its family name.",
+  "strategic_value": "Tight spacing and low stroke contrast can help preserve Lufthansa’s compact typographic character.",
+  "demonstration": "Overlaid words, paired letters and highlighted counters compare DLH Helvetica with Helvetica Neue LT. Three notes explain spacing, stroke contrast and geometry.",
+  "category": "Typography",
+  "practical_value": "Distinguish spacing changes from changes to stroke weight and letter construction.",
+  "content_islands": [
+    {
+      "name": "Spacing comparison",
+      "spec": "Place the overlaid word and its note at top."
+    },
+    {
+      "name": "Stroke comparison",
+      "spec": "Pair H, n, o and t with the enlarged crossbar detail in the middle."
+    },
+    {
+      "name": "Geometry comparison",
+      "spec": "Align highlighted words, explanatory note and color key below."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Overlaid words, paired letters and highlighted counters compare DLH Helvetica with Helvetica Neue LT. Three notes explain spacing, stroke contrast and geometry.",
+    "Intent": "The printed notes connect tight spacing and stroke contrast with a compact, darker appearance."
+  },
+  "ingredient": {
+    "name": "Spacing, stroke contrast and geometry",
+    "role": "Maintain compact word shapes through spacing and stroke relationships.",
+    "application": "Distinguish spacing changes from changes to stroke weight and letter construction.",
+    "scope": "Historical 2018 Lufthansa airline refresh case study; observed example, not a complete brand manual or a current Lufthansa Group rule."
+  }
+}

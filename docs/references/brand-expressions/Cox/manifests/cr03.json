@@ -1,0 +1,26 @@
+{
+  "id": "CR03",
+  "title": "Content Library Still — mother and child",
+  "image": "cr03.png",
+  "source": "../sources/cr03.jpg",
+  "location": {
+    "series": "Cox Brand Collection — Lindsay Little / Periscope",
+    "item": 3,
+    "extent": "whole source image"
+  },
+  "slide_intent": "Choose expressions and proximity that let a viewer read affection before noticing the device.",
+  "strategic_value": "A tablet used within an affectionate exchange can make Cox feel compatible with family closeness.",
+  "demonstration": "A mother kisses a smiling child who holds a tablet in a bright kitchen, with soft colored light at the edges.",
+  "category": "Imagery",
+  "practical_value": "Select moments where the relationship remains the focal point while technology stays part of the scene.",
+  "content_islands": [
+    {
+      "name": "Family interaction",
+      "spec": "Place the mother and child together in the lower center, with the tablet beneath their faces."
+    },
+    {
+      "name": "Kitchen and light",
+      "spec": "Keep the bright kitchen softly out of focus and allow violet and pink highlights at the edges."
+    }
+  ]
+}

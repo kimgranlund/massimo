@@ -1,0 +1,28 @@
+{
+  "id": "B14",
+  "title": "Neutral colors",
+  "image": "b14.png",
+  "source": "../bolt-brand-guidelines-2025-12.pdf",
+  "location": {
+    "page": 14
+  },
+  "slide_intent": "Teach designers to use changes in value to guide reading order. A secondary line can recede while remaining legible beside the main message.",
+  "strategic_value": "Bolt can preserve the prominence of its lead blue while expressing secondary information through a family of cool grays.",
+  "demonstration": "Two rows of five swatches progress from Gray 100 through Gray 900 to Pure White. Gray 300, Gray 600 and Gray 900 carry Dark, Medium and Light labels. The copy gives secondary text as an example of neutral use.",
+  "category": "Color",
+  "practical_value": "Compare a candidate gray with its neighbors before using it for secondary text. Review the result on the actual background to judge legibility.",
+  "content_islands": [
+    {
+      "name": "Section rail",
+      "spec": "Repeat the dark rail with navigation at the top and page number at the bottom."
+    },
+    {
+      "name": "Neutral usage note",
+      "spec": "Set the heading above a short example about de-emphasizing information in a text-heavy layout."
+    },
+    {
+      "name": "Neutral scale",
+      "spec": "Fill the right side with a five-column, two-row grid. Run from dark to light in reading order, then end on the outlined white card. Put the color name and four reproduction references inside each card."
+    }
+  ]
+}

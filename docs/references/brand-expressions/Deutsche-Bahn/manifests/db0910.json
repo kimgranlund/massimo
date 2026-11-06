@@ -1,0 +1,31 @@
+{
+  "id": "DB0910",
+  "title": "Typography / Berlin texture and connected headline",
+  "image": "db0910.png",
+  "source": "../sources/page-09.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 9,
+    "section": 10,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Typografie_neu"
+  },
+  "slide_intent": "Use repeated words or an inserted symbol deliberately so graphic expression still supports a recognizable message.",
+  "strategic_value": "Berlin lettering and a Schwelle within a phrase can make DB headlines distinctive beyond their typeface.",
+  "demonstration": "A tower overlays repeated BERLIN lettering at left; a photograph supports Weniger STRESS and Mehr ZEIT separated by a red Schwelle at right.",
+  "category": "Typography",
+  "practical_value": "Compare decorative background type with an identity element joining words.",
+  "content_islands": [
+    {
+      "name": "Berlin field",
+      "spec": "Repeat the destination word behind the illustrated tower."
+    },
+    {
+      "name": "Connected phrase",
+      "spec": "Align the stressed headline words with the red Schwelle over the traveler photograph."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Type becomes a repeated texture and a headline composition with a red connector.",
+    "Application": "The pair shows destination and travel-benefit campaign treatments."
+  }
+}

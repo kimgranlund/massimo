@@ -1,0 +1,42 @@
+{
+  "id": "DW102",
+  "title": "Illustration / Shape language / Construction",
+  "image": "dw102.png",
+  "source": "../sources/pages/illustration-shape-language.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/illustration/shape-language",
+    "section": "Construction",
+    "item": 102,
+    "order": 1020
+  },
+  "slide_intent": "Limit the building blocks of illustration because repeated geometry makes different subjects feel related.",
+  "strategic_value": "A rounded construction vocabulary can connect Duolingo objects and characters without requiring the same silhouette.",
+  "demonstration": "Blue rounded shapes and constructed pear, cat and frog drawings contrast with a crossed-out set of sharp or elliptical shapes.",
+  "category": "Geometry",
+  "practical_value": "Build new drawings from the three stated base shapes and keep cut edges rounded.",
+  "content_islands": [
+    {
+      "name": "Accepted and rejected geometry",
+      "spec": "Place blue rounded examples beside the pink crossed-out shapes in the upper left panel."
+    },
+    {
+      "name": "Constructed subjects",
+      "spec": "Align the pear, cat and frog construction overlays beneath the shape comparison."
+    },
+    {
+      "name": "Construction guidance",
+      "spec": "Place the heading and explanation of three base shapes at right."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The source names rounded rectangles, circles and rounded triangles as base shapes and allows cutting them with a pathfinder tool.",
+    "Constraint": "The text requires rounded edges and calls pointy shapes off-brand."
+  },
+  "ingredient": {
+    "name": "Rounded illustration primitives",
+    "role": "Unify drawings through a recurring geometric vocabulary.",
+    "application": "Construct with rounded rectangles, circles and rounded triangles; cut them when needed while retaining rounded edges.",
+    "scope": "Historical illustration guidance; the four displayed blue specimens include a cut form, not four independent base-shape categories."
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "DBV06",
+  "title": "Signature graphic / transition",
+  "image": "dbv06.png",
+  "source": "../sources/media/dbv06.mp4",
+  "location": {
+    "series": "DB new design / motion demonstrations",
+    "source_page": 12,
+    "section": "Animation-14020370",
+    "source_url": "https://ecm-mediathek-cdn.deutschebahn.com/cdnenhancedecmvidhls/db306165/2880283/video_config.json",
+    "capture_date": "2026-11-05"
+  },
+  "slide_intent": "Preserve continuity between graphic states so viewers can follow a change of meaning.",
+  "strategic_value": "Transforming one striped symbol into another can make DB’s signature graphics behave as a family.",
+  "demonstration": "Red striped forms change between pause and play symbols against a dark field.",
+  "category": "Motion",
+  "practical_value": "Use shared stripe structure to connect two states rather than treating them as unrelated illustrations.",
+  "content_islands": [
+    {
+      "name": "Pause state",
+      "spec": "Arrange the red stripes into paired vertical groups."
+    },
+    {
+      "name": "Play state",
+      "spec": "Reconfigure the striped material into a right-pointing triangle."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Red striped forms change between pause and play symbols against a dark field.",
+    "Application": "The source provides a playable demonstration of this repeatable sequence: Red striped forms change between pause and play symbols against a dark field.",
+    "Intent": "Accompanying Icons, Signature Graphics, or Animation im UI prose explains that animation directs focus, makes relationships understandable, and adds expression.",
+    "Constraint": "The accompanying guidance says animation is deliberate and never disturbing or complex."
+  },
+  "motion": "../sources/media/dbv06.mp4"
+}

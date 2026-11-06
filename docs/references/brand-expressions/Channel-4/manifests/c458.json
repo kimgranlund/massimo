@@ -1,0 +1,34 @@
+{
+  "id": "C458",
+  "title": "Murder Island platform poster",
+  "image": "c458.png",
+  "source": "../sources/c458.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 / 2023 masterbrand case study",
+    "item": 58,
+    "extent": "Full published artwork"
+  },
+  "slide_intent": "Let imagery and lettering establish a programme’s tone while keeping its source visible, because viewers need both intrigue and attribution.",
+  "strategic_value": "The narrow spaced title over a dark island scene can give this Channel 4 programme a different mood from its sport and comedy campaigns.",
+  "demonstration": "A wide railway-platform billboard places the pale spaced Murder Island title over a low island and water image, with a small green 4 and streaming prompt at upper left.",
+  "category": "Application",
+  "practical_value": "Assess how a thin, widely spaced title reads against a detailed landscape in outdoor use.",
+  "content_islands": [
+    {
+      "name": "Broadcaster cue",
+      "spec": "Place the green 4 and small streaming line at the top-left edge of the poster."
+    },
+    {
+      "name": "Title and landscape",
+      "spec": "Carry the narrow pale title across the water-and-island scene."
+    },
+    {
+      "name": "Outdoor placement",
+      "spec": "Retain the billboard frame, foliage, platform and tracks to show its physical context."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A wide railway-platform billboard places the pale spaced Murder Island title over a low island and water image, with a small green 4 and streaming prompt at upper left.",
+    "Application": "The source demonstrates this treatment in a railway-platform billboard."
+  }
+}

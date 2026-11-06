@@ -1,0 +1,31 @@
+{
+  "id": "HE121",
+  "title": "PowerPoint templates",
+  "image": "he121.png",
+  "source": "../sources/download-elements.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "PowerPoint templates",
+    "order": 168,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/download-elements#powerpoint-templates",
+    "original_html": "../sources/download-elements.html"
+  },
+  "slide_intent": "Provide both examples and templates so authors can learn a visual treatment and then apply it.",
+  "strategic_value": "Linked image examples and presentation templates can support consistent Helsinki decks.",
+  "demonstration": "Expanded webpage section: two short text groups point to an example presentation and branded PowerPoint templates.",
+  "category": "Application",
+  "practical_value": "Review the examples, then start from the supplied presentation template.",
+  "content_islands": [
+    {
+      "name": "Image examples",
+      "spec": "The first group links to a presentation of image use."
+    },
+    {
+      "name": "Template access",
+      "spec": "The second group links to presentation templates."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The source permits copying images from its example presentation and directs authors to the presentation templates."
+  }
+}

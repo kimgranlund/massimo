@@ -1,0 +1,39 @@
+{
+  "id": "DW020",
+  "title": "Color / Duo’s palette",
+  "image": "dw020.png",
+  "source": "../sources/pages/identity-color.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/identity/color",
+    "section": "Duo's palette",
+    "item": 20,
+    "order": 200
+  },
+  "slide_intent": "Connect colors to specific character parts because small inconsistencies can weaken recognition of a familiar mascot.",
+  "strategic_value": "A body-part palette can help Duo look like the same character in print and on screens.",
+  "demonstration": "Eleven named color cards provide values for wings, feathers, mask, beak parts, feet, tongue and neutrals, beside a consistency instruction.",
+  "category": "Color",
+  "practical_value": "Use the named part-to-color mapping when preparing mascot artwork for a medium.",
+  "content_islands": [
+    {
+      "name": "Mascot color cards",
+      "spec": "Keep each named body-part or color swatch and its values in the left area."
+    },
+    {
+      "name": "Consistency instruction",
+      "spec": "Place the heading and reminder about correct body-part colors in the right column."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source identifies Duo as the most recognizable brand asset and ties correct colors to consistent depiction.",
+    "Application": "Body-part names link colors to where they belong.",
+    "Constraint": "The source instructs users to use the right colors for each body part."
+  },
+  "ingredient": {
+    "name": "Duo body-part palette",
+    "role": "Keep the mascot recognizable across reproductions.",
+    "application": "Use each supplied color for its named body part and retain the provided medium-specific values.",
+    "scope": "Historical archived guidelines. Historical Duo palette for screen and print. Do not substitute the general secondary palette for character parts."
+  }
+}

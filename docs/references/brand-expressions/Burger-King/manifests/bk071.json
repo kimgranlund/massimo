@@ -1,0 +1,35 @@
+{
+  "id": "BK071",
+  "title": "Type Size Relationship",
+  "image": "bk071.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 71
+  },
+  "slide_intent": "Keep differences in emphasis large enough that readers can recognize the information hierarchy at a glance.",
+  "strategic_value": "A controlled reduction from headline to subhead to body can make Burger King messages easier to scan without changing type families.",
+  "demonstration": "Headline, Subhead and Body Copy sit on a shared baseline with horizontal measurement guides and a written 50% relationship.",
+  "category": "Typography",
+  "practical_value": "Compare visible ascender and cap heights rather than assuming every relationship is a percentage of font point size.",
+  "content_islands": [
+    {
+      "name": "Ratio explanation",
+      "spec": "Place the short rule at upper left."
+    },
+    {
+      "name": "Measured hierarchy",
+      "spec": "Arrange the three role words across the center with guide lines showing their relative heights."
+    }
+  ],
+  "ingredient": {
+    "name": "Type-role size relationship",
+    "role": "Make the headline lead and supporting levels recede.",
+    "application": "For layouts using all three typefaces, cap subhead height at 50% of headline ascender height and body height at 50% of subhead cap height.",
+    "scope": "Historical 2020 partner guidelines, PDF produced January 2021. These are the source’s glyph-height measures, not a blanket 50% point-size rule."
+  },
+  "reference_purposes": {
+    "Intent": "The copy connects these limits to establishing clear hierarchy.",
+    "Application": "The diagram relates three type roles through measurable heights.",
+    "Constraint": "When all three faces are used, subheads are no larger than 50% of headline ascender height; body is no larger than 50% of subhead cap height."
+  }
+}

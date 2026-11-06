@@ -1,0 +1,24 @@
+{
+  "id": "F66",
+  "title": "Open to all",
+  "image": "f66.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 66
+  },
+  "slide_intent": "Introduce partnership as a relationship that must be identifiable in a communication. Readers need to recognize both the organization speaking and the affiliation it claims.",
+  "strategic_value": "Frontline AIDS can give partners a way to acknowledge collaboration while retaining their distinct identity.",
+  "demonstration": "A full-page street photograph carries the partnership introduction and a large stacked campaign headline near the center-right.",
+  "category": "Brand",
+  "practical_value": "Use this opener to frame the distinction the following pages will specify: partner affiliation and shared authorship require different identifiers.",
+  "content_islands": [
+    {
+      "name": "Partnership introduction",
+      "spec": "Overlay the chapter rail and short introductory copy on the darkened left edge of the photograph."
+    },
+    {
+      "name": "Photo and headline",
+      "spec": "Extend the photograph across the page. Place the three-line headline on pink strips with the hand-drawn accents near the people in the scene."
+    }
+  ]
+}

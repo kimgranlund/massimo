@@ -1,0 +1,36 @@
+{
+  "id": "ML13",
+  "title": "Typographic wall detail",
+  "image": "ml13.png",
+  "source": "../sources/ml13.jpg",
+  "location": {
+    "series": "Pentagram / MIT Media Lab / 2014 identity",
+    "item": 13,
+    "extent": "Published lightbox artwork"
+  },
+  "slide_intent": "Allow language and symbols to share a geometric rhythm so the environment carries both identity and research energy.",
+  "strategic_value": "A graphic wall can make typographic experimentation part of the lab’s physical character.",
+  "demonstration": "A close view alternates dense angular letterforms, repeated words and linear patterns.",
+  "category": "Typography",
+  "practical_value": "Compare text-led pattern blocks with symbol-led blocks.",
+  "content_islands": [
+    {
+      "name": "Pattern blocks",
+      "spec": "Vertical bands hold different repeated typographic motifs."
+    },
+    {
+      "name": "Passing figure",
+      "spec": "A blurred person contrasts with the crisp black and white wall."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A close view alternates dense angular letterforms, repeated words and linear patterns.",
+    "Application": "A close view alternates dense angular letterforms, repeated words and linear patterns."
+  },
+  "ingredient": {
+    "name": "Typographic wall detail",
+    "role": "Allow language and symbols to share a geometric rhythm so the environment carries both identity and research energy.",
+    "application": "Compare text-led pattern blocks with symbol-led blocks.",
+    "scope": "Observed in this historical case-study artwork; not a mandatory usage rule or a current brand standard."
+  }
+}

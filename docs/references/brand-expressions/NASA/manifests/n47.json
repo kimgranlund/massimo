@@ -1,0 +1,35 @@
+{
+  "id": "N47",
+  "title": "NASA Motor Vehicle Identification",
+  "image": "n47.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 47
+  },
+  "slide_intent": "Teach designers to judge a vehicle’s paint value against a reference scale. A middle-value door can make the choice of black or white lettering difficult by eye alone.",
+  "strategic_value": "NASA can preserve readable identification across vehicles acquired in many colors and connect those choices to a common lettering arrangement.",
+  "demonstration": "Instructions describe the government-use lines, logotype, agency and installation. A ten-step gray scale at right carries black or white type on each step, showing the switch at the 40% boundary.",
+  "category": "Color",
+  "practical_value": "Match an uncertain paint color against the scale. Use black on a value of 40% or lighter and white above that value. Consider the separate red-logo option for a white vehicle.",
+  "content_islands": [
+    {
+      "name": "Vehicle markings and placement",
+      "spec": "Set the identification and placement instructions in the left text columns. Describe the front-door location, clearance from hardware, common left edge and circumstances for placing a larger logo elsewhere."
+    },
+    {
+      "name": "Gray-scale comparator",
+      "spec": "Draw ten adjacent horizontal steps down the full right edge from dark to light. Print a type sample on each step so the contrast changes with the background."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text explains that a vehicle in the middle-value range can make black-versus-white identification uncertain, motivating comparison with the gray scale.",
+    "Application": "The scale is placed against the vehicle color until a step’s edge nearly disappears, then the corresponding identification color is selected.",
+    "Constraint": "Black is assigned through 40% gray and white above 40%; the red-logo alternative is confined to white vehicles."
+  },
+  "ingredient": {
+    "name": "Vehicle paint-value comparator",
+    "role": "Resolve an uncertain foreground choice by comparing vehicle paint with a common gray scale.",
+    "application": "Place the scale against the vehicle color and find the step whose edge nearly disappears. Use black identification at 40% gray or lighter and white above 40%. A white vehicle may instead use a red logo with black text.",
+    "scope": "NASA-owned or leased vehicles under the 1976 manual’s section 7.1. The scale’s percentages express gray value, not a modern contrast ratio."
+  }
+}

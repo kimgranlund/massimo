@@ -1,0 +1,35 @@
+{
+  "id": "IT17",
+  "title": "ITVX / Social promotion cards",
+  "image": "it17.png",
+  "source": "../sources/1782130916-cdjgzyvyq8m2fgix5dh0zw-itv_11-2.webp",
+  "location": {
+    "series": "DixonBaxi / ITV case-study artwork series",
+    "item": 17,
+    "extent": "Whole source artwork",
+    "source_asset_index": 17
+  },
+  "slide_intent": "Carry expressive type into a reusable social-card structure, because viewers need to recognize the same service across different situations.",
+  "strategic_value": "This approach can strengthen continuity between campaign recognition and service use.",
+  "demonstration": "Three social-post mockups sit across a yellow field. The centre card combines repeated FRESH lettering with a cut-out performer; adjacent cards carry different programme imagery.",
+  "category": "Application",
+  "practical_value": "Carry expressive type into a reusable social-card structure.",
+  "content_islands": [
+    {
+      "name": "Context field",
+      "spec": "Yellow connects the separate cards."
+    },
+    {
+      "name": "Centre card",
+      "spec": "Repeated headline type sits behind a performer."
+    },
+    {
+      "name": "Side cards",
+      "spec": "Partial cards demonstrate different programme treatments within the same platform frame."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Three social-post mockups sit across a yellow field. The centre card combines repeated FRESH lettering with a cut-out performer; adjacent cards carry different programme imagery.",
+    "Application": "Carry expressive type into a reusable social-card structure. Evidence is the shown application, not a mandatory layout rule."
+  }
+}

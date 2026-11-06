@@ -1,0 +1,31 @@
+{
+  "id": "C451",
+  "title": "Stream tonight / Coming soon",
+  "image": "c451.png",
+  "source": "../sources/c451.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 / 2023 masterbrand case study",
+    "item": 51,
+    "extent": "Full published artwork"
+  },
+  "slide_intent": "Keep changing availability messages recognizable, because viewers should not have to relearn the hierarchy for each promotion.",
+  "strategic_value": "The repeated italic Stream treatment and inline eyes can preserve Channel 4’s voice across short scheduling statements.",
+  "demonstration": "Two lines read Stream tonight and Coming soon with an eyes icon, positioned above a cream-to-blue recessed gradient with a pink sliver at left.",
+  "category": "Typography",
+  "practical_value": "Decide how to pair a playful anticipation symbol with a concise availability statement.",
+  "content_islands": [
+    {
+      "name": "Availability copy",
+      "spec": "Place the two black lines at the upper left, with Stream emphasized and eyes following Coming soon."
+    },
+    {
+      "name": "Adjacent color worlds",
+      "spec": "Retain the blue recessed field and slim pink neighboring panel to frame the message."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "Pentagram’s accompanying case study describes 4mojis as a way to retain playfulness within a functional graphic system.",
+    "Expression": "Two lines read Stream tonight and Coming soon with an eyes icon, positioned above a cream-to-blue recessed gradient with a pink sliver at left.",
+    "Application": "The specimen pairs a two-line availability message with an inline eyes icon on a branded gradient background."
+  }
+}

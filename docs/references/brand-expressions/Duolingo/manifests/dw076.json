@@ -1,0 +1,38 @@
+{
+  "id": "DW076",
+  "title": "Writing / Style / Apostrophes",
+  "image": "dw076.png",
+  "source": "../sources/pages/writing-style.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/style",
+    "section": "Apostrophes",
+    "item": 76,
+    "order": 760
+  },
+  "slide_intent": "Apply possessive endings consistently so a reader encounters familiar grammar even after unusual final letters.",
+  "strategic_value": "A three-case comparison can help Duolingo avoid inconsistent treatment of names and nouns across copy.",
+  "demonstration": "Examples ending in s, x and z compare apostrophe-plus-s forms with apostrophe-only alternatives.",
+  "category": "Voice",
+  "practical_value": "Add the possessive ending according to the singular-noun rule rather than dropping the extra s.",
+  "content_islands": [
+    {
+      "name": "Guidance column",
+      "spec": "Place the topic heading, its parent label and the written convention in the narrow left column."
+    },
+    {
+      "name": "Worked examples",
+      "spec": "Place the worked copy in the pale right panel, keeping preference labels and green checks with their examples."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "Three examples demonstrate possessives after s, x and z.",
+    "Constraint": "For a singular word ending in s, x or z, put an s after the possessive apostrophe."
+  },
+  "ingredient": {
+    "name": "Apostrophes convention",
+    "role": "A reader encounters familiar grammar even after unusual final letters.",
+    "application": "For a singular word ending in s, x or z, put an s after the possessive apostrophe.",
+    "scope": "Historical official guidelines from the 2024–2025 archived snapshot; this records the displayed guidance, not current Duolingo product behavior."
+  }
+}

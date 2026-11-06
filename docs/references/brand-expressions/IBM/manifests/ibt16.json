@@ -1,0 +1,30 @@
+{
+  "id": "IBT16",
+  "title": "IBM creative review",
+  "image": "ibt16.png",
+  "source": "../sources/ibm-logo-third-parties.pdf",
+  "location": {
+    "page": 16,
+    "series": "IBM Logo and Brand Guidelines for Third Parties / copyright 2022",
+    "order": 100016
+  },
+  "slide_intent": "Make review part of the production sequence, because a correct-looking application still needs confirmation before release under the guide’s process.",
+  "strategic_value": "A named review step can help IBM maintain consistent third-party trademark use before materials are distributed.",
+  "demonstration": "The IBM creative review heading accompanies a single paragraph requiring review before printing or posting and describing a usual response time.",
+  "category": "Brand",
+  "practical_value": "Include IBM-contact review before the release step in a third-party communication workflow.",
+  "content_islands": [
+    {
+      "name": "Review heading",
+      "spec": "Place the short heading in the left column."
+    },
+    {
+      "name": "Submission instruction",
+      "spec": "Place the approval requirement and qualified response-time statement in the adjacent narrow text column."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The page tells users to submit communications to their IBM contact before printing or posting.",
+    "Constraint": "Review and approval are required; a response within 24 hours is described as occurring in most cases, not as a guaranteed deadline."
+  }
+}

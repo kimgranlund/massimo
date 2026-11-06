@@ -1,0 +1,25 @@
+{
+  "id": "I033",
+  "title": "Typography",
+  "image": "i033.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 33,
+    "printed_page": 33
+  },
+  "slide_intent": "Introduce the type system while marking its status. Readers need to know how far they can rely on the details in a working edition.",
+  "strategic_value": "Instacart can communicate the intended typographic voice while calling attention to an unresolved part of the February 2022 book.",
+  "demonstration": "The large pale section title stands on a dark green field. A small red circle states that the section will be finished when the typeface is complete.",
+  "category": "Typography",
+  "practical_value": "Use the following pages to study direction and examples, and verify unsettled specifications before putting them into production.",
+  "content_islands": [
+    {
+      "name": "Section title",
+      "spec": "Place Typography in large light letters across the upper-left portion of the green page."
+    },
+    {
+      "name": "Work-in-progress note",
+      "spec": "Place the compact red circular status note at lower right. Keep its wording distinct from the section title."
+    }
+  ]
+}

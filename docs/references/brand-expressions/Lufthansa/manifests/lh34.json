@@ -1,0 +1,23 @@
+{
+  "id": "LH34",
+  "title": "Typographic test wall",
+  "image": "lh34.png",
+  "source": "../sources/lh34.jpg",
+  "location": {
+    "series": "HvD Fonts / Lufthansa 2018",
+    "item": 13,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Test a family with varied content because a corporate face must handle names, codes, numbers and prose.",
+  "strategic_value": "Diverse proofs can expose weaknesses before Lufthansa uses the type across its organization.",
+  "demonstration": "A tall collage of printed tests combines large letters, travel phrases, type labels, numbers and small text.",
+  "category": "Typography",
+  "practical_value": "Build a proof set from realistic content rather than a single alphabet.",
+  "content_islands": [
+    {
+      "name": "Proof collage",
+      "spec": "Preserve the dense mix of different scales and reading tasks through the vertical display."
+    }
+  ],
+  "reference_purposes": {}
+}

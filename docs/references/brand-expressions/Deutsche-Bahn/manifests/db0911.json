@@ -1,0 +1,37 @@
+{
+  "id": "DB0911",
+  "title": "Anwendung / Schriftfarbe und Zeilenabstand",
+  "image": "db0911.png",
+  "source": "../sources/page-09.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 9,
+    "section": 11,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Typografie_neu"
+  },
+  "slide_intent": "Control contrast and line spacing so readers can distinguish letters and follow lines without effort.",
+  "strategic_value": "Consistent reading conditions can let DB typography work across plain and photographic surfaces.",
+  "demonstration": "Four Aa specimens compare black and white on plain and photographic backgrounds; two diagrams and lists define line-height multipliers.",
+  "category": "Typography",
+  "practical_value": "Choose black or white for contrast, then apply the multiplier appropriate to functional or promotional text.",
+  "content_islands": [
+    {
+      "name": "Color examples",
+      "spec": "Arrange four Aa specimens in a two-by-two comparison with captions."
+    },
+    {
+      "name": "Spacing rules",
+      "spec": "Place functional and promotional examples above their separate line-height lists."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The source provides four color/background examples and numerical line-height rules.",
+    "Constraint": "Functional headings use 1.1× and body 1.3×; promotional capitals use 1.0×, umlauts or mixed case 1.1×, and body 1.3×."
+  },
+  "ingredient": {
+    "name": "DB typography contrast and leading",
+    "role": "Make words readable across contexts.",
+    "application": "Default to White or Black (#000000); select for contrast on photographs. Use the stated line-height multipliers.",
+    "scope": "Official DB new-design website captured 2026-11-05; edition date unstated. Functional heading 1.1×; body 1.3×. Promotional capitals 1.0×, umlauts/mixed case 1.1×, body 1.3×."
+  }
+}

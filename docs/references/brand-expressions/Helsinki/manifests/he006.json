@@ -1,0 +1,38 @@
+{
+  "id": "HE006",
+  "title": "Protected area",
+  "image": "he006.png",
+  "source": "../sources/use-basic-elements.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Protected area",
+    "order": 10,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/use-basic-elements#protected-area",
+    "original_html": "../sources/use-basic-elements.html"
+  },
+  "slide_intent": "Protect separation around the mark because neighboring elements can weaken its recognition.",
+  "strategic_value": "H-based clear space can give Helsinki’s logo a consistent boundary at different scales.",
+  "demonstration": "This expanded webpage section describes large and small protected areas and illustrates the larger area with two-H-height units around the logo.",
+  "category": "Geometry",
+  "practical_value": "Choose the normal protected area and identify when the absolute minimum is being used.",
+  "content_islands": [
+    {
+      "name": "Rule",
+      "spec": "Explain that no other elements enter the protected area."
+    },
+    {
+      "name": "Large-area diagram",
+      "spec": "Show two stacked H units and dimension arrows on all four sides of the framed logo."
+    }
+  ],
+  "ingredient": {
+    "name": "Logo protected area",
+    "role": "Keep surrounding content from crowding the signature.",
+    "application": "Measure clear space from outermost logo points: two H heights for the large version, one H height as the small absolute minimum.",
+    "scope": "Applies to space around the framed logo; this uses H height, not the H width used for internal construction."
+  },
+  "reference_purposes": {
+    "Application": "The drawing measures the larger protected area outward from the logo’s outermost points; the text also defines the smaller minimum.",
+    "Constraint": "The large protected area is twice H height; the small absolute minimum is one H height."
+  }
+}

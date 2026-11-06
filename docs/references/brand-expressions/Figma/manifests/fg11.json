@@ -1,0 +1,31 @@
+{
+  "id": "FG11",
+  "title": "Campaign verb family",
+  "image": "fg11.png",
+  "source": "../sources/fg11.png",
+  "location": {
+    "series": "COLLINS / Figma / Nothing Great Is Made Alone case study",
+    "item": 11,
+    "section": "Gallery",
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Use typographic continuity to connect varied activities because repetition helps people recognize a common promise.",
+  "strategic_value": "A multicolored verb family can let Figma address many kinds of making while keeping one recognizable sentence.",
+  "demonstration": "A white horizontal sentence intersects a vertical column of colored uppercase verbs on black.",
+  "category": "Typography",
+  "practical_value": "Compare a fixed sentence structure with a variable word slot before designing a campaign series.",
+  "content_islands": [
+    {
+      "name": "Fixed phrase",
+      "spec": "Run the white campaign wording horizontally through the center."
+    },
+    {
+      "name": "Action column",
+      "spec": "Stack colored verbs vertically through MADE, extending beyond the top edge."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A vertical colored action column contrasts with a fixed white horizontal statement.",
+    "Application": "The word stack demonstrates multiple substitutions within a single sentence pattern."
+  }
+}

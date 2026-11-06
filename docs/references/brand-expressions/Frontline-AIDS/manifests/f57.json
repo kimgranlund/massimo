@@ -1,0 +1,32 @@
+{
+  "id": "F57",
+  "title": "Illustration application",
+  "image": "f57.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 57
+  },
+  "slide_intent": "Teach designers to choose an illustration treatment for the surface beneath it. An overlay needs space for the headline to be read, while an image on a photograph needs a visible edge and a placement that respects the people pictured.",
+  "strategic_value": "Frontline AIDS can carry the same illustration from a typographic campaign to photography. The distinct edge treatment lets the graphic sit on a more complex surface while the original subject remains visible.",
+  "demonstration": "Two parallel columns compare the same multicolor illustration. One example overlaps two typographic blocks. The other gains a cyan-edged sticker treatment and rests at the side of a photograph.",
+  "category": "Application",
+  "practical_value": "Attach an ordinary illustration to a headline box when the lettering remains readable. Try the bordered version on a photograph and check both the edge and the subject at final size.",
+  "content_islands": [
+    {
+      "name": "Section rail and principle",
+      "spec": "Mark Illustration application in the book rail. On the white field beside it, place the heading and an explanation of the overlay and sticker options."
+    },
+    {
+      "name": "Overlay comparison",
+      "spec": "Use the left column of the gray field for the Overlaid explanation and unbordered specimen. Place a pink downward arrow above the finished headline treatment. Preserve the overlap between the illustration and the smaller blue text box."
+    },
+    {
+      "name": "Sticker comparison",
+      "spec": "Align the Sticker explanation and bordered specimen at the same height in the right column. Repeat the pink arrow and place the photographic example beneath it. Position the sticker near the right edge of the image."
+    },
+    {
+      "name": "Visibility reminder",
+      "spec": "Place the compact pink information note beneath the left example. Relate it to both treatments by naming the image and text that must remain visible."
+    }
+  ]
+}

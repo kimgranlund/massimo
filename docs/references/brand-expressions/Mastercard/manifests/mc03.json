@@ -1,0 +1,30 @@
+{
+  "id": "MC03",
+  "title": "Horizontal identity signature",
+  "image": "mc03.png",
+  "source": "../sources/mc03.jpg",
+  "location": {
+    "series": "Pentagram / Mastercard / 2016 identity case study",
+    "item": 3,
+    "extent": "Full published artwork"
+  },
+  "slide_intent": "Show an alternative signature arrangement because the same identity must fit formats with different proportions.",
+  "strategic_value": "A horizontal arrangement can retain recognition in shallow spaces.",
+  "demonstration": "The circle symbol sits to the left of a larger lowercase black wordmark on a pale background.",
+  "category": "Brand",
+  "practical_value": "Compare horizontal and stacked signatures without deriving spacing rules from this image.",
+  "content_islands": [
+    {
+      "name": "Symbol",
+      "spec": "Place the two overlapping circles at left."
+    },
+    {
+      "name": "Name",
+      "spec": "Align the lowercase wordmark horizontally beside the symbol and preserve broad empty margins."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A single horizontal lockup shows symbol and wordmark as adjacent elements.",
+    "Intent": "Pentagram states that the simplified mark provides flexible configurations suited to digital applications."
+  }
+}

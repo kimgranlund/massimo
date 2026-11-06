@@ -1,0 +1,30 @@
+{
+  "id": "DB0100",
+  "title": "New design / train header",
+  "image": "db0100.png",
+  "source": "../sources/page-01.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 1,
+    "section": 0,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design"
+  },
+  "slide_intent": "Connect a new graphic element to railway activity so the identity feels rooted in its subject.",
+  "strategic_value": "The familiar DB mark and sleeper rhythm can connect the refreshed identity to rail travel.",
+  "demonstration": "A red DB mark sits over a blurred train; a growing red sleeper strip runs along the lower edge.",
+  "category": "Brand",
+  "practical_value": "Compare the strength of a centered mark with an edge-based secondary element.",
+  "content_islands": [
+    {
+      "name": "Train and mark",
+      "spec": "Place the red outlined DB mark centrally over the blurred train photograph."
+    },
+    {
+      "name": "Sleeper strip",
+      "spec": "Run red vertical bars of increasing width along the bottom edge."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The source header combines the DB mark, rail photograph and red sleeper motif."
+  }
+}

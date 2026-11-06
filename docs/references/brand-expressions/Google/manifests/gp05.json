@@ -1,0 +1,40 @@
+{
+  "id": "GP05",
+  "title": "Product Sans / ‘a’ Swap",
+  "image": "gp05.png",
+  "source": "../product-sans-specimen.pdf",
+  "location": {
+    "page": 5,
+    "printed_page": "P–5"
+  },
+  "slide_intent": "Use a controlled alternate when repeated forms blur the distinction between a parent logo and a product name.",
+  "strategic_value": "A double-story a can let Google’s product names retain their own character beside the circular logo.",
+  "demonstration": "Two large a forms at left align with two Maps specimens at right, comparing a schoolbook form with a double-story alternate.",
+  "category": "Typography",
+  "practical_value": "Compare alternate glyphs inside the actual product name before selecting one only for its isolated appearance.",
+  "content_islands": [
+    {
+      "name": "Alternate glyphs",
+      "spec": "Stack the single-story and double-story a at left."
+    },
+    {
+      "name": "Word comparison",
+      "spec": "Align Maps in the corresponding forms at right."
+    },
+    {
+      "name": "Lockup rationale",
+      "spec": "Place the note about avoiding redundancy and giving the product form its own character at lower left."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The caption explains that alternates avoid redundancy in product lockups and give the product name its own character.",
+    "Expression": "The paired a and Maps specimens show the difference clearly.",
+    "Application": "The isolated glyph comparison is tested within the product name Maps."
+  },
+  "ingredient": {
+    "name": "Double-story a alternate",
+    "role": "Distinguish product-name texture from the circular Google logo.",
+    "application": "Compare the double-story alternate with the schoolbook form in a product lockup, as the Maps example demonstrates.",
+    "scope": "The 2015 specimen’s product-lockup example; not a requirement to replace every a in all typography."
+  }
+}

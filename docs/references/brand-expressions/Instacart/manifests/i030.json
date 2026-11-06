@@ -1,0 +1,25 @@
+{
+  "id": "I030",
+  "title": "Typographic Color",
+  "image": "i030.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 30,
+    "printed_page": 30
+  },
+  "slide_intent": "Teach a designer how a small text palette can keep a voice recognizable against a much broader range of backgrounds.",
+  "strategic_value": "Instacart can vary its food-inspired fields while keeping letterforms anchored in Kale, Cashew or White.",
+  "demonstration": "A two-row matrix repeats one letter specimen against ten fills. The text switches between dark and light treatments according to the ground.",
+  "category": "Color",
+  "practical_value": "Compare the intended field with the specimen grid before choosing the approved text color. A photograph or graphic can carry additional hues.",
+  "content_islands": [
+    {
+      "name": "Text-color guidance",
+      "spec": "Place the title and the short rule in a wide header above the grid."
+    },
+    {
+      "name": "Pairing specimens",
+      "spec": "Show the same large mixed-case sample centered inside every colored card. Keep card and type size constant so the contrast changes are easy to compare."
+    }
+  ]
+}

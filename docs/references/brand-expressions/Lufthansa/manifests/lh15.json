@@ -1,0 +1,25 @@
+{
+  "id": "LH15",
+  "title": "First Class lettering in material",
+  "image": "lh15.png",
+  "source": "../sources/lh15.jpg",
+  "location": {
+    "series": "Mona Franz / Lufthansa 2018",
+    "item": 15,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Test typography in physical production because lettering must remain legible through surface and lighting changes.",
+  "strategic_value": "Raised lettering can connect premium service identification with the airline’s typographic voice.",
+  "demonstration": "A close photograph shows raised pale First Class lettering on a brushed metallic surface.",
+  "category": "Application",
+  "practical_value": "Evaluate relief, contrast and viewing angle when applying type to a physical sign.",
+  "content_islands": [
+    {
+      "name": "Material close-up",
+      "spec": "Fill the frame with raised lettering and preserve the shallow focus and visible surface grain."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "A close photograph shows raised pale First Class lettering on a brushed metallic surface."
+  }
+}

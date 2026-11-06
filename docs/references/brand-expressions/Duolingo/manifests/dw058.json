@@ -1,0 +1,40 @@
+{
+  "id": "DW058",
+  "title": "Writing / Voice / Embracing",
+  "image": "dw058.png",
+  "source": "../sources/pages/writing-voice.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/voice",
+    "section": "Embracing",
+    "item": 58,
+    "order": 580
+  },
+  "slide_intent": "Make language welcoming and actionable so mistakes do not feel like personal rejection.",
+  "strategic_value": "Supportive feedback, neutral pronouns and clear CTAs can help Duolingo sustain learners’ willingness to continue.",
+  "demonstration": "Four comparisons cover supportive correction, gender-neutral pronouns, contractions and a clear notification action.",
+  "category": "Voice",
+  "practical_value": "Check that feedback supports the person and that a button names an understandable action.",
+  "content_islands": [
+    {
+      "name": "Guidance column",
+      "spec": "Place the Embracing heading, micro-success rationale and opposing trait lists at left."
+    },
+    {
+      "name": "Worked examples",
+      "spec": "Stack four labeled copy comparisons at right; preserve the note that a playful phrase may work as a header but not a CTA."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source connects clear steps and encouragement with micro-successes and avoiding alienation.",
+    "Expression": "Supportive correction and conversational phrasing demonstrate the voice.",
+    "Application": "The examples show neutral pronouns, contractions and context-specific CTA wording.",
+    "Constraint": "The source rejects aggression and gendered assumptions; it explicitly distinguishes header wording from CTA wording."
+  },
+  "ingredient": {
+    "name": "Embracing voice",
+    "role": "Support progress while making the next action clear.",
+    "application": "Use supportive correction, they/them where appropriate and natural contractions; keep CTA wording explicit.",
+    "scope": "Historical official guidelines from the 2024–2025 archived snapshot; this records the displayed guidance, not current Duolingo product behavior."
+  }
+}

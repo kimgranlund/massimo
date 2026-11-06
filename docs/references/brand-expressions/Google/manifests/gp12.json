@@ -1,0 +1,28 @@
+{
+  "id": "GP12",
+  "title": "Product Sans / Closing Page",
+  "image": "gp12.png",
+  "source": "../product-sans-specimen.pdf",
+  "location": {
+    "page": 12,
+    "printed_page": "P–12"
+  },
+  "slide_intent": "End a specimen with a clear signature so the reader retains the connection between the typeface and its parent brand.",
+  "strategic_value": "A restrained Google signature on a full yellow field can reinforce the identity after the technical specimens.",
+  "demonstration": "A nearly empty yellow page carries a small white Google wordmark at lower left and copyright and folio labels across the top.",
+  "category": "Brand",
+  "practical_value": "Use an uncluttered closing page to separate the brand signature from the preceding detailed reference material.",
+  "content_islands": [
+    {
+      "name": "Running metadata",
+      "spec": "Align the typeface, copyright, specimen and final folio labels along the top."
+    },
+    {
+      "name": "Closing signature",
+      "spec": "Place the small white Google wordmark at lower left on the uninterrupted yellow field."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The full yellow field and white wordmark demonstrate a minimal closing brand treatment."
+  }
+}

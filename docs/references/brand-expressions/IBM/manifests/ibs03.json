@@ -1,0 +1,30 @@
+{
+  "id": "IBS03",
+  "title": "Purpose",
+  "image": "ibs03.png",
+  "source": "../sources/ibm-logo-strategic-partners.pdf",
+  "location": {
+    "page": 3,
+    "series": "IBM Logo Guidelines for Strategic Partners / Version 1.2 / copyright 2023",
+    "order": 200003
+  },
+  "slide_intent": "Explain the collaboration context so partners understand why joint communication needs both distinct ownership and consistency.",
+  "strategic_value": "A stated purpose can connect IBM’s logo requirements with its wider aim of coordinated partner experiences.",
+  "demonstration": "Three paragraphs describe open innovation, partner collaboration and required compliance, with Purpose in the left column.",
+  "category": "Brand",
+  "practical_value": "Establish that the guide governs partner marketing use of the 8-bar logo and route questions to the IBM contact.",
+  "content_islands": [
+    {
+      "name": "Section label",
+      "spec": "Place Purpose at upper left."
+    },
+    {
+      "name": "Rationale and scope",
+      "spec": "Align the three paragraphs in the main column, moving from collaboration to guidance scope and compliance."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The page connects partner collaboration with unique yet consistent experiences reaching audiences.",
+    "Constraint": "The page states that partners are required to comply with these standards for using the IBM 8-bar logo in their marketing."
+  }
+}

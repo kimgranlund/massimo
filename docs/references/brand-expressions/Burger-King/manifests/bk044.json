@@ -1,0 +1,32 @@
+{
+  "id": "BK044",
+  "title": "Favicon / Watch and phone examples",
+  "image": "bk044.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 44
+  },
+  "slide_intent": "Evaluate an abbreviated mark among interface icons because people must find the brand quickly at small sizes.",
+  "strategic_value": "The BK symbol can link watch and phone entry points without reproducing the full wordmark.",
+  "demonstration": "A close-up watch app grid and a cropped phone screen both show the BK icon against a broad orange field.",
+  "category": "Application",
+  "practical_value": "Compare favicon visibility among competing app icons and in an enlarged app presentation.",
+  "content_islands": [
+    {
+      "name": "Watch grid",
+      "spec": "Place the angled watch at left with its small BK icon among circular colored app icons."
+    },
+    {
+      "name": "Phone screen",
+      "spec": "Crop a larger phone into the right side, showing the BK app icon and Burger King label on red."
+    },
+    {
+      "name": "Orange field",
+      "spec": "Use the orange background to connect both device examples."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The BK icon repeats its orange buns and red letterform across both screens.",
+    "Application": "Watch and phone mockups demonstrate the favicon in digital interfaces."
+  }
+}

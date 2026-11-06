@@ -1,0 +1,33 @@
+{
+  "id": "DB0816",
+  "title": "Dos and Don’ts / red UI elements",
+  "image": "db0816.png",
+  "source": "../sources/page-08.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 8,
+    "section": 16,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Markenfarben"
+  },
+  "slide_intent": "Choose a functional red deliberately so a recognizable accent remains readable in controls.",
+  "strategic_value": "A darker red for interface elements can support DB’s accessibility intentions without abandoning its color cue.",
+  "demonstration": "A button in DB Red 500 is paired with a crossed-out brighter DB Red button.",
+  "category": "Color",
+  "practical_value": "Select DB Red 500 for the red interface element shown.",
+  "content_islands": [
+    {
+      "name": "UI-red comparison",
+      "spec": "Place the accepted darker red button left and the crossed-out brighter version right with their accessibility captions."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The captions explicitly ground the darker-red choice in accessibility.",
+    "Constraint": "Red UI elements use DB Red 500 rather than the brighter DB Red."
+  },
+  "ingredient": {
+    "name": "Red interface controls",
+    "role": "Preserve recognizable emphasis with the specified functional contrast.",
+    "application": "Use DB Red 500 for red UI elements.",
+    "scope": "This rule concerns interface elements; identity specimens such as the DB mark use the separate brand-red guidance."
+  }
+}

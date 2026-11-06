@@ -1,0 +1,27 @@
+{
+  "id": "LH36",
+  "title": "Typeface review in the studio",
+  "image": "lh36.png",
+  "source": "../sources/lh36.jpg",
+  "location": {
+    "series": "HvD Fonts / Lufthansa 2018",
+    "item": 15,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Show the review environment because type decisions require comparing many relationships rather than one polished example.",
+  "strategic_value": "A wall of proofs can support a coherent Lufthansa family through collaborative evaluation.",
+  "demonstration": "Designers sit and stand around a table beneath a wall of wordmark and character proofs.",
+  "category": "Brand",
+  "practical_value": "Evaluate the process evidence needed to judge a family as a system.",
+  "content_islands": [
+    {
+      "name": "Studio participants",
+      "spec": "Keep the people and working table in the foreground."
+    },
+    {
+      "name": "Proof wall",
+      "spec": "Preserve the dense character and word tests behind them."
+    }
+  ],
+  "reference_purposes": {}
+}

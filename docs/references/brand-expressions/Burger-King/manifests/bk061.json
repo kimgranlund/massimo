@@ -1,0 +1,27 @@
+{
+  "id": "BK061",
+  "title": "Color",
+  "image": "bk061.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 61
+  },
+  "slide_intent": "Mark the shift to palette guidance so designers can locate decisions about color quickly.",
+  "strategic_value": "The orange field and brown title can reinforce Burger King’s core palette before detailed rules appear.",
+  "demonstration": "A large brown Color heading sits near the upper left on an otherwise open orange page.",
+  "category": "Color",
+  "practical_value": "Use the divider as the entry point for palette hierarchy and permitted-use guidance.",
+  "content_islands": [
+    {
+      "name": "Color chapter title",
+      "spec": "Place the oversized brown Color word at upper left."
+    },
+    {
+      "name": "Orange chapter field",
+      "spec": "Leave broad orange space around the title, retaining small running navigation and legal footer."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The divider demonstrates the orange-and-brown pairing at page scale."
+  }
+}

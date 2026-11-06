@@ -1,0 +1,30 @@
+{
+  "id": "DB1102",
+  "title": "Icons / button and travel figures",
+  "image": "db1102.png",
+  "source": "../sources/page-11.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 11,
+    "section": 2,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Icons"
+  },
+  "slide_intent": "Give symbols specific information jobs so they help readers recognize actions and quantities.",
+  "strategic_value": "A shared icon style can connect DB interface controls and performance information.",
+  "demonstration": "A red button with globe and arrow appears beside travel statistics using train and people icons.",
+  "category": "Application",
+  "practical_value": "Compare an action label with an icon-supported information panel.",
+  "content_islands": [
+    {
+      "name": "Button",
+      "spec": "Center the red action button on the dark panel at left."
+    },
+    {
+      "name": "Information graphic",
+      "spec": "Pair transport icons with percentages and a people icon with a traveler-growth figure at right."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "Icons are used in a button and in a travel-information graphic."
+  }
+}

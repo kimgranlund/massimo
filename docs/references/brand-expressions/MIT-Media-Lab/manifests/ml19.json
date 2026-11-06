@@ -1,0 +1,40 @@
+{
+  "id": "ML19",
+  "title": "Printed visitor floor plans",
+  "image": "ml19.png",
+  "source": "../sources/ml19.jpg",
+  "location": {
+    "series": "Pentagram / MIT Media Lab / 2014 identity",
+    "item": 19,
+    "extent": "Published lightbox artwork"
+  },
+  "slide_intent": "Carry wayfinding into a portable format so visitors can continue navigating away from fixed displays.",
+  "strategic_value": "A consistent printed plan can connect signage and personal route-finding.",
+  "demonstration": "An angled white sheet presents labeled lower-level and ground-level floor plans with a compact lab signature.",
+  "category": "Application",
+  "practical_value": "Study information hierarchy between floor labels, maps and directory text.",
+  "content_islands": [
+    {
+      "name": "Header",
+      "spec": "Small institutional identification sits at the top."
+    },
+    {
+      "name": "Floor sections",
+      "spec": "Two bold floor headings lead into plan drawings."
+    },
+    {
+      "name": "Directories",
+      "spec": "Fine text columns accompany the maps."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "An angled white sheet presents labeled lower-level and ground-level floor plans with a compact lab signature.",
+    "Application": "An angled white sheet presents labeled lower-level and ground-level floor plans with a compact lab signature."
+  },
+  "ingredient": {
+    "name": "Printed visitor floor plans",
+    "role": "Carry wayfinding into a portable format so visitors can continue navigating away from fixed displays.",
+    "application": "Study information hierarchy between floor labels, maps and directory text.",
+    "scope": "Observed in this historical case-study artwork; not a mandatory usage rule or a current brand standard."
+  }
+}

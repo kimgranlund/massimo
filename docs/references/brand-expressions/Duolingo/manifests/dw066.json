@@ -1,0 +1,32 @@
+{
+  "id": "DW066",
+  "title": "Writing / Style",
+  "image": "dw066.png",
+  "source": "../sources/pages/writing-style.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/style",
+    "section": "Style",
+    "item": 66,
+    "order": 660
+  },
+  "slide_intent": "Choose editorial conventions for usability so readers encounter clear, predictable language.",
+  "strategic_value": "A stated preference for user-friendliness over formal convention can help Duolingo make consistent decisions in small pieces of copy.",
+  "demonstration": "The blue style introduction pairs a usability statement with oversized colorful punctuation marks.",
+  "category": "Voice",
+  "practical_value": "Evaluate a style decision by how easily a learner can read and use it.",
+  "content_islands": [
+    {
+      "name": "Section introduction",
+      "spec": "Place the Writing label, lowercase section title and explanatory paragraph at left on the blue field."
+    },
+    {
+      "name": "Illustrated cue",
+      "spec": "Arrange oversized brackets, a question mark, exclamation mark and other punctuation at right."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The paragraph says grammar and style rules are based on usability rather than always following formal convention.",
+    "Expression": "The blue style introduction pairs a usability statement with oversized colorful punctuation marks."
+  }
+}

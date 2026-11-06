@@ -1,0 +1,40 @@
+{
+  "id": "GE08",
+  "title": "Typography / Product Sans Lockups",
+  "image": "ge08.png",
+  "source": "../sources/ge08.mp4",
+  "location": {
+    "series": "Evolving the Google Identity / 2015",
+    "item": 8,
+    "extent": "whole source",
+    "poster_seconds": 12.665,
+    "duration_seconds": 25.33
+  },
+  "slide_intent": "Give a product name a compatible but distinguishable voice so readers can understand its relationship to the parent brand.",
+  "strategic_value": "Product Sans can connect Google product names without making them visually compete with the logo.",
+  "demonstration": "A typing sequence sets Google Maps, highlights the product-name letterforms and cycles through product labels before introducing Google Product Sans.",
+  "category": "Typography",
+  "practical_value": "Compare parent-logo character with product-name character in the same line before choosing a companion typeface.",
+  "content_islands": [
+    {
+      "name": "Parent and product lockup",
+      "spec": "Center the Google wordmark and product name on one baseline."
+    },
+    {
+      "name": "Letterform inspection",
+      "spec": "Highlight individual name letters and cycle the product wording while retaining the parent mark."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The article says Product Sans maintains distinction between the Google logotype and product name while complementing the identity.",
+    "Expression": "Changing product names demonstrate the companion typeface’s geometric character.",
+    "Application": "The animation shows the typeface in product lockups."
+  },
+  "ingredient": {
+    "name": "Product Sans companion type",
+    "role": "Identify a product while maintaining a clear relationship with the Google wordmark.",
+    "application": "Pair the product name in Product Sans with the distinct Google logotype in the demonstrated lockup.",
+    "scope": "2015 product branding and supporting identity materials, not a rule for all interface body text."
+  },
+  "motion": "../sources/ge08.mp4"
+}

@@ -1,0 +1,46 @@
+{
+  "id": "HE044",
+  "title": "Illustration icons",
+  "image": "he044.png",
+  "source": "../sources/visual-storytelling.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Illustration icons",
+    "order": 62,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/visual-storytelling#illustration-icons",
+    "original_html": "../sources/visual-storytelling.html"
+  },
+  "slide_intent": "Keep explanatory illustration distinct from navigational symbols because different icon roles require different levels of independent recognition.",
+  "strategic_value": "A clear role boundary can let Helsinki use expressive icons without confusing signage or interface actions.",
+  "demonstration": "This expanded webpage section describes illustration-icon uses and formats, states prohibited UI/signage uses and shows icons supporting food-station text.",
+  "category": "Imagery",
+  "practical_value": "Choose illustration icons to accompany explanation, not to replace an action or wayfinding symbol.",
+  "content_islands": [
+    {
+      "name": "Illustration-icon specimens",
+      "spec": "Begin with two rows of four outlined icons, including a stroller, bird, light bulb, hearts and plug."
+    },
+    {
+      "name": "Purpose and contexts",
+      "spec": "Explain text-supported illustration and list applications."
+    },
+    {
+      "name": "Role limits and supply",
+      "spec": "State exclusions, source-file information and responsible team."
+    },
+    {
+      "name": "Food-station example",
+      "spec": "Show the icons supporting explanatory text."
+    }
+  ],
+  "ingredient": {
+    "name": "Illustration icons",
+    "role": "Support explanatory text and visual storytelling.",
+    "application": "Use for information graphics, presentations, brochures, patterns, posters or products alongside explanatory text.",
+    "scope": "Do not use as UI or signage icons. The source prints a placeholder count of 000, dated August 2022; it is not a verified library size."
+  },
+  "reference_purposes": {
+    "Application": "The food-station example pairs icons with explanatory text.",
+    "Constraint": "Illustration icons cannot be used as user-interface or signage icons."
+  }
+}

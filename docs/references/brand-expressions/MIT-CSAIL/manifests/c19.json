@@ -1,0 +1,24 @@
+{
+  "id": "C19",
+  "title": "Google Documents",
+  "image": "c19.png",
+  "source": "../csail-branding-short-guide.pdf",
+  "location": {
+    "page": 19
+  },
+  "slide_intent": "Teach staff how to maintain a readable hierarchy on computers that lack the brand typeface. A shared document must remain usable for its next editor.",
+  "strategic_value": "CSAIL can give internal documents and email a practical typographic convention using widely available fonts.",
+  "demonstration": "A laptop screen shows Arial Regular and Italic followed by Georgia Regular and Italic. The guidance allows Arial for internal uses and recommends Georgia for long text.",
+  "category": "Typography",
+  "practical_value": "Choose Arial for routine shared documents or email, and consider Georgia for extended reading.",
+  "content_islands": [
+    {
+      "name": "Fallback guidance",
+      "spec": "Set the Google Documents title and the Arial and Georgia recommendations in the left rail."
+    },
+    {
+      "name": "Screen specimen",
+      "spec": "Crop the laptop into the large pale field on the right. Stack four labeled sample rows, grouping the two Arial styles above the two Georgia styles."
+    }
+  ]
+}

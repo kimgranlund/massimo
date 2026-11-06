@@ -1,0 +1,25 @@
+{
+  "id": "I087",
+  "title": "16 x9 Grid Application",
+  "image": "i087.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 87,
+    "printed_page": 87
+  },
+  "slide_intent": "Show how a square grid can organize a video title card so the audience can distinguish the subject, title and publisher.",
+  "strategic_value": "Instacart can identify instructional material with a quiet signature while giving the lesson title enough space to read.",
+  "demonstration": "The grid overlays a cream card with an Ads Manager label, a two-line title for a sponsored-product lesson, and the signature near the bottom.",
+  "category": "Layout",
+  "practical_value": "Align the lesson label, title and signature to one grid column, then choose their vertical positions by assigning different rows.",
+  "content_islands": [
+    {
+      "name": "Slide label",
+      "spec": "Set the application heading at upper left against dark green."
+    },
+    {
+      "name": "Teaching card",
+      "spec": "Leave the cyan square grid visible on the cream field. Align the small label above the large title and the wordmark below, all to the same inset."
+    }
+  ]
+}

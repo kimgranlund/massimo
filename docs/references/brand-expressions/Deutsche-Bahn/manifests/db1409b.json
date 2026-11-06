@@ -1,0 +1,31 @@
+{
+  "id": "DB1409B",
+  "title": "Bildbearbeitung / refined tonal state",
+  "image": "db1409b.png",
+  "source": "../sources/db1409b-page.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 14,
+    "section": 9,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Bildwelt"
+  },
+  "slide_intent": "Inspect the refined photograph on its own so detail, depth and realism can be judged together.",
+  "strategic_value": "Controlled contrast can make DB work imagery clear while preserving the scene’s material character.",
+  "demonstration": "The comparison slider exposes the darker, more defined rail-work photograph; the natural-versus-warm people examples and editing checklist remain below.",
+  "category": "Imagery",
+  "practical_value": "Compare this refined state with the alternate endpoint for preserved highlights, shadows and material texture.",
+  "content_islands": [
+    {
+      "name": "Refined rail-work image",
+      "spec": "Expose the complete rail, gloves and work-clothing image with stronger tonal separation."
+    },
+    {
+      "name": "Color checks",
+      "spec": "Retain the people-photo comparison and the Do/Don’t editing lists beneath."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The endpoint isolates one complete tonal state for comparison with the other.",
+    "Constraint": "The accompanying checklist rejects warm filters, artificial HDR and excessive saturation or sharpening."
+  }
+}

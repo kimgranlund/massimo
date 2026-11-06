@@ -1,0 +1,37 @@
+{
+  "id": "C438",
+  "title": "4 Logo elasticity",
+  "image": "c438.png",
+  "source": "../sources/c438.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 masterbrand / 2023",
+    "item": 38,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Pair movement with its behavior curve so a designer can relate a visible response to an underlying timing model.",
+  "strategic_value": "A repeatable elastic response can make Channel 4’s logo feel active without arbitrary movement.",
+  "demonstration": "The video pairs the green 4 with a curve that rises and falls as the mark shifts; the published poster uses a different S-shaped curve.",
+  "category": "Motion",
+  "practical_value": "Compare the displayed motion with the accompanying curve instead of copying a single still as a complete easing specification.",
+  "content_islands": [
+    {
+      "name": "Logo specimen",
+      "spec": "Place the green 4 on a black stage at left."
+    },
+    {
+      "name": "Curve specimen",
+      "spec": "Place the animated curve and moving highlight at right under the elasticity heading."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The film pairs a moving logo with a behavior-curve demonstration.",
+    "Intent": "Pentagram attributes the logo’s reactive dynamism to physics-based elasticity."
+  },
+  "motion": "../sources/c438.mp4",
+  "ingredient": {
+    "name": "Logo elasticity",
+    "role": "Give the identity a responsive physical character.",
+    "application": "Use the paired animation and curve to understand the demonstrated response.",
+    "scope": "The video and published poster show different curves; this record does not infer a universal numeric easing value."
+  }
+}

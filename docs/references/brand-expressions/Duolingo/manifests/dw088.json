@@ -1,0 +1,39 @@
+{
+  "id": "DW088",
+  "title": "Writing / Style / Prepositions",
+  "image": "dw088.png",
+  "source": "../sources/pages/writing-style.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/style",
+    "section": "Prepositions",
+    "item": 88,
+    "order": 880
+  },
+  "slide_intent": "Prefer natural word order so a simple question feels direct rather than ceremonious.",
+  "strategic_value": "A side-by-side question can help Duolingo preserve approachable speech in product copy.",
+  "demonstration": "The preferred question ends with with; the alternative rearranges it into a formal with whom construction.",
+  "category": "Voice",
+  "practical_value": "Keep the final preposition when moving it would make the line less natural.",
+  "content_islands": [
+    {
+      "name": "Guidance column",
+      "spec": "Place the topic heading, its parent label and the written convention in the narrow left column."
+    },
+    {
+      "name": "Worked examples",
+      "spec": "Place the worked copy in the pale right panel, keeping preference labels and green checks with their examples."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The paired question contrasts natural conversational order with a formal rearrangement.",
+    "Constraint": "A sentence may end with a preposition when that reads more naturally.",
+    "Intent": "The source explicitly makes natural reading the condition for allowing a final preposition."
+  },
+  "ingredient": {
+    "name": "Prepositions convention",
+    "role": "A simple question feels direct rather than ceremonious.",
+    "application": "A sentence may end with a preposition when that reads more naturally.",
+    "scope": "Historical official guidelines from the 2024–2025 archived snapshot; this records the displayed guidance, not current Duolingo product behavior."
+  }
+}

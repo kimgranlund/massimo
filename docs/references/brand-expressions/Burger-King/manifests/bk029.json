@@ -1,0 +1,36 @@
+{
+  "id": "BK029",
+  "title": "Verbal Inspiration Examples / Continued",
+  "image": "bk029.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 29
+  },
+  "slide_intent": "Extend a verbal system from food description to everyday behavior so the brand can speak across more occasions.",
+  "strategic_value": "Eating gestures and personal-choice phrases can broaden Burger King’s conversational vocabulary.",
+  "demonstration": "A left explanation accompanies a long editorial/lifestyle list and a shorter Your Way list on cream.",
+  "category": "Voice",
+  "practical_value": "Compare lifestyle phrases with customization phrases and choose the relevant communication role.",
+  "content_islands": [
+    {
+      "name": "Introduction",
+      "spec": "Keep the continuing explanation at left."
+    },
+    {
+      "name": "Editorial / Lifestyle",
+      "spec": "Place the longer phrase list in the center."
+    },
+    {
+      "name": "Your Way",
+      "spec": "Place four personal-choice examples at upper right."
+    },
+    {
+      "name": "Review notice",
+      "spec": "Preserve the bottom trademark-clearance and local-counsel requirement."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The page demonstrates lifestyle and personal-choice language in separate lists.",
+    "Constraint": "The bottom note subjects example lines to trademark clearance and local legal review."
+  }
+}

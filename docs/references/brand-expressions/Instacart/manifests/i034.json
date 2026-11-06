@@ -1,0 +1,25 @@
+{
+  "id": "I034",
+  "title": "Typography Intro",
+  "image": "i034.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 34,
+    "printed_page": 34
+  },
+  "slide_intent": "Give designers a criterion for choosing type by the reader’s task. A product action and a moment of appetite call for different emphasis.",
+  "strategic_value": "Instacart can use a type family with enough range to connect efficient shopping with the pleasure of what people eat.",
+  "demonstration": "A single large dark statement on a pale field names efficiency and enjoyment as the two purposes of the family.",
+  "category": "Typography",
+  "practical_value": "Decide whether the reader needs to complete an action or linger over an idea before choosing the typographic treatment.",
+  "content_islands": [
+    {
+      "name": "Section label",
+      "spec": "Set the small Typography Intro label beneath the running metadata."
+    },
+    {
+      "name": "Purpose statement",
+      "spec": "Place the sentence in a few large left-aligned lines near the middle of the pale page. Leave the remaining area open."
+    }
+  ]
+}

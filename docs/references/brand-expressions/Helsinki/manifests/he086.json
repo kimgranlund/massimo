@@ -1,0 +1,31 @@
+{
+  "id": "HE086",
+  "title": "Welcome to the Visual Communications Network!",
+  "image": "he086.png",
+  "source": "../sources/design-and-create.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Welcome to the Visual Communications Network!",
+    "order": 117,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/design-and-create#welcome-to-the-visual-communications-network-",
+    "original_html": "../sources/design-and-create.html"
+  },
+  "slide_intent": "Make guidance a shared practice so staff can ask questions before inconsistent interpretations spread.",
+  "strategic_value": "A network for questions, tools and discussion can help Helsinki maintain a common identity across distributed teams.",
+  "demonstration": "Expanded webpage section: text introduces the internal Teams network, followed by bullets about collaboration and a list of shared information.",
+  "category": "Brand",
+  "practical_value": "Identify the network as the route for interpretation and practical support.",
+  "content_islands": [
+    {
+      "name": "Network introduction",
+      "spec": "The opening paragraph names the channel and invited participants."
+    },
+    {
+      "name": "Purposes and shared material",
+      "spec": "The lower bullets explain collaboration, tools and clarification."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source says the network aims to improve development, use and management of the visual identity."
+  }
+}

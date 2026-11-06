@@ -1,0 +1,34 @@
+{
+  "id": "FG22",
+  "title": "Workspace wall / angled view",
+  "image": "fg22.png",
+  "source": "../sources/fg22.jpg",
+  "location": {
+    "series": "COLLINS / Figma / Nothing Great Is Made Alone case study",
+    "item": 22,
+    "section": "Gallery",
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Inspect an identity from an oblique view because depth and overlap can change how a physical application reads.",
+  "strategic_value": "Raised lettering and layered stars can give Figma’s workspace identity a tactile presence beyond its screen graphics.",
+  "demonstration": "An angled wall view reveals the thickness, shadows and overlapping arrangement of the campaign letters and colored motifs.",
+  "category": "Application",
+  "practical_value": "Compare a front-facing composition with its physical depth and side-view legibility.",
+  "content_islands": [
+    {
+      "name": "Raised statement",
+      "spec": "Show black letters standing off the perforated wood surface."
+    },
+    {
+      "name": "Layered motifs",
+      "spec": "Place colored stars across and beside the letters, retaining their projected edges and shadows."
+    },
+    {
+      "name": "Near selection frame",
+      "spec": "Keep the blue outlined frame and cursor objects in the lower-right foreground."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The angled photograph shows the depth and layering of the environmental identity."
+  }
+}

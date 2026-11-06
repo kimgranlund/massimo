@@ -1,0 +1,34 @@
+{
+  "id": "IBS09",
+  "title": "Logo misuse",
+  "image": "ibs09.png",
+  "source": "../sources/ibm-logo-strategic-partners.pdf",
+  "location": {
+    "page": 9,
+    "series": "IBM Logo Guidelines for Strategic Partners / Version 1.2 / copyright 2023",
+    "order": 200009
+  },
+  "slide_intent": "Show concrete violations so partners can recognize when an alteration changes or confuses the identity.",
+  "strategic_value": "Explicit rejection examples can protect the continuity of IBM’s mark across independently produced materials.",
+  "demonstration": "Four red-crossed specimens show extra color, mingling with a partner logo, incorrect recoloring of reversed artwork and a relationship statement inside clear space.",
+  "category": "Brand",
+  "practical_value": "Reject modified or crowded artwork before it enters a partner layout.",
+  "content_islands": [
+    {
+      "name": "Purpose note",
+      "spec": "Explain at left why alterations diminish the brand."
+    },
+    {
+      "name": "Color and combination errors",
+      "spec": "Use the top row for additional color and mingled partner/IBM marks."
+    },
+    {
+      "name": "Artwork and spacing errors",
+      "spec": "Use the bottom row for reversed-to-black recoloring and a tagline intruding into logo clear space."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source explains that alterations and combinations misrepresent and diminish the IBM brand.",
+    "Constraint": "The examples prohibit additional logo colors, mingling logos, recoloring reversed-white artwork black and putting taglines within clear space."
+  }
+}

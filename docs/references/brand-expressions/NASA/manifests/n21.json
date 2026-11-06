@@ -1,0 +1,24 @@
+{
+  "id": "N21",
+  "title": "Typing Style",
+  "image": "n21.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 21
+  },
+  "slide_intent": "Teach typists to extend the alignment already present in the letterhead. A common starting edge and visible paragraph breaks help the recipient follow the message.",
+  "strategic_value": "NASA can make everyday correspondence look related even when different offices type their own letters.",
+  "demonstration": "A worked letter aligns its date, address, body and signoff with the printed name block. The matching envelope appears below.",
+  "category": "Layout",
+  "practical_value": "Use the printed identification to locate the left typing margin. Separate paragraphs with line space.",
+  "content_islands": [
+    {
+      "name": "Typing rule",
+      "spec": "Place the heading at left and explain the shared margin and paragraph spacing in two short columns at the top."
+    },
+    {
+      "name": "Letter and envelope",
+      "spec": "Stack the completed letter above a wider envelope. Preserve the typewritten address, paragraph breaks, signature, return information and postal indicia so readers can compare both pieces."
+    }
+  ]
+}

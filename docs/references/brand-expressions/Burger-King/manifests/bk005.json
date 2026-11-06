@@ -1,0 +1,27 @@
+{
+  "id": "BK005",
+  "title": "Introduction / Purpose of the guide",
+  "image": "bk005.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 5
+  },
+  "slide_intent": "Explain what the guide governs so new contributors can connect identity decisions with consistent communication.",
+  "strategic_value": "Defining appearance, speech and positioning together can support cohesive Burger King materials across teams.",
+  "demonstration": "A small left heading accompanies two large text paragraphs explaining the guide and its onboarding role.",
+  "category": "Brand",
+  "practical_value": "State the practical audience and scope before presenting detailed brand rules.",
+  "content_islands": [
+    {
+      "name": "Section label",
+      "spec": "Place Introduction in the left column."
+    },
+    {
+      "name": "Purpose statement",
+      "spec": "Use the wider right column for two large paragraphs describing the identity guide and its use."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text explains consistency, cohesion and onboarding as reasons for the guide."
+  }
+}

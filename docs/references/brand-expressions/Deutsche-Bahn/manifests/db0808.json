@@ -1,0 +1,31 @@
+{
+  "id": "DB0808",
+  "title": "Farbgewichtung / communication context",
+  "image": "db0808.png",
+  "source": "../sources/page-08.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 8,
+    "section": 8,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Markenfarben"
+  },
+  "slide_intent": "Adjust the balance to the task so factual information and emotional communication can speak differently.",
+  "strategic_value": "DB can vary its palette emphasis while retaining a common identity across audiences and media.",
+  "demonstration": "A paragraph about medium and purpose precedes three circular ingredient diagrams from factual to expressive.",
+  "category": "Color",
+  "practical_value": "Select the palette balance after deciding whether the communication is factual, neutral or emotional.",
+  "content_islands": [
+    {
+      "name": "Context statement",
+      "spec": "Explain the relationship between purpose and dominant/accent colors above the diagrams."
+    },
+    {
+      "name": "Three balances",
+      "spec": "Compare the ingredient circles that progress from factual through core communication to expressive use."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text explains that intended factual, neutral or emotional effect determines color weighting.",
+    "Application": "The diagrams illustrate a range rather than one fixed mixture."
+  }
+}

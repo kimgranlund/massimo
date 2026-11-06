@@ -1,0 +1,25 @@
+{
+  "id": "I086",
+  "title": "16 x9 Grid",
+  "image": "i086.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 86,
+    "printed_page": 86
+  },
+  "slide_intent": "Give motion designers a repeatable spatial unit so elements can align across a widescreen frame.",
+  "strategic_value": "Shared alignment can give Instacart video titles and signatures a consistent place even when the footage or copy changes.",
+  "demonstration": "A 16-by-9 rectangle is divided into square cells. The note specifies 120 px cells on a 1920 by 1080 px screen.",
+  "category": "Layout",
+  "practical_value": "Derive cell size from the screen dimensions and use square units to lay out a widescreen composition.",
+  "content_islands": [
+    {
+      "name": "Unit explanation",
+      "spec": "Set the format, square-cell rule and pixel example in the left column."
+    },
+    {
+      "name": "Widescreen diagram",
+      "spec": "Draw a thin border around the 16:9 field. Divide it with evenly spaced cyan lines in both directions."
+    }
+  ]
+}

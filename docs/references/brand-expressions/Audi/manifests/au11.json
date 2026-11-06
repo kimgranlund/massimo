@@ -1,0 +1,37 @@
+{
+  "id": "AU11",
+  "title": "Audi Sport — identity film",
+  "image": "au11.png",
+  "source": "../sources/11-kms-team-audi-sport_16-9.mov",
+  "location": {
+    "series": "KMS TEAM / Audi and Audi Sport identity case study",
+    "item": 11,
+    "extent": "Complete source media",
+    "poster_time_seconds": 12.06
+  },
+  "slide_intent": "Intensify a shared identity for a distinct audience so a sub-brand can feel different while remaining part of the same family.",
+  "strategic_value": "Red-dominant typography, assertive phrases and disrupted imagery can give Audi Sport a more forceful character than the parent identity.",
+  "demonstration": "The 44.32-second film sequences Audi and Audi Sport signatures, neutral and red palette strips, uppercase statements, split imagery, driving footage and digital applications.",
+  "category": "Motion",
+  "practical_value": "Compare the sub-brand’s use of color, imagery and editing with the parent Audi film AU01.",
+  "content_islands": [
+    {
+      "name": "Family and palette",
+      "spec": "Introduce the Audi Sport signature and shift from the parent color family to red-dominant fields."
+    },
+    {
+      "name": "Campaign sequence",
+      "spec": "Overlay short red uppercase statements on people, driving and high-contrast scenes, including split or offset images."
+    },
+    {
+      "name": "Applications and closure",
+      "spec": "Show responsive digital examples before returning to driving footage and the red Audi Sport signature."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The film combines red uppercase statements, disrupted images and fast driving footage.",
+    "Application": "Tablet, phone and website examples show how the sub-brand treatment is used.",
+    "Intent": "KMS’s More attitude under the hood section explicitly describes Audi Sport as a more intense, distinctive expression within the Audi ecosystem."
+  },
+  "motion": "../sources/au11.mp4"
+}

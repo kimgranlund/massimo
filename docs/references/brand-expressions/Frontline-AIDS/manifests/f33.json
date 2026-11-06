@@ -1,0 +1,28 @@
+{
+  "id": "F33",
+  "title": "Colour palette",
+  "image": "f33.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 33
+  },
+  "slide_intent": "Teach designers to identify a palette through the associations of its colors as well as their reproduction values. This gives each choice a reason beyond taste.",
+  "strategic_value": "Frontline AIDS can connect heritage green with the energy of pink and blue while black lends structure across outputs.",
+  "demonstration": "Four vertical bands present Emotional Green, Activist Pink, Smart Blue and Truth Black. The supporting white reference sits below.",
+  "category": "Color",
+  "practical_value": "Select the named color by its intended role, then use the corresponding print or screen specification in the swatch.",
+  "content_islands": [
+    {
+      "name": "Role introduction",
+      "spec": "Place the short paragraph beside the core palette explaining the contribution of each hue."
+    },
+    {
+      "name": "Core swatches",
+      "spec": "Fill four equal-height vertical panels with the core colors and attach each name and reproduction values near the base."
+    },
+    {
+      "name": "Supporting white",
+      "spec": "Give white a separate label and values in the open lower band beneath the four main swatches."
+    }
+  ]
+}

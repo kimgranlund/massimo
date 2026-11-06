@@ -1,0 +1,31 @@
+{
+  "id": "DB1121",
+  "title": "Animation / functional icons",
+  "image": "db1121.png",
+  "source": "../sources/page-11.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 11,
+    "section": 21,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Icons"
+  },
+  "slide_intent": "Use animation to clarify focus and relationships so movement serves understanding.",
+  "strategic_value": "Purposeful movement can extend the DB icon system without distracting from function.",
+  "demonstration": "A rationale paragraph sits above four media-embed placeholders in the captured webpage; no motion is visible in this PNG.",
+  "category": "Motion",
+  "practical_value": "Use the stated purpose criteria when reviewing the separately preserved animation examples.",
+  "content_islands": [
+    {
+      "name": "Motion rationale",
+      "spec": "Place the focus, relationship and emotion guidance above the examples."
+    },
+    {
+      "name": "Media positions",
+      "spec": "Retain the four embed placeholders in their two-by-two arrangement."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text says animation can direct focus, explain relationships and create emotion.",
+    "Constraint": "Icons follow the motion-branding principles and animation should not be disturbing or complex."
+  }
+}

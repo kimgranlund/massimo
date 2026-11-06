@@ -1,0 +1,26 @@
+{
+  "id": "DB0600",
+  "title": "Design principles / identity collage",
+  "image": "db0600.png",
+  "source": "../sources/page-06.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 6,
+    "section": 0,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Designprinzipien"
+  },
+  "slide_intent": "Show the range of a visual language so viewers can recognize relationships among unlike ingredients.",
+  "strategic_value": "A common palette and geometric vocabulary can connect DB photography, typography and graphics.",
+  "demonstration": "A cropped modular collage combines railway photographs, logo, bold text, sleeper motif, pictograms and illustrative graphics.",
+  "category": "Brand",
+  "practical_value": "Compare the ingredients as a family before applying them individually.",
+  "content_islands": [
+    {
+      "name": "Modular collage",
+      "spec": "Arrange light and dark cells containing the mark, type, rail photographs and graphic specimens."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The header assembles the brand’s contrasting visual ingredients into one grid."
+  }
+}

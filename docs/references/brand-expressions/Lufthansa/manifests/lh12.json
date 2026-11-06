@@ -1,0 +1,33 @@
+{
+  "id": "LH12",
+  "title": "836 glyphs and type roles",
+  "image": "lh12.png",
+  "source": "../sources/lh12.jpg",
+  "location": {
+    "series": "Mona Franz / Lufthansa 2018",
+    "item": 12,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Show both breadth and role differentiation because a corporate typeface must handle many languages and kinds of information.",
+  "strategic_value": "A broad character set with Head, Text, logotype and registration examples can support a consistent airline voice.",
+  "demonstration": "The board states 836 glyphs and 126 languages, shows a dense glyph field, and presents type roles including D–AIXA.",
+  "category": "Typography",
+  "practical_value": "Check language coverage and functional type roles separately when evaluating a corporate family.",
+  "content_islands": [
+    {
+      "name": "Coverage claim",
+      "spec": "Place the large glyph count and language count at upper left."
+    },
+    {
+      "name": "Character repertoire",
+      "spec": "Set the glyph field through the center."
+    },
+    {
+      "name": "Role specimens",
+      "spec": "Arrange logotype, registration and Head/Text specimens around the repertoire."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The board states 836 glyphs and 126 languages, shows a dense glyph field, and presents type roles including D–AIXA."
+  }
+}

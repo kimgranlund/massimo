@@ -1,0 +1,42 @@
+{
+  "id": "HE017",
+  "title": "Text hierarchy",
+  "image": "he017.png",
+  "source": "../sources/use-basic-elements.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Text hierarchy",
+    "order": 22,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/use-basic-elements#text-hierarchy",
+    "original_html": "../sources/use-basic-elements.html"
+  },
+  "slide_intent": "Specify different spacing for headings and continuous text because compact emphasis and sustained reading have different needs.",
+  "strategic_value": "Shared heading/body spacing can give Helsinki publications a consistent rhythm.",
+  "demonstration": "This expanded webpage section compares heading and body specimens with 100% and 120% line-spacing instructions and an Arial fallback.",
+  "category": "Typography",
+  "practical_value": "Set heading leading equal to type size and body leading to 120%, then compare the resulting hierarchy.",
+  "content_islands": [
+    {
+      "name": "Heading rule",
+      "spec": "Give the equal point-size/leading instruction and example."
+    },
+    {
+      "name": "Body rule",
+      "spec": "Give 120% leading and its numerical example."
+    },
+    {
+      "name": "Hierarchy specimens",
+      "spec": "Show the relative heading/body sizes below with the fallback caption."
+    }
+  ],
+  "ingredient": {
+    "name": "Heading and body leading",
+    "role": "Separate compact emphasis from readable paragraphs.",
+    "application": "Use 100% leading for headings and 120% for body text, such as 30/30 pt and 10/12 pt.",
+    "scope": "These are leading ratios; the page’s specimen sizes do not establish a universal fixed type scale."
+  },
+  "reference_purposes": {
+    "Application": "The specimens illustrate relative heading and body sizes.",
+    "Constraint": "Heading leading equals type size; body leading is 120%; Arial substitutes when Helsinki Grotesk is unavailable."
+  }
+}

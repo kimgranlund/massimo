@@ -1,0 +1,33 @@
+{
+  "id": "DB0813",
+  "title": "Dos and Don’ts / type colors",
+  "image": "db0813.png",
+  "source": "../sources/page-08.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 8,
+    "section": 13,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Markenfarben"
+  },
+  "slide_intent": "Protect a consistent text hierarchy so decorative coloring does not compete with the message.",
+  "strategic_value": "Neutral campaign text can keep DB’s red and Lilac accents visually distinct.",
+  "demonstration": "Accepted neutral-text layouts sit beside a crossed-out multicolored headline example.",
+  "category": "Color",
+  "practical_value": "Use the stated standard text colors and check the separate UI accessibility exception before applying this rule broadly.",
+  "content_islands": [
+    {
+      "name": "Typography comparison",
+      "spec": "Compare accepted Black/White text and the stated Cold Black headline option with the crossed-out colored wording."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The paired compositions compare neutral and colored typography.",
+    "Constraint": "This section lists Black/White as standard text colors, Cold Black only for expressive headlines, and prohibits Lilac/DB Red text in its general wording."
+  },
+  "ingredient": {
+    "name": "Standard typography color",
+    "role": "Keep text clear and separate from expressive accents.",
+    "application": "Use Black or White; this do/don’t allows Cold Black only for expressive headlines.",
+    "scope": "The wording prohibits DB Red text generally, while the preceding accessibility section explicitly permits red links, warnings and notices. Preserve that source qualification rather than erase it."
+  }
+}

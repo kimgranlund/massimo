@@ -1,0 +1,31 @@
+{
+  "id": "HE080",
+  "title": "Framework agreement partners and opportunities",
+  "image": "he080.png",
+  "source": "../sources/design-and-create.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Framework agreement partners and opportunities",
+    "order": 109,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/design-and-create#framework-agreement-partners-and-opportunities",
+    "original_html": "../sources/design-and-create.html"
+  },
+  "slide_intent": "Match the assignment to the relevant expertise so visual work receives the capabilities it needs.",
+  "strategic_value": "Naming the available disciplines can help Helsinki teams commission coherent work across media.",
+  "demonstration": "This expanded webpage-section capture lists framework-agreement service categories above a photograph of a partner meeting at City Hall.",
+  "category": "Application",
+  "practical_value": "Identify whether the assignment needs strategy, graphic design, service design, production or another listed capability before engaging a partner.",
+  "content_islands": [
+    {
+      "name": "Capability inventory",
+      "spec": "Keep the category list and descriptive examples together."
+    },
+    {
+      "name": "Partner meeting",
+      "spec": "Show the audience and presentation setting below the list with its caption."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The list maps creative work to available service categories including strategy, design, print, events and video."
+  }
+}

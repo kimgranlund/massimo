@@ -1,0 +1,34 @@
+{
+  "id": "IBS19",
+  "title": "Examples / Websites",
+  "image": "ibs19.png",
+  "source": "../sources/ibm-logo-strategic-partners.pdf",
+  "location": {
+    "page": 19,
+    "series": "IBM Logo Guidelines for Strategic Partners / Version 1.2 / copyright 2023",
+    "order": 200019
+  },
+  "slide_intent": "Keep partnership information within a partner-owned site so visitors can distinguish the site owner from supporting organizations.",
+  "strategic_value": "Clear attribution and partner CTAs can let IBM support an offer without creating a misleading source identity.",
+  "demonstration": "Two laptop frames show a group-partner landing page and an IBM-focused landing page, both led by the green partner logo.",
+  "category": "Application",
+  "practical_value": "Choose grouped attribution or a dedicated partnership content section while keeping navigation and CTA ownership with the partner.",
+  "content_islands": [
+    {
+      "name": "Group landing page",
+      "spec": "Place the left laptop with partner masthead, an In partnership with logo row and partner call to action."
+    },
+    {
+      "name": "Focus landing page",
+      "spec": "Place the right laptop with IBM acknowledgement and explanatory copy in the body, next to an image area and partner CTA."
+    },
+    {
+      "name": "Layout note",
+      "spec": "Keep the nonexclusive-example qualification underneath."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The examples place IBM within page content as either one of several partners or a focused relationship section.",
+    "Constraint": "The page labels both CTAs as the partner’s and states that its layout options are not exhaustive."
+  }
+}

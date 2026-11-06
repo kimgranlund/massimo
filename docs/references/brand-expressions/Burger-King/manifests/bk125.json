@@ -1,0 +1,27 @@
+{
+  "id": "BK125",
+  "title": "File Naming",
+  "image": "bk125.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 125
+  },
+  "slide_intent": "Separate asset-management guidance from design rules so readers can find the practical information needed to select files.",
+  "strategic_value": "A clear File Naming divider can make Burger King’s production reference easier to navigate.",
+  "demonstration": "A large orange File Naming heading occupies the upper portion of a brown page above open space and the small legal footer.",
+  "category": "Brand",
+  "practical_value": "Find the transition into the asset filename convention without confusing it with a visual application example.",
+  "content_islands": [
+    {
+      "name": "File-naming title",
+      "spec": "Set the orange title in one prominent line on the brown field."
+    },
+    {
+      "name": "Peripheral labels",
+      "spec": "Retain the small running header, folio and lower copyright notice."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The divider applies the guide’s orange-on-brown display treatment to an operational topic."
+  }
+}

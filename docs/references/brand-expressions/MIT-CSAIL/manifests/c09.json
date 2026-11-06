@@ -1,0 +1,24 @@
+{
+  "id": "C09",
+  "title": "Logo Family Tree",
+  "image": "c09.png",
+  "source": "../csail-branding-short-guide.pdf",
+  "location": {
+    "page": 9
+  },
+  "slide_intent": "Organize signature variants by the entity they identify. A reader can choose the correct level before choosing an orientation.",
+  "strategic_value": "The lab can distinguish its own identity, its programs and its groups while retaining the same parent mark.",
+  "demonstration": "Four ruled rows compare primary, tag, secondary and tertiary versions. The lower rows show Alliances and Advanced Network Architecture Group examples.",
+  "category": "Brand",
+  "practical_value": "Choose a level by the communication’s owner, then choose the descriptor position that fits the available width.",
+  "content_islands": [
+    {
+      "name": "Variant guidance",
+      "spec": "Explain the tiers in the left rail, with a short use-case note near the foot."
+    },
+    {
+      "name": "Family matrix",
+      "spec": "Label four horizontal rows on a pale ground. Within each row align the available color lockups to compare the bare mark, stacked labels and labels set to the right."
+    }
+  ]
+}

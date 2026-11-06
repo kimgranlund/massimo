@@ -1,0 +1,35 @@
+{
+  "id": "DBV10",
+  "title": "Fläche_up-1c",
+  "image": "dbv10.png",
+  "source": "../sources/media/dbv10.mp4",
+  "location": {
+    "series": "DB new design / motion demonstrations",
+    "source_page": 15,
+    "section": "Bewegungsmuster-14021478",
+    "source_url": "https://ecm-mediathek-cdn.deutschebahn.com/cdnenhancedecmvidhls/db306396/2880779/video_config.json",
+    "capture_date": "2026-11-05"
+  },
+  "slide_intent": "Use a consistent vertical path so the viewer follows a transition without competing directions.",
+  "strategic_value": "An upward red plane can express DB movement with a compact, repeatable visual action.",
+  "demonstration": "A red plane rises from the bottom, covers the frame, and leaves through the top.",
+  "category": "Motion",
+  "practical_value": "Choose the one-color vertical treatment when the composition benefits from an upward transition.",
+  "content_islands": [
+    {
+      "name": "Entry",
+      "spec": "Rise from the bottom edge with a red plane."
+    },
+    {
+      "name": "Exit",
+      "spec": "Continue upward until the plane clears the top edge."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A red plane rises from the bottom, covers the frame, and leaves through the top.",
+    "Application": "The source provides a playable demonstration of this repeatable sequence: A red plane rises from the bottom, covers the frame, and leaves through the top.",
+    "Intent": "Accompanying Flächenverhalten prose says clear axes and straight movement keep focus on content; two-color variants add expression for bold content.",
+    "Constraint": "The source associates one-color planes with high information density and functional use, and two-color planes with bold, expressive content."
+  },
+  "motion": "../sources/media/dbv10.mp4"
+}

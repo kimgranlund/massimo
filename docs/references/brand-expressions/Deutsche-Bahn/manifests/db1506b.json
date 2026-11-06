@@ -1,0 +1,42 @@
+{
+  "id": "DB1506B",
+  "title": "Bewegtbild / Story und Social Safe",
+  "image": "db1506b.png",
+  "source": "../sources/db1506b-page.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 15,
+    "section": 6,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Motion-Branding",
+    "tab": "Story und Social Safe"
+  },
+  "slide_intent": "Adapt safe areas to the viewing format because platform overlays can obscure information that is otherwise well composed.",
+  "strategic_value": "Format-specific protected regions can keep DB messages legible across social channels.",
+  "demonstration": "This alternate tab state retains the audiovisual guidance and replaces the subtitle diagram with three social-format safe-area specimens.",
+  "category": "Motion",
+  "practical_value": "Use the correct source diagram for Instagram Story, Reel/Short/TikTok or Instagram Post rather than extending classic-video margins to all social formats.",
+  "content_islands": [
+    {
+      "name": "Shared guidance",
+      "spec": "Retain the preceding logo, separator and lower-third groups."
+    },
+    {
+      "name": "Social-safe tab",
+      "spec": "Select Story und Social Safe in the lower tab strip."
+    },
+    {
+      "name": "Three format specimens",
+      "spec": "Compare the A, B and C diagrams and their respective platform labels beneath the tab."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The source distinguishes A: Instagram Story, B: Instagram Reel/YouTube Short/TikTok and C: Instagram Post.",
+    "Constraint": "The separate social diagrams define format-specific protected regions rather than a universal classic-video margin."
+  },
+  "ingredient": {
+    "name": "Bewegtbild / Story und Social Safe",
+    "role": "Adapt safe areas to the viewing format because platform overlays can obscure information that is otherwise well composed.",
+    "application": "Use the correct source diagram for Instagram Story, Reel/Short/TikTok or Instagram Post rather than extending classic-video margins to all social formats.",
+    "scope": "Official DB new-design website captured 2026-11-05; edition undated. Instructions are local to this motion section. Source caption inconsistencies are documented separately."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "F45",
+  "title": "Mid-weight content",
+  "image": "f45.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 45
+  },
+  "slide_intent": "Show how a short publication can alternate a strong cover message with accessible supporting information. The sequence should help someone move from interest to detail.",
+  "strategic_value": "Frontline AIDS can adapt its identity to a focused leaflet, combining visible campaign language with enough space for photographs and explanation.",
+  "demonstration": "Two tall leaflet views compare a boxed headline over the cover photograph with an interior page containing shorter text, a pullout, quotation and portrait. Type-role labels surround both views.",
+  "category": "Typography",
+  "practical_value": "Choose a compact hierarchy for a leaflet and separate the main message, supporting copy and attributed quotation before composing the pages.",
+  "content_islands": [
+    {
+      "name": "Publication brief",
+      "spec": "Use the left text column to identify the needs of a publication carrying a moderate amount of information."
+    },
+    {
+      "name": "Cover and opening",
+      "spec": "Place the cover and interior examples side by side. Keep the strong cyan fields, photographic crops and contrasting headline boxes visible."
+    },
+    {
+      "name": "Role annotations",
+      "spec": "Label each specimen outside its page boundary, using thin leaders for the logo, headline, subheads, body, pullout and image caption."
+    }
+  ]
+}

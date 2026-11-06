@@ -1,0 +1,34 @@
+{
+  "id": "C448",
+  "title": "Editorial data spread",
+  "image": "c448.png",
+  "source": "../sources/c448.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 / 2023 masterbrand case study",
+    "item": 48,
+    "extent": "Full published artwork"
+  },
+  "slide_intent": "Give data rows a consistent visual rhythm, because readers need to follow information across a wide spread.",
+  "strategic_value": "Broad color bands can carry Channel 4’s palette into formal reporting while separating adjacent rows.",
+  "demonstration": "An open printed spread carries a sequence of horizontal color bands across both pages, with small labels and values aligned within them and a small 4 near the upper left.",
+  "category": "Layout",
+  "practical_value": "Evaluate whether color bands help track a row across the gutter without overwhelming its labels.",
+  "content_islands": [
+    {
+      "name": "Row structure",
+      "spec": "Run the colored bands horizontally across the open spread with labels and values retained within each row."
+    },
+    {
+      "name": "Page signature",
+      "spec": "Keep the small 4 at the upper-left margin."
+    },
+    {
+      "name": "Printed view",
+      "spec": "Retain the page curvature and gutter so the reader can assess the design as a printed spread rather than a flat palette."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "An open printed spread carries a sequence of horizontal color bands across both pages, with small labels and values aligned within them and a small 4 near the upper left.",
+    "Application": "The source demonstrates this treatment in a printed data spread."
+  }
+}

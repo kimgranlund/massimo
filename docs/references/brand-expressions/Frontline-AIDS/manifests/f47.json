@@ -1,0 +1,24 @@
+{
+  "id": "F47",
+  "title": "The bigger picture",
+  "image": "f47.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 47
+  },
+  "slide_intent": "Introduce documentary photography as a way of noticing people and everyday details that a broad account of the epidemic can overlook.",
+  "strategic_value": "Frontline AIDS can draw on its own archive to bring the people behind its work into communications.",
+  "demonstration": "A full-bleed close-up shows a hand, ring, bracelet and necklace against patterned clothing. The photographic detail fills even the navigation area.",
+  "category": "Imagery",
+  "practical_value": "Choose an archival image with a clear human detail that can carry the introductory page at large scale.",
+  "content_islands": [
+    {
+      "name": "Archive introduction",
+      "spec": "Overlay the section rail and a short white heading and introduction on the darkened left part of the photograph."
+    },
+    {
+      "name": "Close-up photograph",
+      "spec": "Carry the image to all four edges. Give the hand over the chest most of the available area, preserving the jewelry and clothing within the crop."
+    }
+  ]
+}

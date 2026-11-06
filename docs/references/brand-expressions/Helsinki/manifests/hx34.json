@@ -1,0 +1,26 @@
+{
+  "id": "HX34",
+  "title": "For the City’s employees",
+  "image": "hx34.png",
+  "source": "../sources/design-and-create.offline.html",
+  "location": {
+    "series": "Web guideline introduction/component",
+    "order": 129,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/design-and-create",
+    "original_html": "../sources/design-and-create.html"
+  },
+  "slide_intent": "Route contributors to tools they can actually access because production guidance depends on the working environment.",
+  "strategic_value": "Helsinki employees can reuse internal resources and installed templates through the named workplace routes.",
+  "demonstration": "This webpage introduction names intranet resources, material banks and Microsoft 365 resources on employee workstations.",
+  "category": "Application",
+  "practical_value": "Check the employee resources before recreating a template.",
+  "content_islands": [
+    {
+      "name": "Employee resources",
+      "spec": "Keep the internal resource and workstation information together beneath the heading."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The text directs city employees to intranet, material-bank and Microsoft 365 resources."
+  }
+}

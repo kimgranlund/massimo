@@ -1,0 +1,30 @@
+{
+  "id": "C422",
+  "title": "Derry Girls endboard sequence",
+  "image": "c422.png",
+  "source": "../sources/c422.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 masterbrand / 2023",
+    "item": 22,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Move from story to title to action in a readable order so an entertaining clip also tells the viewer what to do next.",
+  "strategic_value": "The 4, programme world and final viewing instructions can connect Derry Girls promotion to Channel 4.",
+  "demonstration": "The clip passes from cast footage through a Derry Girls object collage into adjacent gradient panels carrying the 4 and streaming/live information.",
+  "category": "Application",
+  "practical_value": "Compare the time devoted to the show title with the final viewing instruction.",
+  "content_islands": [
+    {
+      "name": "Story and title",
+      "spec": "Follow the cast scene with the programme’s title over personal objects and magazines."
+    },
+    {
+      "name": "Action endboard",
+      "spec": "Finish with the green 4 in the left room and viewing information in the larger right panel."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "A complete Derry Girls promotion demonstrates footage, title world and branded endboard."
+  },
+  "motion": "../sources/c422.mp4"
+}

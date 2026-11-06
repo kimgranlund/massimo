@@ -1,0 +1,39 @@
+{
+  "id": "BK055",
+  "title": "Home of the Whopper®",
+  "image": "bk055.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 55
+  },
+  "slide_intent": "Keep a familiar claim in a recognizable configuration so a reader immediately connects the phrase with its signature product.",
+  "strategic_value": "The dominant Whopper name can strengthen the relationship between Burger King’s place claim and its product equity.",
+  "demonstration": "Two pale lockups on brown stack Home of the at left of a much larger Whopper, comparing registered and restaurant-signage-only versions.",
+  "category": "Typography",
+  "practical_value": "Use the supplied phrase arrangement for signage, except when the wording occurs inside a paragraph.",
+  "content_islands": [
+    {
+      "name": "Claim-lockup guidance",
+      "spec": "Place the fixed-configuration rule and in-store-signage example at left."
+    },
+    {
+      "name": "Registered claim",
+      "spec": "Place the registered lockup in the upper right with the small words stacked alongside Whopper."
+    },
+    {
+      "name": "Signage claim",
+      "spec": "Repeat the lockup below without registration and retain its signage-only caption."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The subordinate stacked words give Whopper the largest visual weight.",
+    "Application": "The source names in-store signage as an example application.",
+    "Constraint": "Use the fixed configuration except inside paragraph copy; consult BKC marketing/legal on signage trademark treatment."
+  },
+  "ingredient": {
+    "name": "Home of the Whopper lockup",
+    "role": "Tie a place claim to the recognizable product name.",
+    "application": "Use the supplied stacked phrase beside the larger Whopper wordmark.",
+    "scope": "Historical guide; paragraph copy is an exception and signage registration requires consultation."
+  }
+}

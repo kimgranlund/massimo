@@ -1,0 +1,28 @@
+{
+  "id": "B06",
+  "title": "Logo color",
+  "image": "b06.png",
+  "source": "../bolt-brand-guidelines-2025-12.pdf",
+  "location": {
+    "page": 6
+  },
+  "slide_intent": "Teach designers to choose a version of the mark against a specific ground. Its shape must remain easy to pick out over both a flat field and a photograph.",
+  "strategic_value": "Bolt can vary the mark among a small set of colors while retaining its contour and contrast across materials.",
+  "demonstration": "Four panels show a white mark on blue, a dark mark on gray, a blue mark on a light field and a white mark over photography. The legend calls the gray-panel mark white, although the specimen shows it dark.",
+  "category": "Color",
+  "practical_value": "Compare the actual foreground and background in each panel when choosing a mark color. Use the visible contrast of the gray example to interpret its inconsistent caption.",
+  "content_islands": [
+    {
+      "name": "Section rail",
+      "spec": "Place the wordmark at the top of the dark rail, highlight the current topic in the navigation and set the small folio at the foot."
+    },
+    {
+      "name": "Usage text and key",
+      "spec": "Place the logo-color guidance at upper left and its numbered four-line legend below."
+    },
+    {
+      "name": "Ground comparison",
+      "spec": "Set four equal cards in a two-by-two grid. Center the same mark at comparable scale on each ground. Place a small number at the upper left of each card."
+    }
+  ]
+}

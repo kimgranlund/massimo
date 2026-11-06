@@ -1,0 +1,25 @@
+{
+  "id": "I079",
+  "title": "Logo Proportions",
+  "image": "i079.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 79,
+    "printed_page": 79
+  },
+  "slide_intent": "Teach designers to size a signature by the lowercase letters people actually see. Matching visible letter height gives a clearer comparison than matching the outside dimensions of the art.",
+  "strategic_value": "The wordmark can retain a consistent relationship to a message even when headline sizes change.",
+  "demonstration": "Three rows pair the word headline with the Instacart signature. The first identifies x-height, the second shows the usual half-height ratio, and the third shows one-third height for very large type.",
+  "category": "Geometry",
+  "practical_value": "Measure the lowercase heights, then select the half or one-third relationship according to the scale of the headline.",
+  "content_islands": [
+    {
+      "name": "Sizing explanation",
+      "spec": "Place a short explanation of the x-height measurement at left."
+    },
+    {
+      "name": "Measured comparisons",
+      "spec": "Stack the baseline specimen and two progressively smaller signatures at right. Use cyan annotations and captions to identify the ratios and their use cases."
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "id": "AU12",
+  "title": "Audi Sport — introductory loop",
+  "image": "au12.png",
+  "source": "../sources/11-kms-team-audi-sport_LOOP_16-9.mov",
+  "location": {
+    "series": "KMS TEAM / Audi and Audi Sport identity case study",
+    "item": 12,
+    "extent": "Complete source media",
+    "poster_time_seconds": 8.65
+  },
+  "slide_intent": "Provide a concise introduction to sub-brand character so the viewer can recognize the shift before watching the full explanation.",
+  "strategic_value": "A quick transition from Audi rings to Audi Sport, red fields and forceful copy can establish family and difference together.",
+  "demonstration": "The 15.96-second loop moves from white rings to Audi Sport, compares color fields and places Make your statement and Feel the powerful moment over moving images.",
+  "category": "Motion",
+  "practical_value": "Compare the short autoplay sequence with the fuller Audi Sport narrative AU11.",
+  "content_islands": [
+    {
+      "name": "Signature transition",
+      "spec": "Move from parent rings to the Audi Sport wordmark and slanted symbol."
+    },
+    {
+      "name": "Color shift",
+      "spec": "Show the neutral/red family followed by a red-dominant composition."
+    },
+    {
+      "name": "Statement sequence",
+      "spec": "Overlay large uppercase phrases on driving and people footage before returning to the rings."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The loop combines the sub-brand signature, red fields and emphatic campaign statements.",
+    "Application": "This is the case study’s separate autoplay introduction to the full Audi Sport film."
+  },
+  "motion": "../sources/au12.mp4"
+}

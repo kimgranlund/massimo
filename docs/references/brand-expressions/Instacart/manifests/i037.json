@@ -1,0 +1,25 @@
+{
+  "id": "I037",
+  "title": "Instacart Sans",
+  "image": "i037.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 37,
+    "printed_page": 37
+  },
+  "slide_intent": "Show how one product face can change weight while preserving a recognizable letter structure. That continuity helps people identify actions across an interface.",
+  "strategic_value": "A variable Sans can give Instacart practical product copy several levels of emphasis.",
+  "demonstration": "Four rows repeat the same word at progressively heavier weights and pair each with an alphabet and numeral sample. The introduction identifies optical sizes for the product interface.",
+  "category": "Typography",
+  "practical_value": "Compare the word and its character set in the same row when selecting a weight for product copy.",
+  "content_islands": [
+    {
+      "name": "Face description",
+      "spec": "Keep the title above a narrow statement about the interface role and optical sizes."
+    },
+    {
+      "name": "Weight specimens",
+      "spec": "Set four large repetitions in a middle column. Align the matching smaller character sets at right so changes in weight can be compared row by row."
+    }
+  ]
+}

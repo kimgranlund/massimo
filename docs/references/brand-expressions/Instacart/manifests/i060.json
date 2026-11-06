@@ -1,0 +1,28 @@
+{
+  "id": "I060",
+  "title": "Illustration vs. Photography",
+  "image": "i060.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 60
+  },
+  "slide_intent": "Choose a medium according to the thing a reader needs to understand. A financial story can be symbolic, while a food image relies on recognizable texture.",
+  "strategic_value": "Instacart can use illustration to explain shopping benefits and photography to make a dish appealing.",
+  "demonstration": "Two equally sized panels show an illustrated phone with money and chart marks beside a close photograph of plated food. Both carry a green check and a different use caption.",
+  "category": "Imagery",
+  "practical_value": "Ask whether the message depends on an abstract relationship or on the sensory qualities of a real dish, then select the corresponding medium.",
+  "content_islands": [
+    {
+      "name": "Selection rule",
+      "spec": "Place the brief in the left column and keep its concluding food-photography rule prominent."
+    },
+    {
+      "name": "Illustrated story",
+      "spec": "Center the phone and financial symbols on a pale square and attach the caption about stories that photography cannot depict."
+    },
+    {
+      "name": "Food photograph",
+      "spec": "Place a detail of the finished dish in a matching frame and attach the caption describing its appetizing qualities."
+    }
+  ]
+}

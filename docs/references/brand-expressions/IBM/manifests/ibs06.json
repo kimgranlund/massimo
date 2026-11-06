@@ -1,0 +1,41 @@
+{
+  "id": "IBS06",
+  "title": "IBM 8-bar logo",
+  "image": "ibs06.png",
+  "source": "../sources/ibm-logo-strategic-partners.pdf",
+  "location": {
+    "page": 6,
+    "series": "IBM Logo Guidelines for Strategic Partners / Version 1.2 / copyright 2023",
+    "order": 200006
+  },
+  "slide_intent": "Protect a symbol’s separation from nearby material so viewers can recognize it and correctly read the partner relationship.",
+  "strategic_value": "Measured clear space can preserve the IBM mark’s integrity while keeping it in a supporting role.",
+  "demonstration": "The page pairs logo rationale and two clear-space cases with a large IBM mark surrounded by X-height boxes and a registration note.",
+  "category": "Geometry",
+  "practical_value": "Distinguish the ordinary visual-element clearance from the larger separation required from the partner’s own logo.",
+  "content_islands": [
+    {
+      "name": "Rationale and clear-space text",
+      "spec": "Place explanatory copy at left, separating Visual elements from Your logo."
+    },
+    {
+      "name": "Measurement diagram",
+      "spec": "Center the IBM mark in the larger right field and show X boxes around it, defining X by the I height."
+    },
+    {
+      "name": "Registration note",
+      "spec": "Keep the worldwide registration-mark recommendation beside the diagram."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source calls the mark a symbol of expertise, values, people and offerings, and explains the partner separation as maintaining IBM’s supportive position.",
+    "Application": "The diagram defines X as the height of the I and applies it to surrounding clear space.",
+    "Constraint": "Typical visual elements require at least 1X separation; the partner logo should be no closer than 3X. The registration mark is recommended worldwide, not described as legally required everywhere."
+  },
+  "ingredient": {
+    "name": "8-bar clear space",
+    "role": "Keep the logo recognizable and separate from the partner identity.",
+    "application": "Reserve at least one logo-height X around ordinary visual elements and at least 3X from the partner logo.",
+    "scope": "Version1.2 strategic-partner guide. X equals the height of the I in IBM; the partner-logo case differs from ordinary images, copy and CTAs."
+  }
+}

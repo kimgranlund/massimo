@@ -1,0 +1,30 @@
+{
+  "id": "DB0607",
+  "title": "Expressive applications / Berlin and travel message",
+  "image": "db0607.png",
+  "source": "../sources/page-06.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 6,
+    "section": 7,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Designprinzipien"
+  },
+  "slide_intent": "Balance a short message with imagery so the audience can grasp both destination and feeling.",
+  "strategic_value": "Large type and human photography can give DB’s travel communications a recognizable voice.",
+  "demonstration": "A social-post example for Berlin sits beside a wide photograph with the contrasting words Weniger Stress and Mehr Zeit.",
+  "category": "Application",
+  "practical_value": "Compare text placement on a portrait-format post and a landscape campaign image.",
+  "content_islands": [
+    {
+      "name": "Social example",
+      "spec": "Place the Berlin post, including its interface frame, at left."
+    },
+    {
+      "name": "Campaign example",
+      "spec": "Set the large opposing text groups along the bottom of the human photograph at right."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The pair demonstrates identity in a social post and a wide travel campaign."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "C456",
+  "title": "Show-brand typography family",
+  "image": "c456.png",
+  "source": "../sources/c456.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 / 2023 masterbrand case study",
+    "item": 56,
+    "extent": "Full published artwork"
+  },
+  "slide_intent": "Demonstrate variation within a shared type system, because programme identities need individual character while remaining connected to their broadcaster.",
+  "strategic_value": "Different widths, weights and treatments can give Channel 4 shows distinct tones without relying on wholly unrelated lettering systems.",
+  "demonstration": "A three-by-three grid on dark backgrounds compares title treatments for It’s a Sin, Derry Girls, Paralympics, Formula 1, True Crime, Taskmaster, The Windsors, Hollyoaks and deceit.",
+  "category": "Typography",
+  "practical_value": "Compare how width, weight, spacing and arrangement change a programme title’s voice.",
+  "content_islands": [
+    {
+      "name": "Title grid",
+      "spec": "Arrange nine white programme names in three rows, preserving each title’s distinct width, weight and alignment."
+    },
+    {
+      "name": "Treatment labels",
+      "spec": "Retain the small style labels above each specimen as part of the comparison; do not infer rules from unreadable fine values."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "Pentagram’s accompanying case study explains that show assets should align with the masterbrand while retaining appropriate tonal flexibility.",
+    "Expression": "A three-by-three grid on dark backgrounds compares title treatments for It’s a Sin, Derry Girls, Paralympics, Formula 1, True Crime, Taskmaster, The Windsors, Hollyoaks and deceit.",
+    "Application": "The source demonstrates this treatment in nine programme-title treatments."
+  }
+}

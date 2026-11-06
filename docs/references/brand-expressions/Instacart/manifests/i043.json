@@ -1,0 +1,29 @@
+{
+  "id": "I043",
+  "title": "Type Usage",
+  "image": "i043.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 43,
+    "printed_page": 43
+  },
+  "slide_intent": "Show where each type voice belongs in an interface or campaign. Readers need the control to be immediately intelligible while a headline can carry more personality.",
+  "strategic_value": "Instacart can maintain a dependable Sans voice for product tasks and reserve Contrast for moments that deserve attention.",
+  "demonstration": "The board pairs search, offer and deal controls with an order-complete card, a Giving Tuesday message and a large homemade headline on green.",
+  "category": "Typography",
+  "practical_value": "Use the control samples to choose a product face and the campaign or status samples to place a more expressive headline.",
+  "content_islands": [
+    {
+      "name": "Typeface roles",
+      "spec": "Set a short two-part explanation in the left column on the dark ground."
+    },
+    {
+      "name": "Product controls",
+      "spec": "Align the search field, offer button and deal link across the top in compact Sans."
+    },
+    {
+      "name": "Display applications",
+      "spec": "Arrange the order-complete card, campaign banner and standalone headline below. Keep the expressive titles distinct from supporting copy and actions."
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "ML09",
+  "title": "Group directory and graphic display",
+  "image": "ml09.png",
+  "source": "../sources/ml09.jpg",
+  "location": {
+    "series": "Pentagram / MIT Media Lab / 2014 identity",
+    "item": 9,
+    "extent": "Published lightbox artwork"
+  },
+  "slide_intent": "Present the research groups at an arrival point so visitors can identify the people and activities within the lab.",
+  "strategic_value": "A directory of related glyphs can make research diversity readable as one institutional community.",
+  "demonstration": "Two adjacent black screens pair a directory of group glyphs and names with an oversized white linear identity graphic.",
+  "category": "Application",
+  "practical_value": "Compare the informative directory with a neighboring graphic display in the same lobby.",
+  "content_islands": [
+    {
+      "name": "Group directory",
+      "spec": "The left screen lists small glyphs and text in rows."
+    },
+    {
+      "name": "Graphic display",
+      "spec": "The right screen carries oversized condensed linear forms; no floor-plan labels are visible."
+    },
+    {
+      "name": "Circulation space",
+      "spec": "Glazing and visitors establish the display’s location in the lobby."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Two adjacent black screens pair a directory of group glyphs and names with an oversized white linear identity graphic.",
+    "Application": "Two adjacent black screens pair a directory of group glyphs and names with an oversized white linear identity graphic."
+  },
+  "ingredient": {
+    "name": "Group directory and graphic display",
+    "role": "Present the research groups at an arrival point so visitors can identify the people and activities within the lab.",
+    "application": "Compare the informative directory with a neighboring graphic display in the same lobby.",
+    "scope": "Observed in this historical case-study artwork; not a mandatory usage rule or a current brand standard."
+  }
+}

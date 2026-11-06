@@ -1,0 +1,36 @@
+{
+  "id": "AU03",
+  "title": "Identity across screens and campaign formats",
+  "image": "au03.png",
+  "source": "../sources/02-kms-team-audi-CD01_16-9.mov",
+  "location": {
+    "series": "KMS TEAM / Audi and Audi Sport identity case study",
+    "item": 3,
+    "extent": "Complete source media",
+    "poster_time_seconds": 4
+  },
+  "slide_intent": "Show related outputs together because consistency must survive both different devices and changing content.",
+  "strategic_value": "Repeated rings and typographic character can connect Audi interfaces, print-like advertisements and film.",
+  "demonstration": "A 15-second animated device-and-artwork montage changes content within a large screen, tablet, phone, watch and overlapping campaign panels on white.",
+  "category": "Application",
+  "practical_value": "Compare which ingredients persist when screen shape and campaign imagery change.",
+  "content_islands": [
+    {
+      "name": "Device group",
+      "spec": "Arrange a large display behind a tablet, phone and watch."
+    },
+    {
+      "name": "Campaign panels",
+      "spec": "Overlap photographic advertisements with red or white headlines in front and behind the devices."
+    },
+    {
+      "name": "Changing media",
+      "spec": "Animate selected screen and panel content within the stable overall arrangement."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The montage repeats rings and Audi typography across varied images.",
+    "Application": "Desktop, tablet, phone and watch examples show the same identity in different formats."
+  },
+  "motion": "../sources/au03.mp4"
+}

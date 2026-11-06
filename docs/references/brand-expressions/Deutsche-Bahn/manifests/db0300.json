@@ -1,0 +1,30 @@
+{
+  "id": "DB0300",
+  "title": "Email / signature example",
+  "image": "db0300.png",
+  "source": "../sources/page-03.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 3,
+    "section": 0,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Teams-Hintergruende/E-Mail-Signatur"
+  },
+  "slide_intent": "Use small recurring cues to identify a sender while preserving readable contact details.",
+  "strategic_value": "The sleeper strip and bold name can make each DB email a recognizable personal encounter.",
+  "demonstration": "A compact signature block sits centered on a dark field, with a red sleeper motif below the page header.",
+  "category": "Application",
+  "practical_value": "Compare the prominence of name, contact details and the restrained brand motif.",
+  "content_islands": [
+    {
+      "name": "Signature block",
+      "spec": "Center the white sample containing bold sender name, role, red sleeper and contact lines."
+    },
+    {
+      "name": "Header field",
+      "spec": "Surround the sample with dark space and place the red sleeper strip at the bottom."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The specimen applies the sleeper element to an email signature."
+  }
+}

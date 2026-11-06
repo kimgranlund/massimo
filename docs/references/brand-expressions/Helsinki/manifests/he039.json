@@ -1,0 +1,43 @@
+{
+  "id": "HE039",
+  "title": "Style of illustrations – how is it being depicted?",
+  "image": "he039.png",
+  "source": "../sources/visual-storytelling.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Style of illustrations – how is it being depicted?",
+    "order": 53,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/visual-storytelling#style-of-illustrations---how-is-it-being-depicted-",
+    "original_html": "../sources/visual-storytelling.html"
+  },
+  "slide_intent": "Choose an illustration style that supports the message because rendering style can make the same subject feel approachable, obscure or unrelated to its place.",
+  "strategic_value": "Clear, colorful and relaxed illustration can carry Helsinki’s stated character across diverse topics.",
+  "demonstration": "This expanded webpage section compares preferred and less suitable styles, combines photography with illustration and shows accessible explanations of complex subjects.",
+  "category": "Imagery",
+  "practical_value": "Assess clarity, palette and character together when briefing an illustrator.",
+  "content_islands": [
+    {
+      "name": "Relaxed style",
+      "spec": "Compare natural, relaxed treatments with less suitable alternatives."
+    },
+    {
+      "name": "Color and character",
+      "spec": "Show colorful, imaginative examples and photo/illustration combinations."
+    },
+    {
+      "name": "Accessible explanation",
+      "spec": "Finish with clear explanatory illustrations against an obscure example."
+    }
+  ],
+  "ingredient": {
+    "name": "Illustration style",
+    "role": "Make city subjects approachable and distinctive.",
+    "application": "Use a clear, strong, natural and relaxed style with the city palette; choose imaginative combinations that retain understandable meaning.",
+    "scope": "Source language distinguishes must-use palette from preferred/avoided style directions; these examples do not establish one mandatory rendering technique."
+  },
+  "reference_purposes": {
+    "Intent": "The source links approachable, clear style to Helsinki’s sustainability and functionality.",
+    "Application": "The examples demonstrate preferred style choices and mixed photo/illustration treatments.",
+    "Constraint": "Illustrations must use the city palette; the text advises against classical, historical, rustic-romantic and overly abstract styles."
+  }
+}

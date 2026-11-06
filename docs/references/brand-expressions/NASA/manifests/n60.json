@@ -1,0 +1,28 @@
+{
+  "id": "N60",
+  "title": "NASA Uniform Patches",
+  "image": "n60.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 60
+  },
+  "slide_intent": "Teach designers to make an agency and a person’s role readable on clothing. Position and contrast must work with garment construction and with other badges a wearer may carry.",
+  "strategic_value": "NASA can distinguish general personnel from emergency or security teams while retaining agency identification across uniforms, protective clothing and headwear.",
+  "demonstration": "Two patch specimens compare the general white patch with a red emergency or security patch and a separate dark service strip. Seven garment and equipment drawings show chest, shoulder, coat-back and helmet placements.",
+  "category": "Application",
+  "practical_value": "Choose the patch by personnel role, then use the corresponding garment drawing to locate it. The lab coat and hardhat examples specify different sizes for their larger marks.",
+  "content_islands": [
+    {
+      "name": "Personnel and placement guidance",
+      "spec": "Set the title and explanatory columns along the top. Describe placement relative to a pocket and the special arrangement for emergency or security personnel."
+    },
+    {
+      "name": "Patch specimens",
+      "spec": "Place both systems side by side at upper right. Keep the service strip visibly separate beneath the red installation patch."
+    },
+    {
+      "name": "Garment applications",
+      "spec": "Arrange the flight jacket, shirt, flight suit, coat, blazer, emergency shirt and helmet in a single comparison field below the rule. Show each mark on the relevant visible surface."
+    }
+  ]
+}

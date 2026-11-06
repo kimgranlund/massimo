@@ -1,0 +1,39 @@
+{
+  "id": "HE049",
+  "title": "Opening frame",
+  "image": "he049.png",
+  "source": "../sources/visual-storytelling.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Opening frame",
+    "order": 69,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/visual-storytelling#opening-frame",
+    "original_html": "../sources/visual-storytelling.html"
+  },
+  "slide_intent": "Establish a clear opening hierarchy so a viewer can recognize the subject before the video develops.",
+  "strategic_value": "A repeated Bold title treatment can connect varied Helsinki subjects through a familiar opening.",
+  "demonstration": "This expanded webpage-section capture compares four static opening frames: centered and upper-left text on flat color and photographic backgrounds.",
+  "category": "Layout",
+  "practical_value": "Choose alignment and text color to suit the background while keeping the title inside the protected area.",
+  "content_islands": [
+    {
+      "name": "Opening rule",
+      "spec": "Place protected-area, contrast and Bold-font guidance first."
+    },
+    {
+      "name": "Four template comparisons",
+      "spec": "Stack each title-frame image beside its alignment, size and line-spacing explanation."
+    }
+  ],
+  "ingredient": {
+    "name": "Opening title",
+    "role": "Introduce the subject immediately.",
+    "application": "Use Helsinki Grotesk Bold, centered or upper-left within the safe area; choose white or a palette color for the background.",
+    "scope": "Opening frames. The adjacent templates use 400 px type and 400 px line spacing; these are template values."
+  },
+  "reference_purposes": {
+    "Application": "Four templates compare centered and upper-left titles on color and image backgrounds.",
+    "Constraint": "The opening uses Helsinki Grotesk Bold and stays within the protected area.",
+    "Expression": "Blue, pink and photographic backgrounds show different title treatments."
+  }
+}

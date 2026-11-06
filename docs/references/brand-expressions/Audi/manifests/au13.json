@@ -1,0 +1,36 @@
+{
+  "id": "AU13",
+  "title": "DARE TO STAND OUT.",
+  "image": "au13.png",
+  "source": "../sources/12-kms-team-audi-sport-CD01_3-2.jpg",
+  "location": {
+    "series": "KMS TEAM / Audi and Audi Sport identity case study",
+    "item": 13,
+    "extent": "Complete source media"
+  },
+  "slide_intent": "Use a restricted color relationship boldly because recognition can come from the whole field rather than a small accent.",
+  "strategic_value": "A red-on-dark-red composition can distinguish Audi Sport’s intensity while retaining its signature.",
+  "demonstration": "Bright red uppercase text fills three lines on a dark red ground, with the red Audi Sport signature below.",
+  "category": "Color",
+  "practical_value": "Compare tonal red contrast with red-on-white or red-on-photograph examples before choosing a background.",
+  "content_islands": [
+    {
+      "name": "Statement field",
+      "spec": "Place the large uppercase statement across three lines, left aligned."
+    },
+    {
+      "name": "Sub-brand signature",
+      "spec": "Position the slanted symbol and Audi Sport wordmark below the statement on the same dark-red field."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The entire artwork uses a bright-red statement and signature on a darker red ground.",
+    "Application": "The example applies a tonal palette to a typographic Audi Sport campaign panel."
+  },
+  "ingredient": {
+    "name": "Audi Sport tonal red field",
+    "role": "Give the sub-brand an intense field of recognition.",
+    "application": "Compare bright-red lettering against the darker red ground; do not infer numeric color values or a mandatory ratio from this example.",
+    "scope": "One historical Audi Sport campaign composition within the KMS case study."
+  }
+}

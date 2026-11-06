@@ -1,0 +1,43 @@
+{
+  "id": "AU07",
+  "title": "Logo ending over landscape",
+  "image": "au07.png",
+  "source": "../sources/06-kms-team-audi-logoending_16-9.mov",
+  "location": {
+    "series": "KMS TEAM / Audi and Audi Sport identity case study",
+    "item": 7,
+    "extent": "Complete source media",
+    "poster_time_seconds": 4.4
+  },
+  "slide_intent": "Integrate identification into the moving scene so the brand arrives as part of the experience rather than an unrelated interruption.",
+  "strategic_value": "A ring reveal that retains the landscape can connect Audi recognition with travel imagery.",
+  "demonstration": "The 7.08-second clip begins with landscape footage, reveals dark then white rings, changes aerial view and resolves to Audi Vorsprung durch Technik as the background fades to black.",
+  "category": "Motion",
+  "practical_value": "Compare the ring reveal with the later text sign-off and preserve their distinct jobs.",
+  "content_islands": [
+    {
+      "name": "Landscape opening",
+      "spec": "Fill the frame with a road beside reflective water."
+    },
+    {
+      "name": "Ring reveal",
+      "spec": "Reveal the rings across the center, resolve them to white and carry them into another landscape view."
+    },
+    {
+      "name": "Text ending",
+      "spec": "Replace the rings with the small red Audi and white slogan lockup as the landscape darkens."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The rings resolve within moving landscape footage before a text sign-off.",
+    "Application": "The source presents this as a logo-ending example.",
+    "Intent": "The adjacent Smart tools section explains that the logo-ending app makes the animated logo part of the brand message."
+  },
+  "motion": "../sources/au07.mp4",
+  "ingredient": {
+    "name": "Animated ring ending",
+    "role": "Connect the moving scene to Audi identification.",
+    "application": "Observe the ring reveal followed by a separate text sign-off. Use the source as a sequence example, not a universal timing specification.",
+    "scope": "One 7.08-second KMS case-study clip; no required duration or placement for every Audi film is stated."
+  }
+}

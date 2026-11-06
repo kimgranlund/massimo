@@ -1,0 +1,32 @@
+{
+  "id": "HE001",
+  "title": "What is visual identity?",
+  "image": "he001.png",
+  "source": "../sources/discover-the-visual-identity.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "What is visual identity?",
+    "order": 2,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/discover-the-visual-identity#what-is-visual-identity-",
+    "original_html": "../sources/discover-the-visual-identity.html"
+  },
+  "slide_intent": "Make the idea of identity tangible because people encounter a city through visible communications, not an abstract definition.",
+  "strategic_value": "A photograph of Helsinki print material can connect the city’s identity vocabulary to everyday communication.",
+  "demonstration": "This expanded webpage section defines visual identity in four bullets and follows them with a photograph of a green publication spread.",
+  "category": "Brand",
+  "practical_value": "Distinguish a visual identity from an isolated logo by considering all visible communications.",
+  "content_islands": [
+    {
+      "name": "Definition",
+      "spec": "Place the four explanatory bullets beneath the section heading."
+    },
+    {
+      "name": "Applied identity",
+      "spec": "Follow with the publication photograph and its credit."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The bullets say visual identity makes a brand visible and helps convey messages.",
+    "Application": "The publication photograph places graphic identity in a printed communication."
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "id": "DB18",
+  "title": "Common Visual Links / photographed spread",
+  "image": "db18.png",
+  "source": "../sources/db18.jpg",
+  "location": {
+    "series": "COLLINS / Dropbox / 2017 identity case study",
+    "item": 18,
+    "section": "Gallery",
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Explain connections between different images because shared forms can make a juxtaposition feel intentional.",
+  "strategic_value": "Repeated compositional links can help Dropbox’s varied imagery express collaboration rather than randomness.",
+  "demonstration": "A photographed spread pairs guidance at left with six numbered diagrams using triangles, circles, diagonals and portrait contours across divided planes.",
+  "category": "Geometry",
+  "practical_value": "Find a shared shape or contour before combining two images.",
+  "content_islands": [
+    {
+      "name": "Guidance and key",
+      "spec": "Keep the heading, composition prompt and six-item key on the left page."
+    },
+    {
+      "name": "Six diagrams",
+      "spec": "Arrange the examples as three rows of two at right, retaining each number and seam."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The printed copy explains shared visual links as a way to create varied co-creative juxtapositions.",
+    "Application": "A photographed spread pairs guidance at left with six numbered diagrams using triangles, circles, diagonals and portrait contours across divided planes."
+  },
+  "ingredient": {
+    "name": "Shared visual contours",
+    "role": "Connect unlike images through a shared contour or compositional feature.",
+    "application": "Find a shared shape or contour before combining two images.",
+    "scope": "Observed or explained in this historical COLLINS case study; no numeric dimensions or universal rule are supplied."
+  }
+}

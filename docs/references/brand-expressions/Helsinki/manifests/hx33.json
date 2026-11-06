@@ -1,0 +1,24 @@
+{
+  "id": "HX33",
+  "title": "Accessibility and equal communications",
+  "image": "hx33.png",
+  "source": "../sources/design-and-create.offline.html",
+  "location": {
+    "series": "Web guideline introduction/component",
+    "order": 126,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/design-and-create",
+    "original_html": "../sources/design-and-create.html"
+  },
+  "slide_intent": "Provide a clear entry to accessibility guidance because contributors need to locate it before making design decisions.",
+  "strategic_value": "The dedicated section can keep accessibility visible in Helsinki’s production workflow.",
+  "demonstration": "This webpage component contains only the Accessibility and equal communications heading and an Open all control. No detailed requirement is visible.",
+  "category": "Application",
+  "practical_value": "Use it to locate the guidance, not to infer an accessibility criterion.",
+  "content_islands": [
+    {
+      "name": "Section header",
+      "spec": "Retain the heading and expansion control together."
+    }
+  ],
+  "reference_purposes": {}
+}

@@ -1,0 +1,27 @@
+{
+  "id": "BK103",
+  "title": "Primary stripe specimen",
+  "image": "bk103.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 103
+  },
+  "slide_intent": "Show how color and irregular edges can suggest a familiar food structure without drawing the whole product.",
+  "strategic_value": "The layered orange, green, red, cream and brown bands can extend Burger King’s food associations into an abstract surface.",
+  "demonstration": "Broad uneven horizontal color bands span the page, with thin cream and green layers separating red from a large brown band and orange above and below.",
+  "category": "Imagery",
+  "practical_value": "Inspect the stripe silhouette and unequal band widths before comparing its labeled construction on the next page.",
+  "content_islands": [
+    {
+      "name": "Layered bands",
+      "spec": "Run irregular horizontal orange, green, red, cream and brown bands across the entire field."
+    },
+    {
+      "name": "Running information",
+      "spec": "Keep the small header and footer over the specimen without introducing explanatory labels."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The full-page specimen shows the layered, uneven stripe artwork without numeric construction rules."
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "IBT14",
+  "title": "Merchandise placement",
+  "image": "ibt14.png",
+  "source": "../sources/ibm-logo-third-parties.pdf",
+  "location": {
+    "page": 14,
+    "series": "IBM Logo and Brand Guidelines for Third Parties / copyright 2022",
+    "order": 100014
+  },
+  "slide_intent": "Show identity relationships at object scale, because logo placement and nearby partner marks change how merchandise communicates affiliation.",
+  "strategic_value": "A relationship tagline and considered placement can make IBM’s role clearer on co-branded reusable items.",
+  "demonstration": "A four-panel grid pairs a shirt and tote above crossed-out disposable-cup and wall-plug examples; several mockups are labeled FPO.",
+  "category": "Application",
+  "practical_value": "Use the examples to evaluate placement and relationship text, while treating FPO artwork as placeholders.",
+  "content_islands": [
+    {
+      "name": "Heading",
+      "spec": "Place Merchandise placement at upper left."
+    },
+    {
+      "name": "Reusable examples",
+      "spec": "Place shirt and tote mockups across the upper row with captions about placement and mandatory relationship taglines for two or more logos."
+    },
+    {
+      "name": "Rejected items",
+      "spec": "Place the disposable cup and wall-plug item below with diagonal rejection lines and red captions."
+    }
+  ],
+  "ingredient": {
+    "name": "Co-branded merchandise relationship",
+    "role": "Explain the affiliation between marks on a shared physical object.",
+    "application": "Consider placement, size and neighboring logos; include a relationship tagline whenever two or more logos are required.",
+    "scope": "Promotional merchandise in this guide. Mockups marked FPO are placeholders; the page rejects disposable and wall-socket items."
+  },
+  "reference_purposes": {
+    "Application": "The shirt and tote examples demonstrate the object-level placement judgment and relationship-text requirement.",
+    "Constraint": "A relationship tagline is mandatory when two or more logos appear; disposable and wall-socket items are prohibited on this page."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "MC10",
+  "title": "Brochure cover pair",
+  "image": "mc10.png",
+  "source": "../sources/mc10.jpg",
+  "location": {
+    "series": "Pentagram / Mastercard / 2016 identity case study",
+    "item": 10,
+    "extent": "Full published artwork"
+  },
+  "slide_intent": "Compare photographic and abstract covers because a brand system must support different kinds of messages.",
+  "strategic_value": "Shared typography, circular geometry and signature placement can connect visually different publications.",
+  "demonstration": "Two pale brochure covers pair a photograph with orange overlays at left and abstract colored circles on dark at right.",
+  "category": "Application",
+  "practical_value": "Compare common structure with variable image treatment.",
+  "content_islands": [
+    {
+      "name": "Cover images",
+      "spec": "Keep the photographic panel on the left cover and circular abstract panel on the right."
+    },
+    {
+      "name": "Editorial frame",
+      "spec": "Place each headline beneath its image and retain the small bottom signature."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The source identifies the two publication covers as brochures."
+  }
+}

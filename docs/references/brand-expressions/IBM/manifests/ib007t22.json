@@ -1,0 +1,45 @@
+{
+  "id": "IB007T22",
+  "title": "Color / UI palette — RGB specifications",
+  "image": "ib007t22.png",
+  "source": "../sources/alternate-tabs.json",
+  "location": {
+    "series": "IBM Design Language / alternate tab states",
+    "parent": "IB007",
+    "group": 2,
+    "tab": 2,
+    "label": "RGB",
+    "url": "https://www.ibm.com/design/language/color/",
+    "order": 7122
+  },
+  "slide_intent": "Separate interface color roles from the full expressive palette, because users need action and status signals to stand out from structural surfaces.",
+  "strategic_value": "A restrained blue, gray and alert set can make IBM products feel related while leaving functional signals distinct.",
+  "demonstration": "The RGB UI table presents blue and neutral-gray ramps with black and white, plus four alert swatches at the right.",
+  "category": "Color",
+  "practical_value": "Choose the RGB value within the UI subset after deciding whether the element is structural, actionable or a status signal.",
+  "content_islands": [
+    {
+      "name": "Encoding tabs",
+      "spec": "Show RGB selected above the table."
+    },
+    {
+      "name": "Blue and neutral ramps",
+      "spec": "Align the long blue and gray columns from black through numbered grades to white."
+    },
+    {
+      "name": "Alert subset",
+      "spec": "Place red Alert 60, green Alert 50, orange Alert 40 and yellow Alert 30 in the shorter right column."
+    }
+  ],
+  "ingredient": {
+    "name": "UI palette roles",
+    "role": "Separate structure, action and status.",
+    "application": "Use neutral gray to organize zones and core blue for primary action; use additional colors sparingly and purposefully.",
+    "scope": "The roles come from the accompanying Color in UI guidance; the RGB table supplies values and does not prescribe area percentages."
+  },
+  "reference_purposes": {
+    "Intent": "The accompanying Color in UI text assigns neutral grays to organization and core blue to primary action so the identity carries into interaction.",
+    "Expression": "The two ramps and four alerts demonstrate the narrower IBM UI color vocabulary.",
+    "Application": "The RGB tab provides digital channel values for the UI subset."
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "id": "IB037T12",
+  "title": "App icons / Sizing specifications",
+  "image": "ib037t12.png",
+  "source": "../sources/alternate-tabs.json",
+  "location": {
+    "series": "IBM Design Language / alternate tab states",
+    "parent": "IB037",
+    "group": 1,
+    "tab": 2,
+    "label": "Sizing specifications",
+    "url": "https://www.ibm.com/design/language/iconography/app-icons/usage/",
+    "order": 37112
+  },
+  "slide_intent": "Scale an icon’s construction with its overall size, because enlarging the boundary alone would change weight, padding and perceived balance.",
+  "strategic_value": "A coordinated size table can keep IBM app icons consistent from compact interface controls to expressive applications.",
+  "demonstration": "An eight-row table pairs icon sizes 16–96px with stroke width, padding, live area and corner radius; a short instruction appears beneath.",
+  "category": "Geometry",
+  "practical_value": "Look up all construction values together when moving an icon to an approved size.",
+  "content_islands": [
+    {
+      "name": "Sizing tab",
+      "spec": "Show Sizing specifications selected beside Icon sizes."
+    },
+    {
+      "name": "Construction table",
+      "spec": "Align icon size, stroke width, padding, live area and corner radius in five columns."
+    },
+    {
+      "name": "Usage instruction",
+      "spec": "Place the note about original sizes and accepted increments below the table."
+    }
+  ],
+  "ingredient": {
+    "name": "App-icon size relationships",
+    "role": "Preserve weight and interior space while changing scale.",
+    "application": "Use the table’s corresponding stroke, padding, live-area and radius values for each approved size.",
+    "scope": "App-icon usage guidance. Core productive sizes are 16, 20, 24 and 32px; expressive applications may use 48px and above."
+  },
+  "reference_purposes": {
+    "Intent": "The accompanying sizing text connects the core sizes to clarity and consistency in functional contexts.",
+    "Application": "The table links each icon size to its corresponding construction values, such as 32px with 2px stroke/padding/radius and 28px live area.",
+    "Constraint": "The source directs original sizes or accepted increments;16, 20, 24 and 32px are the core product sizes, while expressive uses may start at 48px."
+  }
+}

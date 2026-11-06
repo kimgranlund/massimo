@@ -1,0 +1,28 @@
+{
+  "id": "N58",
+  "title": "Certificates & Awards",
+  "image": "n58.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 58
+  },
+  "slide_intent": "Teach designers to select the seal or logotype according to the significance of an award. The form of recognition sets an expectation for ceremony and permanence.",
+  "strategic_value": "NASA can distinguish sustained service from shorter-term merit through both the identifying emblem and the arrangement of the certificate.",
+  "demonstration": "A traditional certificate centers the seal over the recipient’s name and signatures. Two smaller merit certificates use red logotypes with more contemporary type arrangements.",
+  "category": "Application",
+  "practical_value": "Match the identity treatment to the award type. The manual specifies the seal for a length-of-federal-service certificate and its accompanying service pin.",
+  "content_islands": [
+    {
+      "name": "Award distinctions",
+      "spec": "Set the heading and two text columns above the specimens. Explain the role of each identifier."
+    },
+    {
+      "name": "Formal award",
+      "spec": "Give the centered seal certificate the large specimen position. Align the name and signatures beneath the seal."
+    },
+    {
+      "name": "Merit certificates",
+      "spec": "Arrange the two contrasting certificate formats below. Show how the red logotype and the relative positions of title, name and signatures differ from the seal example."
+    }
+  ]
+}

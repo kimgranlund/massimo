@@ -1,0 +1,25 @@
+{
+  "id": "I082",
+  "title": "Logo Proportions",
+  "image": "i082.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 82,
+    "printed_page": 82
+  },
+  "slide_intent": "Teach optical sizing for compact formats. A signature that looks adequate at desktop scale can disappear beside the supporting copy in a narrow ad.",
+  "strategic_value": "Instacart can remain identifiable on small surfaces while letting the message and action lead.",
+  "demonstration": "Two narrow “Hangry kid?” ads use matching copy, button and photograph. The guide flags the small signature on the left and approves the larger one on the right, where it reads alongside the supporting type.",
+  "category": "Geometry",
+  "practical_value": "Compare the rendered logo against the subhead or body type in the actual narrow layout before choosing its final size.",
+  "content_islands": [
+    {
+      "name": "Small-format rule",
+      "spec": "Keep the left column brief and specify the comparison with subheadline or body text."
+    },
+    {
+      "name": "Optical comparison",
+      "spec": "Place the two dark green ads side by side with the logo at upper left. Mark the small version with a cross and the optically matched version with a check."
+    }
+  ]
+}

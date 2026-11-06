@@ -1,0 +1,42 @@
+{
+  "id": "DB1008",
+  "title": "Anwendung im Layout",
+  "image": "db1008.png",
+  "source": "../sources/page-10.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 10,
+    "section": 8,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Schwelle"
+  },
+  "slide_intent": "Relate the identity element to edges, text and image meaning so placement contributes to reading.",
+  "strategic_value": "The Schwelle can connect varied DB layouts without requiring a single rigid composition.",
+  "demonstration": "Edge-placement diagrams precede subtle background examples and four contextual uses involving movement, people, routes and headlines.",
+  "category": "Layout",
+  "practical_value": "Choose an edge, background or content-related placement; preserve the distinct color, overlap and small-size conditions.",
+  "content_islands": [
+    {
+      "name": "Edge placements",
+      "spec": "Arrange horizontal, vertical and headline-aligned diagrams beneath the opening guidance."
+    },
+    {
+      "name": "Subtle backgrounds",
+      "spec": "Pair light and dark examples with their gray values and overlap restrictions."
+    },
+    {
+      "name": "Contextual placements",
+      "spec": "Compare four small campaign examples with captions explaining their relationship to content."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The copy links contextual placement to supporting a message and visual dynamics.",
+    "Application": "It demonstrates edge alignment, subtle background use and content relationships.",
+    "Constraint": "Subtle use specifies Grey 25/50 on White digitally, Grey 100 on White in print, and Grey 800 on Cold Black; the logo may not overlap that Schwelle. Headline connections use the colored S variant."
+  },
+  "ingredient": {
+    "name": "Schwelle placement",
+    "role": "Frame content or reinforce its meaning.",
+    "application": "Use approximately two-thirds format width or height as flexible guidance; choose edge, subtle or contextual placement.",
+    "scope": "Official DB new-design website captured 2026-11-05; edition date unstated. Subtle gray values depend on medium/background; no logo overlap. Headline connections use colored S."
+  }
+}

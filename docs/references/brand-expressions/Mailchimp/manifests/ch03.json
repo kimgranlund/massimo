@@ -1,0 +1,38 @@
+{
+  "id": "CH03",
+  "title": "Outsider Art Inspiration",
+  "image": "ch03.png",
+  "source": "../sources/ch03.jpg",
+  "location": {
+    "series": "COLLINS / Mailchimp case study",
+    "item": 3,
+    "extent": "Complete published artwork",
+    "section": "Outsider Art Inspiration"
+  },
+  "slide_intent": "Make deliberate irregularity legible as a choice so illustration can convey individuality rather than accidental inconsistency.",
+  "strategic_value": "Uneven strokes and impossible proportions can give Mailchimp an approachable, unconventional character.",
+  "demonstration": "Orange annotations identify intuitive composition, unrefined linework and surreal proportions around a large figure inspecting small plants and figures.",
+  "category": "Imagery",
+  "practical_value": "Use the annotated specimen to distinguish expressive irregularity from a uniform geometric style.",
+  "content_islands": [
+    {
+      "name": "Illustration",
+      "spec": "Center the oversized hand and magnifying glass beside the small plant figures."
+    },
+    {
+      "name": "Annotations",
+      "spec": "Surround the drawing with orange labels, a bracket, circles and arrows tied to specific features."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The accompanying Outsider Art Inspiration text connects imperfect hand drawing to Mailchimp’s outsider identity.",
+    "Expression": "Annotations identify the drawing’s uneven line and surreal scale.",
+    "Application": "The labels point to concrete features another illustrator can examine."
+  },
+  "ingredient": {
+    "name": "Illustration irregularity",
+    "role": "Give the drawing a visibly human and unconventional character.",
+    "application": "Vary stroke texture and relative scale as the annotated specimen demonstrates.",
+    "scope": "Qualitative case-study direction; no numeric construction rule."
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "id": "DB0304",
+  "title": "Email signature / graphic text alternatives",
+  "image": "db0304.png",
+  "source": "../sources/page-03.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 3,
+    "section": 4,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Teams-Hintergruende/E-Mail-Signatur"
+  },
+  "slide_intent": "Provide a text counterpart to a graphic so recipients can understand its role when they cannot see it.",
+  "strategic_value": "Explicit setup guidance can help DB employees make signatures more accessible.",
+  "demonstration": "Two expanded numbered procedures explain alternative text for the sleeper and for general graphics, with optional links and an example resizing step in the general procedure.",
+  "category": "Application",
+  "practical_value": "Identify the graphic’s purpose before writing its text alternative and distinguish the sleeper-specific instructions from general image handling.",
+  "content_islands": [
+    {
+      "name": "Sleeper procedure",
+      "spec": "Present the four-step existing-image procedure and its prescribed description first."
+    },
+    {
+      "name": "General graphics procedure",
+      "spec": "Follow with insertion, example scaling, concise description, optional text/link, default selection and saving."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source says the procedures help recipients understand signature information.",
+    "Application": "Numbered instructions show how to edit image alternatives in the signature settings.",
+    "Constraint": "The sleeper procedure prescribes a specific alternative-text description; general graphics receive a concise content description."
+  },
+  "ingredient": {
+    "name": "Signature graphic text alternative",
+    "role": "Explain a graphic’s role to recipients who cannot see it.",
+    "application": "Follow the source’s sleeper-specific procedure or describe the content of a general graphic concisely.",
+    "scope": "This records DB’s own instruction, including a nonempty description for the decorative sleeper; it is not a universal accessibility prescription. The 80% size in the general procedure is an example, not a brand-wide scale rule."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "F74",
+  "title": "Urgent",
+  "image": "f74.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 74
+  },
+  "slide_intent": "Teach writers to make time and action concrete. A reader needs to know what can be done, when it matters and who is affected.",
+  "strategic_value": "Specific deadlines and achievable actions can connect global plans to the lives and experiences that give them urgency.",
+  "demonstration": "The third principle defines an active tone, links urgency to human impact, then identifies the boundaries of accuracy and sincerity. The action column calls for time frames and a definite request.",
+  "category": "Voice",
+  "practical_value": "Replace an imprecise appeal with an achievable action and a time frame. Retain context needed to understand the facts.",
+  "content_islands": [
+    {
+      "name": "Principle identifier",
+      "spec": "Mark Urgent in the chapter rail. Pair the large pale numeral 3 with its pink nameplate and the cyan underline."
+    },
+    {
+      "name": "Definition and limits",
+      "spec": "Pair the definition with the explanation of scale and personal experience, then distinguish brevity from omission of necessary context."
+    },
+    {
+      "name": "Writing guidance",
+      "spec": "Group timing, call to action and unnecessary qualifiers in the narrow right column."
+    }
+  ]
+}

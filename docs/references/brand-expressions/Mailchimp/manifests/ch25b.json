@@ -1,0 +1,43 @@
+{
+  "id": "CH25B",
+  "title": "Wordmark / Logo minimum sizes",
+  "image": "ch25b.png",
+  "source": "../sources/ch25.gif",
+  "location": {
+    "series": "COLLINS / Mailchimp case study",
+    "item": 25,
+    "extent": "Complete photographed spread from one GIF frame",
+    "section": "Gallery",
+    "frame": 2
+  },
+  "slide_intent": "Set reproduction limits because recognition fails when a mark’s detail becomes too small.",
+  "strategic_value": "Specified small-scale assets and minimums can preserve the relationship between Freddie and the Mailchimp name.",
+  "demonstration": "A photographed spread pairs sizing instructions at left with reversed and positive horizontal logos at right.",
+  "category": "Brand",
+  "practical_value": "Distinguish digital and print minimums and retain the prescribed small-scale lockup.",
+  "content_islands": [
+    {
+      "name": "Instructions",
+      "spec": "Keep the explanatory text above separate digital and print size notes on the left page."
+    },
+    {
+      "name": "Logo comparison",
+      "spec": "Stack a light logo on black above a black logo on white on the right page."
+    },
+    {
+      "name": "Folio",
+      "spec": "Retain printed folio 52 and Version 1.0 footer."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text explicitly connects minimum sizing to legibility and impact.",
+    "Constraint": "The source states minimums of 70px vertical and 100px horizontal for digital; 20mm vertical and 25mm horizontal for print. It also prohibits changing the Freddie–wordmark relationship in special small-scale assets.",
+    "Application": "Positive and reversed examples demonstrate the horizontal signature."
+  },
+  "ingredient": {
+    "name": "Logo minimum reproduction",
+    "role": "Preserve the mark’s legibility and internal relationship.",
+    "application": "Use the stated digital minimums of 70px vertical / 100px horizontal and print minimums of 20mm vertical / 25mm horizontal. Use the designated small-scale assets without changing Freddie relative to the wordmark.",
+    "scope": "Historical Version 1.0 excerpt. The text does not identify the measured axis; do not invent one. The referenced asset toolkit is not included."
+  }
+}

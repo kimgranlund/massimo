@@ -1,0 +1,29 @@
+{
+  "id": "HI10",
+  "title": "Street waiting and companionship",
+  "image": "hi10.png",
+  "source": "../sources/illustration-examples.pdf",
+  "location": {
+    "page": 10,
+    "series": "Helsinki illustration examples — PDF derived from the official PowerPoint deck with LibreOffice",
+    "order": 200
+  },
+  "slide_intent": "Use recognizable street moments so a public-life illustration feels familiar rather than abstract.",
+  "strategic_value": "A bus shelter, skater and person with a dog can connect Helsinki imagery to everyday travel and companionship.",
+  "demonstration": "A green bus shelter and timetable anchor the yellow field, with a skater, standing figures, birds and a dog around it.",
+  "category": "Imagery",
+  "practical_value": "Use the shelter as a contextual anchor while choosing only the figures needed for a message.",
+  "content_islands": [
+    {
+      "name": "Transit anchor",
+      "spec": "Place the shelter and timetable near the center-left."
+    },
+    {
+      "name": "Street figures",
+      "spec": "Distribute the skater, standing people, dog and birds around the shelter."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A green bus shelter and timetable anchor the yellow field, with a skater, standing figures, birds and a dog around it."
+  }
+}

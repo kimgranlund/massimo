@@ -1,0 +1,31 @@
+{
+  "id": "DB1116",
+  "title": "Komposition",
+  "image": "db1116.png",
+  "source": "../sources/page-11.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 11,
+    "section": 16,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Icons"
+  },
+  "slide_intent": "Combine familiar primitives so a new function inherits recognizable meaning.",
+  "strategic_value": "Reusing DB shapes can reduce visual inconsistency when the icon set expands.",
+  "demonstration": "A magnifying glass plus a plus sign equals a zoom-in icon in an illustrated equation.",
+  "category": "Geometry",
+  "practical_value": "Construct a composite from existing parts rather than introducing an unrelated drawing.",
+  "content_islands": [
+    {
+      "name": "Composition principle",
+      "spec": "Place the reuse explanation above the equation."
+    },
+    {
+      "name": "Construction equation",
+      "spec": "Arrange magnifier, plus sign and combined result from left to right."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source connects adapting existing forms to harmony and recognition.",
+    "Application": "The equation demonstrates a zoom-in icon assembled from familiar primitives."
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "C10",
+  "title": "Monochrome Logo Family",
+  "image": "c10.png",
+  "source": "../csail-branding-short-guide.pdf",
+  "location": {
+    "page": 10
+  },
+  "slide_intent": "Show how to preserve identifying features when reproduction is limited to one ink. Small optical changes can affect how clearly the mark reads.",
+  "strategic_value": "CSAIL can keep its family of lockups recognizable in single-color materials by providing dedicated drawings.",
+  "demonstration": "The four-tier family matrix reappears in black. A note specifies that the monochrome artwork includes optical adjustments.",
+  "category": "Brand",
+  "practical_value": "Select the monochrome master for the required organizational level and orientation.",
+  "content_islands": [
+    {
+      "name": "Optical adjustment note",
+      "spec": "Introduce the redrawn single-color artwork in the left rail. Place the artwork-selection reminder near the bottom."
+    },
+    {
+      "name": "One-color matrix",
+      "spec": "Use the same primary, tag, secondary and tertiary rows as the color family. Show each supported variant in black."
+    }
+  ]
+}

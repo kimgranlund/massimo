@@ -1,0 +1,32 @@
+{
+  "id": "C25",
+  "title": "Patterns",
+  "image": "c25.png",
+  "source": "../csail-branding-short-guide.pdf",
+  "location": {
+    "page": 25
+  },
+  "slide_intent": "Teach designers to vary a graphic through scale and subdivision while keeping the angles that relate its versions. A viewer can then recognize the family even when the density changes.",
+  "strategic_value": "CSAIL can extend the geometry of its mark into supporting surfaces. The website header shows how angular forms can frame subject-specific imagery and leave room for the lab identity and a topic title.",
+  "demonstration": "Two black pattern specimens sit above a laptop mockup. The right specimen divides its shapes into narrower bands. The laptop header crops differently colored images into adjacent angled fields.",
+  "category": "Geometry",
+  "practical_value": "Compare a broad subdivision with a finer one before choosing the scale of a header pattern. Use the laptop example to check that graphic detail leaves the identifier and title readable.",
+  "content_islands": [
+    {
+      "name": "Pattern guidance",
+      "spec": "Set the page title and rationale in the narrow left column. Group the notes on source geometry, scale and possible uses."
+    },
+    {
+      "name": "Paired specimens",
+      "spec": "Across the top of a pale field, place two black arrangements of polygonal cells. Draw thin light divisions in both and use a denser subdivision at right."
+    },
+    {
+      "name": "Website header",
+      "spec": "Center a laptop beneath the specimens. Divide its header imagery with angled edges and retain a separate white band for the identifier and Fintech title."
+    },
+    {
+      "name": "Book footer",
+      "spec": "Align the short-guide identifier, laboratory name and folio along the bottom margin."
+    }
+  ]
+}

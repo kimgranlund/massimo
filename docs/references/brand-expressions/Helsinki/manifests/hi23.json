@@ -1,0 +1,29 @@
+{
+  "id": "HI23",
+  "title": "Culture, architecture and conversation",
+  "image": "hi23.png",
+  "source": "../sources/illustration-examples.pdf",
+  "location": {
+    "page": 23,
+    "series": "Helsinki illustration examples — PDF derived from the official PowerPoint deck with LibreOffice",
+    "order": 213
+  },
+  "slide_intent": "Place cultural activity beside architecture so the city is represented as both setting and social life.",
+  "strategic_value": "Companionship, music and a bicycle can make Helsinki’s built environment feel connected to residents.",
+  "demonstration": "Three yellow building fronts line the top; figures sitting together, sharing earphones and playing a guitar sit below with a yellow bicycle on gray.",
+  "category": "Imagery",
+  "practical_value": "Combine one architectural anchor with human activity when a cultural message needs a local setting.",
+  "content_islands": [
+    {
+      "name": "Architecture row",
+      "spec": "Align the yellow building fronts across the upper right with a tree at left."
+    },
+    {
+      "name": "Cultural activity",
+      "spec": "Arrange seated, conversing and music-making figures across the lower area, ending with the bicycle."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Three yellow building fronts line the top; figures sitting together, sharing earphones and playing a guitar sit below with a yellow bicycle on gray."
+  }
+}

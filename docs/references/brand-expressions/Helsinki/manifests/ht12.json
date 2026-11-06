@@ -1,0 +1,28 @@
+{
+  "id": "HT12",
+  "title": "Helsinki Grotesk Pro / Black and Black Italic",
+  "image": "ht12.png",
+  "source": "../sources/helsinki-grotesk-pro-2025.pdf",
+  "location": {
+    "page": 12,
+    "order": 190
+  },
+  "slide_intent": "Judge black and black italic in real words and paragraphs so weight and slant can be chosen for both voice and reading.",
+  "strategic_value": "The black and black italic specimens can help Helsinki retain a consistent family while selecting an appropriate degree of emphasis.",
+  "demonstration": "A two-column specimen combines an English paragraph, large Bla It 75121 and heavy upright and italic multilingual words.",
+  "category": "Typography",
+  "practical_value": "Compare the black and black italic cuts at display and paragraph scale before assigning them to a communication.",
+  "content_islands": [
+    {
+      "name": "Word specimens",
+      "spec": "Large words demonstrate the selected upright and italic cuts."
+    },
+    {
+      "name": "Paragraph and large forms",
+      "spec": "A smaller paragraph and oversized letter or numeral forms provide contrasting reading scales."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A two-column specimen combines an English paragraph, large Bla It 75121 and heavy upright and italic multilingual words."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "LH16",
+  "title": "Tail mark at architectural scale",
+  "image": "lh16.png",
+  "source": "../sources/lh16.jpg",
+  "location": {
+    "series": "Mona Franz / Lufthansa 2018",
+    "item": 16,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Evaluate the mark on a three-dimensional surface because distance, angle and reflected light affect recognition.",
+  "strategic_value": "A large white crane on a dark tail can identify Lufthansa without relying on readable fuselage text.",
+  "demonstration": "A close low-angle photograph places the dark tail and white crane above the wing against clouds.",
+  "category": "Application",
+  "practical_value": "Check how symbol placement reads across the actual shape and viewing angles of an aircraft tail.",
+  "content_islands": [
+    {
+      "name": "Tail and symbol",
+      "spec": "Let the dark fin dominate the upper right."
+    },
+    {
+      "name": "Aircraft and sky",
+      "spec": "Keep the pale wing in the foreground and cloud field behind."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "A close low-angle photograph places the dark tail and white crane above the wing against clouds."
+  }
+}

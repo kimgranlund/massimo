@@ -1,0 +1,35 @@
+{
+  "id": "DBV01",
+  "title": "Auf und Abbau",
+  "image": "dbv01.png",
+  "source": "../sources/media/dbv01.mp4",
+  "location": {
+    "series": "DB new design / motion demonstrations",
+    "source_page": 11,
+    "section": "Animation-14019334",
+    "source_url": "https://ecm-mediathek-cdn.deutschebahn.com/cdnenhancedecmvidhls/db306179/2880445/video_config.json",
+    "capture_date": "2026-11-05"
+  },
+  "slide_intent": "Build and remove an icon deliberately so a person can follow its arrival and departure.",
+  "strategic_value": "The drawn search outline can connect a familiar action to DB’s motion language.",
+  "demonstration": "A dark magnifying-glass outline forms from a curved stroke, holds, and retracts on a pale field.",
+  "category": "Motion",
+  "practical_value": "Choose a stroke reveal when introducing a search symbol without moving its position.",
+  "content_islands": [
+    {
+      "name": "Search construction",
+      "spec": "Center the curved stroke as it forms the lens and handle."
+    },
+    {
+      "name": "Search removal",
+      "spec": "Retract the outline to return to the empty field."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A dark magnifying-glass outline forms from a curved stroke, holds, and retracts on a pale field.",
+    "Application": "The source provides a playable demonstration of this repeatable sequence: A dark magnifying-glass outline forms from a curved stroke, holds, and retracts on a pale field.",
+    "Intent": "Accompanying Icons, Signature Graphics, or Animation im UI prose explains that animation directs focus, makes relationships understandable, and adds expression.",
+    "Constraint": "The accompanying guidance says animation is deliberate and never disturbing or complex."
+  },
+  "motion": "../sources/media/dbv01.mp4"
+}

@@ -1,0 +1,24 @@
+{
+  "id": "I023",
+  "title": "Color",
+  "image": "i023.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 23
+  },
+  "slide_intent": "Signal the move from signature rules to palette decisions so the reader can switch topics.",
+  "strategic_value": "Consistent chapter styling can give each identity discipline an equal place in the book.",
+  "demonstration": "The large pale word Color appears on the same open dark field used for earlier section dividers.",
+  "category": "Layout",
+  "practical_value": "Use this page to identify the color section before consulting its usage guidance.",
+  "content_islands": [
+    {
+      "name": "Running labels",
+      "spec": "Place the small book, version and folio markers across the top."
+    },
+    {
+      "name": "Color title",
+      "spec": "Set the large pale heading to the left on the dark green field."
+    }
+  ]
+}

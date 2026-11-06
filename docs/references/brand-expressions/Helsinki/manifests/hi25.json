@@ -1,0 +1,29 @@
+{
+  "id": "HI25",
+  "title": "Metro neighbourhood and families",
+  "image": "hi25.png",
+  "source": "../sources/illustration-examples.pdf",
+  "location": {
+    "page": 25,
+    "series": "Helsinki illustration examples — PDF derived from the official PowerPoint deck with LibreOffice",
+    "order": 215
+  },
+  "slide_intent": "Connect transportation, housing and people so a neighbourhood message can show how daily life fits together.",
+  "strategic_value": "A metro sign, apartment block and family figures can make Helsinki’s service network visible through familiar surroundings.",
+  "demonstration": "An orange metro marker and ochre apartment facade sit behind a white branching structure; people and orange trees occupy the pink field.",
+  "category": "Imagery",
+  "practical_value": "Choose the transport, housing or family cluster to emphasize the relevant neighbourhood story.",
+  "content_islands": [
+    {
+      "name": "Built setting",
+      "spec": "Place the metro marker and apartment block behind the white branching form."
+    },
+    {
+      "name": "People and planting",
+      "spec": "Arrange the group at lower left and orange trees along the right."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "An orange metro marker and ochre apartment facade sit behind a white branching structure; people and orange trees occupy the pink field."
+  }
+}

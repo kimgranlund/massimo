@@ -1,0 +1,39 @@
+{
+  "id": "BK126",
+  "title": "File Naming Guide",
+  "image": "bk126.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 126
+  },
+  "slide_intent": "Make production choices visible in filenames so people can select the right asset without opening every version.",
+  "strategic_value": "A consistent ordered name can reduce confusion between Burger King logo variants, usage sizes and color spaces.",
+  "demonstration": "A large BK_Logo_Primary_ST_PMS_C.ai example sits over six labeled columns decoding name, asset type, asset name, asset format, color space and file format.",
+  "category": "Application",
+  "practical_value": "Read or construct a filename by its ordered attributes and underscore separators, checking the usage and color-space codes before choosing a file.",
+  "content_islands": [
+    {
+      "name": "Naming rationale",
+      "spec": "Place the concise explanation of findability, abbreviations and underscore separation at left."
+    },
+    {
+      "name": "Worked filename",
+      "spec": "Set the complete example prominently across the upper right."
+    },
+    {
+      "name": "Attribute key",
+      "spec": "Align six columns beneath it, retaining ST/SU/LU usage definitions, CMYK/RGB/Pantone choices and ai/png/jpg formats."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The copy says the convention helps users easily find the correct logo file and keeps names concise.",
+    "Application": "The worked filename and six-column key show the naming structure and abbreviations.",
+    "Constraint": "The source states that attributes follow in order of importance and are separated by underscores."
+  },
+  "ingredient": {
+    "name": "Asset filename structure",
+    "role": "Expose the asset’s intended variant and production format before opening it.",
+    "application": "Use the ordered attribute convention and underscore separators illustrated by BK_Logo_Primary_ST_PMS_C.ai. Interpret ST as standard lockup, SU as small usage, LU as large usage and PMS_C/PMS_U as coated/uncoated Pantone.",
+    "scope": "Historical asset-delivery convention; the page describes filenames rather than granting new asset-use permissions."
+  }
+}

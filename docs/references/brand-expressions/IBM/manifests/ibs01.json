@@ -1,0 +1,29 @@
+{
+  "id": "IBS01",
+  "title": "IBM Logo Guidelines for Strategic Partners / Version 1.2",
+  "image": "ibs01.png",
+  "source": "../sources/ibm-logo-strategic-partners.pdf",
+  "location": {
+    "page": 1,
+    "series": "IBM Logo Guidelines for Strategic Partners / Version 1.2 / copyright 2023",
+    "order": 200001
+  },
+  "slide_intent": "Identify the intended audience and edition so a partner knows which guidance governs the document.",
+  "strategic_value": "A clearly named partner guide can distinguish IBM’s external-use guidance from its broader identity system.",
+  "demonstration": "A large four-line title sits on pale blue above a white footer with the corporate name and IBM logo.",
+  "category": "Brand",
+  "practical_value": "Confirm the document concerns strategic partners before applying its logo rules.",
+  "content_islands": [
+    {
+      "name": "Title and edition",
+      "spec": "Place the stacked title toward the upper left of the pale-blue field, including Version 1.2."
+    },
+    {
+      "name": "Corporate signature",
+      "spec": "Align the corporate name in the lower white strip with the title and place the IBM logo at far right."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The cover uses a restrained pale-blue field, large light-weight type and a small IBM signature."
+  }
+}

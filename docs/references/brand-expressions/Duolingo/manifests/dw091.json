@@ -1,0 +1,38 @@
+{
+  "id": "DW091",
+  "title": "Writing / Style / Money",
+  "image": "dw091.png",
+  "source": "../sources/pages/writing-style.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/style",
+    "section": "Money",
+    "item": 91,
+    "order": 910
+  },
+  "slide_intent": "Show monetary amounts with only useful precision so readers can compare a price without extra notation.",
+  "strategic_value": "Whole amounts, decimal prices and sub-dollar examples can help Duolingo make price communication consistent.",
+  "demonstration": "Three checked examples show a whole-dollar amount, a monthly decimal price and a cents-per-day amount.",
+  "category": "Voice",
+  "practical_value": "Choose the symbol and precision treatment according to the amount.",
+  "content_islands": [
+    {
+      "name": "Guidance column",
+      "spec": "Place the topic heading, its parent label and the written convention in the narrow left column."
+    },
+    {
+      "name": "Worked examples",
+      "spec": "Place the worked copy in the pale right panel, keeping preference labels and green checks with their examples."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The examples show $25, $9.99 a month and 33 cents a day.",
+    "Constraint": "Put the currency symbol before the amount; omit .00 for whole amounts; write amounts below one dollar as x cents."
+  },
+  "ingredient": {
+    "name": "Money convention",
+    "role": "Readers can compare a price without extra notation.",
+    "application": "Put the currency symbol before the amount; omit .00 for whole amounts; write amounts below one dollar as x cents.",
+    "scope": "Historical official guidelines from the 2024–2025 archived snapshot; this records the displayed guidance, not current Duolingo product behavior."
+  }
+}

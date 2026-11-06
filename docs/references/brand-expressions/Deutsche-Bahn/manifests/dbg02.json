@@ -1,0 +1,27 @@
+{
+  "id": "DBG02",
+  "title": "Jetzt Sparpreis sichern / Word sequence",
+  "image": "dbg02.png",
+  "source": "../sources/media/a3e7da48a370-Bild_02-data.gif",
+  "location": {
+    "series": "DB new design / original GIF demonstrations",
+    "source_page": 15,
+    "section": 2,
+    "url": "https://marketingportal.extranet.deutschebahn.com/resource/blob/14025272/08860d701e844dcd65ad943311a4069e/Bild_02-data.gif"
+  },
+  "slide_intent": "Give short words their own beats because a brief moving message must be read in time.",
+  "strategic_value": "A three-word offer followed by the red DB mark can connect the promotion to its sender.",
+  "demonstration": "JETZT, SPARPREIS and SICHERN appear in succession on white, then yield to the red DB logo.",
+  "category": "Motion",
+  "practical_value": "Test a short call to action as a paced word sequence before adding photographic content.",
+  "content_islands": [
+    {
+      "name": "Word and signature sequence",
+      "spec": "Center one black word at a time, then replace it with the smaller red logo."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The film sequences wide black words and finishes on the red DB signature."
+  },
+  "motion": "../sources/media/dbg02.mp4"
+}

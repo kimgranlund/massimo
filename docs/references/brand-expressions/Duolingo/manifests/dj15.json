@@ -1,0 +1,34 @@
+{
+  "id": "DJ15",
+  "title": "Pittsburgh billboard",
+  "image": "dj15.png",
+  "source": "../sources/johnson-banks/Duolingo_billboard-by-Johnson-Banks.jpg",
+  "location": {
+    "series": "Johnson Banks / Everyone can Duolingo / 2019",
+    "item": 15,
+    "extent": "Whole published artwork",
+    "order": 2015
+  },
+  "slide_intent": "Reduce a message to a few readable elements because large outdoor placements are encountered quickly and from a distance.",
+  "strategic_value": "The Pittsburgh reference, large wordmark and running character can connect Duolingo’s local roots with its learning mission.",
+  "demonstration": "A green billboard above a building pairs a two-line statement about the future starting in Pittsburgh with a large wordmark, app badges and running figure.",
+  "category": "Application",
+  "practical_value": "Judge headline length, signature size and illustration scale against an outdoor viewing context.",
+  "content_islands": [
+    {
+      "name": "Billboard message",
+      "spec": "Place the short white statement and signature on the left of the green board."
+    },
+    {
+      "name": "Character",
+      "spec": "Place the running illustrated figure at right, extending to the lower edge."
+    },
+    {
+      "name": "Built context",
+      "spec": "Retain the roof, board frame and sky around the installation."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The billboard demonstrates the identity in a large outdoor format with a location-specific message."
+  }
+}

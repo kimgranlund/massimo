@@ -1,0 +1,28 @@
+{
+  "id": "F28",
+  "title": "Symbol & photography",
+  "image": "f28.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 28
+  },
+  "slide_intent": "Teach designers to decide whether a symbol should reveal a picture or join the scene. Each technique gives the viewer a different way to find the person in the photograph.",
+  "strategic_value": "Frontline AIDS can connect the same figure to lived experience through a recognizable silhouette or a graphic presence in a portrait.",
+  "demonstration": "On a cyan page, a tall photograph is visible through the outlined person shape, while a second portrait sits beside an oversized green figure. An outdoor panel shows a wider application.",
+  "category": "Imagery",
+  "practical_value": "Use a figure-shaped frame when the crop still communicates its subject; use integration when a figure can sit beside the photographed person.",
+  "content_islands": [
+    {
+      "name": "Two techniques",
+      "spec": "Introduce the two photography approaches in the left text field, then place the framed portrait centrally and the integrated example across the lower right."
+    },
+    {
+      "name": "Context view",
+      "spec": "Place the smaller billboard photograph under the introduction so the cropped figure can be compared at street scale."
+    },
+    {
+      "name": "Technique notes",
+      "spec": "Use pink arrows from the Frame and Photo integration notes to their respective examples. Keep the differences legible against the cyan ground."
+    }
+  ]
+}

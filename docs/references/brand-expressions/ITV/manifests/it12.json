@@ -1,0 +1,35 @@
+{
+  "id": "IT12",
+  "title": "ITVX / Device-scale promotion",
+  "image": "it12.png",
+  "source": "../sources/1782130883-ruj68aubqoeapmt06xga_a-itv_8.webp",
+  "location": {
+    "series": "DixonBaxi / ITV case-study artwork series",
+    "item": 12,
+    "extent": "Whole source artwork",
+    "source_asset_index": 12
+  },
+  "slide_intent": "Check how expressive programme typography and imagery work at different display sizes, because viewers need to recognize the same service across different situations.",
+  "strategic_value": "This approach can strengthen continuity between campaign recognition and service use.",
+  "demonstration": "A laptop, phone and tablet display programme-led compositions on a yellow field. The laptop carries large italic serif LIES over footage.",
+  "category": "Application",
+  "practical_value": "Check how expressive programme typography and imagery work at different display sizes.",
+  "content_islands": [
+    {
+      "name": "Background",
+      "spec": "Yellow unifies the device arrangement."
+    },
+    {
+      "name": "Laptop",
+      "spec": "Large italic type overlays programme footage."
+    },
+    {
+      "name": "Small devices",
+      "spec": "Phone and tablet show narrower content compositions."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A laptop, phone and tablet display programme-led compositions on a yellow field. The laptop carries large italic serif LIES over footage.",
+    "Application": "Check how expressive programme typography and imagery work at different display sizes. Evidence is the shown application, not a mandatory layout rule."
+  }
+}

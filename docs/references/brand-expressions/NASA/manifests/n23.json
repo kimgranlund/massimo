@@ -1,0 +1,24 @@
+{
+  "id": "N23",
+  "title": "News Releases",
+  "image": "n23.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 23
+  },
+  "slide_intent": "Show how a press officer can identify the issuing office while giving journalists familiar places to find the contact, release date and story.",
+  "strategic_value": "NASA can make a center release and a headquarters release recognizable as one family of communications.",
+  "demonstration": "Two filled-in releases use the NASA News masthead, a ruled division and typewritten copy. The issuer and news items change between them.",
+  "category": "Application",
+  "practical_value": "Lay out a new press release by holding the masthead and typing conventions steady while substituting the office, contact, release information and story.",
+  "content_islands": [
+    {
+      "name": "Guidance",
+      "spec": "Place the title at left with the note that both versions follow the letterhead typing standard."
+    },
+    {
+      "name": "Release pair",
+      "spec": "Align equal-size headquarters and center samples side by side. Keep the masthead, address, rule, release information, headline and paragraphs together in each example."
+    }
+  ]
+}

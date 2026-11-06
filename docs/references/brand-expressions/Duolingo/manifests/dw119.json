@@ -1,0 +1,38 @@
+{
+  "id": "DW119",
+  "title": "Illustration / Characters / Body types / Repetition",
+  "image": "dw119.png",
+  "source": "../sources/pages/illustration-characters.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/illustration/characters",
+    "section": "Repetition",
+    "item": 119,
+    "order": 1190
+  },
+  "slide_intent": "Repeat compatible shapes across a character so its parts feel like one coherent design.",
+  "strategic_value": "A shared form across head and torso can help Duolingo create recognizable characters with few elements.",
+  "demonstration": "Six translucent figures compare repeated rounded, circular and tapered shapes, alongside a short note about cohesion.",
+  "category": "Geometry",
+  "practical_value": "Try repeating a character’s main shape before introducing unrelated forms, then assess whether the result remains distinctive.",
+  "content_islands": [
+    {
+      "name": "Repeated-form studies",
+      "spec": "Place six blue outlined figures in two rows at left; tint the head and body shapes to reveal repeated forms."
+    },
+    {
+      "name": "Optional method",
+      "spec": "Place the Repetition heading and short note at right, preserving the statement that repetition is a starting point rather than a requirement."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text explicitly says shape repetition can keep a character’s shape language cohesive.",
+    "Application": "The figures demonstrate repeated shapes across different body proportions."
+  },
+  "ingredient": {
+    "name": "Shape repetition",
+    "role": "Make a character’s parts feel related.",
+    "application": "Use repeated shapes as a starting point when developing a character.",
+    "scope": "Historical official Duolingo illustration guidance from the 2024–2025 archived snapshot. Repetition is explicitly optional; do not turn the illustrated method into a universal requirement."
+  }
+}

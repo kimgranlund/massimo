@@ -1,0 +1,31 @@
+{
+  "id": "DJ01",
+  "title": "Everyone can Duolingo",
+  "image": "dj01.png",
+  "source": "../sources/johnson-banks/Duolingo_illustration2-by-Johnson-Banks.jpg",
+  "location": {
+    "series": "Johnson Banks / Everyone can Duolingo / 2019",
+    "item": 1,
+    "extent": "Whole published artwork",
+    "order": 2001
+  },
+  "slide_intent": "Connect a short promise to a welcoming character because people need to recognize who a service is for before considering its features.",
+  "strategic_value": "The inclusive phrase and familiar illustration style can make Duolingo’s language-learning mission feel approachable.",
+  "demonstration": "A bespectacled character stands beside three lines reading “everyone can duolingo”; the brand name is green and the preceding words are gray.",
+  "category": "Voice",
+  "practical_value": "Use a simple promise and character together when introducing the audience’s place in a brand story.",
+  "content_islands": [
+    {
+      "name": "Character",
+      "spec": "Place the tall illustrated figure at left, with blue hat and scarf above a gray coat."
+    },
+    {
+      "name": "Promise",
+      "spec": "Stack the message at right and distinguish the brand name through green."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The accompanying Johnson Banks account says the narrative expresses universal access through the idea that everyone can Duolingo.",
+    "Expression": "Rounded lettering and a flat illustrated character give the inclusive phrase a distinct visual voice."
+  }
+}

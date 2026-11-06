@@ -1,0 +1,29 @@
+{
+  "id": "DW089",
+  "title": "Writing / Style / Etc.",
+  "image": "dw089.png",
+  "source": "../sources/pages/writing-style.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/style",
+    "section": "Etc.",
+    "item": 89,
+    "order": 890
+  },
+  "slide_intent": "Identify a place for miscellaneous notation so writers know where to find conventions that fall outside sentence grammar.",
+  "strategic_value": "A clear separator can help Duolingo’s contributors locate rules for numbers and symbols without guessing.",
+  "demonstration": "A narrow strip pairs Etc. with one explanatory sentence about miscellaneous characters and symbols.",
+  "category": "Voice",
+  "practical_value": "Use this separator to locate the following phone, money, percentage and time rules.",
+  "content_islands": [
+    {
+      "name": "Section heading",
+      "spec": "Place Etc. at left."
+    },
+    {
+      "name": "Scope note",
+      "spec": "Place the short description of miscellaneous symbols at right."
+    }
+  ],
+  "reference_purposes": {}
+}

@@ -1,0 +1,25 @@
+{
+  "id": "LH25",
+  "title": "Crane signature",
+  "image": "lh25.png",
+  "source": "../sources/lh25.svg",
+  "location": {
+    "series": "HvD Fonts / Lufthansa 2018",
+    "item": 4,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Inspect a symbol alone because a recognizable silhouette must survive without supporting messages.",
+  "strategic_value": "The dark blue crane within a circle can provide a stable identification cue across Lufthansa materials.",
+  "demonstration": "A blue crane and enclosing circle occupy the center of a wide white field.",
+  "category": "Brand",
+  "practical_value": "Assess the mark’s silhouette and internal spacing independently of a layout.",
+  "content_islands": [
+    {
+      "name": "Isolated signature",
+      "spec": "Center the blue circular crane and preserve the surrounding white space."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A blue crane and enclosing circle occupy the center of a wide white field."
+  }
+}

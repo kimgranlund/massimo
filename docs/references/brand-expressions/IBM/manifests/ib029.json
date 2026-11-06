@@ -1,0 +1,45 @@
+{
+  "id": "IB029",
+  "title": "Animation / Classic principles",
+  "image": "ib029.png",
+  "source": "../sources/animation-classic-principles.txt",
+  "location": {
+    "series": "IBM Design Language / public web guidelines",
+    "item": 29,
+    "extent": "Complete webpage content-area capture; visible default tab states",
+    "url": "https://www.ibm.com/design/language/animation/classic-principles/",
+    "order": 29000
+  },
+  "slide_intent": "Adapt familiar animation principles to a brand’s intended behavior so movement remains understandable and consistent with its character.",
+  "strategic_value": "Restrained geometric demonstrations can give IBM a precise motion vocabulary while retaining enough surprise to engage viewers.",
+  "demonstration": "The webpage presents twelve animation principles in order, each with explanatory copy and a green/red pair of captured demonstration frames.",
+  "category": "Motion",
+  "practical_value": "Use the paired guidance to decide how timing, staging, overlap and deformation should express IBM’s controlled motion character.",
+  "content_islands": [
+    {
+      "name": "Opening interpretation",
+      "spec": "Begin with the note that IBM interprets the twelve classic animation principles for graphic forms."
+    },
+    {
+      "name": "Action and staging",
+      "spec": "Group Squash and stretch, Anticipation and Staging with their paired blue-and-pink geometric demonstrations."
+    },
+    {
+      "name": "Poses and transitions",
+      "spec": "Continue with Pose to pose, Overlapping action, Slow in and slow out, and Arc; preserve their sequential reading order and paired evaluations."
+    },
+    {
+      "name": "Support and timing",
+      "spec": "Follow with Secondary action, Timing and Exaggeration, keeping the short behavioral rationale attached to each pair."
+    },
+    {
+      "name": "Weight and appeal",
+      "spec": "End with Solid drawing and Appeal before the page navigation; the capture preserves only individual demonstration states."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The introduction explains adapting character-animation principles to graphic forms; Staging explicitly connects sequence and restraint to directing attention.",
+    "Application": "The source supplies guidance on key poses, overlapping motion, timing, axes, weight and secondary action.",
+    "Constraint": "It discourages overt deformation, bouncing curves, abrupt stops and long exponential settling; secondary action must support rather than distract from the main action."
+  }
+}

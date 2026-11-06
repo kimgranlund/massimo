@@ -1,0 +1,43 @@
+{
+  "id": "HE011",
+  "title": "Verbalised logo and text combination",
+  "image": "he011.png",
+  "source": "../sources/use-basic-elements.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Verbalised logo and text combination",
+    "order": 15,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/use-basic-elements#verbalised-logo-and-text-combination",
+    "original_html": "../sources/use-basic-elements.html"
+  },
+  "slide_intent": "Express the city’s relationship to an organization so a signature distinguishes ownership, partnership and support.",
+  "strategic_value": "Consistent wording can make Helsinki’s different civic relationships more understandable without introducing new logos.",
+  "demonstration": "This expanded webpage section explains three relationship phrases and their language availability, shows Finnish horizontal examples, then compares clear space around horizontal and vertical combinations.",
+  "category": "Brand",
+  "practical_value": "Choose the wording from the organization’s relationship to the city before choosing its layout.",
+  "content_islands": [
+    {
+      "name": "Relationship choices",
+      "spec": "Present With love from, Together with and Supported by Helsinki with their intended users."
+    },
+    {
+      "name": "Finnish combinations",
+      "spec": "Stack three horizontal Finnish phrase-and-logo specimens beneath the relationship guidance."
+    },
+    {
+      "name": "Space and orientation",
+      "spec": "Follow placement guidance with horizontal and vertical two-H-height clear-space diagrams."
+    }
+  ],
+  "ingredient": {
+    "name": "Verbal framed-logo combinations",
+    "role": "Explain the city’s relationship to the named activity.",
+    "application": "Use With love from for the described foundation-managed cultural/leisure brands, Together with for shared-ownership or strategic partners, and Supported by for grant recipients.",
+    "scope": "Use the language corresponding to the material and preserve two H heights of clear space. Horizontal/right-edge and vertical/top-or-bottom placement are stated suitability guidance."
+  },
+  "reference_purposes": {
+    "Intent": "The text says the three variants depend on Helsinki’s operational role or brand relationship.",
+    "Application": "The diagrams compare clear space for horizontal and vertical combinations; accompanying text describes suitable edge placements.",
+    "Constraint": "Original files and two-H-height protected areas must be used."
+  }
+}

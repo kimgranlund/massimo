@@ -1,0 +1,52 @@
+{
+  "id": "IB013",
+  "title": "Illustration / Tips and techniques",
+  "image": "ib013.png",
+  "source": "../sources/illustration-tips-and-techniques.txt",
+  "location": {
+    "series": "IBM Design Language / public web guidelines",
+    "item": 13,
+    "extent": "Complete webpage content-area capture; interactive elements retain their captured state",
+    "url": "https://www.ibm.com/design/language/illustration/tips-and-techniques/",
+    "order": 13000
+  },
+  "slide_intent": "Decide what an illustration must explain and where it will appear before choosing detail, color and composition, so its emphasis supports the viewer’s task.",
+  "strategic_value": "Deliberate differences between hero and supporting imagery can preserve IBM’s visual character while protecting functional focal points.",
+  "demonstration": "The page compares abstract/literal, micro/macro and low/high-fidelity images, then pairs hero and supporting applications with color, contrast, canvas and composition guidance.",
+  "category": "Imagery",
+  "practical_value": "Choose an illustration’s explanatory role first, then set its scale, fidelity, palette and focal point for that role.",
+  "content_islands": [
+    {
+      "name": "Ways of seeing",
+      "spec": "Compare an abstract green image with a literal laptop, a close-up eye with a city view, and linework with shaded layers."
+    },
+    {
+      "name": "Featured and supportive roles",
+      "spec": "Show a brochure-like hero application above a supporting illustration in a screen layout."
+    },
+    {
+      "name": "Color choices",
+      "spec": "Follow a large purple illustration with monochromatic, analogous and complementary examples, then blue-focus and additional-color comparisons."
+    },
+    {
+      "name": "Accessibility and canvas",
+      "spec": "Compare readable and unreadable line imagery before the nested aspect-ratio diagram."
+    },
+    {
+      "name": "Composition",
+      "spec": "Close with two-sided and horizon framing diagrams and focal-point compositions paired with 2x Grid overlays."
+    }
+  ],
+  "ingredient": {
+    "name": "Featured versus supportive illustration",
+    "role": "Give an idea the right amount of attention without competing with its surrounding content.",
+    "application": "Use more intricate imagery for a featured story; simplify supporting illustrations for quick recognition and maintain clear separation from functional focal points.",
+    "scope": "Illustration guidance for the described IBM contexts. Accessibility requirements concern information not fully conveyed in accompanying text; platform-specific canvas requirements may override common aspect ratios."
+  },
+  "reference_purposes": {
+    "Intent": "The source explains how intent sets the decision framework and how color reinforces expression without obscuring important UI elements.",
+    "Expression": "Comparisons show multiple ways IBM illustration handles abstraction, scale, fidelity and color.",
+    "Application": "Hero/spot examples and grid diagrams teach selection of complexity and placement.",
+    "Constraint": "The source limits additional colors to specific needs, warns against competing with blue UI actions, and requires 3:1 contrast for key informational concepts not fully supplied in adjacent text."
+  }
+}

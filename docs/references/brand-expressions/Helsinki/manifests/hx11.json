@@ -1,0 +1,27 @@
+{
+  "id": "HX11",
+  "title": "Photographs",
+  "image": "hx11.png",
+  "source": "../sources/visual-storytelling.offline.html",
+  "location": {
+    "series": "Web guideline introduction/component",
+    "order": 40,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/visual-storytelling",
+    "original_html": "../sources/visual-storytelling.html"
+  },
+  "slide_intent": "Photograph real people and contrasts because emotional credibility depends on recognizable lived experience.",
+  "strategic_value": "Residents, staff, companies and visitors can give Helsinki’s story human specificity.",
+  "demonstration": "This webpage introduction defines photography through emotion, the real city and contrasts, naming people as its main characters.",
+  "category": "Imagery",
+  "practical_value": "Select subjects and situations that reveal Helsinki through lived experience.",
+  "content_islands": [
+    {
+      "name": "Photography premise",
+      "spec": "Place the emotional and documentary aims together beneath the heading."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text says photographs tell a unique story and evoke emotions.",
+    "Application": "It identifies residents, staff, companies and visitors as the main characters."
+  }
+}

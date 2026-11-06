@@ -1,0 +1,36 @@
+{
+  "id": "LH20",
+  "title": "Yellow welcome panel",
+  "image": "lh20.png",
+  "source": "../sources/lh20.jpg",
+  "location": {
+    "series": "Mona Franz / Lufthansa 2018",
+    "item": 20,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Use a color cue at a moment of arrival because people need to locate entrances and understand where to go.",
+  "strategic_value": "A yellow welcome panel can make Lufthansa’s accent color useful as well as recognizable.",
+  "demonstration": "A uniformed crew member stands in an open aircraft door beside a yellow crane-and-welcome panel.",
+  "category": "Color",
+  "practical_value": "Evaluate whether an accent marks a useful passenger action or threshold.",
+  "content_islands": [
+    {
+      "name": "Entry and staff",
+      "spec": "Center the open doorway and crew member."
+    },
+    {
+      "name": "Yellow signal",
+      "spec": "Place the small yellow welcome panel on the fuselage beside the entrance."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A uniformed crew member stands in an open aircraft door beside a yellow crane-and-welcome panel.",
+    "Intent": "Mona Franz explicitly assigns orientation and identification roles to the revised yellow."
+  },
+  "ingredient": {
+    "name": "Yellow welcome panel",
+    "role": "Identify the aircraft entrance and welcome the arriving passenger.",
+    "application": "Evaluate whether an accent marks a useful passenger action or threshold.",
+    "scope": "Historical 2018 Lufthansa airline refresh case study; observed example, not a complete brand manual or a current Lufthansa Group rule."
+  }
+}

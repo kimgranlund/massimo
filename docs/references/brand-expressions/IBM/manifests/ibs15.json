@@ -1,0 +1,34 @@
+{
+  "id": "IBS15",
+  "title": "Examples / Paid media",
+  "image": "ibs15.png",
+  "source": "../sources/ibm-logo-strategic-partners.pdf",
+  "location": {
+    "page": 15,
+    "series": "IBM Logo Guidelines for Strategic Partners / Version 1.2 / copyright 2023",
+    "order": 200015
+  },
+  "slide_intent": "Adapt brand hierarchy to advertisement proportions so ownership remains clear in both wide and tall formats.",
+  "strategic_value": "Consistent partner prominence can make IBM support recognizable across varied paid placements.",
+  "demonstration": "A horizontal banner and vertical ad pair partner branding with gray content fields, blue CTA elements and smaller IBM marks.",
+  "category": "Application",
+  "practical_value": "Adjust the composition to the ad format while preserving the partner-led hierarchy and distinct CTA.",
+  "content_islands": [
+    {
+      "name": "Horizontal ad",
+      "spec": "Show the wide banner at left with content and CTA on one side and the partner brand field on the other."
+    },
+    {
+      "name": "Vertical ad",
+      "spec": "Show the tall format at right with partner branding above and content, IBM acknowledgement and CTA below."
+    },
+    {
+      "name": "Qualification",
+      "spec": "Retain the note that layout options are not restricted to these examples."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The paired schematics apply partner-led hierarchy to horizontal and vertical paid media.",
+    "Constraint": "The caption explicitly states that the illustrated layouts are not exhaustive."
+  }
+}

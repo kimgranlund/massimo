@@ -1,0 +1,28 @@
+{
+  "id": "F76",
+  "title": "Provocative",
+  "image": "f76.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 76
+  },
+  "slide_intent": "Teach writers to decide when a challenge serves the reader and the purpose of the piece. A direct challenge needs a concrete issue and a way forward.",
+  "strategic_value": "Frontline AIDS can name a harmful practice or power structure directly while giving an audience a reason and opportunity to act.",
+  "demonstration": "The fifth principle weighs disruption against audience receptiveness. Its writing notes pair a challenge with evidence and a proposed solution.",
+  "category": "Voice",
+  "practical_value": "Name the specific practice that should change. Choose the level of confrontation for the audience and accompany the challenge with a possible response.",
+  "content_islands": [
+    {
+      "name": "Principle identifier",
+      "spec": "Mark Provocative in the chapter rail. Pair the large pale numeral 5 with its pink nameplate and the cyan underline."
+    },
+    {
+      "name": "Definition and limits",
+      "spec": "Give the central column sufficient depth for the additional paragraph about when provocation could undermine the message."
+    },
+    {
+      "name": "Writing guidance",
+      "spec": "Stack the practices at right. Include the example of confronting inaction, the guidance on varying tone and the requirement to offer a solution."
+    }
+  ]
+}

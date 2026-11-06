@@ -1,0 +1,24 @@
+{
+  "id": "F51",
+  "title": "Watchouts",
+  "image": "f51.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 51
+  },
+  "slide_intent": "Help editors recognize image treatments that can obscure the subject or make a documentary encounter look interchangeable.",
+  "strategic_value": "Frontline AIDS can protect the specificity of its photographic record by keeping real settings, color and human detail visible.",
+  "demonstration": "Six photographs marked with pink crosses demonstrate monochrome treatment, unclear focus, flash, stock imagery, artificial tinting and distance.",
+  "category": "Imagery",
+  "practical_value": "Use the examples to explain a rejection precisely. Identify whether the problem is in the original shot, image selection or post-production.",
+  "content_islands": [
+    {
+      "name": "Selection note",
+      "spec": "Introduce the photographic exclusions in a short column beside the section rail."
+    },
+    {
+      "name": "Rejected specimens",
+      "spec": "Set the six examples in a consistent two-by-three grid. Put a pink cross on every image and a short, distinct reason beneath each crop."
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "id": "DW008",
+  "title": "Logotype / Please don’t",
+  "image": "dw008.png",
+  "source": "../sources/pages/identity-logos.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/identity/logos",
+    "section": "Please don't...",
+    "item": 8,
+    "order": 80
+  },
+  "slide_intent": "Show prohibited transformations because attractive variations can still damage a shared signature.",
+  "strategic_value": "A concrete misuse set can reduce inconsistent Duolingo marks across contributors.",
+  "demonstration": "Nine examples pair altered logotypes with prohibitions covering color, squash, font substitution, outline, images, busy background, skew, gradients and spacing.",
+  "category": "Brand",
+  "practical_value": "Compare a proposed treatment against the pictured misuse types.",
+  "content_islands": [
+    {
+      "name": "Misuse grid",
+      "spec": "Arrange nine crossed-out logotypes in a three-column grid on the left."
+    },
+    {
+      "name": "Prohibition list",
+      "spec": "Place the heading and nine matching prohibitions in the right column."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "Each visual example demonstrates a specific form of misuse.",
+    "Constraint": "The page prohibits the nine listed alterations and specifies accepted rotations of 0° and 90°."
+  },
+  "ingredient": {
+    "name": "Logotype integrity",
+    "role": "Preserve recognizable letterforms and contrast.",
+    "application": "Do not recolor beyond approved options, distort, substitute fonts, outline, image-fill, gradient-fill, skew, alter spacing or place over a busy background.",
+    "scope": "Historical archived guidelines. Historical logotype rules; accepted rotations are 0° and 90°."
+  }
+}

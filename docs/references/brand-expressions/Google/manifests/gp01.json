@@ -1,0 +1,32 @@
+{
+  "id": "GP01",
+  "title": "Product Sans / Cover",
+  "image": "gp01.png",
+  "source": "../product-sans-specimen.pdf",
+  "location": {
+    "page": 1,
+    "printed_page": "P–1"
+  },
+  "slide_intent": "Introduce a typeface through its own letterforms so a reader encounters its character before technical explanations.",
+  "strategic_value": "A large white specimen on Google blue can connect the typeface with the brand while keeping the name immediately readable.",
+  "demonstration": "The clean archival cover places Product Sans on two large lines above a small white Google mark, with edition and folio labels along the top.",
+  "category": "Typography",
+  "practical_value": "Use the opening page to judge the typeface’s broad proportions and rhythm before inspecting individual glyphs.",
+  "content_islands": [
+    {
+      "name": "Running metadata",
+      "spec": "Align the typeface name, copyright, specimen label and P–1 along the top."
+    },
+    {
+      "name": "Typeface title",
+      "spec": "Place the large two-line white title in the left half of the blue field."
+    },
+    {
+      "name": "Brand signature",
+      "spec": "Place a small white Google wordmark at lower left."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The cover demonstrates the typeface’s open, geometric forms in a large white-on-blue specimen."
+  }
+}

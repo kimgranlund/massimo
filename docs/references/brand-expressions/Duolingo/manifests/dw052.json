@@ -1,0 +1,33 @@
+{
+  "id": "DW052",
+  "title": "Writing / Brand Narrative / Sample messaging",
+  "image": "dw052.png",
+  "source": "../sources/pages/writing-brand-narrative.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/brand-narrative",
+    "section": "Sample messaging",
+    "item": 52,
+    "order": 520
+  },
+  "slide_intent": "Vary message length while preserving the central promise so the audience recognizes the brand in both brief and detailed contexts.",
+  "strategic_value": "A ladder from tagline to press paragraph can help Duolingo maintain its access-and-possibility story across channels.",
+  "demonstration": "The panel lists a tagline, short CTAs, one-sentence forms, longer descriptions and a press paragraph in increasing detail.",
+  "category": "Voice",
+  "practical_value": "Select a message length for the placement and update historical facts before reuse.",
+  "content_islands": [
+    {
+      "name": "Guidance column",
+      "spec": "Place the Sample Messaging heading and clarity rationale at left."
+    },
+    {
+      "name": "Worked examples",
+      "spec": "Stack labeled copy formats at right; keep the long press description last so the progression from compact to detailed remains visible."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The left note links short, clear words to transparency with learners.",
+    "Expression": "The copy repeatedly frames language learning as accessible and life-expanding.",
+    "Application": "The page supplies ready examples for taglines, CTAs, descriptions and press copy."
+  }
+}

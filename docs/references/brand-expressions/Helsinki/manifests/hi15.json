@@ -1,0 +1,29 @@
+{
+  "id": "HI15",
+  "title": "Harbour building and boat",
+  "image": "hi15.png",
+  "source": "../sources/illustration-examples.pdf",
+  "location": {
+    "page": 15,
+    "series": "Helsinki illustration examples — PDF derived from the official PowerPoint deck with LibreOffice",
+    "order": 205
+  },
+  "slide_intent": "Use a few distinctive forms to suggest place so the illustration remains readable at a smaller scale.",
+  "strategic_value": "A harbor building, boat and people can evoke Helsinki’s maritime character without a dense collage.",
+  "demonstration": "An ochre clock-tower building occupies the left; a pale-blue boat and gull sit right, with two people and vegetation below.",
+  "category": "Imagery",
+  "practical_value": "Select a building-and-boat pairing when the maritime setting should remain the main cue.",
+  "content_islands": [
+    {
+      "name": "Harbour architecture",
+      "spec": "Place the ochre building and vegetation at left."
+    },
+    {
+      "name": "Boat and people",
+      "spec": "Balance the blue boat and gull at right with two figures near the bottom center."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "An ochre clock-tower building occupies the left; a pale-blue boat and gull sit right, with two people and vegetation below."
+  }
+}

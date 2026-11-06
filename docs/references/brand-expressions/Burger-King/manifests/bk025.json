@@ -1,0 +1,43 @@
+{
+  "id": "BK025",
+  "title": "3. Witty",
+  "image": "bk025.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 25
+  },
+  "slide_intent": "Define the limits of wit so writers can express personality without creating the wrong impression.",
+  "strategic_value": "Quick cultural references can make Burger King feel alert and personable while protecting warmth.",
+  "demonstration": "Sarcastic, ironic and smart language is bounded by cautions against cruelty, cynicism and highbrow expression. The right column compares short jokes and cultural references with insults, officious wording and elaborate mythology.",
+  "category": "Voice",
+  "practical_value": "Test a joke for respect and accessibility before using it as brand voice.",
+  "content_islands": [
+    {
+      "name": "Trait and explanation",
+      "spec": "Place the numbered Witty heading and explanatory paragraph in the wide left area."
+    },
+    {
+      "name": "Boundaries",
+      "spec": "Stack three contrasting statements below, highlighting the limiting word in orange."
+    },
+    {
+      "name": "Do and do not examples",
+      "spec": "Use the narrower right column for paired examples with explanatory notes."
+    },
+    {
+      "name": "Review notice",
+      "spec": "Retain the bottom qualification requiring trademark and local legal review of example lines."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The explanatory paragraph describes the role of wit in Burger King’s voice.",
+    "Application": "The right column compares short jokes and cultural references with insults, officious wording and elaborate mythology.",
+    "Constraint": "The page specifies sarcastic but not cruel, ironic but not jaded, smart but not highbrow; its example lines remain subject to trademark and local legal review."
+  },
+  "ingredient": {
+    "name": "Witty voice",
+    "role": "Express wit while avoiding a misleading or alienating tone.",
+    "application": "Test a joke for respect and accessibility before using it as brand voice.",
+    "scope": "Historical partner voice guide. Preserve the named boundaries and source review qualification; examples are not blanket approval to publish claims."
+  }
+}

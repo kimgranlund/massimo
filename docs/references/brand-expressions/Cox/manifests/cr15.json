@@ -1,0 +1,26 @@
+{
+  "id": "CR15",
+  "title": "Brand Awareness Video — streaming poster",
+  "image": "cr15.png",
+  "source": "../sources/cr15.jpg",
+  "location": {
+    "series": "Cox Brand Collection — Lindsay Little / Periscope",
+    "item": 15,
+    "extent": "whole source image"
+  },
+  "slide_intent": "Connect a performance claim to an everyday task so the viewer has a reason to care about speed.",
+  "strategic_value": "The kitchen activity can make Cox’s streaming message feel useful within family life.",
+  "demonstration": "The supplied video poster overlays a blue-green sentence fragment on an adult and child looking at a tablet at a kitchen table. The still does not establish the complete claim or animation.",
+  "category": "Voice",
+  "practical_value": "Check whether the activity gives a technical benefit an understandable human context.",
+  "content_islands": [
+    {
+      "name": "Shared tablet task",
+      "spec": "Keep the adult, child and tablet together across the middle of the domestic scene."
+    },
+    {
+      "name": "Headline fragment",
+      "spec": "Set the large colored line over the left-center of the photograph, retaining the source’s unfinished wording."
+    }
+  ]
+}

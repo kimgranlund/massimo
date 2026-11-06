@@ -1,0 +1,32 @@
+{
+  "id": "BK101",
+  "title": "Plant Based Whopper wrapper illustration",
+  "image": "bk101.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 101
+  },
+  "slide_intent": "Differentiate a product variant within a familiar packaging family so people can identify the choice without losing brand recognition.",
+  "strategic_value": "Green artwork and a green mark can distinguish the Plant Based Whopper while preserving the wrapper structure used by the wider brand.",
+  "demonstration": "A folded wrapper rests on green ingredient graphics with vertical Plant Based Whopper naming and an orange cheese label; its Burger King mark is green.",
+  "category": "Application",
+  "practical_value": "Compare which packaging elements change for the plant-based variant and which maintain the family resemblance.",
+  "content_islands": [
+    {
+      "name": "Green ingredient field",
+      "spec": "Use enlarged green onion, pickle and lettuce forms around the wrapped burger."
+    },
+    {
+      "name": "Variant naming",
+      "spec": "Place vertical Plant Based Whopper labels at the sides, with a smaller cheese panel at right."
+    },
+    {
+      "name": "Wrapped product",
+      "spec": "Center the folded wrapper with its green Burger King mark facing the viewer."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Green ingredient graphics and a green mark distinguish this specimen.",
+    "Application": "The image shows a Plant Based Whopper packaging variant; it does not state a universal green-only rule."
+  }
+}

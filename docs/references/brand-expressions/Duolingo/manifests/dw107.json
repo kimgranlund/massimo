@@ -1,0 +1,39 @@
+{
+  "id": "DW107",
+  "title": "Illustration / Shape language / Color palette",
+  "image": "dw107.png",
+  "source": "../sources/pages/illustration-shape-language.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/illustration/shape-language",
+    "section": "Color",
+    "item": 107,
+    "order": 1070
+  },
+  "slide_intent": "Balance a common palette with subject needs because consistency should not prevent an illustration from communicating its subject.",
+  "strategic_value": "A broad family of named colors can keep Duolingo drawings related while accommodating varied characters and objects.",
+  "demonstration": "Named swatches with hexadecimal values fill a tall pale panel, progressing through neutrals, warm colors, greens, blues and purples; a note explains flexibility.",
+  "category": "Color",
+  "practical_value": "Use the illustration palette as a general guide while preserving the source’s permission to add a needed color.",
+  "content_islands": [
+    {
+      "name": "Palette reference",
+      "spec": "Group the named swatch cards by color family in the broad left panel, retaining every printed hex value."
+    },
+    {
+      "name": "Flexibility note",
+      "spec": "Place the Color heading and explanation at upper right."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The swatch families demonstrate the breadth of the illustration palette.",
+    "Application": "Named swatches and hexadecimal values supply repeatable color references.",
+    "Constraint": "The source explicitly calls this a general guide and allows a color outside the palette when an illustration needs it."
+  },
+  "ingredient": {
+    "name": "Illustration palette",
+    "role": "Connect varied drawings through recurring color families.",
+    "application": "Use the supplied colors consistently where possible; introduce an outside color when the illustration needs one.",
+    "scope": "Historical illustration palette, not a closed list for every brand application; core identity colors are documented separately."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "HT02",
+  "title": "Helsinki Grotesk Pro / Family-Overview",
+  "image": "ht02.png",
+  "source": "../sources/helsinki-grotesk-pro-2025.pdf",
+  "location": {
+    "page": 2,
+    "order": 180
+  },
+  "slide_intent": "Compare weights and italics together so hierarchy can change without losing the family’s voice.",
+  "strategic_value": "The paired weight ladder can help Helsinki vary emphasis while retaining related letterforms.",
+  "demonstration": "Upright and italic columns step from Extra Light through Light, Regular, Medium, Bold and Black.",
+  "category": "Typography",
+  "practical_value": "Compare weight and slant before assigning headline and support roles.",
+  "content_islands": [
+    {
+      "name": "Upright ladder",
+      "spec": "Stack six progressively heavier specimens at left."
+    },
+    {
+      "name": "Italic ladder",
+      "spec": "Mirror the same weight progression at right across a vertical rule."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Upright and italic columns step from Extra Light through Light, Regular, Medium, Bold and Black."
+  }
+}

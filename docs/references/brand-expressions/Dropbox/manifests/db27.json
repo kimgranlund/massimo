@@ -1,0 +1,30 @@
+{
+  "id": "DB27",
+  "title": "Street campaign panel sequence",
+  "image": "db27.png",
+  "source": "../sources/db27.jpg",
+  "location": {
+    "series": "COLLINS / Dropbox / 2017 identity case study",
+    "item": 27,
+    "section": "Gallery",
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Show an identity across adjacent surfaces because repetition and alternation can create recognition over a longer encounter.",
+  "strategic_value": "Alternating text, imagery and the diamond mark can give Dropbox a varied but connected street presence.",
+  "demonstration": "A facade carries a continuous run of green text, abstract pink imagery, a central mark, blue text and dark abstract imagery.",
+  "category": "Application",
+  "practical_value": "Compare how neighboring panels share the work of message, expression and attribution.",
+  "content_islands": [
+    {
+      "name": "Five-panel run",
+      "spec": "Keep the uninterrupted left-to-right sequence and its color transitions."
+    },
+    {
+      "name": "Facade and pavement",
+      "spec": "Retain the building and street context rather than isolating individual posters."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "A facade carries a continuous run of green text, abstract pink imagery, a central mark, blue text and dark abstract imagery."
+  }
+}

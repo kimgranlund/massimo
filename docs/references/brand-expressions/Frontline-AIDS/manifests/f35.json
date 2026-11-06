@@ -1,0 +1,28 @@
+{
+  "id": "F35",
+  "title": "Tints",
+  "image": "f35.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 35
+  },
+  "slide_intent": "Show how lighter values can support sustained reading and distinguish data without introducing another hue family.",
+  "strategic_value": "Frontline AIDS can adapt its assertive core palette to charts, reports and informational callouts while keeping a recognizable color relationship.",
+  "demonstration": "Four swatch columns step down from the core colors to lighter tints. Ring charts and a text panel show applications beneath them.",
+  "category": "Color",
+  "practical_value": "Use related tints for a chart with few data points or the background behind a small text callout. Check that distinctions remain readable.",
+  "content_islands": [
+    {
+      "name": "Tint ladder",
+      "spec": "Head four adjacent columns with the solid green, pink, blue and black swatches and stack lighter percentage bands beneath."
+    },
+    {
+      "name": "Chart comparison",
+      "spec": "Group ring charts and their color keys in the lower left. Attach the pink caution to the example that mixes tints inappropriately."
+    },
+    {
+      "name": "Report detail",
+      "spec": "Place the excerpt with a tinted text panel beside the charts and point a note toward the background behind the small type."
+    }
+  ]
+}

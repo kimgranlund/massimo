@@ -1,0 +1,25 @@
+{
+  "id": "I094",
+  "title": "Swag",
+  "image": "i094.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 94,
+    "printed_page": 100
+  },
+  "slide_intent": "Make identity legible at the scale of a person’s belongings while preserving the distinct jobs of wearable decoration and identification.",
+  "strategic_value": "The brand colors and carrot can relate a shoe and a staff badge even though one is expressive and the other must identify its wearer.",
+  "demonstration": "The left photograph pairs white shoes with orange soles and a small green mark. The dark badge on the right combines a carrot, name and portrait.",
+  "category": "Application",
+  "practical_value": "Choose what needs to be read on the object. Use small color details on footwear and keep space for the person’s identity on a badge.",
+  "content_islands": [
+    {
+      "name": "Footwear photograph",
+      "spec": "Crop to the green trousers and white shoes, leaving the orange sole and small carrot detail visible."
+    },
+    {
+      "name": "Badge photograph",
+      "spec": "Place a close crop of the clipped badge in the right half. Preserve the mark and name above the portrait."
+    }
+  ]
+}

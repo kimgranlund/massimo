@@ -1,0 +1,29 @@
+{
+  "id": "HI14",
+  "title": "Boardwalk and sheep",
+  "image": "hi14.png",
+  "source": "../sources/illustration-examples.pdf",
+  "location": {
+    "page": 14,
+    "series": "Helsinki illustration examples — PDF derived from the official PowerPoint deck with LibreOffice",
+    "order": 204
+  },
+  "slide_intent": "Keep a single activity legible so the relationship between a person and a place remains easy to understand.",
+  "strategic_value": "A walking figure and sheep can add a quieter nature-oriented scene to Helsinki’s city repertoire.",
+  "demonstration": "A walking figure crosses an angular ochre boardwalk with two white sheep and a patch of vegetation on green.",
+  "category": "Imagery",
+  "practical_value": "Use a compact activity composition when a larger collage would distract from the message.",
+  "content_islands": [
+    {
+      "name": "Walking scene",
+      "spec": "Center the figure on the angled boardwalk and place the sheep on opposite sides."
+    },
+    {
+      "name": "Landscape patch",
+      "spec": "Use the ochre-and-black vegetation to anchor the lower right."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A walking figure crosses an angular ochre boardwalk with two white sheep and a patch of vegetation on green."
+  }
+}

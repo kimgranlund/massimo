@@ -1,0 +1,26 @@
+{
+  "id": "DB1000",
+  "title": "Schwelle / header specimen",
+  "image": "db1000.png",
+  "source": "../sources/page-10.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 10,
+    "section": 0,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Schwelle"
+  },
+  "slide_intent": "Make a simple progression distinctive so the viewer can recognize an identity element without text.",
+  "strategic_value": "A thin-to-thick red bar sequence can provide DB with a compact visual signature.",
+  "demonstration": "A centered horizontal sequence of red bars grows in width across a dark field.",
+  "category": "Geometry",
+  "practical_value": "Inspect the progression as a standalone shape before judging its use with other elements.",
+  "content_islands": [
+    {
+      "name": "Bar sequence",
+      "spec": "Center the red progression with generous dark space around it."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The standalone red bars increase in width from left to right."
+  }
+}

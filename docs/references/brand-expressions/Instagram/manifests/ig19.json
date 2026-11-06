@@ -1,0 +1,30 @@
+{
+  "id": "IG19",
+  "title": "Love at first slide",
+  "image": "ig19.png",
+  "source": "../sources/ig19.png",
+  "location": {
+    "series": "Elvis Dinh / Instagram brand design system / project year 2022",
+    "item": 19,
+    "extent": "whole source artwork"
+  },
+  "slide_intent": "Let a headline borrow product language so the campaign’s voice feels connected to how people interact.",
+  "strategic_value": "The slide pun and message bubbles can tie an emotional scene to Instagram’s conversational experience.",
+  "demonstration": "White Love at first slide lettering sits above a portrait, with two pink chat-style bubbles across the image.",
+  "category": "Typography",
+  "practical_value": "Pair a verbal product reference with restrained interface cues so the message remains human.",
+  "content_islands": [
+    {
+      "name": "Headline",
+      "spec": "Stack the white title at the top and use a heart-like form within Love."
+    },
+    {
+      "name": "Portrait and chat cues",
+      "spec": "Let the portrait fill the canvas and place the pink bubbles beside the people."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The headline treatment and pink bubbles give the photograph a conversational tone.",
+    "Application": "The composition applies product-like cues to a campaign message."
+  }
+}

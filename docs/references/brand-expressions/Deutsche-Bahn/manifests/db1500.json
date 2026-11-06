@@ -1,0 +1,27 @@
+{
+  "id": "DB1500",
+  "title": "Motion Branding / Header film",
+  "image": "db1500.png",
+  "source": "../sources/page-15.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 15,
+    "section": 0,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Motion-Branding"
+  },
+  "slide_intent": "Give a familiar geometric element a recognizable rhythm so viewers can connect movement with the brand.",
+  "strategic_value": "A repeated red sleeper sequence on Cold Black can make DB recognizable before any words appear.",
+  "demonstration": "A wide dark video stage presents the red Schwelle as changing vertical bars. The PNG records one frame; the complete local film supplies the motion.",
+  "category": "Motion",
+  "practical_value": "Compare the whole header film with the individual motion rules below.",
+  "content_islands": [
+    {
+      "name": "Film stage",
+      "spec": "Place the red bar sequence centrally on the dark widescreen field; retain the original webpage player edge."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The original header film animates the red Schwelle on a dark field."
+  },
+  "motion": "../sources/media/e315fe114e77-Header-data.mp4"
+}

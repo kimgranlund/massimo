@@ -1,0 +1,39 @@
+{
+  "id": "HE048",
+  "title": "Protected area",
+  "image": "he048.png",
+  "source": "../sources/visual-storytelling.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Protected area",
+    "order": 68,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/visual-storytelling#protected-area",
+    "original_html": "../sources/visual-storytelling.html"
+  },
+  "slide_intent": "Keep titles within the reliably visible screen area so viewers do not lose information to display cropping.",
+  "strategic_value": "Protecting text from screen-edge loss can keep Helsinki video messages complete across viewing environments.",
+  "demonstration": "This expanded webpage-section capture pairs title-safe guidance with a 3840 × 2160 px image-area diagram and a 3456 × 1728 px protected rectangle.",
+  "category": "Layout",
+  "practical_value": "Keep text inside the protected rectangle; treat the printed dimensions as this diagram’s example.",
+  "content_islands": [
+    {
+      "name": "Title-safe rationale",
+      "spec": "Place the TV and cinema visibility explanation above the diagram."
+    },
+    {
+      "name": "Area comparison",
+      "spec": "Nest a red protected rectangle inside the pale full-frame outline and retain both pixel labels."
+    }
+  ],
+  "ingredient": {
+    "name": "Title-safe area",
+    "role": "Keep essential words visible.",
+    "application": "Position text inside the protected area.",
+    "scope": "Moving images; the diagram labels a 3840 × 2160 px frame and 3456 × 1728 px safe area."
+  },
+  "reference_purposes": {
+    "Intent": "The text explains that screen-edge material may become invisible on TV or cinema screens.",
+    "Application": "The diagram distinguishes full image and protected text areas.",
+    "Constraint": "Text should not be positioned outside the protected area."
+  }
+}

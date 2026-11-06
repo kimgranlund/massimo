@@ -1,0 +1,38 @@
+{
+  "id": "HE019",
+  "title": "Use colours correctly",
+  "image": "he019.png",
+  "source": "../sources/use-basic-elements.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Use colours correctly",
+    "order": 25,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/use-basic-elements#use-colours-correctly",
+    "original_html": "../sources/use-basic-elements.html"
+  },
+  "slide_intent": "Keep palette strength consistent because tinting and transparency can turn recognizable colors into uncontrolled variants.",
+  "strategic_value": "Full-strength Helsinki colors can maintain a clear common vocabulary across applications.",
+  "demonstration": "This expanded webpage section states the 100% color rule and shows three crossed-out treatments: partial-intensity blocks, a gradient and overlapping translucent fields.",
+  "category": "Color",
+  "practical_value": "Check that a palette color has not become a tint, gradient or translucent layer.",
+  "content_islands": [
+    {
+      "name": "Intensity rule",
+      "spec": "State the 100% requirement above the examples."
+    },
+    {
+      "name": "Prohibited treatments",
+      "spec": "Place the three crossed-out tint, gradient and transparency examples in a horizontal row."
+    }
+  ],
+  "ingredient": {
+    "name": "Full-strength palette color",
+    "role": "Preserve the defined color character.",
+    "application": "Use colors at 100%, without tinting, gradients or translucency.",
+    "scope": "Applies to the city visual-identity colors in this guidance; does not prescribe area proportions within a composition."
+  },
+  "reference_purposes": {
+    "Application": "The three crossed-out examples make disallowed color treatments inspectable.",
+    "Constraint": "All colors use 100%; partial-intensity colors, gradients and translucency are prohibited."
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "MC02",
+  "title": "Stacked identity signature",
+  "image": "mc02.png",
+  "source": "../sources/mc02.jpg",
+  "location": {
+    "series": "Pentagram / Mastercard / 2016 identity case study",
+    "item": 2,
+    "extent": "Full published artwork"
+  },
+  "slide_intent": "Establish a simple symbol-and-name relationship because a familiar emblem must remain legible as the company expands into digital services.",
+  "strategic_value": "The retained circles can preserve recognition while the separated name improves clarity.",
+  "demonstration": "Red and yellow circles overlap in orange above a lowercase black wordmark on a pale field.",
+  "category": "Brand",
+  "practical_value": "Inspect the relationship of emblem, lowercase name and surrounding space.",
+  "content_islands": [
+    {
+      "name": "Symbol",
+      "spec": "Center the intersecting red and yellow circles in the upper part of the signature."
+    },
+    {
+      "name": "Name",
+      "spec": "Place the lowercase black wordmark below the circles; keep the surrounding field empty."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The accompanying Pentagram narrative states that simplicity and modernity must preserve heritage and brand equity while positioning Mastercard for digital services.",
+    "Expression": "The isolated stacked signature exposes the simplified circles and lowercase wordmark."
+  }
+}

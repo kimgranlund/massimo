@@ -1,0 +1,36 @@
+{
+  "id": "IBS14",
+  "title": "Examples / Social",
+  "image": "ibs14.png",
+  "source": "../sources/ibm-logo-strategic-partners.pdf",
+  "location": {
+    "page": 14,
+    "series": "IBM Logo Guidelines for Strategic Partners / Version 1.2 / copyright 2023",
+    "note": "The footer on this physical page reads Version 1.1; the book cover reads Version 1.2.",
+    "order": 200014
+  },
+  "slide_intent": "Keep the partner visibly responsible for a social message so viewers do not confuse it with an official IBM account.",
+  "strategic_value": "Partner-led profiles and clear IBM attribution can acknowledge collaboration without borrowing IBM’s authorship.",
+  "demonstration": "Twitter and LinkedIn post schematics show a green partner signature, gray content areas and subordinate IBM text or logo. The page footer reads Version1.1 within the Version1.2 book.",
+  "category": "Application",
+  "practical_value": "Choose logo or text attribution for the available social-post space while preserving the partner’s own account identity.",
+  "content_islands": [
+    {
+      "name": "Twitter post",
+      "spec": "Place the vertical post schematic in the left example area with partner branding above and IBM acknowledgement below."
+    },
+    {
+      "name": "LinkedIn post",
+      "spec": "Place the wide post schematic at right with relationship text and a partner CTA beside an image area."
+    },
+    {
+      "name": "Scope notes",
+      "spec": "Keep the account-identity explanation below the left example and the nonexclusive-layout note at lower right."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text explains preventing the misleading impression of an official IBM account.",
+    "Application": "Two platform examples show partner identity, relationship explanation and subordinate IBM presence.",
+    "Constraint": "Profile and background images should reflect the partner’s identity; account names must not be confusingly similar to IBM accounts. Layouts are examples, not the only permitted arrangements."
+  }
+}

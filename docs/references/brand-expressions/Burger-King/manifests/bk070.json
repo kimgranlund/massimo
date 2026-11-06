@@ -1,0 +1,40 @@
+{
+  "id": "BK070",
+  "title": "Regional Font Alternatives",
+  "image": "bk070.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 70
+  },
+  "slide_intent": "Preserve a comparable voice across writing systems because language coverage should not force every market into a different visual personality.",
+  "strategic_value": "The Chinese headline, subhead and body examples can extend Burger King’s hierarchy beyond Flame’s supported characters.",
+  "demonstration": "Three Chinese text samples are paired with named Fang Zheng alternatives and a note about obtaining approval.",
+  "category": "Typography",
+  "practical_value": "Use the Chinese examples as a model for proposing a stylistically related local alternative when Flame lacks language support.",
+  "content_islands": [
+    {
+      "name": "Selection and approval guidance",
+      "spec": "Place the explanatory column at left and the Chinese-example label below."
+    },
+    {
+      "name": "Regional specimens",
+      "spec": "Stack the three font names and corresponding Chinese examples by headline, subhead and body role."
+    },
+    {
+      "name": "Legal qualification",
+      "spec": "Keep the example-clearance note below the samples."
+    }
+  ],
+  "ingredient": {
+    "name": "Regional type alternatives",
+    "role": "Carry the hierarchy and character into unsupported writing systems.",
+    "application": "Contact the local agency for a similar-style alternative when Flame does not support the language; obtain Global Brand Management and Legal approval before release.",
+    "scope": "Historical 2020 partner guidelines, PDF produced January 2021. The Chinese fonts are examples, not a universal substitute for every language. Printed examples require BK legal trademark clearance and local legal review before use."
+  },
+  "reference_purposes": {
+    "Intent": "The text asks for an alternative in a similar style when the country’s language is unsupported.",
+    "Expression": "The Chinese examples show three distinct levels of typographic emphasis.",
+    "Application": "The page names example headline, subhead and body alternatives.",
+    "Constraint": "Proposed font use requires BKC Global Brand Management and Legal approval before release, plus applicable local compliance."
+  }
+}

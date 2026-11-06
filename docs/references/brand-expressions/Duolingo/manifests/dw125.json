@@ -1,0 +1,38 @@
+{
+  "id": "DW125",
+  "title": "Illustration / Characters / Noses / Angles",
+  "image": "dw125.png",
+  "source": "../sources/pages/illustration-characters.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/illustration/characters",
+    "section": "Angles",
+    "item": 125,
+    "order": 1250
+  },
+  "slide_intent": "Adapt a feature to viewing angle so the face reads as one form turning in space.",
+  "strategic_value": "A consistent transition from frontal to profile construction can help Duolingo keep characters recognizable across poses.",
+  "demonstration": "Two rows show a head in front, three-quarter and profile views; side text states how the nose edge and color change.",
+  "category": "Geometry",
+  "practical_value": "Check nose edge direction in three-quarter view and remove its contrasting color in profile.",
+  "content_islands": [
+    {
+      "name": "Angle sequences",
+      "spec": "Arrange two three-view head sequences at left, moving from front through three-quarter to profile."
+    },
+    {
+      "name": "View-specific rules",
+      "spec": "Place the Angles heading and two instructions at right, distinguishing three-quarter geometry from profile color."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The two sequences demonstrate the same nose behavior across different head shapes.",
+    "Constraint": "In three-quarter view the right nose edge angles outward while the left becomes vertical; in profile the nose takes the base skin color."
+  },
+  "ingredient": {
+    "name": "Nose behavior across views",
+    "role": "Keep facial construction coherent as the head turns.",
+    "application": "In the displayed three-quarter view, angle the right nose edge outward and keep the left edge vertical; in profile match the nose to the skin.",
+    "scope": "Historical official Duolingo illustration guidance from the 2024–2025 archived snapshot. Directional wording follows the source’s illustrated orientation; it is not a universal screen-space rule for every mirrored pose."
+  }
+}

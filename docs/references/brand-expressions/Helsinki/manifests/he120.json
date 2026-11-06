@@ -1,0 +1,31 @@
+{
+  "id": "HE120",
+  "title": "Word templates",
+  "image": "he120.png",
+  "source": "../sources/download-elements.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Word templates",
+    "order": 167,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/download-elements#word-templates",
+    "original_html": "../sources/download-elements.html"
+  },
+  "slide_intent": "Choose a document structure that matches its length so readers can navigate information predictably.",
+  "strategic_value": "Separate form and report templates can make Helsinki publications consistent without forcing every document into one layout.",
+  "demonstration": "Expanded webpage section: three text groups distinguish short forms, multi-page reports and accessibility responsibilities, each with relevant links.",
+  "category": "Layout",
+  "practical_value": "Use form templates for short documents and report templates when a cover and contents are needed.",
+  "content_islands": [
+    {
+      "name": "Forms and reports",
+      "spec": "The first two groups contrast structures and language/color options."
+    },
+    {
+      "name": "Accessibility responsibility",
+      "spec": "Bold guidance and an onward link close the section."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The page distinguishes short forms without cover/contents from multi-page reports with both."
+  }
+}

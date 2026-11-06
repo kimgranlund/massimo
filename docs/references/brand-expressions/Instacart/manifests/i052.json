@@ -1,0 +1,24 @@
+{
+  "id": "I052",
+  "title": "Product Spotlight",
+  "image": "i052.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 52
+  },
+  "slide_intent": "Give a featured item enough context to suggest how someone might enjoy or use it, while keeping its packaging legible.",
+  "strategic_value": "Instacart can feature a sponsor within the same photographic world as the food and lifestyle images.",
+  "demonstration": "Packaged products appear among tomatoes, bread, drinks and other groceries. The brief extends the lighting guidance to occasions that need plain backgrounds.",
+  "category": "Imagery",
+  "practical_value": "Choose a setting, props and light that preserve the product as the focal point. When a plain backdrop is required, carry the same lighting treatment into it.",
+  "content_islands": [
+    {
+      "name": "Sponsor brief",
+      "spec": "Use a dark left column for the title and the two shooting conditions. Anchor the four descriptive words at the bottom."
+    },
+    {
+      "name": "Product settings",
+      "spec": "Assemble the bright photographs into a close right-hand mosaic. Show packaging amid related food and reserve a broad lower panel for the product on the tiled-counter set."
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "id": "I054",
+  "title": "Incorrect",
+  "image": "i054.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 54
+  },
+  "slide_intent": "Learn to recognize image treatments that obscure the food, remove its physical context or make a moment feel posed. Comparing named faults makes feedback more precise.",
+  "strategic_value": "Instacart can give photographers and editors a shared way to reject images that weaken appetite or credibility.",
+  "demonstration": "A white field holds rows of rejected photographs with red crosses and captions. Examples address staging, isolation, filtering, exposure, depth of field and glossy reflections.",
+  "category": "Imagery",
+  "practical_value": "Identify the visible fault in a candidate image and give the photographer a specific correction, such as reducing glare or moving the food into the focal plane.",
+  "content_islands": [
+    {
+      "name": "Page heading",
+      "spec": "Place Incorrect in the open upper-left position so the reader knows how to interpret every example."
+    },
+    {
+      "name": "Rejected image grid",
+      "spec": "Set the photographs at a common landscape size across a staggered four-column grid. Attach a red cross and the reason for rejection to each image, including the bananas with the reflected silhouette."
+    }
+  ]
+}

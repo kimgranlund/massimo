@@ -1,0 +1,31 @@
+{
+  "id": "DB1407",
+  "title": "Flexibilität im Ausdruck",
+  "image": "db1407.png",
+  "source": "../sources/page-14.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 14,
+    "section": 7,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Bildwelt"
+  },
+  "slide_intent": "Allow controlled variation so the photographic language can fit its audience and medium.",
+  "strategic_value": "DB can remain recognizable across polished corporate images and more direct social content.",
+  "demonstration": "A collage spans controlled architecture and portraits through expressive people and work scenes, labeled from precise to spontaneous.",
+  "category": "Imagery",
+  "practical_value": "Choose the appropriate degree of control while preserving the shared photographic attitude.",
+  "content_islands": [
+    {
+      "name": "Range explanation",
+      "spec": "Place the context-dependent flexibility statement above the collage."
+    },
+    {
+      "name": "Expression range",
+      "spec": "Arrange imagery across the precise, expressive and spontaneous labels."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The copy says a common attitude can vary by message, medium and context without losing its characteristic view.",
+    "Application": "The collage maps expression to corporate communication, campaign formats and social media."
+  }
+}

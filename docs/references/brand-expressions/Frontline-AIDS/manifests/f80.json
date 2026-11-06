@@ -1,0 +1,24 @@
+{
+  "id": "F80",
+  "title": "Advertising",
+  "image": "f80.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 80
+  },
+  "slide_intent": "Teach how several posters can share a wall while each supplies a different message. At viewing distance the dominant words and images must carry the first read.",
+  "strategic_value": "A mix of photography, questions and hand-drawn marks can let distinct campaign messages read as one public presence.",
+  "demonstration": "A brick wall carries adjacent colored poster fields. A large question occupies the left group, while photographs, letters, illustrations and short statements fill the denser panels at right.",
+  "category": "Application",
+  "practical_value": "Compare a text-led poster with a photo-led poster and decide which element should dominate each unit of a larger installation.",
+  "content_islands": [
+    {
+      "name": "Wall context and heading",
+      "spec": "Place the heading over the brick texture and keep the chapter navigation at the left edge."
+    },
+    {
+      "name": "Poster run",
+      "spec": "Build a continuous band across the wall with a large green question panel, a cyan signature field and smaller photographic and illustrated panels. Retain visible boundaries between compositions."
+    }
+  ]
+}

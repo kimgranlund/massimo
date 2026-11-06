@@ -1,0 +1,40 @@
+{
+  "id": "BK041",
+  "title": "Chinese Wordmark and Primary Logo Lockup",
+  "image": "bk041.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 41
+  },
+  "slide_intent": "Adapt the name to a local script while preserving recognizable relationships so localization does not fragment identity.",
+  "strategic_value": "The custom Chinese lettering can connect local reading with the familiar Burger King logo.",
+  "demonstration": "A red Chinese wordmark appears alone above a horizontal lockup pairing the primary logo with the same characters.",
+  "category": "Brand",
+  "practical_value": "Use the supplied Chinese wordmark and fixed lockup instead of rebuilding their proportions.",
+  "content_islands": [
+    {
+      "name": "Localization guidance",
+      "spec": "Place the explanation and fixed-proportion rule in the left column."
+    },
+    {
+      "name": "Chinese wordmark",
+      "spec": "Show the standalone red Chinese wordmark at upper right."
+    },
+    {
+      "name": "Combined lockup",
+      "spec": "Place the primary logo at the left of the Chinese wordmark in the lower specimen, preserving the supplied spacing."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source says the Chinese wordmark is made for the local market and inspired by the Burger King wordmark.",
+    "Expression": "The rounded Chinese characters share the visual weight and curved forms of the Latin identity.",
+    "Application": "The page supplies standalone and primary-logo lockup configurations.",
+    "Constraint": "The Chinese wordmark proportions and spacing relative to the primary logo are fixed and may not be altered."
+  },
+  "ingredient": {
+    "name": "Chinese wordmark lockup",
+    "role": "Connect local-language recognition with the global logo.",
+    "application": "Use the supplied relative proportions and spacing unchanged.",
+    "scope": "Historical guide; applies to the custom Chinese wordmark and primary-logo lockup."
+  }
+}

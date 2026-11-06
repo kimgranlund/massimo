@@ -1,0 +1,35 @@
+{
+  "id": "DB0104",
+  "title": "Unsere Designprinzipien",
+  "image": "db0104.png",
+  "source": "../sources/page-01.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 1,
+    "section": 4,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design"
+  },
+  "slide_intent": "Translate abstract values into visible distinctions so designers can make consistent choices.",
+  "strategic_value": "Three contrasting specimens can make DB’s clarity, movement and connection easier to recognize across media.",
+  "demonstration": "Three illustrated principles sit between introductory and explanatory paragraphs: a modular frame, red sleeper bars and a figure within a frame.",
+  "category": "Brand",
+  "practical_value": "Compare a proposed design against the three principles without treating them as detailed construction rules.",
+  "content_islands": [
+    {
+      "name": "Principle introduction",
+      "spec": "Place the heading and rationale above the three columns."
+    },
+    {
+      "name": "Three specimens",
+      "spec": "Align clarity, movement and connection illustrations with their labels."
+    },
+    {
+      "name": "Decision framework",
+      "spec": "Explain below that principles guide priorities without defining every element."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text states that the principles make abstract brand traits concrete and guide decisions.",
+    "Expression": "The three labeled illustrations demonstrate contrasting visual treatments."
+  }
+}

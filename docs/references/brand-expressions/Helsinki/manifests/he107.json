@@ -1,0 +1,31 @@
+{
+  "id": "HE107",
+  "title": "Helsinki, Helsingfors and bilingual logos",
+  "image": "he107.png",
+  "source": "../sources/download-elements.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Helsinki, Helsingfors and bilingual logos",
+    "order": 144,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/download-elements#helsinki--helsingfors-and-bilingual-logos",
+    "original_html": "../sources/download-elements.html"
+  },
+  "slide_intent": "Choose production files appropriate to the medium so the official mark stays sharp and consistent.",
+  "strategic_value": "A shared source for Finnish, Swedish and bilingual signatures can reduce recreated Helsinki logos.",
+  "demonstration": "Expanded webpage section: a short format note and download link sit below the section title.",
+  "category": "Brand",
+  "practical_value": "Retrieve vector PDF for print or PNG for screen from the basic logo collection.",
+  "content_islands": [
+    {
+      "name": "Formats and source",
+      "spec": "The single paragraph and link identify black/white variants and media-specific file types."
+    },
+    {
+      "name": "Header",
+      "spec": "The heading identifies the three language arrangements."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The source identifies PDF vector originals for print and PNG images for screen."
+  }
+}

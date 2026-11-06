@@ -1,0 +1,39 @@
+{
+  "id": "DW061",
+  "title": "Writing / Tone / Content",
+  "image": "dw061.png",
+  "source": "../sources/pages/writing-tone.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/tone",
+    "section": "Content",
+    "item": 61,
+    "order": 610
+  },
+  "slide_intent": "Let the human stakes of a story determine its tone so serious experiences receive respect and achievements receive celebration.",
+  "strategic_value": "Contrasting a refugee story with a learning streak can help Duolingo avoid treating every story as upbeat marketing material.",
+  "demonstration": "Two stacked scenarios contrast respectful handling of hardship with celebration of a student’s 900-day streak, each with preferred and rejected copy.",
+  "category": "Voice",
+  "practical_value": "Match punctuation and emotional intensity to the story rather than applying one cheerful template.",
+  "content_islands": [
+    {
+      "name": "Guidance column",
+      "spec": "Place the Content title and explanation of the broad subject range at left."
+    },
+    {
+      "name": "Worked examples",
+      "spec": "Stack the serious story first and the celebratory story below, keeping each instruction with its Like this and Not this comparison."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source explicitly says hardship should be treated as a person’s life and explains why different content needs different tone.",
+    "Application": "Two complete story comparisons demonstrate changing emotional intensity.",
+    "Constraint": "For the serious story, the source directs writers to reduce exuberance and exclamation points."
+  },
+  "ingredient": {
+    "name": "Content-sensitive tone",
+    "role": "Respect the emotional weight of the subject.",
+    "application": "Use restraint for hardship and appropriate celebration for achievements.",
+    "scope": "Historical official guidelines from the 2024–2025 archived snapshot; this records the displayed guidance, not current Duolingo product behavior. The contrasting examples concern editorial stories, not a universal ban on exclamation points."
+  }
+}

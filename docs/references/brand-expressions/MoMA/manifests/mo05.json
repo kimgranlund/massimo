@@ -1,0 +1,33 @@
+{
+  "id": "MO05",
+  "title": "Print communications",
+  "image": "mo05.png",
+  "source": "../sources/mo05.jpg",
+  "location": {
+    "series": "Pentagram / MoMA / 2009 identity case study",
+    "item": 5,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Keep related publications recognizable while distinguishing their jobs, because visitors need to select the right information quickly.",
+  "strategic_value": "Shared vertical signatures can connect a seasonal programme, monthly listing and visitor information despite their different content.",
+  "demonstration": "Three overlapping narrow publications combine vertical MoMA marks with a blue seasonal field, a photographic monthly cover and a magenta information panel.",
+  "category": "Application",
+  "practical_value": "Compare how color, imagery and headings distinguish publication functions within one signature system.",
+  "content_islands": [
+    {
+      "name": "Seasonal programme",
+      "spec": "Place the tall Winter/Spring 2009 piece behind at left with cyan text and information block."
+    },
+    {
+      "name": "Monthly programme",
+      "spec": "Place the February 2009 photographic piece in front with its green date and vertical MoMA strip."
+    },
+    {
+      "name": "Visitor information",
+      "spec": "Place the magenta English Plan/Information piece behind at right, retaining its white signature strip."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "Three physical publication examples apply related signature treatments to different information products."
+  }
+}

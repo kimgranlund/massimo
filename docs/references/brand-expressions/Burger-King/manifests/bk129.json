@@ -1,0 +1,25 @@
+{
+  "id": "BK129",
+  "title": "Closing brown page",
+  "image": "bk129.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 129
+  },
+  "slide_intent": "Provide a quiet end to the guide so the reader can recognize that the instructional sequence has finished.",
+  "strategic_value": "The uninterrupted brown field can close the document with a familiar Burger King color while retaining ownership information.",
+  "demonstration": "A nearly empty brown page contains only a small orange copyright and confidentiality notice at the lower left.",
+  "category": "Brand",
+  "practical_value": "Preserve this closing physical page when documenting the full book; it contains no additional design rule.",
+  "content_islands": [
+    {
+      "name": "Brown closing field",
+      "spec": "Leave the full page brown without a title, logo specimen or application image."
+    },
+    {
+      "name": "Ownership footer",
+      "spec": "Retain the small orange copyright and confidentiality notice at the lower left."
+    }
+  ],
+  "reference_purposes": {}
+}

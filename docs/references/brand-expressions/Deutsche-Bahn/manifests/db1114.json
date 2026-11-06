@@ -1,0 +1,31 @@
+{
+  "id": "DB1114",
+  "title": "Geometrische Grundformen / Large",
+  "image": "db1114.png",
+  "source": "../sources/page-11.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 11,
+    "section": 14,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Icons"
+  },
+  "slide_intent": "Use shared key shapes as a starting point so different symbols have comparable visual weight.",
+  "strategic_value": "A common construction grid can make DB icons feel balanced as a set.",
+  "demonstration": "The Large tab shows circle, square, vertical rectangle and horizontal rectangle outlines on gridded fields.",
+  "category": "Geometry",
+  "practical_value": "Start large-icon construction from the appropriate key shape, then judge optical balance.",
+  "content_islands": [
+    {
+      "name": "Grid rationale",
+      "spec": "Place the balance explanation above the three size tabs."
+    },
+    {
+      "name": "Key shapes",
+      "spec": "Align the four labeled geometric frames under the selected Large tab."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source links geometric base forms to consistency and visual balance.",
+    "Application": "The selected Large tab supplies four key-shape templates."
+  }
+}

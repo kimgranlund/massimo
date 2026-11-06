@@ -1,0 +1,34 @@
+{
+  "id": "DBV24",
+  "title": "Layout_04",
+  "image": "dbv24.png",
+  "source": "../sources/media/dbv24.mp4",
+  "location": {
+    "series": "DB new design / motion demonstrations",
+    "source_page": 15,
+    "section": "Animation-14021536",
+    "source_url": "https://ecm-mediathek-cdn.deutschebahn.com/cdnenhancedecmvidhls/db306420/2880955/video_config.json",
+    "capture_date": "2026-11-05"
+  },
+  "slide_intent": "Animate the image container to reveal supporting context while keeping the message anchored.",
+  "strategic_value": "An expanding photograph can add movement to DB communication without moving the primary text block.",
+  "demonstration": "On white, a logo and text remain on the left while an inset image on the right grows from a narrow strip; a white Schwelle sits along its lower edge.",
+  "category": "Motion",
+  "practical_value": "Choose an image-bearing module when the text needs a calm, stable background.",
+  "content_islands": [
+    {
+      "name": "Message anchor",
+      "spec": "Place the red DB logo and black text on the white left side."
+    },
+    {
+      "name": "Image reveal",
+      "spec": "Grow the right image horizontally and retain the white bars at its lower edge."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "On white, a logo and text remain on the left while an inset image on the right grows from a narrow strip; a white Schwelle sits along its lower edge.",
+    "Application": "The source provides a playable demonstration of this repeatable sequence: On white, a logo and text remain on the left while an inset image on the right grows from a narrow strip; a white Schwelle sits along its lower edge.",
+    "Intent": "Accompanying Layout prose says animation can direct focus and clarify structure through clear, precise, comprehensible movements."
+  },
+  "motion": "../sources/media/dbv24.mp4"
+}

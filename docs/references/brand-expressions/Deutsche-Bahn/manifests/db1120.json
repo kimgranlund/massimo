@@ -1,0 +1,31 @@
+{
+  "id": "DB1120",
+  "title": "Durchgestrichene Formen",
+  "image": "db1120.png",
+  "source": "../sources/page-11.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 11,
+    "section": 20,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Icons"
+  },
+  "slide_intent": "Construct cancellation consistently so users recognize a disabled or hidden state.",
+  "strategic_value": "A standardized slash can make DB state indicators coherent across symbols.",
+  "demonstration": "An eye-with-slash icon is shown at actual size and enlarged with a diagonal construction callout.",
+  "category": "Geometry",
+  "practical_value": "Add a 2 dp line and perform the indicated cutting operation to construct the crossed-out form.",
+  "content_islands": [
+    {
+      "name": "Construction rule",
+      "spec": "Place the line-width instruction above the specimen."
+    },
+    {
+      "name": "Slash diagram",
+      "spec": "Pair the actual-size icon with an enlarged slashed-eye construction."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The source demonstrates creating a crossed-out form with an added line and cut.",
+    "Constraint": "The added slash line is 2 dp."
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "id": "DW009",
+  "title": "Logos / Landscape lockup",
+  "image": "dw009.png",
+  "source": "../sources/pages/identity-logos.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/identity/logos",
+    "section": "Landscape Lockup",
+    "item": 9,
+    "order": 90
+  },
+  "slide_intent": "Pair name and mascot where recognition is uncertain because either cue can help viewers identify the brand.",
+  "strategic_value": "A fixed Duo-and-wordmark arrangement can strengthen Duolingo’s presence in third-party spaces.",
+  "demonstration": "The landscape lockup is accompanied by guidance for press releases, conferences and placements managed by other companies.",
+  "category": "Brand",
+  "practical_value": "Choose the fixed landscape lockup when supplying a logo to a third party.",
+  "content_islands": [
+    {
+      "name": "Landscape specimen",
+      "spec": "Show Duo beside the wordmark in the large left panel, with the download control in its lower-right corner."
+    },
+    {
+      "name": "Third-party guidance",
+      "spec": "Place the heading, recognition rationale, use examples and two Duo guidance links at right."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source says Duo’s recognizability aids awareness in third-party applications.",
+    "Application": "The copy names press releases, conferences and spaces managed by other companies."
+  },
+  "ingredient": {
+    "name": "Landscape lockup",
+    "role": "Combine mascot recognition with the brand name.",
+    "application": "Supply the fixed lockup for the described third-party uses.",
+    "scope": "Historical archived guidelines. Applies to the historical landscape combination, not a direction to assemble arbitrary mascot poses."
+  }
+}

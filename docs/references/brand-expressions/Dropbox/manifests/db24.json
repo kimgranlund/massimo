@@ -1,0 +1,30 @@
+{
+  "id": "DB24",
+  "title": "Signature detail and portrait billboard",
+  "image": "db24.png",
+  "source": "../sources/db24.jpg",
+  "location": {
+    "series": "COLLINS / Dropbox / 2017 identity case study",
+    "item": 24,
+    "section": "Gallery",
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Compare close and distant brand cues because a signature must coexist with expressive subject matter.",
+  "strategic_value": "Repeated naming can connect a quiet edge detail with a bold Dropbox portrait campaign.",
+  "demonstration": "Two photographs pair a cropped architectural panel with a small signature at left and a large colorful portrait billboard at right.",
+  "category": "Application",
+  "practical_value": "Check recognition at the signature level and at the overall campaign level.",
+  "content_islands": [
+    {
+      "name": "Detail view",
+      "spec": "Keep the left image’s narrow framed opening and low signature."
+    },
+    {
+      "name": "Billboard view",
+      "spec": "Retain the right portrait, adjacent typography and street supports."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "Two photographs pair a cropped architectural panel with a small signature at left and a large colorful portrait billboard at right."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "GP08",
+  "title": "Product Sans / Glyph Set",
+  "image": "gp08.png",
+  "source": "../product-sans-specimen.pdf",
+  "location": {
+    "page": 8,
+    "printed_page": "P–8"
+  },
+  "slide_intent": "Expose character coverage before application so designers can check whether a typeface supports the required language and notation.",
+  "strategic_value": "A broad, inspectable glyph inventory can support consistent Google branding across more written contexts.",
+  "demonstration": "Two dense blue-on-white columns group letters, numerals, punctuation, symbols, alternates and ligatures at left and accented, Greek and Cyrillic forms at right.",
+  "category": "Typography",
+  "practical_value": "Check the actual required characters against the displayed set before committing a product name or localized phrase.",
+  "content_islands": [
+    {
+      "name": "Basic and feature glyphs",
+      "spec": "Stack labeled groups of Latin letters, numerals, symbols, alternates and ligatures in the left column."
+    },
+    {
+      "name": "Language extensions",
+      "spec": "Use the right column for accented forms, Greek and Cyrillic specimens with their own labels."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The inventory demonstrates the typeface across a wide range of glyph shapes.",
+    "Application": "Labeled character groups make supported characters and alternates inspectable."
+  }
+}

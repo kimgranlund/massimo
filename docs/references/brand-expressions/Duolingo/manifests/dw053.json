@@ -1,0 +1,32 @@
+{
+  "id": "DW053",
+  "title": "Writing / Brand Narrative / Messages by audience",
+  "image": "dw053.png",
+  "source": "../sources/pages/writing-brand-narrative.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/brand-narrative",
+    "section": "Messages by audience",
+    "item": 53,
+    "order": 530
+  },
+  "slide_intent": "Adapt emphasis to audience motivation so a shared promise answers different people’s reasons for engaging.",
+  "strategic_value": "Audience-specific versions of the same invitation can help Duolingo connect learning, institutional adoption, employment and community participation.",
+  "demonstration": "Five labeled rows pair audience groups with headlines and paragraphs, ranging from consumers to institutions, prospective employees and contributors.",
+  "category": "Voice",
+  "practical_value": "Choose the relevant motivation while keeping the same voice; treat audience labels and numerical claims as historical.",
+  "content_islands": [
+    {
+      "name": "Guidance column",
+      "spec": "Place the Messages by Audience title and explanation of consistent voice with changing message at left."
+    },
+    {
+      "name": "Worked examples",
+      "spec": "Stack five audience rows at right with a headline above each paragraph and a consistent label column."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source explains that diverse audiences need messages matched to their motivations.",
+    "Application": "Five audience-specific message examples demonstrate adaptation while retaining a shared voice."
+  }
+}

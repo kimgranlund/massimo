@@ -1,0 +1,31 @@
+{
+  "id": "DB06",
+  "title": "Flex Deck",
+  "image": "db06.png",
+  "source": "../sources/db06.jpg",
+  "location": {
+    "series": "COLLINS / Dropbox / 2017 identity case study",
+    "item": 6,
+    "section": "Flex Deck",
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Show variation within a repeated format because coherence need not require identical messages or imagery.",
+  "strategic_value": "Adjacent text, mark and image panels can make Dropbox feel varied while remaining one campaign.",
+  "demonstration": "A street-level wall carries five adjacent colored panels with text, abstract imagery and a central mark, framed by an annotated presentation board.",
+  "category": "Application",
+  "practical_value": "Compare the roles of headline, artwork and signature across neighboring panels.",
+  "content_islands": [
+    {
+      "name": "Campaign run",
+      "spec": "Place the five-panel installation centrally within the pale board."
+    },
+    {
+      "name": "Context",
+      "spec": "Retain the facade, street and small orange annotation to distinguish this analytical view from DB27."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The Flex Deck caption presents coherence across different applications as the system’s purpose.",
+    "Application": "A street-level wall carries five adjacent colored panels with text, abstract imagery and a central mark, framed by an annotated presentation board."
+  }
+}

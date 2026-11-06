@@ -1,0 +1,32 @@
+{
+  "id": "BK009",
+  "title": "Design Strategy",
+  "image": "bk009.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 9
+  },
+  "slide_intent": "Use a distinct chapter opening to mark the shift from history to design reasoning, helping readers keep the kinds of guidance apart.",
+  "strategic_value": "The repeated display style can make design strategy feel part of one Burger King document.",
+  "demonstration": "A large Design Strategy title sits on a flat field with small running labels and notices.",
+  "category": "Brand",
+  "practical_value": "Use this divider to identify where design strategy guidance begins without interpreting it as a standalone application rule.",
+  "content_islands": [
+    {
+      "name": "Chapter title",
+      "spec": "Place the oversized Design Strategy title at upper left, brown on orange, leaving an open field below."
+    },
+    {
+      "name": "Navigation and notices",
+      "spec": "Retain the small top navigation, page number and bottom publication notice."
+    },
+    {
+      "name": "Continuity note",
+      "spec": "Place the short note about maintaining existing positioning and personality near the bottom left."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The Design Strategy divider uses large rounded display type and the warm brown on orange treatment.",
+    "Intent": "The note states that the visual identity maintains existing positioning and personality."
+  }
+}

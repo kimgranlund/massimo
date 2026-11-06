@@ -1,0 +1,28 @@
+{
+  "id": "N27",
+  "title": "Typography—Sans Serif: Helvetica",
+  "image": "n27.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 27
+  },
+  "slide_intent": "Teach designers to establish a readable hierarchy with related weights and test it in continuous text as well as in a specimen alphabet.",
+  "strategic_value": "NASA can carry the typeface used with its identification into publication headings and body copy.",
+  "demonstration": "The upper text explains the roles of Helvetica Light and Medium. Large character samples occupy the middle, and two settings below show paragraphs and headings in use.",
+  "category": "Typography",
+  "practical_value": "Choose Light text and a Medium heading, then compare the broad and narrow settings to judge measure and emphasis.",
+  "content_islands": [
+    {
+      "name": "Family guidance",
+      "spec": "Set the title and explanation across the header. Separate it from the character specimens with a rule."
+    },
+    {
+      "name": "Weight specimens",
+      "spec": "Stack matching uppercase, lowercase, figures and symbols in Helvetica Light and Medium. Label each setting at right."
+    },
+    {
+      "name": "Text in use",
+      "spec": "Place wide and narrow samples below a rule. Caption the sizes and set headings above paragraphs so the weight difference remains visible at reading scale."
+    }
+  ]
+}

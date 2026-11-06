@@ -1,0 +1,24 @@
+{
+  "id": "F05",
+  "title": "We are here, on the frontline of equality / against hate",
+  "image": "f05.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 5
+  },
+  "slide_intent": "Pair a broad value with an action or gesture people can recognize. Repetition lets the two sentiments be read together.",
+  "strategic_value": "Frontline AIDS can express solidarity across distinct photographs through a consistent declaration and boxed type.",
+  "demonstration": "A two-person portrait carries the equality line. A photograph of hands forming a heart carries the statement against hate.",
+  "category": "Voice",
+  "practical_value": "Pair photographs whose pose or gesture can remain readable alongside the headline and check the crop at its intended size.",
+  "content_islands": [
+    {
+      "name": "Equality panel",
+      "spec": "Fill the left half with the two people side by side. Set the green-on-black text below their faces."
+    },
+    {
+      "name": "Against hate panel",
+      "spec": "Place the heart gesture high on the right. Use a pink text field below the hands so the gesture remains intact."
+    }
+  ]
+}

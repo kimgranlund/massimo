@@ -1,0 +1,31 @@
+{
+  "id": "C427",
+  "title": "I am Ruth promotion",
+  "image": "c427.png",
+  "source": "../sources/c427.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 masterbrand / 2023",
+    "item": 27,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Adapt the delivery to a dramatic subject so a consistent identity does not flatten differences in tone.",
+  "strategic_value": "A quieter scene and restrained endboard can let Channel 4 identify I am Ruth while respecting its atmosphere.",
+  "demonstration": "The playable clip uses an embrace, an assembling green 4, an I am Ruth title room and a final Stream from Thursday endboard. The published poster shows an ocean scene instead.",
+  "category": "Application",
+  "practical_value": "Compare the programme-specific footage with the stable title and action structure.",
+  "content_islands": [
+    {
+      "name": "Source poster",
+      "spec": "Retain the dark ocean image with its green 4 as the published preview."
+    },
+    {
+      "name": "Playable sequence",
+      "spec": "Follow the embrace with the title room and a two-panel streaming announcement."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The video applies the shared promotion structure to I am Ruth.",
+    "Expression": "The sequence combines subdued footage with green and pale gradient panels."
+  },
+  "motion": "../sources/c427.mp4"
+}

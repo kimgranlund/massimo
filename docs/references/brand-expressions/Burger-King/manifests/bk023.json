@@ -1,0 +1,43 @@
+{
+  "id": "BK023",
+  "title": "1. Enthusiastic",
+  "image": "bk023.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 23
+  },
+  "slide_intent": "Define the limits of sensory enthusiasm so writers can express personality without creating the wrong impression.",
+  "strategic_value": "Descriptive food phrases can make Burger King sound excited about taste without sounding uncontrolled.",
+  "demonstration": "Energetic, excited and spirited language is bounded by cautions against manic, naive and childish expression. The right column compares sensory phrases with repetitive shouting, bland claims and forced rhymes.",
+  "category": "Voice",
+  "practical_value": "Use vivid taste, appearance and texture words, then test whether the line becomes exaggerated or childish.",
+  "content_islands": [
+    {
+      "name": "Trait and explanation",
+      "spec": "Place the numbered Enthusiastic heading and explanatory paragraph in the wide left area."
+    },
+    {
+      "name": "Boundaries",
+      "spec": "Stack three contrasting statements below, highlighting the limiting word in orange."
+    },
+    {
+      "name": "Do and do not examples",
+      "spec": "Use the narrower right column for paired examples with explanatory notes."
+    },
+    {
+      "name": "Review notice",
+      "spec": "Retain the bottom qualification requiring trademark and local legal review of example lines."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The explanatory paragraph describes the role of sensory enthusiasm in Burger King’s voice.",
+    "Application": "The right column compares sensory phrases with repetitive shouting, bland claims and forced rhymes.",
+    "Constraint": "The page specifies energetic but not manic, excited but not naive, spirited but not childish; its example lines remain subject to trademark and local legal review."
+  },
+  "ingredient": {
+    "name": "Enthusiastic voice",
+    "role": "Express sensory enthusiasm while avoiding a misleading or alienating tone.",
+    "application": "Use vivid taste, appearance and texture words, then test whether the line becomes exaggerated or childish.",
+    "scope": "Historical partner voice guide. Preserve the named boundaries and source review qualification; examples are not blanket approval to publish claims."
+  }
+}

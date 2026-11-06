@@ -1,0 +1,31 @@
+{
+  "id": "DB1403",
+  "title": "Bildwelt / infrastructure and work",
+  "image": "db1403.png",
+  "source": "../sources/page-14.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 14,
+    "section": 3,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Bildwelt"
+  },
+  "slide_intent": "Pair operational detail with human activity so the service becomes tangible.",
+  "strategic_value": "Rail structures and a working employee can make DB’s everyday effort visible.",
+  "demonstration": "A close crop of track construction is paired with a wider image of a worker cleaning a station area.",
+  "category": "Imagery",
+  "practical_value": "Compare a material detail with a contextual work scene.",
+  "content_islands": [
+    {
+      "name": "Track detail",
+      "spec": "Fill the left image with rails, fasteners and repeated structural lines."
+    },
+    {
+      "name": "Work scene",
+      "spec": "Show the worker and equipment within the lit station environment at right."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The pair emphasizes real infrastructure and work through structured composition.",
+    "Application": "The images illustrate two subjects within the DB photographic world."
+  }
+}

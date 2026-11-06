@@ -1,0 +1,29 @@
+{
+  "id": "LH18",
+  "title": "Livery above clouds",
+  "image": "lh18.png",
+  "source": "../sources/lh18.jpg",
+  "location": {
+    "series": "Mona Franz / Lufthansa 2018",
+    "item": 18,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Pair identity with travel context because environmental imagery can make an abstract brand promise tangible.",
+  "strategic_value": "The aircraft above a broad cloudscape can associate the refreshed identity with spaciousness and travel.",
+  "demonstration": "An aircraft in side view occupies the upper portion of a wide blue sky and cloud photograph.",
+  "category": "Imagery",
+  "practical_value": "Judge the role of surrounding space when presenting a branded vehicle in campaign imagery.",
+  "content_islands": [
+    {
+      "name": "Aircraft",
+      "spec": "Place the branded aircraft above the cloud horizon."
+    },
+    {
+      "name": "Cloudscape",
+      "spec": "Keep the lower cloud field and open blue sky to establish scale."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "An aircraft in side view occupies the upper portion of a wide blue sky and cloud photograph."
+  }
+}

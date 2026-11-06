@@ -1,0 +1,37 @@
+{
+  "id": "HE027",
+  "title": "Left alignment",
+  "image": "he027.png",
+  "source": "../sources/use-basic-elements.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Left alignment",
+    "order": 35,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/use-basic-elements#left-alignment",
+    "original_html": "../sources/use-basic-elements.html"
+  },
+  "slide_intent": "Give elements a common alignment so viewers can scan a composition along a stable starting edge.",
+  "strategic_value": "A preferred left edge can connect Helsinki layouts without prescribing every detail of their composition.",
+  "demonstration": "This expanded webpage section states the left-alignment preference and shows orange Helsinki Energy Challenge text with a common left edge.",
+  "category": "Layout",
+  "practical_value": "Start with left-aligned text and visual elements when arranging a city communication.",
+  "content_islands": [
+    {
+      "name": "Alignment guidance",
+      "spec": "State the preferred approach first."
+    },
+    {
+      "name": "Energy Challenge specimen",
+      "spec": "Show the large Process and timetable heading above smaller orange text, all sharing a left edge."
+    }
+  ],
+  "ingredient": {
+    "name": "Left alignment",
+    "role": "Provide a common reading edge.",
+    "application": "Prefer left alignment for visual elements and align text left.",
+    "scope": "The source calls this a preferred approach, not a universal prohibition on every centered composition."
+  },
+  "reference_purposes": {
+    "Application": "The example demonstrates left-aligned text and visual elements."
+  }
+}

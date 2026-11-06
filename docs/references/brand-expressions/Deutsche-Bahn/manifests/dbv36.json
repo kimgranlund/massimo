@@ -1,0 +1,42 @@
+{
+  "id": "DBV36",
+  "title": "Trenner_side-2c",
+  "image": "dbv36.png",
+  "source": "../sources/media/dbv36.mp4",
+  "location": {
+    "series": "DB new design / motion demonstrations",
+    "source_page": 15,
+    "section": "Bewegtbild-14021636",
+    "source_url": "https://ecm-mediathek-cdn.deutschebahn.com/cdnenhancedecmvidhls/db306441/2881101/video_config.json",
+    "capture_date": "2026-11-05",
+    "note": "Transition page grouping/captions and embedded file behavior are inconsistent. Direction and color count here follow the inspected video; the preference for two-color dividers remains a separately attributed source rule."
+  },
+  "slide_intent": "Use two planes on one axis to mark a scene boundary without creating competing directions.",
+  "strategic_value": "The red-and-white horizontal wipe can make a DB transition more expressive while preserving orientation.",
+  "demonstration": "Winter lakeside rail footage changes to a countryside train shot through horizontal red and white planes.",
+  "category": "Motion",
+  "practical_value": "Choose the two-color horizontal transition for an expressive scene change.",
+  "content_islands": [
+    {
+      "name": "Opening scene",
+      "spec": "Establish the winter rail landscape beside water."
+    },
+    {
+      "name": "Transition",
+      "spec": "Move red and white planes horizontally to uncover the approaching train."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Winter lakeside rail footage changes to a countryside train shot through horizontal red and white planes.",
+    "Application": "The source provides a playable demonstration of this repeatable sequence: Winter lakeside rail footage changes to a countryside train shot through horizontal red and white planes.",
+    "Intent": "Accompanying Trenner prose says transitions separate film sequences, create structure, and help viewers orient themselves.",
+    "Constraint": "The source prefers the two-color dynamic divider and uses the one-color divider especially on busy backgrounds; dividers follow the main axes."
+  },
+  "motion": "../sources/media/dbv36.mp4",
+  "ingredient": {
+    "name": "Scene divider",
+    "role": "Make the boundary between film sequences visible.",
+    "application": "Prefer two-color dynamic dividers; use a one-color divider particularly for a busy background. Keep movement on a main axis.",
+    "scope": "Official DB new-design web guidance, undated live edition captured 2026-11-05; applies to the demonstrated motion context. File behavior determines this record’s direction and color count because nearby page captions/groupings do not consistently match the embedded clips."
+  }
+}

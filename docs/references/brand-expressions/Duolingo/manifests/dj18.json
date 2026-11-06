@@ -1,0 +1,30 @@
+{
+  "id": "DJ18",
+  "title": "Passport holder",
+  "image": "dj18.png",
+  "source": "../sources/johnson-banks/Duolingo_passport-by-Johnson-Banks.jpg",
+  "location": {
+    "series": "Johnson Banks / Everyone can Duolingo / 2019",
+    "item": 18,
+    "extent": "Whole published artwork",
+    "order": 2018
+  },
+  "slide_intent": "Connect a brand object to a relevant activity because physical context can make an abstract promise tangible.",
+  "strategic_value": "A passport holder with Duo in a window can connect Duolingo’s learning identity with travel.",
+  "demonstration": "A green passport holder contains travel documents and carries a window-shaped Duo illustration above a white wordmark.",
+  "category": "Application",
+  "practical_value": "Compare the role of an illustration and signature on a small travel accessory.",
+  "content_islands": [
+    {
+      "name": "Travel documents",
+      "spec": "Allow the passport and papers to project above the holder."
+    },
+    {
+      "name": "Holder graphics",
+      "spec": "Center the window-framed Duo above the white wordmark on the green cover."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The accessory visualization applies character imagery and signature to a passport holder."
+  }
+}

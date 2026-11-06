@@ -1,0 +1,32 @@
+{
+  "id": "DW047",
+  "title": "Writing / Brand Narrative",
+  "image": "dw047.png",
+  "source": "../sources/pages/writing-brand-narrative.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/brand-narrative",
+    "section": "Brand narrative",
+    "item": 47,
+    "order": 470
+  },
+  "slide_intent": "Connect individual messages to a shared story so audiences encounter a recognizable idea across communications.",
+  "strategic_value": "The invitation to adapt a common narrative can let Duolingo retain a coherent promise while writers address different situations.",
+  "demonstration": "A blue introduction pairs the brand-narrative heading and short guidance with Duo reading an open book.",
+  "category": "Voice",
+  "practical_value": "Begin a writing brief with the common story before selecting a channel-specific message.",
+  "content_islands": [
+    {
+      "name": "Section introduction",
+      "spec": "Place the Writing label, lowercase section title and explanatory paragraph at left on the blue field."
+    },
+    {
+      "name": "Illustrated cue",
+      "spec": "Place Duo leaning over an open book at right, with small diamond accents around the figure."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The introduction explicitly states that every written word contributes to the Duolingo story and introduces voice, key messages and sample copy.",
+    "Expression": "A blue introduction pairs the brand-narrative heading and short guidance with Duo reading an open book."
+  }
+}

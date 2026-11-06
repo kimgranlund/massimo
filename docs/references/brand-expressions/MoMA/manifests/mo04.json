@@ -1,0 +1,34 @@
+{
+  "id": "MO04",
+  "title": "Street banners",
+  "image": "mo04.png",
+  "source": "../sources/mo04.jpg",
+  "location": {
+    "series": "Pentagram / MoMA / 2009 identity case study",
+    "item": 4,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Test recognition at street scale, because viewers encounter a museum identity while moving and from below.",
+  "strategic_value": "Repeating the vertical signature on narrow suspended banners can connect street encounters with MoMA\u2019s printed communications.",
+  "demonstration": "Overlapping hanging banners project from a building. A large MoMA signature on the rear banner sits beside a front composition of yellow objects, plus signs and a right-edge signature.",
+  "category": "Application",
+  "practical_value": "Check whether a narrow format can retain both the institution\u2019s signature and a legible exhibition image sequence.",
+  "content_islands": [
+    {
+      "name": "Rear signature banner",
+      "spec": "Keep the large black MoMA lettering visible behind and to the left of the front banner."
+    },
+    {
+      "name": "Exhibition banner",
+      "spec": "Place the vertical object sequence and plus signs in the front banner, beside its right-edge MoMA signature and exhibition details."
+    },
+    {
+      "name": "Street context",
+      "spec": "Retain the fa\u00e7ade, support rods and low viewing angle to show installation and scale."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The photograph shows suspended exterior banners viewed from the street.",
+    "Intent": "The accompanying caption connects vertical logo placement with the museum\u2019s fa\u00e7ade signage."
+  }
+}

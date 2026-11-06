@@ -1,0 +1,38 @@
+{
+  "id": "DB1004",
+  "title": "Visuelles Element / Schwelle variants",
+  "image": "db1004.png",
+  "source": "../sources/page-10.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 10,
+    "section": 4,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Schwelle"
+  },
+  "slide_intent": "Simplify a repeated structure at small sizes so its gaps remain distinct.",
+  "strategic_value": "A dedicated compact variant can preserve recognition when DB has little space.",
+  "demonstration": "The section explains standard and S variants and compares their bar counts in two labeled specimens.",
+  "category": "Geometry",
+  "practical_value": "Use the standard version normally and choose S when space is narrow or height falls below 32 px digitally or 6 mm in print.",
+  "content_islands": [
+    {
+      "name": "Variant guidance",
+      "spec": "Place the explanation and small-size conditions above the specimens."
+    },
+    {
+      "name": "Specimen pair",
+      "spec": "Compare Standardschwelle and S-Variante side by side."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source says fewer elements preserve proportions and character at small sizes.",
+    "Constraint": "The S variant applies below 32 px digital height or 6 mm print height, and in constrained settings where the standard would require compression.",
+    "Application": "The side-by-side pair identifies which supplied variant to select."
+  },
+  "ingredient": {
+    "name": "Schwelle S variant",
+    "role": "Keep bar gaps distinct in compact applications.",
+    "application": "Prefer the standard; use S for narrow placements and below 32 px digital or 6 mm print height.",
+    "scope": "Official DB new-design website captured 2026-11-05; edition date unstated. The source also cites headline connections as constrained applications."
+  }
+}

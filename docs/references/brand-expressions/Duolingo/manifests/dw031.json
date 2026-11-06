@@ -1,0 +1,31 @@
+{
+  "id": "DW031",
+  "title": "Identity / Imagery introduction",
+  "image": "dw031.png",
+  "source": "../sources/pages/identity-imagery.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/identity/imagery",
+    "section": "Imagery",
+    "item": 31,
+    "order": 310
+  },
+  "slide_intent": "Distinguish the jobs of illustration and photography because a visual system needs both a recognizable style and a connection to real people.",
+  "strategic_value": "Illustration can carry Duolingo’s signature while photography represents the diversity of its learners.",
+  "demonstration": "The imagery introduction names illustration as a key identity element and photography as a way to show people learning.",
+  "category": "Imagery",
+  "practical_value": "Choose the medium according to whether the communication needs character-led expression or real-person representation.",
+  "content_islands": [
+    {
+      "name": "Imagery introduction",
+      "spec": "Place the white title and explanation of illustration and photography at left on green."
+    },
+    {
+      "name": "Image-making illustration",
+      "spec": "Group the palette, brush, framed portrait and camera on the right."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source explicitly separates illustration’s identity role from photography’s role in capturing learner diversity."
+  }
+}

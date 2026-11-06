@@ -1,0 +1,35 @@
+{
+  "id": "DB0708",
+  "title": "Dos & Don'ts / logo",
+  "image": "db0708.png",
+  "source": "../sources/page-07.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 7,
+    "section": 8,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Logo_neu"
+  },
+  "slide_intent": "Show prohibited changes alongside correct versions so small production choices do not erode recognition.",
+  "strategic_value": "Consistent color, spacing and proportions can keep DB’s mark dependable across layouts.",
+  "demonstration": "Three paired comparisons address logo color, separation from the sleeper and proportional scaling; incorrect examples are crossed out.",
+  "category": "Brand",
+  "practical_value": "Reject recoloring, overlap with sleepers and distorted scaling before publishing.",
+  "content_islands": [
+    {
+      "name": "Color pair",
+      "spec": "Compare DB Red/White variants with the crossed-out Lilac mark."
+    },
+    {
+      "name": "Spacing pair",
+      "spec": "Compare separated mark and sleeper with an overlapped version."
+    },
+    {
+      "name": "Scale pair",
+      "spec": "Compare the regular mark with a distorted example."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The side-by-side specimens provide direct production checks.",
+    "Constraint": "The source prohibits other logo colors, placement on sleepers and nonproportional scaling."
+  }
+}

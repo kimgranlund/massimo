@@ -1,0 +1,31 @@
+{
+  "id": "IT04",
+  "title": "ITVX / Laptop landing page",
+  "image": "it04.png",
+  "source": "../sources/1782130832-xoa_p5stteih1xs3vfozoq-itv_2-2.webp",
+  "location": {
+    "series": "DixonBaxi / ITV case-study artwork series",
+    "item": 4,
+    "extent": "Whole source artwork",
+    "source_asset_index": 4
+  },
+  "slide_intent": "Carry campaign recognition into the first streaming-service screen, because viewers need to recognize the same service across different situations.",
+  "strategic_value": "This approach can strengthen continuity between campaign recognition and service use.",
+  "demonstration": "A laptop on a bright yellow field displays talent portrait columns, a central ITVX logo and small supporting copy.",
+  "category": "Application",
+  "practical_value": "Carry campaign recognition into the first streaming-service screen.",
+  "content_islands": [
+    {
+      "name": "Colour field",
+      "spec": "Yellow isolates the device."
+    },
+    {
+      "name": "Laptop screen",
+      "spec": "Talent strips converge around the central logo and offer."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A laptop on a bright yellow field displays talent portrait columns, a central ITVX logo and small supporting copy.",
+    "Application": "Carry campaign recognition into the first streaming-service screen. Evidence is the shown application, not a mandatory layout rule."
+  }
+}

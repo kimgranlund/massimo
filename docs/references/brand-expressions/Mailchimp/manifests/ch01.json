@@ -1,0 +1,26 @@
+{
+  "id": "CH01",
+  "title": "Freddie on yellow",
+  "image": "ch01.png",
+  "source": "../sources/ch01.svg",
+  "location": {
+    "series": "COLLINS / Mailchimp case study",
+    "item": 1,
+    "extent": "Complete published artwork",
+    "section": "Cover"
+  },
+  "slide_intent": "Give a familiar character a simple field so recognition can occur before reading.",
+  "strategic_value": "The isolated black Freddie mark can connect a brief encounter with Mailchimp.",
+  "demonstration": "A black chimp head and cap sit near the center of a tall yellow field.",
+  "category": "Brand",
+  "practical_value": "Assess whether a character alone can carry recognition in a narrow format.",
+  "content_islands": [
+    {
+      "name": "Character",
+      "spec": "Place Freddie near the center with ample yellow space around it."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The cover pairs the black character mark with a saturated yellow field."
+  }
+}

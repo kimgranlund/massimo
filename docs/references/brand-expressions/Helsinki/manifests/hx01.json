@@ -1,0 +1,34 @@
+{
+  "id": "HX01",
+  "title": "See: A quick introduction to the visual identity of Helsinki",
+  "image": "hx01.png",
+  "source": "../sources/discover-the-visual-identity.offline.html",
+  "location": {
+    "series": "Web guideline introduction/component",
+    "order": 1,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/discover-the-visual-identity",
+    "original_html": "../sources/discover-the-visual-identity.html"
+  },
+  "slide_intent": "Introduce a shared visual vocabulary because coherent communications help people recognize the same city across encounters.",
+  "strategic_value": "The promised overview can give Helsinki contributors a common starting point.",
+  "demonstration": "This webpage component pairs an eight-minute video description with an unavailable external-video embed; no video frames or movement are visible.",
+  "category": "Brand",
+  "practical_value": "Use the description to locate the introduction; do not infer motion rules from the blocked player.",
+  "content_islands": [
+    {
+      "name": "Introduction",
+      "spec": "Place the video title and duration above the embed."
+    },
+    {
+      "name": "Unavailable player",
+      "spec": "Retain the blocked-content notice and external-site/cookie controls."
+    },
+    {
+      "name": "Purpose",
+      "spec": "Follow with the paragraph describing coherent branded communications."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The description says the video teaches elements and their use in coherent marketing and communications."
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "id": "DW006",
+  "title": "Logotype / General positioning",
+  "image": "dw006.png",
+  "source": "../sources/pages/identity-logos.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/identity/logos",
+    "section": "General positioning",
+    "item": 6,
+    "order": 60
+  },
+  "slide_intent": "Assign a signature a clear place and scale because a visible brand cue should survive different format shapes.",
+  "strategic_value": "Bold placement can make Duolingo recognizable in both portrait and landscape communications.",
+  "demonstration": "Four layout examples accompany guidance to use a corner or central vertical axis and avoid a logotype narrower than one-third of the canvas.",
+  "category": "Layout",
+  "practical_value": "Choose an allowed placement and check size relative to the composition.",
+  "content_islands": [
+    {
+      "name": "Layout comparisons",
+      "spec": "Arrange the four placement examples in a two-column grid within the left panel."
+    },
+    {
+      "name": "Placement and scale rules",
+      "spec": "Place the digital/print scope and corner, axis and width instructions in the right column."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The examples and copy identify corners or the central vertical axis as logo positions.",
+    "Constraint": "The source says to avoid a logotype smaller than one-third of canvas width.",
+    "Intent": "The instructions encourage prominent scale with the stated aim of a bold, proud presentation."
+  },
+  "ingredient": {
+    "name": "Logotype placement",
+    "role": "Make identification prominent within a composition.",
+    "application": "Use one of four corners or center on the vertical axis; avoid width below one-third of the canvas.",
+    "scope": "Historical archived guidelines. General historical digital and print guidance for portrait and landscape formats."
+  }
+}

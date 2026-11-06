@@ -1,0 +1,29 @@
+{
+  "id": "C432",
+  "title": "Presentation deck editor",
+  "image": "c432.png",
+  "source": "../sources/c432.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 masterbrand / 2023",
+    "item": 32,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Carry brand structure into everyday authoring so consistency is practical for people making routine materials.",
+  "strategic_value": "A recognizable slide framework can extend Channel 4’s identity beyond polished broadcast assets.",
+  "demonstration": "A desktop slide-editor view shows a 2024 Trends / The future of TV slide with a photo, playful icons and a colored side panel.",
+  "category": "Application",
+  "practical_value": "Compare the branded composition with the editing interface that surrounds it.",
+  "content_islands": [
+    {
+      "name": "Slide canvas",
+      "spec": "Keep the title and photo on white with a narrow colored information panel at right."
+    },
+    {
+      "name": "Authoring context",
+      "spec": "Retain the slide thumbnails and application frame to show the material in use."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The case-study artwork shows a branded presentation slide inside an editor."
+  }
+}

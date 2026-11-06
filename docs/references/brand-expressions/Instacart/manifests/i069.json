@@ -1,0 +1,24 @@
+{
+  "id": "I069",
+  "title": "Iconography",
+  "image": "i069.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 69
+  },
+  "slide_intent": "Introduce the system for drawing small functional signs. The section boundary gives readers a clear transition from expressive illustrations to interface symbols.",
+  "strategic_value": "Instacart can organize different kinds of image-making within a consistent chapter structure.",
+  "demonstration": "The single cream title Iconography occupies the left of a dark green divider beneath a quiet running header.",
+  "category": "Geometry",
+  "practical_value": "Use the divider to locate the rules for functional icons before drawing interface controls.",
+  "content_islands": [
+    {
+      "name": "Running identifiers",
+      "spec": "Keep the book name, version and folio small at the top of the green field."
+    },
+    {
+      "name": "Section name",
+      "spec": "Set Iconography in very large cream lettering and leave the right side clear."
+    }
+  ]
+}

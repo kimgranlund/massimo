@@ -1,0 +1,38 @@
+{
+  "id": "DW109",
+  "title": "Illustration / Pastels versus gray",
+  "image": "dw109.png",
+  "source": "../sources/pages/illustration-shape-language.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/illustration/shape-language",
+    "section": "Pastels vs. gray",
+    "item": 109,
+    "order": 1090
+  },
+  "slide_intent": "Consider the surrounding surface when choosing a light base because a white subject can disappear against a white interface.",
+  "strategic_value": "Light pastel bases can retain Duolingo’s colorful character while separating pale subjects from white backgrounds.",
+  "demonstration": "Two paired rows compare tinted wolf and egg illustrations with crossed-out gray versions.",
+  "category": "Color",
+  "practical_value": "Use a light pastel for a pale illustration base instead of white or neutral gray.",
+  "content_islands": [
+    {
+      "name": "Tinted and gray specimens",
+      "spec": "Place the wolf pair above the egg pair, marking both right-hand gray treatments as rejected."
+    },
+    {
+      "name": "Background rationale",
+      "spec": "Explain the white interface background and pastel preference at right."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source connects the choice to white app backgrounds and describes gray as cold beside the bright palette.",
+    "Constraint": "Use light pastels instead of white or gray as illustration base colors."
+  },
+  "ingredient": {
+    "name": "Light illustration bases",
+    "role": "Separate pale subjects from white surfaces while retaining color.",
+    "application": "Choose light pastels from the palette for the base rather than white or gray.",
+    "scope": "Historical illustration-base guidance; this does not prohibit gray typography, shadows or every neutral detail elsewhere."
+  }
+}

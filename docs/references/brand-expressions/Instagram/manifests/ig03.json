@@ -1,0 +1,40 @@
+{
+  "id": "IG03",
+  "title": "Small glyph / corner scale and margin",
+  "image": "ig03.png",
+  "source": "../sources/ig03.gif",
+  "location": {
+    "series": "Elvis Dinh / Instagram brand design system / project year 2022",
+    "item": 3,
+    "extent": "whole source artwork",
+    "poster_frame": 96,
+    "poster_seconds": 3.84,
+    "duration_seconds": 5.12
+  },
+  "slide_intent": "Coordinate a corner signature’s size and inset so it remains visible without taking over the message.",
+  "strategic_value": "A repeatable small signature can identify Instagram while leaving room for content.",
+  "demonstration": "A small upper-right glyph is compared with a five-part height stack; later guides mark top and right offsets as 1/12 X.",
+  "category": "Geometry",
+  "practical_value": "Separate the glyph’s one-fifth scale relation from the one-twelfth inset relation.",
+  "content_islands": [
+    {
+      "name": "Small corner glyph",
+      "spec": "Position the active gradient glyph at upper right on white."
+    },
+    {
+      "name": "Measurement overlays",
+      "spec": "Show a vertical five-glyph stack, field-height arrow and dotted inset guides in the sequence."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The animation locates a small glyph relative to its canvas.",
+    "Constraint": "The displayed diagram labels glyph height 1/5 X and inset guides 1/12 X."
+  },
+  "ingredient": {
+    "name": "Small corner glyph",
+    "role": "Identify the brand while keeping the central composition available.",
+    "application": "Use the demonstrated 1/5 X glyph height and 1/12 X top/right inset when reproducing this construction.",
+    "scope": "This small-glyph demonstration; the drawing defines X as the field height."
+  },
+  "motion": "../sources/ig03.mp4"
+}

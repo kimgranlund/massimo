@@ -1,0 +1,34 @@
+{
+  "id": "C457",
+  "title": "Super. Human. station display",
+  "image": "c457.png",
+  "source": "../sources/c457.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 / 2023 masterbrand case study",
+    "item": 57,
+    "extent": "Full published artwork"
+  },
+  "slide_intent": "Test headline scale at viewing distance, because a public-space advertisement must communicate before a passerby stops to read.",
+  "strategic_value": "The large extended headline, athlete portrait and small green 4 can connect a distinctive campaign with Channel 4 at a glance.",
+  "demonstration": "A wide illuminated display above an escalator pairs a swimmer wearing goggles with the oversized white Super. Human. headline; a green 4, viewing prompt and Paralympics label sit at the left.",
+  "category": "Application",
+  "practical_value": "Compare the campaign headline’s scale with the smaller broadcaster and programme information in a wide placement.",
+  "content_islands": [
+    {
+      "name": "Left information stack",
+      "spec": "Place the green 4 and small viewing/programme details at the left edge."
+    },
+    {
+      "name": "Campaign image and headline",
+      "spec": "Center the swimmer and stretch the large white headline across the lower part of the display."
+    },
+    {
+      "name": "Station context",
+      "spec": "Retain the ceiling and escalator foreground to show the screen’s scale and viewing position."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A wide illuminated display above an escalator pairs a swimmer wearing goggles with the oversized white Super. Human. headline; a green 4, viewing prompt and Paralympics label sit at the left.",
+    "Application": "The source demonstrates this treatment in a wide station display."
+  }
+}

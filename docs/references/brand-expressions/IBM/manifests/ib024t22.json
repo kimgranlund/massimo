@@ -1,0 +1,46 @@
+{
+  "id": "IB024T22",
+  "title": "Technical diagrams / Node colors — Dark theme",
+  "image": "ib024t22.png",
+  "source": "../sources/alternate-tabs.json",
+  "location": {
+    "series": "IBM Design Language / alternate tab states",
+    "parent": "IB024",
+    "group": 2,
+    "tab": 2,
+    "label": "Dark theme",
+    "url": "https://www.ibm.com/design/language/infographics/technical-diagrams/design/",
+    "order": 24122
+  },
+  "slide_intent": "Adapt node contrast to a dark canvas without losing hierarchy, because outlines, fills, icons and labels must remain distinguishable.",
+  "strategic_value": "A defined dark-theme role system can keep IBM diagrams readable while preserving their construction vocabulary.",
+  "demonstration": "On a dark field, two large nodes at left compare side-bar and color-block treatments; two small nodes at right compare outlined and filled versions.",
+  "category": "Color",
+  "practical_value": "Assign primary and secondary colors by element role before choosing a dark-theme node variant.",
+  "content_islands": [
+    {
+      "name": "Theme selector",
+      "spec": "Show Dark theme selected beside Light theme."
+    },
+    {
+      "name": "Large nodes",
+      "spec": "Stack the side-bar and color-block examples on the left, using white labels and contrasting icon treatments."
+    },
+    {
+      "name": "Small nodes",
+      "spec": "Stack an outlined and a filled circular node on the right with their labels beneath."
+    }
+  ],
+  "ingredient": {
+    "name": "Dark technical-diagram colors",
+    "role": "Keep node boundaries, labels and icons legible on a dark canvas.",
+    "application": "Use primary colors for outlines, side bars, color blocks and connectors; reserve secondary colors for fills and keep text White.",
+    "scope": "The accompanying dark-theme diagram rules specify Gray 100 canvas, primary grades 30–50 or White and secondary Gray 100/Color 90. Meaning must also be carried by labels, lines or icons."
+  },
+  "reference_purposes": {
+    "Intent": "The accompanying color section explains that the role rules support accessibility while retaining flexibility.",
+    "Expression": "Blue outlines and solid blue regions contrast with the dark canvas and white labels in this captured dark-theme diagram treatment.",
+    "Application": "Four node variants show how primary and secondary colors operate across large and small shapes.",
+    "Constraint": "The source sets Gray 100 canvas, White text, primary swatches 30–50 or White and secondary fills Gray 100 or Color 90 for dark-theme diagrams."
+  }
+}

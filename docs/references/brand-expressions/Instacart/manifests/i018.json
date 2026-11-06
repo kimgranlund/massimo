@@ -1,0 +1,24 @@
+{
+  "id": "I018",
+  "title": "App Icon",
+  "image": "i018.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 18
+  },
+  "slide_intent": "Show how to introduce a changed icon while helping existing customers distinguish two apps.",
+  "strategic_value": "A phased change can preserve recognition for the main app, while a paper bag identifies the shopper app.",
+  "demonstration": "Two columns compare launch and future versions. Each pairs a primary icon with a shopper icon and flags a pending bag-color update.",
+  "category": "Application",
+  "practical_value": "Choose the appropriate version for the launch stage and distinguish the primary app from the shopper app.",
+  "content_islands": [
+    {
+      "name": "Transition guidance",
+      "spec": "Set the version explanations and application-only scope on the left."
+    },
+    {
+      "name": "Version comparison",
+      "spec": "Align two columns of rounded-square icons, with primary apps above shopper apps. Keep the bag-color note attached to the shopper examples."
+    }
+  ]
+}

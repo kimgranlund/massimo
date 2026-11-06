@@ -1,0 +1,42 @@
+{
+  "id": "DB0504",
+  "title": "Bewegend / Klar (ehrlich) / Zuversichtlich",
+  "image": "db0504.png",
+  "source": "../sources/page-05.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 5,
+    "section": 4,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Unsere-Markenpersoenlichkeit"
+  },
+  "slide_intent": "Define a speaking stance so messages can motivate, orient and reassure without relying on visual style alone.",
+  "strategic_value": "An active, direct and forward-looking voice can support DB’s intended personality across channels.",
+  "demonstration": "Three expanded text panels define moving, clear/honest and confident communication.",
+  "category": "Voice",
+  "practical_value": "Review language for active progress, transparent information and realistic attention to solutions.",
+  "content_islands": [
+    {
+      "name": "Bewegend",
+      "spec": "Open with active language about movement, development and participation."
+    },
+    {
+      "name": "Klar (ehrlich)",
+      "spec": "Use the middle panel for direct, understandable information without empty phrases or evasion."
+    },
+    {
+      "name": "Zuversichtlich",
+      "spec": "Close with possibilities, solutions and a forward-looking outlook even amid challenges."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "Each panel explains the intended human effect: energy and motivation; trust and orientation; courage and hope.",
+    "Application": "The panels describe how messages should frame progress, facts and possibilities.",
+    "Constraint": "The clear/honest panel rejects unnecessary stock phrases and evasive wording."
+  },
+  "ingredient": {
+    "name": "Brand voice",
+    "role": "Help people understand DB’s position and participate in progress.",
+    "application": "Use active, transparent and forward-looking language; avoid empty phrases and evasion.",
+    "scope": "The three traits guide communication tone; they do not justify omitting problems or setbacks, which the transparency examples explicitly include."
+  }
+}

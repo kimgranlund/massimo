@@ -1,0 +1,30 @@
+{
+  "id": "DB1400",
+  "title": "Bildwelt / traveler header",
+  "image": "db1400.png",
+  "source": "../sources/page-14.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 14,
+    "section": 0,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Bildwelt"
+  },
+  "slide_intent": "Place a person within a believable environment so viewers can relate the image to lived travel.",
+  "strategic_value": "A natural moment at a station can make DB’s world feel concrete and human.",
+  "demonstration": "A wide photograph shows a woman holding a phone at a station, with directional light and the building behind her.",
+  "category": "Imagery",
+  "practical_value": "Inspect how portrait, setting and light share the frame without a posed advertising gesture.",
+  "content_islands": [
+    {
+      "name": "Traveler",
+      "spec": "Place the woman and phone prominently in the foreground."
+    },
+    {
+      "name": "Station context",
+      "spec": "Retain the roof and station structure behind her."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The photograph combines a traveler, real station setting and directional light."
+  }
+}

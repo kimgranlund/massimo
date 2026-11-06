@@ -1,0 +1,38 @@
+{
+  "id": "HE025",
+  "title": "Tips and cut edges of wave motifs",
+  "image": "he025.png",
+  "source": "../sources/use-basic-elements.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Tips and cut edges of wave motifs",
+    "order": 32,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/use-basic-elements#tips-and-cut-edges-of-wave-motifs",
+    "original_html": "../sources/use-basic-elements.html"
+  },
+  "slide_intent": "Control cropping so a repeated wave retains enough structure to be recognized at the edge of a composition.",
+  "strategic_value": "Consistent wave tips and cut points can keep Helsinki’s motif legible across differently sized surfaces.",
+  "demonstration": "This expanded webpage section shows a two-rule list and diagrams comparing how wave tips and edge cuts meet a surface.",
+  "category": "Geometry",
+  "practical_value": "Count complete tips and compare the crop with the supplied diagrams before finalizing the divider.",
+  "content_islands": [
+    {
+      "name": "Tip and crop rules",
+      "spec": "Place the two bullets above the diagram."
+    },
+    {
+      "name": "Edge examples",
+      "spec": "Show the wave boundaries and their allowed cut positions."
+    }
+  ],
+  "ingredient": {
+    "name": "Wave edge crop",
+    "role": "Retain recognizable rhythm at the surface boundary.",
+    "application": "Include at least two whole tips and follow the depicted cut positions.",
+    "scope": "The English text says tip or bottom, then describes halfway between extrema; preserve that wording ambiguity and rely on the diagram rather than inventing a clearer numeric rule."
+  },
+  "reference_purposes": {
+    "Application": "The diagrams illustrate how wave tips meet surface edges.",
+    "Constraint": "At least two whole wave tips are required per surface; the text specifies cutting at tip or bottom and then uses an ambiguous halfway phrase."
+  }
+}

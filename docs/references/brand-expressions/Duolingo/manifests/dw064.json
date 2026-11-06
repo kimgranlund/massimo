@@ -1,0 +1,40 @@
+{
+  "id": "DW064",
+  "title": "Writing / Duo / Duo's voice and tone",
+  "image": "dw064.png",
+  "source": "../sources/pages/writing-duo.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/duo",
+    "section": "Duo's voice and tone",
+    "item": 64,
+    "order": 640
+  },
+  "slide_intent": "Set emotional limits around a persistent mascot so reminders remain supportive rather than threatening.",
+  "strategic_value": "Positive and negative traits paired with product examples can help Duolingo keep Duo recognizable across lessons and notifications.",
+  "demonstration": "The panel lists what Duo is and is not, followed by preferred and rejected notification and lesson messages.",
+  "category": "Voice",
+  "practical_value": "Review mascot copy against both the personality list and the context-specific examples.",
+  "content_islands": [
+    {
+      "name": "Guidance column",
+      "spec": "Place Duo’s Voice and Tone heading, explanatory copy and text-channel list at left."
+    },
+    {
+      "name": "Worked examples",
+      "spec": "Put trait comparisons at the top right, then notification examples and lesson examples below."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source frames Duo as helping people return to learning rather than being hostile.",
+    "Expression": "First-person reminders and encouragement demonstrate the mascot’s historical voice.",
+    "Application": "Separate notification and lesson examples demonstrate contextual wording.",
+    "Constraint": "The historical guidance says Duo communicates through text and excludes threatening, aggressive, violent and mean behavior."
+  },
+  "ingredient": {
+    "name": "Duo’s historical voice",
+    "role": "Make persistent encouragement recognizable as the mascot.",
+    "application": "Use supportive and emotive text in lessons, notifications and emails; avoid threats or aggression.",
+    "scope": "Historical official guidelines from the 2024–2025 archived snapshot; this records the displayed guidance, not current Duolingo product behavior. This archived guide does not establish current social-media behavior."
+  }
+}

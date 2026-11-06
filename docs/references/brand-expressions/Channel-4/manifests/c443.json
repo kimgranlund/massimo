@@ -1,0 +1,35 @@
+{
+  "id": "C443",
+  "title": "The new starter handbook",
+  "image": "c443.png",
+  "source": "../sources/c443.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 / 2023 masterbrand case study",
+    "item": 43,
+    "extent": "Full published artwork"
+  },
+  "slide_intent": "Give internal materials the same character as public communication, because employees encounter the brand through everyday information.",
+  "strategic_value": "The green signature, gradient room and alien icon can make joining Channel 4 feel connected to its playful public personality.",
+  "demonstration": "A handbook cover places the green 4 above a purple gradient room, with a black title and alien icon on the green-to-white lower field.",
+  "category": "Application",
+  "practical_value": "Decide how much expressive color and iconography a practical onboarding cover can carry.",
+  "content_islands": [
+    {
+      "name": "Upper identity field",
+      "spec": "Place the small green 4 over the purple recessed gradient at the top."
+    },
+    {
+      "name": "Handbook title",
+      "spec": "Set the title at the left edge of the green lower field and attach the alien icon to its final line."
+    },
+    {
+      "name": "Physical format",
+      "spec": "Retain the book edge and cast shadow against the pale background."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "Pentagram’s accompanying case study explains that playful 4mojis prevent the functional graphic system from losing Channel 4’s mischievousness.",
+    "Expression": "A handbook cover places the green 4 above a purple gradient room, with a black title and alien icon on the green-to-white lower field.",
+    "Application": "The source demonstrates this treatment in an employee handbook cover."
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "id": "DW131",
+  "title": "Illustration / Characters / Arms and hands",
+  "image": "dw131.png",
+  "source": "../sources/pages/illustration-characters.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/illustration/characters",
+    "section": "Arms and hands",
+    "item": 131,
+    "order": 1310
+  },
+  "slide_intent": "Use only the hand detail needed for a gesture so the pose remains clear and feasible to produce repeatedly.",
+  "strategic_value": "Abstract hands can help Duolingo preserve expressive action without increasing illustration and animation complexity unnecessarily.",
+  "demonstration": "A tall grid shows arm positions, prop-holding poses, translucent construction views, gestures and isolated hand shapes; text at right explains simplification.",
+  "category": "Geometry",
+  "practical_value": "Start with circular hands and add only the fingers required to make the specific pose readable.",
+  "content_islands": [
+    {
+      "name": "Pose and construction studies",
+      "spec": "Group standing arm positions and prop interactions at upper left, followed by blue construction views and gesture examples."
+    },
+    {
+      "name": "Hand-shape specimens",
+      "spec": "Place the isolated hand silhouettes at the bottom of the visual field, comparing simple circles and a few explicit fingers."
+    },
+    {
+      "name": "Production rationale",
+      "spec": "Set Arms and Hands and its paragraph at right, explaining the time cost of posing and animation."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text identifies arms and hands as time-consuming for illustrators and animators and connects abstraction with easier production.",
+    "Expression": "The examples maintain a simple rounded hand vocabulary across varied gestures.",
+    "Application": "The grid demonstrates circular hands, prop interactions and selectively visible fingers.",
+    "Constraint": "The source asks for the minimum fingers needed for the pose and circular abstraction in most situations."
+  },
+  "ingredient": {
+    "name": "Abstract hands",
+    "role": "Make gestures readable with minimal construction.",
+    "application": "Keep hands circular in most situations and display only the fingers needed for the pose.",
+    "scope": "Historical official Duolingo illustration guidance from the 2024–2025 archived snapshot. This page states a minimum-detail principle; the explicit four-finger maximum appears in the following prohibition panel."
+  }
+}

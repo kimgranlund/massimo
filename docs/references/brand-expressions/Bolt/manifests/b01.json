@@ -1,0 +1,24 @@
+{
+  "id": "B01",
+  "title": "Brand Guidelines",
+  "image": "b01.png",
+  "source": "../bolt-brand-guidelines-2025-12.pdf",
+  "location": {
+    "page": 1
+  },
+  "slide_intent": "Introduce the identity through its name and one recognizable gesture. A simple first encounter gives readers a visual reference for the rules that follow.",
+  "strategic_value": "The bolt cut into the wordmark and the large bolt-shaped light on the cover can associate the product name with speed before any explanation.",
+  "demonstration": "A white wordmark and small edition label occupy the left side of a dark cover. A large diagonal blue and violet lightning form extends beyond the upper and right edges.",
+  "category": "Brand",
+  "practical_value": "Use the cover to compare the graphic device with the mark. The graphic can fill the field while the name remains legible against a quiet ground.",
+  "content_islands": [
+    {
+      "name": "Wordmark and edition",
+      "spec": "Place the white mark left of center at mid-height. Set the book title and December 2025 in small type immediately to its right."
+    },
+    {
+      "name": "Lightning field",
+      "spec": "Extend the oversized diagonal lightning shape from the middle toward the upper-right edge. Keep the sharp inner corners and the areas of blurred blue and violet light."
+    }
+  ]
+}

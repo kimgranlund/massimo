@@ -1,0 +1,32 @@
+{
+  "id": "DB12",
+  "title": "Animated illustration characters",
+  "image": "db12.png",
+  "source": "../sources/db12.mp4",
+  "location": {
+    "series": "COLLINS / Dropbox / 2017 identity case study",
+    "item": 12,
+    "section": "Gallery",
+    "extent": "Complete published clip; PNG is a frame at 0.5 seconds",
+    "duration_seconds": 18.92
+  },
+  "slide_intent": "Give illustration a repeatable movement character because a playful world needs continuity between scenes.",
+  "strategic_value": "Loose outlines and patterned fills can make Dropbox’s creative stance feel human and varied.",
+  "demonstration": "The clip sequences a running animal, a walking bus-like creature, floating objects, a balloon-carrying crocodile and figures on a board, all drawn with black outlines and colored patterns.",
+  "category": "Motion",
+  "practical_value": "Compare how line, fill and motion remain related across different characters.",
+  "content_islands": [
+    {
+      "name": "Character episodes",
+      "spec": "Sequence the separate figures on white without treating them as one fixed character."
+    },
+    {
+      "name": "Graphic language",
+      "spec": "Preserve the loose black strokes, sparse ground lines and bright patterned patches."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The clip sequences a running animal, a walking bus-like creature, floating objects, a balloon-carrying crocodile and figures on a board, all drawn with black outlines and colored patterns."
+  },
+  "motion": "../sources/db12.mp4"
+}

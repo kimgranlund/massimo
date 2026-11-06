@@ -1,0 +1,24 @@
+{
+  "id": "N01",
+  "title": "Graphics Standards Manual",
+  "image": "n01.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 1
+  },
+  "slide_intent": "Establish who issued the manual and which identity it governs. A reader should recognize the document and distinguish its edition before using its specifications.",
+  "strategic_value": "NASA can turn the cover into a first encounter with the system. The scale of the black logotype conveys its central place in the manual.",
+  "demonstration": "The cover places the agency name, manual title, document number and January 1976 date in small type above a large black NASA logotype.",
+  "category": "Brand",
+  "practical_value": "Identify this handbook as NHB 1430.2 and use the date to distinguish this edition from later reproductions or policies.",
+  "content_islands": [
+    {
+      "name": "Publication details",
+      "spec": "Align the agency name and document title above the logotype. Place NHB 1430.2 and the date at the top right."
+    },
+    {
+      "name": "Cover logotype",
+      "spec": "Set the black NASA mark on white below the header. Leave a deep unused field beneath it."
+    }
+  ]
+}

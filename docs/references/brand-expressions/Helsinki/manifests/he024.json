@@ -1,0 +1,42 @@
+{
+  "id": "HE024",
+  "title": "Surfaces divided into grid",
+  "image": "he024.png",
+  "source": "../sources/use-basic-elements.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Surfaces divided into grid",
+    "order": 31,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/use-basic-elements#surfaces-divided-into-grid",
+    "original_html": "../sources/use-basic-elements.html"
+  },
+  "slide_intent": "Relate surface division to a grid so changing format does not require an unrelated composition logic.",
+  "strategic_value": "A consistent division system can connect Helsinki’s portrait, landscape and diagonal layouts.",
+  "demonstration": "This expanded webpage section pairs grid-based surface divisions with permitted horizontal, vertical and diagonal wave orientations.",
+  "category": "Layout",
+  "practical_value": "Adapt the grid to the format while keeping wave divisions on the stated angles.",
+  "content_islands": [
+    {
+      "name": "Grid explanation",
+      "spec": "Explain the common logic for different formats."
+    },
+    {
+      "name": "Orientation rule",
+      "spec": "State the permitted directions."
+    },
+    {
+      "name": "Division examples",
+      "spec": "Show several wave-divided grid arrangements below."
+    }
+  ],
+  "ingredient": {
+    "name": "Wave division grid",
+    "role": "Keep format variation within a common composition system.",
+    "application": "Divide surfaces horizontally, vertically or at 45/135 degrees using the illustrated grid logic.",
+    "scope": "The angle limits govern wave surface divisions, not every element on the page."
+  },
+  "reference_purposes": {
+    "Application": "The examples compare surface divisions across formats.",
+    "Constraint": "Wave divisions may be horizontal, vertical or at 45/135 degrees."
+  }
+}

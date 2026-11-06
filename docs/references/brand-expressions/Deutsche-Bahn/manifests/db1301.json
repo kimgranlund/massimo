@@ -1,0 +1,27 @@
+{
+  "id": "DB1301",
+  "title": "LAYOUT",
+  "image": "db1301.png",
+  "source": "../sources/page-13.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 13,
+    "section": 1,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Layout"
+  },
+  "slide_intent": "Let layout respond to content and medium so information has an appropriate place to be read.",
+  "strategic_value": "Flexible surface modules can keep DB communications coherent across varied requirements.",
+  "demonstration": "A short introduction explains the role of surface modules in adapting layouts to different topics and media.",
+  "category": "Layout",
+  "practical_value": "Choose the arrangement that supports the content instead of treating one composition as universal.",
+  "content_islands": [
+    {
+      "name": "Introduction",
+      "spec": "Place the Layout heading above the explanation of flexible modules."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source says the layout system creates suitable solutions for different media and content requirements.",
+    "Application": "It identifies surface modules as the organizing device."
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "I006",
+  "title": "Shop + Savor",
+  "image": "i006.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 6
+  },
+  "slide_intent": "Distinguish getting a task done from enjoying what it makes possible. People can recognize both reasons for using a service.",
+  "strategic_value": "Instacart can connect the convenience of its product to the experiences that follow delivery.",
+  "demonstration": "A horizontal arrow leads from efficiency to enjoyment. Large shop and savor specimens use contrasting letterforms, with a plus sign between them.",
+  "category": "Brand",
+  "practical_value": "Choose whether a communication primarily explains an efficient action or expresses the enjoyment it enables.",
+  "content_islands": [
+    {
+      "name": "Continuum",
+      "spec": "Place a thin arrow across the top and label its ends with efficiency and enjoyment."
+    },
+    {
+      "name": "Paired words",
+      "spec": "Set shop and savor on one baseline with a plus sign. Give each a contrasting voice and place its explanation directly below."
+    }
+  ]
+}

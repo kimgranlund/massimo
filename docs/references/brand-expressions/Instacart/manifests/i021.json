@@ -1,0 +1,24 @@
+{
+  "id": "I021",
+  "title": "Social Icons",
+  "image": "i021.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 21
+  },
+  "slide_intent": "Show how to adapt an avatar to a platform mask or temporary occasion while retaining its silhouette.",
+  "strategic_value": "A stable carrot shape can give seasonal variations a visible link to the primary identity.",
+  "demonstration": "Twelve examples compare primary colorways with pink and rainbow seasonal versions across square, rounded-square and circular masks.",
+  "category": "Application",
+  "practical_value": "Select a primary or seasonal treatment, then check its crop under the platform’s actual mask.",
+  "content_islands": [
+    {
+      "name": "Usage notes",
+      "spec": "Place the primary and seasonal guidance at left."
+    },
+    {
+      "name": "Primary and seasonal matrix",
+      "spec": "Set primary examples in the middle columns and seasonal examples at right. Repeat the masks in aligned rows to isolate the change in artwork."
+    }
+  ]
+}

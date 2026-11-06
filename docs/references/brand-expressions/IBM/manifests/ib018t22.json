@@ -1,0 +1,38 @@
+{
+  "id": "IB018T22",
+  "title": "People illustration / Isometric pose progression",
+  "image": "ib018t22.png",
+  "source": "../sources/alternate-tabs.json",
+  "location": {
+    "series": "IBM Design Language / alternate tab states",
+    "parent": "IB018",
+    "group": 2,
+    "tab": 2,
+    "label": "Isometric",
+    "url": "https://www.ibm.com/design/language/illustration/people/",
+    "order": 18122
+  },
+  "slide_intent": "Let a shared skeleton support different actions, because believable pose gives a character meaning beyond its surface appearance.",
+  "strategic_value": "Consistent construction across walking and phone-use figures can help IBM illustrate varied human activity within one visual system.",
+  "demonstration": "Two pairs compare skeletal construction with finished colored characters: a walking woman at left and a person holding a phone at right.",
+  "category": "Geometry",
+  "practical_value": "Test a pose in the structural stage before committing to the final silhouette and clothing.",
+  "content_islands": [
+    {
+      "name": "Style selector",
+      "spec": "Keep Isometric selected above the specimen."
+    },
+    {
+      "name": "Walking pair",
+      "spec": "Place the walking skeleton beside its finished light-blue-shirted character."
+    },
+    {
+      "name": "Phone-use pair",
+      "spec": "Place the bent-arm skeleton beside the finished purple-hooded character holding a phone."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The accompanying People page explains that body language, clothing and props add familiarity and help express the character’s role.",
+    "Application": "The paired skeleton/final views demonstrate transferring the common human construction into two different poses."
+  }
+}

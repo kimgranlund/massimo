@@ -1,0 +1,30 @@
+{
+  "id": "DB1402",
+  "title": "Bildwelt / travelers and employee",
+  "image": "db1402.png",
+  "source": "../sources/page-14.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 14,
+    "section": 2,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Bildwelt"
+  },
+  "slide_intent": "Show individuals with recognizable context so people feel specific rather than interchangeable.",
+  "strategic_value": "Distinct portraits can give DB travel and service a human presence.",
+  "demonstration": "A pair of travelers in directional light is shown beside a uniformed employee portrait with a softly obscured foreground.",
+  "category": "Imagery",
+  "practical_value": "Compare group interaction with a focused individual portrait.",
+  "content_islands": [
+    {
+      "name": "Travelers",
+      "spec": "Frame the pair together with light defining their faces and clothing."
+    },
+    {
+      "name": "Employee portrait",
+      "spec": "Place the uniformed person against a soft background with foreground depth."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The two photographs use directional light and depth around identifiable people."
+  }
+}

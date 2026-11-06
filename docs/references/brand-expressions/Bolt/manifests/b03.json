@@ -1,0 +1,28 @@
+{
+  "id": "B03",
+  "title": "ToV Principles",
+  "image": "b03.png",
+  "source": "../bolt-brand-guidelines-2025-12.pdf",
+  "location": {
+    "page": 3
+  },
+  "slide_intent": "Give writers a short set of judgments to apply when someone reads a checkout message. The language should be easy to follow, give the reader agency and communicate expertise without condescension.",
+  "strategic_value": "Bolt can use three shared qualities to review writing across different points in the checkout experience.",
+  "demonstration": "Three stacked panels name Effortless, Empowering and Expert (without ego). The parenthetical qualification appears in a lighter weight than Expert.",
+  "category": "Voice",
+  "practical_value": "Review a proposed line of copy against each of the three principles, including the qualification attached to expertise.",
+  "content_islands": [
+    {
+      "name": "Section rail",
+      "spec": "Place the wordmark at the top of the dark rail, highlight the current topic in the navigation and set the small folio at the foot."
+    },
+    {
+      "name": "Introduction",
+      "spec": "Place the heading and one short introductory paragraph in the white column beside the rail."
+    },
+    {
+      "name": "Principle cards",
+      "spec": "Stack three equally wide dark cards. Place the small blue numbered principle label above a large white name. Reduce the weight of the parenthetical words on the last card."
+    }
+  ]
+}

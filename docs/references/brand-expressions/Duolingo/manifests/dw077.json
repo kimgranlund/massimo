@@ -1,0 +1,38 @@
+{
+  "id": "DW077",
+  "title": "Writing / Style / Quotes and quotation marks",
+  "image": "dw077.png",
+  "source": "../sources/pages/writing-style.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/style",
+    "section": "Quotes and quotation marks",
+    "item": 77,
+    "order": 770
+  },
+  "slide_intent": "Distinguish quoted words from surrounding punctuation so meaning and language-specific conventions remain clear.",
+  "strategic_value": "Explicit English rules with a localization exception can help Duolingo maintain consistency without imposing English punctuation on every language.",
+  "demonstration": "The upper comparison covers punctuation inside and outside quotations; a lower group shows when a reporting phrase requires a preceding comma.",
+  "category": "Voice",
+  "practical_value": "Identify the language, whether punctuation belongs to the quote and whether the preceding words introduce speech.",
+  "content_islands": [
+    {
+      "name": "Guidance column",
+      "spec": "Place the quotation-marks heading and short framing note at left."
+    },
+    {
+      "name": "Worked examples",
+      "spec": "Put English punctuation guidance and three paired examples above the reporting-clause rule and two checked examples."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The examples distinguish quoted words, quoted questions and reporting clauses.",
+    "Constraint": "English periods and commas go inside quotes; other marks go outside unless part of the quotation. Localized copy follows the relevant language’s conventions, and a reporting phrase introducing a quote takes a comma."
+  },
+  "ingredient": {
+    "name": "Quotation punctuation",
+    "role": "Clarify quoted meaning while respecting language conventions.",
+    "application": "Apply the displayed English inside/outside rules and reporting-clause comma; follow other languages’ conventions in localization.",
+    "scope": "Historical official guidelines from the 2024–2025 archived snapshot; this records the displayed guidance, not current Duolingo product behavior."
+  }
+}

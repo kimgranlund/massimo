@@ -1,0 +1,26 @@
+{
+  "id": "DB0701",
+  "title": "LOGO",
+  "image": "db0701.png",
+  "source": "../sources/page-07.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 7,
+    "section": 1,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Logo_neu"
+  },
+  "slide_intent": "Explain why consistent use matters so familiarity is preserved across repeated encounters.",
+  "strategic_value": "Following shared logo guidance can protect DB’s established recognition.",
+  "demonstration": "A large heading precedes a short statement connecting widespread familiarity with consistent application requirements.",
+  "category": "Brand",
+  "practical_value": "Treat the detailed logo guidance as a means of maintaining recognition.",
+  "content_islands": [
+    {
+      "name": "Recognition rationale",
+      "spec": "Place the short explanatory statement directly below the Logo title."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text explicitly connects defined application guidance to consistent brand effect."
+  }
+}

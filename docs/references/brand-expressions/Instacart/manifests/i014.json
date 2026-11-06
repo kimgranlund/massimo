@@ -1,0 +1,24 @@
+{
+  "id": "I014",
+  "title": "Logo Colors",
+  "image": "i014.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 14
+  },
+  "slide_intent": "Give designers a reliable way to retain the signature’s contrast on light and dark surfaces.",
+  "strategic_value": "Preserving the carrot colors while changing the wordmark can make the signature recognizable across backgrounds.",
+  "demonstration": "The top row shows the dark wordmark on Cashew. The bottom row reverses it to a pale wordmark on dark Kale. Both keep the arrow green and the root orange.",
+  "category": "Color",
+  "practical_value": "Choose the illustrated wordmark treatment according to the background. The accompanying note also allows white as a light ground.",
+  "content_islands": [
+    {
+      "name": "Light-ground example and rule",
+      "spec": "Use the upper pale field for the heading, usage note and positive lockup."
+    },
+    {
+      "name": "Dark-ground example",
+      "spec": "Repeat the lockup on dark green under the horizontal division. Reverse the wordmark while preserving the two symbol colors."
+    }
+  ]
+}

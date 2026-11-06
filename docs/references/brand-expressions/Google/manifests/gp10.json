@@ -1,0 +1,36 @@
+{
+  "id": "GP10",
+  "title": "Product Sans / Localization",
+  "image": "gp10.png",
+  "source": "../product-sans-specimen.pdf",
+  "location": {
+    "page": 10,
+    "printed_page": "P–10"
+  },
+  "slide_intent": "Plan for script coverage so the brand can remain coherent when the reader’s language changes.",
+  "strategic_value": "Coordinated Latin, Greek and Cyrillic forms can give Google’s localized naming a related voice.",
+  "demonstration": "Four large white words in Cyrillic, extended Latin and Greek are stacked on green, above a small note identifying Product Sans coverage and Noto Sans support.",
+  "category": "Typography",
+  "practical_value": "Check whether the needed script belongs to the displayed family or requires the broader companion coverage described by the specimen.",
+  "content_islands": [
+    {
+      "name": "Localized word stack",
+      "spec": "Center four large script specimens vertically in the green field."
+    },
+    {
+      "name": "Coverage note",
+      "spec": "Place the small script-coverage explanation at lower left."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The caption explains Noto Sans as a way to bridge coverage beyond the supplied scripts.",
+    "Expression": "The large words compare the visual character across scripts.",
+    "Application": "The note identifies Latin, Greek and Cyrillic coverage and the broader Noto Sans companion."
+  },
+  "ingredient": {
+    "name": "Script coverage",
+    "role": "Carry a related typographic character across localized names.",
+    "application": "Use the supplied Latin, Greek and Cyrillic forms and consult the companion coverage described for other scripts.",
+    "scope": "The 2015 specimen describes Noto Sans coverage at that time; its count is historical, not a current inventory."
+  }
+}

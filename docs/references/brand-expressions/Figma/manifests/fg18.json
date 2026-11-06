@@ -1,0 +1,37 @@
+{
+  "id": "FG18",
+  "title": "Collaborative invention / website sequence",
+  "image": "fg18.png",
+  "source": "../sources/fg18.mp4",
+  "location": {
+    "series": "COLLINS / Figma / Nothing Great Is Made Alone case study",
+    "item": 18,
+    "section": "Gallery",
+    "extent": "Complete clip; PNG is midpoint poster",
+    "poster_seconds": 11.17
+  },
+  "slide_intent": "Connect an inviting headline to a concrete story because an abstract promise needs an example people can follow.",
+  "strategic_value": "A narrated assembly story can make Figma’s relevance to diverse collaborators clearer before a product invitation.",
+  "demonstration": "A tablet-like website presentation moves from a white headline page into blue-violet submarine construction scenes with contributor labels, then returns to the opening invitation.",
+  "category": "Application",
+  "practical_value": "Use an illustrated progression to connect a website promise with an example and call to action.",
+  "content_islands": [
+    {
+      "name": "Opening page",
+      "spec": "Center the collaboration headline and invitation on white below a compact navigation bar."
+    },
+    {
+      "name": "Story pages",
+      "spec": "Pair copy at left with an evolving submarine at right on blue-violet."
+    },
+    {
+      "name": "Participants and conclusion",
+      "spec": "Add named contributor labels, resolve the submarine and return to the headline page."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The campaign is demonstrated as a website sequence with navigation, story sections and a call to action.",
+    "Intent": "The on-screen copy connects combining different skills with creating something new."
+  },
+  "motion": "../sources/fg18.mp4"
+}

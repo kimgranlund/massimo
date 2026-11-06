@@ -1,0 +1,28 @@
+{
+  "id": "N57",
+  "title": "NASA Spacecraft Markings",
+  "image": "n57.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 57
+  },
+  "slide_intent": "Teach designers to choose identifiers according to available surface and scientific function. A small, unobstructed mark can carry more information than a crowded group.",
+  "strategic_value": "NASA can identify spacecraft of different shapes while letting each scientific instrument’s operational constraints determine the marking scheme.",
+  "demonstration": "Three annotated craft demonstrate distinct solutions. The telescope uses red at the scale of its smaller diameter. The Solar Maximum Mission craft pairs a gray mark with the flag and country name. The exposure facility uses a red mark alone above a panel of matching width.",
+  "category": "Application",
+  "practical_value": "Compare the telescope, satellite and exposure facility before choosing a mark size or adding a national identifier. Use an actual structural dimension for scale.",
+  "content_islands": [
+    {
+      "name": "Selection principles",
+      "spec": "Place the principles and minimum marking guidance in the upper-left text area."
+    },
+    {
+      "name": "Telescope and solar mission",
+      "spec": "Use two separate angled views with their short notes. Keep the side panels, mark, flag and type legible so the available surfaces can be compared."
+    },
+    {
+      "name": "Exposure facility",
+      "spec": "Show the elongated faceted structure across the lower field. Keep its single red mark visible above the reference panel and explain the width relationship beside it."
+    }
+  ]
+}

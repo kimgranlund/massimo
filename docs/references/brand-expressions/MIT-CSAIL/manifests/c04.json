@@ -1,0 +1,32 @@
+{
+  "id": "C04",
+  "title": "What is CSAIL?",
+  "image": "c04.png",
+  "source": "../csail-branding-short-guide.pdf",
+  "location": {
+    "page": 4
+  },
+  "slide_intent": "Give a mission statement human scope by naming who the organization serves. Readers can then connect an institutional purpose to recognizable communities.",
+  "strategic_value": "CSAIL can relate computing research to its intended effect on people while giving writers a set of values against which to judge tone.",
+  "demonstration": "Mission and audiences occupy the middle column, values occupy the right, and a large orange statement repeats the mission low on the page.",
+  "category": "Brand",
+  "practical_value": "Use the named audiences and values to decide which part of a lab story matters to a particular reader.",
+  "content_islands": [
+    {
+      "name": "Page question",
+      "spec": "Set the question in the narrow left column, leaving space below for the larger mission statement."
+    },
+    {
+      "name": "Mission and audiences",
+      "spec": "Use a short mission paragraph and a list covering MIT, the nation and the human community."
+    },
+    {
+      "name": "Values",
+      "spec": "Arrange the five values as a separate vertical list at right, with an explanation under each name."
+    },
+    {
+      "name": "Mission statement",
+      "spec": "Repeat the central claim in large, light orange type below the left columns."
+    }
+  ]
+}

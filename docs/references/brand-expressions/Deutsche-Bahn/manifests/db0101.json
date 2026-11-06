@@ -1,0 +1,31 @@
+{
+  "id": "DB0101",
+  "title": "DAS NEUE MARKENDESIGN",
+  "image": "db0101.png",
+  "source": "../sources/page-01.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 1,
+    "section": 1,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design"
+  },
+  "slide_intent": "Explain the origin of a new visual idea so designers can connect form to the organization’s work.",
+  "strategic_value": "Linking the sleeper motif to railway infrastructure can make DB’s promise of progress tangible.",
+  "demonstration": "A large uppercase heading introduces prose about railway sleepers, Signature Graphics, retained identity constants and office templates.",
+  "category": "Brand",
+  "practical_value": "Identify which elements change and which remain recognizable during this refresh.",
+  "content_islands": [
+    {
+      "name": "Introduction",
+      "spec": "Lead with the uppercase title above the explanation of sleepers and the aim of getting better each day."
+    },
+    {
+      "name": "Continuity and use",
+      "spec": "Follow with Signature Graphics, retained logo/color identity and links to employee templates."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text explicitly links sleepers to railway DNA, progress and DB employees’ work.",
+    "Application": "The final paragraph directs employees to email, presentation and Teams templates."
+  }
+}

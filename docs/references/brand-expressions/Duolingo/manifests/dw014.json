@@ -1,0 +1,32 @@
+{
+  "id": "DW014",
+  "title": "Logos / Icon",
+  "image": "dw014.png",
+  "source": "../sources/pages/identity-logos.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/identity/logos",
+    "section": "Icon",
+    "item": 14,
+    "order": 140
+  },
+  "slide_intent": "Make a small symbol consistent because it may be a person’s first encounter with the brand.",
+  "strategic_value": "A repeatable Duo icon can connect Duolingo’s presence across online spaces.",
+  "demonstration": "An icon specimen accompanies a rationale about online recognition and first introductions.",
+  "category": "Brand",
+  "practical_value": "Treat icon consistency as an identification decision across digital placements.",
+  "content_islands": [
+    {
+      "name": "Icon specimen",
+      "spec": "Place the icon in the large left panel, preserving its surrounding space."
+    },
+    {
+      "name": "Recognition rationale",
+      "spec": "Place the heading and explanation of online consistency and first encounters in the right column."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The copy states that icon consistency is critical for recognition and often introduces people to Duolingo.",
+    "Expression": "The icon presents Duo’s recognizable facial features in a compact mark."
+  }
+}

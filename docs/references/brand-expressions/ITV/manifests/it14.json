@@ -1,0 +1,48 @@
+{
+  "id": "IT14",
+  "title": "ITV / Type voices in motion",
+  "image": "it14.png",
+  "source": "../sources/1782130898-d0yvgihtr4wklvg0cu1bqa-itv_10.mp4",
+  "location": {
+    "series": "DixonBaxi / ITV case-study artwork series",
+    "item": 14,
+    "extent": "Whole original clip; PNG is one representative frame",
+    "source_asset_index": 14,
+    "duration_seconds": 38.08,
+    "representative_timestamp_seconds": 21.759999999999998,
+    "reviewed_timestamps_seconds": [
+      0.1,
+      5.4399999999999995,
+      10.879999999999999,
+      16.32,
+      21.759999999999998,
+      27.199999999999996,
+      32.64,
+      37.98
+    ]
+  },
+  "slide_intent": "Match font, scale and movement to a phrase’s emotional tone while preserving reading order, because letterforms shape the tone and reading emphasis of a message.",
+  "strategic_value": "This approach can strengthen a recognizable voice across different programme moods.",
+  "demonstration": "The reel changes between serif, italic and sans forms, varied spacing, stacked repetitions and highlighted words on dark or green fields. Phrases include ESPIONAGE, INCREDIBLE and new season.",
+  "category": "Typography",
+  "practical_value": "Match font, scale and movement to a phrase’s emotional tone while preserving reading order.",
+  "content_islands": [
+    {
+      "name": "Phrase field",
+      "spec": "Each sequence centres a compact verbal message."
+    },
+    {
+      "name": "Emphasis",
+      "spec": "Weight, serif contrast, italic form and colour select key words."
+    },
+    {
+      "name": "Movement",
+      "spec": "Repetition and changing type arrangements carry the transitions."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The reel changes between serif, italic and sans forms, varied spacing, stacked repetitions and highlighted words on dark or green fields. Phrases include ESPIONAGE, INCREDIBLE and new season.",
+    "Intent": "The case-study section Type That Speaks Every Voice says the custom serif and sans families express ITV’s range of voices and scale from billboards to on-screen detail."
+  },
+  "motion": "../sources/1782130898-d0yvgihtr4wklvg0cu1bqa-itv_10.mp4"
+}

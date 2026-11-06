@@ -1,0 +1,35 @@
+{
+  "id": "C444",
+  "title": "Editorial contents and statement spreads",
+  "image": "c444.png",
+  "source": "../sources/c444.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 / 2023 masterbrand case study",
+    "item": 44,
+    "extent": "Full published artwork"
+  },
+  "slide_intent": "Separate navigation, introduction and sustained reading, because readers need different entry points into a long document.",
+  "strategic_value": "A repeated small 4 and disciplined columns can keep Channel 4 recognizable while making formal information accessible.",
+  "demonstration": "Two white editorial spreads sit side by side on black: a contents spread pairs a gradient image with numbered entries, while a statement spread pairs a large heading with narrow text columns.",
+  "category": "Layout",
+  "practical_value": "Compare how a contents page and a long statement reuse the same margins while changing text density.",
+  "content_islands": [
+    {
+      "name": "Contents spread",
+      "spec": "Place a gradient image on the left page and a numbered contents list on the right."
+    },
+    {
+      "name": "Statement spread",
+      "spec": "Start the next spread with a small 4 and large heading, then carry the statement through narrow columns on the right."
+    },
+    {
+      "name": "Comparison field",
+      "spec": "Align both spreads on a black ground so their whitespace and column structures can be compared."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "Pentagram’s accompanying case study says the typography and layout principles use a clear information hierarchy to balance the eclectic content, color and motion.",
+    "Expression": "Two white editorial spreads sit side by side on black: a contents spread pairs a gradient image with numbered entries, while a statement spread pairs a large heading with narrow text columns.",
+    "Application": "The source demonstrates this treatment in contents and statement spreads."
+  }
+}

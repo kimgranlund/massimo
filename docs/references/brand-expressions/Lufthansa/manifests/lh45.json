@@ -1,0 +1,35 @@
+{
+  "id": "LH45",
+  "title": "Airport orientation",
+  "image": "lh45.png",
+  "source": "../sources/lh45.jpg",
+  "location": {
+    "series": "HvD Fonts / Lufthansa 2018",
+    "item": 24,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Combine color, type and direction because travelers need to recognize the carrier and choose a route quickly.",
+  "strategic_value": "Yellow signage with bold dark type can make Lufthansa service points identifiable across an airport hall.",
+  "demonstration": "A yellow Business Class Check-in sign with crane, partner marks and arrow hangs above counters and queue barriers.",
+  "category": "Application",
+  "practical_value": "Judge whether the carrier name, service label and directional cue form a clear reading sequence.",
+  "content_islands": [
+    {
+      "name": "Overhead sign",
+      "spec": "Place the yellow sign above the route it identifies."
+    },
+    {
+      "name": "Service context",
+      "spec": "Keep counters, barriers and smaller signs below."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "A yellow Business Class Check-in sign with crane, partner marks and arrow hangs above counters and queue barriers."
+  },
+  "ingredient": {
+    "name": "Airport orientation",
+    "role": "Identify the carrier, service and direction at a glance.",
+    "application": "Judge whether the carrier name, service label and directional cue form a clear reading sequence.",
+    "scope": "Historical 2018 Lufthansa airline refresh case study; observed example, not a complete brand manual or a current Lufthansa Group rule."
+  }
+}

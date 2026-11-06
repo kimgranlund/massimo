@@ -1,0 +1,39 @@
+{
+  "id": "GP02",
+  "title": "Product Sans / Introduction",
+  "image": "gp02.png",
+  "source": "../product-sans-specimen.pdf",
+  "location": {
+    "page": 2,
+    "printed_page": "P–2"
+  },
+  "slide_intent": "Explain the job of a companion typeface so designers know when similarity supports the brand and when distinction is needed.",
+  "strategic_value": "A stated relationship between the logo, product names and interface text can help Google avoid competing typographic voices.",
+  "demonstration": "A blue monospaced paragraph on white explains Product Sans’s role, followed by Google Design references at lower left.",
+  "category": "Brand",
+  "practical_value": "Use the stated role to distinguish branding lockups from general interface typography.",
+  "content_islands": [
+    {
+      "name": "Running metadata",
+      "spec": "Keep four small labels aligned across the top."
+    },
+    {
+      "name": "Rationale text",
+      "spec": "Place the multi-paragraph introduction in the broad left-center field with ample blank space at right and below."
+    },
+    {
+      "name": "Source references",
+      "spec": "Place the two Google Design references near the lower-left corner."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text explains that Product Sans pairs with the logo without overshadowing it and differs from Material Design interface text.",
+    "Application": "The introduction identifies product lockups and supporting branding as its intended contexts."
+  },
+  "ingredient": {
+    "name": "Product Sans",
+    "role": "Support the logo in product names without overwhelming it.",
+    "application": "Use the companion typeface in branding contexts where a close but distinct relationship to the Google logo is needed.",
+    "scope": "The 2015 specimen’s stated role; it does not prescribe Product Sans for all interface text."
+  }
+}

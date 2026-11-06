@@ -1,0 +1,31 @@
+{
+  "id": "DB1411",
+  "title": "Details und Strukturen",
+  "image": "db1411.png",
+  "source": "../sources/page-14.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 14,
+    "section": 11,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Bildwelt"
+  },
+  "slide_intent": "Look closely at functional surroundings so overlooked materials become meaningful visual subjects.",
+  "strategic_value": "DB can develop an editorial image language from its own infrastructure and work.",
+  "demonstration": "Track components, a gloved hand at work and a train exterior form a structured collage.",
+  "category": "Imagery",
+  "practical_value": "Choose details whose material, repetition or function remains recognizable at large scale.",
+  "content_islands": [
+    {
+      "name": "Detail rationale",
+      "spec": "Place the explanation of overlooked beauty above the photographs."
+    },
+    {
+      "name": "Material collage",
+      "spec": "Group repeated track structure and working hands beside a large train detail."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text seeks beauty in infrastructure, technology and construction through a deliberate view.",
+    "Application": "It proposes details and functional places as large-scale subjects."
+  }
+}

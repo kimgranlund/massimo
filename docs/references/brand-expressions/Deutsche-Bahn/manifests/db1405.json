@@ -1,0 +1,32 @@
+{
+  "id": "DB1405",
+  "title": "Fotografische Gestaltung",
+  "image": "db1405.png",
+  "source": "../sources/page-14.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 14,
+    "section": 5,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Bildwelt"
+  },
+  "slide_intent": "Make the important decisions during photography so editing reinforces a credible scene.",
+  "strategic_value": "Deliberate perspective and framing can create a distinctive DB look from real situations.",
+  "demonstration": "Six captioned photographs illustrate perspective, composition, proximity/distance, cropping, detail and scale.",
+  "category": "Imagery",
+  "practical_value": "Plan viewpoint, subject distance and frame before relying on postproduction.",
+  "content_islands": [
+    {
+      "name": "Capture principle",
+      "spec": "Place the explanation that editing supports rather than replaces capture decisions above the grid."
+    },
+    {
+      "name": "Six photographic decisions",
+      "spec": "Arrange the captioned examples in two columns, pairing each technique with a concrete scene."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text aims to develop the look from the actual situation rather than create it in postproduction.",
+    "Application": "Six examples identify controllable photographic decisions.",
+    "Constraint": "The source says editing supports those decisions and does not replace them."
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "HX03",
+  "title": "Movable Helsinki logo sign at an event",
+  "image": "hx03.png",
+  "source": "../sources/use-basic-elements.offline.html",
+  "location": {
+    "series": "Web guideline introduction/component",
+    "order": 5,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/use-basic-elements",
+    "original_html": "../sources/use-basic-elements.html"
+  },
+  "slide_intent": "Consider a logo as a physical gathering point because people encounter identity through shared events.",
+  "strategic_value": "The large white framed Helsinki sign can connect a sports celebration to the city.",
+  "demonstration": "This webpage photograph shows a jumping sports team around a large movable Helsinki light sign in an atrium; the caption identifies event use.",
+  "category": "Application",
+  "practical_value": "Evaluate whether a movable sign can identify an event while participating in its photograph.",
+  "content_islands": [
+    {
+      "name": "Event photograph",
+      "spec": "Keep the team, architectural setting and large sign together; place the descriptive credit below."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The caption identifies the framed logo as a movable LED fixture used at events."
+  }
+}

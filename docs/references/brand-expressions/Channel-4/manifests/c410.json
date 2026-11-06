@@ -1,0 +1,31 @@
+{
+  "id": "C410",
+  "title": "Gradient world traversal",
+  "image": "c410.png",
+  "source": "../sources/c410.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 masterbrand / 2023",
+    "item": 10,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Use movement between connected spaces to make variation feel like part of one navigable world.",
+  "strategic_value": "The green 4 can anchor a broad range of Channel 4 color combinations without requiring a single background.",
+  "demonstration": "A 30-second sequence moves the green mark through adjoining gradient rooms in blue, pink, teal, yellow and red.",
+  "category": "Motion",
+  "practical_value": "Study how a room edge and a moving logo prepare the viewer for the next color environment.",
+  "content_islands": [
+    {
+      "name": "Traveller",
+      "spec": "Keep the green 4 visible through most transitions, allowing brief departures at edges."
+    },
+    {
+      "name": "Adjoining rooms",
+      "spec": "Move horizontally and vertically between differently colored recessed spaces."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The animation combines a repeated green mark with varied spatial gradients.",
+    "Intent": "Pentagram frames 4 as a traveller through an interconnected universe of content."
+  },
+  "motion": "../sources/c410.mp4"
+}

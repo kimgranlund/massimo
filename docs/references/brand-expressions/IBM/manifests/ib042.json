@@ -1,0 +1,128 @@
+{
+  "id": "IB042",
+  "title": "Flat illustration / Usage",
+  "image": "ib042.png",
+  "source": "../sources/illustration-flat-style-usage.txt",
+  "location": {
+    "series": "IBM Design Language / public web guidelines",
+    "item": 42,
+    "extent": "Complete webpage content area, default interactive state",
+    "url": "https://www.ibm.com/design/language/illustration/flat-style/usage/",
+    "order": 42000
+  },
+  "slide_intent": "Keep bold shapes readable in motion so expression does not turn into ambiguous overlaps or disorienting movement.",
+  "strategic_value": "Confident silhouettes and restrained transitions can extend IBM’s flat illustration character across digital and print contexts.",
+  "demonstration": "Applications lead into motion examples comparing performance, transparency, camera translation and adaptation of shaded artwork.",
+  "category": "Motion",
+  "practical_value": "Use flat forms for expressive action while preserving their geometry and simplifying effects when necessary.",
+  "content_islands": [
+    {
+      "name": "Application family",
+      "spec": "Group publications and screen examples above the motion guidance."
+    },
+    {
+      "name": "Performance",
+      "spec": "Introduce the large green animation frame and two character-performance examples."
+    },
+    {
+      "name": "Transparency and translation",
+      "spec": "Pair approved and rejected fades and camera movements with explicit captions."
+    },
+    {
+      "name": "Adaptation",
+      "spec": "Compare the original shaded finger with a simplified version prepared for animation."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source connects bold color and graphic quality to dynamic content and personality.",
+    "Expression": "Large filled shapes and saturated fields carry the flat style.",
+    "Application": "Comparisons demonstrate performance, fades, camera behavior and adaptations for animation.",
+    "Constraint": "The source discourages exaggeration, bounces and smears, and rejects distracting camera moves or unintended translucent intersections."
+  },
+  "motion_assets": [
+    {
+      "title": "Flat illustration motion overview",
+      "file": "../sources/media/4e65d4d4662c.mp4",
+      "poster": "../sources/media/4e65d4d4662c-poster.png",
+      "duration_seconds": 12.0,
+      "source_url": "https://www.ibm.com/design/language/videos/illustration/fs-usage-hero.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Flat performance: geometric hand",
+      "file": "../sources/media/246cfb043db8.mp4",
+      "poster": "../sources/media/246cfb043db8-poster.png",
+      "duration_seconds": 3.75,
+      "source_url": "https://www.ibm.com/design/language/videos/illustration/performance-1.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Flat performance: organic hand",
+      "file": "../sources/media/49382e2e1408.mp4",
+      "poster": "../sources/media/49382e2e1408-poster.png",
+      "duration_seconds": 3.75,
+      "source_url": "https://www.ibm.com/design/language/videos/illustration/performance-2.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Flat transparency: approved example",
+      "file": "../sources/media/1c2892e08041.mp4",
+      "poster": "../sources/media/1c2892e08041-poster.png",
+      "duration_seconds": 3.38,
+      "source_url": "https://www.ibm.com/design/language/videos/illustration/transparency-do.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Flat transparency: discouraged example",
+      "file": "../sources/media/05ff0e4adfdc.mp4",
+      "poster": "../sources/media/05ff0e4adfdc-poster.png",
+      "duration_seconds": 3.38,
+      "source_url": "https://www.ibm.com/design/language/videos/illustration/transparency-dont.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Flat translation: simple camera movement",
+      "file": "../sources/media/fa29dd580352.mp4",
+      "poster": "../sources/media/fa29dd580352-poster.png",
+      "duration_seconds": 6.25,
+      "source_url": "https://www.ibm.com/design/language/videos/illustration/fs-translation-do.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Flat translation: distracting camera movement",
+      "file": "../sources/media/dd21d04d0e44.mp4",
+      "poster": "../sources/media/dd21d04d0e44-poster.png",
+      "duration_seconds": 6.25,
+      "source_url": "https://www.ibm.com/design/language/videos/illustration/fs-translation-dont.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    }
+  ]
+}

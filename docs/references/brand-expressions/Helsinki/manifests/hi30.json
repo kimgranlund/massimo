@@ -1,0 +1,30 @@
+{
+  "id": "HI30",
+  "title": "Illustration use / Building and bicycle on white",
+  "image": "hi30.png",
+  "source": "../sources/illustration-examples.pdf",
+  "location": {
+    "page": 30,
+    "series": "Helsinki illustration examples — PDF derived from the official PowerPoint deck with LibreOffice",
+    "order": 220
+  },
+  "slide_intent": "Use fewer motifs when the subject is focused so the illustration does not overwhelm supporting copy.",
+  "strategic_value": "A yellow facade and bicycle can make a Helsinki text page distinctive while preserving a quiet reading surface.",
+  "demonstration": "A black heading and two paragraphs sit at left on white; a large yellow building, signboard and bicycle fill the right.",
+  "category": "Layout",
+  "practical_value": "Choose a compact related motif group when the text should remain the main source of detail.",
+  "content_islands": [
+    {
+      "name": "Copy column",
+      "spec": "Align the heading and paragraphs on the left."
+    },
+    {
+      "name": "Architectural group",
+      "spec": "Anchor the right side with the yellow facade and place bicycle and signboard below."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The slide pairs a text column with a limited building-and-bicycle group.",
+    "Expression": "Yellow illustration accents stand out against a predominantly white composition."
+  }
+}

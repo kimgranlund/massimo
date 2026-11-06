@@ -1,0 +1,36 @@
+{
+  "id": "N49",
+  "title": "Motor Vehicles: White & “Special” Vehicles",
+  "image": "n49.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 49
+  },
+  "slide_intent": "Show how to choose the ground for a red vehicle mark. A more conspicuous paint treatment still needs readable lettering on both sides of the color boundary.",
+  "strategic_value": "NASA can make a special-purpose vehicle visible to the public while preserving the identifying arrangement used on an ordinary white car.",
+  "demonstration": "Two side views compare a white car with one painted white above a blue lower body. The logo stays red on white. In the divided scheme the agency and center names sit in white on blue.",
+  "category": "Color",
+  "practical_value": "Let the body contours suggest the horizontal paint division. Keep the official-use text black in the upper field and assign the lower identification lines to a ground that supports them.",
+  "content_islands": [
+    {
+      "name": "Paint and lettering guidance",
+      "spec": "Place the two cases and the white and blue enamel references in the upper band, then separate them from the drawings with a rule."
+    },
+    {
+      "name": "Matched vehicle views",
+      "spec": "Stack the two sedans in the same orientation and at the same scale. Hold the logo and door location steady. Change the lower body paint and reverse the lower type on the second car."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text identifies the white-and-blue scheme as a way to make a special vehicle more conspicuous to the public.",
+    "Expression": "The matched sedans show red marks on white and the white-over-blue special-vehicle scheme.",
+    "Application": "The page assigns paint fields and lettering colors, with the body contours guiding the horizontal division.",
+    "Constraint": "The red vehicle logo is permitted only on white; the special scheme retains flush-left elements and specified white and blue enamels."
+  },
+  "ingredient": {
+    "name": "White and blue special-vehicle scheme",
+    "role": "Make a special vehicle conspicuous while keeping its identification arrangement recognizable.",
+    "application": "The illustrated option places white above blue, a red logo on white, black government-use text above and white agency and center text below. Let the vehicle contours guide the division and retain flush-left alignment. The specified gloss enamels are Federal Standard White 17886 and Blue 15102.",
+    "scope": "White and special vehicles in the 1976 manual’s section 7.3. The special scheme is presented as an option for conspicuous public-facing vehicles; red vehicle logos remain confined to white backgrounds."
+  }
+}

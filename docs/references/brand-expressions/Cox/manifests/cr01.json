@@ -1,0 +1,32 @@
+{
+  "id": "CR01",
+  "title": "Live Passionately. Connect Effortlessly.",
+  "image": "cr01.png",
+  "source": "../sources/cr01.jpg",
+  "location": {
+    "series": "Cox Brand Collection — Lindsay Little / Periscope",
+    "item": 1,
+    "extent": "whole source image"
+  },
+  "slide_intent": "Connect a service promise to an ordinary human moment so the reader understands what reliability makes possible.",
+  "strategic_value": "The family scene can position Cox as the unobtrusive support for a full household life.",
+  "demonstration": "A translucent blue-to-teal vertical panel carries the promise and explanation over a bright kitchen scene.",
+  "category": "Brand",
+  "practical_value": "Choose a household activity that supports the promise, then keep the copy in a quiet part of the photograph.",
+  "content_islands": [
+    {
+      "name": "Message panel",
+      "spec": "Place a tall translucent gradient band on the left, with a large four-line headline and smaller explanatory paragraph."
+    },
+    {
+      "name": "Family kitchen",
+      "spec": "Let the photograph fill the canvas behind the panel. Keep the adults and children interacting across the uncovered right side."
+    }
+  ],
+  "ingredient": {
+    "name": "Translucent gradient message panel",
+    "role": "Give the copy a distinct reading area while keeping the household scene visible.",
+    "application": "Place white headline and body text within the dark blue-to-teal band over the left side of the photograph.",
+    "scope": "Observed treatment in this retail positioning board. The source provides no universal opacity or color-proportion rule."
+  }
+}

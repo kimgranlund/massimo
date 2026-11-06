@@ -1,0 +1,41 @@
+{
+  "id": "IBT13",
+  "title": "Merchandise",
+  "image": "ibt13.png",
+  "source": "../sources/ibm-logo-third-parties.pdf",
+  "location": {
+    "page": 13,
+    "series": "IBM Logo and Brand Guidelines for Third Parties / copyright 2022",
+    "order": 100013
+  },
+  "slide_intent": "Adapt trademark rules to physical objects and production limits, because disposability, electrical components and embroidery create different considerations from a printed page.",
+  "strategic_value": "Specific merchandise boundaries can protect IBM’s presentation while avoiding illegible small registration marks.",
+  "demonstration": "A heading and introduction lead into two columns of merchandise rules and an approval-contact address.",
+  "category": "Application",
+  "practical_value": "Check the item type, authorization and production method before designing branded merchandise.",
+  "content_islands": [
+    {
+      "name": "Merchandise scope",
+      "spec": "Place the heading and short usage introduction in the left column."
+    },
+    {
+      "name": "Authorization and item life",
+      "spec": "Use the middle column for written permission, reusable-only items and the ban on merchandise sold for profit at or for events."
+    },
+    {
+      "name": "Device and reproduction conditions",
+      "spec": "Use the next column for wireless/lithium approval conditions, clothing and small-item registration exceptions, and the contact address."
+    }
+  ],
+  "ingredient": {
+    "name": "Merchandise mark treatment",
+    "role": "Keep the identity appropriate to item life and reproduction quality.",
+    "application": "Use authorized reusable items; omit the registration mark on clothing and on small items where it cannot reproduce clearly.",
+    "scope": "Copyright 2022 third-party merchandise rules. Wireless/Bluetooth/lithium products require prior approval; the next page separately prohibits wall-socket items."
+  },
+  "reference_purposes": {
+    "Intent": "The page explains that embroidery and small reproduction can make the registration mark difficult to reproduce clearly.",
+    "Application": "The text lists reusable-item examples and identifies the merchandise contact for questions or approvals.",
+    "Constraint": "Written permission is required; disposable items and event merchandise sold for profit are excluded. Wireless/Bluetooth/lithium items require prior approval; registration marks are omitted on clothing and small items where unclear."
+  }
+}

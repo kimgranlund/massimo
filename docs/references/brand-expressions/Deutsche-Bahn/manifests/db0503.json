@@ -1,0 +1,36 @@
+{
+  "id": "DB0503",
+  "title": "Wie fühlt sich unsere Marke an und wie verhält sie sich?",
+  "image": "db0503.png",
+  "source": "../sources/page-05.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 5,
+    "section": 3,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Unsere-Markenpersoenlichkeit"
+  },
+  "slide_intent": "Translate a brand promise into recognizable traits so designers can connect tone with visible choices.",
+  "strategic_value": "Linking performance, responsibility and care to examples can help DB maintain a coherent stance across media.",
+  "demonstration": "Three promise words precede four photographed personality traits, followed by a tonality explanation and a collage of brand ingredients.",
+  "category": "Brand",
+  "practical_value": "Evaluate the same composition against the promise, behavioral traits and visual tone.",
+  "content_islands": [
+    {
+      "name": "Promise",
+      "spec": "Present Leistung, Verantwortung and Fürsorge as three parallel cards below the rationale."
+    },
+    {
+      "name": "Personality traits",
+      "spec": "Pair four operational photographs with consequent, dynamic, responsible and customer-oriented explanations."
+    },
+    {
+      "name": "Tonality and collage",
+      "spec": "Explain moving, clear and confident tone before the mixed image/type/graphic board."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text connects tone to orientation, trust, courage and a consistent brand experience.",
+    "Expression": "The four photographs and final collage demonstrate how personality can appear visually.",
+    "Application": "The section supplies questions for evaluating whether a project reflects the stated stance."
+  }
+}

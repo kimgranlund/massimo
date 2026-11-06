@@ -1,0 +1,24 @@
+{
+  "id": "F58",
+  "title": "Impact illustrations",
+  "image": "f58.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 58
+  },
+  "slide_intent": "Distinguish two tasks for illustration: drawing attention to a detail in dense copy and carrying a composition when photography is unavailable. Scale changes the task the illustration performs.",
+  "strategic_value": "Frontline AIDS can keep reports readable and still give selected messages a distinctly illustrated voice.",
+  "demonstration": "A small pill illustration marks an article; the same visual vocabulary becomes a focal graphic on covers and layouts beneath the large-scale example.",
+  "category": "Application",
+  "practical_value": "Set the intended reading order before sizing the art. Use a small cue within text, or give the illustration the principal image area.",
+  "content_islands": [
+    {
+      "name": "Visual cues",
+      "spec": "Introduce the small specimen with a compact text block and a pink arrow to the report example below."
+    },
+    {
+      "name": "Large-scale examples",
+      "spec": "Set a second explanation beside the first. Crop a much larger graphic at the outer edge and use arrows to connect the guidance with finished applications."
+    }
+  ]
+}

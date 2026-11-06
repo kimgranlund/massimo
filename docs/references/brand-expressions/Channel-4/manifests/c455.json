@@ -1,0 +1,41 @@
+{
+  "id": "C455",
+  "title": "4 Text and 4 Headline",
+  "image": "c455.png",
+  "source": "../sources/c455.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 / 2023 masterbrand case study",
+    "item": 55,
+    "extent": "Full published artwork"
+  },
+  "slide_intent": "Show a coordinated range of weights and widths, because different reading tasks and programme tones need distinct voices within one family.",
+  "strategic_value": "The related Text and Headline specimens can let Channel 4 vary emphasis and tone without abandoning typographic recognition.",
+  "demonstration": "A white specimen compares 4 Text in upright and italic weights with 4 Headline in condensed, standard, italic and extended forms; the lists run from Extralight to Black.",
+  "category": "Typography",
+  "practical_value": "Compare weight, slant and width as separate choices before selecting a text or show-title treatment.",
+  "content_islands": [
+    {
+      "name": "4 Text specimen",
+      "spec": "Place the Text family at left with aligned upright and italic weight lists."
+    },
+    {
+      "name": "4 Headline specimen",
+      "spec": "Place the Headline family at right with parallel condensed, standard, italic and extended weight lists."
+    },
+    {
+      "name": "Family labels",
+      "spec": "Keep each family name above its specimen so the roles remain distinguishable."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "Pentagram’s accompanying case study says the Headline family was expanded with condensed and extended styles to give show branding tonal flexibility.",
+    "Expression": "A white specimen compares 4 Text in upright and italic weights with 4 Headline in condensed, standard, italic and extended forms; the lists run from Extralight to Black.",
+    "Application": "The source demonstrates this treatment in parallel family specimens for comparing weight, width and slant."
+  },
+  "ingredient": {
+    "name": "4 Text and 4 Headline families",
+    "role": "Give reading text and programme titles related but distinct voices.",
+    "application": "Compare weight, width and italic treatments before choosing the show or text setting.",
+    "scope": "Historical 2023 case-study specimens. The source explains tonal flexibility; this artwork does not prescribe exact sizes or a mandatory weight for a role."
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "id": "IB038",
+  "title": "App icons / Contribution",
+  "image": "ib038.png",
+  "source": "../sources/iconography-app-icons-contribute.txt",
+  "location": {
+    "series": "IBM Design Language / public web guidelines",
+    "item": 38,
+    "extent": "Complete webpage content area, default interactive state",
+    "url": "https://www.ibm.com/design/language/iconography/app-icons/contribute/",
+    "order": 38000
+  },
+  "slide_intent": "Preserve consistency as a product portfolio grows, because each addition should remain distinguishable without inventing a new visual grammar.",
+  "strategic_value": "The documented production and approval stages can keep IBM app icons coherent across libraries and product launches.",
+  "demonstration": "Resource cards, design criteria, production requirements and approval stages form a text-led contribution guide.",
+  "category": "Application",
+  "practical_value": "Prepare an original app-icon submission in the starter file and distinguish approval from later library publication.",
+  "content_islands": [
+    {
+      "name": "Resources",
+      "spec": "Present starter, Figma and builder cards below the contribution introduction."
+    },
+    {
+      "name": "Design and production",
+      "spec": "List distinctness, accessibility and cross-platform requirements."
+    },
+    {
+      "name": "Creating and delivering",
+      "spec": "Specify 32px artwork, 2px padding, grouped layers and Illustrator starter-file delivery."
+    },
+    {
+      "name": "Approval and publication",
+      "spec": "Explain draft review, the approved Box asset link and later library sprint, ending with request actions."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source links design and production guidance to consistency and proper formatting.",
+    "Application": "The page describes setup, layer grouping, file delivery and review steps.",
+    "Constraint": "Submissions require review; app icons use the Illustrator starter file and expanded strokes, with whole-pixel values."
+  }
+}

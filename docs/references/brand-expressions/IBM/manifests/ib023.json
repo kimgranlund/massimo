@@ -1,0 +1,102 @@
+{
+  "id": "IB023",
+  "title": "Data visualization / Design — Basics",
+  "image": "ib023.png",
+  "source": "../sources/data-visualization-design-basics.txt",
+  "location": {
+    "series": "IBM Design Language / public web guidelines",
+    "item": 23,
+    "extent": "Complete webpage content-area capture; visible default tab states",
+    "url": "https://www.ibm.com/design/language/data-visualization/design/basics/",
+    "order": 23000
+  },
+  "slide_intent": "Coordinate labels, color, interaction and transitions so viewers can understand a chart’s meaning before exploring its detail.",
+  "strategic_value": "Purposeful IBM color and a consistent chart anatomy can connect recognition with usable, accurate analytical displays.",
+  "demonstration": "The page pairs chart-anatomy and density comparisons with color-emphasis examples, a map, a patterned line chart, and captured interaction and motion demonstrations.",
+  "category": "Application",
+  "practical_value": "Decide which information must be visible immediately, how to encode emphasis and quantity, and which details can appear through interaction.",
+  "content_islands": [
+    {
+      "name": "Resources and chart anatomy",
+      "spec": "Place the resource card above a chart specimen, concise-versus-long title comparison and grid-density comparison."
+    },
+    {
+      "name": "Color and hierarchy",
+      "spec": "Continue with palette resources and charts using blue emphasis, gray context and quantitative color ranges."
+    },
+    {
+      "name": "Texture and markers",
+      "spec": "Follow the map with a monochrome patterned line chart demonstrating non-color distinctions."
+    },
+    {
+      "name": "Interaction",
+      "spec": "Place the overview-first rationale with its black video poster of a row of dots."
+    },
+    {
+      "name": "Motion",
+      "spec": "End with paired green/red-labelled video posters illustrating the source’s contrast between clarifying changes and hiding connections."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The color section explains recognition and meaning; interaction guidance explains exploration and understanding; motion guidance explains making changes unambiguous.",
+    "Expression": "Blue accents, gray context, patterned lines and consistent typography demonstrate IBM’s analytical visual treatment.",
+    "Application": "The page teaches concise insight-led titles, direct labels, appropriate grid density, purposeful color and details on demand.",
+    "Constraint": "Important information must not be hidden behind interactive behavior, and transitions must not communicate contradictory information."
+  },
+  "ingredient": {
+    "name": "Chart color and non-color encoding",
+    "role": "Direct attention and encode relationships without losing readability.",
+    "application": "Give each color a purpose, use gray for context and reinforce meaning with shape, line or pattern; choose categorical or sequential palettes according to the relationship.",
+    "scope": "IBM data-visualization guidance. Palette selection is tied to data meaning and accessibility, not a universal decorative color ratio."
+  },
+  "motion_assets": [
+    {
+      "title": "Data interaction and selection",
+      "file": "../sources/media/3f7bad080b90.mp4",
+      "poster": "../sources/media/3f7bad080b90-poster.png",
+      "duration_seconds": 10.48,
+      "source_url": "https://www.ibm.com/design/language/videos/dataviz/Design_Interaction.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Data motion: approved comparison",
+      "file": "../sources/media/5709253097e5.mp4",
+      "poster": "../sources/media/5709253097e5-poster.png",
+      "duration_seconds": 5.0,
+      "source_url": "https://www.ibm.com/design/language/videos/dataviz/Design_Motion_DO.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Data motion: discouraged comparison",
+      "file": "../sources/media/e688c3608a0f.mp4",
+      "poster": "../sources/media/e688c3608a0f-poster.png",
+      "duration_seconds": 4.72,
+      "source_url": "https://www.ibm.com/design/language/videos/dataviz/Design_Motion_DONTS.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    },
+    {
+      "title": "Chart anatomy sequence",
+      "file": "../sources/media/5ced6a130537.mp4",
+      "poster": "../sources/media/5ced6a130537-poster.png",
+      "duration_seconds": 8.0,
+      "source_url": "https://www.ibm.com/design/language/adacef7269fe7efb9ec771fff5efc094/Design_ChartAnatomy_Animation.gif",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    }
+  ]
+}

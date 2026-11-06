@@ -1,0 +1,27 @@
+{
+  "id": "BK113",
+  "title": "Illustration: Iconography",
+  "image": "bk113.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 113
+  },
+  "slide_intent": "Separate the icon system from expressive lettering so readers can find guidance for smaller functional symbols.",
+  "strategic_value": "The familiar brown-on-yellow divider can keep Burger King’s guide navigable as it moves into operational and digital uses.",
+  "demonstration": "A two-line Illustration: Iconography title sits on a yellow field with the guide’s running information.",
+  "category": "Brand",
+  "practical_value": "Identify the transition from illustrative typography to functional icon guidance.",
+  "content_islands": [
+    {
+      "name": "Iconography heading",
+      "spec": "Set the large brown chapter title near the upper left."
+    },
+    {
+      "name": "Guide furniture",
+      "spec": "Retain the small upper labels, folio and lower legal footer in the open yellow field."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The divider carries the guide’s rounded display typography and brown/yellow pairing into the iconography chapter."
+  }
+}

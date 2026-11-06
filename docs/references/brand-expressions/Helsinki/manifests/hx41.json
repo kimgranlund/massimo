@@ -1,0 +1,31 @@
+{
+  "id": "HX41",
+  "title": "Helsinki Grotesk Pro font licence",
+  "image": "hx41.png",
+  "source": "../sources/download-elements.offline.html",
+  "location": {
+    "series": "Web guideline introduction/component",
+    "order": 153,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/download-elements",
+    "original_html": "../sources/download-elements.html"
+  },
+  "slide_intent": "Resolve font access before production because a consistent voice depends on contributors having the authorized face.",
+  "strategic_value": "The explicit license route can help Helsinki partners obtain the same Helsinki Grotesk Pro used by city communications.",
+  "demonstration": "This webpage component explains DigiHelsinki’s client installation role, identifies other contributors who must obtain their own license, and gives a creator link, email and stated €70 per style price.",
+  "category": "Typography",
+  "practical_value": "Determine who manages the license for the contributor and follow the creator route; treat the price as the captured source’s statement.",
+  "content_islands": [
+    {
+      "name": "Responsibility",
+      "spec": "Place the installation and contributor-responsibility bullet first."
+    },
+    {
+      "name": "Purchase route",
+      "spec": "Follow with the stated price, creator contact and license link."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The source provides the creator purchase route and distinguishes DigiHelsinki-managed clients.",
+    "Constraint": "Other city contributors and purchase-agreement partners must obtain their own font license."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "HE105",
+  "title": "Personal chart templates",
+  "image": "he105.png",
+  "source": "../sources/design-and-create.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Personal chart templates",
+    "order": 140,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/design-and-create#personal-chart-templates",
+    "original_html": "../sources/design-and-create.html"
+  },
+  "slide_intent": "Save a deliberate variation separately so useful customization does not erase the shared starting point.",
+  "strategic_value": "Distinctly named chart files can support reuse while preserving Helsinki defaults.",
+  "demonstration": "Expanded webpage section: instructions list Save as Template, a distinct filename and sharing a .crtx file above an Excel screenshot.",
+  "category": "Application",
+  "practical_value": "Save a custom chart with a new name rather than overwriting the default template.",
+  "content_islands": [
+    {
+      "name": "Custom-template procedure",
+      "spec": "The numbered steps name selection, saving and distinct naming."
+    },
+    {
+      "name": "Sharing and interface",
+      "spec": "A paragraph describes sharing .crtx files above the menu screenshot."
+    }
+  ],
+  "reference_purposes": {
+    "Constraint": "The source instructs users to choose a filename different from the default so they do not overwrite it."
+  }
+}

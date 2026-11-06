@@ -1,0 +1,31 @@
+{
+  "id": "MC12",
+  "title": "Priceless desktop experience",
+  "image": "mc12.png",
+  "source": "../sources/mc12.jpg",
+  "location": {
+    "series": "Pentagram / Mastercard / 2016 identity case study",
+    "item": 12,
+    "extent": "Full published artwork"
+  },
+  "slide_intent": "Show circles shaping a digital layout because identity geometry can guide composition beyond the logo.",
+  "strategic_value": "An oversized circle crop can connect photography and typography while retaining brand character.",
+  "demonstration": "A desktop screen pairs a blue photographic circular crop with a dark text region against an orange backdrop.",
+  "category": "Geometry",
+  "practical_value": "Inspect how a circle becomes the boundary between image and message.",
+  "content_islands": [
+    {
+      "name": "Device and ground",
+      "spec": "Center the desktop display on the orange background."
+    },
+    {
+      "name": "Screen composition",
+      "spec": "Use the large curved image edge at left and the white shopping headline at right; retain the small header navigation."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The artwork shows a Priceless digital experience on a desktop display.",
+    "Expression": "The composition enlarges circular geometry into an image boundary.",
+    "Intent": "Pentagram states that the system extends logo geometry and color into graphic tools for consistent communication across media."
+  }
+}

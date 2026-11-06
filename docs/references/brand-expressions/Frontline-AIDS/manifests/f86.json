@@ -1,0 +1,24 @@
+{
+  "id": "F86",
+  "title": "Reports",
+  "image": "f86.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 86
+  },
+  "slide_intent": "Teach how an identity can carry a reader between a report cover and an information-rich spread. These pages have different demands on attention and legibility.",
+  "strategic_value": "Distinctive covers can help identify Frontline AIDS publications while recurring interior type and accent choices support longer reading.",
+  "demonstration": "An array of angled covers and open reports sits on pink. Some lead with portraits, others with oversized illustration; the interiors show structured text, pictures and colored headings.",
+  "category": "Application",
+  "practical_value": "Choose a cover treatment that names the report’s subject, then inspect an open spread to judge the relative space needed for text, evidence and photographs.",
+  "content_islands": [
+    {
+      "name": "Cover selection",
+      "spec": "Show multiple report fronts at the same angle so a reader can compare which asset leads each one."
+    },
+    {
+      "name": "Interior spreads",
+      "spec": "Interleave open spreads among the covers and retain enough of each spread to show columns, inset images and typographic levels."
+    }
+  ]
+}

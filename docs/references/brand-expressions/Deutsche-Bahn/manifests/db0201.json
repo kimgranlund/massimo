@@ -1,0 +1,27 @@
+{
+  "id": "DB0201",
+  "title": "TEAMS-HINTERGRÜNDE",
+  "image": "db0201.png",
+  "source": "../sources/page-02.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 2,
+    "section": 1,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Teams-Hintergruende/Teams-Hintergruende"
+  },
+  "slide_intent": "Explain the practical job of a branded background so identity supports the meeting experience.",
+  "strategic_value": "Reducing distracting backgrounds can help DB employees present a consistent professional setting.",
+  "demonstration": "A heading, short rationale and download link introduce the available Teams backgrounds.",
+  "category": "Application",
+  "practical_value": "Choose a supplied background when the real environment would distract viewers.",
+  "content_islands": [
+    {
+      "name": "Rationale and download",
+      "spec": "Place the explanatory paragraph below the title and the background-download link beneath it."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The paragraph explicitly identifies minimizing background distractions and appearing professional as the purpose.",
+    "Application": "The download link supplies the backgrounds for Teams use."
+  }
+}

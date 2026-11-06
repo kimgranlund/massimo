@@ -1,0 +1,28 @@
+{
+  "id": "F27",
+  "title": "Symbol usage",
+  "image": "f27.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 27
+  },
+  "slide_intent": "Teach designers when a short symbol can identify a brand in limited space. Its role changes with the viewer’s familiarity and the space available.",
+  "strategic_value": "Frontline AIDS can carry its identity onto a badge, profile avatar or browser tab where the full name could become too small to distinguish.",
+  "demonstration": "An application montage repeats the person across a shirt, cards, badges, a browser tab, posters and social posts.",
+  "category": "Application",
+  "practical_value": "Choose the person for a small or informal placement where the audience can recognize the shorthand; inspect it at the final size.",
+  "content_islands": [
+    {
+      "name": "Shorthand guidance",
+      "spec": "Place the symbol usage heading and explanation in the left text column. Relate size and existing recognition to the choice of mark."
+    },
+    {
+      "name": "Physical applications",
+      "spec": "Layer the pink shirt, green card and colored badges across the main field. Preserve identifiable object edges so scale remains apparent."
+    },
+    {
+      "name": "Screen applications",
+      "spec": "Overlap a browser tab, social posts and profile view at right. Keep the differently sized person marks visible together."
+    }
+  ]
+}

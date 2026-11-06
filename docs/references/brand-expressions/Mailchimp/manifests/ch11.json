@@ -1,0 +1,27 @@
+{
+  "id": "CH11",
+  "title": "Wordmark letters",
+  "image": "ch11.png",
+  "source": "../sources/ch11.gif",
+  "location": {
+    "series": "COLLINS / Mailchimp case study",
+    "item": 11,
+    "extent": "Complete published artwork",
+    "section": "Gallery"
+  },
+  "slide_intent": "Inspect letters individually because distinctive details can disappear when a word is viewed only as a whole.",
+  "strategic_value": "The heavy irregular lowercase forms can give the Mailchimp name a memorable silhouette.",
+  "demonstration": "A portrait yellow loop presents successive oversized black letters spelling the brand name at different positions.",
+  "category": "Typography",
+  "practical_value": "Compare the wordmark’s individual curves, counters and terminals.",
+  "content_islands": [
+    {
+      "name": "Letter specimen",
+      "spec": "Show one large letter at a time against the yellow field, retaining the changing position."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The sequence isolates the custom-looking lowercase forms of the name."
+  },
+  "motion": "../sources/ch11.mp4"
+}

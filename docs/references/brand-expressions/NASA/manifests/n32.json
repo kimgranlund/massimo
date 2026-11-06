@@ -1,0 +1,28 @@
+{
+  "id": "N32",
+  "title": "Cover Design: Journals and Technical Publications",
+  "image": "n32.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 32
+  },
+  "slide_intent": "Teach editors to establish recurring positions for a technical publication’s identity and reference information so readers can find it from issue to issue.",
+  "strategic_value": "NASA can make a technical series recognizable while giving research data and diagrams enough room to be read.",
+  "demonstration": "The examples pair a spare NASA Tech Briefs front cover with a technical page containing a boxed diagram. A smaller NASA Facts page appears below.",
+  "category": "Layout",
+  "practical_value": "Give center accreditation and the headline clear positions, keep catalog numbers in a consistent location and use a box to distinguish a technical diagram.",
+  "content_islands": [
+    {
+      "name": "Cover guidance",
+      "spec": "Place the section title at left and explain the use of the logotype within a series title in the neighboring columns."
+    },
+    {
+      "name": "Tech Briefs specimens",
+      "spec": "Align the mostly open front cover with the information-dense technical page. Keep their captions and common masthead visible."
+    },
+    {
+      "name": "NASA Facts specimen",
+      "spec": "Place the smaller example beneath the cover. Show the center identification, photograph and two-column text as one publication page."
+    }
+  ]
+}

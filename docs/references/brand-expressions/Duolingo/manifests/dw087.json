@@ -1,0 +1,38 @@
+{
+  "id": "DW087",
+  "title": "Writing / Style / Conjunctions",
+  "image": "dw087.png",
+  "source": "../sources/pages/writing-style.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/style",
+    "section": "Conjunctions",
+    "item": 87,
+    "order": 870
+  },
+  "slide_intent": "Allow a sentence to begin conversationally so a short follow-up thought can retain its natural rhythm.",
+  "strategic_value": "The conjunction-led birthday example can help Duolingo avoid unnecessary sentence merging.",
+  "demonstration": "One checked example begins its second sentence with And after a celebratory first sentence.",
+  "category": "Voice",
+  "practical_value": "Keep an initial conjunction when it gives the next short sentence a natural connection.",
+  "content_islands": [
+    {
+      "name": "Guidance column",
+      "spec": "Place the topic heading, its parent label and the written convention in the narrow left column."
+    },
+    {
+      "name": "Worked examples",
+      "spec": "Place the worked copy in the pale right panel, keeping preference labels and green checks with their examples."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The approved birthday message begins its second sentence with And.",
+    "Constraint": "A sentence may begin with a conjunction such as and, but or or."
+  },
+  "ingredient": {
+    "name": "Conjunctions convention",
+    "role": "A short follow-up thought can retain its natural rhythm.",
+    "application": "A sentence may begin with a conjunction such as and, but or or.",
+    "scope": "Historical official guidelines from the 2024–2025 archived snapshot; this records the displayed guidance, not current Duolingo product behavior."
+  }
+}

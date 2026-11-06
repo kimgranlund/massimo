@@ -1,0 +1,28 @@
+{
+  "id": "F15",
+  "title": "Brand toolkit",
+  "image": "f15.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 15
+  },
+  "slide_intent": "Distinguish what a designer should repeat consistently from what can change for the subject. A system can accommodate new content while retaining familiar identifiers.",
+  "strategic_value": "Frontline AIDS can preserve recognition through the logo, palette and typefaces while allowing typography, photographs and illustrations to vary.",
+  "demonstration": "Six specimens form two columns. Logo and symbol, colour palette and typefaces sit above the fixed-assets caption. Typography, photography and illustration sit above the flexible-assets caption.",
+  "category": "Brand",
+  "practical_value": "When creating a new piece, identify which choices have fixed rules and where adaptation is encouraged.",
+  "content_islands": [
+    {
+      "name": "Introduction",
+      "spec": "Place the navigation rail and introductory paragraph to the left of the toolkit."
+    },
+    {
+      "name": "Fixed specimens",
+      "spec": "Group the logo, palette and typefaces in a single labeled column, with guide page references and the fixed-assets note."
+    },
+    {
+      "name": "Flexible specimens",
+      "spec": "Mirror the row structure for typography, photography and illustration. Add the flexible-assets note beneath that column."
+    }
+  ]
+}

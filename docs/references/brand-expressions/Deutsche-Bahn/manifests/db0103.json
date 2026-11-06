@@ -1,0 +1,31 @@
+{
+  "id": "DB0103",
+  "title": "Brand personality / driver at work",
+  "image": "db0103.png",
+  "source": "../sources/page-01.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 1,
+    "section": 3,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design"
+  },
+  "slide_intent": "Ground abstract brand traits in a person doing the work so viewers can understand them concretely.",
+  "strategic_value": "A driver at the controls can connect DB’s responsibility and customer focus to lived railway activity.",
+  "demonstration": "A photograph of a driver’s arm and control desk precedes text explaining brand personality and a link to its guidance.",
+  "category": "Imagery",
+  "practical_value": "Choose an operational detail that makes a stated personality credible.",
+  "content_islands": [
+    {
+      "name": "Operational photograph",
+      "spec": "Place the cropped driver and control desk above the text."
+    },
+    {
+      "name": "Personality explanation",
+      "spec": "Connect the image to responsibility, performance and customer orientation, then link to further guidance."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The operational photograph gives the personality explanation a concrete railway setting.",
+    "Intent": "The accompanying paragraph says personality provides orientation for behavior, design and communication."
+  }
+}

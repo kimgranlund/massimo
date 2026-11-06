@@ -1,0 +1,35 @@
+{
+  "id": "IB033T12",
+  "title": "Pictograms / Color treatments — Dark background",
+  "image": "ib033t12.png",
+  "source": "../sources/alternate-tabs.json",
+  "location": {
+    "series": "IBM Design Language / alternate tab states",
+    "parent": "IB033",
+    "group": 1,
+    "tab": 2,
+    "label": "Dark background",
+    "url": "https://www.ibm.com/design/language/iconography/pictograms/design/",
+    "order": 33112
+  },
+  "slide_intent": "Distinguish decorative treatment from the symbol’s core shape, because color should add expression without preventing immediate recognition.",
+  "strategic_value": "A bounded set of monochrome, tonal and gradient options can let IBM pictograms vary while remaining part of one family.",
+  "demonstration": "Four pictograms on a dark-purple field compare a white-line symbol, a purple outline, a shaded purple symbol and a blue-purple gradient robot arm. The first white specimen retains the source caption Black.",
+  "category": "Color",
+  "practical_value": "Compare the four treatments on a dark field while relying on the actual artwork and surrounding guidance rather than the mismatched first caption.",
+  "content_islands": [
+    {
+      "name": "Background selector",
+      "spec": "Show Dark background selected above the field."
+    },
+    {
+      "name": "Treatment comparison",
+      "spec": "Align four specimens with the source captions Black, Color, Tinted color and Gradient, preserving the first caption’s mismatch with the white linework."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The row demonstrates four pictogram color treatments against one dark background.",
+    "Application": "The accompanying color guidance identifies black/white, monochromatic, tinted/shaded and gradient options.",
+    "Constraint": "The accompanying design guidance requires pictograms to meet 4.5:1 contrast regardless of style; the screenshot’s first caption is a source-label inconsistency, not a black-on-dark recommendation."
+  }
+}

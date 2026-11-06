@@ -1,0 +1,23 @@
+{
+  "id": "LH47",
+  "title": "Project team photograph",
+  "image": "lh47.png",
+  "source": "../sources/lh47.jpg",
+  "location": {
+    "series": "HvD Fonts / Lufthansa 2018",
+    "item": 26,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Record authorship because an identity system results from coordinated specialist decisions.",
+  "strategic_value": "A team record can preserve context for understanding the Lufthansa refresh process.",
+  "demonstration": "A printed group photograph shows the project team beneath an aircraft image.",
+  "category": "Brand",
+  "practical_value": "Distinguish process and authorship evidence from application guidance.",
+  "content_islands": [
+    {
+      "name": "Team print",
+      "spec": "Preserve the complete photograph and visible campaign hashtag at its edge."
+    }
+  ],
+  "reference_purposes": {}
+}

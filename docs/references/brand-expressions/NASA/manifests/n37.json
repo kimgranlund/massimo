@@ -1,0 +1,28 @@
+{
+  "id": "N37",
+  "title": "Posters/Broadsides",
+  "image": "n37.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 37
+  },
+  "slide_intent": "Teach designers to match information density to viewing behavior. A poster must register quickly, while a broadside can reward a closer reading.",
+  "strategic_value": "NASA can give public communications immediate impact and still identify their source.",
+  "demonstration": "A shorter astronaut poster and a taller Weather Satellites piece both use a dominant photograph. The headline and signature remain distinct from the image detail.",
+  "category": "Application",
+  "practical_value": "For a distant first read, test the headline, image and mark as a group. Use the broadside format when the audience will spend time with more information.",
+  "content_islands": [
+    {
+      "name": "Viewing-distance guidance",
+      "spec": "Place the title and two columns of text above the specimens. State the distinction between the quick poster read and the longer broadside read."
+    },
+    {
+      "name": "Astronaut poster",
+      "spec": "Place the astronaut image at left with the headline in its upper-left area and the NASA mark near the bottom."
+    },
+    {
+      "name": "Weather satellite example",
+      "spec": "Align the taller piece with the poster at the top. Set its information across the dark upper area and use the storm image as the dominant field."
+    }
+  ]
+}

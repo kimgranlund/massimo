@@ -1,0 +1,29 @@
+{
+  "id": "HI24",
+  "title": "Neighbourhood market and rest",
+  "image": "hi24.png",
+  "source": "../sources/illustration-examples.pdf",
+  "location": {
+    "page": 24,
+    "series": "Helsinki illustration examples — PDF derived from the official PowerPoint deck with LibreOffice",
+    "order": 214
+  },
+  "slide_intent": "Show ordinary shared moments so a neighbourhood can be understood through social use rather than landmarks alone.",
+  "strategic_value": "A shopping cart, conversation and resting figures can make Helsinki neighbourhood imagery relatable.",
+  "demonstration": "Two figures overlap an ochre architectural rail above a shopping cart, seated figures and decorative objects on pink.",
+  "category": "Imagery",
+  "practical_value": "Use the upper architectural scene or lower social group according to the emphasis of the message.",
+  "content_islands": [
+    {
+      "name": "Raised encounter",
+      "spec": "Place the two figures within the long ochre structure across the top."
+    },
+    {
+      "name": "Street-level life",
+      "spec": "Group cart, resting people and small objects along the bottom."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Two figures overlap an ochre architectural rail above a shopping cart, seated figures and decorative objects on pink."
+  }
+}

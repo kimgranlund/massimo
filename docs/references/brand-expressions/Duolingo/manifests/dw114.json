@@ -1,0 +1,42 @@
+{
+  "id": "DW114",
+  "title": "Illustration / Duo / Joints",
+  "image": "dw114.png",
+  "source": "../sources/pages/illustration-duo.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/illustration/duo",
+    "section": "Joints",
+    "item": 114,
+    "order": 1140
+  },
+  "slide_intent": "Define how a simple body bends because expressive gestures must remain consistent with its construction.",
+  "strategic_value": "A repeatable bending method can give Duo emotional range without losing his rounded form.",
+  "demonstration": "Two rows pair pale construction diagrams with a joyful bent pose and an angry pose.",
+  "category": "Geometry",
+  "practical_value": "Use added rounded geometry to bend the waist and preserve the underlying body shape.",
+  "content_islands": [
+    {
+      "name": "Waist construction",
+      "spec": "Pair the overlapping rounded forms with the energetic finished pose in the upper row."
+    },
+    {
+      "name": "Wing joints",
+      "spec": "Pair the marked wing joints with the angry finished pose below."
+    },
+    {
+      "name": "Bending method",
+      "spec": "Place the waist, elbow and wrist guidance at right."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "Construction diagrams show waist and wing bending alongside finished expressions.",
+    "Constraint": "Duo may bend at waist, elbow and wrists; use a rounded rectangle over the body for a waist bend instead of editing the existing body shape."
+  },
+  "ingredient": {
+    "name": "Duo articulation",
+    "role": "Support expressive poses within the mascot’s simple geometry.",
+    "application": "Bend at waist, elbow and wrists as needed; overlay a rounded rectangle for waist bends.",
+    "scope": "Historical static construction guide; this page supplies no animation timing."
+  }
+}

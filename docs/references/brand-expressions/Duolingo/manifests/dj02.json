@@ -1,0 +1,37 @@
+{
+  "id": "DJ02",
+  "title": "Duo and the Feather Bold g",
+  "image": "dj02.png",
+  "source": "../sources/johnson-banks/Duolingo_typography1-by-Johnson-Banks.jpg",
+  "location": {
+    "series": "Johnson Banks / Everyone can Duolingo / 2019",
+    "item": 2,
+    "extent": "Whole published artwork",
+    "order": 2002
+  },
+  "slide_intent": "Translate a familiar character feature into letterforms because the brand voice should remain recognizable even when the mascot is absent.",
+  "strategic_value": "Repeating Duo’s feather shape in the lowercase g can connect typography to an existing source of recognition.",
+  "demonstration": "A two-panel comparison pairs Duo on white with a white g on green; dotted pink circles identify the related feather and terminal.",
+  "category": "Typography",
+  "practical_value": "Evaluate whether a custom letterform carries a recognizable feature of an established brand asset.",
+  "content_islands": [
+    {
+      "name": "Mascot reference",
+      "spec": "Show Duo at left and circle the upper-right feather."
+    },
+    {
+      "name": "Letterform comparison",
+      "spec": "Place the large g at right and circle its upper terminal; retain the Duo and Feather bold captions."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "Johnson Banks explains that the logotype takes inspiration from Duo’s feathery form to express the company’s quirky personality.",
+    "Expression": "Matching dotted annotations connect the owl’s feather contour and the g terminal."
+  },
+  "ingredient": {
+    "name": "Feather Bold and the Duolingo wordmark",
+    "role": "Carry mascot-derived character into typography.",
+    "application": "Compare the owl feather and g terminal as the source illustrates.",
+    "scope": "Historical 2019 case-study evidence. These are observed design relationships, not a license to redraw the mark or a complete type-usage specification."
+  }
+}

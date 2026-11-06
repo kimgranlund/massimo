@@ -1,0 +1,39 @@
+{
+  "id": "DW126",
+  "title": "Illustration / Characters / Noses / Please don’t…",
+  "image": "dw126.png",
+  "source": "../sources/pages/illustration-characters.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/illustration/characters",
+    "section": "Please don't...",
+    "item": 126,
+    "order": 1260
+  },
+  "slide_intent": "Place eyes on a stable area of the head so they remain visually attached as the character turns.",
+  "strategic_value": "The rejected turn sequence can help Duolingo avoid facial constructions that work only from the front.",
+  "demonstration": "Three crossed panels show eyes placed too high on a rounded head, followed by outlined angled views where the eyes appear to project away from the face.",
+  "category": "Geometry",
+  "practical_value": "Test a head in multiple views before accepting eye placement near a curved upper edge.",
+  "content_islands": [
+    {
+      "name": "Rejected turn sequence",
+      "spec": "Place three red-framed, crossed examples at left, progressing from the filled front view to outlined angled views."
+    },
+    {
+      "name": "Placement warning",
+      "spec": "Set the Please Don’t heading and single warning at right, explaining the floating-eye effect."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The warning explains that eyes on a curved upper area can appear to float when the character turns.",
+    "Application": "The sequence demonstrates a construction problem across views.",
+    "Constraint": "The source warns against aligning eyes too closely with the top of the head."
+  },
+  "ingredient": {
+    "name": "Eye placement on curved heads",
+    "role": "Keep eyes attached to the perceived facial plane.",
+    "application": "Avoid placing eyes too close to the curved top of the head; inspect how they behave as the character turns.",
+    "scope": "Historical official Duolingo illustration guidance from the 2024–2025 archived snapshot. This eye-placement warning appears under the source’s Noses section; preserve that original placement while classifying the construction lesson."
+  }
+}

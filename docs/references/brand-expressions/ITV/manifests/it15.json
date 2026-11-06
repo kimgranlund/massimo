@@ -1,0 +1,35 @@
+{
+  "id": "IT15",
+  "title": "ITVX / Letterform specimen",
+  "image": "it15.png",
+  "source": "../sources/1782130902-ctlrv4slt9i3yfscqxykng-itv_11-1.webp",
+  "location": {
+    "series": "DixonBaxi / ITV case-study artwork series",
+    "item": 15,
+    "extent": "Whole source artwork",
+    "source_asset_index": 15
+  },
+  "slide_intent": "Compare letterform character at display scale before applying it to full headlines, because letterforms shape the tone and reading emphasis of a message.",
+  "strategic_value": "This approach can strengthen a recognizable voice across different programme moods.",
+  "demonstration": "A printed specimen leans against a wall with two oversized K forms in yellow and white on a dark field. Small supporting text sits at the lower right.",
+  "category": "Typography",
+  "practical_value": "Compare letterform character at display scale before applying it to full headlines.",
+  "content_islands": [
+    {
+      "name": "Setting",
+      "spec": "A floor and wall frame the specimen."
+    },
+    {
+      "name": "Letters",
+      "spec": "Two large K forms dominate the sheet."
+    },
+    {
+      "name": "Annotation",
+      "spec": "Small text occupies the lower-right corner."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A printed specimen leans against a wall with two oversized K forms in yellow and white on a dark field. Small supporting text sits at the lower right.",
+    "Intent": "The case-study section Type That Speaks Every Voice says the custom serif and sans families express ITV’s range of voices and scale from billboards to on-screen detail."
+  }
+}

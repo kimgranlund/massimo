@@ -1,0 +1,38 @@
+{
+  "id": "DW070",
+  "title": "Writing / Style / Periods",
+  "image": "dw070.png",
+  "source": "../sources/pages/writing-style.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/style",
+    "section": "Periods",
+    "item": 70,
+    "order": 700
+  },
+  "slide_intent": "Keep sentence endings visually predictable so readers can follow quoted material without distraction.",
+  "strategic_value": "A compact punctuation comparison can help Duolingo maintain editorial consistency across writers.",
+  "demonstration": "Two versions of a quoted sentence differ in whether the period sits inside or outside quotation marks.",
+  "category": "Voice",
+  "practical_value": "Check period placement and spacing when a sentence includes a quotation.",
+  "content_islands": [
+    {
+      "name": "Guidance column",
+      "spec": "Place the topic heading, its parent label and the written convention in the narrow left column."
+    },
+    {
+      "name": "Worked examples",
+      "spec": "Place the worked copy in the pale right panel, keeping preference labels and green checks with their examples."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The paired sentence places its period inside quotation marks in the preferred version.",
+    "Constraint": "Place periods inside quotation marks and follow periods with one space rather than two."
+  },
+  "ingredient": {
+    "name": "Periods convention",
+    "role": "Readers can follow quoted material without distraction.",
+    "application": "Place periods inside quotation marks and follow periods with one space rather than two.",
+    "scope": "Historical official guidelines from the 2024–2025 archived snapshot; this records the displayed guidance, not current Duolingo product behavior."
+  }
+}

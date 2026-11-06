@@ -1,0 +1,24 @@
+{
+  "id": "C11",
+  "title": "Protecting the Logo",
+  "image": "c11.png",
+  "source": "../csail-branding-short-guide.pdf",
+  "location": {
+    "page": 11
+  },
+  "slide_intent": "Teach designers to measure clear space from a feature of the artwork. A proportional unit keeps the separation meaningful as the mark changes size.",
+  "strategic_value": "The lab can retain an identifiable silhouette in crowded layouts by deriving the exclusion zone from its own letterforms.",
+  "demonstration": "A boundary surrounds the color mark. Blue markers indicate the height of the uppercase I on each side, and blue hatching fills the surrounding field.",
+  "category": "Geometry",
+  "practical_value": "Use the height of the I to set the minimum separation around the logo when placing adjacent content.",
+  "content_islands": [
+    {
+      "name": "Rule",
+      "spec": "Explain the exclusion zone and its unit in the left rail."
+    },
+    {
+      "name": "Clear-space drawing",
+      "spec": "Center the mark inside a bounded pale rectangle. Repeat the blue unit on all four edges and hatch the outer field to distinguish it from the clear space."
+    }
+  ]
+}

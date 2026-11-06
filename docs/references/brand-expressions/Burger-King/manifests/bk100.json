@@ -1,0 +1,32 @@
+{
+  "id": "BK100",
+  "title": "Whopper wrapper illustration",
+  "image": "bk100.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 100
+  },
+  "slide_intent": "Connect packaging graphics to the food inside so a customer can recognize the product through its ingredients and name.",
+  "strategic_value": "The large ingredient drawings and centered Burger King mark can turn a routine wrapper into a recognizable brand encounter.",
+  "demonstration": "A wrapped burger lies on matching paper printed with oversized tomato, lettuce, onion and pickle illustrations, vertical Whopper naming and the central full-color mark.",
+  "category": "Application",
+  "practical_value": "Compare how large ingredient illustrations and product naming survive folding around a burger.",
+  "content_islands": [
+    {
+      "name": "Ingredient field",
+      "spec": "Spread cropped tomato, lettuce, onion and pickle illustrations across the wrapper background."
+    },
+    {
+      "name": "Product labels",
+      "spec": "Set Whopper naming vertically at the left and right edges, with a cheese descriptor at right."
+    },
+    {
+      "name": "Wrapped burger",
+      "spec": "Center a folded burger wrapper with the Burger King mark visible on its face."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Oversized ingredient drawings and warm paper color create a distinctive food-oriented surface.",
+    "Application": "The photograph demonstrates the illustration system on an actual folded wrapper."
+  }
+}

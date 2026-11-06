@@ -1,0 +1,42 @@
+{
+  "id": "HE020",
+  "title": "Good colour combinations for digital applications",
+  "image": "he020.png",
+  "source": "../sources/use-basic-elements.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Good colour combinations for digital applications",
+    "order": 26,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/use-basic-elements#good-colour-combinations-for-digital-applications",
+    "original_html": "../sources/use-basic-elements.html"
+  },
+  "slide_intent": "Evaluate foreground/background pairs because usable contrast depends on their relationship and the conditions of reading.",
+  "strategic_value": "A shared contrast table can help Helsinki maintain readable digital communications across its broad palette.",
+  "demonstration": "This expanded webpage section places a contrast-pairing table beneath guidance for documents, presentations, newsletters and social posts.",
+  "category": "Color",
+  "practical_value": "Choose a supported color pair, then separately consider type size, line spacing and viewing distance.",
+  "content_islands": [
+    {
+      "name": "Scope and caveat",
+      "spec": "Explain the covered digital applications and other readability factors."
+    },
+    {
+      "name": "Related guidance",
+      "spec": "Link to data-visualization and professional digital-service guidance."
+    },
+    {
+      "name": "Pairing table",
+      "spec": "Finish with horizontal background-color bands and colored dots indicating supported foreground pairings."
+    }
+  ],
+  "ingredient": {
+    "name": "Digital color pairings",
+    "role": "Keep text distinguishable from its background.",
+    "application": "Use the displayed contrast pairings and review font size, line spacing and reading distance.",
+    "scope": "Examples cover PDFs from Word, PowerPoint, newsletters and social media; professional digital-service and data-visualization guidance is linked separately."
+  },
+  "reference_purposes": {
+    "Intent": "The source connects color combinations to adequate contrast while naming other readability factors.",
+    "Application": "The table supplies foreground/background pairings for the listed digital applications."
+  }
+}

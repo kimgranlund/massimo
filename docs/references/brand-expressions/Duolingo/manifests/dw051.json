@@ -1,0 +1,32 @@
+{
+  "id": "DW051",
+  "title": "Writing / Brand Narrative / If Duolingo were a...",
+  "image": "dw051.png",
+  "source": "../sources/pages/writing-brand-narrative.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/brand-narrative",
+    "section": "If Duolingo were a...",
+    "item": 51,
+    "order": 510
+  },
+  "slide_intent": "Translate personality into familiar cultural references so collaborators can align on a feeling before writing.",
+  "strategic_value": "Illustrated references to a person, vehicle and song can give Duolingo’s team a shared vocabulary for its energy and accessibility.",
+  "demonstration": "A vertical panel presents a celebrity, a green scooter and musicians under Celebrity, Vehicle and Song, each with explanatory copy.",
+  "category": "Brand",
+  "practical_value": "Use the analogies as creative calibration, while retaining their historical context rather than treating them as present endorsements.",
+  "content_islands": [
+    {
+      "name": "Guidance column",
+      "spec": "Place the personality subheading, analogy title and short framing paragraph at left."
+    },
+    {
+      "name": "Worked examples",
+      "spec": "Stack the three illustrated cultural references at right, with the category label and explanatory paragraph accompanying each image."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The framing text explicitly offers cultural touchstones for entering the brand’s state of mind.",
+    "Expression": "The illustrated analogies describe an accessible, stylish and upbeat personality."
+  }
+}

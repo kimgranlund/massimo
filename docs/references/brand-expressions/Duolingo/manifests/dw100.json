@@ -1,0 +1,38 @@
+{
+  "id": "DW100",
+  "title": "Writing / Glossary / Words to avoid",
+  "image": "dw100.png",
+  "source": "../sources/pages/writing-glossary.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/glossary",
+    "section": "Words to avoid",
+    "item": 100,
+    "order": 1000
+  },
+  "slide_intent": "Replace internal shorthand with audience-facing language so people do not need organizational knowledge to understand the product.",
+  "strategic_value": "The distinction can help Duolingo describe its learning experience in terms meaningful to learners.",
+  "demonstration": "Three rows identify users, challenges and tree as terms to avoid externally and give learner-facing alternatives.",
+  "category": "Voice",
+  "practical_value": "Check whether a word is internal shorthand before using it in public copy.",
+  "content_islands": [
+    {
+      "name": "Guidance column",
+      "spec": "Place Words to Avoid and the internal-versus-external scope note at left."
+    },
+    {
+      "name": "Worked examples",
+      "spec": "Pair each discouraged term with its replacement or explanation at right, keeping the internal-use exception with users."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "Three term substitutions demonstrate public-facing vocabulary.",
+    "Constraint": "The guide reserves users and tree for internal contexts, prefers learners externally, and uses exercises instead of challenges."
+  },
+  "ingredient": {
+    "name": "Audience-facing terminology",
+    "role": "Remove organizational shorthand from public explanations.",
+    "application": "Use learners externally, exercises instead of challenges, and course-progress wording instead of tree.",
+    "scope": "Historical official guidelines from the 2024–2025 archived snapshot; this records the displayed guidance, not current Duolingo product behavior. Internal expressions such as user testing remain permitted; this is not a ban across all company writing."
+  }
+}

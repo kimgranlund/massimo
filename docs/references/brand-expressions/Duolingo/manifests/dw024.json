@@ -1,0 +1,38 @@
+{
+  "id": "DW024",
+  "title": "Typography / DIN Next Rounded specimen",
+  "image": "dw024.png",
+  "source": "../sources/pages/identity-typography.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/identity/typography",
+    "section": "DIN Next Rounded",
+    "item": 24,
+    "order": 240
+  },
+  "slide_intent": "Give longer passages a complementary voice because sustained reading calls for a different typographic role from a brief headline.",
+  "strategic_value": "DIN Next Rounded can carry Duolingo’s extended messages while remaining visually related to its display language.",
+  "demonstration": "Four specimen blocks show DIN Next Rounded characters in different weights, beside its long-text and marketing-headline role.",
+  "category": "Typography",
+  "practical_value": "Compare weights and repertoire when choosing a face for extended reading.",
+  "content_islands": [
+    {
+      "name": "Weight specimens",
+      "spec": "Stack the four green character displays in the left panel and retain the color controls below."
+    },
+    {
+      "name": "Reading role",
+      "spec": "Place the heading and longer-text role in the right column."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The source assigns DIN Next Rounded to longer sections and says it is used in marketing headlines of 10 words or longer.",
+    "Expression": "Multiple weights demonstrate the rounded face’s range."
+  },
+  "ingredient": {
+    "name": "DIN Next Rounded",
+    "role": "Support longer reading within the brand voice.",
+    "application": "Use for longer sections of text; this introduction names marketing headlines of 10 words or longer.",
+    "scope": "Historical archived guidelines. Historical source. The adjacent usage section says “longer than 10 words”; preserve that slight threshold difference rather than silently rewriting it."
+  }
+}

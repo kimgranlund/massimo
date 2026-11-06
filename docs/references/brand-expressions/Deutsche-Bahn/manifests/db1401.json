@@ -1,0 +1,27 @@
+{
+  "id": "DB1401",
+  "title": "BILDWELT",
+  "image": "db1401.png",
+  "source": "../sources/page-14.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 14,
+    "section": 1,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Bildwelt"
+  },
+  "slide_intent": "Compose real situations deliberately so photography communicates a point of view without feeling artificial.",
+  "strategic_value": "A credible, distinctive photographic approach can connect DB’s people and infrastructure to everyday experience.",
+  "demonstration": "The introduction describes real people and situations, composed through light, perspective, movement and graphic structure.",
+  "category": "Imagery",
+  "practical_value": "Judge images for both authenticity and deliberate visual organization.",
+  "content_islands": [
+    {
+      "name": "Photographic position",
+      "spec": "Place the Bildwelt heading above the paragraph defining realism and composition."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source explicitly chooses credibility and closeness to reality over interchangeable artificial-looking imagery.",
+    "Application": "It identifies light, perspective, movement and graphic structures as means of composition."
+  }
+}

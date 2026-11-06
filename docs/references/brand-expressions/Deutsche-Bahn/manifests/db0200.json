@@ -1,0 +1,30 @@
+{
+  "id": "DB0200",
+  "title": "Teams / meeting background example",
+  "image": "db0200.png",
+  "source": "../sources/page-02.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 2,
+    "section": 0,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Teams-Hintergruende/Teams-Hintergruende"
+  },
+  "slide_intent": "Carry identity into an everyday meeting without obscuring the person who is speaking.",
+  "strategic_value": "A branded environment can make DB recognizable in routine video conversations.",
+  "demonstration": "A Teams window shows a woman in front of an architectural background with the DB mark and sleeper accents; the page header adds a red sleeper strip below.",
+  "category": "Application",
+  "practical_value": "Compare where identity cues can sit around a participant’s face.",
+  "content_islands": [
+    {
+      "name": "Meeting window",
+      "spec": "Center the video-call specimen against the dark header field."
+    },
+    {
+      "name": "Brand accents",
+      "spec": "Keep the DB mark in the video background and the sleeper motif along the lower edges."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The image shows identity applied to a Teams meeting background."
+  }
+}

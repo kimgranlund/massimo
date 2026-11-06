@@ -1,0 +1,30 @@
+{
+  "id": "IG28",
+  "title": "Notes campaign / Friends make notes noteworthy",
+  "image": "ig28.png",
+  "source": "../sources/ig28.jpg",
+  "location": {
+    "series": "Elvis Dinh / Instagram brand design system / project year 2022",
+    "item": 28,
+    "extent": "whole source artwork"
+  },
+  "slide_intent": "Use neighboring wall surfaces to connect a social message with a recognizable brand cue.",
+  "strategic_value": "A large gradient glyph field can identify Instagram while the adjacent words explain the human value.",
+  "demonstration": "A street photograph pairs a gradient text wall and shadow imagery with a taller gradient glyph wall behind.",
+  "category": "Application",
+  "practical_value": "Review the relationship between the readable foreground message and the more distant identifying surface.",
+  "content_islands": [
+    {
+      "name": "Foreground message wall",
+      "spec": "Place the short white phrase on a warm gradient beside the shadow image."
+    },
+    {
+      "name": "Raised brand wall",
+      "spec": "Keep the large white glyph on the taller gradient surface visible above the foreground."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The photograph demonstrates a coordinated multi-surface outdoor campaign.",
+    "Expression": "Gradient fields and sparse white type connect the separate walls."
+  }
+}

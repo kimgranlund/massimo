@@ -1,0 +1,66 @@
+{
+  "id": "IB005",
+  "title": "Typography / Type basics",
+  "image": "ib005.png",
+  "source": "../sources/typography-type-basics.txt",
+  "location": {
+    "series": "IBM Design Language / public web guidelines",
+    "item": 5,
+    "extent": "Complete webpage content-area capture; interactive elements retain their captured state",
+    "url": "https://www.ibm.com/design/language/typography/type-basics/",
+    "order": 5000
+  },
+  "slide_intent": "Make the mechanics of typography support comfortable reading, because poor spacing, punctuation and hierarchy can interrupt meaning before readers notice the brand.",
+  "strategic_value": "Consistent Plex alignment and restrained emphasis can make IBM communications feel organized and carefully executed.",
+  "demonstration": "A long sequence of green-approved and red-rejected examples compares tracking, alignment, leading, punctuation, case, line breaks and headline hierarchy.",
+  "category": "Typography",
+  "practical_value": "Diagnose a typographic problem by comparing the relevant approved and rejected treatments.",
+  "content_islands": [
+    {
+      "name": "Orientation and resources",
+      "spec": "Begin with the Type basics title, introductory explanation, section links and Plex resource cards."
+    },
+    {
+      "name": "Spacing and alignment",
+      "spec": "Compare comfortable tracking, flush-left paragraphs and leading using paired green and red examples."
+    },
+    {
+      "name": "Punctuation and emphasis",
+      "spec": "Follow with apostrophes/primes, quotation marks, dashes, and restrained versus redundant emphasis."
+    },
+    {
+      "name": "Case and line quality",
+      "spec": "Compare sentence case, rags, orphans and widows, then alignment with adjacent copy and imagery."
+    },
+    {
+      "name": "Reading and hierarchy",
+      "spec": "Finish with the reading-length media state, container padding, stacked headlines and title/subtitle weight or scale relationships."
+    }
+  ],
+  "ingredient": {
+    "name": "Plex text setting",
+    "role": "Keep reading orderly and emphasis clear.",
+    "application": "Set copy flush left; use sentence case except proper titles, product names and service names; preserve comfortable spacing and avoid stacking emphasis styles.",
+    "scope": "IBM typography guidance shown on this captured page; line length and leading depend on the content and container, rather than a universal number."
+  },
+  "reference_purposes": {
+    "Intent": "The introduction and section explanations connect typographic consistency, hierarchy and alignment to reading quality.",
+    "Expression": "The specimens show Plex’s light, open appearance in real phrases and paragraphs.",
+    "Application": "Paired examples teach corrections to tracking, alignment, line lengths and hierarchy.",
+    "Constraint": "The source sets flush left as IBM’s standard, directs sentence case with named exceptions, and rejects straight quotation marks and redundant emphasis."
+  },
+  "motion_assets": [
+    {
+      "title": "Comfortable reading: changing line lengths",
+      "file": "../sources/media/00dce99bbca9.mp4",
+      "poster": "../sources/media/00dce99bbca9-poster.png",
+      "duration_seconds": 21.43,
+      "source_url": "https://www.ibm.com/design/language/videos/type-basics-comfortable-reading.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    }
+  ]
+}

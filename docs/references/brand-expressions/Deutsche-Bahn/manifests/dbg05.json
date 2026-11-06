@@ -1,0 +1,28 @@
+{
+  "id": "DBG05",
+  "title": "Von A nach B / Clear axes",
+  "image": "dbg05.png",
+  "source": "../sources/media/2186a54b0287-Bild_05-data.gif",
+  "location": {
+    "series": "DB new design / original GIF demonstrations",
+    "source_page": 15,
+    "section": 4,
+    "url": "https://marketingportal.extranet.deutschebahn.com/resource/blob/14025282/e38ccece89f24334573eae9f58733662/Bild_05-data.gif"
+  },
+  "slide_intent": "Constrain movement to readable directions because clear axes help viewers anticipate change.",
+  "strategic_value": "A simple red field crossing the frame can express DB’s direct and decisive motion principle.",
+  "demonstration": "A red rectangular field moves across the dark stage on vertical and horizontal axes.",
+  "category": "Motion",
+  "practical_value": "Use this pattern to compare axis-led movement with diagonal or arbitrary paths.",
+  "content_islands": [
+    {
+      "name": "Moving field",
+      "spec": "Let a straight-edged red rectangle traverse the dark field along one axis at a time."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The accompanying Von A nach B guidance connects reduction, straight directions and decisive movement.",
+    "Application": "The animated field demonstrates the stated axis-led pattern."
+  },
+  "motion": "../sources/media/dbg05.mp4"
+}

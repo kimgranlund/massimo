@@ -1,0 +1,25 @@
+{
+  "id": "I093",
+  "title": "Shopper",
+  "image": "i093.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 93,
+    "printed_page": 99
+  },
+  "slide_intent": "Connect a human delivery encounter to the identification item someone can inspect at close range.",
+  "strategic_value": "Showing a person with groceries beside the branded lanyard can make the shopper role and its identifier easier to associate.",
+  "demonstration": "An outdoor portrait of a person holding groceries fills one half. A close crop on the other half shows a dark green card with the carrot and a repeated wordmark on its strap.",
+  "category": "Application",
+  "practical_value": "Use the portrait to establish the role and the detail photograph to specify how the identifier appears on a lanyard.",
+  "content_islands": [
+    {
+      "name": "Shopper portrait",
+      "spec": "Fill the left half with the person and paper grocery bags in context."
+    },
+    {
+      "name": "Lanyard detail",
+      "spec": "Fill the right half with a close-up on a warm ground. Keep the swivel, strap lettering and graphic on the hanging card visible."
+    }
+  ]
+}

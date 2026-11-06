@@ -1,0 +1,30 @@
+{
+  "id": "DB22",
+  "title": "Offline-files product screen",
+  "image": "db22.png",
+  "source": "../sources/db22.jpg",
+  "location": {
+    "series": "COLLINS / Dropbox / 2017 identity case study",
+    "item": 22,
+    "section": "Gallery",
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Connect illustration to a useful explanation because a brand image can help a product state feel approachable.",
+  "strategic_value": "The expressive character can make a practical Dropbox feature feel related to the broader identity.",
+  "demonstration": "A white phone on green displays an illustrated animal above an offline-files explanation and a small action link.",
+  "category": "Application",
+  "practical_value": "Assess illustration scale relative to instructional copy and interface controls.",
+  "content_islands": [
+    {
+      "name": "Illustration and message",
+      "spec": "Center the character above the feature explanation in the phone."
+    },
+    {
+      "name": "Interface frame",
+      "spec": "Retain the handset, bottom navigation and plain green surround."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "A white phone on green displays an illustrated animal above an offline-files explanation and a small action link."
+  }
+}

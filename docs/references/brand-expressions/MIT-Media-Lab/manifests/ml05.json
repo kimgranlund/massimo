@@ -1,0 +1,36 @@
+{
+  "id": "ML05",
+  "title": "Re-think food event signature",
+  "image": "ml05.png",
+  "source": "../sources/ml05.jpg",
+  "location": {
+    "series": "Pentagram / MIT Media Lab / 2014 identity",
+    "item": 5,
+    "extent": "Published lightbox artwork"
+  },
+  "slide_intent": "Let an event speak clearly while carrying a compact institutional cue so the topic remains primary.",
+  "strategic_value": "A small lab symbol can endorse an event without competing with its title.",
+  "demonstration": "A bold two-line event title dominates; a small angular lab symbol appears near its upper right.",
+  "category": "Typography",
+  "practical_value": "Evaluate an endorsement hierarchy led by the event name.",
+  "content_islands": [
+    {
+      "name": "Event title",
+      "spec": "Large black lowercase words occupy the central left."
+    },
+    {
+      "name": "Lab endorsement",
+      "spec": "A small monogram sits above the title’s right edge."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A bold two-line event title dominates; a small angular lab symbol appears near its upper right.",
+    "Application": "A bold two-line event title dominates; a small angular lab symbol appears near its upper right."
+  },
+  "ingredient": {
+    "name": "Re-think food event signature",
+    "role": "Let an event speak clearly while carrying a compact institutional cue so the topic remains primary.",
+    "application": "Evaluate an endorsement hierarchy led by the event name.",
+    "scope": "Observed in this historical case-study artwork; not a mandatory usage rule or a current brand standard."
+  }
+}

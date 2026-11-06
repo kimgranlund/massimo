@@ -1,0 +1,39 @@
+{
+  "id": "IB006T11",
+  "title": "Typography / Large-format scale — 1x table",
+  "image": "ib006t11.png",
+  "source": "../sources/alternate-tabs.json",
+  "location": {
+    "series": "IBM Design Language / alternate tab states",
+    "parent": "IB006",
+    "group": 1,
+    "tab": 1,
+    "label": "1x",
+    "url": "https://www.ibm.com/design/language/typography/type-scale/",
+    "order": 6111
+  },
+  "slide_intent": "Establish a baseline before enlarging typography, because relative size and line height need to remain coordinated across scripts.",
+  "strategic_value": "A complete shared scale can help IBM teams select type consistently instead of inventing a new hierarchy for every format.",
+  "demonstration": "The selected 1x tab shows the full three-column table: default sizes 6–300, adjusted sizes at 95%, and corresponding line heights with alternatives for some smaller sizes.",
+  "category": "Typography",
+  "practical_value": "Look up a baseline size and its script-adjusted counterpart before applying a large-format multiplier.",
+  "content_islands": [
+    {
+      "name": "Multiplier selector",
+      "spec": "Show 1x selected beside 4x and 8x."
+    },
+    {
+      "name": "Default and adjusted sizes",
+      "spec": "Align the default-script sizes with the 95% adjusted values in the first two columns."
+    },
+    {
+      "name": "Line-height options",
+      "spec": "Keep the line-height column aligned with each size, preserving multiple options where shown."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The accompanying type-scale guidance explains that shared size/line-height relationships maintain coherence and accommodate differing script anatomy.",
+    "Application": "The complete 1x table provides coordinated default, adjusted and line-height values.",
+    "Constraint": "The accompanying guidance assigns 95% point sizes to Chinese, Japanese, Korean, Thai, Devanagari and Arabic while retaining the same line heights."
+  }
+}

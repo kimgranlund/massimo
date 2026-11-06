@@ -1,0 +1,29 @@
+{
+  "id": "HI19",
+  "title": "Serving and eating",
+  "image": "hi19.png",
+  "source": "../sources/illustration-examples.pdf",
+  "location": {
+    "page": 19,
+    "series": "Helsinki illustration examples — PDF derived from the official PowerPoint deck with LibreOffice",
+    "order": 209
+  },
+  "slide_intent": "Use gestures to communicate enjoyment and service so food imagery has a human narrative.",
+  "strategic_value": "A pizza carrier, diner and serving hand can bring warmth and variety to Helsinki’s food communications.",
+  "demonstration": "A small food truck sits upper left; a seated diner, pizza-carrying figure, raised cup and tray-bearing hand spread across pale blue.",
+  "category": "Imagery",
+  "practical_value": "Select a gesture that expresses the intended action rather than relying only on a food object.",
+  "content_islands": [
+    {
+      "name": "Food and diner",
+      "spec": "Pair the small truck and seated eater across the upper left and middle."
+    },
+    {
+      "name": "Serving gestures",
+      "spec": "Place the pizza carrier, raised cup and tray-bearing hand around them."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A small food truck sits upper left; a seated diner, pizza-carrying figure, raised cup and tray-bearing hand spread across pale blue."
+  }
+}

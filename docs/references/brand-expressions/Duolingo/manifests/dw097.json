@@ -1,0 +1,32 @@
+{
+  "id": "DW097",
+  "title": "Writing / Glossary",
+  "image": "dw097.png",
+  "source": "../sources/pages/writing-glossary.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/glossary",
+    "section": "Glossary",
+    "item": 97,
+    "order": 970
+  },
+  "slide_intent": "Use shared definitions so different writers explain the same product consistently to learners and the wider public.",
+  "strategic_value": "A common terminology reference can help Duolingo reduce contradictory explanations of its offer.",
+  "demonstration": "The blue glossary introduction pairs a consistency statement with a tall stack of brightly colored books.",
+  "category": "Voice",
+  "practical_value": "Check the agreed definition and preferred term before describing a product concept.",
+  "content_islands": [
+    {
+      "name": "Section introduction",
+      "spec": "Place the Writing label, lowercase section title and explanatory paragraph at left on the blue field."
+    },
+    {
+      "name": "Illustrated cue",
+      "spec": "Place a colorful stack of books at right, rising nearly the full height of the header."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The paragraph explicitly connects consistent messaging with understanding what Duolingo is and how it works.",
+    "Expression": "The blue glossary introduction pairs a consistency statement with a tall stack of brightly colored books."
+  }
+}

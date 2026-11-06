@@ -1,0 +1,27 @@
+{
+  "id": "HX13",
+  "title": "Illustrations",
+  "image": "hx13.png",
+  "source": "../sources/visual-storytelling.offline.html",
+  "location": {
+    "series": "Web guideline introduction/component",
+    "order": 50,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/visual-storytelling",
+    "original_html": "../sources/visual-storytelling.html"
+  },
+  "slide_intent": "Choose illustration when it clarifies a difficult subject because some ideas cannot be photographed directly.",
+  "strategic_value": "A consistent illustration style can help Helsinki explain complex topics while retaining recognition.",
+  "demonstration": "This webpage introduction names abstract, complex and hard-to-photograph subjects and explains illustration’s clarifying, enlivening and decorative roles.",
+  "category": "Imagery",
+  "practical_value": "Decide whether illustration communicates the subject more clearly than a photograph.",
+  "content_islands": [
+    {
+      "name": "Illustration premise",
+      "spec": "Place the subject-selection rationale and consistency statement beneath the heading."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text connects illustration to clarification and a consistent style to recognition.",
+    "Application": "It names the kinds of subjects illustration can communicate."
+  }
+}

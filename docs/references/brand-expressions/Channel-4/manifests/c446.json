@@ -1,0 +1,30 @@
+{
+  "id": "C446",
+  "title": "Green pens",
+  "image": "c446.png",
+  "source": "../sources/c446.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 / 2023 masterbrand case study",
+    "item": 46,
+    "extent": "Full published artwork"
+  },
+  "slide_intent": "Reduce identity to elements that survive on a narrow object, because small merchandise offers little room for explanation.",
+  "strategic_value": "Green pen bodies and contrasting black marks can make a routine tool recognizable as Channel 4 merchandise.",
+  "demonstration": "Two upright green pens carry black 4 marks on their lighter caps, photographed on a gray surface with a long shadow.",
+  "category": "Application",
+  "practical_value": "Test whether a mark and material color are sufficient for identifying a small cylindrical object.",
+  "content_islands": [
+    {
+      "name": "Branded objects",
+      "spec": "Place two pens together with the 4 marks facing the viewer near their upper ends."
+    },
+    {
+      "name": "Material and light",
+      "spec": "Retain the cap/body color distinction and strong side shadow to show how the identity reads on the physical objects."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Two upright green pens carry black 4 marks on their lighter caps, photographed on a gray surface with a long shadow.",
+    "Application": "The source demonstrates this treatment in branded pens."
+  }
+}

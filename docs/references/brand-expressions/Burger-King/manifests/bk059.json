@@ -1,0 +1,39 @@
+{
+  "id": "BK059",
+  "title": "Your Way",
+  "image": "bk059.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 59
+  },
+  "slide_intent": "Bind a short promise to an identifiable signature so the closing message remains attributable to the brand.",
+  "strategic_value": "A consistent Your Way end lockup can link Burger King’s customization promise to its logo.",
+  "demonstration": "The pale Your Way wordmark appears alone above a pale horizontal combination with the burger logo on brown.",
+  "category": "Typography",
+  "practical_value": "Use the supplied logo combination in Mayo Egg White at the end of television commercials.",
+  "content_islands": [
+    {
+      "name": "Usage restriction",
+      "spec": "Place the fixed-form and television-ending instructions at left."
+    },
+    {
+      "name": "Phrase specimen",
+      "spec": "Show the large Your Way wordmark at upper right."
+    },
+    {
+      "name": "Logo lockup",
+      "spec": "Place the logo and phrase together beneath, with the logo to the left."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Both specimens use the heavy rounded phrase in a pale-on-brown treatment.",
+    "Application": "The page supplies the television-ending logo combination.",
+    "Constraint": "Your Way is used only locked up with the logo at the end of television commercials, in Mayo Egg White."
+  },
+  "ingredient": {
+    "name": "Your Way television end lockup",
+    "role": "Attach the promise to the brand at the commercial’s close.",
+    "application": "Use the supplied logo-and-phrase configuration in Mayo Egg White.",
+    "scope": "Historical partner guide; restricted to television-commercial endings. The standalone specimen does not authorize standalone deployment."
+  }
+}

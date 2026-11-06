@@ -1,0 +1,37 @@
+{
+  "id": "MC05",
+  "title": "Circle colors on black",
+  "image": "mc05.png",
+  "source": "../sources/mc05.jpg",
+  "location": {
+    "series": "Pentagram / Mastercard / 2016 identity case study",
+    "item": 5,
+    "extent": "Full published artwork"
+  },
+  "slide_intent": "Expose the overlap against black because color relationships must stay distinct across light and dark backgrounds.",
+  "strategic_value": "A controlled lightness relationship can maintain both legibility and the impression of transparency.",
+  "demonstration": "Red and yellow circles intersect in bright orange at the center of a black field.",
+  "category": "Color",
+  "practical_value": "Evaluate overlap visibility alongside the pale-background signature in MC02.",
+  "content_islands": [
+    {
+      "name": "Color symbol",
+      "spec": "Center the red circle at left and yellow circle at right with an orange intersection."
+    },
+    {
+      "name": "Ground",
+      "spec": "Retain the uninterrupted black field around the symbol."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "Pentagram states that the three hues were tested for visibility on white, black and intermediate backgrounds.",
+    "Expression": "The black field isolates the red, orange and yellow relationships.",
+    "Constraint": "Pentagram explicitly states that the final overlap is lighter than the red and darker than the yellow."
+  },
+  "ingredient": {
+    "name": "Three-color circle mark",
+    "role": "Preserve recognition and express connection through overlapping colors.",
+    "application": "Keep the overlap lighter than red and darker than yellow; evaluate against different backgrounds.",
+    "scope": "Historical 2016 Pentagram case study; not a current master guideline or numeric production specification."
+  }
+}

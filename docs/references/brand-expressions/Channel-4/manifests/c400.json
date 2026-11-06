@@ -1,0 +1,31 @@
+{
+  "id": "C400",
+  "title": "Opening logo reveal",
+  "image": "c400.png",
+  "source": "../sources/c400.mp4",
+  "location": {
+    "series": "Pentagram / Channel 4 masterbrand / 2023",
+    "item": 0,
+    "extent": "Opening film; PNG extracted at 1 second"
+  },
+  "slide_intent": "Make an identity resolve through movement so the viewer can follow change toward a familiar sign.",
+  "strategic_value": "A green 4 that assembles within changing gradient rooms can connect expressive transitions to Channel 4 recognition.",
+  "demonstration": "The short film assembles separated green blocks into the 4 as warm rooms shift through pink, purple and blue before resolving on black.",
+  "category": "Motion",
+  "practical_value": "Compare the transitional fragments with the final stable silhouette.",
+  "content_islands": [
+    {
+      "name": "Moving blocks",
+      "spec": "Keep the green pieces at the visual center as their faces rotate into the recognizable mark."
+    },
+    {
+      "name": "Gradient room",
+      "spec": "Surround the mark with a receding room that shifts color before fading to black."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The film combines a segmented green mark, spatial gradients and a final black field.",
+    "Intent": "Pentagram explains that the new logo reveal and singular masterbrand color support attribution outside Channel 4 platforms."
+  },
+  "motion": "../sources/c400.mp4"
+}

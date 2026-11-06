@@ -1,0 +1,31 @@
+{
+  "id": "DW094",
+  "title": "Writing / Style / Capitalization",
+  "image": "dw094.png",
+  "source": "../sources/pages/writing-style.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/style",
+    "section": "Capitalization",
+    "item": 94,
+    "order": 940
+  },
+  "slide_intent": "Introduce a naming lookup so contributors can resolve capitalization consistently before publishing.",
+  "strategic_value": "A distinct reference heading can help Duolingo separate named product concepts from ordinary vocabulary.",
+  "demonstration": "A narrow separator places Capitalization beside a brief instruction to consult the upcoming charts.",
+  "category": "Voice",
+  "practical_value": "Use the following charts to check a specific word rather than relying only on general casing rules.",
+  "content_islands": [
+    {
+      "name": "Lookup heading",
+      "spec": "Place Capitalization at left."
+    },
+    {
+      "name": "Lookup instruction",
+      "spec": "Align the short instruction to consult the charts at right."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The instruction directs writers to the following capitalization charts."
+  }
+}

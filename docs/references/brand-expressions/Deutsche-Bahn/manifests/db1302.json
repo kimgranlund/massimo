@@ -1,0 +1,30 @@
+{
+  "id": "DB1302",
+  "title": "Layout / image-led and panel-led messages",
+  "image": "db1302.png",
+  "source": "../sources/page-13.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 13,
+    "section": 2,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Layout"
+  },
+  "slide_intent": "Separate text from an image when needed so the main message stays legible.",
+  "strategic_value": "A consistent set of DB elements can work both directly on photography and within a distinct panel.",
+  "demonstration": "A cleaning-worker campaign places white text on the photograph; a railway campaign places black text in a white rectangle over the image.",
+  "category": "Layout",
+  "practical_value": "Compare direct text-on-image treatment with a contrasting information panel.",
+  "content_islands": [
+    {
+      "name": "Image-led campaign",
+      "spec": "Place the headline near the bottom of the worker photograph with a red edge accent."
+    },
+    {
+      "name": "Panel-led campaign",
+      "spec": "Place the numeric headline in a white rectangle over the track image."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The pair demonstrates text directly on photography and text separated onto a white surface."
+  }
+}

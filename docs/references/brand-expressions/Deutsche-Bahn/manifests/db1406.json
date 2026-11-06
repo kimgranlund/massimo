@@ -1,0 +1,31 @@
+{
+  "id": "DB1406",
+  "title": "Bilder im Kontext",
+  "image": "db1406.png",
+  "source": "../sources/page-14.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 14,
+    "section": 6,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Bildwelt"
+  },
+  "slide_intent": "Match photographic information to the communication task so a shared style does not erase purpose.",
+  "strategic_value": "One visual attitude can support DB image-building, campaigns and factual information.",
+  "demonstration": "Three small examples are labeled Image, Kampagne and Presse / Information with different role descriptions.",
+  "category": "Imagery",
+  "practical_value": "Choose atmosphere for image-building, a clear idea for campaigns and credible clarity for press or information.",
+  "content_islands": [
+    {
+      "name": "Context principle",
+      "spec": "Explain the common attitude and differing requirements above the examples."
+    },
+    {
+      "name": "Three roles",
+      "spec": "Align the image, campaign and information examples with their role captions."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source explains that different tasks require different staging and information content.",
+    "Application": "It assigns distinct photographic emphases to three communication contexts."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "DB1001",
+  "title": "SCHWELLE",
+  "image": "db1001.png",
+  "source": "../sources/page-10.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 10,
+    "section": 1,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Schwelle"
+  },
+  "slide_intent": "Connect a geometric progression to a meaningful idea so a repeated mark communicates more than decoration.",
+  "strategic_value": "The thin-to-thick sequence can associate DB with forward movement and continuous improvement.",
+  "demonstration": "The heading and paragraph explain the Schwelle progression and its extension into signature graphics and infographics.",
+  "category": "Geometry",
+  "practical_value": "Use the source rationale to judge whether a derivative preserves the element’s recognizable system.",
+  "content_islands": [
+    {
+      "name": "Rationale",
+      "spec": "Place the Schwelle heading above the explanation of progression and extensions."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source explicitly links thin-to-thick progression to movement, progress and continuous development.",
+    "Application": "It names signature graphics and infographics as extensions of the system."
+  }
+}

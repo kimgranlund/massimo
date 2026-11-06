@@ -1,0 +1,25 @@
+{
+  "id": "I042",
+  "title": "Sugar, spice, and sticky rice",
+  "image": "i042.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 42,
+    "printed_page": 42
+  },
+  "slide_intent": "Demonstrate how a type hierarchy helps a reader move from a recipe category to an invitation to explore and then to supporting information.",
+  "strategic_value": "Instacart can give an editorial recipe feature a distinct display voice while keeping the surrounding service copy easy to scan.",
+  "demonstration": "A dark green feature pairs a left-aligned stack of wordmark, eyebrow, headline, subhead and copy with a large food photograph at right. Fine print sits near the bottom.",
+  "category": "Typography",
+  "practical_value": "Use the recipe composition to check whether the display phrase gets the first read and whether the explanatory and legal copy remain separate.",
+  "content_islands": [
+    {
+      "name": "Editorial type stack",
+      "spec": "Place the wordmark above the recipe eyebrow. Set the display headline in two lines with the subhead and supporting copy directly below."
+    },
+    {
+      "name": "Food photograph and footer",
+      "spec": "Align a large rounded image with the right side of the green panel, keeping the small legal text at its lower left."
+    }
+  ]
+}

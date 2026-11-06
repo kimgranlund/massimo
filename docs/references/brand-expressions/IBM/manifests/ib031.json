@@ -1,0 +1,44 @@
+{
+  "id": "IB031",
+  "title": "Resources / Brand tools and repositories",
+  "image": "ib031.png",
+  "source": "../sources/resources.txt",
+  "location": {
+    "series": "IBM Design Language / public web guidelines",
+    "item": 31,
+    "extent": "Complete webpage content-area capture; visible default tab states",
+    "url": "https://www.ibm.com/design/language/resources/",
+    "order": 31000
+  },
+  "slide_intent": "Make authoritative tools easy to locate so designers can start from the intended assets and identify access requirements.",
+  "strategic_value": "A categorized resource directory can reduce inconsistent recreation of IBM elements and clarify where restricted assets require permission.",
+  "demonstration": "The webpage arranges resource cards under design tools, typography, color, grid, logos, iconography, illustration, photography, data visualization, animation and other resources.",
+  "category": "Brand",
+  "practical_value": "Identify the appropriate source library or starter kit and distinguish public references from resources marked as requiring IBM ID.",
+  "content_islands": [
+    {
+      "name": "Design tools, type and color",
+      "spec": "Begin with library cards, Plex repositories and palette/accessibility resources in small card grids."
+    },
+    {
+      "name": "Grid and logos",
+      "spec": "Follow grid references with logo-request and co-branding cards, retaining IBM-ID qualifiers."
+    },
+    {
+      "name": "Iconography",
+      "spec": "Group UI icons, app icons and pictograms into separate card families for libraries, starters and requests."
+    },
+    {
+      "name": "Imagery and data",
+      "spec": "Continue with illustration kits, photography assets and data-visualization resources."
+    },
+    {
+      "name": "Animation and other resources",
+      "spec": "Close with motion links and Carbon/Brand Center references, preserving access labels and ancillary footer."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The directory maps design tasks to named starter files, libraries, repositories and guidance.",
+    "Constraint": "Logo requests, co-branding, photography assets, video guidance and Brand Center resources carry IBM-ID access labels."
+  }
+}

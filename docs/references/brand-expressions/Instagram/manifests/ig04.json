@@ -1,0 +1,33 @@
+{
+  "id": "IG04",
+  "title": "Squircle / letterform motion",
+  "image": "ig04.png",
+  "source": "../sources/ig04.gif",
+  "location": {
+    "series": "Elvis Dinh / Instagram brand design system / project year 2022",
+    "item": 4,
+    "extent": "whole source artwork",
+    "poster_frame": 49,
+    "poster_seconds": 1.96,
+    "duration_seconds": 7.84
+  },
+  "slide_intent": "Connect typography to a recurring shape so words and symbols share a visual character.",
+  "strategic_value": "Rounded-square curves can make Instagram’s type feel related to its glyph.",
+  "demonstration": "The black-and-white animation moves between enlarged curved letterform fragments and rounded-square strokes.",
+  "category": "Typography",
+  "practical_value": "Compare the curvature shared by a letterform and the rounded-square motif without assuming every letter is identical.",
+  "content_islands": [
+    {
+      "name": "Letterform field",
+      "spec": "Use extreme black or white crops to fill the field."
+    },
+    {
+      "name": "Changing outline",
+      "spec": "Animate rounded strokes and counters through scale and position changes."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The animation demonstrates a common rounded-square character in graphic and typographic forms."
+  },
+  "motion": "../sources/ig04.mp4"
+}

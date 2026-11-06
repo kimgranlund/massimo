@@ -1,0 +1,40 @@
+{
+  "id": "IG05",
+  "title": "Layout / safe-area construction",
+  "image": "ig05.png",
+  "source": "../sources/ig05.gif",
+  "location": {
+    "series": "Elvis Dinh / Instagram brand design system / project year 2022",
+    "item": 5,
+    "extent": "whole source artwork",
+    "poster_frame": 247,
+    "poster_seconds": 9.88,
+    "duration_seconds": 9.92
+  },
+  "slide_intent": "Make the usable composition area explicit so signatures and copy remain clear at the edge.",
+  "strategic_value": "A repeatable frame can hold Instagram photography, message and attribution together across sizes.",
+  "demonstration": "A Find your people execution gains a grid, reduces inside a white field, then resolves into an inset diagram labelled 1/12 short side.",
+  "category": "Layout",
+  "practical_value": "Derive the demonstrated inset from the short side rather than a fixed pixel value.",
+  "content_islands": [
+    {
+      "name": "Campaign composition",
+      "spec": "Start with the overhead photograph, central white message, upper-right glyph and lower signatures."
+    },
+    {
+      "name": "Grid and inset diagram",
+      "spec": "Reveal alignment lines before isolating a pink border and short-side measurement."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The sequence traces a finished campaign back to its layout guides.",
+    "Constraint": "The inset diagram labels the margin as 1/12 of the short side."
+  },
+  "ingredient": {
+    "name": "Layout inset",
+    "role": "Keep messages and signatures inside a consistent usable field.",
+    "application": "Use the shown inset of one twelfth of the short side.",
+    "scope": "The case-study construction example; no additional format exceptions are supplied."
+  },
+  "motion": "../sources/ig05.mp4"
+}

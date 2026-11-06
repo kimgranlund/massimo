@@ -1,0 +1,38 @@
+{
+  "id": "DW067",
+  "title": "Writing / Style / Numerals",
+  "image": "dw067.png",
+  "source": "../sources/pages/writing-style.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/style",
+    "section": "Numerals",
+    "item": 67,
+    "order": 670
+  },
+  "slide_intent": "Format numbers according to reading context so quantities are easy to scan without making sentence openings awkward.",
+  "strategic_value": "Explicit exceptions for sentence starts and product currencies can help Duolingo keep numbers consistent across prose and interfaces.",
+  "demonstration": "Four preferred examples are compared with four alternatives for streaks, sentence starts, thousands and XP.",
+  "category": "Voice",
+  "practical_value": "Use numerals by default, then check the sentence-opening and product-currency exceptions.",
+  "content_islands": [
+    {
+      "name": "Guidance column",
+      "spec": "Place the Numerals heading and two rule paragraphs at left."
+    },
+    {
+      "name": "Worked examples",
+      "spec": "Set Like this examples above Not this alternatives at right, including comma-separated ordinary quantities and unseparated XP."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "Worked examples cover a streak, a sentence-opening number, a large quantity and XP.",
+    "Constraint": "The source requires numerals by default, spelled-out sentence starts, commas above 999, and no commas for XP or other product currency totals."
+  },
+  "ingredient": {
+    "name": "Number formatting",
+    "role": "Make quantities quickly recognizable.",
+    "application": "Use numerals, spell out sentence-opening numbers or rewrite large ones, and separate values above 999 with commas except product currency totals.",
+    "scope": "Historical official guidelines from the 2024–2025 archived snapshot; this records the displayed guidance, not current Duolingo product behavior."
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "I049",
+  "title": "Photography Tiers",
+  "image": "i049.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 49,
+    "printed_page": 49
+  },
+  "slide_intent": "Teach designers to choose the photographic approach that fits the communication’s job. A food scene and an isolated catalog product answer different viewer questions.",
+  "strategic_value": "Instacart can organize its photographic range by purpose while retaining a coherent image direction across applications.",
+  "demonstration": "Four similarly sized circular photographs introduce food-focused, lifestyle, product spotlight and catalogue images in a single row.",
+  "category": "Imagery",
+  "practical_value": "Decide whether the viewer needs appetite, context, a product hero or item identification, then use the corresponding tier for the brief.",
+  "content_islands": [
+    {
+      "name": "Tier examples",
+      "spec": "Place the four circular crops at equal intervals across the white page: a food scene, people outdoors, a product spotlight and an isolated jar."
+    },
+    {
+      "name": "Tier names",
+      "spec": "Center a concise label beneath every photograph and keep their order aligned with the examples."
+    }
+  ]
+}

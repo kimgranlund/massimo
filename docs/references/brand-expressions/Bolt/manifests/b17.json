@@ -1,0 +1,32 @@
+{
+  "id": "B17",
+  "title": "Primary type",
+  "image": "b17.png",
+  "source": "../bolt-brand-guidelines-2025-12.pdf",
+  "location": {
+    "page": 17
+  },
+  "slide_intent": "Teach designers to judge a display face both in isolation and in a real line. Its letterforms supply a voice while its spacing and weight determine how that voice reads at headline scale.",
+  "strategic_value": "Bolt can give short checkout promises a consistent inflection with Agrandir Narrow. A worked line connects its letterforms to the product’s vocabulary.",
+  "demonstration": "The page names Agrandir Narrow, enlarges six mixed-case letters, then sets a checkout line in the face. Medium and Bold character samples occupy two columns below.",
+  "category": "Typography",
+  "practical_value": "Compare the weights and read the sample headline before deciding how strongly the face should lead a campaign layout.",
+  "content_islands": [
+    {
+      "name": "Section rail",
+      "spec": "Place the wordmark at the top of the dark rail, highlight the current topic in the navigation and set the small folio at the foot."
+    },
+    {
+      "name": "Typeface introduction",
+      "spec": "Place the short role explanation in the white column. Set the family and designer credit in blue atop the large dark specimen card."
+    },
+    {
+      "name": "Letterform and headline specimens",
+      "spec": "Give the mixed-case AaBbCc sample most of the top card. Use a second wide card for a two-line checkout headline."
+    },
+    {
+      "name": "Weight comparison",
+      "spec": "Fill the bottom card with matched alphabets, numerals and punctuation in two columns. Label Medium and Bold above the specimens."
+    }
+  ]
+}

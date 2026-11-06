@@ -1,0 +1,47 @@
+{
+  "id": "HE038",
+  "title": "Content of illustrations – what is being depicted?",
+  "image": "he038.png",
+  "source": "../sources/visual-storytelling.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Content of illustrations – what is being depicted?",
+    "order": 52,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/visual-storytelling#content-of-illustrations---what-is-being-depicted-",
+    "original_html": "../sources/visual-storytelling.html"
+  },
+  "slide_intent": "Give illustrations specific people, places and information because generic symbols can flatten a city’s character and obscure its message.",
+  "strategic_value": "Recognizable Helsinki details and inclusive subjects can connect imagination with local identity.",
+  "demonstration": "This expanded webpage section compares inclusive people, local cityscapes, unusual stories, sustainability explanations and information graphics, then shows pattern-like illustration applications.",
+  "category": "Imagery",
+  "practical_value": "Select an illustrative subject that makes Helsinki or the intended information identifiable.",
+  "content_islands": [
+    {
+      "name": "People and place",
+      "spec": "Compare diverse subjects and recognizable Helsinki settings with generic alternatives."
+    },
+    {
+      "name": "Stories and sustainability",
+      "spec": "Show inventive city stories and age-appropriate sustainability imagery."
+    },
+    {
+      "name": "Information versus decoration",
+      "spec": "Compare concrete information graphics with abstract symbolic images."
+    },
+    {
+      "name": "Pattern applications",
+      "spec": "Finish with campaign/event pattern examples and their uses."
+    }
+  ],
+  "ingredient": {
+    "name": "Illustration subject",
+    "role": "Make Helsinki’s character or information specific and understandable.",
+    "application": "Include recognizable local features and diverse people; choose concrete information over generic sustainability symbolism.",
+    "scope": "Pattern-like illustrations are allowed for campaigns/events and when photos are unsuitable; waves are usually unnecessary in that context."
+  },
+  "reference_purposes": {
+    "Intent": "The text explains that information visualization exists to communicate efficiently and comprehensibly, not to decorate.",
+    "Application": "The comparisons demonstrate local details, inclusive subjects and explanatory information graphics.",
+    "Constraint": "Illustrations should include recognizable Helsinki features; a wave motif is usually unnecessary with pattern-like illustration, not absolutely prohibited."
+  }
+}

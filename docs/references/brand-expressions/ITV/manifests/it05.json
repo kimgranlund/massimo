@@ -1,0 +1,34 @@
+{
+  "id": "IT05",
+  "title": "ITVX / Bus-side audience voices",
+  "image": "it05.png",
+  "source": "../sources/1782130839-pfpmg5q3tmuqi5phezhzla-itv-x-bus.jpg",
+  "location": {
+    "series": "DixonBaxi / ITV case-study artwork series",
+    "item": 5,
+    "extent": "Whole source artwork",
+    "source_asset_index": 5
+  },
+  "slide_intent": "Write a sequence of short audience identities to express breadth without a catalogue of titles, because language tells audiences whether a service speaks to them.",
+  "strategic_value": "This approach can strengthen audience identification with the service.",
+  "demonstration": "A yellow panel on a red bus pairs the ITVX logo with stacked phrases including Crime junkie, Petrol head and Drama queen.",
+  "category": "Voice",
+  "practical_value": "Write a sequence of short audience identities to express breadth without a catalogue of titles.",
+  "content_islands": [
+    {
+      "name": "Vehicle",
+      "spec": "Red bus structure sets the physical advertising boundary."
+    },
+    {
+      "name": "Copy",
+      "spec": "Short serif phrases stack along the left."
+    },
+    {
+      "name": "Logo",
+      "spec": "Dark ITVX occupies the upper right."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A yellow panel on a red bus pairs the ITVX logo with stacked phrases including Crime junkie, Petrol head and Drama queen."
+  }
+}

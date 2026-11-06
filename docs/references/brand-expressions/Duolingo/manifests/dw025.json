@@ -1,0 +1,38 @@
+{
+  "id": "DW025",
+  "title": "DIN Next Rounded / Usage",
+  "image": "dw025.png",
+  "source": "../sources/pages/identity-typography.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/identity/typography",
+    "section": "Usage",
+    "item": 25,
+    "order": 250
+  },
+  "slide_intent": "Specify reading settings and hierarchy because extended copy must remain clear while supporting the headline.",
+  "strategic_value": "Consistent spacing and minimum size can help Duolingo’s explanatory text retain a recognizable, readable voice.",
+  "demonstration": "Examples show a long headline, supporting copy beneath Feather Bold and a subheading/body passage; the rules specify spacing, minimum size and alignment.",
+  "category": "Typography",
+  "practical_value": "Choose DIN for the stated roles and check settings against medium and size.",
+  "content_islands": [
+    {
+      "name": "Role examples",
+      "spec": "Stack the long headline, display-face support and body-copy examples with role captions in the left panel."
+    },
+    {
+      "name": "Text settings",
+      "spec": "Place the heading and leading, tracking, kerning, minimum size, alignment and hyphenation guidance in the right column."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The section assigns the face to headlines longer than 10 words, subheadings and all body copy.",
+    "Constraint": "The source states 140% leading, tracking 0, “0, optical” kerning, minimum 14 pt/px, no full justification and no hyphenation."
+  },
+  "ingredient": {
+    "name": "DIN Next Rounded settings",
+    "role": "Carry supporting and extended text clearly.",
+    "application": "Use 140% leading, tracking 0 and the printed “0, optical” kerning instruction; never below 14 pt in print or 14 px onscreen. Usually align left or center; never fully justify or hyphenate.",
+    "scope": "Historical archived guidelines. Historical guidance. Above 40 pt in print or 40 px onscreen, leading may decrease as size increases. This section says headlines longer than 10 words; its introductory specimen says 10 or longer."
+  }
+}

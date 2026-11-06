@@ -1,0 +1,27 @@
+{
+  "id": "DB1101",
+  "title": "ICONS",
+  "image": "db1101.png",
+  "source": "../sources/page-11.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 11,
+    "section": 1,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Icons"
+  },
+  "slide_intent": "Use compact symbols for rapid orientation while keeping their scope distinct from other sign systems.",
+  "strategic_value": "A clear functional icon vocabulary can support DB digital interfaces without conflating them with vehicle or architectural signage.",
+  "demonstration": "The introduction explains the functional purpose of icons and identifies separate requirements for vehicles, architecture and wayfinding.",
+  "category": "Geometry",
+  "practical_value": "Check that the intended use belongs to this functional icon system.",
+  "content_islands": [
+    {
+      "name": "Scope statement",
+      "spec": "Place the Icons heading above the purpose and application boundaries."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source links consistent icons to fast, intuitive orientation.",
+    "Constraint": "This system is exclusively functional, especially digital UI; vehicles, architecture and wayfinding have separate systems."
+  }
+}

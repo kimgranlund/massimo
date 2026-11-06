@@ -7,10 +7,10 @@
     "page": 48
   },
   "slide_intent": "Teach designers to read the lightness of a painted surface before choosing a mark color. People looking at a fleet vehicle need to distinguish its identification from the door behind it.",
-  "strategic_value": "NASA can use one identification across cars acquired in different colors. Changing the lettering from black to white preserves the form of the mark while giving it contrast against a darker body.",
+  "strategic_value": "NASA can keep its fleet identifiable across vehicles bought in different paint colors. The two sedan drawings preserve the same lockup and door placement as the foreground changes.",
   "demonstration": "Two side views hold the sedan, marking position and flush-left arrangement steady. Figure a uses black on the light car. Figure b uses white on the dark car. The text uses a 40% gray-scale value as the dividing line.",
   "category": "Color",
-  "practical_value": "Compare the body color with the manual’s gray scale. For this black-or-white treatment, use black markings at 40% or lighter and white markings above 40%. The adjacent section 7.3 gives white vehicles a separate red-logo option.",
+  "practical_value": "Compare the door paint with the manual’s gray scale before specifying the markings. At exactly 40%, choose black.",
   "content_islands": [
     {
       "name": "Heading and decision rule",
@@ -20,5 +20,16 @@
       "name": "Matched sedan comparison",
       "spec": "Below a horizontal rule, stack two equally scaled side elevations in the same orientation. Label them a and b. Keep the lockup on the front door and carry its left alignment across both examples. Change the body value and lettering color together so the contrast decision is visible."
     }
-  ]
+  ],
+  "ingredient": {
+    "name": "Vehicle identification color",
+    "role": "Keep the NASA mark and lettering legible against the body paint.",
+    "application": "Use black identification on a vehicle at 40% gray or lighter. Use white identification on a vehicle darker than 40%.",
+    "scope": "Evaluate the painted surface of each vehicle under the 1976 manual’s black-or-white treatment (§7.2). White vehicles also have a red-logotype option in §7.3."
+  },
+  "reference_purposes": {
+    "Expression": "Two matched sedan drawings show the same door identification in black on a light body and white on a dark body.",
+    "Application": "The text directs the reader to compare vehicle paint against the preceding gray scale before choosing black or white.",
+    "Constraint": "The decision boundary is explicit: black at 40% gray or lighter, white when darker than 40%; markings also clear door moldings."
+  }
 }

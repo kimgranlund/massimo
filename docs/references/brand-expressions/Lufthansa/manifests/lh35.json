@@ -1,0 +1,36 @@
+{
+  "id": "LH35",
+  "title": "Letter construction detail",
+  "image": "lh35.png",
+  "source": "../sources/lh35.svg",
+  "location": {
+    "series": "HvD Fonts / Lufthansa 2018",
+    "item": 14,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Compare geometry with optical correction because mechanically similar forms can produce uneven reading rhythm.",
+  "strategic_value": "Controlled curves, spacing and proportions can give Lufthansa type both precision and readable character.",
+  "demonstration": "Large c, f, x, n and 9 forms sit over pale guides with cyan contours and measurement arrows.",
+  "category": "Geometry",
+  "practical_value": "Inspect curves, diagonals and counters together before applying a geometric rule to a whole alphabet.",
+  "content_islands": [
+    {
+      "name": "Letter row",
+      "spec": "Align the large black forms."
+    },
+    {
+      "name": "Guide overlay",
+      "spec": "Keep the cyan contours and arrows visible against the pale construction field."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Large c, f, x, n and 9 forms sit over pale guides with cyan contours and measurement arrows.",
+    "Intent": "HvD explains the balance of construction with optical corrections."
+  },
+  "ingredient": {
+    "name": "Letter construction detail",
+    "role": "Balance geometric consistency with readable letter spacing and counters.",
+    "application": "Inspect curves, diagonals and counters together before applying a geometric rule to a whole alphabet.",
+    "scope": "Historical 2018 Lufthansa airline refresh case study; observed example, not a complete brand manual or a current Lufthansa Group rule."
+  }
+}

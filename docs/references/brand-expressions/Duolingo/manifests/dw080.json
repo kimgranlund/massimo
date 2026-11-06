@@ -1,0 +1,39 @@
+{
+  "id": "DW080",
+  "title": "Writing / Style / Capitalization",
+  "image": "dw080.png",
+  "source": "../sources/pages/writing-style.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/style",
+    "section": "Capitalization",
+    "item": 80,
+    "order": 800
+  },
+  "slide_intent": "Assign capitalization by content role so approachability and recognizable interface labels can coexist.",
+  "strategic_value": "Role-specific casing can help Duolingo keep most copy relaxed while making buttons and named content predictable.",
+  "demonstration": "Five groups compare button, header, page/blog, video and story title capitalization.",
+  "category": "Voice",
+  "practical_value": "Choose case from the content’s role instead of applying sentence case or title case universally.",
+  "content_islands": [
+    {
+      "name": "Guidance column",
+      "spec": "Place the Capitalization heading, approachability rationale and cross-reference at left."
+    },
+    {
+      "name": "Worked examples",
+      "spec": "Stack five rule-and-example groups at right: buttons, headers/subheads, blog/page titles, videos and stories."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The explanation links restrained capitalization to an approachable product and brand.",
+    "Application": "Five comparisons show casing choices for distinct content types.",
+    "Constraint": "Buttons use all caps; headers, subheads, blog and page titles use sentence case; video and story titles use title case."
+  },
+  "ingredient": {
+    "name": "Capitalization by role",
+    "role": "Signal the type of text without making every line formal.",
+    "application": "Use all caps for buttons, sentence case for headers/subheads/blog/page titles, and title case for video and story titles.",
+    "scope": "Historical official guidelines from the 2024–2025 archived snapshot; this records the displayed guidance, not current Duolingo product behavior. This is the displayed writing convention; typography-specific display-font rules elsewhere may add context."
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "DBV25",
+  "title": "Layout_05",
+  "image": "dbv25.png",
+  "source": "../sources/media/dbv25.mp4",
+  "location": {
+    "series": "DB new design / motion demonstrations",
+    "source_page": 15,
+    "section": "Animation-14021536",
+    "source_url": "https://ecm-mediathek-cdn.deutschebahn.com/cdnenhancedecmvidhls/db306419/2880965/video_config.json",
+    "capture_date": "2026-11-05",
+    "note": "Visually repeats the no-panel composition in DBV21, but the source explicitly teaches its DOOH application here."
+  },
+  "slide_intent": "Make an outdoor screen message legible as a sequence because a passerby may see only part of its cycle.",
+  "strategic_value": "The direct white headline and red Schwelle can connect a brief DOOH encounter to DB’s identity.",
+  "demonstration": "An employee photograph supports a white logo and headline with small copy and a red Schwelle; the source identifies this version as a DOOH format.",
+  "category": "Motion",
+  "practical_value": "Use this as the DOOH application of the no-panel layout and assess which elements remain clear during a brief glance.",
+  "content_islands": [
+    {
+      "name": "Screen image",
+      "spec": "Fill the screen with the employee photograph."
+    },
+    {
+      "name": "Timed message",
+      "spec": "Stage the white type and red Schwelle over the image for the DOOH sequence."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "An employee photograph supports a white logo and headline with small copy and a red Schwelle; the source identifies this version as a DOOH format.",
+    "Application": "The source caption explicitly identifies this no-panel animation as a DOOH format.",
+    "Intent": "Accompanying Layout prose says animation can direct focus and clarify structure through clear, precise, comprehensible movements."
+  },
+  "motion": "../sources/media/dbv25.mp4"
+}

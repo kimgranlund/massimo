@@ -1,0 +1,33 @@
+{
+  "id": "DB0812",
+  "title": "Dos and Don'ts / layout fields",
+  "image": "db0812.png",
+  "source": "../sources/page-08.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 8,
+    "section": 12,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Markenfarben"
+  },
+  "slide_intent": "Keep accents from becoming arbitrary grounds so the palette’s hierarchy remains recognizable.",
+  "strategic_value": "Restricting large layout fields to neutrals can preserve the distinct jobs of DB Red and Lilac.",
+  "demonstration": "Correct light/dark layout examples are paired with crossed-out red and Lilac fields.",
+  "category": "Color",
+  "practical_value": "Keep the main layout surface White or Cold Black.",
+  "content_islands": [
+    {
+      "name": "Field comparison",
+      "spec": "Place the accepted neutral pair at left and crossed-out accent-color fields at right with their captions."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The side-by-side examples show the permitted surface treatment.",
+    "Constraint": "White and Cold Black are layout-field colors; DB Red and Lilac are not used as layout fields."
+  },
+  "ingredient": {
+    "name": "Layout field colors",
+    "role": "Provide a neutral base for content and identity accents.",
+    "application": "Use White or Cold Black as the layout field.",
+    "scope": "This section prohibits DB Red and Lilac as general layout fields; the guide separately demonstrates red UI controls."
+  }
+}

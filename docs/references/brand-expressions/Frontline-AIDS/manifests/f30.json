@@ -1,0 +1,28 @@
+{
+  "id": "F30",
+  "title": "Watchouts",
+  "image": "f30.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 30
+  },
+  "slide_intent": "Teach designers to distinguish a reproducible identity symbol from a drawing anyone may make in a participatory setting. Official uses depend on a stable silhouette.",
+  "strategic_value": "Frontline AIDS can invite informal expressions of the figure while keeping its supplied mark identifiable in formal communications.",
+  "demonstration": "Nine prohibited examples change the head, orientation, color, effects, construction or surroundings of the person. Each is paired with a pink cross.",
+  "category": "Brand",
+  "practical_value": "Check the official asset for distortion, superimposed facial features, poor contrast and additions before release.",
+  "content_islands": [
+    {
+      "name": "Scope note",
+      "spec": "Identify this as the symbol subsection in the rail and put the caution under Watchouts at left."
+    },
+    {
+      "name": "Alteration examples",
+      "spec": "Arrange three rows of standalone figures with short diagnoses. Include the examples of recoloring, outlining, rotating and adding a shadow."
+    },
+    {
+      "name": "Image and redraw cases",
+      "spec": "Use the face inside the symbol, the altered construction and the symbol on a photograph to clarify the limits on formal reproduction."
+    }
+  ]
+}

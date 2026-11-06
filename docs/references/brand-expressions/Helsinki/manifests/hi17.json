@@ -1,0 +1,29 @@
+{
+  "id": "HI17",
+  "title": "Winter recreation and warmth",
+  "image": "hi17.png",
+  "source": "../sources/illustration-examples.pdf",
+  "location": {
+    "page": 17,
+    "series": "Helsinki illustration examples — PDF derived from the official PowerPoint deck with LibreOffice",
+    "order": 207
+  },
+  "slide_intent": "Pair outdoor activity with warm details so the season is expressed through experience rather than snow alone.",
+  "strategic_value": "Skiing, bathing and steaming cups can give Helsinki winter imagery several emotional registers.",
+  "demonstration": "A skier, winding boardwalk, bundled standing figure, seated bather, fire and steaming cups are distributed on gray beneath sun and clouds.",
+  "category": "Imagery",
+  "practical_value": "Choose contrasting cold-weather activities and warm details to suit the desired tone.",
+  "content_islands": [
+    {
+      "name": "Sky and recreation",
+      "spec": "Place sun, clouds, skier and boardwalk in the upper half."
+    },
+    {
+      "name": "Warmth and rest",
+      "spec": "Arrange the seated bather, cups and fire below the standing figure."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A skier, winding boardwalk, bundled standing figure, seated bather, fire and steaming cups are distributed on gray beneath sun and clouds."
+  }
+}

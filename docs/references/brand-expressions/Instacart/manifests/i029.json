@@ -1,0 +1,25 @@
+{
+  "id": "I029",
+  "title": "Extended Palette",
+  "image": "i029.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 29,
+    "printed_page": 29
+  },
+  "slide_intent": "Teach designers to distinguish the colors that anchor the identity from those that extend it. The distinction helps a viewer interpret variety and recognize a specific service.",
+  "strategic_value": "Food-related names can tie an expanded range to shopping. Reserving Plus colors for Plus communications can distinguish that offer inside the wider brand.",
+  "demonstration": "Ten labeled cards form two rows. Cashew and Carrot, Kale and Lime, Pomegranate and Guava, Cinnamon and Turmeric, and the Plus pair occupy adjacent vertical pairs.",
+  "category": "Color",
+  "practical_value": "Choose an extended hue for a food-related context, and check its assigned role before applying a Plus hue to general communications.",
+  "content_islands": [
+    {
+      "name": "Palette introduction",
+      "spec": "Put the title at upper left and the explanation of supporting and Plus colors above the swatch field."
+    },
+    {
+      "name": "Swatch matrix",
+      "spec": "Arrange the colors in five columns of two rounded cards. Give each a name and compact color references. Preserve the distinct Plus pair at the far right."
+    }
+  ]
+}

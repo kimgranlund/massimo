@@ -1,0 +1,31 @@
+{
+  "id": "DB1208",
+  "title": "Kombination und Erweiterung / light background",
+  "image": "db1208.png",
+  "source": "../sources/page-12.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 12,
+    "section": 8,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Signature-Graphics"
+  },
+  "slide_intent": "Keep combined graphics subordinate to one focus so a detailed composition remains readable.",
+  "strategic_value": "A subdued skyline with one color accent can make DB destination imagery expressive without clutter.",
+  "demonstration": "The light-background tab shows a gray combined skyline with one red tower under the composition guidance.",
+  "category": "Layout",
+  "practical_value": "Keep combined graphics at equal detail, use a subtle gray background treatment and highlight only one focal element in red or lilac.",
+  "content_islands": [
+    {
+      "name": "Combination rules",
+      "spec": "Place the detail, complexity and color conditions above the tabs."
+    },
+    {
+      "name": "Combined skyline",
+      "spec": "Use gray landmarks as context around the single red focal tower."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The skyline demonstrates combined graphics with a single color focus.",
+    "Constraint": "Combined compositions are only subtle backgrounds in defined grays; one focal element may use DB Red or Transitional Lilac."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "N36",
+  "title": "Press Kits/Directories",
+  "image": "n36.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 36
+  },
+  "slide_intent": "Teach designers to distinguish a package that introduces many press materials from a directory that helps someone retrieve information.",
+  "strategic_value": "NASA can identify both kinds of publication with the same type and mark while giving each cover an appropriate level of expression.",
+  "demonstration": "The upper row compares three press-kit treatments, including the angled Viking title. The lower row compares directory covers featuring a telephone illustration, a red type-led cover and an enlarged mark.",
+  "category": "Application",
+  "practical_value": "For a press kit, start with layout, type and issuer identification. For a directory, consider a graphic cue that helps the reader identify its function.",
+  "content_islands": [
+    {
+      "name": "Format guidance",
+      "spec": "Set the heading and compare the purpose of a press kit and a directory in the top columns."
+    },
+    {
+      "name": "Press-kit covers",
+      "spec": "Align three complete rectangles across the upper row. Keep the contrasting treatments of the NASA signature, center name and mission title."
+    },
+    {
+      "name": "Directory covers",
+      "spec": "Place the directory examples below, with their covers at equal scale. Retain the telephone image and the alternate type-led treatments."
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "IG08",
+  "title": "Embrace imperfection / windblown portrait",
+  "image": "ig08.png",
+  "source": "../sources/ig08.jpg",
+  "location": {
+    "series": "Elvis Dinh / Instagram brand design system / project year 2022",
+    "item": 8,
+    "extent": "whole source artwork"
+  },
+  "slide_intent": "Allow incidental movement and imperfect framing to convey a lived human moment.",
+  "strategic_value": "Unpolished imagery can support the authentic experience described in Instagram’s principle.",
+  "demonstration": "A low-angle portrait shows hair blown across the frame against a cloudy sky, with no graphic overlays.",
+  "category": "Imagery",
+  "practical_value": "Assess whether a photograph feels spontaneous through motion, framing and expression before adding branding.",
+  "content_islands": [
+    {
+      "name": "Windblown subject",
+      "spec": "Let the moving hair occupy much of the portrait field."
+    },
+    {
+      "name": "Open sky",
+      "spec": "Retain the pale sky behind the head so the loose strands remain visible."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The adjacent Embrace imperfection text explicitly celebrates authentic, imperfect human experiences.",
+    "Expression": "The image demonstrates that principle through loose framing and visible movement."
+  }
+}

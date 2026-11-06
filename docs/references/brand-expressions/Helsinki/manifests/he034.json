@@ -1,0 +1,32 @@
+{
+  "id": "HE034",
+  "title": "Using photographs in campaigns",
+  "image": "he034.png",
+  "source": "../sources/visual-storytelling.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Using photographs in campaigns",
+    "order": 46,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/visual-storytelling#using-photographs-in-campaigns",
+    "original_html": "../sources/visual-storytelling.html"
+  },
+  "slide_intent": "Allow campaign invention while retaining recognition because a surprising idea still needs to be attributed to its source.",
+  "strategic_value": "Helsinki can vary photographic concepts without losing the city identity that connects them.",
+  "demonstration": "This expanded webpage section introduces broad campaign freedom and shows four credited campaign applications.",
+  "category": "Imagery",
+  "practical_value": "Evaluate whether an inventive campaign remains recognizable as Helsinki.",
+  "content_islands": [
+    {
+      "name": "Campaign scope",
+      "spec": "Place the freedom-and-recognition statement above the examples."
+    },
+    {
+      "name": "Campaign examples",
+      "spec": "Show the credited photographic campaign compositions in paired groups."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The examples demonstrate photographic concepts in city campaigns.",
+    "Constraint": "Campaigns must remain recognizable as part of Helsinki’s brand and visual identity."
+  }
+}

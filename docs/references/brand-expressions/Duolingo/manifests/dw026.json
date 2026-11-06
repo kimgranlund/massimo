@@ -1,0 +1,39 @@
+{
+  "id": "DW026",
+  "title": "Typography / Hierarchy with the logotype",
+  "image": "dw026.png",
+  "source": "../sources/pages/identity-typography.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/identity/typography",
+    "section": "Hierarchy",
+    "item": 26,
+    "order": 260
+  },
+  "slide_intent": "Separate headline from signature through weight and scale because equal-looking elements can compete for the same reading role.",
+  "strategic_value": "A light DIN headline contrasted with the Duolingo signature can preserve both message hierarchy and brand recognition.",
+  "demonstration": "Ideal and maximum examples compare headline scale with the logotype; the copy specifies light weight and 1.5× versus 2× x-height relationships.",
+  "category": "Typography",
+  "practical_value": "Check headline weight and scale when DIN is paired with the signature.",
+  "content_islands": [
+    {
+      "name": "Scale comparison",
+      "spec": "Keep the Ideal and Maximum examples side by side within the left panel."
+    },
+    {
+      "name": "Hierarchy instructions",
+      "spec": "Place the heading, light-weight direction and numerical relationship in the right column."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source says contrasting weight and scale creates a harmonious relationship between logotype and headline.",
+    "Application": "Ideal and maximum specimens show the relationship.",
+    "Constraint": "DIN should be light when paired with the logotype; ideal scale is 1.5 times its x-height, with 2 times as the maximum."
+  },
+  "ingredient": {
+    "name": "Headline-to-logotype hierarchy",
+    "role": "Keep message and signature distinct.",
+    "application": "Pair the logotype with light DIN Next Rounded; target 1.5 times the logotype x-height and do not exceed 2 times.",
+    "scope": "Historical archived guidelines. Historical rule for DIN used with the logo, not a universal headline/body ratio."
+  }
+}

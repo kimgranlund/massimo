@@ -1,0 +1,34 @@
+{
+  "id": "HI35",
+  "title": "Illustration use / Infrastructure collage with text",
+  "image": "hi35.png",
+  "source": "../sources/illustration-examples.pdf",
+  "location": {
+    "page": 35,
+    "series": "Helsinki illustration examples — PDF derived from the official PowerPoint deck with LibreOffice",
+    "order": 225
+  },
+  "slide_intent": "Group related fragments into a distinct image zone so a collage can accompany detailed text without fragmenting the reading path.",
+  "strategic_value": "Construction and waterfront motifs can give Helsinki explanatory material a locally recognizable setting.",
+  "demonstration": "A planter, white bridge on blue water, crane, buildings and small facade cluster at left; the right holds a heading and two paragraphs, with a small logo at lower left.",
+  "category": "Layout",
+  "practical_value": "Keep the collage concentrated beside a stable text column and use the logo as a separate signature.",
+  "content_islands": [
+    {
+      "name": "Infrastructure collage",
+      "spec": "Stack planter, bridge, crane and building fragments across the left half."
+    },
+    {
+      "name": "Text column",
+      "spec": "Align the heading and two paragraphs at right."
+    },
+    {
+      "name": "Logo signature",
+      "spec": "Place the small framed logo below the image field."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The slide applies infrastructure motifs beside a conventional text column.",
+    "Expression": "Orange crane, blue water and outlined buildings create a recognizable collage vocabulary."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "IBS27",
+  "title": "Corporate signature / Copyright 2023",
+  "image": "ibs27.png",
+  "source": "../sources/ibm-logo-strategic-partners.pdf",
+  "location": {
+    "page": 27,
+    "series": "IBM Logo Guidelines for Strategic Partners / Version 1.2 / copyright 2023",
+    "order": 200027
+  },
+  "slide_intent": "Close the guide with a clear owner and date so a reader can identify the source of the document.",
+  "strategic_value": "A restrained corporate signature can reinforce IBM authorship without adding another instructional claim.",
+  "demonstration": "A pale-blue field fills most of the page; the lower white band contains the corporate name, copyright2023 and a small IBM logo at right.",
+  "category": "Brand",
+  "practical_value": "Record the copyright year as provenance without assuming it establishes the current validity of every rule.",
+  "content_islands": [
+    {
+      "name": "Closing field",
+      "spec": "Leave the pale-blue field unlabelled, matching the cover and section dividers."
+    },
+    {
+      "name": "Ownership footer",
+      "spec": "Place the corporate name and 2023 copyright at lower left of the content alignment and the IBM logo at far right."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The closing page repeats the pale-blue and white book treatment with the small IBM signature."
+  }
+}

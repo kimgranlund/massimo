@@ -1,0 +1,31 @@
+{
+  "id": "DB0507",
+  "title": "Fortschrittswirkung in Zahlen",
+  "image": "db0507.png",
+  "source": "../sources/page-05.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 5,
+    "section": 7,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Unsere-Markenpersoenlichkeit"
+  },
+  "slide_intent": "Show the effect of progress with comparable quantities so viewers can see what changed.",
+  "strategic_value": "Prominent increments and outcomes can make DB’s performance narrative concrete.",
+  "demonstration": "A three-part stage display presents punctuality, a total score and renewable-electricity change beside a written explanation of progress messaging.",
+  "category": "Application",
+  "practical_value": "Pair a change figure with its underlying measure and emphasize the consequence for people.",
+  "content_islands": [
+    {
+      "name": "Metrics display",
+      "spec": "Show the dark/light/dark three-panel stage with +3.4%, 78 total score and +2.4% examples."
+    },
+    {
+      "name": "Explanation",
+      "spec": "Place the progress-message bullets in the light panel at right."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The right-hand text says the focus is the effect for people, not merely what DB did.",
+    "Application": "The stage example uses KPIs, infographics and change symbols to present progress."
+  }
+}

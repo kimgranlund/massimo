@@ -1,0 +1,38 @@
+{
+  "id": "DW083",
+  "title": "Writing / Style / Italics",
+  "image": "dw083.png",
+  "source": "../sources/pages/writing-style.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/style",
+    "section": "Italics",
+    "item": 83,
+    "order": 830
+  },
+  "slide_intent": "Distinguish titles from surrounding prose so readers can recognize the kind of work being referenced.",
+  "strategic_value": "A single mixed example can help Duolingo keep citations readable without inventing a treatment for each title.",
+  "demonstration": "One paragraph contrasts italicized book and magazine titles with quoted song and article titles.",
+  "category": "Voice",
+  "practical_value": "Identify the type of work before choosing italics or quotation marks.",
+  "content_islands": [
+    {
+      "name": "Guidance column",
+      "spec": "Place the topic heading, its parent label and the written convention in the narrow left column."
+    },
+    {
+      "name": "Worked examples",
+      "spec": "Place the worked copy in the pale right panel, keeping preference labels and green checks with their examples."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The example combines a book, song, article and magazine in one sentence sequence.",
+    "Constraint": "Italicize books, magazines, films and music albums; use quotation marks for song and article titles."
+  },
+  "ingredient": {
+    "name": "Italics convention",
+    "role": "Readers can recognize the kind of work being referenced.",
+    "application": "Italicize books, magazines, films and music albums; use quotation marks for song and article titles.",
+    "scope": "Historical official guidelines from the 2024–2025 archived snapshot; this records the displayed guidance, not current Duolingo product behavior."
+  }
+}

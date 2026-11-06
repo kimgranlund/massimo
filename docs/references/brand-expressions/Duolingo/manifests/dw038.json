@@ -1,0 +1,39 @@
+{
+  "id": "DW038",
+  "title": "Photography / Portraits",
+  "image": "dw038.png",
+  "source": "../sources/pages/identity-imagery.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/identity/imagery",
+    "section": "Portraits",
+    "item": 38,
+    "order": 380
+  },
+  "slide_intent": "Connect authentic portraits to a recognizable color cue because subtle repetition can create unity without making every person look the same.",
+  "strategic_value": "Green in clothing or surroundings can link diverse portraits to Duolingo while preserving individual character.",
+  "demonstration": "Four portrait examples accompany a direction to use authentic people across the globe and include green when possible.",
+  "category": "Imagery",
+  "practical_value": "Look for a natural green element in an otherwise authentic portrait.",
+  "content_islands": [
+    {
+      "name": "Portrait comparison",
+      "spec": "Arrange the four photographs as a two-column set within the left panel."
+    },
+    {
+      "name": "Optional color connection",
+      "spec": "Place the heading, authenticity statement and conditional green preference at right."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source emphasizes authentic portraits of people across the globe.",
+    "Application": "The text suggests green in clothing or surroundings when possible.",
+    "Expression": "The four images demonstrate the portrait approach."
+  },
+  "ingredient": {
+    "name": "Green in portraiture",
+    "role": "Connect real-person imagery with the brand palette.",
+    "application": "Choose authentic portraits and include green clothing or surroundings when possible.",
+    "scope": "Historical archived guidelines. Historical portrait guidance. Green is a preference conditioned on possibility, not a mandatory recoloring instruction."
+  }
+}

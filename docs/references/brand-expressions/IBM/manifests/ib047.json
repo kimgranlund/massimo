@@ -1,0 +1,47 @@
+{
+  "id": "IB047",
+  "title": "Technical diagrams / Usage",
+  "image": "ib047.png",
+  "source": "../sources/infographics-technical-diagrams-usage.txt",
+  "location": {
+    "series": "IBM Design Language / public web guidelines",
+    "item": 47,
+    "extent": "Complete webpage content area, default interactive state",
+    "url": "https://www.ibm.com/design/language/infographics/technical-diagrams/usage/",
+    "order": 47000
+  },
+  "slide_intent": "Make system relationships explicit so readers do not have to infer meaning from unexplained symbols.",
+  "strategic_value": "Legends, consistent nodes and clear subsystem boundaries can make IBM technical communications easier to interpret.",
+  "demonstration": "Document and screen examples precede clarity comparisons, product-guidance routing and an IT architecture vocabulary table.",
+  "category": "Application",
+  "practical_value": "Choose the right diagram system, add a legend and text labels, and preserve semantic differences between node types.",
+  "content_islands": [
+    {
+      "name": "Examples in use",
+      "spec": "Begin with documents, printed diagrams and screen applications."
+    },
+    {
+      "name": "Clarity comparisons",
+      "spec": "Use approved and rejected legends, labels, zoom access, nesting and node examples."
+    },
+    {
+      "name": "Carbon boundary",
+      "spec": "Explain when to switch to product components rather than communication-diagram guidance."
+    },
+    {
+      "name": "Subsystem vocabulary",
+      "spec": "List architecture concepts beside their notation and link to specialist resources and documentation kits."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source prioritizes clarity and correct interpretation of relationships and architectural models.",
+    "Application": "Examples explain legends, labels, nested fills, zoom access and specialist architecture notation.",
+    "Constraint": "General guidance applies outside product screens; product diagrams use Carbon guidance. Essential information must have words as well as icons, and new subsystem elements require approval."
+  },
+  "ingredient": {
+    "name": "Technical diagram semantics",
+    "role": "Make the meaning of relationships and nodes explicit.",
+    "application": "Include a legend and words for essential information; offer zoom or download when a diagram cannot be displayed at 100%. Use node differences only for semantic differences.",
+    "scope": "Documentation, presentation and collateral diagrams. Product interfaces follow Carbon; architecture subsystems also retain their specialized notation."
+  }
+}

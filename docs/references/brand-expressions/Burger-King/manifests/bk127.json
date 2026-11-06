@@ -1,0 +1,27 @@
+{
+  "id": "BK127",
+  "title": "Contacts",
+  "image": "bk127.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 127
+  },
+  "slide_intent": "Make support information easy to locate so readers know where the guide turns from instructions to help.",
+  "strategic_value": "A distinct Contacts divider can help Burger King partners find the route for resolving brand questions.",
+  "demonstration": "A single large orange Contacts heading appears near the top left of a brown page with small guide furniture.",
+  "category": "Brand",
+  "practical_value": "Locate the final contact section when the preceding guidance leaves a question unresolved.",
+  "content_islands": [
+    {
+      "name": "Contact title",
+      "spec": "Place the oversized orange Contacts heading high on the brown field."
+    },
+    {
+      "name": "Running labels",
+      "spec": "Keep the guide name, section label, folio and copyright footer peripheral."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The Contacts divider uses the same orange/brown display treatment as the preceding operational chapters."
+  }
+}

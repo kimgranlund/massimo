@@ -1,0 +1,32 @@
+{
+  "id": "CH08",
+  "title": "Website in a garden",
+  "image": "ch08.png",
+  "source": "../sources/ch08.mp4",
+  "location": {
+    "series": "COLLINS / Mailchimp case study",
+    "item": 8,
+    "extent": "Complete published artwork",
+    "section": "Gallery"
+  },
+  "slide_intent": "Give a digital service a tangible setting because an abstract tool can feel more approachable through familiar surroundings.",
+  "strategic_value": "A yellow interface in a planted scene can extend Mailchimp’s combination of useful software and playful imagery.",
+  "demonstration": "A monitor in grass beneath a toucan shows a yellow website; its right-side line illustration transforms while the headline and controls remain in place.",
+  "category": "Motion",
+  "practical_value": "Compare animated illustration with stable interface copy in one composition.",
+  "content_islands": [
+    {
+      "name": "Environment",
+      "spec": "Frame the monitor with tree, foliage, toucan and small plants."
+    },
+    {
+      "name": "Interface",
+      "spec": "Keep headline and controls at left while the hand-drawn figure changes at right."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The film presents an animated illustration inside a website layout.",
+    "Expression": "A realistic planted setting contrasts with the yellow interface and transforming drawing."
+  },
+  "motion": "../sources/ch08.mp4"
+}

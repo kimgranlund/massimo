@@ -1,0 +1,29 @@
+{
+  "id": "LH08",
+  "title": "Brand across service environments",
+  "image": "lh08.png",
+  "source": "../sources/lh08.jpg",
+  "location": {
+    "series": "Mona Franz / Lufthansa 2018",
+    "item": 8,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Compare identity across people and places because recognition depends on repeated cues through a journey.",
+  "strategic_value": "Blue seats and signage, yellow uniform accents and crane reliefs can make separate service encounters feel related.",
+  "demonstration": "A collage combines flags, a staff portrait, cabin seating, a crane relief, check-in and lounge interiors.",
+  "category": "Application",
+  "practical_value": "Check whether environmental and human touchpoints reinforce the same visual ingredients.",
+  "content_islands": [
+    {
+      "name": "Upper strip",
+      "spec": "Pair flags and the staff portrait with cabin seating."
+    },
+    {
+      "name": "Lower applications",
+      "spec": "Arrange relief, check-in and lounge examples beneath."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "A collage combines flags, a staff portrait, cabin seating, a crane relief, check-in and lounge interiors."
+  }
+}

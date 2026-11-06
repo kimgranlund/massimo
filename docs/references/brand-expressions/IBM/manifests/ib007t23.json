@@ -1,0 +1,38 @@
+{
+  "id": "IB007T23",
+  "title": "Color / UI palette — PMS references",
+  "image": "ib007t23.png",
+  "source": "../sources/alternate-tabs.json",
+  "location": {
+    "series": "IBM Design Language / alternate tab states",
+    "parent": "IB007",
+    "group": 2,
+    "tab": 3,
+    "label": "PMS",
+    "url": "https://www.ibm.com/design/language/color/",
+    "order": 7123
+  },
+  "slide_intent": "Maintain the identity of an interface palette when referencing it in print, because a named color system can cross media without losing its roles.",
+  "strategic_value": "The UI subset’s Pantone mappings can support consistent physical references to IBM’s digital experience.",
+  "demonstration": "The PMS tab pairs the blue and gray ramps and four alert swatches with print-reference names or numbers.",
+  "category": "Color",
+  "practical_value": "Look up a UI color’s supplied Pantone reference for a print representation of the palette.",
+  "content_islands": [
+    {
+      "name": "Encoding selector",
+      "spec": "Show PMS selected in the four-tab row."
+    },
+    {
+      "name": "Core UI references",
+      "spec": "Display blue and gray columns with Pantone references and dashes for White."
+    },
+    {
+      "name": "Alert references",
+      "spec": "Align four compact alert swatches at right, labeled 185, 7481, 1575 and 116."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The table retains the distinction between core blue, neutral structure and four status colors.",
+    "Application": "The captured PMS tab provides print references for the UI color subset; it does not change their digital UI roles."
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "LH09",
+  "title": "Cabin atmosphere and amenities",
+  "image": "lh09.png",
+  "source": "../sources/lh09.jpg",
+  "location": {
+    "series": "Mona Franz / Lufthansa 2018",
+    "item": 9,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Judge the relationship between an environment and its small objects because passengers experience both at close range.",
+  "strategic_value": "Matching blue textiles and amenity objects can extend Lufthansa recognition beyond large logos.",
+  "demonstration": "A cabin photograph and fabric swatches sit above a cup, pillow, mask and travel amenities.",
+  "category": "Application",
+  "practical_value": "Coordinate cabin materials with hand-held objects while preserving distinct functional forms.",
+  "content_islands": [
+    {
+      "name": "Cabin and swatches",
+      "spec": "Place the wide seating photograph above a vertical material strip."
+    },
+    {
+      "name": "Amenity collection",
+      "spec": "Arrange the cup, textiles and small items beneath on white."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "A cabin photograph and fabric swatches sit above a cup, pillow, mask and travel amenities.",
+    "Intent": "Mona Franz discusses color and material together as connected parts of the refresh."
+  }
+}

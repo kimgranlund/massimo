@@ -1,0 +1,29 @@
+{
+  "id": "GP04",
+  "title": "Product Sans / Schoolbook",
+  "image": "gp04.png",
+  "source": "../product-sans-specimen.pdf",
+  "location": {
+    "page": 4,
+    "printed_page": "P–4"
+  },
+  "slide_intent": "Choose familiar letter structures deliberately so the typographic voice feels approachable to readers.",
+  "strategic_value": "Schoolbook-inspired forms can support Google’s friendly character without abandoning a geometric system.",
+  "demonstration": "White lowercase a through h and numerals 1 through 8 occupy two large rows on blue, above a brief rationale.",
+  "category": "Typography",
+  "practical_value": "Judge the personality of simple everyday characters before relying on an abstract font description.",
+  "content_islands": [
+    {
+      "name": "Character rows",
+      "spec": "Align the lowercase row above the numeral row, distributing both across the blue field."
+    },
+    {
+      "name": "Style rationale",
+      "spec": "Place the short explanation at lower left beneath the specimens."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The caption connects schoolbook letter printing with a simple, friendly and approachable style.",
+    "Expression": "The large lowercase and numeral specimens make that character visible."
+  }
+}

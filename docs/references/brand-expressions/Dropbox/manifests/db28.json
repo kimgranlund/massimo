@@ -1,0 +1,36 @@
+{
+  "id": "DB28",
+  "title": "Creative-energy campaign film",
+  "image": "db28.png",
+  "source": "../sources/db28.mp4",
+  "location": {
+    "series": "COLLINS / Dropbox / 2017 identity case study",
+    "item": 28,
+    "section": "Gallery",
+    "extent": "Complete published clip; PNG is a frame at 0.5 seconds",
+    "duration_seconds": 30.02
+  },
+  "slide_intent": "Connect an abstract promise to people and activity because viewers need to see what creative collaboration enables.",
+  "strategic_value": "Scenes of makers and shared work can connect Dropbox’s expressive identity with a human purpose.",
+  "demonstration": "The film alternates people, creative settings, product collaboration screens, bold headline overlays and a closing Dropbox signature on yellow.",
+  "category": "Motion",
+  "practical_value": "Compare the roles of human footage, product evidence and graphic transitions in one campaign film.",
+  "content_islands": [
+    {
+      "name": "People and work",
+      "spec": "Sequence individuals and groups in varied creative contexts."
+    },
+    {
+      "name": "Product evidence",
+      "spec": "Retain the collaboration screens within the film rather than treating them as unrelated UI samples."
+    },
+    {
+      "name": "Graphic closure",
+      "spec": "Follow the headline overlays through to the final symbol-and-name frame."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The film alternates people, creative settings, product collaboration screens, bold headline overlays and a closing Dropbox signature on yellow."
+  },
+  "motion": "../sources/db28.mp4"
+}

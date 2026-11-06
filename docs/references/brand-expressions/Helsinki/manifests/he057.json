@@ -1,0 +1,32 @@
+{
+  "id": "HE057",
+  "title": "General information about maps",
+  "image": "he057.png",
+  "source": "../sources/visual-storytelling.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "General information about maps",
+    "order": 79,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/visual-storytelling#general-information-about-maps",
+    "original_html": "../sources/visual-storytelling.html"
+  },
+  "slide_intent": "Choose a map by the information it must convey so readers receive the right level of geographic detail.",
+  "strategic_value": "Using maintained city map sources can make Helsinki communications more consistent and traceable.",
+  "demonstration": "This expanded webpage-section capture organizes text into available map types, access routes, publishing rights and custom-order information.",
+  "category": "Imagery",
+  "practical_value": "Choose general, guide, cadastral or base mapping before requesting access or a custom version.",
+  "content_islands": [
+    {
+      "name": "Map range and access",
+      "spec": "List map types from general to detailed with links to the city services."
+    },
+    {
+      "name": "Rights and custom products",
+      "spec": "Keep attribution requirements separate from ordering and pricing notes."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The section lists map types and routes to self-service or custom products.",
+    "Constraint": "Published map material must carry the specified City Survey Services copyright notice; the usual licence is identified as CC BY 4.0."
+  }
+}

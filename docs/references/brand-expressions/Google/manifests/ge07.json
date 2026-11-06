@@ -1,0 +1,40 @@
+{
+  "id": "GE07",
+  "title": "Color / Optical Adjustment",
+  "image": "ge07.png",
+  "source": "../sources/ge07.mp4",
+  "location": {
+    "series": "Evolving the Google Identity / 2015",
+    "item": 7,
+    "extent": "whole source",
+    "poster_seconds": 3.51,
+    "duration_seconds": 7.02
+  },
+  "slide_intent": "Judge colors in their actual adjacency because isolated swatches can appear different when they touch.",
+  "strategic_value": "Adjusting adjacent hues can help Google preserve the perceived brightness of its familiar palette in a compact G.",
+  "demonstration": "Four separated labeled swatches move together; green, yellow and red change while blue remains stable, ending with a brighter adjacent palette.",
+  "category": "Color",
+  "practical_value": "Compare both isolated and touching colors before transferring a wordmark palette into a compact symbol.",
+  "content_islands": [
+    {
+      "name": "Separated swatches",
+      "spec": "Align blue, green, yellow and red rectangles with white gaps and small names and hex labels."
+    },
+    {
+      "name": "Adjacent comparison",
+      "spec": "Close the gaps and animate the color adjustment in place so the changed hues can be compared."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The article explains that adjacent hues can optically darken, prompting increased vibrancy in red, green and yellow.",
+    "Expression": "The clip presents the four-color family as separated and contiguous fields.",
+    "Application": "The transition demonstrates testing and adjusting the colors in adjacency."
+  },
+  "ingredient": {
+    "name": "Adjacent four-color palette",
+    "role": "Keep the four hues visually distinct and bright when they share boundaries.",
+    "application": "Evaluate adjoining hues together; this example increases the vibrancy of red, green and yellow while retaining blue.",
+    "scope": "The 2015 identity comparison, especially the compact G. This is not a general instruction to alter approved brand colors."
+  },
+  "motion": "../sources/ge07.mp4"
+}

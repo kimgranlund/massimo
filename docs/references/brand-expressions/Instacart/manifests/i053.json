@@ -1,0 +1,24 @@
+{
+  "id": "I053",
+  "title": "Catalogue",
+  "image": "i053.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 53
+  },
+  "slide_intent": "Preserve instant recognition in a small product tile. A visible contact shadow lets a viewer perceive the object’s shape and position.",
+  "strategic_value": "Instacart can keep grocery listings clear while retaining some of the dimension found in its editorial photography.",
+  "demonstration": "Produce, bottles and a spice jar stand against pale fields. The photograph of bananas, tomatoes and leafy greens occupies the largest tile.",
+  "category": "Imagery",
+  "practical_value": "Use a plain ground and check that the product casts a grounding shadow before reducing the photograph to catalog size.",
+  "content_islands": [
+    {
+      "name": "Catalog brief",
+      "spec": "Explain small-space recognition and grounding shadows on the dark green panel. Stack the four selection terms near its lower edge."
+    },
+    {
+      "name": "Catalog specimens",
+      "spec": "Arrange the clean product photographs in adjoining rectangles. Give the produce group enough room to show overlap and use tighter panels for individual bottles and the spice jar."
+    }
+  ]
+}

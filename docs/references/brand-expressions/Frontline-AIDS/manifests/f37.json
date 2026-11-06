@@ -1,0 +1,28 @@
+{
+  "id": "F37",
+  "title": "Amplify our words",
+  "image": "f37.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 37
+  },
+  "slide_intent": "Introduce typographic voice through the scale and density of letters. A heavy letter on a bright block can recall the immediacy of a placard.",
+  "strategic_value": "Frontline AIDS can connect contemporary campaigns to the visual history of activism and make a short message prominent at a distance.",
+  "demonstration": "Oversized black capitals sit on staggered pink bands over cyan, with white guides and a loose green arrow behind and beside them.",
+  "category": "Typography",
+  "practical_value": "Use a heavy display face and concentrated blocks of color to make a short activist headline the first read.",
+  "content_islands": [
+    {
+      "name": "Chapter introduction",
+      "spec": "Place Amplify our words and the explanation of poster influences in the narrow left column."
+    },
+    {
+      "name": "Display lettering",
+      "spec": "Stack three letter groups across the main area in black capitals. Set pink behind the lines, shift the bands horizontally and keep the cyan ground visible."
+    },
+    {
+      "name": "Guides and gesture",
+      "spec": "Overlay fine construction guides and add a loose green loop and arrow to show both the alignment and the gesture surrounding the letters."
+    }
+  ]
+}

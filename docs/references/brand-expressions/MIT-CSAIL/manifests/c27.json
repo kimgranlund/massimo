@@ -1,0 +1,28 @@
+{
+  "id": "C27",
+  "title": "Stationery",
+  "image": "c27.png",
+  "source": "../csail-branding-short-guide.pdf",
+  "location": {
+    "page": 27
+  },
+  "slide_intent": "Show how an identity persists across documents of different sizes and information densities. A reader should recognize the issuing institution on both a short card and a detailed agenda.",
+  "strategic_value": "CSAIL can connect personal correspondence, event materials and mail through repeated marks and warm geometric accents.",
+  "demonstration": "Letter sheets, business cards, an agenda, a flyer and an envelope form a stationery ensemble on a common gray field.",
+  "category": "Application",
+  "practical_value": "Identify which specimen matches the communication before deciding how much room to allocate to the mark, contact information and message.",
+  "content_islands": [
+    {
+      "name": "Format inventory",
+      "spec": "Set Stationery and the list of formats in the narrow left column."
+    },
+    {
+      "name": "Correspondence",
+      "spec": "Overlap the letter sheets in the upper-left field. Set the business cards above the agenda on the right."
+    },
+    {
+      "name": "Additional formats",
+      "spec": "Place the event flyer and envelope beneath the correspondence, retaining their different proportions."
+    }
+  ]
+}

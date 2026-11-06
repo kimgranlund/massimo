@@ -1,0 +1,31 @@
+{
+  "id": "DB1109",
+  "title": "Klare Kanten und Winkel",
+  "image": "db1109.png",
+  "source": "../sources/page-11.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 11,
+    "section": 9,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Icons"
+  },
+  "slide_intent": "Control line endings and angles so diverse symbols share a precise visual character.",
+  "strategic_value": "A common angular construction can make DB icons look intentional as a family.",
+  "demonstration": "An enlarged download icon and circular detail views illustrate square endings and 90°/45° construction.",
+  "category": "Geometry",
+  "practical_value": "Build with square-cut endings and prefer 90° and 45° angles, using 15° increments when needed.",
+  "content_islands": [
+    {
+      "name": "Construction note",
+      "spec": "Place the angle guidance above the diagram."
+    },
+    {
+      "name": "Edge and angle details",
+      "spec": "Pair the enlarged download symbol with close-ups of endings and corners."
+    }
+  ],
+  "reference_purposes": {
+    "Constraint": "Line ends and corners are square-cut; 90° and 45° are preferred, with other angles in 15° steps.",
+    "Application": "Enlarged details demonstrate the construction."
+  }
+}

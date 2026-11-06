@@ -1,0 +1,30 @@
+{
+  "id": "IG26",
+  "title": "UI / Distill the experience",
+  "image": "ig26.png",
+  "source": "../sources/ig26.png",
+  "location": {
+    "series": "Elvis Dinh / Instagram brand design system / project year 2022",
+    "item": 26,
+    "extent": "whole source artwork"
+  },
+  "slide_intent": "Carry only the product cues needed for recognition when moving a digital experience into a large physical format.",
+  "strategic_value": "A familiar post frame can identify Instagram while allowing the creator image to dominate.",
+  "demonstration": "A billboard displays a rotated portrait with account identity, glyph and simplified interaction symbols.",
+  "category": "Application",
+  "practical_value": "Compare which interface cues survive the change from a small screen to a roadside billboard.",
+  "content_islands": [
+    {
+      "name": "Billboard image",
+      "spec": "Fill the billboard with the reclining subject’s image."
+    },
+    {
+      "name": "Distilled interface",
+      "spec": "Keep the account cue at upper left, glyph at upper right and a few interaction marks near the edges."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The billboard translates a post-like interface into an outdoor placement.",
+    "Expression": "The image and sparse white UI cues preserve a recognizable Instagram character."
+  }
+}

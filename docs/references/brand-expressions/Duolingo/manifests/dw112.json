@@ -1,0 +1,32 @@
+{
+  "id": "DW112",
+  "title": "Illustration / Duo / Introduction",
+  "image": "dw112.png",
+  "source": "../sources/pages/illustration-duo.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/illustration/duo",
+    "section": "Duo",
+    "item": 112,
+    "order": 1120
+  },
+  "slide_intent": "Give a mascot a range of expressions because repeated appearances should communicate different feelings without losing identity.",
+  "strategic_value": "A recognizable green owl in an exuberant pose can make Duolingo’s product and marketing feel related.",
+  "demonstration": "The purple header pairs an invitation to explore poses and emotions with a large tilted Duo.",
+  "category": "Imagery",
+  "practical_value": "Plan a mascot repertoire that varies emotion while retaining recognizable features.",
+  "content_islands": [
+    {
+      "name": "Introduction",
+      "spec": "Place the illustration label, Duo heading and short rationale at left."
+    },
+    {
+      "name": "Expressive mascot",
+      "spec": "Place the large tilted green owl at right with spread wings and detached orange feet."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text invites different poses and emotions to communicate Duo’s expressiveness in marketing and product.",
+    "Expression": "The large owl has a tilted body, raised wings and an open beak."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "C18",
+  "title": "Typography: CSAIL Ebony",
+  "image": "c18.png",
+  "source": "../csail-branding-short-guide.pdf",
+  "location": {
+    "page": 18
+  },
+  "slide_intent": "Teach readers how to create emphasis within a single family. A change of weight, style or numeral form can clarify a passage without introducing another face.",
+  "strategic_value": "The lab can maintain its typographic identity in everyday documents while giving long headings, lists and body text distinct roles.",
+  "demonstration": "A blue specimen panel demonstrates heavy and thin headings, italic emphasis, oldstyle figures, three weight pairs, paragraph alignment and bullets.",
+  "category": "Typography",
+  "practical_value": "Use the side-by-side weight pairs to choose a restrained two-weight hierarchy. Refer to the list and number examples for smaller text.",
+  "content_islands": [
+    {
+      "name": "Usage introduction",
+      "spec": "Introduce the practical settings in the narrow left rail."
+    },
+    {
+      "name": "Heading and figure specimens",
+      "spec": "Start the right panel with heavy and thin title lines, italic emphasis and an example of oldstyle numerals."
+    },
+    {
+      "name": "Weight pairs and text setting",
+      "spec": "Stack three weight pairs on shared baselines. Finish with a short paragraph and bullet examples to show settings beyond headlines."
+    }
+  ]
+}

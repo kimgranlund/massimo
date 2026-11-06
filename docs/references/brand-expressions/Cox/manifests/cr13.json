@@ -1,0 +1,30 @@
+{
+  "id": "CR13",
+  "title": "Discover Cox app",
+  "image": "cr13.png",
+  "source": "../sources/cr13.png",
+  "location": {
+    "series": "Cox Brand Collection — Lindsay Little / Periscope",
+    "item": 13,
+    "extent": "whole source image"
+  },
+  "slide_intent": "Organize a service family into visible choices so the viewer can find a relevant path without reading a long explanation.",
+  "strategic_value": "The repeated menu structure can make several Cox products feel like one coordinated offer.",
+  "demonstration": "A tablet screen divides a mother-and-child photograph from five horizontal service and advisor menu rows.",
+  "category": "Application",
+  "practical_value": "Keep the emotional image separate from the navigation and repeat the same row structure for each service.",
+  "content_islands": [
+    {
+      "name": "Lifestyle panel",
+      "spec": "Fill the left portion of the tablet screen with the mother and child using a device."
+    },
+    {
+      "name": "Service menu",
+      "spec": "Stack the white service rows at right, aligning their circular icons at the boundary with the photograph."
+    },
+    {
+      "name": "Device frame",
+      "spec": "Retain the black tablet frame to show the application’s intended physical setting."
+    }
+  ]
+}

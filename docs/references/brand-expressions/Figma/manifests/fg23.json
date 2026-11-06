@@ -1,0 +1,34 @@
+{
+  "id": "FG23",
+  "title": "Workspace wall / material detail",
+  "image": "fg23.png",
+  "source": "../sources/fg23.jpg",
+  "location": {
+    "series": "COLLINS / Figma / Nothing Great Is Made Alone case study",
+    "item": 23,
+    "section": "Gallery",
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Examine the material translation of digital motifs because a convincing physical identity depends on edges, finish and depth.",
+  "strategic_value": "Colored star layers and small cursor objects can retain Figma’s expressive character at close viewing distance.",
+  "demonstration": "A close crop pairs large layered starbursts, small hand and cursor symbols, black letter fragments and the perforated wood surface.",
+  "category": "Application",
+  "practical_value": "Inspect the relationship between flat digital motifs and dimensional fabrication.",
+  "content_islands": [
+    {
+      "name": "Star layers",
+      "spec": "Let a large multicolor star fill the lower foreground and a smaller lavender star sit above."
+    },
+    {
+      "name": "Small tools",
+      "spec": "Place hand and arrow symbols between the stars."
+    },
+    {
+      "name": "Material reference",
+      "spec": "Retain black letter fragments, panel seams and peg holes to show scale and depth."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The close photograph exposes materials, raised edges and overlaps in the wall installation."
+  }
+}

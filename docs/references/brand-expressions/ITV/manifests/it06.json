@@ -1,0 +1,35 @@
+{
+  "id": "IT06",
+  "title": "ITVX / App icon among competitors",
+  "image": "it06.png",
+  "source": "../sources/1749145429-itv_2-4.png",
+  "location": {
+    "series": "DixonBaxi / ITV case-study artwork series",
+    "item": 6,
+    "extent": "Whole source artwork",
+    "source_asset_index": 31
+  },
+  "slide_intent": "Test whether a reduced symbol and colour field identify the service in an app grid, because viewers need to recognize the same service across different situations.",
+  "strategic_value": "This approach can strengthen continuity between campaign recognition and service use.",
+  "demonstration": "A close crop of a phone shows the yellow ITVX app tile with a dark X beside a Netflix tile.",
+  "category": "Application",
+  "practical_value": "Test whether a reduced symbol and colour field identify the service in an app grid.",
+  "content_islands": [
+    {
+      "name": "Device edge",
+      "spec": "The phone frame establishes scale."
+    },
+    {
+      "name": "App grid",
+      "spec": "The ITVX tile is visible alongside other streaming apps."
+    },
+    {
+      "name": "Identifier",
+      "spec": "A dark X fills the yellow rounded-square tile."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A close crop of a phone shows the yellow ITVX app tile with a dark X beside a Netflix tile.",
+    "Application": "Test whether a reduced symbol and colour field identify the service in an app grid. Evidence is the shown application, not a mandatory layout rule."
+  }
+}

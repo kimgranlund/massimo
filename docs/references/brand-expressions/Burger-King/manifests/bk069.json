@@ -1,0 +1,30 @@
+{
+  "id": "BK069",
+  "title": "Typeface Overview",
+  "image": "bk069.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 69
+  },
+  "slide_intent": "Compare the same character repertoire across styles so designers can see how personality changes while reading remains consistent.",
+  "strategic_value": "Showing related alphabets can help Burger King teams maintain a family resemblance across communication roles.",
+  "demonstration": "Three rows show uppercase, lowercase, numerals and punctuation in Flame Bold, Regular and Sans on red.",
+  "category": "Typography",
+  "practical_value": "Inspect the available glyph forms before choosing a style for a particular text role.",
+  "content_islands": [
+    {
+      "name": "Family guidance",
+      "spec": "Place the explanatory text at upper left."
+    },
+    {
+      "name": "Character sets",
+      "spec": "Align three labeled role rows with matching character sequences across the right area."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text links the three styles to a flexible voice and consistent impression.",
+    "Expression": "The complete specimen rows expose differences between Bold, Regular and Sans.",
+    "Application": "The specimens retain headline, subhead and body-role labels.",
+    "Constraint": "The copy prohibits font modification or adaptation without BKC legal approval."
+  }
+}

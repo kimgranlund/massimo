@@ -1,0 +1,34 @@
+{
+  "id": "HE056",
+  "title": "Material instructions for different channels",
+  "image": "he056.png",
+  "source": "../sources/visual-storytelling.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Material instructions for different channels",
+    "order": 76,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/visual-storytelling#material-instructions-for-different-channels",
+    "original_html": "../sources/visual-storytelling.html"
+  },
+  "slide_intent": "Match delivery specifications to the destination so a finished video remains usable in its intended channel.",
+  "strategic_value": "A channel comparison can reduce avoidable inconsistencies in Helsinki video handoffs.",
+  "demonstration": "This expanded webpage-section capture presents a table comparing Helsinki Channel, social-media delivery and raw footage across format, frame rate, bit rate, resolution and audio.",
+  "category": "Motion",
+  "practical_value": "Select the destination column before exporting and preserve channel-specific requirements rather than applying one preset everywhere.",
+  "content_islands": [
+    {
+      "name": "Delivery matrix",
+      "spec": "Keep the three destination columns aligned against the shared technical-property rows."
+    }
+  ],
+  "ingredient": {
+    "name": "Video delivery specification",
+    "role": "Keep the asset usable in its destination.",
+    "application": "Use the relevant table column; do not transfer raw-footage settings to channel delivery.",
+    "scope": "Published Helsinki guidance snapshot; Helsinki Channel lists 1920 × 1080, raw footage UHD 3840 × 2160. Values are source specifications, not independently updated technical advice."
+  },
+  "reference_purposes": {
+    "Application": "The table maps export properties to three delivery contexts.",
+    "Constraint": "It specifies 25 fps and progressive scanning, while social resolution and aspect ratio follow the publication channel."
+  }
+}

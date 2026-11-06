@@ -1,0 +1,28 @@
+{
+  "id": "C38",
+  "title": "Visual Communications System Renewal Effort Acknowledgements",
+  "image": "c38.png",
+  "source": "../csail-branding-short-guide.pdf",
+  "location": {
+    "page": 38
+  },
+  "slide_intent": "Show who contributed to each part of identity development. Grouping credits by responsibility helps readers understand how the system came together.",
+  "strategic_value": "CSAIL can recognize the people behind its mission, mark and communications system and distinguish committee work from supporting contributions.",
+  "demonstration": "A narrow heading at left introduces a single stacked credits column. Separate headings identify committees for mission and tagline, logotype, visual system and implementation, followed by supporting organizations.",
+  "category": "Brand",
+  "practical_value": "Use functional groups when attributing a shared identity project so readers can locate a contribution without parsing one undifferentiated list.",
+  "content_islands": [
+    {
+      "name": "Acknowledgement title",
+      "spec": "Set the multipart title near the top of the left column."
+    },
+    {
+      "name": "Committee credits",
+      "spec": "Stack groups in the adjacent column. Distinguish headings from names and identify chairs within each group."
+    },
+    {
+      "name": "Supporting organizations",
+      "spec": "Close the credits column with organizations and individual project roles. Retain the open page area below and beside it."
+    }
+  ]
+}

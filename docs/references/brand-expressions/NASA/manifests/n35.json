@@ -1,0 +1,28 @@
+{
+  "id": "N35",
+  "title": "Cover Design: Case Bound and Educational Publications",
+  "image": "n35.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 35
+  },
+  "slide_intent": "Teach designers to let a book title carry the cover and to use illustration only where it helps the reader understand the subject.",
+  "strategic_value": "NASA can vary the expression of educational and case-bound books while preserving a clear introduction to each subject.",
+  "demonstration": "Space Mathematics places a restrained title over an open field. Photography in Space uses slanted lettering against black. A larger Apollo 11 cover pairs oversized serif type with drawn portraits.",
+  "category": "Typography",
+  "practical_value": "Compare the title-only and illustrated examples when deciding how much imagery a book needs. Check whether the binding material can reproduce the agency mark.",
+  "content_islands": [
+    {
+      "name": "Book-cover principles",
+      "spec": "Place the heading beside the guidance on bound materials, reproduction and educational titles."
+    },
+    {
+      "name": "Typographic cover pair",
+      "spec": "Stack the Space Mathematics and Photography in Space examples at left. Preserve their different contrast, title position and scale."
+    },
+    {
+      "name": "Illustrated Apollo cover",
+      "spec": "Give the portrait-and-title composition the larger right-hand field. Keep its broad white interval between title and portraits."
+    }
+  ]
+}

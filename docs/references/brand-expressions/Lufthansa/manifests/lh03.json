@@ -1,0 +1,29 @@
+{
+  "id": "LH03",
+  "title": "Crane detail audit",
+  "image": "lh03.png",
+  "source": "../sources/lh03.jpg",
+  "location": {
+    "series": "Mona Franz / Lufthansa 2018",
+    "item": 3,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Make small shape decisions explicit because recognition and reproduction depend on details within a familiar silhouette.",
+  "strategic_value": "Named areas of the crane can focus a refresh on controlled adjustments rather than arbitrary redrawing.",
+  "demonstration": "Cyan circles and leaders identify the ring, beak, neck, wing and tail areas of a large black crane.",
+  "category": "Geometry",
+  "practical_value": "Use labeled regions to compare proposed mark refinements systematically.",
+  "content_islands": [
+    {
+      "name": "Mark",
+      "spec": "Center the large black crane and ring."
+    },
+    {
+      "name": "Detail annotations",
+      "spec": "Arrange cyan circles and gray labels around the features they identify."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Cyan circles and leaders identify the ring, beak, neck, wing and tail areas of a large black crane."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "C01",
+  "title": "Our Branding · The Short Guide",
+  "image": "c01.png",
+  "source": "../csail-branding-short-guide.pdf",
+  "location": {
+    "page": 1
+  },
+  "slide_intent": "Introduce the book through a composition a reader can recognize before reading the full institutional name.",
+  "strategic_value": "A cover made from the lab’s colors and tilted contours can establish a vocabulary that the building and pattern pages later explain.",
+  "demonstration": "A small two-line title sits above oversized ochre and yellow shapes. A gray strip at right carries the laboratory description vertically.",
+  "category": "Brand",
+  "practical_value": "Use the cover to study how little text a large graphic needs when the audience already holds the guide.",
+  "content_islands": [
+    {
+      "name": "Title",
+      "spec": "Place a compact gray title and subtitle in the white upper-left area."
+    },
+    {
+      "name": "Oversized shapes",
+      "spec": "Intersect a rust-colored field with a large yellow form whose curved top and angled side continue past the page edges."
+    },
+    {
+      "name": "Vertical identifier",
+      "spec": "Run a gray band down the right edge and set the guide descriptor vertically within it."
+    }
+  ]
+}

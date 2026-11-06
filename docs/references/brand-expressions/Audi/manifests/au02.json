@@ -1,0 +1,36 @@
+{
+  "id": "AU02",
+  "title": "Identity overview — header loop",
+  "image": "au02.png",
+  "source": "../sources/01-kms-team-audi_Header_Loop_16-9.mov",
+  "location": {
+    "series": "KMS TEAM / Audi and Audi Sport identity case study",
+    "item": 2,
+    "extent": "Complete source media",
+    "poster_time_seconds": 0
+  },
+  "slide_intent": "Condense a system into a short recurring sequence so a viewer can recognize its character before studying its rules.",
+  "strategic_value": "Alternating branded layouts and experiential footage can introduce Audi as both a digital system and a lived experience.",
+  "demonstration": "The 14.44-second header loop cuts between website layouts, driving and human-detail footage, ending with rings over an aerial landscape.",
+  "category": "Motion",
+  "practical_value": "Compare a short introduction with the complete explanatory film AU01.",
+  "content_islands": [
+    {
+      "name": "Application flashes",
+      "spec": "Place briefly changing layouts and headlines across the frame."
+    },
+    {
+      "name": "Experiential montage",
+      "spec": "Follow with action, vehicle and human-detail shots."
+    },
+    {
+      "name": "Ring closure",
+      "spec": "Resolve to rings over the aerial landscape before repeating."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The loop pairs Audi layouts with fast experiential imagery and a ring reveal.",
+    "Application": "It is the source page’s autoplay header presentation."
+  },
+  "motion": "../sources/au02.mp4"
+}

@@ -1,0 +1,26 @@
+{
+  "id": "DB1200",
+  "title": "Signature Graphics / landmark header",
+  "image": "db1200.png",
+  "source": "../sources/page-12.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 12,
+    "section": 0,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Signature-Graphics"
+  },
+  "slide_intent": "Build distinct subjects from shared marks so a family can express place while retaining identity.",
+  "strategic_value": "Vertical-bar landmarks can give DB destination communication a recognizable construction.",
+  "demonstration": "A dark header places a red Berlin tower between gray landmark silhouettes built from vertical lines.",
+  "category": "Geometry",
+  "practical_value": "Compare how one line vocabulary distinguishes landmarks.",
+  "content_islands": [
+    {
+      "name": "Landmark field",
+      "spec": "Arrange the gray buildings around the red tower on the dark ground."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Different landmark silhouettes use the same vertical-line construction."
+  }
+}

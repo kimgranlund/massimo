@@ -1,0 +1,35 @@
+{
+  "id": "DBV29",
+  "title": "UI_Signature Graphic",
+  "image": "dbv29.png",
+  "source": "../sources/media/dbv29.mp4",
+  "location": {
+    "series": "DB new design / motion demonstrations",
+    "source_page": 15,
+    "section": "Animation-14021536",
+    "source_url": "https://ecm-mediathek-cdn.deutschebahn.com/cdnenhancedecmvidhls/db306431/2881029/video_config.json",
+    "capture_date": "2026-11-05"
+  },
+  "slide_intent": "Link interface states through shared form so the user can follow the change.",
+  "strategic_value": "The striped pause-to-play transformation can carry DB’s signature language into a familiar control transition.",
+  "demonstration": "Red striped pause bars transform into a play triangle on a pale field.",
+  "category": "Motion",
+  "practical_value": "Choose a signature-graphic transition when the relationship between two UI states should remain visible.",
+  "content_islands": [
+    {
+      "name": "Pause form",
+      "spec": "Arrange red stripes into two upright groups."
+    },
+    {
+      "name": "Play form",
+      "spec": "Reform the stripes as a right-pointing triangle."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Red striped pause bars transform into a play triangle on a pale field.",
+    "Application": "The source provides a playable demonstration of this repeatable sequence: Red striped pause bars transform into a play triangle on a pale field.",
+    "Intent": "Accompanying Icons, Signature Graphics, or Animation im UI prose explains that animation directs focus, makes relationships understandable, and adds expression.",
+    "Constraint": "The accompanying guidance says animation is deliberate and never disturbing or complex."
+  },
+  "motion": "../sources/media/dbv29.mp4"
+}

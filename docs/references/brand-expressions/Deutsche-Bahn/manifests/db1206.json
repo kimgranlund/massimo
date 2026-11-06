@@ -1,0 +1,32 @@
+{
+  "id": "DB1206",
+  "title": "Kontext / graphic hierarchy",
+  "image": "db1206.png",
+  "source": "../sources/page-12.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 12,
+    "section": 6,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Signature-Graphics"
+  },
+  "slide_intent": "Separate functional and expressive image roles so each level carries an appropriate amount of detail.",
+  "strategic_value": "A hierarchy from icons to signature graphics can give DB a coherent expressive range.",
+  "demonstration": "Three heart icons in 20, 24 and 32 sizes are compared with a 96-size heart signature graphic beneath the role explanation.",
+  "category": "Geometry",
+  "practical_value": "Choose icons for rapid function and signature graphics for the bridge toward expression; do not assume the unfinished illustration system is supplied.",
+  "content_islands": [
+    {
+      "name": "Role explanation",
+      "spec": "Define icons, signature graphics and illustrations above the specimen, including the development note."
+    },
+    {
+      "name": "Scale comparison",
+      "spec": "Compare the three outline hearts with the larger striped heart."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text distinguishes quick functional recognition, a bridge to expression and an emotional illustration level.",
+    "Application": "The heart comparison demonstrates related construction at different expressive levels.",
+    "Constraint": "The source explicitly says the illustration system is still in development."
+  }
+}

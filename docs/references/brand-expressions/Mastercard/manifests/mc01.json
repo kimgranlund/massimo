@@ -1,0 +1,29 @@
+{
+  "id": "MC01",
+  "title": "Identity at environmental scale",
+  "image": "mc01.png",
+  "source": "../sources/mc01.jpg",
+  "location": {
+    "series": "Pentagram / Mastercard / 2016 identity case study",
+    "item": 1,
+    "extent": "Published hero crop"
+  },
+  "slide_intent": "Show the mark in a crowded physical setting because recognition must survive beyond a clean presentation board.",
+  "strategic_value": "A large, simple symbol can remain identifiable amid people, architecture and bright outdoor light.",
+  "demonstration": "A red-and-yellow mark and white wordmark occupy a dark wall beside a snowy public gathering.",
+  "category": "Application",
+  "practical_value": "Compare environmental prominence with the small acceptance sticker in MC07.",
+  "content_islands": [
+    {
+      "name": "Setting",
+      "spec": "Retain the full snowy crowd, blue sky and diagonal building edge."
+    },
+    {
+      "name": "Brand surface",
+      "spec": "Place the large overlapping circles over the white wordmark on the dark wall at right."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The photograph places the identity on a large exterior wall at a public venue."
+  }
+}

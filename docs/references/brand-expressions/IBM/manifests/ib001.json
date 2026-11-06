@@ -1,0 +1,59 @@
+{
+  "id": "IB001",
+  "title": "IBM Design Language / Home",
+  "image": "ib001.png",
+  "source": "../sources/home.txt",
+  "location": {
+    "series": "IBM Design Language / public web guidelines",
+    "item": 1,
+    "extent": "Complete webpage content-area capture; interactive elements retain their captured state",
+    "url": "https://www.ibm.com/design/language/",
+    "order": 1000
+  },
+  "slide_intent": "Connect the governing idea to the tools used to express it, so designers can understand why separate ingredients belong to one system.",
+  "strategic_value": "The Build Bonds statement beside links to Plex, color and imagery can make IBM’s identity feel like a coordinated practice.",
+  "demonstration": "The webpage pairs a filmed hero state and the Think → Guide ethos with a grid of design-topic cards, practical resources and recent type releases.",
+  "category": "Brand",
+  "practical_value": "Use the home page as a map from brand philosophy to the specific guidance needed for a task.",
+  "content_islands": [
+    {
+      "name": "Hero gateways",
+      "spec": "Place Philosophy and Gallery links over the large photographic video state at the top."
+    },
+    {
+      "name": "Governing ethos",
+      "spec": "Set Think → Guide beside Build Bonds and its short explanation below the hero."
+    },
+    {
+      "name": "Design topics",
+      "spec": "Arrange illustrated cards for typeface, philosophy, color, photography, illustration and 2x Grid in a varied grid."
+    },
+    {
+      "name": "Working resources",
+      "spec": "Follow with a compact grid of links to type, color, grid, icons, illustration and Carbon tools."
+    },
+    {
+      "name": "Recent releases",
+      "spec": "Close the main editorial content with three dated Plex release cards before the site navigation and footer."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The home copy identifies Build Bonds as the ethos that distinguishes every IBM element and experience.",
+    "Expression": "Topic cards show Plex letterforms, the rebus, a color spectrum, photography and isometric illustration together.",
+    "Application": "Resource cards connect the ethos to specific assets and design tools."
+  },
+  "motion_assets": [
+    {
+      "title": "Identity montage",
+      "file": "../sources/media/46ce5f8f201a.mp4",
+      "poster": "../sources/media/46ce5f8f201a-poster.png",
+      "duration_seconds": 10.64,
+      "source_url": "https://www.ibm.com/design/language/videos/hero-video-min.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "HE118",
+  "title": "Room signage",
+  "image": "he118.png",
+  "source": "../sources/download-elements.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Room signage",
+    "order": 164,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/download-elements#room-signage",
+    "original_html": "../sources/download-elements.html"
+  },
+  "slide_intent": "Direct authors to the shared room signage resource so recurring materials can begin from a consistent source.",
+  "strategic_value": "A named source for room signage can reduce ad hoc Helsinki production.",
+  "demonstration": "Expanded webpage section: the room-signage resource contains a title and a download link for AI and InDesign files; it does not display the template design.",
+  "category": "Application",
+  "practical_value": "Locate the room signage resource before judging or adapting the actual template.",
+  "content_islands": [
+    {
+      "name": "Resource heading",
+      "spec": "The section title identifies the resource."
+    },
+    {
+      "name": "Download link",
+      "spec": "A single link below points to room signage files."
+    }
+  ],
+  "reference_purposes": {}
+}

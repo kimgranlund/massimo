@@ -1,0 +1,24 @@
+{
+  "id": "I065",
+  "title": "Illustration Color",
+  "image": "i065.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 65
+  },
+  "slide_intent": "Set the scope of an extended palette. A designer needs to know which hues can enliven an illustration and which colors should hold a series together.",
+  "strategic_value": "Instacart can add bright accents to drawings while Kale and Cashew maintain a recognizable thread across them.",
+  "demonstration": "A five-column swatch grid includes the brand colors and an additional labeled row of Illustration Red, Blue, Blush, Yellow and Pink. The note limits the added colors to illustration.",
+  "category": "Color",
+  "practical_value": "Choose drawing accents from the tertiary row while checking the prominence of Kale and Cashew across the color story.",
+  "content_islands": [
+    {
+      "name": "Palette scope",
+      "spec": "Place the title at upper left and set the usage note across the top, above the samples."
+    },
+    {
+      "name": "Swatch grid",
+      "spec": "Build three rows of broad rounded swatches with narrow gutters. Keep the five illustration-only names and their HEX and RGB references inside the bottom row."
+    }
+  ]
+}

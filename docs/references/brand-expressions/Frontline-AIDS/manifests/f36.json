@@ -1,0 +1,28 @@
+{
+  "id": "F36",
+  "title": "Secondary palette",
+  "image": "f36.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 36
+  },
+  "slide_intent": "Teach when to expand the colors available for information or representation. A data category and a person’s skin tone call for different palette decisions.",
+  "strategic_value": "Frontline AIDS can illustrate a range of people and explain complex data while a core color keeps the work connected to the identity.",
+  "demonstration": "Supplementary hue swatches and skin-tone swatches occupy separate rows above a ring chart and a two-person illustration.",
+  "category": "Color",
+  "practical_value": "Use secondary hues with at least one primary hue; keep the skin-tone range for character illustration.",
+  "content_islands": [
+    {
+      "name": "Extended colors",
+      "spec": "Use a grid of labeled color references for the secondary hues. Give the skin-tone range its own continuous row below."
+    },
+    {
+      "name": "Data example",
+      "spec": "Show the chart with its palette chips and the note reserving skin tones for people."
+    },
+    {
+      "name": "Character example",
+      "spec": "Place the two figures beside the chart with a separate note explaining the relationship between primary, secondary and skin-tone colors."
+    }
+  ]
+}

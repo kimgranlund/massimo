@@ -1,0 +1,29 @@
+{
+  "id": "HI16",
+  "title": "Winter cabin and sled",
+  "image": "hi16.png",
+  "source": "../sources/illustration-examples.pdf",
+  "location": {
+    "page": 16,
+    "series": "Helsinki illustration examples — PDF derived from the official PowerPoint deck with LibreOffice",
+    "order": 206
+  },
+  "slide_intent": "Make season visible through activity and clothing so viewers can understand context without a caption.",
+  "strategic_value": "A bundled figure pulling a sled toward a blue cabin can give Helsinki winter communications a welcoming human scene.",
+  "demonstration": "A large blue cabin sits right, with smaller landscape fragments, a sled-pulling figure and blue chairs and table on gray.",
+  "category": "Imagery",
+  "practical_value": "Use the cabin and sled group to suggest winter while reserving space for text elsewhere.",
+  "content_islands": [
+    {
+      "name": "Winter setting",
+      "spec": "Place the cabin at right and smaller blue landscape at upper left."
+    },
+    {
+      "name": "People and furnishings",
+      "spec": "Arrange the pulling figure and sled across the lower left, with table and chairs beneath the cabin."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A large blue cabin sits right, with smaller landscape fragments, a sled-pulling figure and blue chairs and table on gray."
+  }
+}

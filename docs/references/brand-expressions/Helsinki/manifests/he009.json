@@ -1,0 +1,38 @@
+{
+  "id": "HE009",
+  "title": "Incorrect use",
+  "image": "he009.png",
+  "source": "../sources/use-basic-elements.offline.html",
+  "location": {
+    "series": "City of Helsinki live visual identity guidelines",
+    "section": "Incorrect use",
+    "order": 13,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/use-basic-elements#incorrect-use",
+    "original_html": "../sources/use-basic-elements.html"
+  },
+  "slide_intent": "Make damaging alterations recognizable so production decisions do not erode a familiar signature.",
+  "strategic_value": "Specific counterexamples can help Helsinki prevent inconsistent or unreadable reproductions.",
+  "demonstration": "This expanded webpage section pairs thirteen numbered incorrect logo treatments with explanations covering contrast, distortion, added elements, fills, effects and image quality.",
+  "category": "Brand",
+  "practical_value": "Audit a proposed reproduction against the numbered failure types.",
+  "content_islands": [
+    {
+      "name": "Incorrect specimens",
+      "spec": "Begin with thirteen numbered altered and low-contrast marks, each crossed out."
+    },
+    {
+      "name": "Prohibition and key",
+      "spec": "Follow the examples with original-file guidance and numbered explanations of the failures."
+    }
+  ],
+  "ingredient": {
+    "name": "Unaltered framed logo",
+    "role": "Maintain a stable and legible civic signature.",
+    "application": "Use the original high-quality file horizontally, without distortion, filler, extra framing or effects.",
+    "scope": "The thirteen specimens are prohibited-use examples; do not treat them as available styles."
+  },
+  "reference_purposes": {
+    "Application": "Numbered examples let a designer diagnose specific logo failures.",
+    "Constraint": "The section prohibits alteration, stretching, rotation, filler color, added elements and effects, and requires adequate original-file quality."
+  }
+}

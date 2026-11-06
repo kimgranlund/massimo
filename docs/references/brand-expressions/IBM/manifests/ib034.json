@@ -1,0 +1,62 @@
+{
+  "id": "IB034",
+  "title": "UI icons / Usage",
+  "image": "ib034.png",
+  "source": "../sources/iconography-ui-icons-usage.txt",
+  "location": {
+    "series": "IBM Design Language / public web guidelines",
+    "item": 34,
+    "extent": "Complete webpage content area, default interactive state",
+    "url": "https://www.ibm.com/design/language/iconography/ui-icons/usage/",
+    "order": 34000
+  },
+  "slide_intent": "Keep small interface symbols readable and predictable so people can act without decoding unnecessary visual variation.",
+  "strategic_value": "Consistent sizing, text alignment and monochrome treatment can connect IBM interfaces while reducing visual competition.",
+  "demonstration": "A sizing table, text-and-icon comparisons, clearance diagram, third-party marks and interface examples explain use at small scales.",
+  "category": "Application",
+  "practical_value": "Select the supplied icon size, center it beside text and retain adequate touch clearance.",
+  "content_islands": [
+    {
+      "name": "Sizing and text pairs",
+      "spec": "Begin with the four-size table and Plex pairings, followed by correct and incorrect size and baseline examples."
+    },
+    {
+      "name": "Alignment and clearance",
+      "spec": "Place optical-centering specimens before the 44px target diagram and spacing comparison."
+    },
+    {
+      "name": "Color and third-party marks",
+      "spec": "Use monochrome examples and borrowed marks to separate color consistency from third-party artwork permissions."
+    },
+    {
+      "name": "Applications",
+      "spec": "Close with interface, device and dashboard examples showing icons in actual layouts."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The introduction explicitly connects sparse, strategic icon use to reduced cognitive load.",
+    "Expression": "Monochrome outlined icons share characteristic corners and Plex-adjacent proportions.",
+    "Application": "The page demonstrates icon-to-text alignment, touch padding and integration into interfaces.",
+    "Constraint": "The source requires original 16, 20, 24 or 32px sizes, 44px-or-larger touch targets and monochrome icons; third-party marks must not be visually altered."
+  },
+  "ingredient": {
+    "name": "UI icon sizing and clearance",
+    "role": "Keep actions identifiable and touch targets usable.",
+    "application": "Use icons at their supplied sizes; center them alongside text. Provide at least 44px touch targets, adding surrounding padding when the icon is smaller.",
+    "scope": "UI icons in interfaces. The 44px minimum is the touch target, not a requirement that the artwork itself be 44px."
+  },
+  "motion_assets": [
+    {
+      "title": "Icons in a product interface",
+      "file": "../sources/media/475c3aa23f3c.mp4",
+      "poster": "../sources/media/475c3aa23f3c-poster.png",
+      "duration_seconds": 5.67,
+      "source_url": "https://www.ibm.com/design/language/bca865eaf0a15c0ce30951e6dcb4205b/20-idl-iconography-ui-icons-usage-v2.mp4",
+      "inspection": {
+        "method": "Six uniformly spaced sampled frames across the complete clip",
+        "frame_count": 6,
+        "audio_analyzed": false
+      }
+    }
+  ]
+}

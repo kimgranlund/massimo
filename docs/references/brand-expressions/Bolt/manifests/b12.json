@@ -1,0 +1,28 @@
+{
+  "id": "B12",
+  "title": "Primary colors",
+  "image": "b12.png",
+  "source": "../bolt-brand-guidelines-2025-12.pdf",
+  "location": {
+    "page": 12
+  },
+  "slide_intent": "Teach designers to assign different jobs to foregrounds, backgrounds and accents. A consistent emphasis gives the viewer a color to remember across otherwise varied communications.",
+  "strategic_value": "Giving Bolt Blue priority over other accents can preserve a recognizable cue while a black or white ground keeps the message legible.",
+  "demonstration": "Four equally wide cards present Bolt Black, Bolt White, Bolt Blue and Bolt Purple. The accompanying text assigns black and white to backgrounds and blue and purple to accents, with blue carrying the most visual weight.",
+  "category": "Color",
+  "practical_value": "Choose a ground and a lead accent for a new composition. Use the swatch specifications to reproduce each color in the intended medium.",
+  "content_islands": [
+    {
+      "name": "Section rail",
+      "spec": "Set the small Bolt mark at the top of a narrow dark rail. Place the section list below it and the folio at the foot."
+    },
+    {
+      "name": "Palette roles",
+      "spec": "Place the title and three short paragraphs in the white column left of the specimens. Explain the lead color, grounds and accents in that order."
+    },
+    {
+      "name": "Primary swatches",
+      "spec": "Align four tall, lightly rounded cards from left to right. Place each color name and its HEX, RGB, Pantone and CMYK references in the upper left. Leave the rest of each card open."
+    }
+  ]
+}

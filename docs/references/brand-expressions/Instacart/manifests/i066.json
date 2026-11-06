@@ -1,0 +1,24 @@
+{
+  "id": "I066",
+  "title": "Object Illustrations",
+  "image": "i066.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 66
+  },
+  "slide_intent": "Reduce a picture to the features someone can recognize at a small size. A compact shape can guide a reader through several steps without interrupting the text.",
+  "strategic_value": "Instacart can connect instructions about choosing goods, receiving updates and delivery through a family of concise pictures.",
+  "demonstration": "A cream How it works panel places a small green illustration above each of three steps. A fruit, an update motif and a bag distinguish the steps.",
+  "category": "Imagery",
+  "practical_value": "Use this scale of illustration when a short action label needs a quick visual cue beside other steps.",
+  "content_islands": [
+    {
+      "name": "Object guidance",
+      "spec": "Keep the title and notes about small areas and recognition on the left side of the green field."
+    },
+    {
+      "name": "How it works specimen",
+      "spec": "Set a wide rounded panel at right with a common heading. Align each small picture above its own step title and short explanation."
+    }
+  ]
+}

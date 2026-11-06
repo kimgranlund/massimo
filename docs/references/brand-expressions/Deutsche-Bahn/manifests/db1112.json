@@ -1,0 +1,38 @@
+{
+  "id": "DB1112",
+  "title": "Größen & Schutzraum / Large",
+  "image": "db1112.png",
+  "source": "../sources/page-11.png",
+  "location": {
+    "series": "DB new design / official website",
+    "source_page": 11,
+    "section": 12,
+    "url": "https://marketingportal.extranet.deutschebahn.com/neues-design/Icons"
+  },
+  "slide_intent": "Reserve clear space around a symbol so it remains distinct from neighboring content.",
+  "strategic_value": "A consistent safety margin can keep DB controls visually clear across sizes.",
+  "demonstration": "The Large tab shows a plus-circle icon at actual scale and enlarged on a 32×32 dp construction area with a 2 dp margin.",
+  "category": "Geometry",
+  "practical_value": "Use the supplied 32×32 dp variant at 100% and preserve its 2 dp clear space.",
+  "content_islands": [
+    {
+      "name": "Size tabs",
+      "spec": "Place Large, Medium and Small labels above the specimen with Large selected."
+    },
+    {
+      "name": "Margin diagram",
+      "spec": "Compare the small actual-size symbol with its enlarged construction area."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text connects correct size selection with pixel-perfect display at 100%.",
+    "Constraint": "The clear space is 2 dp; the selected Large size is 32×32 dp.",
+    "Application": "The selected-tab diagram shows the margin on an enlarged specimen."
+  },
+  "ingredient": {
+    "name": "Large functional icon clear space",
+    "role": "Separate the icon from surrounding content.",
+    "application": "Use the 32×32 dp variant and retain 2 dp clear space.",
+    "scope": "Official DB new-design website captured 2026-11-05; edition date unstated. This capture shows the Large tab; Medium and Small are separate states."
+  }
+}

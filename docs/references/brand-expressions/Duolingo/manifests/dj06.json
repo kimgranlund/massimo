@@ -1,0 +1,31 @@
+{
+  "id": "DJ06",
+  "title": "Lowercase g exploration",
+  "image": "dj06.png",
+  "source": "../sources/johnson-banks/Duolingo_typography4-by-Johnson-Banks.jpg",
+  "location": {
+    "series": "Johnson Banks / Everyone can Duolingo / 2019",
+    "item": 6,
+    "extent": "Whole published artwork",
+    "order": 2006
+  },
+  "slide_intent": "Compare alternatives for a conspicuous letter because a small change can alter both readability and personality.",
+  "strategic_value": "Exploring the g can help Duolingo choose a memorable feature without making the full wordmark inconsistent.",
+  "demonstration": "Twelve green lowercase g variants form two rows, comparing loop structures, terminals and proportions.",
+  "category": "Typography",
+  "practical_value": "Compare competing constructions side by side before selecting a distinctive letter.",
+  "content_islands": [
+    {
+      "name": "Upper alternatives",
+      "spec": "Align six looped g variants in the upper row."
+    },
+    {
+      "name": "Lower alternatives",
+      "spec": "Place six further constructions beneath, keeping their shared green and scale comparable."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "Johnson Banks describes extensive discussion of the lowercase g and says the more memorable looped form won through.",
+    "Expression": "The repeated green alternatives make differences in bowl, loop and terminal visible."
+  }
+}

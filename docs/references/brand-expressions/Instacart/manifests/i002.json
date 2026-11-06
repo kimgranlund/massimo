@@ -1,0 +1,24 @@
+{
+  "id": "I002",
+  "title": "Quick start guide",
+  "image": "i002.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 2
+  },
+  "slide_intent": "Introduce the scope in language that gives readers an immediate way to think about the system.",
+  "strategic_value": "Calling the components ingredients can connect identity work to the food that anchors Instacart’s business.",
+  "demonstration": "A single large statement on orange describes the book as a quick start guide to the brand ingredients and their use.",
+  "category": "Brand",
+  "practical_value": "Use this page to introduce a practical collection before giving a reader its inventory.",
+  "content_islands": [
+    {
+      "name": "Running labels",
+      "spec": "Keep the small book and edition labels along the top edge."
+    },
+    {
+      "name": "Scope statement",
+      "spec": "Set the sentence in large pale letters across three lines. Leave open orange space beneath it."
+    }
+  ]
+}

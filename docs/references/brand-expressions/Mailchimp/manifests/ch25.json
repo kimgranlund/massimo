@@ -1,0 +1,37 @@
+{
+  "id": "CH25",
+  "title": "Guideline spread sequence",
+  "image": "ch25.png",
+  "source": "../sources/ch25.gif",
+  "location": {
+    "series": "COLLINS / Mailchimp case study",
+    "item": 25,
+    "extent": "Complete published artwork",
+    "section": "Gallery"
+  },
+  "slide_intent": "Show related rules together because a designer needs to see how individual ingredients form a system.",
+  "strategic_value": "The four photographed spreads can connect Mailchimp’s typographic voice, logo reproduction and color rationale.",
+  "demonstration": "A four-frame loop presents photographed guideline spreads for Cooper Light, logo sizing, type spacing and Cavendish Yellow.",
+  "category": "Brand",
+  "practical_value": "Compare the roles of rationale, specimens and explicit rules across the selected spreads.",
+  "content_islands": [
+    {
+      "name": "Book presentation",
+      "spec": "Hold the photographed book on the wooden surface while the spread changes."
+    },
+    {
+      "name": "Sequence",
+      "spec": "Retain all four source frames; the linked panel records allow each spread to be read separately."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The sequence presents four spreads from a brand guideline book."
+  },
+  "motion": "../sources/ch25.mp4",
+  "panels": [
+    "ch25a.json",
+    "ch25b.json",
+    "ch25c.json",
+    "ch25d.json"
+  ]
+}

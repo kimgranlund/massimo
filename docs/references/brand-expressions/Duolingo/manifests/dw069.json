@@ -1,0 +1,39 @@
+{
+  "id": "DW069",
+  "title": "Writing / Style / Punctuation",
+  "image": "dw069.png",
+  "source": "../sources/pages/writing-style.png",
+  "location": {
+    "series": "Archived official Duolingo guidelines / 2024–2025 snapshot",
+    "route": "/writing/style",
+    "section": "Punctuation",
+    "item": 69,
+    "order": 690
+  },
+  "slide_intent": "Match punctuation to the role of the text so small interface labels remain clean while longer statements stay readable.",
+  "strategic_value": "Role-specific examples can help Duolingo maintain a consistent rhythm across headlines, subheads and buttons.",
+  "demonstration": "Three stacked comparisons cover headline punctuation, single- versus multi-sentence subheads and a button label.",
+  "category": "Voice",
+  "practical_value": "Identify the text role before applying a punctuation convention.",
+  "content_islands": [
+    {
+      "name": "Guidance column",
+      "spec": "Place the Punctuation heading and explanation of readability and tone at left."
+    },
+    {
+      "name": "Worked examples",
+      "spec": "Stack headline, subhead and button rules at right, each followed by preferred and rejected examples."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The left copy explicitly connects punctuation with readable chunks and tone.",
+    "Application": "Three worked groups distinguish headline, subhead and button usage.",
+    "Constraint": "Headlines and single-sentence subheads allow exclamation points but otherwise omit punctuation; multi-sentence subheads punctuate each sentence; buttons never use punctuation."
+  },
+  "ingredient": {
+    "name": "Punctuation by text role",
+    "role": "Keep short UI language clear and consistent.",
+    "application": "Omit punctuation from buttons; omit terminal punctuation from headlines and single-sentence subheads except exclamation points; punctuate each sentence in multi-sentence subheads.",
+    "scope": "Historical official guidelines from the 2024–2025 archived snapshot; this records the displayed guidance, not current Duolingo product behavior."
+  }
+}

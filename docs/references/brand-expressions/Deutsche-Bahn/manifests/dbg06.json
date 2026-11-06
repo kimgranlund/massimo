@@ -1,0 +1,28 @@
+{
+  "id": "DBG06",
+  "title": "Schritt für Schritt / Stacking",
+  "image": "dbg06.png",
+  "source": "../sources/media/954cab26c160-Bild_06-data.gif",
+  "location": {
+    "series": "DB new design / original GIF demonstrations",
+    "source_page": 15,
+    "section": 4,
+    "url": "https://marketingportal.extranet.deutschebahn.com/resource/blob/14025284/5f4992ee52178f3e37d92ac6dec8ab5a/Bild_06-data.gif"
+  },
+  "slide_intent": "Build repeated units in sequence because a methodical order makes a group easier to understand.",
+  "strategic_value": "A rhythmic stack can express DB movement through a consistent modular action.",
+  "demonstration": "Red horizontal rectangles build into a stack on a dark field, hold and disappear in sequence.",
+  "category": "Motion",
+  "practical_value": "Compare the sequence with the source’s stacking principle when establishing order among related elements.",
+  "content_islands": [
+    {
+      "name": "Stack",
+      "spec": "Build equal-width red modules into a vertical group with consistent dark gaps."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source describes rhythm, stacking and methodical sequence rather than arbitrariness.",
+    "Application": "The modules build and clear as a coordinated stack."
+  },
+  "motion": "../sources/media/dbg06.mp4"
+}

@@ -1,0 +1,23 @@
+{
+  "id": "LH48",
+  "title": "Award record",
+  "image": "lh48.png",
+  "source": "../sources/lh48.jpg",
+  "location": {
+    "series": "HvD Fonts / Lufthansa 2018",
+    "item": 27,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Separate recognition from design instruction because an award establishes reception rather than a reusable rule.",
+  "strategic_value": "The award panel can document external recognition of the Lufthansa refresh without proving specific audience outcomes.",
+  "demonstration": "Four award marks form a two-by-two panel, including dated 2018 and 2019 awards.",
+  "category": "Brand",
+  "practical_value": "Use the panel as provenance of recognition, not as evidence that every design choice is effective.",
+  "content_islands": [
+    {
+      "name": "Award grid",
+      "spec": "Retain the four award marks and their dates in the balanced white panel."
+    }
+  ],
+  "reference_purposes": {}
+}

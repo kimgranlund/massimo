@@ -1,0 +1,31 @@
+{
+  "id": "HX35",
+  "title": "Visualisation of information: M365 diagram templates user guide",
+  "image": "hx35.png",
+  "source": "../sources/design-and-create.offline.html",
+  "location": {
+    "series": "Web guideline introduction/component",
+    "order": 133,
+    "url": "https://www.hel.fi/en/decision-making/information-on-helsinki/design-and-digitalisation/helsinki-brand-and-visual-identity/visual-identity-guidelines/design-and-create",
+    "original_html": "../sources/design-and-create.html"
+  },
+  "slide_intent": "Build accessible charts from maintained templates because repeated manual formatting can weaken clarity and consistency.",
+  "strategic_value": "Installed palette and chart settings can help Helsinki contributors produce recognizable information graphics.",
+  "demonstration": "This webpage introduction describes Microsoft 365 diagram templates, installed colors/settings, related Excel and Illustrator resources, and chart terminology. It includes a visible unresolved >LINK placeholder.",
+  "category": "Layout",
+  "practical_value": "Check the installed template and related guide before styling a chart; do not treat the placeholder as a usable destination.",
+  "content_islands": [
+    {
+      "name": "Template workflow",
+      "spec": "Place the accessibility and installed-setting explanation first."
+    },
+    {
+      "name": "Related guidance",
+      "spec": "Follow with resource references and terminology; retain the unresolved placeholder as source content."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text connects templates with accessible graphics that follow the brand.",
+    "Application": "It explains that installed templates contain palette and settings without separate files afterward."
+  }
+}

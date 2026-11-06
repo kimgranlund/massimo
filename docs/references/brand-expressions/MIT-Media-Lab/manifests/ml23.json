@@ -1,0 +1,40 @@
+{
+  "id": "ML23",
+  "title": "Member candidates tabletop sign",
+  "image": "ml23.png",
+  "source": "../sources/ml23.jpg",
+  "location": {
+    "series": "Pentagram / MIT Media Lab / 2014 identity",
+    "item": 23,
+    "extent": "Published lightbox artwork"
+  },
+  "slide_intent": "Make an administrative message easy to find while preserving institutional ownership.",
+  "strategic_value": "A restrained title and small monogram can turn an ordinary event sign into a coherent touchpoint.",
+  "demonstration": "A black tabletop sign reads Member Candidates in white at upper left and carries a small lab mark at lower left.",
+  "category": "Layout",
+  "practical_value": "Study separation of message and endorsement across a simple surface.",
+  "content_islands": [
+    {
+      "name": "Message",
+      "spec": "Two white title lines occupy the upper-left corner."
+    },
+    {
+      "name": "Endorsement",
+      "spec": "A small white monogram anchors the lower left."
+    },
+    {
+      "name": "Tabletop context",
+      "spec": "Books and glazing show the sign in use."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A black tabletop sign reads Member Candidates in white at upper left and carries a small lab mark at lower left.",
+    "Application": "A black tabletop sign reads Member Candidates in white at upper left and carries a small lab mark at lower left."
+  },
+  "ingredient": {
+    "name": "Member candidates tabletop sign",
+    "role": "Make an administrative message easy to find while preserving institutional ownership.",
+    "application": "Study separation of message and endorsement across a simple surface.",
+    "scope": "Observed in this historical case-study artwork; not a mandatory usage rule or a current brand standard."
+  }
+}

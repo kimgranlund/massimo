@@ -1,0 +1,36 @@
+{
+  "id": "BK099",
+  "title": "Illustration Color",
+  "image": "bk099.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 99
+  },
+  "slide_intent": "Choose an illustration background deliberately so the subject remains easy to distinguish while retaining a recognizable palette.",
+  "strategic_value": "Contrasting food-colored tiles can give Burger King varied compositions without changing its illustration assets.",
+  "demonstration": "A cream instruction column sits beside a tiled field of ingredient and storytelling illustrations on orange, green, red, yellow and brown backgrounds.",
+  "category": "Color",
+  "practical_value": "Select a background from the full brand palette that gives the illustration enough contrast.",
+  "content_islands": [
+    {
+      "name": "Color guidance",
+      "spec": "Place the heading and background/contrast rules in the left cream column."
+    },
+    {
+      "name": "Illustration tiles",
+      "spec": "Fill the remaining area with ingredient, food and character illustrations on contrasting brand-color fields."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The copy explicitly links background selection to sufficient contrast.",
+    "Expression": "The tiled specimens combine food illustrations with saturated brand colors.",
+    "Application": "The text directs use of a background from the full palette.",
+    "Constraint": "The page prohibits amending illustration colors."
+  },
+  "ingredient": {
+    "name": "Illustration backgrounds",
+    "role": "Separate the illustrated subject from its field.",
+    "application": "Choose a full-palette background with enough contrast; retain supplied illustration colors.",
+    "scope": "Historical partner guide; applies to the illustration library, not a numeric contrast standard."
+  }
+}

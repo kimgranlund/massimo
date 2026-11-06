@@ -1,0 +1,27 @@
+{
+  "id": "BK102",
+  "title": "Illustration: Stripes",
+  "image": "bk102.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 102
+  },
+  "slide_intent": "Mark a change from literal illustrations to an abstract graphic device so readers can locate the next part of the system.",
+  "strategic_value": "A large brown heading on yellow can keep the guide itself recognizable while making the stripe chapter easy to find.",
+  "demonstration": "A two-line Illustration: Stripes title occupies the upper-left portion of a yellow page, beneath a small running header.",
+  "category": "Brand",
+  "practical_value": "Use this divider to identify where the guide begins explaining the stripe device.",
+  "content_islands": [
+    {
+      "name": "Section title",
+      "spec": "Set the oversized brown title on two lines near the upper left."
+    },
+    {
+      "name": "Page furniture",
+      "spec": "Retain the small running header, folio and copyright footer around the open yellow field."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The divider applies the guide’s large rounded brown display lettering to a yellow field."
+  }
+}

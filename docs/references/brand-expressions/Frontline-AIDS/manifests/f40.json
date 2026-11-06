@@ -1,0 +1,28 @@
+{
+  "id": "F40",
+  "title": "Principles",
+  "image": "f40.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 40
+  },
+  "slide_intent": "Show how tracking, kerning and leading change the way a short headline and a paragraph can be read. Setting the roles together makes their different densities visible.",
+  "strategic_value": "Frontline AIDS can retain its emphatic headline while giving readers enough space to follow supporting copy.",
+  "demonstration": "The page pairs a compact uppercase headline with a lower Raleway subhead and body specimen. Pink notes label optical kerning and negative tracking values for both roles.",
+  "category": "Typography",
+  "practical_value": "Use the page’s headline and body settings as starting references and judge leading with the text at its final size.",
+  "content_islands": [
+    {
+      "name": "Typesetting guidance",
+      "spec": "Separate the guidance for headlines from the guidance for body copy and subheads in the left text column."
+    },
+    {
+      "name": "Headline settings",
+      "spec": "Align the large multiline headline above the body sample. Label the Quasimoda Heavy tracking and optical kerning beside it."
+    },
+    {
+      "name": "Reading sample",
+      "spec": "Set a bold Raleway subhead above a regular paragraph. Annotate each with its settings and use the lower sample to show interline space."
+    }
+  ]
+}

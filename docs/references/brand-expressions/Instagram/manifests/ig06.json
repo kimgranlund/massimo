@@ -1,0 +1,31 @@
+{
+  "id": "IG06",
+  "title": "Spark connection / Dive into Instagram Reels",
+  "image": "ig06.png",
+  "source": "../sources/ig06.jpg",
+  "location": {
+    "series": "Elvis Dinh / Instagram brand design system / project year 2022",
+    "item": 6,
+    "extent": "whole source artwork"
+  },
+  "slide_intent": "Pair a product invitation with a personal moment so the service feels connected to human expression.",
+  "strategic_value": "The informal portrait and Reels invitation can give Instagram a people-centered voice.",
+  "demonstration": "A portrait fills the vertical composition, with Dive into Instagram Reels broken across its open areas and interface symbols at right.",
+  "category": "Brand",
+  "practical_value": "Place an invitation around the person’s face while retaining recognizable product cues.",
+  "content_islands": [
+    {
+      "name": "Portrait",
+      "spec": "Fill the frame with the expressive close-up and raised hand."
+    },
+    {
+      "name": "Invitation and interface cues",
+      "spec": "Distribute white words through open areas and align social symbols down the right edge."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The accompanying Spark connection principle says Instagram products bring people together.",
+    "Expression": "The loose wording and portrait give the invitation an informal character.",
+    "Application": "The composition applies the system to a Reels promotion."
+  }
+}

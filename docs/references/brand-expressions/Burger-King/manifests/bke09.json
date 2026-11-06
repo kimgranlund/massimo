@@ -1,0 +1,29 @@
+{
+  "id": "BKE09",
+  "title": "Illustration family",
+  "image": "bke09.png",
+  "source": "../sources/bke09.webp",
+  "location": {
+    "series": "JKR / Burger King identity case study",
+    "item": 9,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Show variation within one drawing language so designers can judge which features keep a family coherent.",
+  "strategic_value": "Shared flat colors and outlined hands can connect Burger King’s food, people and playful motifs.",
+  "demonstration": "Seven adjacent panels combine a held burger, ketchup packet, cucumber eyes, stacked burger, fries mouth, onion rings and ice cream.",
+  "category": "Imagery",
+  "practical_value": "Compare shape simplification, line use and color across different subjects.",
+  "content_islands": [
+    {
+      "name": "Upper panels",
+      "spec": "Place held food, ketchup and a face with cucumber slices across the upper row."
+    },
+    {
+      "name": "Lower panels",
+      "spec": "Group stacked ingredients, fries mouth, onion-ring hand and ice cream below."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The collage shows one flat illustration language spanning food and human gestures."
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "BK053",
+  "title": "Whopper®",
+  "image": "bk053.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 53
+  },
+  "slide_intent": "Treat a signature product name consistently because its visual form helps people distinguish it from other offerings.",
+  "strategic_value": "A fixed Whopper wordmark can support product recognition across packaging and menus.",
+  "demonstration": "Two large pale Whopper wordmarks on brown compare the registered version with the restaurant-signage-only version without registration.",
+  "category": "Typography",
+  "practical_value": "Use the supplied configuration for product identification, retaining the stated exception for ordinary paragraph copy.",
+  "content_islands": [
+    {
+      "name": "Product-lockup guidance",
+      "spec": "Place the differentiation rationale, application examples and registration consultation note at left."
+    },
+    {
+      "name": "Registered Whopper",
+      "spec": "Place the registered wordmark at upper right."
+    },
+    {
+      "name": "Signage Whopper",
+      "spec": "Repeat the wordmark below without registration, labeled for restaurant signage only."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source explains that the fixed Whopper configuration differentiates the product from other offerings.",
+    "Expression": "The heavy rounded product lettering is shown at large scale in a pale-on-brown treatment.",
+    "Application": "Packaging, merchandising and menu boards are named as applications.",
+    "Constraint": "Keep the configuration except inside paragraph copy; signage trademark treatment requires BKC marketing/legal guidance."
+  },
+  "ingredient": {
+    "name": "Whopper signature",
+    "role": "Give the signature product a recognizable typographic identifier.",
+    "application": "Use the supplied configuration for packaging, merchandising and menu boards; ordinary paragraph copy is excepted.",
+    "scope": "Historical partner guide. The source refers to Product Architecture on page140, which lies outside this129-page file; do not invent that missing guidance."
+  }
+}

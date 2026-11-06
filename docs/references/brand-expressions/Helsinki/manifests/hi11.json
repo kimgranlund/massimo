@@ -1,0 +1,29 @@
+{
+  "id": "HI11",
+  "title": "Neighbourhood buildings and play",
+  "image": "hi11.png",
+  "source": "../sources/illustration-examples.pdf",
+  "location": {
+    "page": 11,
+    "series": "Helsinki illustration examples — PDF derived from the official PowerPoint deck with LibreOffice",
+    "order": 201
+  },
+  "slide_intent": "Combine homes and small interactions so neighbourhood identity is communicated through both places and people.",
+  "strategic_value": "Housing, play equipment and residents can make Helsinki neighbourhood imagery feel inhabited.",
+  "demonstration": "Pale-blue and white buildings occupy the top and right of a gray field; a swing, laundry rack, residents, shrubs and a van fill the lower area.",
+  "category": "Imagery",
+  "practical_value": "Build a neighbourhood scene from a few architecture and activity elements rather than using all pieces at once.",
+  "content_islands": [
+    {
+      "name": "Housing and planting",
+      "spec": "Arrange building fronts, a birch and shrubs across the upper portion."
+    },
+    {
+      "name": "Ground-level activity",
+      "spec": "Place swing, laundry rack, people and vehicle below and between the buildings."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Pale-blue and white buildings occupy the top and right of a gray field; a swing, laundry rack, residents, shrubs and a van fill the lower area."
+  }
+}

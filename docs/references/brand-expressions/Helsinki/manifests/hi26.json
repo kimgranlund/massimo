@@ -1,0 +1,25 @@
+{
+  "id": "HI26",
+  "title": "Esimerkkejä kuvitusten käytöstä",
+  "image": "hi26.png",
+  "source": "../sources/illustration-examples.pdf",
+  "location": {
+    "page": 26,
+    "series": "Helsinki illustration examples — PDF derived from the official PowerPoint deck with LibreOffice",
+    "order": 216
+  },
+  "slide_intent": "Mark the move from assets to compositions so designers can see how the parts become usable communication.",
+  "strategic_value": "Separating examples from the illustration inventory can help Helsinki teams learn application rather than merely collect motifs.",
+  "demonstration": "A three-line white Finnish heading is centered on the solid blue divider field.",
+  "category": "Brand",
+  "practical_value": "Use the next section to compare layout choices rather than interpret isolated illustrations as templates.",
+  "content_islands": [
+    {
+      "name": "Application-section title",
+      "spec": "Center the three-line heading on the blue background."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The divider introduces examples of illustration use."
+  }
+}

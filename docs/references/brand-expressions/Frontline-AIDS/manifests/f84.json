@@ -1,0 +1,28 @@
+{
+  "id": "F84",
+  "title": "Event collateral",
+  "image": "f84.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 84
+  },
+  "slide_intent": "Teach designers to adjust emphasis for objects seen at different distances. A tall banner, badge and tabletop item each give the reader a different encounter.",
+  "strategic_value": "A common palette and graphic language can connect the event venue, its staff and the materials people carry away.",
+  "demonstration": "Three standing banners fill the left group. At right, colored panels show a mat and cup, a lanyard badge and a laptop with a video-call background.",
+  "category": "Application",
+  "practical_value": "Choose a large message for a banner, a compact identifier for a badge, and check whether the identifying detail survives at actual size.",
+  "content_islands": [
+    {
+      "name": "Banner group",
+      "spec": "Place three upright displays at different depths on green, showing cyan type-led and pink image-led options."
+    },
+    {
+      "name": "Small items",
+      "spec": "Place the cup, mat and badge in colored fields at right. Leave the surrounding objects visible to establish scale."
+    },
+    {
+      "name": "Screen application",
+      "spec": "Show the laptop and its background as an event touchpoint distinct from the printed pieces."
+    }
+  ]
+}

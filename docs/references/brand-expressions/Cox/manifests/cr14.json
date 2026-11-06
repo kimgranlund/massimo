@@ -1,0 +1,26 @@
+{
+  "id": "CR14",
+  "title": "All product brochure — Contour spread",
+  "image": "cr14.png",
+  "source": "../sources/cr14.png",
+  "location": {
+    "series": "Cox Brand Collection — Lindsay Little / Periscope",
+    "item": 14,
+    "extent": "whole source image"
+  },
+  "slide_intent": "Separate the emotional introduction from product detail so readers can scan at more than one depth.",
+  "strategic_value": "A consistent image, type and gradient hierarchy can make Cox’s Contour offer feel familiar while explaining its options.",
+  "demonstration": "An angled brochure spread combines a couple watching television, a room with a TV, feature copy, device images and a blue-purple offer panel.",
+  "category": "Layout",
+  "practical_value": "Reserve the largest images for use context and group detailed features into clearly differentiated text blocks.",
+  "content_islands": [
+    {
+      "name": "Left-page story",
+      "spec": "Place the couple photograph above feature descriptions and device imagery, with a small gradient Contour panel overlapping the photo."
+    },
+    {
+      "name": "Right-page offer",
+      "spec": "Pair the room and TV image with a short introduction and a larger gradient package panel near the lower outer corner."
+    }
+  ]
+}

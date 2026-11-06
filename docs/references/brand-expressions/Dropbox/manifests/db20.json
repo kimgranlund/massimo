@@ -1,0 +1,30 @@
+{
+  "id": "DB20",
+  "title": "Desktop website in context",
+  "image": "db20.png",
+  "source": "../sources/db20.jpg",
+  "location": {
+    "series": "COLLINS / Dropbox / 2017 identity case study",
+    "item": 20,
+    "section": "Gallery",
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Show a digital composition at a plausible viewing distance because layouts must be legible outside isolated mockups.",
+  "strategic_value": "The paired artwork and colored panels can carry Dropbox’s campaign language onto a desk screen.",
+  "demonstration": "A desktop monitor on a white desk displays a burgundy-and-blue page with text and two joined abstract images.",
+  "category": "Application",
+  "practical_value": "Compare text scale, image balance and surrounding whitespace in a physical screen context.",
+  "content_islands": [
+    {
+      "name": "Screen composition",
+      "spec": "Keep the campaign text left of the paired image within the monitor."
+    },
+    {
+      "name": "Desk context",
+      "spec": "Retain the white workspace, drawing tools, plant and orange chair."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "A desktop monitor on a white desk displays a burgundy-and-blue page with text and two joined abstract images."
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "id": "MC16",
+  "title": "Extended color palette",
+  "image": "mc16.png",
+  "source": "../sources/mc16.jpg",
+  "location": {
+    "series": "Pentagram / Mastercard / 2016 identity case study",
+    "item": 16,
+    "extent": "Full published artwork"
+  },
+  "slide_intent": "Explain how signature colors expand into a working palette because compositions need supporting tones as well as distinctive brand hues.",
+  "strategic_value": "Neutral bases and a wider hue range can support varied content while retaining orange as a recognizable emphasis.",
+  "demonstration": "A rectangular matrix places broad dark-neutral, light-neutral and orange columns beside narrow red, yellow, green and turquoise scales.",
+  "category": "Color",
+  "practical_value": "Compare the hierarchy of palette families; do not infer numeric color values or required area ratios.",
+  "content_islands": [
+    {
+      "name": "Neutral scales",
+      "spec": "Keep broad dark and light neutral columns on the left."
+    },
+    {
+      "name": "Chromatic scales",
+      "spec": "Place the broad orange column beside narrower chromatic columns; retain the horizontal tint and shade bands."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The matrix displays neutral and chromatic families across multiple lightness values.",
+    "Intent": "Pentagram explains that warm gray bases provide neutrality and that orange forms the midpoint between logo red and yellow.",
+    "Constraint": "The accompanying article explicitly specifies warm grays as the base for compositions and orange as the new primary color."
+  },
+  "ingredient": {
+    "name": "Extended palette",
+    "role": "Support varied communication around a distinctive orange emphasis.",
+    "application": "Use warm grays as composition bases and orange as primary color, as specified in the accompanying article.",
+    "scope": "Historical 2016 Pentagram case study; not a current master guideline or numeric production specification."
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "I100",
+  "title": "Contact",
+  "image": "i100.png",
+  "source": "../instacart-brand-guidelines-v1-2022.pdf",
+  "location": {
+    "page": 100,
+    "printed_page": 106
+  },
+  "slide_intent": "Give the reader a clear route to a person who can resolve a brand question after the examples end.",
+  "strategic_value": "Naming contacts can help teams clarify how to apply the identity when a new case exceeds the published guidance.",
+  "demonstration": "The final dark green page pairs a large Contact title with two names and email addresses at lower left.",
+  "category": "Brand",
+  "practical_value": "Use the page as the dated edition’s contact reference for questions about the book.",
+  "content_islands": [
+    {
+      "name": "Closing title",
+      "spec": "Place the large cream Contact label at left with generous open green space."
+    },
+    {
+      "name": "Contact block",
+      "spec": "Group Kevin Byrd and Adam Cote with their respective addresses at lower left. Keep the two entries distinct and aligned."
+    }
+  ]
+}

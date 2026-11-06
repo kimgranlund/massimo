@@ -1,0 +1,30 @@
+{
+  "id": "C428",
+  "title": "Gradient world schematic",
+  "image": "c428.png",
+  "source": "../sources/c428.jpg",
+  "location": {
+    "series": "Pentagram / Channel 4 masterbrand / 2023",
+    "item": 28,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Expose the structure behind an effect so designers can reproduce a family of environments consistently.",
+  "strategic_value": "A shared cube construction can keep Channel 4’s varied gradients spatially related.",
+  "demonstration": "The film pulls back from a blue room to a cube with outlined planes, then cycles through color variants before returning to the room view.",
+  "category": "Geometry",
+  "practical_value": "Compare the front-facing gradient result with the oblique construction view.",
+  "content_islands": [
+    {
+      "name": "Room result",
+      "spec": "Begin and end with the full-frame blue gradient room."
+    },
+    {
+      "name": "Construction view",
+      "spec": "Show the cube and outlined planes on black, then compare alternate colored cubes."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The animation reveals a cube construction behind the gradient-room appearance."
+  },
+  "motion": "../sources/c428.mp4"
+}

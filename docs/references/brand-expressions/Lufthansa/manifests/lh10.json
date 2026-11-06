@@ -1,0 +1,30 @@
+{
+  "id": "LH10",
+  "title": "Typeface research comparison",
+  "image": "lh10.png",
+  "source": "../sources/lh10.jpg",
+  "location": {
+    "series": "Mona Franz / Lufthansa 2018",
+    "item": 10,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Compare letter structures before choosing a replacement because familiar words carry a recognizable voice.",
+  "strategic_value": "A detailed comparison with DLH Helvetica can guide a new face without discarding its inherited character.",
+  "demonstration": "Three columns labeled DLH Helvetica, CorD and Neue Helvetica LT compare Hglx, letters and isolated forms.",
+  "category": "Typography",
+  "practical_value": "Identify which proportions and terminals matter to the existing identity.",
+  "content_islands": [
+    {
+      "name": "Three type columns",
+      "spec": "Align the named faces and large Hglx specimens."
+    },
+    {
+      "name": "Detail rows",
+      "spec": "Place matching letters and dissected forms below each face."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Three columns labeled DLH Helvetica, CorD and Neue Helvetica LT compare Hglx, letters and isolated forms.",
+    "Intent": "Mona Franz describes the briefing as a balance between inherited DLH Helvetica character, branding and technical needs."
+  }
+}

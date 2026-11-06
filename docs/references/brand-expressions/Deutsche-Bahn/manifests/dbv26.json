@@ -1,0 +1,41 @@
+{
+  "id": "DBV26",
+  "title": "Ken-Burns_Zoom",
+  "image": "dbv26.png",
+  "source": "../sources/media/dbv26.mp4",
+  "location": {
+    "series": "DB new design / motion demonstrations",
+    "source_page": 15,
+    "section": "Animation-14021536",
+    "source_url": "https://ecm-mediathek-cdn.deutschebahn.com/cdnenhancedecmvidhls/db306423/2880975/video_config.json",
+    "capture_date": "2026-11-05"
+  },
+  "slide_intent": "Move a still image subtly so it feels active without forcing the viewer to track a new subject.",
+  "strategic_value": "A slow zoom can give DB photography life while preserving attention on the employee.",
+  "demonstration": "An employee photograph gradually changes scale; a small inward-corner indicator appears at the lower left.",
+  "category": "Motion",
+  "practical_value": "Choose a slow zoom when closer framing strengthens the existing subject.",
+  "content_islands": [
+    {
+      "name": "Photograph",
+      "spec": "Keep the employee as the visual anchor while changing image scale."
+    },
+    {
+      "name": "Zoom indicator",
+      "spec": "Place the small corner-shaped cue at the lower left."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "An employee photograph gradually changes scale; a small inward-corner indicator appears at the lower left.",
+    "Application": "The source provides a playable demonstration of this repeatable sequence: An employee photograph gradually changes scale; a small inward-corner indicator appears at the lower left.",
+    "Intent": "Accompanying Ken-Burns prose explains that slow zooms or pans give still images more dynamism and make content feel more alive.",
+    "Constraint": "The source specifies smooth, subtle movement with linear easing for the Ken-Burns effect."
+  },
+  "motion": "../sources/media/dbv26.mp4",
+  "ingredient": {
+    "name": "Ken-Burns zoom",
+    "role": "Give a still photographic scene continuous movement.",
+    "application": "Use a slow, subtle change in image scale with linear easing.",
+    "scope": "Official DB new-design web guidance, undated live edition captured 2026-11-05; applies to the demonstrated motion context. This linear-easing instruction is specific to Ken-Burns image motion, not the general primary motion curve."
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "BK026",
+  "title": "4. Approachable",
+  "image": "bk026.png",
+  "source": "../burger-king-brand-guidelines-2020.pdf",
+  "location": {
+    "page": 26
+  },
+  "slide_intent": "Define the limits of approachability so writers can express personality without creating the wrong impression.",
+  "strategic_value": "Plain conversational language can make Burger King’s food and service feel accessible.",
+  "demonstration": "Clear, real and friendly language is bounded by cautions against terseness, pretension and false friendliness. The right column compares direct invitations and ingredient descriptions with officious, ornate and implausible copy.",
+  "category": "Voice",
+  "practical_value": "Replace formal or inflated wording with something a person would naturally say.",
+  "content_islands": [
+    {
+      "name": "Trait and explanation",
+      "spec": "Place the numbered Approachable heading and explanatory paragraph in the wide left area."
+    },
+    {
+      "name": "Boundaries",
+      "spec": "Stack three contrasting statements below, highlighting the limiting word in orange."
+    },
+    {
+      "name": "Do and do not examples",
+      "spec": "Use the narrower right column for paired examples with explanatory notes."
+    },
+    {
+      "name": "Review notice",
+      "spec": "Retain the bottom qualification requiring trademark and local legal review of example lines."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The explanatory paragraph describes the role of approachability in Burger King’s voice.",
+    "Application": "The right column compares direct invitations and ingredient descriptions with officious, ornate and implausible copy.",
+    "Constraint": "The page specifies clear not terse, real not pretentious, friendly not false; its example lines remain subject to trademark and local legal review."
+  },
+  "ingredient": {
+    "name": "Approachable voice",
+    "role": "Express approachability while avoiding a misleading or alienating tone.",
+    "application": "Replace formal or inflated wording with something a person would naturally say.",
+    "scope": "Historical partner voice guide. Preserve the named boundaries and source review qualification; examples are not blanket approval to publish claims."
+  }
+}

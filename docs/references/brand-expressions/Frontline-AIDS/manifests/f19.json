@@ -1,0 +1,24 @@
+{
+  "id": "F19",
+  "title": "Sizing & clearspace",
+  "image": "f19.png",
+  "source": "../frontline-aids-brand-guidelines-2021-01.pdf",
+  "location": {
+    "page": 19
+  },
+  "slide_intent": "Give a logo enough space to read at its smallest intended size. A measure derived from the mark travels with it when the artwork is scaled.",
+  "strategic_value": "Frontline AIDS can protect both versions of its signature while setting separate thresholds for their different proportions.",
+  "demonstration": "Symbol silhouettes indicate clearspace around the primary and secondary lockups. Smaller specimens give each logo its own minimum width for print and screen.",
+  "category": "Geometry",
+  "practical_value": "Use the symbol width as the minimum surrounding clearance. Check the relevant minimum size: 25 mm or 110 px for the primary, 15 mm or 65 px for the secondary.",
+  "content_islands": [
+    {
+      "name": "Clearspace rule",
+      "spec": "Place the explanatory text at left. Diagram the horizontal and stacked lockups on the right with ghosted symbols marking their buffers."
+    },
+    {
+      "name": "Minimum-size comparison",
+      "spec": "Alongside the lower diagram, show the two reduced marks with width indicators and separate print and screen dimensions."
+    }
+  ]
+}

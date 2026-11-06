@@ -1,0 +1,33 @@
+{
+  "id": "BKE12",
+  "title": "Street poster sequence",
+  "image": "bke12.png",
+  "source": "../sources/bke12.webp",
+  "location": {
+    "series": "JKR / Burger King identity case study",
+    "item": 12,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Let adjacent panels share a message so viewers can connect signature, claim and product while moving past.",
+  "strategic_value": "A sequence of logo, ingredient language and close-up food can reinforce Burger King through several short encounters.",
+  "demonstration": "Street hoarding places food photography, the primary logo, Freshly Sliced with tomatoes, and a macro burger image side by side.",
+  "category": "Application",
+  "practical_value": "Compare how each panel contributes a distinct role to a larger campaign sequence.",
+  "content_islands": [
+    {
+      "name": "Food and signature",
+      "spec": "Place the food scene and cream logo panel at left."
+    },
+    {
+      "name": "Ingredient claim",
+      "spec": "Use a brown panel with red tomatoes and cream Freshly Sliced lettering in the middle."
+    },
+    {
+      "name": "Product close-up",
+      "spec": "Finish with a large burger crop at right, preserving the pavement setting."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The multi-panel street installation combines photography, logo, illustration and wording in one campaign sequence."
+  }
+}
