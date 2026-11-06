@@ -255,11 +255,11 @@ export function ContainersPage({ params }: PageProps) {
 /** A title and panels of one size. Collapsing, the title is a transparent section of that size, and its margin collapses with the panel's. Padded, it is a painted section of the card's own size, flush, and the panel keeps its margin. */
 function SizedCard({ card, size, padded, panels = 1 }: { card: CardPadding; size: CardPadding; padded: boolean; panels?: number }) {
   return <>
-    <ui-section size={padded ? card : size} className={padded ? titleBar : undefined}><ui-row><strong>Container title</strong><span>⌄</span></ui-row></ui-section>
+    <ui-section size={padded ? card : size} className={padded ? titleBar : undefined}><ui-row><strong>Container title</strong><i name="caret-down" icon-size="sm" /></ui-row></ui-section>
     {Array.from({ length: panels }, (_, i) => (
       <ui-section size={size} className={tintedBox} key={i}>
         <ui-row><strong>Card title</strong></ui-row>
-        {['Option 1', 'Option 2', 'Option 3'].map((o) => <ui-row key={o}><span>{o}</span><span>+</span></ui-row>)}
+        {['Option 1', 'Option 2', 'Option 3'].map((o) => <ui-row key={o}><span>{o}</span><i name="plus" /></ui-row>)}
       </ui-section>
     ))}
   </>;
