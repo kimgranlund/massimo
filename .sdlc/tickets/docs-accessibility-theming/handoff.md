@@ -2,7 +2,7 @@
 id: T-0066
 title: "Docs site: Accessibility and Theming pages, System and Guides navigation"
 type: feature        # feature | bug | chore | spike | idea
-status: proposed     # proposed | ready | claimed | paused | blocked | done | dropped (build progress lives in /board)
+status: done     # proposed | ready | claimed | paused | blocked | done | dropped (build progress lives in /board)
 size: L2             # L1 | L2 | L3 | L4 (L5 reserved)
 priority: P2         # P1 | P2 | P3
 depends: []          # T-NNNN, file:<path>, cap:<name>; e.g. [T-0002]
@@ -25,3 +25,9 @@ Decisions made, paths, links. Everything a clean-context agent needs; it sees no
 
 ## Constraints
 What must not change. "None" if none.
+
+## Outcome
+
+2026-11-06 · lane: full L2 · verdict: closed by reason (built live; gates passed in Chromium, Firefox and WebKit) · verifier: none · base: none
+- Changed: apps/docs: Accessibility on the live theme, Theming on the real engine, System and Guides navigation
+- Commits: none

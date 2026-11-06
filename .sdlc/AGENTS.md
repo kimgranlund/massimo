@@ -1,4 +1,4 @@
-<!-- sdlc:managed:start v1 sha256:7a47151f5e83 -->
+<!-- sdlc:managed:start v1 sha256:8561af6ab57e -->
 # Work records
 
 This folder holds SDLC tickets, task records, `roadmap.md`, `notes.md`, and `config`. `tickets.py roadmap` (also run by `new` and `close`) generates this block: do not edit inside it; change a ticket's `handoff.md` front matter and rerun `roadmap`. `roadmap.md` lists every ticket in dependency order. Closed `.NNNN-*` folders are history: open one only when asked.
@@ -10,9 +10,8 @@ This folder holds SDLC tickets, task records, `roadmap.md`, `notes.md`, and `con
 
 ## Stages
 
-- proposed: 2
+- proposed: 1
   - T-0064 Parity W7 · Decide scope of specialist components (parity-wave-7-scope)
-  - T-0066 Docs site: Accessibility and Theming pages, System and Guides navigation (docs-accessibility-theming)
 - ready: 28
   - T-0036 Parity W1 · Breadcrumb (breadcrumb)
   - T-0037 Parity W1 · Button link (button-link)
@@ -45,7 +44,7 @@ This folder holds SDLC tickets, task records, `roadmap.md`, `notes.md`, and `con
 - claimed: 0
 - paused: 0
 - blocked: 0
-- done: 36
+- done: 37
 - dropped: 0
 
 ## Procedures
