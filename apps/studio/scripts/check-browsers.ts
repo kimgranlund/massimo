@@ -85,7 +85,7 @@ async function checkDocs(page: Page): Promise<string[]> {
   page.on('response', failed);
   await page.goto(docsUrl);
   await page.waitForSelector('nav a', { timeout: 120_000 });
-  const slugs = ['components', ...await page.$$eval('nav a', (links) => links.map((a) => a.getAttribute('href')!.slice(2)))];
+  const slugs = [...await page.$$eval('nav a', (links) => links.map((a) => a.getAttribute('href')!.slice(2)))];
   if (!slugs.length) fails.push('docs: no component pages');
   for (const slug of slugs) {
     await page.evaluate((s) => { location.hash = `#/${s}`; }, slug);
@@ -100,9 +100,16 @@ async function checkDocs(page: Page): Promise<string[]> {
     if (r.undefinedTags.length) fails.push(`docs ${slug}: unregistered ${r.undefinedTags.join(', ')}`);
     if (r.overflow > 0) fails.push(`docs ${slug}: scrolls sideways by ${r.overflow}px`);
   }
+  // The contrast table measures the live theme, so a brand changes it.
+  const contrast = () => page.locator('[data-page] table').nth(1).innerText();
+  await page.evaluate(() => { location.hash = '#/accessibility'; });
+  await page.waitForFunction(() => /\d:1/.test(document.querySelector('[data-page]')?.textContent ?? ''), null, { timeout: 30_000 });
+  const before = await contrast();
   await page.locator('header ui-select').click();
   await page.locator('ui-option', { hasText: 'Audi' }).first().click();
   await page.waitForFunction(() => document.getElementById('docs-brand')?.getAttribute('href')?.endsWith('brands/Audi.css'), null, { timeout: 10_000 }).catch(() => fails.push('docs: the Theme select loaded no brand'));
+  await page.waitForTimeout(800);
+  if (await contrast() === before) fails.push('docs: the contrast table did not follow the Theme select');
   page.off('response', failed);
   console.log(`  docs: ${slugs.length} pages, ${fails.length} fails`);
   return fails;

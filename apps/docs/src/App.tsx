@@ -53,7 +53,8 @@ export function App() {
   const groups = useMemo(() => {
     const match = (title: string, tag = '') => !query || title.toLowerCase().includes(query) || tag.includes(query);
     return [
-      ['Foundations', FOUNDATIONS.filter((f) => match(f.title)).map((f) => ({ slug: f.slug, title: f.title }))] as const,
+      ...(['System', 'Guides'] as const).map((section) => [section, FOUNDATIONS.filter((f) => f.section === section && match(f.title)).map((f) => ({ slug: f.slug, title: f.title }))] as const),
+      ['Components', match('All components') ? [{ slug: 'components', title: 'All components' }] : []] as const,
       ...GROUPS.map(([label, slugs]) => [label, PAGES.filter((p) => slugs.includes(p.slug) && match(p.title, p.tag)).map((p) => ({ slug: p.slug, title: p.title }))] as const),
     ].filter(([, items]) => items.length);
   }, [query]);

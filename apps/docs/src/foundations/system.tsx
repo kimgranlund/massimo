@@ -2,11 +2,11 @@
 // kit's resolvers, and the specimens beside them take the same inputs, so the two can't disagree.
 import { useState, type ReactNode } from 'react';
 import { css } from '../../styled-system/css/index.js';
-import { DENSITIES, SIZES, type Density } from '@massimo/ui-kit/tokens/geometry/resolve';
+import { DENSITIES, GEOMETRY_DEFAULTS, SIZES, type Density } from '@massimo/ui-kit/tokens/geometry/resolve';
 import { useEvent } from '../wc.ts';
 
 export interface System { unit: number; density: Density; radiusScale: number }
-export const DEFAULT_SYSTEM: System = { unit: 4, density: 'default', radiusScale: 1 };
+export const DEFAULT_SYSTEM: System = { unit: GEOMETRY_DEFAULTS.unit, density: GEOMETRY_DEFAULTS.density, radiusScale: GEOMETRY_DEFAULTS.radiusScale };
 
 const bar = css({ display: 'flex', flexWrap: 'wrap', gap: '3', alignItems: 'end', padding: '4', borderRadius: 'lg', bg: 'bg.subtle' });
 const field = css({ display: 'flex', flexDirection: 'column', gap: '1', textStyle: 'label', minWidth: '[8rem]' });

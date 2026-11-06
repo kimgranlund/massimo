@@ -9,9 +9,11 @@ import { ELEVATION } from '@massimo/ui-kit/tokens/elevation/index';
 import { INTENTS, type IntentName } from '@massimo/ui-kit/tokens/motion/index';
 import { SCALE_ROLES } from '@massimo/ui-kit/tokens/colors/spectrum/roles';
 import { Live, SystemBar, useSystem, type System } from './system.tsx';
+import { Accessibility } from './accessibility.tsx';
+import { Theming } from './theming.tsx';
 import { useEvent } from '../wc.ts';
 
-const s = {
+export const s = {
   title: css({ textStyle: 'heading-1' }),
   display: css({ textStyle: 'heading-1', md: { textStyle: 'display' } }),
   lead: css({ textStyle: 'body-lg', marginBlockStart: '3', maxWidth: '[44rem]' }),
@@ -54,21 +56,21 @@ const TYPE_CLASS: Record<TypeRoleName, string> = {
   'control-md': css({ textStyle: 'control-md' }), 'control-sm': css({ textStyle: 'control-sm' }), 'section-kicker': css({ textStyle: 'section-kicker' }), 'group-kicker': css({ textStyle: 'group-kicker' }), code: css({ textStyle: 'code' }),
 };
 
-const px = (n: number) => `${Math.round(n * 100) / 100}px`;
-const Table = ({ head, rows }: { head: string[]; rows: ReactNode[][] }) => (
+export const px = (n: number) => `${Math.round(n * 100) / 100}px`;
+export const Table = ({ head, rows }: { head: string[]; rows: ReactNode[][] }) => (
   <div className={s.scroller}><table className={s.table}>
     <thead><tr>{head.map((h) => <th key={h} scope="col">{h}</th>)}</tr></thead>
     <tbody>{rows.map((r, i) => <tr key={i}>{r.map((c, j) => <td key={j}>{c}</td>)}</tr>)}</tbody>
   </table></div>
 );
-const Page = ({ title, lead, display, children }: { title: string; lead: string; display?: boolean; children: ReactNode }) => (
+export const Page = ({ title, lead, display, children }: { title: string; lead: string; display?: boolean; children: ReactNode }) => (
   <article data-page="">
     <h1 className={display ? s.display : s.title}>{title}</h1>
     <p className={s.lead}>{lead}</p>
     {children}
   </article>
 );
-const Section = ({ title, children }: { title: string; children: ReactNode }) => <section className={s.section}><h2 className={s.h2}>{title}</h2>{children}</section>;
+export const Section = ({ title, children }: { title: string; children: ReactNode }) => <section className={s.section}><h2 className={s.h2}>{title}</h2>{children}</section>;
 const inputs = (x: System) => ({ unit: x.unit, density: x.density, radiusScale: x.radiusScale });
 
 const CardSpecimen = ({ system }: { system: System }) => (
@@ -165,7 +167,7 @@ function Type() {
     <Page title="Typography" lead="Type works in three layers: faces, voices and roles. A role sets the size, weight and color, so components name a role and never a font size.">
       <Section title="Roles">
         {(Object.keys(TYPE_ROLES) as TypeRoleName[]).map((role) => {
-          const t = resolveType(role, { unit: 4 });
+          const t = resolveType(role);
           return <div key={role} className={s.specimen}><span className={TYPE_CLASS[role]}>{TYPE_ROLES[role].label}</span><span className={s.tag}>{role} · {px(t.size)} / {px(t.lineHeight)} · {t.weight}</span></div>;
         })}
       </Section>
@@ -192,7 +194,7 @@ function Color() {
       </Section>
       <Section title="Brand colors">
         <p className={s.body}>A theme can pin a brand's exact colors to a role. The ramp settles around the pin, so steps 9 to 12 stay one curve. Two dials shape those steps alone: <code className={s.inline}>keyIntensity</code> scales their chroma, and <code className={s.inline}>keyDepth</code> moves their tone.</p>
-        <p className={s.body}>Step contrast is solved with APCA, not WCAG 2 ratios, so some valid pairs fall under 4.5:1. A project that must meet WCAG AA can raise the step targets or anchor its solids.</p>
+        <p className={s.body}>Step contrast is solved with APCA, not WCAG 2 ratios. See <a href="#/accessibility">Accessibility</a> for what that means for your product.</p>
       </Section>
     </Page>
   );
@@ -256,14 +258,16 @@ function Motion() {
   );
 }
 
-export interface Foundation { slug: string; title: string; note: string; Page: ComponentType }
+export interface Foundation { slug: string; title: string; note: string; section: 'System' | 'Guides'; Page: ComponentType }
 export const FOUNDATIONS: Foundation[] = [
-  { slug: 'overview', title: 'Overview', note: 'How one unit produces the whole system.', Page: Story },
-  { slug: 'get-started', title: 'Get started', note: 'Use the kit with web components or React.', Page: Start },
-  { slug: 'unit-and-density', title: 'Unit and density', note: 'The inputs behind every length.', Page: Geometry },
-  { slug: 'typography', title: 'Typography', note: 'Faces, voices and roles.', Page: Type },
-  { slug: 'color', title: 'Color', note: 'Ramps, roles and brand colors.', Page: Color },
-  { slug: 'containers', title: 'Containers', note: 'The ladder, cards and sections.', Page: Containers },
-  { slug: 'elevation', title: 'Elevation', note: 'Fills, shadows and layers.', Page: Elevation },
-  { slug: 'motion', title: 'Motion', note: 'Intents and springs.', Page: Motion },
+  { slug: 'overview', section: 'System', title: 'Overview', note: 'How one unit produces the whole system.', Page: Story },
+  { slug: 'get-started', section: 'System', title: 'Get started', note: 'Use the kit with web components or React.', Page: Start },
+  { slug: 'unit-and-density', section: 'System', title: 'Unit and density', note: 'The inputs behind every length.', Page: Geometry },
+  { slug: 'typography', section: 'System', title: 'Typography', note: 'Faces, voices and roles.', Page: Type },
+  { slug: 'color', section: 'System', title: 'Color', note: 'Ramps, roles and brand colors.', Page: Color },
+  { slug: 'containers', section: 'System', title: 'Containers', note: 'The ladder, cards and sections.', Page: Containers },
+  { slug: 'elevation', section: 'System', title: 'Elevation', note: 'Fills, shadows and layers.', Page: Elevation },
+  { slug: 'motion', section: 'System', title: 'Motion', note: 'Intents and springs.', Page: Motion },
+  { slug: 'theming', section: 'Guides', title: 'Theming and brands', note: 'A few inputs produce a whole theme.', Page: Theming },
+  { slug: 'accessibility', section: 'Guides', title: 'Accessibility', note: 'What the system guarantees and what you own.', Page: Accessibility },
 ];
