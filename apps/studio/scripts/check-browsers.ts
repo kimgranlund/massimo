@@ -42,6 +42,21 @@ for (let i = 0; i < 100; i++) { if (await fetch(docsUrl).then((r) => r.ok, () =>
 
 /** Tags with no script: they have no custom element to define. */
 const CSS_ONLY = new Set(['ui-container', 'ui-section', 'ui-row', 'ui-column', 'ui-list', 'ui-grid']);
+// The shell scrolls inside its panes: the document itself never does, on any page.
+async function checkShellScroll(page: Page): Promise<string[]> {
+  const fails: string[] = [];
+  for (const route of ['home', 'components', 'containers', 'elevation', 'brand', 'geometry', 'typography', 'colors', 'motion']) {
+    await page.goto('about:blank');
+    await page.goto(`${base}/#/${route}`);
+    await page.waitForSelector('[data-canvas] > *', { timeout: 60_000 });
+    await page.waitForLoadState('networkidle');
+    const over = await page.evaluate(() => document.documentElement.scrollHeight - innerHeight);
+    if (over > 0) fails.push(`shell ${route}: the document scrolls by ${over}px`);
+  }
+  console.log(`  shell scroll: ${fails.length} fails`);
+  return fails;
+}
+
 async function checkDocs(page: Page): Promise<string[]> {
   const fails: string[] = [];
   const failed = (r: { status(): number; url(): string }) => { if (r.status() >= 400) fails.push(`docs: ${r.status()} ${r.url()}`); };
@@ -197,6 +212,7 @@ try {
       ...await checkPage(page, 'scope-check.html'),
       ...await checkPage(page, 'brand-demo.html'),
       ...await checkStudioBrand(page),
+      ...await checkShellScroll(page),
       ...await checkDocs(page),
       ...errors.map((e) => `page error: ${e}`),
     ];

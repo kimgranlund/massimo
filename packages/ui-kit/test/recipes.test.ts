@@ -104,3 +104,10 @@ test('ui-section takes its inset from the card by inheritance; a card has no pad
 test('--ui-gap does not inherit, so the gap attribute applies to its own element only', () => {
   assert.deepEqual((uiKitPreset as any).globalVars['--ui-gap'], { syntax: '*', inherits: false });
 });
+
+test('a hidden label stays inside its field, so it cannot stretch a scroller\'s document', async () => {
+  const { fieldRoot } = await import('../components/recipe-parts.ts');
+  assert.equal((fieldRoot as any)['&:is([hide-label], [data-hide-label])'].position, 'relative');
+  assert.equal((fieldRoot as any)['&:is([hide-label], [data-hide-label]) > [data-part=label]'].position, 'absolute');
+});
+

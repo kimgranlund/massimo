@@ -144,7 +144,7 @@ test('hideLabel keeps the label in the markup (accessible name) and marks the ho
   const { input } = await import('../components/input/input.recipe.ts');
   const { select } = await import('../components/select/select.recipe.ts');
   for (const recipe of [input, select]) {
-    const sel = Object.keys(recipe.base!.root!).find((k) => k.includes('[hide-label]') && k.includes('[data-hide-label]'));
+    const sel = Object.keys(recipe.base!.root!).find((k) => k.includes('[hide-label]') && k.includes('[data-hide-label]') && k.includes('[data-part=label]'));
     assert.ok(sel, 'hide-label rule exists for both renderers');
     assert.equal((recipe.base!.root as any)[sel!].clipPath, 'inset(50%)');
   }

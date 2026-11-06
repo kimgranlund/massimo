@@ -200,7 +200,9 @@ export const FORCED = '@media (forced-colors: active)';
 export const fieldRoot: Style = {
   display: 'flex', flexDirection: 'column', gap: '1.5', fontFamily: UI_FONT,
   // hide-label: the label stays the control's accessible name but is not drawn (visually hidden,
-  // out of flow, so the field keeps no gap for it).
+  // out of flow, so the field keeps no gap for it). The host holds it: anchored to the page instead,
+  // it escapes a scroller and stretches the document.
+  '&:is([hide-label], [data-hide-label])': { position: 'relative' },
   '&:is([hide-label], [data-hide-label]) > [data-part=label]': {
     position: 'absolute', width: '1px', height: '1px', margin: '-1px', padding: 0, overflow: 'hidden',
     clipPath: 'inset(50%)', whiteSpace: 'nowrap', border: 0,
