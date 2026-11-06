@@ -134,7 +134,7 @@ export function Settings() {
 
         <div className={footer}>
           <span className={s.caption}>Last saved 4 minutes ago</span>
-          <ui-container preset="group">
+          <ui-container preset="group" gap="2">
             <ui-button type="reset">Discard</ui-button>
             <ui-button type="submit" variant="primary">Save changes</ui-button>
           </ui-container>

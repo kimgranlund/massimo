@@ -37,6 +37,7 @@ const grid = css({
 const shotText = css({ display: 'flex', flexDirection: 'column', gap: '0.5', paddingInline: '1', paddingBlockEnd: '1' });
 const shotHead = css({ display: 'flex', alignItems: 'start', justifyContent: 'space-between', gap: '2' });
 const ellipsis = css({ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' });
+const place = css({ display: 'flex', alignItems: 'center', gap: '1', minWidth: '0', '& > i': { flexShrink: '0' } });
 const tagHide = css({ display: 'none', [CQ_SM]: { display: 'inline-flex' } });
 
 const TAGS = ['All', ...new Set(SHOTS.map((x) => x.tag))];
@@ -70,7 +71,7 @@ export function Media({ spectrum }: { spectrum?: SpectrumPayload }) {
       <div className={s.stack4}>
         <div className={s.spread}>
           <h3 className={s.h3}>Photo library</h3>
-          <ui-container preset="group">
+          <ui-container preset="group" gap="2">
             {TAGS.map((t) => <ui-chip key={t} selectable selected={tag === t || undefined} onClick={() => setTag(t)}>{t}</ui-chip>)}
           </ui-container>
         </div>
@@ -84,7 +85,7 @@ export function Media({ spectrum }: { spectrum?: SpectrumPayload }) {
                   <span className={cx(s.strong, ellipsis)}>{x.title}</span>
                   <ui-tag className={tagHide}>{x.tag}</ui-tag>
                 </div>
-                <span className={cx(s.caption, ellipsis)}><i name="map-pin" /> {x.place}</span>
+                <span className={cx(s.caption, place)}><i name="map-pin" /><span className={ellipsis}>{x.place}</span></span>
               </div>
             </ui-section></ui-container>
           ))}

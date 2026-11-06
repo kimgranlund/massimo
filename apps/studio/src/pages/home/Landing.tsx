@@ -38,7 +38,7 @@ export function Landing({ spectrum }: { spectrum?: SpectrumPayload }) {
           <ui-tag className={cx(s.tone.primary, badgeLink)}><i slot="leading" name="sparkle" />New<span slot="suffix">Autumn planner is live</span></ui-tag>
           <h1 className={s.display}>Plan the season. Ship it on time.</h1>
           <p className={s.bodyLarge}>{BRAND} keeps your collections, launches and numbers in one calm workspace, so the whole team sees the same plan.</p>
-          <ui-container preset="group">
+          <ui-container preset="group" gap="2">
             <ui-button variant="primary">Start free trial<i slot="trailing" name="arrow-right" /></ui-button>
             <ui-button><i slot="leading" name="play" />Watch the tour<span slot="suffix">2 min</span></ui-button>
           </ui-container>
@@ -51,7 +51,7 @@ export function Landing({ spectrum }: { spectrum?: SpectrumPayload }) {
         </div>
         <ui-container preset="card" padding="xl" surface="solid" className={brandCard}><ui-section>
           <span className={onSolidKicker}>Autumn / Winter 26</span>
-          <ui-image src={art(spectrum, 'hills', 'primary', 'secondary')} alt="Hills at first light" ratio="landscape" className={heroImage} />
+          <ui-image src={art(spectrum, 'dusk', 'primary', 'secondary')} alt="Mountain ridges at dusk, the sun low over a lake" ratio="landscape" className={heroImage} />
           <ui-container preset="card" padding="sm" surface="raised" className={floating}><ui-section>
             <div className={s.spread}>
               <div className={s.stack1}>
@@ -62,7 +62,7 @@ export function Landing({ spectrum }: { spectrum?: SpectrumPayload }) {
             </div>
             <ui-progress label="Collection readiness" value={62} />
           </ui-section></ui-container>
-          <span className={onSolidMuted}>Photography: Sarek, Sweden</span>
+          <span className={onSolidMuted}>Illustration: Sarek, Sweden</span>
         </ui-section></ui-container>
       </div>
       <div className={features}>

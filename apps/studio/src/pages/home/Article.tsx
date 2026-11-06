@@ -50,7 +50,7 @@ export function Article({ spectrum }: { spectrum?: SpectrumPayload }) {
               <span className={s.strong}>Elin Lund</span>
               <span className={s.caption}>Oct 28, 2026 · 12 min read</span>
             </div>
-            <ui-container preset="group">
+            <ui-container preset="group" gap="2">
               <ui-button aria-label="Save article"><i slot="leading" name="bookmark-simple" /></ui-button>
               <ui-button><i slot="leading" name="share-network" />Share</ui-button>
             </ui-container>

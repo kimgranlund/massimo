@@ -91,7 +91,7 @@ export function Dashboard() {
           <span className={s.groupKicker}>Store · last 30 days</span>
           <h2 className={s.h1}>Good morning, Kim</h2>
         </div>
-        <ui-container preset="group">
+        <ui-container preset="group" gap="2">
           <ui-segmented label="Period" value="30d">
             <ui-option value="7d">7d</ui-option><ui-option value="30d">30d</ui-option><ui-option value="90d">90d</ui-option>
           </ui-segmented>
@@ -153,7 +153,7 @@ export function Dashboard() {
       <ui-container preset="card"><ui-section>
         <div className={s.spread}>
           <div className={s.stack1}><h3 className={s.h3}>Recent orders</h3><span className={s.caption}>{rows.length} of {ORDERS.length} shown</span></div>
-          <ui-container preset="group">
+          <ui-container preset="group" gap="2">
             {FILTERS.map((f) => (
               <ui-chip key={f} selectable selected={filter === f || undefined} onClick={() => setFilter(f)}>{f}</ui-chip>
             ))}
