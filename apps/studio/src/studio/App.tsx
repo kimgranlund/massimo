@@ -485,6 +485,7 @@ export function App() {
                     <Range label="Base chroma %" value={spectrum.base} min={0} max={100} step={1} onValue={(v) => setSpec('base', v)} />
                   </>}
                 <Range label="Key intensity %" value={spectrum.keyIntensity} min={0} max={300} step={5} onValue={(v) => setSpec('keyIntensity', v)} />
+                <Range label="Key depth (Lc)" value={spectrum.keyDepth} min={-30} max={30} step={1} onValue={(v) => setSpec('keyDepth', v)} />
                 <Range label="Falloff" value={spectrum.falloff} min={0.2} max={5} step={0.1} onValue={(v) => setSpec('falloff', v)} />
                 {spectrum.generator === 'hct' && <Switch label="Hue balance" checked={spectrum.hb === 1} onValue={(v) => setSpec('hb', v ? 1 : 0)} />}
               </Group>

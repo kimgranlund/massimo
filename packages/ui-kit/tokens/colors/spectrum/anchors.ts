@@ -25,7 +25,7 @@
 // Two surface anchors pin the ends of the neutral ramp instead of a role's family: `ground` is the
 // light page (step 1) and the dark ink (step 12); `ink` is the light ink (step 12) and the dark page
 // (step 1). `dark` gives the color for the dark scheme; without one the same color is used.
-import { apcaLc } from './contrast.ts';
+import { apcaLc, deepenKeys, DEFAULT_TARGETS, luminance, stepTones } from './contrast.ts';
 import type { Spectrum, Swatch } from './index.ts';
 
 /** How far an anchor's chroma reaches: the solid and text steps only (`key`), or every step (`ramp`). */
@@ -143,27 +143,44 @@ function settleBase(ramp: Swatch[], want: number[], gamut: string) {
 
 const neutralFamiliesOf = (data: Spectrum) => new Set(data.metadata?.light.neutrals ?? Object.keys(data.schemes.light).filter((n) => /neutral|gray|mauve|slate|sage|olive|sand/i.test(n)));
 /**
- * The key intensity (`keyIntensity`, % of the generated chroma) on steps 9–12 of every accent family;
- * neutrals keep theirs, since their 9–12 are text. Each step's lightness is re-solved for its luminance,
- * so contrast holds at any setting, and the gamut caps the chroma, with no step passing step 9. A pin stays exact: the scale eases
- * to 1 at a pinned step, so the run stays one curve. Returns `data` itself at 100.
+ * The dials for steps 9–12 of every accent family, after the generator and the anchors; neutrals keep
+ * theirs, since their 9–12 are text. `keyDepth` moves each step's tone (deepenKeys), `keyIntensity`
+ * scales its chroma (% of generated), and intensity alone keeps the luminance, so contrast holds. The
+ * gamut caps the chroma, with no step passing step 9. A pin stays exact: both ease out to it, so the
+ * run stays one curve. Returns `data` itself with both at rest.
  */
-export function magnifyKeys(data: Spectrum, pins: KeyPins = { light: {}, dark: {} }) {
-  const scale = Number(data.settings.keyIntensity ?? 100) / 100;
-  if (scale === 1) return data;
+export function shapeKeys(data: Spectrum, pins: KeyPins = { light: {}, dark: {} }) {
+  const scale = Number(data.settings.keyIntensity ?? 100) / 100, depth = Number(data.settings.keyDepth ?? 0);
+  if (scale === 1 && !depth) return data;
   const out: Spectrum = structuredClone(data);
   const gamut = String(data.settings.target ?? 'display-p3'), neutrals = neutralFamiliesOf(data);
-  for (const mode of ['light', 'dark'] as const) for (const [family, ramp] of Object.entries(out.schemes[mode])) {
-    if (neutrals.has(family)) continue;
-    const pin = pins[mode][family], span = pin ? Math.max(pin - KEY_FROM, 12 - pin) : 1;
-    let peak = Infinity;
-    for (const sw of ramp.slice(KEY_FROM - 1)) {
-      if (sw.step === pin) continue;
-      const [, C, h] = sw.oklch, lifted = C * mix(1, scale, pin ? Math.abs(sw.step - pin) / span : 1);
-      // The gamut stops a solid first. Without a pin no step passes it, so step 9 stays the run's peak.
-      const wanted = pin ? lifted : Math.min(lifted, peak), L = solveLightness(linearY(sw.oklch), wanted, h, gamut);
-      setSwatch(sw, [L, clampChroma(L, wanted, h, gamut), h]);
-      peak = sw.oklch[1];
+  for (const mode of ['light', 'dark'] as const) {
+    const targets = (mode === 'light' ? data.settings.targetsLight : data.settings.targetsDark) as number[] | undefined ?? DEFAULT_TARGETS[mode];
+    const placed = deepenKeys(targets, depth, mode);
+    for (const [family, ramp] of Object.entries(out.schemes[mode])) {
+      if (neutrals.has(family)) continue;
+      const pin = pins[mode][family], span = pin ? Math.max(pin - KEY_FROM, 12 - pin) : 1;
+      const tones = stepTones(toneOf(ramp[0]), placed, mode);
+      const lc = (sw: Swatch) => apcaLc(toneOf(sw), toneOf(ramp[0])), before = Object.fromEntries(ramp.map((sw) => [sw.step, lc(sw)]));
+      let peak = Infinity;
+      for (const sw of ramp.slice(KEY_FROM - 1)) {
+        if (sw.step === pin) continue;
+        const reach = pin ? Math.abs(sw.step - pin) / span : 1, [, C, h] = sw.oklch;
+        const was = linearY(sw.oklch), Y = depth ? luminance(mix(toneOfY(was), tones[sw.step - 1], reach)) : was;
+        // The gamut stops a solid first. Without a pin no step passes it, so step 9 stays the run's peak.
+        const lifted = C * mix(1, scale, reach), wanted = pin ? lifted : Math.min(lifted, peak);
+        const L = solveLightness(Y, wanted, h, gamut);
+        setSwatch(sw, [L, clampChroma(L, wanted, h, gamut), h]);
+        if (sw.hct) sw.hct[2] = toneOfY(linearY(sw.oklch));
+        peak = sw.oklch[1];
+      }
+      // The check the lint reads, shifted by what depth moved: the generator's Lc is its own measure.
+      const row = out.checks?.[mode].rows[family];
+      if (row && depth) {
+        const shift = (n: number) => lc(ramp[n - 1]) - before[n];
+        row.roles = { ...row.roles, r11: row.roles.r11 + shift(11), r12: row.roles.r12 + shift(12) };
+        row.passes = { ...row.passes, r11: row.roles.r11 >= 60, r12: row.roles.r12 >= 75 };
+      }
     }
   }
   return out;

@@ -3314,6 +3314,16 @@
         "chroma distribution"
       ]
     },
+    "parameter:spectrum-key-depth": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/spectrum",
+      "availability": "implemented",
+      "title": "Key depth (Lc)",
+      "searchTerms": [
+        "key depth",
+        "key depth (lc)"
+      ]
+    },
     "parameter:spectrum-key-intensity": {
       "kind": "parameter",
       "source": "contracts/parameters.json#/groups/spectrum",
@@ -11973,6 +11983,11 @@
     },
     {
       "from": "parameter:spectrum-key-intensity",
+      "relation": "memberOf",
+      "to": "parameters:spectrum"
+    },
+    {
+      "from": "parameter:spectrum-key-depth",
       "relation": "memberOf",
       "to": "parameters:spectrum"
     },

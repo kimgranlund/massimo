@@ -37,6 +37,19 @@ export function stepTones(page: number, targets: readonly number[], mode: 'light
   return tones;
 }
 
+/** The least Lc between step 9 and step 8, and between step 9 and step 12, when depth moves the run. */
+const DEPTH_GAP = { base: 1, top: 6 };
+/**
+ * Targets with the run of steps 9–12 moved by `depth`, in Lc at step 9: positive is a darker solid in
+ * both schemes, which is where the gamut has room for more chroma. Step 12 stays and steps 10–11 follow
+ * in proportion. Steps 2–8 don't move, so step 8 is the limit toward the page.
+ */
+export function deepenKeys(targets: readonly number[], depth: number, mode: 'light' | 'dark') {
+  const t8 = targets[6], t9 = targets[7], t12 = targets[10], want = t9 + (mode === 'light' ? depth : -depth);
+  const moved = Math.min(Math.max(want, t8 + DEPTH_GAP.base), t12 - DEPTH_GAP.top);
+  return targets.map((t, i) => (i < 7 ? t : moved + ((t - t9) * (t12 - moved)) / (t12 - t9)));
+}
+
 /**
  * Default targets (steps 2–12, APCA Lc against the page): measured from the even 12-step ramp the
  * kit used before (page 97.5 / 5, peak 62), so the default palette is unchanged.

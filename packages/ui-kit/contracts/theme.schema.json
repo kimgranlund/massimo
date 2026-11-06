@@ -375,6 +375,12 @@
               "maximum": 300,
               "description": "Key intensity %"
             },
+            "keyDepth": {
+              "type": "number",
+              "minimum": -30,
+              "maximum": 30,
+              "description": "Key depth (Lc)"
+            },
             "falloff": {
               "type": "number",
               "minimum": 0.2,

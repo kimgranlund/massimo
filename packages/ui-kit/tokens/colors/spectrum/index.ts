@@ -5,7 +5,7 @@
 import RUNTIME from './runtime.json' with { type: 'json' };
 import { RADIX_HUES, SPECTRUM_FIXED, normalizeSpectrum, type SpectrumSettings } from './config.ts';
 import { apcaLc, stepTones, DEFAULT_TARGETS } from './contrast.ts';
-import { applyAnchors, magnifyKeys, type SolidSteps } from './anchors.ts';
+import { applyAnchors, shapeKeys, type SolidSteps } from './anchors.ts';
 import { generateOklch, oklchBoundary, quadratureOf } from './oklch.ts';
 export { apcaLc, stepTones, toneForLc, DEFAULT_TARGETS, TARGET_MAX } from './contrast.ts';
 export { applyAnchors, isAnchorColor, type ColorAnchor, type AnchorResult, type SolidSteps } from './anchors.ts';
@@ -80,7 +80,7 @@ export function gamutBoundary(hue: number, tone: number, target: string): number
 
 /** Generate both schemes. Throws on invalid settings or a malformed ramp. */
 /** The engine's own settings: ours minus the contrast targets. */
-const engineSettings = (s: SpectrumSettings) => { const { targetsLight: _l, targetsDark: _d, generator: _g, oklchChroma: _c, keyIntensity: _k, ...rest } = s; return rest; };
+const engineSettings = (s: SpectrumSettings) => { const { targetsLight: _l, targetsDark: _d, generator: _g, oklchChroma: _c, keyIntensity: _k, keyDepth: _kd, ...rest } = s; return rest; };
 /** A ramp the legacy way (the engine's own tone placement), for measuring targets from old settings. */
 const generateLegacy = (s: SpectrumSettings) => engine!.generate({ ...engineSettings(s), ...SPECTRUM_FIXED, tint: s.tint }) as Spectrum;
 /** The contrast targets (steps 2–12) a ramp has against its page, per scheme, measured on the neutral family. */
@@ -108,7 +108,7 @@ export function generateSpectrum(settings: SpectrumSettings = {}): Spectrum {
     // The even ladder keeps the kit's chroma envelope; its 12 stops take our tones. Step 9 is the chroma peak.
     out = engine!.generate({ ...engineSettings(s), ladder: 'even', ptAuto: 0, pt: Math.round(tones.light[8] * 2) / 2, ...SPECTRUM_FIXED, tint: s.tint });
   } finally { toneOverride = null; }
-  out.settings = { ...out.settings, keyIntensity: s.keyIntensity, targetsLight: targets.light, targetsDark: targets.dark };
+  out.settings = { ...out.settings, keyIntensity: s.keyIntensity, keyDepth: s.keyDepth, targetsLight: targets.light, targetsDark: targets.dark };
   for (const mode of ["light", "dark"] as const) for (const [name, ramp] of Object.entries(out.schemes[mode]) as [string, Swatch[]][]) {
     if (ramp.length !== 12 || ramp.some((sw) => !sw.css)) throw new Error(`Invalid generated ramp: ${name}`);
   }
@@ -278,12 +278,12 @@ export function spectrumDiagnostics(data: Spectrum, roles: Roles, step = 2): Spe
 /**
  * A spectrum with a theme's anchors applied (anchors.ts): each anchor's family re-shaped and its step
  * overridden, the roles (a role whose family another anchor claimed moves to a free family), and the
- * solid step per anchored role. The key intensity applies here, around the pins, with or without
+ * solid step per anchored role. The key intensity and depth apply here, around the pins, with or without
  * anchors, so read a theme's ramps from this. Use the returned roles.
  */
 export function anchoredSpectrum(data: Spectrum, roles: Roles, anchors: import('./anchors.ts').ColorAnchor[] = []) {
-  if (!anchors.length) return { data: magnifyKeys(data), roles, report: [] as import('./anchors.ts').AnchorResult[], solidSteps: { light: {}, dark: {} } as SolidSteps };
+  if (!anchors.length) return { data: shapeKeys(data), roles, report: [] as import('./anchors.ts').AnchorResult[], solidSteps: { light: {}, dark: {} } as SolidSteps };
   const targets = { light: (data.settings.targetsLight as number[] | undefined) ?? [...DEFAULT_TARGETS.light], dark: (data.settings.targetsDark as number[] | undefined) ?? [...DEFAULT_TARGETS.dark] };
   const r = applyAnchors(data, roles, anchors, targets);
-  return { data: magnifyKeys(r.data, r.pins), roles: r.roles as Roles, report: r.report, solidSteps: r.solidSteps };
+  return { data: shapeKeys(r.data, r.pins), roles: r.roles as Roles, report: r.report, solidSteps: r.solidSteps };
 }

@@ -221,3 +221,37 @@ test('key intensity scales steps 9–12 alone, keeps contrast, and leaves neutra
   const top = chromas(lift(300).data, family).slice(8);
   top.forEach((c, i) => assert.ok(c <= top[0] + 1e-6 && (i === 0 || c >= was[8 + i]), `step ${9 + i} at 300`));
 });
+
+test('key depth moves the tones of steps 9–12 alone, keeps chroma, and opens room for intensity', () => {
+  const at = (settings: Record<string, number>, anchors: ColorAnchor[] = []) => {
+    const gen = generateSpectrum(settings);
+    return anchoredSpectrum(gen, resolveRoles(gen, {}), anchors);
+  };
+  const plain = at({}).data, deep = at({ keyDepth: 20 }).data, family = roles.primary;
+  const tone = (d: Spectrum, f: string, m: 'light' | 'dark', i: number) => toneOfY(linearY(d.schemes[m][f][i].oklch));
+  for (const mode of ['light', 'dark'] as const) for (const [f, ramp] of Object.entries(deep.schemes[mode])) ramp.forEach((sw, i) => {
+    if (i < 8 || f === roles.neutral) assert.equal(sw.css, plain.schemes[mode][f][i].css, `${f} ${i + 1} ${mode}`);
+  });
+  assert.ok(tone(deep, family, 'light', 8) < tone(plain, family, 'light', 8) - 5, 'darker solid in light');
+  assert.ok(tone(deep, family, 'dark', 8) < tone(plain, family, 'dark', 8) - 2, 'darker solid in dark');
+  assert.ok(Math.abs(tone(deep, family, 'light', 11) - tone(plain, family, 'light', 11)) < 0.1, 'step 12 stays');
+  assert.ok(Math.abs(deep.schemes.light[family][8].oklch[1] - plain.schemes.light[family][8].oklch[1]) < 1e-3, 'depth alone keeps the chroma');
+  for (const mode of ['light', 'dark'] as const) for (const depth of [-30, 30]) {
+    const ramp = at({ keyDepth: depth }).data.schemes[mode][family], tones = ramp.map((_, i) => toneOfY(linearY(ramp[i].oklch)));
+    tones.slice(1).forEach((t, i) => assert.ok(mode === 'light' ? t < tones[i] : t > tones[i], `${mode} ${depth}: order at ${i + 2}`));
+  }
+  const ceiling = at({ keyIntensity: 300 }).data.schemes.light[family][8].oklch[1];
+  assert.ok(at({ keyIntensity: 300, keyDepth: 20 }).data.schemes.light[family][8].oklch[1] > ceiling * 1.3, 'depth lifts the ceiling');
+  // A pin stays exact under depth too.
+  const anchor = { role: 'primary', value: '#003057', step: 12 } as ColorAnchor;
+  const a = at({}, [anchor]), b = at({ keyDepth: 15 }, [anchor]), f = a.report[0].family;
+  assert.equal(b.data.schemes.light[f][11].css, a.data.schemes.light[f][11].css, 'pin exact');
+  // The lint's contrast check follows the steps: a lighter run can fail where the default passes.
+  const roleChecks = (depth: number) => at({ keyDepth: depth }).data.checks!.light.rows[family].roles;
+  const step11Lc = (depth: number) => apcaLc(tone(at({ keyDepth: depth }).data, family, 'light', 10), tone(plain, family, 'light', 0));
+  assert.ok(Math.abs(roleChecks(0).r11 - roleChecks(-30).r11 - (step11Lc(0) - step11Lc(-30))) < 0.3, 'r11 moves with the step');
+  assert.ok(roleChecks(0).r11 > roleChecks(-30).r11 + 0.5, 'a lighter run reads lower');
+  assert.ok(Math.abs(roleChecks(0).r12 - roleChecks(-30).r12) < 0.3, 'r12 stays');
+  const oklch = at({ generator: 'oklch', keyDepth: 20 } as never).data;
+  assert.ok(tone(oklch, family, 'light', 8) < tone(generateSpectrum({ generator: 'oklch' } as never), family, 'light', 8) - 5, 'the OKLCH generator too');
+});

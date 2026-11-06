@@ -6,15 +6,15 @@
   "sources": [
     {
       "path": "tokens/colors/spectrum/index.ts",
-      "sha256": "24afae5b047c2007805668414944ac0ba5c268db038c712543855bd8d3568241"
+      "sha256": "dfa2c5bd643bb7dc26b09eb1af707c5af28f234fe5a2d1a4b01d9bda63736222"
     },
     {
       "path": "tokens/colors/spectrum/config.ts",
-      "sha256": "fb1f2c89d64b7475754dd72d0421e42d593736d62c3780bc8f66f9a383e59b08"
+      "sha256": "9a474b3baf1bc6d0cd56ee2d8eda43953ff3f201459b81799ba3dcc6a07d476e"
     },
     {
       "path": "tokens/colors/spectrum/contrast.ts",
-      "sha256": "316a7e12a893ede79f6f6908cb66bb8e11e7f9c5942ebb55297e2fa589727c66"
+      "sha256": "077c40e7f11a8f18557e16de62941bcd18948cfe8e1d57884583035527c684c9"
     },
     {
       "path": "tokens/colors/index.ts",
@@ -34,7 +34,7 @@
     },
     {
       "path": "tokens/colors/spectrum/anchors.ts",
-      "sha256": "83fc83b9e073594bad5bcd80260b2846622738a169aac82426427f82d86b0eda"
+      "sha256": "765ad79254cd7babfa8a01b6d306f029e43352274628c993201b04b43547c68f"
     }
   ],
   "renderers": {
