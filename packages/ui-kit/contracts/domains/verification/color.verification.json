@@ -6,11 +6,11 @@
   "sources": [
     {
       "path": "tokens/colors/spectrum/index.ts",
-      "sha256": "ca773e52abbd37626c1c273966a69f497071377f1ca5d5588ffb98cd6d2135f2"
+      "sha256": "24afae5b047c2007805668414944ac0ba5c268db038c712543855bd8d3568241"
     },
     {
       "path": "tokens/colors/spectrum/config.ts",
-      "sha256": "63a11aaf2b032484e3a649ae8a2b455e7169072f9888374c916923e36796f4e4"
+      "sha256": "fb1f2c89d64b7475754dd72d0421e42d593736d62c3780bc8f66f9a383e59b08"
     },
     {
       "path": "tokens/colors/spectrum/contrast.ts",
@@ -34,7 +34,7 @@
     },
     {
       "path": "tokens/colors/spectrum/anchors.ts",
-      "sha256": "fc2dfbb67821cba67f831f86f196c776d3b16e3e30add080658584977cd66812"
+      "sha256": "83fc83b9e073594bad5bcd80260b2846622738a169aac82426427f82d86b0eda"
     }
   ],
   "renderers": {
@@ -58,7 +58,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-05",
+        "date": "2026-11-06",
         "outcome": "pass",
         "commands": [
           "node --test test/spectrum.test.ts",

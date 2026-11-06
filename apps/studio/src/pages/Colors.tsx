@@ -83,7 +83,6 @@ const uiGrid = css({
   display: 'grid', gridTemplateColumns: '1fr', gap: '4', alignItems: 'stretch', gridAutoFlow: 'row dense',
   [CQ_MD]: { gridTemplateColumns: 'repeat(2, minmax(0, 1fr))' },
   [CQ_LG]: { gridTemplateColumns: 'repeat(3, minmax(0, 1fr))' },
-  '& ui-container[preset=card] > ui-badge': { alignSelf: 'start' },
 });
 const cardTitle = css({ textStyle: 'heading-3' });
 const chartCard = css({ [CQ_MD]: { gridColumn: 'span 2' } });
@@ -93,9 +92,7 @@ const chartDay = css({ flex: '1', display: 'flex', flexDirection: 'column', gap:
 // Stacked bar: data 1 at the bottom; 1px gaps separate the series, the top rounds.
 // Static color classes from role tokens: the demos never set colors inline.
 const tone = {
-  solid: css({ bg: 'primary.solid', color: 'fg.onSolid' }),
   solidHover: css({ bg: 'primary.solidHover !important' }),
-  secondaryOnSolid: css({ color: 'secondary.subtle' }),
   secondaryDot: css({ bg: 'secondary.solid' }),
   paper: css({ bg: 'bg.subtle', color: 'primary.fg' }),
   muted: css({ color: 'fg.muted' }),
@@ -156,11 +153,11 @@ function ColorInContext({ spectrum }: { spectrum: SpectrumPayload }) {
     <div className={context}>
       <div className={contextHead}><h3 className={subTitle}>Brand</h3><span className={caption}>Primary as material · secondary as punctuation</span></div>
       <div className={brandGrid}>
-        <ui-container preset="panel" className={cx(campaign, tone.solid)}>
+        <ui-container preset="panel" surface="solid" className={campaign}>
           <span className={sectionKicker}>Studio / Collection 01</span>
           <h3 className={display}>A spectrum.<br />A shared language.</h3>
           <p className={bodyLarge}>Different hues, one system. Color carries the character; a common rhythm holds it together.</p>
-          <span className={cx(sectionKicker, tone.secondaryOnSolid)}>An exploration in color &amp; proportion</span>
+          <span className={sectionKicker}>An exploration in color &amp; proportion</span>
         </ui-container>
         <div data-ramp className={rampStrip} role="img" aria-label={`${primary} steps 1 to 12`}>
           {RAMP_USE.map((use, i) => (
@@ -211,9 +208,9 @@ function ColorInContext({ spectrum }: { spectrum: SpectrumPayload }) {
             </ui-listbox>
           </ui-section></ui-container>
           <ui-container preset="card"><ui-section>
-            <span className={kicker}>This week</span><strong className={bigFigure} data-numeric>1,284</strong>
+            <ui-row><span className={kicker}>This week</span><ui-badge className={tone.success}>↑ 12%</ui-badge></ui-row>
+            <strong className={bigFigure} data-numeric>1,284</strong>
             <p className={caption}>Orders across six channels.</p>
-            <ui-badge className={tone.success}>↑ 12% this week</ui-badge>
           </ui-section></ui-container>
           <ui-container preset="card"><ui-section>
             <span className={kicker}>Collection progress</span><strong className={bigFigure} data-numeric>62<span data-numeric>%</span></strong>

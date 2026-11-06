@@ -47,6 +47,12 @@
       "label": "Radius magnitude: concentric, half, square",
       "subject": "component:container",
       "markup": "<ui-container preset=\"collection\"><ui-button>Concentric</ui-button></ui-container><ui-container preset=\"collection\" radius=\"0.5\"><ui-button>Half</ui-button></ui-container><ui-container preset=\"collection\" radius=\"0\"><ui-button>Square</ui-button></ui-container>"
+    },
+    {
+      "id": "solid",
+      "label": "Solid surface: text follows it, a nested card keeps the page colors",
+      "subject": "component:container",
+      "markup": "<ui-container preset=\"panel\" surface=\"solid\"><h3>Autumn</h3><p>Text follows the surface.</p><ui-container preset=\"card\"><ui-section><p>A card keeps the page colors.</p></ui-section></ui-container></ui-container>"
     }
   ]
 }

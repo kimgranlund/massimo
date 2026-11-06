@@ -1,5 +1,5 @@
 // Spectrum settings: the editable inputs of the ramp generators (ported from massimo-ui
-// spectrum-config.js). HCT reads them all but oklchChroma; OKLCH (oklch.ts) reads hue, falloff, the
+// spectrum-config.js). HCT reads them all but oklchChroma; keyIntensity applies after either generator (anchors.ts); OKLCH (oklch.ts) reads hue, falloff, the
 // contrast fields, mat, tint, neutralFrom, target and oklchChroma. Generation always produces separate light and dark 12-step ramps.
 export interface Field { key: string; label: string; group: string; options?: (string | number)[]; labels?: string[]; min?: number; max?: number; step?: number; multiple?: boolean; /** A fixed-length list of numbers in min..max (the contrast targets). */ list?: number; legacy?: boolean; value: unknown }
 import { DEFAULT_TARGETS, TARGET_MAX } from './contrast.ts';
@@ -12,6 +12,7 @@ export const SPECTRUM_FIELDS: Field[] = [
   { key: 'hue', label: 'First hue', group: 'Hues', min: 0, max: 359, step: 1, value: 225 },
   { key: 'chroma', label: 'Requested chroma', group: 'Chroma', min: 4, max: 120, step: 1, value: 120 },
   { key: 'base', label: 'Base chroma %', group: 'Chroma', min: 0, max: 100, step: 1, value: 100 },
+  { key: 'keyIntensity', label: 'Key intensity %', group: 'Chroma', min: 0, max: 300, step: 5, value: 100 },
   { key: 'falloff', label: 'Chroma falloff', group: 'Chroma', min: 0.2, max: 5, step: 0.1, value: 1 },
   { key: 'keyC', label: 'Chroma distribution', group: 'Chroma', options: ['shared', 'radix'], labels: ['Shared', 'Radix'], value: 'radix' },
   { key: 'hb', label: 'Hue balance', group: 'Chroma', options: [0, 1], labels: ['Off', 'On'], value: 1 },

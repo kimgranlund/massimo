@@ -3314,6 +3314,16 @@
         "chroma distribution"
       ]
     },
+    "parameter:spectrum-key-intensity": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/spectrum",
+      "availability": "implemented",
+      "title": "Key intensity %",
+      "searchTerms": [
+        "key intensity",
+        "key intensity %"
+      ]
+    },
     "parameter:spectrum-ladder": {
       "kind": "parameter",
       "source": "contracts/parameters.json#/groups/spectrum",
@@ -11958,6 +11968,11 @@
     },
     {
       "from": "parameter:spectrum-base",
+      "relation": "memberOf",
+      "to": "parameters:spectrum"
+    },
+    {
+      "from": "parameter:spectrum-key-intensity",
       "relation": "memberOf",
       "to": "parameters:spectrum"
     },

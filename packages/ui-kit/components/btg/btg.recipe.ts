@@ -25,8 +25,8 @@ function btgBase(text: Record<string, any>, adornColor: boolean) {
   };
 }
 
-// Tag and badge need no block padding, the row centers the text.
-const ROW = { display: 'flex', alignItems: 'center', lineHeight: 'var(--line)' };
+// Tag and badge need no block padding, the row centers the text. They hug their label in a stack.
+const ROW = { display: 'flex', width: 'fit-content', alignItems: 'center', lineHeight: 'var(--line)' };
 
 export const badge = defineSlotRecipe({
   className: 'ui-badge',

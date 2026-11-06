@@ -26,6 +26,7 @@ A `preset` picks where a container starts; three families, each with one radius 
 - A root keeps its preset geometry: the ladder padding and its radius. A card's radius is its padding × min(1, corner scale); a wrapper's is the control radius + its padding.
 - A nested container is concentric when its parent has room: R = max(R_parent − p_parent, R_parent × k; k is the theme's `container-ratio`, 0.4).
 - A nested card steps down the ladder, p = max(min(3u, p_parent), p_parent − 1u) × density, and that padding is also its gap.
+- `surface="solid"` paints the primary solid. Type roles inside take its text color, so headings and body need no color of their own, and a card or panel nested in it returns to the page's text colors.
 - An unpainted group or collection (no `surface`, no `padding`) has no padding or border, keeps its ladder gap, and passes its parent through. Its contents share an edge with what sits beside it, and a card directly under an unpainted root is a root.
 - `padding` on a nested card, and any painted wrapper, takes the ladder padding and gap. `padding` on a group or collection gives it the card ladder level; an area ignores `padding`.
 - Lists move to `<ui-section size="…" divided>`: the box sits inside the card, and its rows' text stays on the card's inset.

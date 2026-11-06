@@ -16,7 +16,12 @@
 // An anchor may give its own `dark` color: it is placed in the dark ramp the same way (against the
 // dark page, the dark targets) and moves the dark solid (solidSteps.dark). Without one, the dark ramp
 // takes the hue and chroma only and the dark solid stays at step 9.
-// Lightness (each step's tone) is kept, so the ramp's contrast steps still hold.
+// An exact color rarely sits where the generator put that step, so the ramp settles around it. The
+// solids and text (9–12) are one run: a pin at 10–12 spreads its lightness offset evenly back to step
+// 9, which stays put, and chroma runs straight from 9 to the pin; steps past a pin ease back to their
+// own lightness. A surface pin also carries its hue along that run, and a page pin eases lightness,
+// chroma over steps 2–4 and carries its hue on to step 9. Steps 5–8 keep their lightness, and so does
+// everything for an anchor below 9.
 // Two surface anchors pin the ends of the neutral ramp instead of a role's family: `ground` is the
 // light page (step 1) and the dark ink (step 12); `ink` is the light ink (step 12) and the dark page
 // (step 1). `dark` gives the color for the dark scheme; without one the same color is used.
@@ -28,8 +33,14 @@ export const ANCHOR_REACHES = ['key', 'ramp'] as const;
 export type AnchorReach = (typeof ANCHOR_REACHES)[number];
 /** The first step of the solids and text, where a `key` anchor's chroma starts. */
 const KEY_FROM = 9;
+/** The first step a page pin leaves alone. */
+const BASE_TO = 5;
+/** Below this chroma a color has no hue worth carrying. */
+const HUELESS = 0.01;
 export interface ColorAnchor { role: string; value: string; step?: number; name?: string; /** The anchor's own color in the dark scheme. */ dark?: string; /** Default: `key`, or `ramp` on a neutral family. */ reach?: AnchorReach }
 export type SolidSteps = { light: Record<string, number>; dark: Record<string, number> };
+/** The step pinned to an exact color at 9–12, per family and scheme. */
+export type KeyPins = { light: Record<string, number>; dark: Record<string, number> };
 export interface AnchorResult { role: string; family: string; value: string; step: number; lc: number; target: number; below: number; above: number; inOrder: boolean; inRange: boolean; dE: number; dark?: { value: string; step: number; lc: number; target: number; inOrder: boolean } }
 
 const HEX = /^#[0-9a-f]{6}$/i;
@@ -81,6 +92,83 @@ function setSwatch(sw: Swatch, lch: [number, number, number]) {
   sw.oklch = lch; sw.css = css(lch); sw.apca = onFill(lch);
 }
 
+/** Move a swatch, keeping the tone contrast reads in step with it. */
+function moveSwatch(sw: Swatch, lch: [number, number, number], gamut: string) {
+  setSwatch(sw, [lch[0], clampChroma(lch[0], Math.max(0, lch[1]), lch[2], gamut), lch[2]]);
+  if (sw.hct) sw.hct[2] = toneOfY(yOf(sw.oklch));
+}
+/** The L that puts this hue and chroma (capped by the gamut) on a luminance: luminance rises with L. */
+export function solveLightness(Y: number, C: number, h: number, gamut: string) {
+  let lo = 0, hi = 1;
+  for (let i = 0; i < 26; i++) {
+    const L = (lo + hi) / 2;
+    if (linearY([L, clampChroma(L, C, h, gamut), h]) < Y) lo = L; else hi = L;
+  }
+  return (lo + hi) / 2;
+}
+const mix = (a: number, b: number, t: number) => a + (b - a) * t;
+const mixHue = (a: number, b: number, t: number) => (a + ((((b - a) % 360) + 540) % 360 - 180) * t + 360) % 360;
+/**
+ * Settle steps 9–12 around a color about to be pinned at `step`, so the run stays one curve. Run
+ * before the pin: it reads the step's generated lightness. `withHue` carries the pin's hue along the
+ * run, for a surface pin, whose family keeps its own hue.
+ */
+function settleKey(ramp: Swatch[], step: number, want: number[], gamut: string, withHue = false) {
+  if (step < KEY_FROM) return;
+  // Only ever away from the page: a pin brighter than its step must not cost the text steps contrast.
+  const offset = want[0] - ramp[step - 1].oklch[0], awayFromPage = Math.sign(ramp[11].oklch[0] - ramp[0].oklch[0]);
+  const shift = offset * awayFromPage > 0 ? offset : 0, from = ramp[KEY_FROM - 1].oklch[1];
+  for (let n = KEY_FROM; n <= 12; n++) {
+    if (n === step) continue;
+    const sw = ramp[n - 1], [L, C, h] = sw.oklch, inRun = n < step;
+    const t = inRun ? (n - KEY_FROM) / (step - KEY_FROM) : (12 - n) / (12 - step);
+    moveSwatch(sw, [L + shift * t, inRun ? mix(from, want[1], t) : C, withHue && inRun && want[1] > HUELESS ? mixHue(h, want[2], t) : h], gamut);
+  }
+}
+/**
+ * Ease the base range toward a color about to be pinned as the page (step 1): lightness and chroma
+ * over steps 2–4, and a tinted page's hue on to step 9, with steps 5–8 held at step 4's chroma or
+ * their own so the tint doesn't dip on its way to the solids.
+ */
+function settleBase(ramp: Swatch[], want: number[], gamut: string) {
+  const [L1, C1] = ramp[0].oklch, tinted = want[1] > HUELESS;
+  let floor = 0;
+  for (let n = 2; n < KEY_FROM; n++) {
+    const sw = ramp[n - 1], [L, C, h] = sw.oklch, t = Math.max(0, (BASE_TO - n) / (BASE_TO - 1));
+    const nextC = n < BASE_TO ? C + (want[1] - C1) * t : tinted ? Math.max(C, floor) : C;
+    floor = nextC;
+    moveSwatch(sw, [L + (want[0] - L1) * t, nextC, tinted ? mixHue(h, want[2], (KEY_FROM - n) / (KEY_FROM - 1)) : h], gamut);
+  }
+}
+
+const neutralFamiliesOf = (data: Spectrum) => new Set(data.metadata?.light.neutrals ?? Object.keys(data.schemes.light).filter((n) => /neutral|gray|mauve|slate|sage|olive|sand/i.test(n)));
+/**
+ * The key intensity (`keyIntensity`, % of the generated chroma) on steps 9–12 of every accent family;
+ * neutrals keep theirs, since their 9–12 are text. Each step's lightness is re-solved for its luminance,
+ * so contrast holds at any setting, and the gamut caps the chroma, with no step passing step 9. A pin stays exact: the scale eases
+ * to 1 at a pinned step, so the run stays one curve. Returns `data` itself at 100.
+ */
+export function magnifyKeys(data: Spectrum, pins: KeyPins = { light: {}, dark: {} }) {
+  const scale = Number(data.settings.keyIntensity ?? 100) / 100;
+  if (scale === 1) return data;
+  const out: Spectrum = structuredClone(data);
+  const gamut = String(data.settings.target ?? 'display-p3'), neutrals = neutralFamiliesOf(data);
+  for (const mode of ['light', 'dark'] as const) for (const [family, ramp] of Object.entries(out.schemes[mode])) {
+    if (neutrals.has(family)) continue;
+    const pin = pins[mode][family], span = pin ? Math.max(pin - KEY_FROM, 12 - pin) : 1;
+    let peak = Infinity;
+    for (const sw of ramp.slice(KEY_FROM - 1)) {
+      if (sw.step === pin) continue;
+      const [, C, h] = sw.oklch, lifted = C * mix(1, scale, pin ? Math.abs(sw.step - pin) / span : 1);
+      // The gamut stops a solid first. Without a pin no step passes it, so step 9 stays the run's peak.
+      const wanted = pin ? lifted : Math.min(lifted, peak), L = solveLightness(linearY(sw.oklch), wanted, h, gamut);
+      setSwatch(sw, [L, clampChroma(L, wanted, h, gamut), h]);
+      peak = sw.oklch[1];
+    }
+  }
+  return out;
+}
+
 /**
  * Apply anchors to a generated spectrum (a copy is returned). `roles` maps each role to its family.
  * Returns the report per anchor and the solid step per anchored role.
@@ -90,12 +178,13 @@ export function applyAnchors(data: Spectrum, roles: Record<string, string>, anch
   const gamut = String(data.settings.target ?? 'display-p3');
   const report: AnchorResult[] = [];
   const solidSteps: SolidSteps = { light: {}, dark: {} };
+  const pins: KeyPins = { light: {}, dark: {} };
   // Each anchor claims its family. Roles often share one (primary and data 1 both default to indigo),
   // so a second anchor on a claimed family moves its role to the nearest free family by hue: first a
   // family no role uses, else one no anchor has claimed.
   const outRoles = { ...roles };
   const claimed = new Map<string, string>();
-  const neutralFamilies = new Set(data.metadata?.light.neutrals ?? Object.keys(data.schemes.light).filter((n) => /neutral|gray|mauve|slate|sage|olive|sand/i.test(n)));
+  const neutralFamilies = neutralFamiliesOf(data);
   const hueGap = (a: number, b: number) => { const d = Math.abs(a - b) % 360; return Math.min(d, 360 - d); };
   // Claim in role order (brand, feedback, then data), so a brand role keeps its family whatever order
   // the anchors were written in.
@@ -137,12 +226,16 @@ export function applyAnchors(data: Spectrum, roles: Record<string, string>, anch
     };
     for (const sw of lightRamp) if (sw.step !== 1) setSwatch(sw, [sw.oklch[0], clampChroma(sw.oklch[0], chroma(sw.oklch[1], sw.step, step, want[1]), want[2], gamut), want[2]]); // the page keeps its tone and tint
     for (const sw of darkRamp) if (sw.step !== 1) setSwatch(sw, [sw.oklch[0], clampChroma(sw.oklch[0], chroma(sw.oklch[1], sw.step, stepD ?? KEY_FROM, wantD?.[1] ?? want[1]), want[2], gamut), want[2]]);
+    settleKey(lightRamp, step, want, gamut);
     setSwatch(lightRamp[step - 1], want);
+    if (step >= KEY_FROM) pins.light[family] = step;
     const below = step > 2 ? targets.light[step - 3] : 0, above = step < 12 ? targets.light[step - 1] : Infinity;
     // The dark color, when given: exact at its own step in the dark ramp.
     let dark: AnchorResult['dark'];
     if (anchor.dark && wantD && stepD) {
+      settleKey(darkRamp, stepD, wantD, gamut);
       setSwatch(darkRamp[stepD - 1], wantD);
+      if (stepD >= KEY_FROM) pins.dark[family] = stepD;
       const lo = stepD > 2 ? targets.dark[stepD - 3] : 0, hi = stepD < 12 ? targets.dark[stepD - 1] : Infinity;
       dark = { value: anchor.dark, step: stepD, lc: Math.round(lcD * 10) / 10, target: targets.dark[stepD - 2], inOrder: lcD > lo && lcD < hi };
       if (stepD >= 8) solidSteps.dark[anchor.role] = stepD;
@@ -163,7 +256,8 @@ export function applyAnchors(data: Spectrum, roles: Record<string, string>, anch
     const page = toneOf(data.schemes.light[neutral][0]);
     const lc = apcaLc(toneOfY(yOfHex(anchor.value)), page);
     const pin = (mode: 'light' | 'dark', step: number, hex: string) => {
-      const sw = out.schemes[mode][neutral][step - 1], want = srgbToOklch(hex);
+      const ramp = out.schemes[mode][neutral], sw = ramp[step - 1], want = srgbToOklch(hex);
+      if (step === 1) settleBase(ramp, want, gamut); else settleKey(ramp, step, want, gamut, true);
       setSwatch(sw, want);
       if (sw.hct) sw.hct[2] = toneOfY(yOf(want)); // the tone contrast reads
     };
@@ -176,7 +270,7 @@ export function applyAnchors(data: Spectrum, roles: Record<string, string>, anch
       dE: Math.round(before * 10) / 10, dark: { value: anchor.dark ?? anchor.value, step: darkStep, lc: 0, target: 0, inOrder: true },
     });
   }
-  return { data: out, roles: outRoles, report, solidSteps };
+  return { data: out, roles: outRoles, report, solidSteps, pins };
 }
 function yOfHex(hex: string) {
   const [r, g, b] = [1, 3, 5].map((i) => lin(parseInt(hex.slice(i, i + 2), 16) / 255));

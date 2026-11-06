@@ -369,6 +369,12 @@
               "maximum": 100,
               "description": "Base chroma %"
             },
+            "keyIntensity": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 300,
+              "description": "Key intensity %"
+            },
             "falloff": {
               "type": "number",
               "minimum": 0.2,

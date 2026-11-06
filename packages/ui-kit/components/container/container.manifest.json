@@ -89,12 +89,13 @@
           "name": "surface",
           "type": "string",
           "readBy": "css",
-          "description": "none, panel, card, raised: the elevation level (fill and shadow). Default: the preset's.",
+          "description": "none, panel, card, raised: the elevation level (fill and shadow). Default: the preset's. solid: the primary solid; type roles inside follow its text color, and a painted surface nested in it returns to the page colors.",
           "enum": [
             "none",
             "panel",
             "card",
-            "raised"
+            "raised",
+            "solid"
           ],
           "inspector": {
             "control": "select"
@@ -317,7 +318,7 @@
             "preset?: ContainerPreset = 'collection' // group, collection (default), card, panel, region, page: the starting geometry, flow and surface.",
             "padding?: CardPadding // The card ladder level: xs 2u, sm 3u, md 4u, lg 6u, xl 8u.",
             "layout?: 'stack' | 'row' | 'wrap' // stack (column), row, wrap. Default: the preset's.",
-            "surface?: 'none' | 'panel' | 'card' | 'raised' // none, panel, card, raised: the elevation level. Default: the preset's."
+            "surface?: 'none' | 'panel' | 'card' | 'raised' | 'solid' // none, panel, card, raised: the elevation level. Default: the preset's."
           ]
         }
       }

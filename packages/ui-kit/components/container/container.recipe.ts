@@ -55,12 +55,23 @@ const SURFACES = {
   panel: { bg: 'elevation.panel', boxShadow: 'none' },
   card: { bg: 'elevation.card', boxShadow: 'card' },
   raised: { bg: 'elevation.card', boxShadow: 'raised' },
+  // The primary solid. Type roles read --ui-on-solid first, so text inside needs no color of its own.
+  solid: {
+    bg: 'primary.solid', color: 'fg.onSolid',
+    '--ui-on-solid': 'var(--colors-fg-on-solid)',
+    '--ui-on-solid-muted': 'color-mix(in oklch, var(--colors-fg-on-solid) 85%, transparent)',
+  },
 };
+/** A painted surface inside a solid one goes back to the page's text colors. */
+const OFF_SOLID = '[surface=solid] &:is([preset=card], [preset=panel], [surface=card], [surface=panel], [surface=raised]):not([surface=solid], [surface=none])';
 export const uiContainer = defineSlotRecipe({
   className: 'ui-container',
   description: 'One container for every level, group to page: padding steps down with depth and radius follows (ui-container, React Container).',
   slots: ['root'],
-  base: { root: mergeStyles(box, column, { ':is([surface=card], [preset=card]) &[surface=card]': { bg: 'bg' } }) },
+  base: { root: mergeStyles(box, column, {
+    ':is([surface=card], [preset=card]) &[surface=card]': { bg: 'bg' },
+    [OFF_SOLID]: { color: 'fg', '--ui-on-solid': 'initial', '--ui-on-solid-muted': 'initial' },
+  }) },
   variants: {
     preset: {
       group: { root: mergeStyles(level('group'), ROW) },

@@ -2,6 +2,8 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { generateSpectrum, rampVar, resolveRoles, anchoredSpectrum } from '../tokens/colors/spectrum/index.ts';
+import { linearY, toneOfY, type ColorAnchor } from '../tokens/colors/spectrum/anchors.ts';
+import type { Spectrum } from '../tokens/colors/spectrum/index.ts';
 import { apcaLc } from '../tokens/colors/spectrum/contrast.ts';
 import { themeCss } from '../tokens/themes/index.ts';
 import { validateThemeObject } from '../tokens/themes/theme.ts';
@@ -13,7 +15,7 @@ const roles = resolveRoles(data, {});
 const IBM = [{ role: 'primary', value: '#0f62fe' }, { role: 'critical', value: '#da1e28' }, { role: 'success', value: '#24a148' }, { role: 'warning', value: '#f1c21b' }] as const;
 const M3 = [{ role: 'primary', value: '#6750a4' }, { role: 'secondary', value: '#625b71' }, { role: 'critical', value: '#b3261e' }] as const;
 
-test('anchors: each anchor is exact at its step; its family takes its hue; lightness is kept; the order holds', () => {
+test('anchors: each anchor is exact at its step; its family takes its hue; steps 1–8 keep their lightness; the order holds', () => {
   for (const palette of [IBM, M3]) {
     const r = anchoredSpectrum(data, roles, [...palette]);
     for (const a of r.report) {
@@ -23,7 +25,7 @@ test('anchors: each anchor is exact at its step; its family takes its hue; light
       // Exact: the stored OKLCH is the anchor's.
       const hue = anchored.oklch[2];
       for (const sw of after) if (sw.step > 1) assert.ok(Math.abs(((sw.oklch[2] - hue + 540) % 360) - 180) < 1e-6, `${a.family} ${sw.step}: hue pinned`);
-      for (const sw of after) if (sw.step > 1 && sw.step !== a.step) assert.ok(Math.abs(sw.oklch[0] - before[sw.step - 1].oklch[0]) < 1e-9, `${a.family} ${sw.step}: lightness kept`);
+      for (const sw of after) if (sw.step > 1 && sw.step < 9 && sw.step !== a.step) assert.ok(Math.abs(sw.oklch[0] - before[sw.step - 1].oklch[0]) < 1e-9, `${a.family} ${sw.step}: lightness kept`);
       assert.deepEqual(after[0].oklch, before[0].oklch, 'the page step is untouched');
       assert.ok(a.inOrder, `${a.role} ${a.value}: Lc ${a.lc} between ${a.below} and ${a.above}`);
       assert.ok(a.inRange);
@@ -155,4 +157,67 @@ test('anchors: light solid steps stay in light; a dark anchor color sets its own
   if (d.step >= 8) assert.equal(r.solidSteps.dark.primary, d.step);
   assert.ok(validateThemeObject({ schemaVersion: 2, name: 'd', color: { anchors: [{ role: 'primary', value: '#1f3a5f', dark: '#7fb2f0' }] } }).ok);
   assert.equal(validateThemeObject({ schemaVersion: 2, name: 'd', color: { anchors: [{ role: 'primary', value: '#1f3a5f', dark: 'blue' }] } }).ok, false);
+});
+
+test('anchors: steps 9–12 settle into one run around a pin', () => {
+  const spread = (ramp: { oklch: number[] }[], from: number) => {
+    const d = [0, 1, 2].map((i) => ramp[from - 1 + i].oklch[0] - ramp[from + i].oklch[0]).map(Math.abs);
+    return Math.max(...d) / Math.min(...d);
+  };
+  const r = anchoredSpectrum(data, roles, [{ role: 'primary', value: '#003057' }, { role: 'ink', value: '#00142c' }, { role: 'ground', value: '#ffffff' }]);
+  const primary = r.data.schemes.light[r.roles.primary], neutral = r.data.schemes.light[r.roles.neutral], darkNeutral = r.data.schemes.dark[r.roles.neutral];
+  // Generated, the dark anchor leaves a step 11 to 12 gap about 2.5 times the others; settled, under 1.3.
+  assert.ok(spread(data.schemes.light[r.roles.primary], 9) < 1.3, 'the generated run is even');
+  for (const ramp of [primary, neutral, darkNeutral]) assert.ok(spread(ramp, 9) < 1.3, 'lightness runs evenly into the pin');
+  // Chroma runs straight from step 9 to the pin.
+  const [c9, c10, c11, c12] = [9, 10, 11, 12].map((n) => primary[n - 1].oklch[1]);
+  assert.ok(Math.abs(c10 - (c9 + (c12 - c9) / 3)) < 1e-6 && Math.abs(c11 - (c9 + (2 * (c12 - c9)) / 3)) < 1e-6);
+  // Step 9, the solid, stays where the generator put it.
+  assert.equal(primary[8].oklch[0], data.schemes.light[r.roles.primary][8].oklch[0]);
+  // A page pin eases into the ramp: steps 2–4 carry its chroma, step 5 keeps the generator's lightness,
+  // and the tint never dips on the way to the solids.
+  const page = darkNeutral[0].oklch, gen = data.schemes.dark[r.roles.neutral];
+  assert.ok(darkNeutral[1].oklch[1] > gen[1].oklch[1] + 0.02 && darkNeutral[1].oklch[1] < page[1]);
+  assert.equal(darkNeutral[4].oklch[0], gen[4].oklch[0]);
+  for (let n = 5; n <= 8; n++) assert.ok(darkNeutral[n - 1].oklch[1] >= darkNeutral[3].oklch[1] - 1e-3, `step ${n} holds the tint`);
+});
+
+test('anchors: a pin brighter than its step costs the text steps no contrast', () => {
+  const r = anchoredSpectrum(data, roles, [{ role: 'primary', value: '#ffe01b', step: 9 }]);
+  for (const n of [10, 11, 12]) assert.equal(r.data.schemes.light[r.roles.primary][n - 1].oklch[0], data.schemes.light[r.roles.primary][n - 1].oklch[0]);
+});
+
+test('anchors: a pin below step 9 leaves the run alone', () => {
+  const r = anchoredSpectrum(data, roles, [{ role: 'primary', value: '#ffe01b', step: 7 }]);
+  for (const n of [9, 10, 11, 12]) assert.equal(r.data.schemes.light[r.roles.primary][n - 1].oklch[0], data.schemes.light[r.roles.primary][n - 1].oklch[0]);
+});
+
+test('key intensity scales steps 9–12 alone, keeps contrast, and leaves neutrals and pins', () => {
+  const chromas = (d: Spectrum, f: string) => d.schemes.light[f].map((s) => s.oklch[1]);
+  const lift = (keyIntensity: number, anchors: ColorAnchor[] = []) => {
+    const gen = generateSpectrum({ keyIntensity });
+    return anchoredSpectrum(gen, resolveRoles(gen, {}), anchors);
+  };
+  const base = generateSpectrum({}), roles = resolveRoles(base, {});
+  assert.equal(anchoredSpectrum(base, roles, []).data, base, '100 is the generated spectrum, untouched');
+  const up = lift(150).data, down = lift(50).data, off = lift(0).data, family = roles.primary, neutral = roles.neutral;
+  const was = chromas(base, family);
+  for (const mode of ['light', 'dark'] as const) for (const [f, ramp] of Object.entries(down.schemes[mode])) ramp.forEach((sw, i) => {
+    const orig = base.schemes[mode][f][i];
+    if (i < 8 || f === neutral) { assert.equal(sw.css, orig.css, `${f} ${i + 1} ${mode}`); return; }
+    assert.ok(Math.abs(sw.oklch[1] - orig.oklch[1] / 2) < 1e-3, `${f} ${i + 1} ${mode} halves`);
+    assert.ok(Math.abs(toneOfY(linearY(sw.oklch)) - toneOfY(linearY(orig.oklch))) < 0.05, `${f} ${i + 1} ${mode} keeps its tone`);
+  });
+  chromas(up, family).forEach((c, i) => assert.ok(i < 8 ? c === was[i] : c > was[i], `step ${i + 1} up`));
+  chromas(off, family).slice(8).forEach((c) => assert.ok(c < 1e-6, 'zero is gray'));
+  // A pin stays exact and the scale eases to it, so the run keeps one curve.
+  const anchor = { role: 'primary', value: '#003057', step: 12 } as ColorAnchor;
+  const plain = lift(100, [anchor]), quiet = lift(50, [anchor]);
+  const f = plain.report[0].family, a = chromas(plain.data, f), b = chromas(quiet.data, f);
+  assert.equal(quiet.data.schemes.light[f][11].css, plain.data.schemes.light[f][11].css, 'pin exact');
+  assert.ok(Math.abs(b[8] / a[8] - 0.5) < 0.01, 'the far end of the run takes the full scale');
+  assert.ok(Math.abs(b[10] / a[10] - 5 / 6) < 0.01, 'the scale eases toward the pin');
+  // Past the gamut the run plateaus at step 9 rather than peaking on a text step.
+  const top = chromas(lift(300).data, family).slice(8);
+  top.forEach((c, i) => assert.ok(c <= top[0] + 1e-6 && (i === 0 || c >= was[8 + i]), `step ${9 + i} at 300`));
 });

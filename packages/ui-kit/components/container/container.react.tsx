@@ -21,7 +21,7 @@ export interface UniversalContainerProps extends ContainerProps {
   /** stack (column), row, wrap. Default: the preset's. */
   layout?: 'stack' | 'row' | 'wrap';
   /** none, panel, card, raised: the elevation level. Default: the preset's. */
-  surface?: 'none' | 'panel' | 'card' | 'raised';
+  surface?: 'none' | 'panel' | 'card' | 'raised' | 'solid';
 }
 
 /**

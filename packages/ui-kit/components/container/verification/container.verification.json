@@ -14,15 +14,15 @@
     },
     {
       "path": "components/container/container.manifest.json",
-      "sha256": "67aef6cffdea1960f74e8eb7ae8ecda25771d68cf410615e5f899fb8fb1e4195"
+      "sha256": "c91f23d19bd9209362a687b57bba10982f665f9a2a277f405e093b35b89d13d3"
     },
     {
       "path": "components/container/container.react.tsx",
-      "sha256": "203dee89726a8d6c854dba1af2109c4ed4c2d633a52e6d9fc3489fcc55ad9aaa"
+      "sha256": "52ee9fbad9f9ff5deeaa69c602ab9a92458b902a5c924fb43ad139ba336385bb"
     },
     {
       "path": "components/container/container.recipe.ts",
-      "sha256": "4f52105c065dbce3cb986f285dad328a5c054356e13e57679edf605c34e1c89c"
+      "sha256": "b80ef8760f4c2f3b6476575b2e3cd473eb3ede0c9004243362a1a934b3a719ac"
     },
     {
       "path": "components/recipe-parts.ts",
@@ -42,7 +42,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-05",
+        "date": "2026-11-06",
         "outcome": "pass",
         "commands": [
           "node --test test/geometry.test.ts",
@@ -61,7 +61,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-05",
+        "date": "2026-11-06",
         "outcome": "pass",
         "commands": [
           "node --test test/react.test.ts"

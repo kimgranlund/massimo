@@ -16,12 +16,11 @@ const hero = css({
   [CQ_LG]: { gridTemplateColumns: 'minmax(0, 1.05fr) minmax(0, 1fr)', gap: '12' },
 });
 const copy = css({ display: 'flex', flexDirection: 'column', gap: '6', alignItems: 'start' });
-const brandCard = css({ bg: 'primary.solid', color: 'fg.onSolid', position: 'relative' });
+const brandCard = css({ position: 'relative' });
 const heroImage = css({ borderRadius: 'lg', overflow: 'hidden', width: 'full' });
 const floating = css({ position: 'relative', zIndex: '1', color: 'fg', [CQ_SM]: { marginInlineStart: '[20%]', marginBlockStart: '-12' } });
-const onSolidSoft = '[color-mix(in oklch, var(--colors-fg-on-solid) 75%, transparent)]';
-const onSolidMuted = css({ textStyle: 'body-sm', color: onSolidSoft });
-const onSolidKicker = css({ textStyle: 'group-kicker', color: onSolidSoft });
+const onSolidMuted = css({ textStyle: 'body-sm' });
+const onSolidKicker = css({ textStyle: 'group-kicker' });
 const trust = css({ display: 'flex', alignItems: 'center', gap: '3' });
 const faces = css({ display: 'flex', '& > ui-avatar + ui-avatar': { marginInlineStart: '-1.5' }, '& > ui-avatar': { boxShadow: '[0 0 0 2px var(--colors-bg)]' } });
 const features = css({
@@ -50,7 +49,7 @@ export function Landing({ spectrum }: { spectrum?: SpectrumPayload }) {
             <span className={s.caption}>Used by 4,000 small brands · 4.8 rating</span>
           </div>
         </div>
-        <ui-container preset="card" padding="xl" className={brandCard}><ui-section>
+        <ui-container preset="card" padding="xl" surface="solid" className={brandCard}><ui-section>
           <span className={onSolidKicker}>Autumn / Winter 26</span>
           <ui-image src={art(spectrum, 'hills', 'primary', 'secondary')} alt="Hills at first light" ratio="landscape" className={heroImage} />
           <ui-container preset="card" padding="sm" surface="raised" className={floating}><ui-section>

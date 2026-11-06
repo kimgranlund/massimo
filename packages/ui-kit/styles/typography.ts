@@ -49,8 +49,9 @@ function roleStyle(name: string, r: TypeRole) {
     textTransform: r.upper ? 'uppercase' : 'none',
     // The role's text color (theme typography.colors): display, headings and titles default to the
     // strong color (fg.strong); the others inherit unless a theme maps them (an
-    // unset variable leaves an inherited property inheriting).
-    color: r.strong ? `var(--ui-type-color-${name}, var(--colors-fg-strong))` : r.ink ? `var(--ui-type-color-${name}, var(--colors-fg-${r.ink}))` : `var(--ui-type-color-${name})`,
+    // unset variable leaves an inherited property inheriting). On a solid surface (--ui-on-solid, set
+    // by ui-container surface="solid") every role takes the surface's text color first.
+    color: r.strong ? `var(--ui-on-solid, var(--ui-type-color-${name}, var(--colors-fg-strong)))` : r.ink ? `var(--ui-on-solid-muted, var(--ui-type-color-${name}, var(--colors-fg-${r.ink})))` : `var(--ui-on-solid, var(--ui-type-color-${name}))`,
   };
 }
 

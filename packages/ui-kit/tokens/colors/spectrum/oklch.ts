@@ -4,7 +4,7 @@
 // requested chroma, capped by what the weakest hue can reach there. Lightness keeps the kit's contrast
 // model: each step's L is solved per hue and chroma to land on that step's tone (contrast.ts), so a
 // step has the same APCA contrast in every family, as it does under HCT.
-import { clampChroma, css, linearY, onFill, toneOfY } from './anchors.ts';
+import { clampChroma, css, linearY, onFill, solveLightness, toneOfY } from './anchors.ts';
 import { apcaLc, luminance, stepTones } from './contrast.ts';
 import type { SpectrumSettings } from './config.ts';
 import type { Scheme, Spectrum, Swatch } from './index.ts';
@@ -36,16 +36,8 @@ const grayL = (tone: number) => Math.cbrt(luminance(tone));
 /** Max in-gamut OKLCH chroma at a hue, at the L of a gray of this tone. */
 export const oklchBoundary = (hue: number, tone: number, target: string) => clampChroma(grayL(tone), 0.5, hue, target);
 
-/** The L that puts this hue and chroma (capped by the gamut) on a tone: luminance rises with L. */
-function solveL(tone: number, C: number, h: number, gamut: string) {
-  const want = luminance(tone);
-  let lo = 0, hi = 1;
-  for (let i = 0; i < 26; i++) {
-    const L = (lo + hi) / 2;
-    if (linearY([L, clampChroma(L, C, h, gamut), h]) < want) lo = L; else hi = L;
-  }
-  return (lo + hi) / 2;
-}
+/** The L that puts this hue and chroma on a tone. */
+const solveL = (tone: number, C: number, h: number, gamut: string) => solveLightness(luminance(tone), C, h, gamut);
 
 /** The most chroma a hue can hold on a tone: the solved L shifts with chroma, so the two are found together. */
 function reachOnTone(tone: number, h: number, gamut: string) {
