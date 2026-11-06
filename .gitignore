@@ -29,3 +29,11 @@ docs/references/claude-artifacts-skills/web-artifacts-builder/
 
 # Brand source files stay local: too large for GitHub, and third-party
 docs/references/brand-expressions/**/sources/
+
+# Third-party brand captures stay local: only brand.json, annotations and notes are tracked.
+docs/references/brand-expressions/**/*.png
+docs/references/brand-expressions/**/*.jpg
+docs/references/brand-expressions/**/*.jpeg
+docs/references/brand-expressions/**/*.pdf
+docs/references/brand-expressions/*/index.html
+docs/references/brand-expressions/*/*/*.html
