@@ -5,5 +5,39 @@ New ticket: `/ticket new <feature|bug|chore|spike|idea> <slug> "title"`. Build p
 
 | ID | Ticket | Title | Type | Size | Pri | Depends on | Status |
 |---|---|---|---|---|---|---|---|
+| T-0031 | [docs-site](tickets/docs-site/handoff.md) | Parity W0 · Docs site | feature | L3 | P1 | none | 🔵 ready |
+| T-0032 | [grid-layout-primitives](tickets/grid-layout-primitives/handoff.md) | Parity W1 · Column, List and Grid | feature | L2 | P2 | T-0031 | 🔵 ready |
+| T-0033 | [spinner](tickets/spinner/handoff.md) | Parity W1 · Spinner | feature | L1 | P2 | T-0031 | 🔵 ready |
+| T-0034 | [kbd](tickets/kbd/handoff.md) | Parity W1 · Kbd | feature | L1 | P2 | T-0031 | 🔵 ready |
+| T-0035 | [textarea](tickets/textarea/handoff.md) | Parity W1 · Textarea | feature | L2 | P2 | T-0031 | 🔵 ready |
+| T-0036 | [breadcrumb](tickets/breadcrumb/handoff.md) | Parity W1 · Breadcrumb | feature | L1 | P2 | T-0031 | 🔵 ready |
+| T-0037 | [button-link](tickets/button-link/handoff.md) | Parity W1 · Button link | feature | L1 | P2 | T-0031 | 🔵 ready |
+| T-0038 | [setting-row](tickets/setting-row/handoff.md) | Parity W1 · Setting row | feature | L1 | P2 | T-0031 | 🔵 ready |
+| T-0039 | [data-list](tickets/data-list/handoff.md) | Parity W1 · Data list | feature | L2 | P2 | T-0031 | 🔵 ready |
+| T-0040 | [stat-card](tickets/stat-card/handoff.md) | Parity W1 · Stat card | feature | L2 | P2 | T-0031 | 🔵 ready |
+| T-0041 | [file-picker](tickets/file-picker/handoff.md) | Parity W2 · File picker | feature | L2 | P2 | T-0031 | 🔵 ready |
+| T-0042 | [chip-select](tickets/chip-select/handoff.md) | Parity W2 · Chip select | feature | L1 | P2 | T-0031 | 🔵 ready |
+| T-0043 | [selection-control](tickets/selection-control/handoff.md) | Parity W2 · Selection control | feature | L2 | P2 | T-0031 | 🔵 ready |
+| T-0044 | [color-picker](tickets/color-picker/handoff.md) | Parity W2 · Color picker | feature | L2 | P2 | T-0031 | 🔵 ready |
+| T-0045 | [grid-navigation](tickets/grid-navigation/handoff.md) | Parity W3 · Grid keyboard navigation foundation | chore | L2 | P2 | T-0031 | 🔵 ready |
+| T-0046 | [calendar](tickets/calendar/handoff.md) | Parity W3 · Calendar | feature | L2 | P2 | T-0045 | 🔵 ready |
+| T-0047 | [date-picker](tickets/date-picker/handoff.md) | Parity W3 · Date picker | feature | L2 | P2 | T-0046 | 🔵 ready |
+| T-0048 | [date-range-picker](tickets/date-range-picker/handoff.md) | Parity W3 · Date range picker | feature | L2 | P2 | T-0047 | 🔵 ready |
+| T-0049 | [time-picker](tickets/time-picker/handoff.md) | Parity W3 · Time picker | feature | L2 | P2 | T-0031 | 🔵 ready |
+| T-0050 | [toolbar](tickets/toolbar/handoff.md) | Parity W4 · Toolbar | feature | L2 | P2 | T-0031 | 🔵 ready |
+| T-0051 | [command-bar](tickets/command-bar/handoff.md) | Parity W4 · Command bar | feature | L2 | P2 | T-0034 | 🔵 ready |
+| T-0052 | [search-trigger](tickets/search-trigger/handoff.md) | Parity W4 · Search trigger | feature | L1 | P2 | T-0051 | 🔵 ready |
+| T-0053 | [tree-view](tickets/tree-view/handoff.md) | Parity W4 · Tree view | feature | L2 | P2 | T-0031 | 🔵 ready |
+| T-0054 | [sidebar](tickets/sidebar/handoff.md) | Parity W4 · Sidebar | feature | L2 | P2 | T-0031 | 🔵 ready |
+| T-0055 | [scroll-region-geometry](tickets/scroll-region-geometry/handoff.md) | Parity W5 · Pane and scroll-region geometry foundation | chore | L2 | P2 | T-0031 | 🔵 ready |
+| T-0056 | [page](tickets/page/handoff.md) | Parity W5 · Page | feature | L1 | P2 | T-0055 | 🔵 ready |
+| T-0057 | [pane](tickets/pane/handoff.md) | Parity W5 · Pane | feature | L2 | P2 | T-0055 | 🔵 ready |
+| T-0058 | [content-shell](tickets/content-shell/handoff.md) | Parity W5 · Content shell | feature | L2 | P2 | T-0057 | 🔵 ready |
+| T-0059 | [app-shell](tickets/app-shell/handoff.md) | Parity W5 · App and editor shell | feature | L2 | P2 | T-0057 | 🔵 ready |
+| T-0060 | [admin-shell](tickets/admin-shell/handoff.md) | Parity W5 · Admin shell | feature | L2 | P2 | T-0059, T-0054 | 🔵 ready |
+| T-0061 | [floating-panel](tickets/floating-panel/handoff.md) | Parity W5 · Floating panel | feature | L2 | P2 | T-0055 | 🔵 ready |
+| T-0062 | [data-table](tickets/data-table/handoff.md) | Parity W6 · Data table | feature | L3 | P2 | T-0045 | 🔵 ready |
+| T-0063 | [chart](tickets/chart/handoff.md) | Parity W6 · Chart | feature | L3 | P2 | T-0031 | 🔵 ready |
+| T-0064 | [parity-wave-7-scope](tickets/parity-wave-7-scope/handoff.md) | Parity W7 · Decide scope of specialist components | idea | L2 | P3 | T-0062, T-0063 | ⏳ proposed |
 
 Closed: 30 done, 0 dropped (git log or .NNNN-* folders)

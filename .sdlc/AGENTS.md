@@ -1,4 +1,4 @@
-<!-- sdlc:managed:start v1 sha256:1c0e05a51c97 -->
+<!-- sdlc:managed:start v1 sha256:98775becfb93 -->
 # Work records
 
 This folder holds SDLC tickets, task records, `roadmap.md`, `notes.md`, and `config`. `tickets.py roadmap` (also run by `new` and `close`) generates this block: do not edit inside it; change a ticket's `handoff.md` front matter and rerun `roadmap`. `roadmap.md` lists every ticket in dependency order. Closed `.NNNN-*` folders are history: open one only when asked.
@@ -10,8 +10,42 @@ This folder holds SDLC tickets, task records, `roadmap.md`, `notes.md`, and `con
 
 ## Stages
 
-- proposed: 0
-- ready: 0
+- proposed: 1
+  - T-0064 Parity W7 · Decide scope of specialist components (parity-wave-7-scope)
+- ready: 33
+  - T-0031 Parity W0 · Docs site (docs-site)
+  - T-0032 Parity W1 · Column, List and Grid (grid-layout-primitives)
+  - T-0033 Parity W1 · Spinner (spinner)
+  - T-0034 Parity W1 · Kbd (kbd)
+  - T-0035 Parity W1 · Textarea (textarea)
+  - T-0036 Parity W1 · Breadcrumb (breadcrumb)
+  - T-0037 Parity W1 · Button link (button-link)
+  - T-0038 Parity W1 · Setting row (setting-row)
+  - T-0039 Parity W1 · Data list (data-list)
+  - T-0040 Parity W1 · Stat card (stat-card)
+  - T-0041 Parity W2 · File picker (file-picker)
+  - T-0042 Parity W2 · Chip select (chip-select)
+  - T-0043 Parity W2 · Selection control (selection-control)
+  - T-0044 Parity W2 · Color picker (color-picker)
+  - T-0045 Parity W3 · Grid keyboard navigation foundation (grid-navigation)
+  - T-0046 Parity W3 · Calendar (calendar)
+  - T-0047 Parity W3 · Date picker (date-picker)
+  - T-0048 Parity W3 · Date range picker (date-range-picker)
+  - T-0049 Parity W3 · Time picker (time-picker)
+  - T-0050 Parity W4 · Toolbar (toolbar)
+  - T-0051 Parity W4 · Command bar (command-bar)
+  - T-0052 Parity W4 · Search trigger (search-trigger)
+  - T-0053 Parity W4 · Tree view (tree-view)
+  - T-0054 Parity W4 · Sidebar (sidebar)
+  - T-0055 Parity W5 · Pane and scroll-region geometry foundation (scroll-region-geometry)
+  - T-0056 Parity W5 · Page (page)
+  - T-0057 Parity W5 · Pane (pane)
+  - T-0058 Parity W5 · Content shell (content-shell)
+  - T-0059 Parity W5 · App and editor shell (app-shell)
+  - T-0060 Parity W5 · Admin shell (admin-shell)
+  - T-0061 Parity W5 · Floating panel (floating-panel)
+  - T-0062 Parity W6 · Data table (data-table)
+  - T-0063 Parity W6 · Chart (chart)
 - claimed: 0
 - paused: 0
 - blocked: 0
