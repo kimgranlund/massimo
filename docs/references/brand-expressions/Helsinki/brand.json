@@ -1,0 +1,132 @@
+{
+  "$schema": "../../../../packages/ui-kit/contracts/brand.schema.json",
+  "schemaVersion": 1,
+  "name": "helsinki",
+  "subject": {
+    "name": "Helsinki",
+    "audience": "residents, staff and visitors of the City of Helsinki",
+    "primaryJob": "keep a city’s many services recognizably one",
+    "kind": "institution",
+    "sources": [
+      "the framed coat of arms (HC01)",
+      "wave motifs (HE047)",
+      "Helsinki Grotesk (HE013)"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "scandinavian-functionalism",
+      "relation": "inherit",
+      "principles": [
+        "plain public information (HE088)",
+        "a clear two-H margin rule (HE007)"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "Harbor city",
+      "ref": "harbor",
+      "primary": true,
+      "description": "Sea blue and calm pastels, with a wave along the edge.",
+      "materials": [
+        "wave edges",
+        "coat of arms",
+        "city signage"
+      ],
+      "light": "soft northern daylight"
+    }
+  ],
+  "muse": {
+    "kind": "place",
+    "name": "the Baltic shoreline",
+    "take": "a repeated wave edge (HE047)",
+    "leave": "the heraldic detail"
+  },
+  "color": {
+    "anchors": [
+      {
+        "name": "Sea blue",
+        "value": "#0072C7",
+        "role": "primary"
+      },
+      {
+        "name": "Coat yellow",
+        "value": "#FFC61E",
+        "role": "secondary"
+      },
+      {
+        "name": "Copper orange",
+        "value": "#FD4F00",
+        "role": "data1"
+      },
+      {
+        "name": "Pale pink",
+        "value": "#F5A4C8",
+        "role": "data2"
+      },
+      {
+        "name": "White",
+        "value": "#FFFFFF",
+        "role": "ground"
+      },
+      {
+        "name": "Black",
+        "value": "#000000",
+        "role": "ink"
+      }
+    ],
+    "feedback": "independent",
+    "character": {
+      "neutral": "true"
+    }
+  },
+  "type": {
+    "faces": {
+      "display": {
+        "ref": "work-sans"
+      },
+      "body": {
+        "ref": "helvetica-neue"
+      },
+      "utility": {
+        "ref": "helvetica-neue"
+      }
+    },
+    "character": {}
+  },
+  "form": {
+    "curvature": "square",
+    "line": "borderless",
+    "elevation": "flat"
+  },
+  "movement": "calm",
+  "adaptivity": "light-first",
+  "voice": {
+    "tone": [
+      "plain",
+      "calm"
+    ]
+  },
+  "signature": {
+    "concept": "square civic page",
+    "scale": "curvature",
+    "reason": "HE007 sets the page by strict margins, and the wave is the only curve"
+  },
+  "rationale": {
+    "grounding.primary": "Inferred from the source: a civic system with plain type and margins.",
+    "type.faces": "Stand-in for display: Helsinki Grotesk (HE013) is outside the catalogue. Arial is its named substitute (HE013), so Helvetica Neue is the nearest catalogue match.",
+    "form.curvature": "square-cut layouts with a strict margin (HE007)",
+    "form.line": "color fields and waves (HE047)",
+    "form.elevation": "flat print fields (HE047)",
+    "color.character.neutral": "plain black and white (HE008)",
+    "adaptivity": "white grounds (HC01)",
+    "movement": "slow wave use in video (HE047)",
+    "color.anchors.0": "Sampled from HE020.",
+    "color.anchors.1": "Sampled from HE020.",
+    "color.anchors.2": "Sampled from HE020.",
+    "color.anchors.3": "Sampled from HE020.",
+    "color.anchors.4": "White pages (HC01).",
+    "color.anchors.5": "Black logo (HE008)."
+  }
+}

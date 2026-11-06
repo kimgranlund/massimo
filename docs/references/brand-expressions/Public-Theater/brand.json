@@ -1,0 +1,133 @@
+{
+  "$schema": "../../../../packages/ui-kit/contracts/brand.schema.json",
+  "schemaVersion": 1,
+  "name": "public-theater",
+  "subject": {
+    "name": "The Public Theater",
+    "audience": "New Yorkers and theatergoers",
+    "primaryJob": "shout public theater from the street",
+    "kind": "institution",
+    "sources": [
+      "the PUBLIC signature narrowing letter by letter (PT01)",
+      "the season poster sketch (PT05)",
+      "wood-type Free Love poster (PT19)"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "constructivism",
+      "relation": "inherit",
+      "principles": [
+        "type as image (PT02)",
+        "tight, loud street posters (PT05)"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "Street posters",
+      "ref": "print-shop",
+      "primary": true,
+      "description": "Wheat-pasted black and red type packed to the edges.",
+      "materials": [
+        "wood type",
+        "street posters",
+        "red ink"
+      ],
+      "light": "flat street daylight"
+    }
+  ],
+  "muse": {
+    "kind": "object",
+    "name": "the wood-type drawer",
+    "take": "letters of mixed widths pressed together (PT01)",
+    "leave": "the 19th-century poster look"
+  },
+  "color": {
+    "anchors": [
+      {
+        "name": "Public red",
+        "value": "#ED4231",
+        "role": "primary"
+      },
+      {
+        "name": "Poster yellow",
+        "value": "#FDEE00",
+        "role": "secondary"
+      },
+      {
+        "name": "Program blue",
+        "value": "#0F2289",
+        "role": "data1"
+      },
+      {
+        "name": "White",
+        "value": "#FFFFFF",
+        "role": "ground"
+      },
+      {
+        "name": "Black",
+        "value": "#000000",
+        "role": "ink"
+      }
+    ],
+    "feedback": "independent",
+    "character": {}
+  },
+  "type": {
+    "faces": {
+      "display": {
+        "ref": "libre-franklin"
+      },
+      "body": {
+        "ref": "libre-franklin"
+      },
+      "utility": {
+        "ref": "libre-franklin"
+      }
+    },
+    "character": {
+      "type-scale": "dramatic"
+    },
+    "weights": {
+      "display": 800,
+      "heading": 700
+    }
+  },
+  "form": {
+    "curvature": "square",
+    "line": "borderless",
+    "elevation": "flat",
+    "density": "compact"
+  },
+  "movement": "lively",
+  "adaptivity": "light-first",
+  "voice": {
+    "tone": [
+      "confident",
+      "candid"
+    ]
+  },
+  "signature": {
+    "concept": "packed type",
+    "scale": "density",
+    "reason": "PT05 sets show names tightly, as on a street poster"
+  },
+  "rationale": {
+    "grounding.primary": "Inferred from the source: street posters and stacked type fit the canon.",
+    "type.faces": "Stand-ins: the case study does not name a typeface; Libre Franklin is the closest gothic.",
+    "form.curvature": "square-cut type blocks (PT05)",
+    "form.line": "ink only (PT01)",
+    "form.elevation": "flat paper (PT19)",
+    "form.density": "tightly packed show names (PT05)",
+    "type.character.type-scale": "words fill the sheet (PT19)",
+    "type.weights": "Heavier display weights, matching the sources’ headlines.",
+    "adaptivity": "white posters (PT01)",
+    "movement": "street energy (PT05)",
+    "color.anchors.0": "Sampled from PT28.",
+    "color.anchors.1": "Sampled from PT09.",
+    "color.anchors.2": "Sampled from PT13.",
+    "color.anchors.3": "Sampled from PT01.",
+    "color.anchors.4": "Sampled from PT02."
+  }
+}

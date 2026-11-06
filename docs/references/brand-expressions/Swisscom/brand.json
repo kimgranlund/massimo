@@ -1,0 +1,119 @@
+{
+  "$schema": "../../../../packages/ui-kit/contracts/brand.schema.json",
+  "schemaVersion": 1,
+  "name": "swisscom",
+  "subject": {
+    "name": "Swisscom",
+    "audience": "Swiss customers of telecoms and IT",
+    "primaryJob": "present a Swiss operator as dynamic and always connected",
+    "kind": "product",
+    "sources": [
+      "the folded red-and-blue form (SW01)",
+      "sketch, wireframe and render (SW02)",
+      "crops across print (SW03)"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "swiss-international",
+      "relation": "reinterpret",
+      "principles": [
+        "white space around one form (SW01)",
+        "clear small copy (SW03)"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "Alpine white",
+      "ref": "alpine",
+      "primary": true,
+      "description": "Open white, with one folded red-blue form.",
+      "materials": [
+        "folded surfaces",
+        "printed crops"
+      ],
+      "light": "clean high daylight"
+    }
+  ],
+  "muse": {
+    "kind": "object",
+    "name": "the folded ribbon",
+    "take": "a soft fold of color (SW02)",
+    "leave": "the 3D render"
+  },
+  "color": {
+    "anchors": [
+      {
+        "name": "Swisscom red",
+        "value": "#D82838",
+        "role": "primary"
+      },
+      {
+        "name": "Sky blue",
+        "value": "#38A8F8",
+        "role": "secondary"
+      },
+      {
+        "name": "White",
+        "value": "#FFFFFF",
+        "role": "ground"
+      },
+      {
+        "name": "Study gray",
+        "value": "#383431",
+        "role": "ink"
+      }
+    ],
+    "feedback": "independent",
+    "character": {
+      "harmony": "complementary"
+    }
+  },
+  "type": {
+    "faces": {
+      "display": {
+        "ref": "inter"
+      },
+      "body": {
+        "ref": "inter"
+      },
+      "utility": {
+        "ref": "inter"
+      }
+    },
+    "character": {}
+  },
+  "form": {
+    "space": "airy",
+    "curvature": "soft",
+    "elevation": "layered"
+  },
+  "movement": "lively",
+  "adaptivity": "light-first",
+  "voice": {
+    "tone": [
+      "plain",
+      "precise"
+    ]
+  },
+  "signature": {
+    "concept": "room around the fold",
+    "scale": "space",
+    "reason": "SW01 leaves half the page open in the alpine territory"
+  },
+  "rationale": {
+    "grounding.primary": "Inferred, not stated by the source. Departs from the canon: a soft dimensional symbol.",
+    "type.faces": "Stand-ins: the collection does not name a typeface.",
+    "form.space": "the right half stays open (SW01)",
+    "form.curvature": "a soft fold (SW02)",
+    "form.elevation": "dimensional symbol (SW02)",
+    "color.character.harmony": "red against blue (SW01)",
+    "adaptivity": "white grounds (SW01)",
+    "movement": "a dynamic symbol (SW01)",
+    "color.anchors.0": "Sampled from SW01, so approximate.",
+    "color.anchors.1": "Sampled from SW01, so approximate.",
+    "color.anchors.2": "Sampled from SW01.",
+    "color.anchors.3": "Sampled from SW02."
+  }
+}

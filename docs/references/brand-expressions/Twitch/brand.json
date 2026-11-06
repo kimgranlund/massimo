@@ -1,0 +1,136 @@
+{
+  "$schema": "../../../../packages/ui-kit/contracts/brand.schema.json",
+  "schemaVersion": 1,
+  "name": "twitch",
+  "subject": {
+    "name": "Twitch",
+    "audience": "live streamers and their communities",
+    "primaryJob": "celebrate the odd culture of live streaming",
+    "kind": "product",
+    "sources": [
+      "gradient wordmarks (TW08)",
+      "named color palette (TW14)",
+      "Twitch Roobert (TW10)"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "memphis",
+      "relation": "inherit",
+      "principles": [
+        "loud, playful color (TW14)",
+        "in-jokes as design (TW13)"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "Live chat",
+      "ref": "nocturne",
+      "primary": true,
+      "description": "Black rooms, purple glow and neon reactions.",
+      "materials": [
+        "emotes",
+        "gradients",
+        "street posters"
+      ],
+      "light": "screen glow"
+    }
+  ],
+  "muse": {
+    "kind": "work",
+    "name": "the emote",
+    "take": "a tiny loud reaction (TW13)",
+    "leave": "the characters themselves"
+  },
+  "color": {
+    "anchors": [
+      {
+        "name": "Twitch purple",
+        "value": "#9243FE",
+        "role": "primary"
+      },
+      {
+        "name": "Hot pink",
+        "value": "#F91CD0",
+        "role": "secondary"
+      },
+      {
+        "name": "Orange",
+        "value": "#FC6703",
+        "role": "data1"
+      },
+      {
+        "name": "Green",
+        "value": "#00F902",
+        "role": "data2"
+      },
+      {
+        "name": "Off white",
+        "value": "#F6F8F5",
+        "role": "ground"
+      },
+      {
+        "name": "Black",
+        "value": "#000000",
+        "role": "ink"
+      }
+    ],
+    "feedback": "independent",
+    "character": {
+      "vibrancy": "vivid",
+      "harmony": "triadic"
+    }
+  },
+  "type": {
+    "faces": {
+      "display": {
+        "ref": "space-grotesk"
+      },
+      "body": {
+        "ref": "inter"
+      },
+      "utility": {
+        "ref": "jetbrains-mono"
+      }
+    },
+    "character": {},
+    "weights": {
+      "display": 700
+    }
+  },
+  "form": {
+    "curvature": "round",
+    "line": "borderless"
+  },
+  "movement": "playful",
+  "adaptivity": "dark-first",
+  "voice": {
+    "tone": [
+      "playful",
+      "candid"
+    ]
+  },
+  "signature": {
+    "concept": "a loud room",
+    "scale": "movement",
+    "reason": "TW06 and TW13 keep everything reacting, like chat"
+  },
+  "rationale": {
+    "grounding.primary": "Inferred from the source: named colors and emotes fit the canon.",
+    "type.faces": "Stand-ins: Roobert (TW10) is outside the catalogue.",
+    "form.curvature": "rounded cards (TW13)",
+    "form.line": "gradient fields (TW08)",
+    "color.character.vibrancy": "saturated palette (TW14)",
+    "color.character.harmony": "purple, pink and green collide (TW14)",
+    "type.weights": "Heavier display weights, matching the sources’ headlines.",
+    "adaptivity": "black cards (TW13)",
+    "movement": "the wordmark stretches and extrudes (TW06)",
+    "color.anchors.0": "Sampled from TW22.",
+    "color.anchors.1": "Sampled from TW14.",
+    "color.anchors.2": "Sampled from TW14.",
+    "color.anchors.3": "Sampled from TW14.",
+    "color.anchors.4": "Sampled from TW05.",
+    "color.anchors.5": "Sampled from TW21."
+  }
+}

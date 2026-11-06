@@ -1,0 +1,120 @@
+{
+  "$schema": "../../../../packages/ui-kit/contracts/brand.schema.json",
+  "schemaVersion": 1,
+  "name": "moma",
+  "subject": {
+    "name": "MoMA",
+    "audience": "museum visitors and subway riders",
+    "primaryJob": "let art lead, with a simple black-and-white system around it",
+    "kind": "institution",
+    "sources": [
+      "the vertical MoMA signature (MO02)",
+      "title, image and programmes in a system (MO02)",
+      "the film subway poster (MO07)"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "swiss-international",
+      "relation": "inherit",
+      "principles": [
+        "a strict poster system (MO02)",
+        "one type voice (MO07)"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "Gallery wall",
+      "ref": "archive",
+      "primary": true,
+      "description": "White walls and black type, with the art supplying all color.",
+      "materials": [
+        "posters",
+        "subway frames",
+        "white walls"
+      ],
+      "light": "neutral gallery light"
+    }
+  ],
+  "muse": {
+    "kind": "place",
+    "name": "the gallery wall",
+    "take": "stepping back so the work can speak (MO02)",
+    "leave": "the architecture"
+  },
+  "color": {
+    "anchors": [
+      {
+        "name": "Black",
+        "value": "#000000",
+        "role": "primary"
+      },
+      {
+        "name": "White",
+        "value": "#FFFFFF",
+        "role": "ground"
+      },
+      {
+        "name": "Black ink",
+        "value": "#000000",
+        "role": "ink"
+      }
+    ],
+    "feedback": "independent",
+    "character": {
+      "neutral": "true",
+      "vibrancy": "muted"
+    }
+  },
+  "type": {
+    "faces": {
+      "display": {
+        "ref": "libre-franklin"
+      },
+      "body": {
+        "ref": "libre-franklin"
+      },
+      "utility": {
+        "ref": "libre-franklin"
+      }
+    },
+    "character": {},
+    "weights": {
+      "display": 700
+    }
+  },
+  "form": {
+    "curvature": "square",
+    "line": "borderless",
+    "elevation": "flat"
+  },
+  "movement": "still",
+  "adaptivity": "light-first",
+  "voice": {
+    "tone": [
+      "formal",
+      "plain"
+    ]
+  },
+  "signature": {
+    "concept": "stillness on the wall",
+    "scale": "movement",
+    "reason": "the gallery muse stays still so the work can lead (MO02)"
+  },
+  "rationale": {
+    "grounding.primary": "Inferred from the source: thin evidence, eight pieces.",
+    "type.faces": "Stand-ins: the case study does not name a typeface; Libre Franklin is the closest gothic.",
+    "form.curvature": "rectangular posters (MO02)",
+    "form.line": "black type on white (MO02)",
+    "form.elevation": "flat print (MO02)",
+    "color.character.neutral": "pure black and white (MO02)",
+    "color.character.vibrancy": "color comes only from the art (MO07)",
+    "type.weights": "Heavier display weights, matching the sources’ headlines.",
+    "adaptivity": "white posters (MO02)",
+    "movement": "printed posters (MO02)",
+    "color.anchors.0": "Black type (MO06).",
+    "color.anchors.1": "Sampled from MO02.",
+    "color.anchors.2": "Sampled from MO06."
+  }
+}

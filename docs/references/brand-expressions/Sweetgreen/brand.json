@@ -1,0 +1,122 @@
+{
+  "$schema": "../../../../packages/ui-kit/contracts/brand.schema.json",
+  "schemaVersion": 1,
+  "name": "sweetgreen",
+  "subject": {
+    "name": "Sweetgreen",
+    "audience": "lunch customers and staff in restaurants and the app",
+    "primaryJob": "make fresh food feel bright, modern and honest",
+    "kind": "product",
+    "sources": [
+      "the vivid yellow-green field (SG28)",
+      "custom icon system (SG06)",
+      "produce in motion (SG09)"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "mingei",
+      "relation": "reinterpret",
+      "principles": [
+        "honest natural materials (SG18)",
+        "hand-care in ordinary things (SG06)"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "Harvest table",
+      "ref": "botanical",
+      "primary": true,
+      "description": "Warm oat grounds, farmland and one electric lime.",
+      "materials": [
+        "produce",
+        "farmland",
+        "oat paper"
+      ],
+      "light": "warm daylight"
+    }
+  ],
+  "muse": {
+    "kind": "object",
+    "name": "a fresh leaf",
+    "take": "bright natural color (SG09)",
+    "leave": "the farm-to-table cliché"
+  },
+  "color": {
+    "anchors": [
+      {
+        "name": "Electric lime",
+        "value": "#DDFD0B",
+        "role": "primary",
+        "step": 9
+      },
+      {
+        "name": "Leaf green",
+        "value": "#185848",
+        "role": "secondary"
+      },
+      {
+        "name": "Oat",
+        "value": "#E6DAC4",
+        "role": "ground"
+      },
+      {
+        "name": "Paper",
+        "value": "#F2F0E6",
+        "role": "neutral"
+      }
+    ],
+    "feedback": "independent",
+    "character": {
+      "neutral": "strong"
+    }
+  },
+  "type": {
+    "faces": {
+      "display": {
+        "ref": "avenir-next"
+      },
+      "body": {
+        "ref": "avenir-next"
+      },
+      "utility": {
+        "ref": "avenir-next"
+      }
+    },
+    "character": {}
+  },
+  "form": {
+    "curvature": "pill",
+    "line": "borderless",
+    "elevation": "flat"
+  },
+  "movement": "lively",
+  "adaptivity": "light-first",
+  "voice": {
+    "tone": [
+      "warm",
+      "plain",
+      "candid"
+    ]
+  },
+  "signature": {
+    "concept": "oat-warm neutrals",
+    "scale": "neutral",
+    "reason": "the harvest-table territory warms every surface (SG18)"
+  },
+  "rationale": {
+    "grounding.primary": "Inferred, not stated by the source. Departs from the canon: a loud electric green.",
+    "type.faces": "Stand-ins: Sweet Sans (SG28) is outside the catalogue.",
+    "form.curvature": "pill controls (SG28)",
+    "form.line": "color and photographs (SG28)",
+    "form.elevation": "flat fields (SG28)",
+    "color.character.neutral": "warm oat grounds (SG18)",
+    "adaptivity": "warm light grounds (SG18)",
+    "movement": "produce moves through the frame (SG09)",
+    "color.anchors.0": "Sampled from SG28. Pinned to step 9: placed by contrast it would land in the tints, and the button would turn olive.",
+    "color.anchors.1": "Sampled from SG06, so approximate.",
+    "color.anchors.2": "Sampled from SG18.",
+    "color.anchors.3": "Sampled from SG20."
+  }
+}

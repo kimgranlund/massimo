@@ -1,0 +1,125 @@
+{
+  "$schema": "../../../../packages/ui-kit/contracts/brand.schema.json",
+  "schemaVersion": 1,
+  "name": "deutsche-bahn",
+  "subject": {
+    "name": "Deutsche Bahn",
+    "audience": "rail passengers and staff across Germany",
+    "primaryJob": "make a national railway feel moving, clear and confident",
+    "kind": "institution",
+    "sources": [
+      "the red sleeper strip (DB0100)",
+      "DB Red, White and Cold Black (DB0800)",
+      "DB Neo type (DB0900)"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "swiss-international",
+      "relation": "reinterpret",
+      "principles": [
+        "clear, honest information (DB0504)",
+        "one type family with a strict hierarchy (DB0901)"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "On the line",
+      "ref": "harbor",
+      "primary": true,
+      "description": "Platforms and carriages: a red sleeper running under white and cold black.",
+      "materials": [
+        "rail sleepers",
+        "platform signs",
+        "train photography"
+      ],
+      "light": "clean daylight"
+    }
+  ],
+  "muse": {
+    "kind": "object",
+    "name": "the Schwelle",
+    "take": "one strip that grows along the edge (DB0100)",
+    "leave": "the literal railway tie"
+  },
+  "color": {
+    "anchors": [
+      {
+        "name": "DB Red",
+        "value": "#FF002B",
+        "role": "primary"
+      },
+      {
+        "name": "Lilac",
+        "value": "#AA99FF",
+        "role": "secondary"
+      },
+      {
+        "name": "White",
+        "value": "#FFFFFF",
+        "role": "ground"
+      },
+      {
+        "name": "Cold Black",
+        "value": "#090F1B",
+        "role": "ink"
+      }
+    ],
+    "feedback": "independent",
+    "character": {
+      "neutral": "subtle"
+    }
+  },
+  "type": {
+    "faces": {
+      "display": {
+        "ref": "work-sans"
+      },
+      "body": {
+        "ref": "work-sans"
+      },
+      "utility": {
+        "ref": "work-sans"
+      }
+    },
+    "character": {},
+    "weights": {
+      "display": 700
+    }
+  },
+  "form": {
+    "curvature": "crisp",
+    "line": "borderless",
+    "elevation": "flat"
+  },
+  "movement": "lively",
+  "adaptivity": "both",
+  "voice": {
+    "tone": [
+      "plain",
+      "candid",
+      "confident"
+    ]
+  },
+  "signature": {
+    "concept": "crisp edge of the sleeper",
+    "scale": "curvature",
+    "reason": "the sleeper strip is the muse, so edges stay straight (DB0100)"
+  },
+  "rationale": {
+    "grounding.primary": "Inferred, not stated by the source. Departs from the canon: Lilac adds expressive warmth (DB0801).",
+    "type.faces": "Stand-ins: DB Neo (DB0901) is outside the catalogue.",
+    "form.curvature": "straight sleeper edges (DB0100)",
+    "form.line": "color fields and white space (DB0801)",
+    "form.elevation": "flat fields (DB0800)",
+    "color.character.neutral": "cold, near-pure neutrals (DB0800)",
+    "type.weights": "Heavier display weights, matching the sources’ headlines.",
+    "adaptivity": "white or black backgrounds (DB0911)",
+    "movement": "moving is a named value (DB0504)",
+    "color.anchors.0": "Printed on DB0811 for logo and sleeper.",
+    "color.anchors.1": "Sampled from DB0806.",
+    "color.anchors.2": "Printed on DB0911.",
+    "color.anchors.3": "Sampled from DB0800."
+  }
+}

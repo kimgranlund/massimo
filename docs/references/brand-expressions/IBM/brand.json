@@ -1,0 +1,121 @@
+{
+  "$schema": "../../../../packages/ui-kit/contracts/brand.schema.json",
+  "schemaVersion": 1,
+  "name": "ibm",
+  "subject": {
+    "name": "IBM",
+    "audience": "developers, enterprise buyers and IBM designers",
+    "primaryJob": "make an engineering company read as essential, dynamic and engineered",
+    "kind": "institution",
+    "sources": [
+      "the 2x Grid (IB008)",
+      "IBM Plex (IB004)",
+      "the Think to Guide ethos (IB001)"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "swiss-international",
+      "relation": "inherit",
+      "principles": [
+        "the grid is explicit (IB008)",
+        "type is treated as engineering (IB005)"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "Engineered grid",
+      "ref": "laboratory",
+      "primary": true,
+      "description": "Grid-ruled pages in IBM Blue and cool gray.",
+      "materials": [
+        "grids",
+        "field guides",
+        "technical drawings"
+      ],
+      "light": "cool and even"
+    }
+  ],
+  "muse": {
+    "kind": "object",
+    "name": "the 2x Grid",
+    "take": "one base unit and its multiples (IB008)",
+    "leave": "corporate reports"
+  },
+  "color": {
+    "anchors": [
+      {
+        "name": "Blue 60",
+        "value": "#0F62FE",
+        "role": "primary"
+      },
+      {
+        "name": "Blue 90",
+        "value": "#001D6C",
+        "role": "secondary"
+      },
+      {
+        "name": "Gray 10",
+        "value": "#F4F4F4",
+        "role": "ground"
+      },
+      {
+        "name": "Gray 100",
+        "value": "#161616",
+        "role": "ink"
+      }
+    ],
+    "feedback": "independent",
+    "character": {
+      "neutral": "subtle"
+    }
+  },
+  "type": {
+    "faces": {
+      "display": {
+        "ref": "ibm-plex-sans"
+      },
+      "body": {
+        "ref": "ibm-plex-sans"
+      },
+      "utility": {
+        "ref": "ibm-plex-mono"
+      }
+    },
+    "character": {}
+  },
+  "form": {
+    "curvature": "square",
+    "line": "hairline",
+    "elevation": "flat"
+  },
+  "movement": "calm",
+  "adaptivity": "both",
+  "voice": {
+    "tone": [
+      "precise",
+      "technical",
+      "plain"
+    ]
+  },
+  "signature": {
+    "concept": "every edge on the grid",
+    "scale": "curvature",
+    "reason": "the 2x Grid muse keeps every edge square (IB008)"
+  },
+  "rationale": {
+    "grounding.primary": "Inferred from the source: the grid, Plex and strict type basics fit the canon.",
+    "type.faces": "IBM Plex is named on IB004.",
+    "form.curvature": "square grid cells (IB008)",
+    "form.line": "thin rules in tables (IB007T12)",
+    "form.elevation": "flat panels (IB026)",
+    "color.character.neutral": "cool gray families (IB007T12)",
+    "adaptivity": "light and dark UI palettes (IB007)",
+    "movement": "productive motion comes first (IB028)",
+    "color.anchors.0": "Sampled from IB007T23.",
+    "color.anchors.1": "Sampled from IB007T23.",
+    "color.anchors.2": "Sampled from IB018T32.",
+    "color.anchors.3": "Sampled from IB033T32."
+  }
+}

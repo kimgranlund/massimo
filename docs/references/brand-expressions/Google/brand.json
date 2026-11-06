@@ -1,0 +1,128 @@
+{
+  "$schema": "../../../../packages/ui-kit/contracts/brand.schema.json",
+  "schemaVersion": 1,
+  "name": "google",
+  "subject": {
+    "name": "Google",
+    "audience": "people using Google across every screen size",
+    "primaryJob": "stay simple and recognizable from a watch to a television",
+    "kind": "product",
+    "sources": [
+      "the multicolored wordmark (GE01)",
+      "Google Dots (GE06)",
+      "circle-built letter skeletons (GE04)"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "swiss-international",
+      "relation": "reinterpret",
+      "principles": [
+        "geometric construction (GE04)",
+        "a measured system (GP01)"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "White field",
+      "ref": "laboratory",
+      "primary": true,
+      "description": "A white field, four clean colors and geometric type.",
+      "materials": [
+        "screens",
+        "dots",
+        "construction guides"
+      ],
+      "light": "bright and even"
+    }
+  ],
+  "muse": {
+    "kind": "object",
+    "name": "Google Dots",
+    "take": "four simple dots that listen and reply (GE06)",
+    "leave": "the voice-assistant states"
+  },
+  "color": {
+    "anchors": [
+      {
+        "name": "Blue",
+        "value": "#4285F5",
+        "role": "primary"
+      },
+      {
+        "name": "Red",
+        "value": "#DB4336",
+        "role": "secondary"
+      },
+      {
+        "name": "Yellow",
+        "value": "#FABD05",
+        "role": "data1"
+      },
+      {
+        "name": "Green",
+        "value": "#0E9D58",
+        "role": "data2"
+      },
+      {
+        "name": "White",
+        "value": "#FFFFFF",
+        "role": "ground"
+      }
+    ],
+    "feedback": "independent",
+    "character": {
+      "harmony": "triadic",
+      "neutral": "true"
+    }
+  },
+  "type": {
+    "faces": {
+      "display": {
+        "ref": "avenir-next"
+      },
+      "body": {
+        "ref": "inter"
+      },
+      "utility": {
+        "ref": "inter"
+      }
+    },
+    "character": {}
+  },
+  "form": {
+    "curvature": "round",
+    "line": "borderless",
+    "space": "airy"
+  },
+  "movement": "lively",
+  "adaptivity": "light-first",
+  "voice": {
+    "tone": [
+      "plain",
+      "warm"
+    ]
+  },
+  "signature": {
+    "concept": "four balanced colors",
+    "scale": "harmony",
+    "reason": "GE07 tunes four hues together on the white field"
+  },
+  "rationale": {
+    "grounding.primary": "Inferred, not stated by the source. Departs from the canon: four colors and a friendly sans.",
+    "type.faces": "Stand-in: Product Sans (GP01) is outside the catalogue; Avenir Next is the closest geometric sans.",
+    "form.curvature": "circle-built letters (GE04)",
+    "form.line": "color alone (GE01)",
+    "form.space": "the mark sits alone on white (GE01)",
+    "color.character.harmony": "four bright colors in balance (GE07)",
+    "color.character.neutral": "plain white and gray (GE02)",
+    "adaptivity": "white field (GE01)",
+    "movement": "dots shift through states (GE06)",
+    "color.anchors.0": "Sampled from GP01.",
+    "color.anchors.1": "Sampled from GE07.",
+    "color.anchors.2": "Sampled from GP12.",
+    "color.anchors.3": "Sampled from GE07.",
+    "color.anchors.4": "White field (GE01)."
+  }
+}

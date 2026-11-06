@@ -1,0 +1,136 @@
+{
+  "$schema": "../../../../packages/ui-kit/contracts/brand.schema.json",
+  "schemaVersion": 1,
+  "name": "instagram",
+  "subject": {
+    "name": "Instagram",
+    "audience": "people sharing and discovering on their phones",
+    "primaryJob": "spark connection, from quiet moments to full expression",
+    "kind": "product",
+    "sources": [
+      "the gradient glyph (IG02)",
+      "the squircle (IG04)",
+      "the expressive range (IG09, IG10)"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "californian-modernism",
+      "relation": "reinterpret",
+      "principles": [
+        "warm, sunlit color (IG10)",
+        "simple rounded forms (IG04)"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "Golden hour feed",
+      "ref": "market",
+      "primary": true,
+      "description": "Portraits on white, with a pink-to-orange glow reserved for the moments that matter.",
+      "materials": [
+        "portraits",
+        "phone screens",
+        "gradient accents"
+      ],
+      "light": "warm and glowing"
+    }
+  ],
+  "muse": {
+    "kind": "object",
+    "name": "the squircle",
+    "take": "a soft corner that feels held (IG04)",
+    "leave": "the app icon itself"
+  },
+  "color": {
+    "anchors": [
+      {
+        "name": "Magenta",
+        "value": "#FF006A",
+        "role": "primary"
+      },
+      {
+        "name": "Orange",
+        "value": "#FF7A01",
+        "role": "secondary"
+      },
+      {
+        "name": "Violet",
+        "value": "#7638FB",
+        "role": "data1"
+      },
+      {
+        "name": "Yellow",
+        "value": "#FFD600",
+        "role": "data2"
+      },
+      {
+        "name": "White",
+        "value": "#FFFFFF",
+        "role": "ground"
+      },
+      {
+        "name": "Black",
+        "value": "#000000",
+        "role": "ink"
+      }
+    ],
+    "feedback": "independent",
+    "character": {
+      "harmony": "analogous"
+    }
+  },
+  "type": {
+    "faces": {
+      "display": {
+        "ref": "manrope"
+      },
+      "body": {
+        "ref": "manrope"
+      },
+      "utility": {
+        "ref": "manrope"
+      }
+    },
+    "character": {},
+    "weights": {
+      "display": 700
+    }
+  },
+  "form": {
+    "curvature": "round",
+    "corner": "squircle",
+    "line": "borderless"
+  },
+  "movement": "lively",
+  "adaptivity": "both",
+  "voice": {
+    "tone": [
+      "warm",
+      "playful"
+    ]
+  },
+  "signature": {
+    "concept": "the squircle",
+    "scale": "corner",
+    "reason": "IG04 draws every form from it, so corners answer the muse"
+  },
+  "rationale": {
+    "grounding.primary": "Inferred, not stated by the source. Departs from the canon: color is a screen gradient, not flat print.",
+    "type.faces": "Stand-ins: the case study does not name its primary typeface.",
+    "form.curvature": "rounded-square strokes (IG04)",
+    "form.corner": "the squircle is the system’s shape (IG04)",
+    "form.line": "photographs and fields (IG09)",
+    "color.character.harmony": "pink, orange and yellow run together (IG10)",
+    "type.weights": "Heavier display weights, matching the sources’ headlines.",
+    "adaptivity": "white and black grounds (IG04, IG09)",
+    "movement": "gradient emphasis appears on interaction (IG17)",
+    "color.anchors.0": "Sampled from IG10.",
+    "color.anchors.1": "Sampled from IG10.",
+    "color.anchors.2": "Sampled from IG07.",
+    "color.anchors.3": "Sampled from IG20.",
+    "color.anchors.4": "White grounds (IG09).",
+    "color.anchors.5": "Black text (IG04)."
+  }
+}

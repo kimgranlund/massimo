@@ -1,0 +1,136 @@
+{
+  "$schema": "../../../../packages/ui-kit/contracts/brand.schema.json",
+  "schemaVersion": 1,
+  "name": "uber",
+  "subject": {
+    "name": "Uber",
+    "audience": "riders, drivers and partners",
+    "primaryJob": "be plain, direct and everywhere",
+    "kind": "product",
+    "sources": [
+      "the black and white system (U01)",
+      "Safety Blue (U05)",
+      "Uber Move (U07)"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "swiss-international",
+      "relation": "inherit",
+      "principles": [
+        "black, white and hierarchy (U07)",
+        "restraint in color (U06)"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "City at street level",
+      "ref": "laboratory",
+      "primary": true,
+      "description": "Black, white and a safety blue line.",
+      "materials": [
+        "black panels",
+        "wordmark",
+        "street"
+      ],
+      "light": "hard and even"
+    }
+  ],
+  "muse": {
+    "kind": "place",
+    "name": "the city grid",
+    "take": "direct routes (U08)",
+    "leave": "the car"
+  },
+  "color": {
+    "anchors": [
+      {
+        "name": "Black",
+        "value": "#000000",
+        "role": "primary"
+      },
+      {
+        "name": "Safety Blue",
+        "value": "#276EF1",
+        "role": "secondary"
+      },
+      {
+        "name": "Orange",
+        "value": "#FF7D48",
+        "role": "data1"
+      },
+      {
+        "name": "Green",
+        "value": "#47B275",
+        "role": "data2"
+      },
+      {
+        "name": "White",
+        "value": "#FFFFFF",
+        "role": "ground"
+      },
+      {
+        "name": "Near black",
+        "value": "#191919",
+        "role": "ink"
+      }
+    ],
+    "feedback": "independent",
+    "character": {
+      "neutral": "true"
+    }
+  },
+  "type": {
+    "faces": {
+      "display": {
+        "ref": "inter-tight"
+      },
+      "body": {
+        "ref": "inter"
+      },
+      "utility": {
+        "ref": "inter"
+      }
+    },
+    "character": {},
+    "weights": {
+      "display": 700
+    }
+  },
+  "form": {
+    "curvature": "crisp",
+    "line": "borderless",
+    "elevation": "flat"
+  },
+  "movement": "calm",
+  "adaptivity": "both",
+  "voice": {
+    "tone": [
+      "plain",
+      "confident"
+    ]
+  },
+  "signature": {
+    "concept": "black and white, no tint",
+    "scale": "neutral",
+    "reason": "U05 uses pure black and white in the city territory"
+  },
+  "rationale": {
+    "grounding.primary": "Inferred from the source: restrained black and white fit the canon.",
+    "type.faces": "Stand-ins: Uber Move (U07) is outside the catalogue.",
+    "form.curvature": "straight panels (U05)",
+    "form.line": "solid panels (U05)",
+    "form.elevation": "flat black panels (U01)",
+    "color.character.neutral": "plain black and white (U05)",
+    "type.weights": "Heavier display weights, matching the sources’ headlines.",
+    "adaptivity": "black and white panels (U07)",
+    "movement": "plain and direct (U08)",
+    "color.anchors.0": "Sampled from U10.",
+    "color.anchors.1": "Sampled from U05.",
+    "color.anchors.2": "Sampled from U06.",
+    "color.anchors.3": "Sampled from U06.",
+    "color.anchors.4": "Sampled from U09.",
+    "color.anchors.5": "Sampled from U03."
+  }
+}

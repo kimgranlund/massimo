@@ -1,0 +1,133 @@
+{
+  "$schema": "../../../../packages/ui-kit/contracts/brand.schema.json",
+  "schemaVersion": 1,
+  "name": "dropbox",
+  "subject": {
+    "name": "Dropbox",
+    "audience": "creative teams working together",
+    "primaryJob": "present collaboration as an expressive, open canvas",
+    "kind": "product",
+    "sources": [
+      "the white five-part symbol on blue (DB01)",
+      "isometric diamonds (DB03)",
+      "sixteen named colors in quadrants (DB17)"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "memphis",
+      "relation": "reinterpret",
+      "principles": [
+        "unexpected color pairs (DB17)",
+        "scale shifts create tension (DB07)"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "Open canvas",
+      "ref": "atelier",
+      "primary": true,
+      "description": "Loud color pairs, oversized adjectives and aligned rectangles under tension.",
+      "materials": [
+        "billboards",
+        "color cells",
+        "isometric diamonds"
+      ],
+      "light": "even studio light"
+    }
+  ],
+  "muse": {
+    "kind": "work",
+    "name": "the isometric box",
+    "take": "an open form that can expand (DB03)",
+    "leave": "the literal box"
+  },
+  "color": {
+    "anchors": [
+      {
+        "name": "Dropbox blue",
+        "value": "#0061FE",
+        "role": "primary"
+      },
+      {
+        "name": "Coral",
+        "value": "#FDAD9F",
+        "role": "secondary"
+      },
+      {
+        "name": "Plum",
+        "value": "#67062E",
+        "role": "data1"
+      },
+      {
+        "name": "Yellow",
+        "value": "#FDD344",
+        "role": "data2"
+      },
+      {
+        "name": "Off white",
+        "value": "#F5F5F5",
+        "role": "ground"
+      }
+    ],
+    "feedback": "independent",
+    "character": {
+      "harmony": "complementary"
+    }
+  },
+  "type": {
+    "faces": {
+      "display": {
+        "ref": "inter-tight"
+      },
+      "body": {
+        "ref": "inter"
+      },
+      "utility": {
+        "ref": "inter"
+      }
+    },
+    "character": {
+      "type-scale": "dramatic"
+    },
+    "weights": {
+      "display": 700
+    }
+  },
+  "form": {
+    "curvature": "square",
+    "line": "borderless",
+    "elevation": "flat"
+  },
+  "movement": "playful",
+  "adaptivity": "light-first",
+  "voice": {
+    "tone": [
+      "confident",
+      "playful"
+    ]
+  },
+  "signature": {
+    "concept": "oversized expressive type",
+    "scale": "type-scale",
+    "reason": "DB07 and DB25 create tension through scale, which suits the canvas territory"
+  },
+  "rationale": {
+    "grounding.primary": "Inferred, not stated by the source. Departs from Memphis ornament: the shapes stay rectilinear and system-driven.",
+    "type.faces": "Stand-ins: the case study does not name a typeface.",
+    "form.curvature": "sharp cells and diamonds (DB03, DB14)",
+    "form.line": "color cells only (DB14)",
+    "form.elevation": "flat color cells (DB14)",
+    "type.character.type-scale": "oversized adjectives (DB25)",
+    "color.character.harmony": "unexpected warm against cool (DB17)",
+    "type.weights": "Heavier display weights, matching the sources’ headlines.",
+    "adaptivity": "pale fields lead (DB09)",
+    "movement": "the mark compresses, separates and rebuilds (DB04)",
+    "color.anchors.0": "Sampled from DB01.",
+    "color.anchors.1": "Sampled from DB19.",
+    "color.anchors.2": "Sampled from DB19.",
+    "color.anchors.3": "Sampled from DB14.",
+    "color.anchors.4": "Sampled from DB09."
+  }
+}

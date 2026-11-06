@@ -1,0 +1,121 @@
+{
+  "$schema": "../../../../packages/ui-kit/contracts/brand.schema.json",
+  "schemaVersion": 1,
+  "name": "verizon",
+  "subject": {
+    "name": "Verizon",
+    "audience": "wireless customers and enterprises",
+    "primaryJob": "be simple and human at the size of a national network",
+    "kind": "product",
+    "sources": [
+      "the red palette with a 15% secondary cap (VZ12)",
+      "Verizon NHG (VZ13)",
+      "icon and type construction guides (VZ07)"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "swiss-international",
+      "relation": "inherit",
+      "principles": [
+        "neo-grotesque type (VZ13)",
+        "bold geometry on a grid (VZ07)"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "Red on white",
+      "ref": "laboratory",
+      "primary": true,
+      "description": "Black, white and one red, with big grotesque letters.",
+      "materials": [
+        "bold letters",
+        "geometric forms",
+        "photographs"
+      ],
+      "light": "bright and flat"
+    }
+  ],
+  "muse": {
+    "kind": "object",
+    "name": "the Neue Haas capital",
+    "take": "bold, neutral letters (VZ13)",
+    "leave": "the 1950s lineage"
+  },
+  "color": {
+    "anchors": [
+      {
+        "name": "Verizon red",
+        "value": "#EE0000",
+        "role": "primary"
+      },
+      {
+        "name": "White",
+        "value": "#FFFFFF",
+        "role": "ground"
+      },
+      {
+        "name": "Black",
+        "value": "#000000",
+        "role": "ink"
+      }
+    ],
+    "feedback": "independent",
+    "character": {
+      "neutral": "true"
+    }
+  },
+  "type": {
+    "faces": {
+      "display": {
+        "ref": "helvetica-neue"
+      },
+      "body": {
+        "ref": "helvetica-neue"
+      },
+      "utility": {
+        "ref": "helvetica-neue"
+      }
+    },
+    "character": {
+      "type-scale": "dramatic"
+    },
+    "weights": {
+      "display": 700
+    }
+  },
+  "form": {
+    "curvature": "crisp",
+    "line": "borderless",
+    "elevation": "flat"
+  },
+  "movement": "lively",
+  "adaptivity": "light-first",
+  "voice": {
+    "tone": [
+      "plain",
+      "warm"
+    ]
+  },
+  "signature": {
+    "concept": "big grotesque type",
+    "scale": "type-scale",
+    "reason": "VZ03 sets bold letters at scale on the white territory"
+  },
+  "rationale": {
+    "grounding.primary": "Inferred from the source: Neue Haas Grotesk and construction guides fit the canon.",
+    "type.faces": "Verizon NHG (VZ13) is cut from Neue Haas Grotesk, so Helvetica Neue is the nearest catalogue face.",
+    "form.curvature": "constructed letters (VZ07)",
+    "form.line": "flat fields (VZ03)",
+    "form.elevation": "flat fields (VZ03)",
+    "color.character.neutral": "black, white and gray (VZ12)",
+    "type.character.type-scale": "bold letters at scale (VZ03)",
+    "type.weights": "Heavier display weights, matching the sources’ headlines.",
+    "adaptivity": "white pages (VZ18)",
+    "movement": "layouts shift (VZ03)",
+    "color.anchors.0": "Sampled from VZ04.",
+    "color.anchors.1": "Sampled from VZ18.",
+    "color.anchors.2": "Sampled from VZ04."
+  }
+}

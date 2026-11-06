@@ -1,0 +1,120 @@
+{
+  "$schema": "../../../../packages/ui-kit/contracts/brand.schema.json",
+  "schemaVersion": 1,
+  "name": "mit-media-lab",
+  "subject": {
+    "name": "MIT Media Lab",
+    "audience": "researchers, students and visitors of the Lab",
+    "primaryJob": "show many research groups as one family of marks",
+    "kind": "institution",
+    "sources": [
+      "the angular ML monogram (ML01)",
+      "the stepped arrow in the building (ML08)",
+      "the family of research identities (ML29)"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "swiss-international",
+      "relation": "reinterpret",
+      "principles": [
+        "black and white, one grid (ML01)",
+        "the logic generates the family (ML29)"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "Research lab",
+      "ref": "laboratory",
+      "primary": true,
+      "description": "Black and white, angular glyphs and tight lowercase names.",
+      "materials": [
+        "monograms",
+        "wall graphics",
+        "screens"
+      ],
+      "light": "bright and flat"
+    }
+  ],
+  "muse": {
+    "kind": "work",
+    "name": "the glyph family",
+    "take": "one orthogonal rule yields many marks (ML29)",
+    "leave": "the historical logo"
+  },
+  "color": {
+    "anchors": [
+      {
+        "name": "Black",
+        "value": "#000000",
+        "role": "primary"
+      },
+      {
+        "name": "White",
+        "value": "#FFFFFF",
+        "role": "ground"
+      },
+      {
+        "name": "Near black",
+        "value": "#121212",
+        "role": "ink"
+      }
+    ],
+    "feedback": "independent",
+    "character": {
+      "neutral": "true",
+      "vibrancy": "muted"
+    }
+  },
+  "type": {
+    "faces": {
+      "display": {
+        "ref": "helvetica-neue"
+      },
+      "body": {
+        "ref": "helvetica-neue"
+      },
+      "utility": {
+        "ref": "jetbrains-mono"
+      }
+    },
+    "character": {},
+    "weights": {
+      "display": 700
+    }
+  },
+  "form": {
+    "curvature": "square",
+    "line": "borderless",
+    "elevation": "flat"
+  },
+  "movement": "lively",
+  "adaptivity": "both",
+  "voice": {
+    "tone": [
+      "technical",
+      "precise"
+    ]
+  },
+  "signature": {
+    "concept": "hard orthogonal strokes",
+    "scale": "curvature",
+    "reason": "the glyph muse has no curves (ML29)"
+  },
+  "rationale": {
+    "grounding.primary": "Inferred, not stated by the source. Departs from the canon: glyphs are angular and generative.",
+    "type.faces": "Stand-ins: the case study does not name a typeface.",
+    "form.curvature": "orthogonal strokes (ML29)",
+    "form.line": "solid black forms (ML01)",
+    "form.elevation": "flat print (ML02)",
+    "color.character.neutral": "pure black and white (ML02)",
+    "color.character.vibrancy": "no color in the system (ML01)",
+    "type.weights": "Heavier display weights, matching the sources’ headlines.",
+    "adaptivity": "white and black versions (ML01, ML02)",
+    "movement": "strokes enter and resolve (ML29)",
+    "color.anchors.0": "Black monogram (ML01).",
+    "color.anchors.1": "Sampled from ML05.",
+    "color.anchors.2": "Sampled from ML20."
+  }
+}

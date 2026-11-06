@@ -1,0 +1,122 @@
+{
+  "$schema": "../../../../packages/ui-kit/contracts/brand.schema.json",
+  "schemaVersion": 1,
+  "name": "o2",
+  "subject": {
+    "name": "O2",
+    "audience": "mobile customers in the UK",
+    "primaryJob": "make a network feel as light and necessary as oxygen",
+    "kind": "product",
+    "sources": [
+      "translucent bubbles (O01)",
+      "the O2 blue gradient (O08)",
+      "bespoke letterforms (O10)"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "californian-modernism",
+      "relation": "reinterpret",
+      "principles": [
+        "light, optimistic space (O01)",
+        "rounded friendly forms (O04)"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "Clear air",
+      "ref": "alpine",
+      "primary": true,
+      "description": "Vivid blue depth with pale bubbles rising.",
+      "materials": [
+        "bubbles",
+        "blue gradients",
+        "phones"
+      ],
+      "light": "bright and airy"
+    }
+  ],
+  "muse": {
+    "kind": "object",
+    "name": "the bubble",
+    "take": "a light rounded form that clears (O04)",
+    "leave": "the chemistry reference"
+  },
+  "color": {
+    "anchors": [
+      {
+        "name": "O2 blue",
+        "value": "#0059FF",
+        "role": "primary"
+      },
+      {
+        "name": "Deep blue",
+        "value": "#051081",
+        "role": "secondary"
+      },
+      {
+        "name": "Pale",
+        "value": "#F2F2F4",
+        "role": "ground"
+      },
+      {
+        "name": "Near black",
+        "value": "#111111",
+        "role": "ink"
+      }
+    ],
+    "feedback": "independent",
+    "character": {
+      "harmony": "analogous"
+    }
+  },
+  "type": {
+    "faces": {
+      "display": {
+        "ref": "manrope"
+      },
+      "body": {
+        "ref": "manrope"
+      },
+      "utility": {
+        "ref": "manrope"
+      }
+    },
+    "character": {}
+  },
+  "form": {
+    "curvature": "pill",
+    "line": "borderless",
+    "elevation": "layered",
+    "space": "airy"
+  },
+  "movement": "calm",
+  "adaptivity": "both",
+  "voice": {
+    "tone": [
+      "warm",
+      "plain"
+    ]
+  },
+  "signature": {
+    "concept": "the round bubble",
+    "scale": "curvature",
+    "reason": "the bubble muse sets every end (O04)"
+  },
+  "rationale": {
+    "grounding.primary": "Inferred, not stated by the source. Departs from the canon: gradients and glass.",
+    "type.faces": "Stand-ins: the bespoke letters (O10) are not named in the collection.",
+    "form.curvature": "bubbles and rounded controls (O02)",
+    "form.line": "gradient fields (O08)",
+    "form.elevation": "bubbles overlap (O04)",
+    "form.space": "bubbles need clear room (O01)",
+    "color.character.harmony": "blue through cyan (O08)",
+    "adaptivity": "light and blue treatments (O02)",
+    "movement": "bubbles drift (O01)",
+    "color.anchors.0": "Sampled from O10.",
+    "color.anchors.1": "Sampled from O08.",
+    "color.anchors.2": "Sampled from O02.",
+    "color.anchors.3": "Sampled from O12."
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "$schema": "../../../../packages/ui-kit/contracts/brand.schema.json",
+  "schemaVersion": 1,
+  "name": "cox",
+  "subject": {
+    "name": "Cox",
+    "audience": "households choosing internet and television",
+    "primaryJob": "sell connection as an effortless part of home life",
+    "kind": "product",
+    "sources": [
+      "the translucent blue-to-teal panel (CR01)",
+      "cables arranged in a circle (CR19)",
+      "the blue-purple offer panel (CR14)"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "californian-modernism",
+      "relation": "reinterpret",
+      "principles": [
+        "bright domestic optimism (CR01)",
+        "color panels over photography (CR14)"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "Bright living room",
+      "ref": "harbor",
+      "primary": true,
+      "description": "Sunny kitchens and living rooms, with a clear blue-teal panel laid over them.",
+      "materials": [
+        "home photography",
+        "translucent panels",
+        "brochures"
+      ],
+      "light": "bright daylight"
+    }
+  ],
+  "muse": {
+    "kind": "object",
+    "name": "the translucent panel",
+    "take": "a clear color layer over daily life (CR01)",
+    "leave": "the stock lifestyle photography"
+  },
+  "color": {
+    "anchors": [
+      {
+        "name": "Cox blue",
+        "value": "#185888",
+        "role": "primary"
+      },
+      {
+        "name": "Panel teal",
+        "value": "#488888",
+        "role": "secondary"
+      },
+      {
+        "name": "White",
+        "value": "#FFFFFF",
+        "role": "ground"
+      },
+      {
+        "name": "Near black",
+        "value": "#131311",
+        "role": "ink"
+      }
+    ],
+    "feedback": "independent",
+    "character": {
+      "neutral": "subtle"
+    }
+  },
+  "type": {
+    "faces": {
+      "display": {
+        "ref": "avenir-next"
+      },
+      "body": {
+        "ref": "avenir-next"
+      },
+      "utility": {
+        "ref": "avenir-next"
+      }
+    },
+    "character": {}
+  },
+  "form": {
+    "curvature": "soft",
+    "elevation": "layered",
+    "space": "airy"
+  },
+  "movement": "calm",
+  "adaptivity": "light-first",
+  "voice": {
+    "tone": [
+      "warm",
+      "plain"
+    ]
+  },
+  "signature": {
+    "concept": "open, effortless space",
+    "scale": "space",
+    "reason": "the living-room territory leaves room around each panel (CR14)"
+  },
+  "rationale": {
+    "grounding.primary": "Inferred, not stated by the source. Thin evidence: retail material only. Departs from print flatness: panels are translucent.",
+    "type.faces": "Stand-ins: the collection does not name a typeface.",
+    "form.curvature": "plain panels with slightly eased ends (CR14)",
+    "form.elevation": "panels sit over photography (CR01)",
+    "form.space": "open brochure pages (CR14)",
+    "color.character.neutral": "bright white rooms (CR09)",
+    "adaptivity": "bright white grounds (CR09)",
+    "movement": "the voice promises effortlessness (CR01)",
+    "color.anchors.0": "Sampled from CR14, so approximate.",
+    "color.anchors.1": "Sampled from CR01, so approximate.",
+    "color.anchors.2": "White grounds (CR09).",
+    "color.anchors.3": "Sampled from CR19."
+  }
+}

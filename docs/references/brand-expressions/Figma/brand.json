@@ -1,0 +1,139 @@
+{
+  "$schema": "../../../../packages/ui-kit/contracts/brand.schema.json",
+  "schemaVersion": 1,
+  "name": "figma",
+  "subject": {
+    "name": "Figma",
+    "audience": "designers and the teams that make things with them",
+    "primaryJob": "show that nothing great is made alone",
+    "kind": "campaign",
+    "sources": [
+      "colored cursors assembling the logo (FG01)",
+      "the campaign verb family (FG11)",
+      "outlined drawings with contributor labels (FG03)"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "constructivism",
+      "relation": "reinterpret",
+      "principles": [
+        "bold uppercase slogans (FG12)",
+        "type crossing type (FG11)"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "Shared canvas",
+      "ref": "atelier",
+      "primary": true,
+      "description": "Black and pale fields with colored cursors, labels and outlined drawings.",
+      "materials": [
+        "posters",
+        "cursors",
+        "hand drawings"
+      ],
+      "light": "even studio light"
+    }
+  ],
+  "muse": {
+    "kind": "work",
+    "name": "multiplayer cursors",
+    "take": "many colored hands on one object (FG01)",
+    "leave": "the product interface"
+  },
+  "color": {
+    "anchors": [
+      {
+        "name": "Editor violet",
+        "value": "#5451F6",
+        "role": "primary"
+      },
+      {
+        "name": "Poster yellow",
+        "value": "#F4E86B",
+        "role": "secondary"
+      },
+      {
+        "name": "Lilac",
+        "value": "#C4B9FC",
+        "role": "data1"
+      },
+      {
+        "name": "Coral",
+        "value": "#EF8B7C",
+        "role": "data2"
+      },
+      {
+        "name": "Paper",
+        "value": "#F7F9F6",
+        "role": "ground"
+      },
+      {
+        "name": "Black",
+        "value": "#0F120F",
+        "role": "ink"
+      }
+    ],
+    "feedback": "independent",
+    "character": {
+      "harmony": "split"
+    }
+  },
+  "type": {
+    "faces": {
+      "display": {
+        "ref": "inter-tight"
+      },
+      "body": {
+        "ref": "inter"
+      },
+      "utility": {
+        "ref": "jetbrains-mono"
+      }
+    },
+    "character": {
+      "type-scale": "dramatic"
+    },
+    "weights": {
+      "display": 700
+    }
+  },
+  "form": {
+    "curvature": "crisp",
+    "line": "outlined",
+    "elevation": "flat"
+  },
+  "movement": "playful",
+  "adaptivity": "both",
+  "voice": {
+    "tone": [
+      "confident",
+      "warm"
+    ]
+  },
+  "signature": {
+    "concept": "many colors on one page",
+    "scale": "harmony",
+    "reason": "each contributor brings a color to the shared canvas (FG01)"
+  },
+  "rationale": {
+    "grounding.primary": "Inferred, not stated by the source. Departs from the canon: the voice is collaborative, not didactic.",
+    "type.faces": "Stand-ins: the case study does not name a typeface.",
+    "form.curvature": "straight poster fields (FG12)",
+    "form.line": "outlined drawings (FG03)",
+    "form.elevation": "flat posters (FG12)",
+    "type.character.type-scale": "type fills the poster (FG12)",
+    "color.character.harmony": "violet against yellow and coral (FG05)",
+    "type.weights": "Heavier display weights, matching the sources’ headlines.",
+    "adaptivity": "black and pale posters alternate (FG11, FG12)",
+    "movement": "cursors drag the logo together (FG01)",
+    "color.anchors.0": "Sampled from FG05.",
+    "color.anchors.1": "Sampled from FG12.",
+    "color.anchors.2": "Sampled from FG15.",
+    "color.anchors.3": "Sampled from FG05.",
+    "color.anchors.4": "Sampled from FG05.",
+    "color.anchors.5": "Sampled from FG11."
+  }
+}

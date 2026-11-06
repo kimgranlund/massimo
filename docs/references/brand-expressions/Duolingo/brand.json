@@ -1,0 +1,138 @@
+{
+  "$schema": "../../../../packages/ui-kit/contracts/brand.schema.json",
+  "schemaVersion": 1,
+  "name": "duolingo",
+  "subject": {
+    "name": "Duolingo",
+    "audience": "anyone learning a language for free",
+    "primaryJob": "make daily learning feel friendly and worth returning to",
+    "kind": "product",
+    "sources": [
+      "Duo the owl (DJ02)",
+      "the wing form in the letters (DJ03)",
+      "Feather Green (DW017)"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "memphis",
+      "relation": "reinterpret",
+      "principles": [
+        "bright, cheerful color (DJ12)",
+        "simple friendly shapes (DJ03)"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "Duo’s classroom",
+      "ref": "market",
+      "primary": true,
+      "description": "Bright green and white with a cast of round characters.",
+      "materials": [
+        "illustrated characters",
+        "phone lessons",
+        "social tiles"
+      ],
+      "light": "bright and flat"
+    }
+  ],
+  "muse": {
+    "kind": "person",
+    "name": "Duo the owl",
+    "take": "rounded warmth and a lifted wing (DJ03)",
+    "leave": "the mascot drawing"
+  },
+  "color": {
+    "anchors": [
+      {
+        "name": "Feather Green",
+        "value": "#58CC02",
+        "role": "primary"
+      },
+      {
+        "name": "Macaw blue",
+        "value": "#1CB0F6",
+        "role": "secondary"
+      },
+      {
+        "name": "Mask Green",
+        "value": "#89E219",
+        "role": "data1"
+      },
+      {
+        "name": "Bee yellow",
+        "value": "#FFCC00",
+        "role": "data2"
+      },
+      {
+        "name": "Snow",
+        "value": "#FFFFFF",
+        "role": "ground"
+      },
+      {
+        "name": "Eel",
+        "value": "#4B4B4B",
+        "role": "ink"
+      }
+    ],
+    "feedback": "independent",
+    "character": {
+      "vibrancy": "vivid"
+    }
+  },
+  "type": {
+    "faces": {
+      "display": {
+        "ref": "manrope"
+      },
+      "body": {
+        "ref": "manrope"
+      },
+      "utility": {
+        "ref": "manrope"
+      }
+    },
+    "character": {},
+    "weights": {
+      "display": 800,
+      "heading": 700
+    }
+  },
+  "form": {
+    "curvature": "pill",
+    "line": "borderless",
+    "elevation": "flat"
+  },
+  "movement": "playful",
+  "adaptivity": "light-first",
+  "voice": {
+    "tone": [
+      "playful",
+      "warm",
+      "plain"
+    ]
+  },
+  "signature": {
+    "concept": "the rounded wing",
+    "scale": "curvature",
+    "reason": "the owl muse sets the letter ends (DJ03), so controls stay fully round"
+  },
+  "rationale": {
+    "grounding.primary": "Inferred, not stated by the source. Departs from Memphis clutter: pages stay simple on white.",
+    "type.faces": "Stand-ins: Feather Bold and DIN are outside the catalogue; Manrope is the closest rounded sans.",
+    "form.curvature": "wing-round letters and shapes (DJ05)",
+    "form.line": "flat color shapes (DJ12)",
+    "form.elevation": "flat characters (DJ12)",
+    "color.character.vibrancy": "saturated green (DJ04)",
+    "type.weights": "Heavier display weights, matching the sources’ headlines.",
+    "adaptivity": "white pages with green accents (DJ01)",
+    "movement": "screens change character by character (DJ20)",
+    "color.anchors.0": "Printed on DW017.",
+    "color.anchors.1": "Sampled from DW138.",
+    "color.anchors.2": "Printed on DW017.",
+    "color.anchors.3": "Sampled from DW138.",
+    "color.anchors.4": "Printed on DW017.",
+    "color.anchors.5": "Printed on DW017."
+  }
+}

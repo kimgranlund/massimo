@@ -1,0 +1,128 @@
+{
+  "$schema": "../../../../packages/ui-kit/contracts/brand.schema.json",
+  "schemaVersion": 1,
+  "name": "natural-history-museum",
+  "subject": {
+    "name": "Natural History Museum",
+    "audience": "families and curious visitors",
+    "primaryJob": "turn the museum’s science into a living, urgent story",
+    "kind": "institution",
+    "sources": [
+      "the radial NHM symbol (NH01)",
+      "word rings (NH25)",
+      "nature-derived color families (NH24)"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "art-nouveau",
+      "relation": "react-against",
+      "principles": [
+        "take the living subject, leave the ornament",
+        "concentric logic replaces drawn curves (NH25)"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "Living planet",
+      "ref": "botanical",
+      "primary": true,
+      "description": "Deep purple night with rings of bright color taken from nature.",
+      "materials": [
+        "concentric rings",
+        "seaweed",
+        "specimens"
+      ],
+      "light": "deep with bright pulses"
+    }
+  ],
+  "muse": {
+    "kind": "work",
+    "name": "tree rings",
+    "take": "growth shown in concentric lines (NH25)",
+    "leave": "the literal specimen"
+  },
+  "color": {
+    "anchors": [
+      {
+        "name": "Museum purple",
+        "value": "#210535",
+        "role": "primary"
+      },
+      {
+        "name": "Cyan",
+        "value": "#0EE8F1",
+        "role": "secondary"
+      },
+      {
+        "name": "Electric blue",
+        "value": "#1117F3",
+        "role": "data1"
+      },
+      {
+        "name": "Off white",
+        "value": "#E5E5E5",
+        "role": "ground"
+      },
+      {
+        "name": "Near black",
+        "value": "#1C1C1C",
+        "role": "ink"
+      }
+    ],
+    "feedback": "independent",
+    "character": {
+      "harmony": "split",
+      "vibrancy": "vivid"
+    }
+  },
+  "type": {
+    "faces": {
+      "display": {
+        "ref": "space-grotesk"
+      },
+      "body": {
+        "ref": "inter"
+      },
+      "utility": {
+        "ref": "inter"
+      }
+    },
+    "character": {}
+  },
+  "form": {
+    "curvature": "crisp",
+    "line": "borderless",
+    "elevation": "flat"
+  },
+  "movement": "lively",
+  "adaptivity": "dark-first",
+  "voice": {
+    "tone": [
+      "confident",
+      "playful"
+    ]
+  },
+  "signature": {
+    "concept": "rings on a deep ground",
+    "scale": "adaptivity",
+    "reason": "the living-planet territory holds a dark page so color can pulse (NH01)"
+  },
+  "rationale": {
+    "grounding.primary": "Inferred, not stated by the source. Reacts against decorative natural history: rings are generated type.",
+    "type.faces": "Stand-ins: the case study does not name a typeface.",
+    "form.curvature": "straight text bands (NH22)",
+    "form.line": "color fields (NH21)",
+    "form.elevation": "flat print (NH21)",
+    "color.character.harmony": "nature families run warm against cool (NH24)",
+    "color.character.vibrancy": "bright swatches (NH24)",
+    "adaptivity": "purple and dark grounds lead (NH01, NH22)",
+    "movement": "the rings pulse (NH01)",
+    "color.anchors.0": "Sampled from NH02.",
+    "color.anchors.1": "Sampled from NH24.",
+    "color.anchors.2": "Sampled from NH24.",
+    "color.anchors.3": "Sampled from NH18.",
+    "color.anchors.4": "Sampled from NH07."
+  }
+}

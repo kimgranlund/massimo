@@ -1,0 +1,135 @@
+{
+  "$schema": "../../../../packages/ui-kit/contracts/brand.schema.json",
+  "schemaVersion": 1,
+  "name": "burger-king",
+  "subject": {
+    "name": "Burger King",
+    "audience": "guests, franchisees and brand partners",
+    "primaryJob": "make every partner application feel like one flame-grilled brand",
+    "kind": "product",
+    "sources": [
+      "the burger logo and its U (BK034)",
+      "Fiery Red and Mayo Egg White (BK046)",
+      "the Flame Sans signature lockups (BK052)"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "californian-modernism",
+      "relation": "reinterpret",
+      "principles": [
+        "warm flat color fields (BK052)",
+        "friendly, oversized type (BK053)"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "Flame grill",
+      "ref": "market",
+      "primary": true,
+      "description": "A burger counter: brown, orange, red and cream, flat and greasy-warm.",
+      "materials": [
+        "grilled food",
+        "paper wrappers",
+        "restaurant signage"
+      ],
+      "light": "warm and direct"
+    }
+  ],
+  "muse": {
+    "kind": "object",
+    "name": "the bun of the logo",
+    "take": "plump rounded forms (BK034)",
+    "leave": "the literal burger drawing"
+  },
+  "color": {
+    "anchors": [
+      {
+        "name": "Fiery Red",
+        "value": "#D62300",
+        "role": "primary"
+      },
+      {
+        "name": "Flaming Orange",
+        "value": "#FF8732",
+        "role": "secondary"
+      },
+      {
+        "name": "Mayo Egg White",
+        "value": "#F5EBDC",
+        "role": "ground"
+      },
+      {
+        "name": "BBQ Brown",
+        "value": "#502314",
+        "role": "ink"
+      },
+      {
+        "name": "Green",
+        "value": "#198737",
+        "role": "data1"
+      }
+    ],
+    "feedback": "independent",
+    "character": {
+      "neutral": "strong"
+    }
+  },
+  "type": {
+    "faces": {
+      "display": {
+        "ref": "work-sans"
+      },
+      "body": {
+        "ref": "work-sans"
+      },
+      "utility": {
+        "ref": "work-sans"
+      }
+    },
+    "character": {
+      "type-scale": "dramatic"
+    },
+    "weights": {
+      "display": 800,
+      "heading": 700
+    }
+  },
+  "form": {
+    "curvature": "round",
+    "line": "borderless",
+    "elevation": "flat"
+  },
+  "movement": "playful",
+  "adaptivity": "light-first",
+  "voice": {
+    "tone": [
+      "playful",
+      "confident",
+      "warm"
+    ]
+  },
+  "signature": {
+    "concept": "bun-round forms",
+    "scale": "curvature",
+    "reason": "the bun shapes the logo (BK034), so controls take the same soft end"
+  },
+  "rationale": {
+    "grounding.primary": "Inferred, not stated by the source. Departs from the canon: the source is fast-food appetite, not West Coast print.",
+    "type.faces": "Stand-in: Flame Sans (BK062) is outside the catalogue; Work Sans is the closest heavy sans.",
+    "form.curvature": "the logo is built from soft plump forms (BK034)",
+    "form.line": "solid color fields (BK052)",
+    "form.elevation": "flat fields (BK052)",
+    "type.character.type-scale": "wordmarks fill the page (BK053)",
+    "color.character.neutral": "neutrals carry the brown and cream (BK001, BK002)",
+    "type.weights": "Heavier display weights, matching the sources’ headlines.",
+    "adaptivity": "Mayo Egg White is the primary ground (BK047)",
+    "movement": "the logo assembles and repeats (BKE00)",
+    "color.anchors.0": "Printed on BK062.",
+    "color.anchors.1": "Sampled from BK061.",
+    "color.anchors.2": "Sampled from BK002.",
+    "color.anchors.3": "Sampled from BK001.",
+    "color.anchors.4": "Sampled from BK064."
+  }
+}

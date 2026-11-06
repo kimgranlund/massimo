@@ -1,0 +1,128 @@
+{
+  "$schema": "../../../../packages/ui-kit/contracts/brand.schema.json",
+  "schemaVersion": 1,
+  "name": "wise",
+  "subject": {
+    "name": "Wise",
+    "audience": "people sending money across borders",
+    "primaryJob": "make international money feel plain and bold",
+    "kind": "product",
+    "sources": [
+      "the world’s money headline (WI03)",
+      "bright green on forest green (WI07)",
+      "Wise Sans (WI12)"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "british-foundry-grotesque",
+      "relation": "reinterpret",
+      "principles": [
+        "tall, plain letters at poster scale (WI04)",
+        "direct statements (WI03)"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "Forest billboard",
+      "ref": "botanical",
+      "primary": true,
+      "description": "Forest green and bright green with big currency names.",
+      "materials": [
+        "billboards",
+        "tapestry textures",
+        "cards"
+      ],
+      "light": "bright outdoor"
+    }
+  ],
+  "muse": {
+    "kind": "object",
+    "name": "the banknote",
+    "take": "big numbers and clear value (WI04)",
+    "leave": "the money itself"
+  },
+  "color": {
+    "anchors": [
+      {
+        "name": "Forest green",
+        "value": "#133100",
+        "role": "primary"
+      },
+      {
+        "name": "Bright green",
+        "value": "#9EE86F",
+        "role": "secondary"
+      },
+      {
+        "name": "White",
+        "value": "#FDFDFD",
+        "role": "ground"
+      },
+      {
+        "name": "Near black",
+        "value": "#001900",
+        "role": "ink"
+      }
+    ],
+    "feedback": "independent",
+    "character": {
+      "neutral": "tinted"
+    }
+  },
+  "type": {
+    "faces": {
+      "display": {
+        "ref": "space-grotesk"
+      },
+      "body": {
+        "ref": "inter"
+      },
+      "utility": {
+        "ref": "inter"
+      }
+    },
+    "character": {
+      "type-scale": "dramatic"
+    },
+    "weights": {
+      "display": 700
+    }
+  },
+  "form": {
+    "curvature": "round",
+    "line": "borderless",
+    "elevation": "flat"
+  },
+  "movement": "lively",
+  "adaptivity": "both",
+  "voice": {
+    "tone": [
+      "plain",
+      "confident",
+      "candid"
+    ]
+  },
+  "signature": {
+    "concept": "big stacked words",
+    "scale": "type-scale",
+    "reason": "WI04 uses type at billboard scale, in the forest territory"
+  },
+  "rationale": {
+    "grounding.primary": "Inferred, not stated by the source. Departs from the canon: forest and bright green, global scripts (WI12).",
+    "type.faces": "Stand-ins: Wise Sans (WI12) is outside the catalogue.",
+    "form.curvature": "rounded tiles (WI30)",
+    "form.line": "solid tiles (WI30)",
+    "form.elevation": "flat billboards (WI04)",
+    "type.character.type-scale": "stacked currency names (WI04)",
+    "color.character.neutral": "green-tinted surfaces (WI14)",
+    "type.weights": "Heavier display weights, matching the sources’ headlines.",
+    "adaptivity": "white and forest grounds (WI03, WI10)",
+    "movement": "the montage cuts between places (WI01)",
+    "color.anchors.0": "Sampled from WI10.",
+    "color.anchors.1": "Sampled from WI06.",
+    "color.anchors.2": "Sampled from WI12.",
+    "color.anchors.3": "Sampled from WI28."
+  }
+}

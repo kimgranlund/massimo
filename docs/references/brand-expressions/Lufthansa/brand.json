@@ -1,0 +1,125 @@
+{
+  "$schema": "../../../../packages/ui-kit/contracts/brand.schema.json",
+  "schemaVersion": 1,
+  "name": "lufthansa",
+  "subject": {
+    "name": "Lufthansa",
+    "audience": "airline passengers and Lufthansa staff",
+    "primaryJob": "make a premium airline feel calm, exact and German",
+    "kind": "product",
+    "sources": [
+      "the crane in its ring (LH03)",
+      "the blue-and-yellow material board (LH07)",
+      "the Helvetica comparison (LH10)"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "ulm-school",
+      "relation": "inherit",
+      "principles": [
+        "the refined drawing audit (LH03)",
+        "the typeface studied at letter level (LH11)"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "Cabin at altitude",
+      "ref": "alpine",
+      "primary": true,
+      "description": "Deep blue textiles, one yellow accent, and thin white lines.",
+      "materials": [
+        "cabin textiles",
+        "livery",
+        "uniforms"
+      ],
+      "light": "cool and high"
+    }
+  ],
+  "muse": {
+    "kind": "object",
+    "name": "the crane",
+    "take": "a thin, even line in a ring (LH05)",
+    "leave": "the heraldic history"
+  },
+  "color": {
+    "anchors": [
+      {
+        "name": "Lufthansa blue",
+        "value": "#05164D",
+        "role": "primary"
+      },
+      {
+        "name": "Crane yellow",
+        "value": "#FFBE02",
+        "role": "secondary"
+      },
+      {
+        "name": "White",
+        "value": "#FFFFFF",
+        "role": "ground"
+      },
+      {
+        "name": "Deep navy",
+        "value": "#021F47",
+        "role": "ink"
+      }
+    ],
+    "feedback": "independent",
+    "character": {
+      "neutral": "tinted",
+      "vibrancy": "natural"
+    }
+  },
+  "type": {
+    "faces": {
+      "display": {
+        "ref": "helvetica-neue"
+      },
+      "body": {
+        "ref": "helvetica-neue"
+      },
+      "utility": {
+        "ref": "helvetica-neue"
+      }
+    },
+    "character": {}
+  },
+  "form": {
+    "curvature": "crisp",
+    "line": "hairline",
+    "space": "airy",
+    "elevation": "flat"
+  },
+  "movement": "calm",
+  "adaptivity": "light-first",
+  "voice": {
+    "tone": [
+      "formal",
+      "calm",
+      "precise"
+    ]
+  },
+  "signature": {
+    "concept": "the thin crane line",
+    "scale": "line",
+    "reason": "the crane muse is drawn in one fine line (LH05)"
+  },
+  "rationale": {
+    "grounding.primary": "Inferred from the source: the audit and Helvetica fit Ulm rationality.",
+    "type.faces": "Helvetica is the studied base (LH10). Lufthansa Text is outside the catalogue.",
+    "form.curvature": "cut, exact details (LH01)",
+    "form.line": "the thin crane line (LH05)",
+    "form.space": "calm, open boards (LH01)",
+    "form.elevation": "print and textile surfaces (LH07)",
+    "color.character.neutral": "blue-tinted neutrals on the board (LH07)",
+    "color.character.vibrancy": "textile rather than screen color (LH07)",
+    "adaptivity": "white grounds in print (LH48)",
+    "movement": "a calm airline (LH01)",
+    "color.anchors.0": "Sampled from LH25.",
+    "color.anchors.1": "Sampled from LH01.",
+    "color.anchors.2": "Sampled from LH48.",
+    "color.anchors.3": "Sampled from LH01."
+  }
+}

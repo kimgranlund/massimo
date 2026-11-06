@@ -1,0 +1,138 @@
+{
+  "$schema": "../../../../packages/ui-kit/contracts/brand.schema.json",
+  "schemaVersion": 1,
+  "name": "spotify",
+  "subject": {
+    "name": "Spotify",
+    "audience": "music listeners worldwide",
+    "primaryJob": "turn listening into a bold visual culture",
+    "kind": "product",
+    "sources": [
+      "the green symbol on black (SP22)",
+      "twelve color and shape combinations (SP06)",
+      "vibrating color (SP03)"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "constructivism",
+      "relation": "reinterpret",
+      "principles": [
+        "angular cut shapes (SP04)",
+        "type and image collide (SP10)"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "Concert poster",
+      "ref": "nocturne",
+      "primary": true,
+      "description": "Black stages and duotone portraits with green that vibrates.",
+      "materials": [
+        "duotone portraits",
+        "posters",
+        "cut shapes"
+      ],
+      "light": "stage dark"
+    }
+  ],
+  "muse": {
+    "kind": "work",
+    "name": "the duotone poster",
+    "take": "two colors that vibrate together (SP03)",
+    "leave": "artist photography"
+  },
+  "color": {
+    "anchors": [
+      {
+        "name": "Spotify green",
+        "value": "#18D868",
+        "role": "primary"
+      },
+      {
+        "name": "Deep blue",
+        "value": "#2D46B9",
+        "role": "secondary"
+      },
+      {
+        "name": "Magenta",
+        "value": "#AF2895",
+        "role": "data1"
+      },
+      {
+        "name": "Red",
+        "value": "#EB1E32",
+        "role": "data2"
+      },
+      {
+        "name": "Off white",
+        "value": "#F7F9F6",
+        "role": "ground"
+      },
+      {
+        "name": "Black",
+        "value": "#000000",
+        "role": "ink"
+      }
+    ],
+    "feedback": "independent",
+    "character": {
+      "vibrancy": "vivid",
+      "harmony": "triadic"
+    }
+  },
+  "type": {
+    "faces": {
+      "display": {
+        "ref": "manrope"
+      },
+      "body": {
+        "ref": "manrope"
+      },
+      "utility": {
+        "ref": "manrope"
+      }
+    },
+    "character": {},
+    "weights": {
+      "display": 700
+    }
+  },
+  "form": {
+    "curvature": "pill",
+    "line": "borderless",
+    "elevation": "flat"
+  },
+  "movement": "lively",
+  "adaptivity": "dark-first",
+  "voice": {
+    "tone": [
+      "confident",
+      "playful"
+    ]
+  },
+  "signature": {
+    "concept": "color that vibrates",
+    "scale": "harmony",
+    "reason": "SP03 and SP06 pair colors at full strength on the stage-dark territory"
+  },
+  "rationale": {
+    "grounding.primary": "Inferred, not stated by the source. Departs from the canon: it borrows pop-music color, not political red.",
+    "type.faces": "Stand-ins: Circular (SP22) is outside the catalogue.",
+    "form.curvature": "circular swatches (SP22)",
+    "form.line": "color fields (SP06)",
+    "form.elevation": "flat shapes (SP06)",
+    "color.character.vibrancy": "saturated color that vibrates (SP03)",
+    "color.character.harmony": "twelve bold pairs (SP06)",
+    "type.weights": "Heavier display weights, matching the sources’ headlines.",
+    "adaptivity": "black overview board (SP22)",
+    "movement": "shapes change on the beat (SP04)",
+    "color.anchors.0": "Sampled from SP22, so approximate.",
+    "color.anchors.1": "Sampled from SP06.",
+    "color.anchors.2": "Sampled from SP07.",
+    "color.anchors.3": "Sampled from SP06.",
+    "color.anchors.4": "Sampled from SP05.",
+    "color.anchors.5": "Sampled from SP19."
+  }
+}

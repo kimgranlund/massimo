@@ -1,0 +1,128 @@
+{
+  "$schema": "../../../../packages/ui-kit/contracts/brand.schema.json",
+  "schemaVersion": 1,
+  "name": "xfinity",
+  "subject": {
+    "name": "Xfinity",
+    "audience": "cable and internet households",
+    "primaryJob": "keep home entertainment simple, personal and awesome",
+    "kind": "product",
+    "sources": [
+      "the white X on a chromatic field (X01)",
+      "service cards (X07)",
+      "the voice remote X (X11)"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "californian-modernism",
+      "relation": "reinterpret",
+      "principles": [
+        "simple friendly promises (X13)",
+        "white cards in a loose grid (X07)"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "Glow of the set",
+      "ref": "nocturne",
+      "primary": true,
+      "description": "Luminous color behind a white X, and quiet white cards.",
+      "materials": [
+        "screens",
+        "remotes",
+        "cards"
+      ],
+      "light": "television glow"
+    }
+  ],
+  "muse": {
+    "kind": "object",
+    "name": "the remote’s X button",
+    "take": "one central control (X11)",
+    "leave": "the hardware"
+  },
+  "color": {
+    "anchors": [
+      {
+        "name": "Xfinity pink",
+        "value": "#F0004B",
+        "role": "primary"
+      },
+      {
+        "name": "Violet",
+        "value": "#9222F0",
+        "role": "secondary"
+      },
+      {
+        "name": "Blue",
+        "value": "#0D56F3",
+        "role": "data1"
+      },
+      {
+        "name": "White",
+        "value": "#FFFFFF",
+        "role": "ground"
+      },
+      {
+        "name": "Near black",
+        "value": "#0D0D0F",
+        "role": "ink"
+      }
+    ],
+    "feedback": "independent",
+    "character": {
+      "vibrancy": "vivid",
+      "harmony": "analogous"
+    }
+  },
+  "type": {
+    "faces": {
+      "display": {
+        "ref": "avenir-next"
+      },
+      "body": {
+        "ref": "inter"
+      },
+      "utility": {
+        "ref": "inter"
+      }
+    },
+    "character": {}
+  },
+  "form": {
+    "curvature": "round",
+    "line": "borderless",
+    "elevation": "layered"
+  },
+  "movement": "lively",
+  "adaptivity": "both",
+  "voice": {
+    "tone": [
+      "warm",
+      "plain"
+    ]
+  },
+  "signature": {
+    "concept": "a color loop",
+    "scale": "harmony",
+    "reason": "X01 cycles neighboring hues behind one white X"
+  },
+  "rationale": {
+    "grounding.primary": "Inferred, not stated by the source. Departs from the canon: a luminous screen-based color loop.",
+    "type.faces": "Stand-ins: the collection does not name a typeface.",
+    "form.curvature": "round button in a soft diamond (X11)",
+    "form.line": "white cards (X07)",
+    "form.elevation": "cards over the screen (X07)",
+    "color.character.vibrancy": "luminous loop (X01)",
+    "color.character.harmony": "blue through magenta (X01)",
+    "adaptivity": "white cards and dark screens (X07, X12)",
+    "movement": "the field moves through color (X01)",
+    "color.anchors.0": "Sampled from X08.",
+    "color.anchors.1": "Sampled from X05.",
+    "color.anchors.2": "Sampled from X06.",
+    "color.anchors.3": "Sampled from X07.",
+    "color.anchors.4": "Sampled from X12."
+  }
+}

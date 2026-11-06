@@ -1,0 +1,125 @@
+{
+  "$schema": "../../../../packages/ui-kit/contracts/brand.schema.json",
+  "schemaVersion": 1,
+  "name": "mailchimp",
+  "subject": {
+    "name": "Mailchimp",
+    "audience": "small businesses marketing themselves",
+    "primaryJob": "give small businesses a big, human personality",
+    "kind": "product",
+    "sources": [
+      "Freddie on Cavendish Yellow (CH01)",
+      "Cooper Light (CH21)",
+      "odd black drawings between lines (CH05)"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "arts-and-crafts",
+      "relation": "reinterpret",
+      "principles": [
+        "drawn by hand (CH15)",
+        "warm, soft lettering (CH21)"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "Cavendish yellow studio",
+      "ref": "print-shop",
+      "primary": true,
+      "description": "Full yellow fields, black ink and soft serif headlines.",
+      "materials": [
+        "screen-print ink",
+        "odd drawings",
+        "posters"
+      ],
+      "light": "flat and sunny"
+    }
+  ],
+  "muse": {
+    "kind": "work",
+    "name": "Freddie the chimp",
+    "take": "human oddness in simple black (CH01)",
+    "leave": "the mascot drawing"
+  },
+  "color": {
+    "anchors": [
+      {
+        "name": "Cavendish Yellow",
+        "value": "#FFE01B",
+        "role": "primary",
+        "step": 9
+      },
+      {
+        "name": "Peppercorn",
+        "value": "#241C14",
+        "role": "ink"
+      },
+      {
+        "name": "Off white",
+        "value": "#F7F9F6",
+        "role": "ground"
+      },
+      {
+        "name": "Warm taupe",
+        "value": "#926C57",
+        "role": "neutral"
+      }
+    ],
+    "feedback": "independent",
+    "character": {
+      "neutral": "strong"
+    }
+  },
+  "type": {
+    "faces": {
+      "display": {
+        "ref": "fraunces"
+      },
+      "body": {
+        "ref": "fraunces"
+      },
+      "utility": {
+        "ref": "inter"
+      }
+    },
+    "character": {
+      "type-scale": "dramatic"
+    }
+  },
+  "form": {
+    "curvature": "soft",
+    "line": "borderless",
+    "elevation": "flat"
+  },
+  "movement": "playful",
+  "adaptivity": "light-first",
+  "voice": {
+    "tone": [
+      "playful",
+      "warm",
+      "candid"
+    ]
+  },
+  "signature": {
+    "concept": "oversized soft serif",
+    "scale": "type-scale",
+    "reason": "CH05 lets one serif headline fill the poster, in the print-shop territory"
+  },
+  "rationale": {
+    "grounding.primary": "Inferred, not stated by the source. Departs from the canon: the color is a loud marketing yellow.",
+    "type.faces": "Stand-in: Cooper Light (CH21) is outside the catalogue; Fraunces is the closest soft serif.",
+    "form.curvature": "plain circles and page fields (CH02)",
+    "form.line": "flat color (CH01)",
+    "form.elevation": "flat yellow fields (CH01)",
+    "type.character.type-scale": "an oversized serif headline (CH05)",
+    "color.character.neutral": "warm taupes in the palette (CH25B)",
+    "adaptivity": "yellow and white grounds (CH01, CH05)",
+    "movement": "letters jump around the loop (CH11)",
+    "color.anchors.0": "Printed on CH25D. Pinned to step 9: placed by contrast it would land in the tints, and the button would turn olive.",
+    "color.anchors.1": "Sampled from CH21.",
+    "color.anchors.2": "Sampled from CH02.",
+    "color.anchors.3": "Sampled from CH25B."
+  }
+}

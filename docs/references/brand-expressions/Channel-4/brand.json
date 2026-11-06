@@ -1,0 +1,137 @@
+{
+  "$schema": "../../../../packages/ui-kit/contracts/brand.schema.json",
+  "schemaVersion": 1,
+  "name": "channel-4",
+  "subject": {
+    "name": "Channel 4",
+    "audience": "British viewers across television, app and streets",
+    "primaryJob": "hold a broad programme slate inside one bold masterbrand",
+    "kind": "editorial",
+    "sources": [
+      "green blocks assembling into the 4 (C400)",
+      "recessed gradient rooms (C425)",
+      "the cube framework (C421)"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "constructivism",
+      "relation": "reinterpret",
+      "principles": [
+        "dynamic block construction (C400)",
+        "type and form share the frame (C407)"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "Gradient rooms",
+      "ref": "nocturne",
+      "primary": true,
+      "description": "Warm rooms recede behind the 4 and shift through pink, purple and blue.",
+      "materials": [
+        "recessed rooms",
+        "gradients",
+        "billboards"
+      ],
+      "light": "glowing, from inside the frame"
+    }
+  ],
+  "muse": {
+    "kind": "object",
+    "name": "the cube room",
+    "take": "depth built from one simple frame (C421)",
+    "leave": "the 3D rendering"
+  },
+  "color": {
+    "anchors": [
+      {
+        "name": "Signal red",
+        "value": "#F9314D",
+        "role": "primary"
+      },
+      {
+        "name": "Block green",
+        "value": "#B6FF94",
+        "role": "secondary"
+      },
+      {
+        "name": "Aqua",
+        "value": "#72FFDF",
+        "role": "data1"
+      },
+      {
+        "name": "Pink",
+        "value": "#FE79D4",
+        "role": "data2"
+      },
+      {
+        "name": "White",
+        "value": "#FFFFFF",
+        "role": "ground"
+      },
+      {
+        "name": "Near black",
+        "value": "#111111",
+        "role": "ink"
+      }
+    ],
+    "feedback": "independent",
+    "character": {
+      "vibrancy": "vivid",
+      "harmony": "split"
+    }
+  },
+  "type": {
+    "faces": {
+      "display": {
+        "ref": "manrope"
+      },
+      "body": {
+        "ref": "manrope"
+      },
+      "utility": {
+        "ref": "manrope"
+      }
+    },
+    "character": {},
+    "weights": {
+      "display": 700
+    }
+  },
+  "form": {
+    "curvature": "crisp",
+    "elevation": "layered"
+  },
+  "movement": "playful",
+  "adaptivity": "dark-first",
+  "voice": {
+    "tone": [
+      "confident",
+      "playful",
+      "candid"
+    ]
+  },
+  "signature": {
+    "concept": "rooms of shifting color",
+    "scale": "harmony",
+    "reason": "the room territory sets warm and cool colors against each other (C425)"
+  },
+  "rationale": {
+    "grounding.primary": "Inferred, not stated by the source. Departs from flat constructivist color: rooms carry gradients (C425).",
+    "type.faces": "Stand-ins: the case study does not name a typeface.",
+    "form.curvature": "cut blocks of the 4 (C400)",
+    "form.elevation": "recessed rooms give depth (C421)",
+    "color.character.vibrancy": "saturated room gradients (C425)",
+    "color.character.harmony": "warm rooms against aqua and green (C425)",
+    "type.weights": "Heavier display weights, matching the sources’ headlines.",
+    "adaptivity": "the reveal resolves on black (C400)",
+    "movement": "blocks assemble as rooms shift (C400)",
+    "color.anchors.0": "Sampled from C418.",
+    "color.anchors.1": "Sampled from C401.",
+    "color.anchors.2": "Sampled from C412.",
+    "color.anchors.3": "Sampled from C422.",
+    "color.anchors.4": "Pale rooms (C451).",
+    "color.anchors.5": "Sampled from C416."
+  }
+}

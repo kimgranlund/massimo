@@ -1,0 +1,127 @@
+{
+  "$schema": "../../../../packages/ui-kit/contracts/brand.schema.json",
+  "schemaVersion": 1,
+  "name": "nike-sportswear",
+  "subject": {
+    "name": "Nike Sportswear",
+    "audience": "sneaker buyers in retail and online",
+    "primaryJob": "make each season’s product feel taped up by hand",
+    "kind": "campaign",
+    "sources": [
+      "taped photographs (NS06)",
+      "wide white headlines (NS01)",
+      "the white outline Swoosh (NS14)"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "brutalism",
+      "relation": "reinterpret",
+      "principles": [
+        "raw collage (NS01)",
+        "big blunt type (NS06)"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "Taped wall",
+      "ref": "print-shop",
+      "primary": true,
+      "description": "Black and white with taped photographs and one wide headline.",
+      "materials": [
+        "tape",
+        "photo prints",
+        "court textures"
+      ],
+      "light": "hard flash"
+    }
+  ],
+  "muse": {
+    "kind": "object",
+    "name": "the strip of tape",
+    "take": "a fast, hand-placed frame (NS06)",
+    "leave": "the shoes"
+  },
+  "color": {
+    "anchors": [
+      {
+        "name": "Black",
+        "value": "#000000",
+        "role": "primary"
+      },
+      {
+        "name": "White",
+        "value": "#FFFFFF",
+        "role": "ground"
+      },
+      {
+        "name": "Pink field",
+        "value": "#C84888",
+        "role": "secondary"
+      },
+      {
+        "name": "Black ink",
+        "value": "#000000",
+        "role": "ink"
+      }
+    ],
+    "feedback": "independent",
+    "character": {
+      "neutral": "true"
+    }
+  },
+  "type": {
+    "faces": {
+      "display": {
+        "ref": "futura"
+      },
+      "body": {
+        "ref": "helvetica-neue"
+      },
+      "utility": {
+        "ref": "helvetica-neue"
+      }
+    },
+    "character": {
+      "type-scale": "dramatic"
+    },
+    "weights": {
+      "display": 700
+    }
+  },
+  "form": {
+    "curvature": "square",
+    "line": "borderless",
+    "elevation": "flat"
+  },
+  "movement": "lively",
+  "adaptivity": "dark-first",
+  "voice": {
+    "tone": [
+      "confident",
+      "plain"
+    ]
+  },
+  "signature": {
+    "concept": "a wide headline",
+    "scale": "type-scale",
+    "reason": "NS01 and NS06 anchor the taped wall with one wide line of type"
+  },
+  "rationale": {
+    "grounding.primary": "Inferred, not stated by the source. Thin evidence: one season. Departs from the canon: product stays polished.",
+    "type.faces": "Stand-ins: the collection does not name a typeface.",
+    "form.curvature": "taped rectangles (NS06)",
+    "form.line": "photographs and fields (NS01)",
+    "form.elevation": "paper on a wall (NS01)",
+    "type.character.type-scale": "a wide headline spans the layout (NS01)",
+    "color.character.neutral": "plain black and white (NS12)",
+    "type.weights": "Heavier display weights, matching the sources’ headlines.",
+    "adaptivity": "black grounds lead (NS14)",
+    "movement": "seasonal retail energy (NS01)",
+    "color.anchors.0": "Sampled from NS14.",
+    "color.anchors.1": "Sampled from NS12.",
+    "color.anchors.2": "Sampled from NS08, so approximate.",
+    "color.anchors.3": "Sampled from NS14."
+  }
+}

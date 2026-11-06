@@ -1,0 +1,124 @@
+{
+  "$schema": "../../../../packages/ui-kit/contracts/brand.schema.json",
+  "schemaVersion": 1,
+  "name": "audi",
+  "subject": {
+    "name": "Audi",
+    "audience": "drivers and buyers meeting Audi on screen, on the street and in its films",
+    "primaryJob": "turn a car brand from monologue into dialogue with a bolder presence",
+    "kind": "product",
+    "sources": [
+      "the rings over an aerial landscape (AU02)",
+      "the red rear light at dusk (AU06)",
+      "red headlines on dark red (AU13)"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "ulm-school",
+      "relation": "reinterpret",
+      "principles": [
+        "one system runs from rings to controls (AU01)",
+        "principles organize the identity into tiles (AU04)"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "Night road",
+      "ref": "nocturne",
+      "primary": true,
+      "description": "Dusk and headlight: black and dark red fields, one white headline, a red light in the distance.",
+      "materials": [
+        "dusk photography",
+        "black fields",
+        "rear lights"
+      ],
+      "light": "low and directional"
+    }
+  ],
+  "muse": {
+    "kind": "object",
+    "name": "the rear light at dusk",
+    "take": "one bright red line against the dark (AU06)",
+    "leave": "the car photography"
+  },
+  "color": {
+    "anchors": [
+      {
+        "name": "Audi red",
+        "value": "#FE0000",
+        "role": "primary"
+      },
+      {
+        "name": "Sport dark red",
+        "value": "#AB0A1A",
+        "role": "secondary"
+      },
+      {
+        "name": "White",
+        "value": "#FFFFFF",
+        "role": "ground"
+      },
+      {
+        "name": "Black",
+        "value": "#000000",
+        "role": "ink"
+      }
+    ],
+    "feedback": "independent",
+    "character": {}
+  },
+  "type": {
+    "faces": {
+      "display": {
+        "ref": "helvetica-neue"
+      },
+      "body": {
+        "ref": "helvetica-neue"
+      },
+      "utility": {
+        "ref": "inter"
+      }
+    },
+    "character": {
+      "type-scale": "dramatic"
+    },
+    "weights": {
+      "display": 700
+    }
+  },
+  "form": {
+    "curvature": "square",
+    "line": "borderless",
+    "elevation": "flat"
+  },
+  "movement": "lively",
+  "adaptivity": "dark-first",
+  "voice": {
+    "tone": [
+      "confident",
+      "precise"
+    ]
+  },
+  "signature": {
+    "concept": "red on black at night",
+    "scale": "adaptivity",
+    "reason": "the night road territory holds the page dark so red can carry the brand (AU13)"
+  },
+  "rationale": {
+    "grounding.primary": "Inferred, not stated by the source. Departs from Ulm restraint: Audi Sport sets huge red uppercase (AU13).",
+    "type.faces": "Stand-ins: the case study does not name a typeface.",
+    "form.curvature": "hard rectangular principle tiles (AU04)",
+    "form.line": "type and photography, no rules (AU06)",
+    "form.elevation": "flat fields (AU13)",
+    "type.character.type-scale": "headlines fill the field (AU13)",
+    "type.weights": "Heavier display weights, matching the sources’ headlines.",
+    "adaptivity": "black and dusk grounds lead (AU04, AU06)",
+    "movement": "the header loop cuts fast between scenes (AU02)",
+    "color.anchors.0": "Sampled from AU13.",
+    "color.anchors.1": "Sampled from AU13.",
+    "color.anchors.2": "White type on dark (AU06).",
+    "color.anchors.3": "Black principle tiles (AU04)."
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "$schema": "../../../../packages/ui-kit/contracts/brand.schema.json",
+  "schemaVersion": 1,
+  "name": "mastercard",
+  "subject": {
+    "name": "Mastercard",
+    "audience": "cardholders and merchants worldwide",
+    "primaryJob": "keep two overlapping circles recognizable everywhere",
+    "kind": "product",
+    "sources": [
+      "red and yellow circles overlapping in orange (MC02)",
+      "the extended palette matrix (MC16)",
+      "FF Mark (MC15)"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "swiss-international",
+      "relation": "reinterpret",
+      "principles": [
+        "reduction to two circles (MC02)",
+        "one geometric type family (MC15)"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "Priceless evening",
+      "ref": "nocturne",
+      "primary": true,
+      "description": "Black and warm neutrals with red and yellow circles.",
+      "materials": [
+        "circles",
+        "photographic crops",
+        "signage"
+      ],
+      "light": "warm and dim"
+    }
+  ],
+  "muse": {
+    "kind": "object",
+    "name": "the two circles",
+    "take": "one soft overlap (MC02)",
+    "leave": "the card itself"
+  },
+  "color": {
+    "anchors": [
+      {
+        "name": "Red",
+        "value": "#EA001D",
+        "role": "primary"
+      },
+      {
+        "name": "Yellow",
+        "value": "#F49D1A",
+        "role": "secondary"
+      },
+      {
+        "name": "Overlap orange",
+        "value": "#FD5E00",
+        "role": "data1"
+      },
+      {
+        "name": "Warm white",
+        "value": "#EDF0E9",
+        "role": "ground"
+      },
+      {
+        "name": "Black",
+        "value": "#141D2C",
+        "role": "ink"
+      }
+    ],
+    "feedback": "independent",
+    "character": {
+      "harmony": "analogous"
+    }
+  },
+  "type": {
+    "faces": {
+      "display": {
+        "ref": "futura"
+      },
+      "body": {
+        "ref": "avenir-next"
+      },
+      "utility": {
+        "ref": "avenir-next"
+      }
+    },
+    "character": {}
+  },
+  "form": {
+    "curvature": "pill",
+    "line": "borderless",
+    "elevation": "flat"
+  },
+  "movement": "calm",
+  "adaptivity": "both",
+  "voice": {
+    "tone": [
+      "warm",
+      "confident"
+    ]
+  },
+  "signature": {
+    "concept": "the full circle",
+    "scale": "curvature",
+    "reason": "the muse is two circles, so controls end in a full round (MC02)"
+  },
+  "rationale": {
+    "grounding.primary": "Inferred, not stated by the source. Departs from the canon: warm color and full circles.",
+    "type.faces": "Stand-ins: FF Mark (MC15) is outside the catalogue; Futura is the closest geometric.",
+    "form.curvature": "circles everywhere (MC05)",
+    "form.line": "solid circles (MC05)",
+    "form.elevation": "flat fields (MC05)",
+    "color.character.harmony": "red through orange to yellow (MC02)",
+    "adaptivity": "pale and black grounds (MC02, MC05)",
+    "movement": "one slow circle reveal (MC17)",
+    "color.anchors.0": "Sampled from MC02.",
+    "color.anchors.1": "Sampled from MC05.",
+    "color.anchors.2": "Sampled from MC05.",
+    "color.anchors.3": "Sampled from MC03.",
+    "color.anchors.4": "Sampled from MC06."
+  }
+}

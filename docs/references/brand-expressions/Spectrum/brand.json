@@ -1,0 +1,120 @@
+{
+  "$schema": "../../../../packages/ui-kit/contracts/brand.schema.json",
+  "schemaVersion": 1,
+  "name": "spectrum",
+  "subject": {
+    "name": "Spectrum",
+    "audience": "cable and internet customers",
+    "primaryJob": "present connection as a current running through daily life",
+    "kind": "product",
+    "sources": [
+      "blue-to-green connectivity current (E01)",
+      "Deep Blue and Light Blue (S11)",
+      "the logo clear space from the p (S07)"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "swiss-international",
+      "relation": "reinterpret",
+      "principles": [
+        "one strict logo system (S07)",
+        "plain short messaging (S16)"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "Connected home",
+      "ref": "harbor",
+      "primary": true,
+      "description": "Deep blue fields with a luminous current curving through.",
+      "materials": [
+        "current lines",
+        "deep blue fields",
+        "phones"
+      ],
+      "light": "dark blue with light"
+    }
+  ],
+  "muse": {
+    "kind": "object",
+    "name": "the connectivity current",
+    "take": "one line flowing to a point (E01)",
+    "leave": "the cable hardware"
+  },
+  "color": {
+    "anchors": [
+      {
+        "name": "Deep Blue",
+        "value": "#003057",
+        "role": "primary"
+      },
+      {
+        "name": "Light Blue",
+        "value": "#0099D8",
+        "role": "secondary"
+      },
+      {
+        "name": "White",
+        "value": "#FFFFFF",
+        "role": "ground"
+      },
+      {
+        "name": "Night",
+        "value": "#00142C",
+        "role": "ink"
+      }
+    ],
+    "feedback": "independent",
+    "character": {
+      "neutral": "tinted"
+    }
+  },
+  "type": {
+    "faces": {
+      "display": {
+        "ref": "avenir-next"
+      },
+      "body": {
+        "ref": "source-sans-3"
+      },
+      "utility": {
+        "ref": "source-sans-3"
+      }
+    },
+    "character": {}
+  },
+  "form": {
+    "curvature": "soft",
+    "line": "hairline",
+    "elevation": "layered"
+  },
+  "movement": "calm",
+  "adaptivity": "light-first",
+  "voice": {
+    "tone": [
+      "plain",
+      "warm"
+    ]
+  },
+  "signature": {
+    "concept": "the fine current line",
+    "scale": "line",
+    "reason": "the current muse is one thin line (E01)"
+  },
+  "rationale": {
+    "grounding.primary": "Inferred, not stated by the source. Departs from the canon: curved current lines.",
+    "type.faces": "Stand-ins: Gotham (S13) and Whitney (S14) are outside the catalogue.",
+    "form.curvature": "plain panels (S03)",
+    "form.line": "thin current lines (E01)",
+    "form.elevation": "current passes behind the logo (E01)",
+    "color.character.neutral": "blue-gray gradients (S16)",
+    "adaptivity": "guideline pages are pale (S03)",
+    "movement": "lines flow slowly (E03)",
+    "color.anchors.0": "Printed on S11.",
+    "color.anchors.1": "Printed on S11.",
+    "color.anchors.2": "Sampled from S04.",
+    "color.anchors.3": "Sampled from E01."
+  }
+}

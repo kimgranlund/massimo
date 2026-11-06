@@ -1,0 +1,121 @@
+{
+  "$schema": "../../../../packages/ui-kit/contracts/brand.schema.json",
+  "schemaVersion": 1,
+  "name": "itv",
+  "subject": {
+    "name": "ITV",
+    "audience": "British audiences across channels and ITVX",
+    "primaryJob": "make a family of channels feel like one streaming home",
+    "kind": "editorial",
+    "sources": [
+      "the Spark yellow field (IT09)",
+      "the channel logo family (IT19)",
+      "serif and sans type voices (IT14)"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "british-foundry-grotesque",
+      "relation": "reinterpret",
+      "principles": [
+        "British broadcast directness (IT05)",
+        "plain lettering across the family (IT19)"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "Living room at night",
+      "ref": "nocturne",
+      "primary": true,
+      "description": "Dark teal grounds with one yellow signal, and drama in big italic type.",
+      "materials": [
+        "programme footage",
+        "bus sides",
+        "billboards"
+      ],
+      "light": "low with one bright accent"
+    }
+  ],
+  "muse": {
+    "kind": "work",
+    "name": "the drama title card",
+    "take": "one huge word over a dark scene (IT13)",
+    "leave": "the programme photography"
+  },
+  "color": {
+    "anchors": [
+      {
+        "name": "Spark yellow",
+        "value": "#E3F740",
+        "role": "primary",
+        "dark": "#E3F740",
+        "step": 9
+      },
+      {
+        "name": "Deep teal",
+        "value": "#01333E",
+        "role": "secondary"
+      },
+      {
+        "name": "White",
+        "value": "#FCFBFE",
+        "role": "ground"
+      },
+      {
+        "name": "Night",
+        "value": "#112C3D",
+        "role": "ink"
+      }
+    ],
+    "feedback": "independent",
+    "character": {}
+  },
+  "type": {
+    "faces": {
+      "display": {
+        "ref": "newsreader"
+      },
+      "body": {
+        "ref": "inter"
+      },
+      "utility": {
+        "ref": "inter"
+      }
+    },
+    "character": {
+      "type-scale": "dramatic"
+    }
+  },
+  "form": {
+    "curvature": "round",
+    "line": "hairline"
+  },
+  "movement": "lively",
+  "adaptivity": "dark-first",
+  "voice": {
+    "tone": [
+      "candid",
+      "confident",
+      "playful"
+    ]
+  },
+  "signature": {
+    "concept": "a dark screen with one spark",
+    "scale": "adaptivity",
+    "reason": "the night territory lets yellow act as the signature (IT09)"
+  },
+  "rationale": {
+    "grounding.primary": "Inferred, not stated by the source. Departs from the canon: expressive italic serifs (IT13).",
+    "type.faces": "Stand-ins: the case study does not name a typeface.",
+    "form.curvature": "rounded symbol line ends (IT25)",
+    "form.line": "outline symbols (IT25)",
+    "type.character.type-scale": "one word fills the frame (IT13)",
+    "adaptivity": "dark grounds lead (IT19, IT26)",
+    "movement": "the type changes voice in motion (IT14)",
+    "color.anchors.0": "Sampled from IT09. Pinned to step 9: placed by contrast it would land in the tints, and the button would turn olive.",
+    "color.anchors.1": "Sampled from IT19.",
+    "color.anchors.2": "Sampled from IT01.",
+    "color.anchors.3": "Sampled from IT26."
+  }
+}

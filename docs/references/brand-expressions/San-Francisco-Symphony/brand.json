@@ -1,0 +1,133 @@
+{
+  "$schema": "../../../../packages/ui-kit/contracts/brand.schema.json",
+  "schemaVersion": 1,
+  "name": "san-francisco-symphony",
+  "subject": {
+    "name": "San Francisco Symphony",
+    "audience": "concertgoers and music lovers",
+    "primaryJob": "make the orchestra feel alive by making its type respond to sound",
+    "kind": "institution",
+    "sources": [
+      "variable serif letters (SF05)",
+      "monthly covers (SF21)",
+      "computational design (SF02)"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "art-deco",
+      "relation": "reinterpret",
+      "principles": [
+        "elegant high-contrast serifs (SF04)",
+        "theatrical black and gold occasions (SF12)"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "Concert hall",
+      "ref": "atelier",
+      "primary": true,
+      "description": "Deep green, olive and ochre, with a tall serif that moves.",
+      "materials": [
+        "programme covers",
+        "street posters",
+        "fabric"
+      ],
+      "light": "warm stage light"
+    }
+  ],
+  "muse": {
+    "kind": "work",
+    "name": "the score",
+    "take": "type that follows pitch and rhythm (SF02)",
+    "leave": "the concert photography"
+  },
+  "color": {
+    "anchors": [
+      {
+        "name": "Hall green",
+        "value": "#093D26",
+        "role": "primary"
+      },
+      {
+        "name": "Teal",
+        "value": "#42ABC1",
+        "role": "secondary"
+      },
+      {
+        "name": "Olive",
+        "value": "#616C43",
+        "role": "data1"
+      },
+      {
+        "name": "Pink",
+        "value": "#E096D9",
+        "role": "data2"
+      },
+      {
+        "name": "Paper",
+        "value": "#F7F9F6",
+        "role": "ground"
+      },
+      {
+        "name": "Black",
+        "value": "#121212",
+        "role": "ink"
+      }
+    ],
+    "feedback": "independent",
+    "character": {
+      "harmony": "split"
+    }
+  },
+  "type": {
+    "faces": {
+      "display": {
+        "ref": "didot"
+      },
+      "body": {
+        "ref": "newsreader"
+      },
+      "utility": {
+        "ref": "inter"
+      }
+    },
+    "character": {
+      "type-scale": "dramatic"
+    }
+  },
+  "form": {
+    "curvature": "crisp",
+    "line": "borderless"
+  },
+  "movement": "playful",
+  "adaptivity": "both",
+  "voice": {
+    "tone": [
+      "poetic",
+      "confident"
+    ]
+  },
+  "signature": {
+    "concept": "type that moves with sound",
+    "scale": "movement",
+    "reason": "the score muse lets letters stretch (SF02, SF05)"
+  },
+  "rationale": {
+    "grounding.primary": "Inferred, not stated by the source. Departs from the canon: letters stretch and slant with sound.",
+    "type.faces": "Stand-ins: the case study does not name a typeface; Didot is the closest high-contrast serif.",
+    "form.curvature": "cut print edges (SF12)",
+    "form.line": "type and color (SF19)",
+    "type.character.type-scale": "oversized serif words (SF12)",
+    "color.character.harmony": "olive against pink and blue (SF19)",
+    "adaptivity": "black and pale pieces (SF05, SF12)",
+    "movement": "letters grow and skew (SF02)",
+    "color.anchors.0": "Sampled from SF21.",
+    "color.anchors.1": "Sampled from SF21.",
+    "color.anchors.2": "Sampled from SF19.",
+    "color.anchors.3": "Sampled from SF19.",
+    "color.anchors.4": "Sampled from SF05.",
+    "color.anchors.5": "Sampled from SF21."
+  }
+}

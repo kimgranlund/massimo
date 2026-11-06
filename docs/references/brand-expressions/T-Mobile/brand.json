@@ -1,0 +1,124 @@
+{
+  "$schema": "../../../../packages/ui-kit/contracts/brand.schema.json",
+  "schemaVersion": 1,
+  "name": "t-mobile",
+  "subject": {
+    "name": "T-Mobile",
+    "audience": "wireless customers and retail staff",
+    "primaryJob": "own magenta and act as the Un-carrier",
+    "kind": "product",
+    "sources": [
+      "the T-Digit (TM01)",
+      "We Love Magenta (TM18)",
+      "the Un-carrier Manifesto (TM04)"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "brutalism",
+      "relation": "reinterpret",
+      "principles": [
+        "blunt statements (TM04)",
+        "one color, used loudly (TM18)"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "Magenta street",
+      "ref": "market",
+      "primary": true,
+      "description": "Full magenta fields, neon light and bold prices.",
+      "materials": [
+        "neon",
+        "retail signs",
+        "magenta fields"
+      ],
+      "light": "neon and bright"
+    }
+  ],
+  "muse": {
+    "kind": "object",
+    "name": "the T-Digit",
+    "take": "one strong, simplified geometric letter (TM10)",
+    "leave": "the phone hardware"
+  },
+  "color": {
+    "anchors": [
+      {
+        "name": "Magenta",
+        "value": "#E20074",
+        "role": "primary"
+      },
+      {
+        "name": "White",
+        "value": "#FFFFFF",
+        "role": "ground"
+      },
+      {
+        "name": "Black",
+        "value": "#000000",
+        "role": "ink"
+      }
+    ],
+    "feedback": "independent",
+    "character": {
+      "vibrancy": "vivid",
+      "emphasis": "loud"
+    }
+  },
+  "type": {
+    "faces": {
+      "display": {
+        "ref": "manrope"
+      },
+      "body": {
+        "ref": "manrope"
+      },
+      "utility": {
+        "ref": "manrope"
+      }
+    },
+    "character": {
+      "type-scale": "dramatic"
+    },
+    "weights": {
+      "display": 800,
+      "heading": 700
+    }
+  },
+  "form": {
+    "curvature": "crisp",
+    "line": "borderless",
+    "elevation": "flat"
+  },
+  "movement": "lively",
+  "adaptivity": "light-first",
+  "voice": {
+    "tone": [
+      "confident",
+      "candid"
+    ]
+  },
+  "signature": {
+    "concept": "one loud magenta",
+    "scale": "emphasis",
+    "reason": "TM18 asks for magenta to lead every moment"
+  },
+  "rationale": {
+    "grounding.primary": "Inferred, not stated by the source. Departs from the canon: the system stays polished and accessible (TM14).",
+    "type.faces": "Stand-ins: TeleNeo (TM23) is outside the catalogue.",
+    "form.curvature": "the strengthened T-Digit (TM10)",
+    "form.line": "magenta fields (TM01)",
+    "form.elevation": "flat color (TM01)",
+    "color.character.vibrancy": "full magenta (TM18)",
+    "type.character.type-scale": "oversized headings (TM22)",
+    "color.character.emphasis": "magenta leads (TM18)",
+    "type.weights": "Heavier display weights, matching the sources’ headlines.",
+    "adaptivity": "white and magenta (TM01)",
+    "movement": "neon and the city change color (TM40)",
+    "color.anchors.0": "Printed on TM19.",
+    "color.anchors.1": "Sampled from TM16.",
+    "color.anchors.2": "Sampled from TM02."
+  }
+}

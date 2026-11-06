@@ -1,0 +1,120 @@
+{
+  "$schema": "../../../../packages/ui-kit/contracts/brand.schema.json",
+  "schemaVersion": 1,
+  "name": "whitney",
+  "subject": {
+    "name": "Whitney Museum",
+    "audience": "visitors to American art",
+    "primaryJob": "let one line respond to everything the museum shows",
+    "kind": "institution",
+    "sources": [
+      "the responsive W (WH04)",
+      "artwork above, W below (WH05)",
+      "Neue Haas Grotesk (WH16)"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "swiss-international",
+      "relation": "inherit",
+      "principles": [
+        "a grotesque with one rule (WH16)",
+        "the system responds to its content (WH05)"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "Gallery line",
+      "ref": "archive",
+      "primary": true,
+      "description": "White with one thin black line that folds around the art.",
+      "materials": [
+        "tickets",
+        "posters",
+        "fine lines"
+      ],
+      "light": "neutral gallery light"
+    }
+  ],
+  "muse": {
+    "kind": "work",
+    "name": "the zig-zag W",
+    "take": "one line that adapts (WH04)",
+    "leave": "the Breuer building"
+  },
+  "color": {
+    "anchors": [
+      {
+        "name": "Black",
+        "value": "#000000",
+        "role": "primary"
+      },
+      {
+        "name": "White",
+        "value": "#FFFFFF",
+        "role": "ground"
+      },
+      {
+        "name": "Black ink",
+        "value": "#000000",
+        "role": "ink"
+      }
+    ],
+    "feedback": "independent",
+    "character": {
+      "neutral": "true",
+      "vibrancy": "muted"
+    }
+  },
+  "type": {
+    "faces": {
+      "display": {
+        "ref": "helvetica-neue"
+      },
+      "body": {
+        "ref": "helvetica-neue"
+      },
+      "utility": {
+        "ref": "helvetica-neue"
+      }
+    },
+    "character": {},
+    "weights": {
+      "display": 700
+    }
+  },
+  "form": {
+    "curvature": "square",
+    "line": "hairline",
+    "elevation": "flat"
+  },
+  "movement": "calm",
+  "adaptivity": "light-first",
+  "voice": {
+    "tone": [
+      "plain",
+      "precise"
+    ]
+  },
+  "signature": {
+    "concept": "one fine line",
+    "scale": "line",
+    "reason": "the W muse is a single line (WH04)"
+  },
+  "rationale": {
+    "grounding.primary": "Inferred from the source: the process essay’s rationalism fits the canon.",
+    "type.faces": "Neue Haas Grotesk (WH16) is the source of Helvetica, the catalogue’s nearest face.",
+    "form.curvature": "diagonal segments, square ends (WH04)",
+    "form.line": "fine W lines (WH22)",
+    "form.elevation": "flat print (WH05)",
+    "color.character.neutral": "pure black and white (WH16)",
+    "color.character.vibrancy": "the art brings the color (WH05)",
+    "type.weights": "Heavier display weights, matching the sources’ headlines.",
+    "adaptivity": "white field (WH04)",
+    "movement": "the W builds slowly (WH17)",
+    "color.anchors.0": "Black line (WH04).",
+    "color.anchors.1": "Sampled from WH05.",
+    "color.anchors.2": "Black type (WH16)."
+  }
+}
