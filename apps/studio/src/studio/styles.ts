@@ -5,6 +5,7 @@ export const shell = css({ display: 'grid', gridTemplateColumns: { base: '1fr', 
 export const panel = css({ display: 'flex', flexDirection: 'column', minHeight: '0', borderRightWidth: 'thin', borderColor: 'border', bg: 'bg' });
 export const panelHeader = css({ display: 'flex', flexDirection: 'column', gap: '3', padding: '4', borderBottomWidth: 'thin', borderColor: 'border' });
 export const brand = css({ textStyle: 'heading-3' });
+export const themeSelect = css({ flex: '[0 1 11rem]', minWidth: '0', '& > ui-select': { width: 'full' } });
 export const titleRow = css({ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '2' });
 // The panel's ui-field-grid: it scrolls on its own; rows keep their height (align to the top).
 // One grid for every tab: the label column is fixed at the field grid's 40% cap (not sized to the tab's

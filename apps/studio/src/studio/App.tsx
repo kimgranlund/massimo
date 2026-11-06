@@ -26,7 +26,7 @@ import { generateSpectrumOff, lintThemeOff } from './engine.ts';
 import { HomePage } from '../pages/Home.tsx';
 import { FAMILIES, isFamily } from '../pages/families.ts';
 import { loadFontSource } from './fonts.ts';
-import { BrandEditor } from './BrandEditor.tsx';
+import { BRAND_CHOICES, BrandEditor, loadBrandChoice } from './BrandEditor.tsx';
 import { hydrate, validateBrand, type Brand } from '@massimo/ui-kit/tokens/brand/index';
 import { MotionPanel } from './MotionPanel.tsx';
 import { ICON_SET_NAMES } from '@massimo/ui-kit/icons/sets';
@@ -147,6 +147,7 @@ export function App() {
   // Brand anchors (color.anchors): carried through Load and Copy; a brand sets them on Apply.
   // The brand the theme came from (Brand page Apply, or Load of a brand or bundle); Copy then writes both.
   const [brand, setBrand] = useState<Brand | null>(null);
+  const chosenBrand = useRef<{ id: string; name: string } | null>(null); // the Theme choice behind the active brand
   const editTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
   useEffect(() => () => clearTimeout(editTimer.current), []);
   // The jig's own brand faces (its panel scope): from the built theme's typography.sources.
@@ -317,6 +318,16 @@ export function App() {
     setStatus('Reset to defaults');
   };
 
+  // The header's Theme select: the default theme, or a brand applied clean (no hand tuning carried over).
+  const chooseTheme = async (id: string) => {
+    if (id === 'active') return;
+    if (id === 'default') { const s = scheme; reset(); setScheme(s); setStatus('Default theme'); return; }
+    const b = await loadBrandChoice(id);
+    if (b) { chosenBrand.current = { id, name: b.name }; applyBrand(b); }
+  };
+  const themeChoice = !brand ? (themeName === 'custom' ? 'default' : 'active') : chosenBrand.current?.name === brand.name ? chosenBrand.current.id : BRAND_CHOICES.some(([id]) => id === brand.name) ? brand.name : 'active';
+  const themeOptions: [string, string][] = [['default', 'Default theme'], ...BRAND_CHOICES, ...(themeChoice === 'active' ? [['active', brand?.subject.name ?? themeName] as [string, string]] : [])];
+
   // The scheme applies to the whole jig: a .light/.dark class on <html> (none for auto).
   useEffect(() => {
     const root = document.documentElement;
@@ -360,7 +371,10 @@ export function App() {
       {/* The panel wears the jig's own brand (public/brand/massimo.scope.css); the canvas shows the theme being tuned. */}
       <aside className={s.panel} aria-label="Jig" data-size="3" data-ui-scope="massimo">
         <header className={s.panelHeader}>
-          <h1 className={s.brand}>Studio</h1>
+          <div className={s.titleRow}>
+            <h1 className={s.brand}>Studio</h1>
+            <div className={s.themeSelect}><SelectControl label="Theme" value={themeChoice} options={themeOptions} onValue={(v) => void chooseTheme(v)} /></div>
+          </div>
           <Segmented<PanelTab> ariaLabel="Panel" value={tab} onValue={setTab} options={PANEL_TABS} />
         </header>
 

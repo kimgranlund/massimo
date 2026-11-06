@@ -1,7 +1,7 @@
 // The panel's Brand tab: edit the active brand in place (frame, anchors, faces, closed choices,
 // signature) instead of authoring JSON. Every edit produces a new brand; the jig re-hydrates it
-// (tokens/brand hydrate), so the brand stays the source and the canvas follows. Start from a worked
-// brand or a blank one.
+// (tokens/brand hydrate), so the brand stays the source and the canvas follows. With no brand active
+// the form shows a blank one, which applies on the first edit; the header's Theme select picks a brand.
 import { useState } from 'react';
 import { DESCRIPTORS } from '@massimo/ui-kit/tokens/themes/descriptor-data';
 import { EXAMPLE_BRANDS } from '@massimo/ui-kit/tokens/brand/examples';
@@ -31,24 +31,19 @@ function Text({ label, value, onValue }: { label: string; value: string; onValue
   return <Field label={label}><ui-input ref={ref} label={label} hide-label="" value={value} /></Field>;
 }
 
-export function BrandEditor({ brand, onBrand }: { brand: Brand | null; onBrand: (b: Brand) => void }) {
-  return brand ? <BrandForm brand={brand} onBrand={onBrand} /> : <StartBrand onBrand={onBrand} />;
+/** The header's Theme select: id and label of each brand it can apply. */
+export const BRAND_CHOICES: [string, string][] = [['blank', 'Blank brand'], ...EXAMPLE_BRANDS.map((b) => [b.name, b.subject.name] as [string, string]), ...REFERENCE_BRANDS.map((b) => [b.id, b.label] as [string, string])];
+
+/** The brand behind a Theme choice. Reference brands load when chosen. */
+export async function loadBrandChoice(id: string): Promise<Brand | null> {
+  const reference = REFERENCE_BRANDS.find((b) => b.id === id);
+  if (!reference) return structuredClone(id === 'blank' ? BLANK : EXAMPLE_BRANDS.find((b) => b.name === id)!);
+  const r = validateBrand(structuredClone((await reference.load()).default)); // test/brand.test.ts holds them valid
+  return r.ok ? r.brand : null;
 }
 
-function StartBrand({ onBrand }: { onBrand: (b: Brand) => void }) {
-  const start = async (v: string) => {
-    if (v === 'choose') return;
-    const reference = REFERENCE_BRANDS.find((b) => b.id === v);
-    if (!reference) return onBrand(structuredClone(v === 'blank' ? BLANK : EXAMPLE_BRANDS.find((b) => b.name === v)!));
-    const r = validateBrand(structuredClone((await reference.load()).default)); // test/brand.test.ts holds them valid
-    if (r.ok) onBrand(r.brand);
-  };
-  return (
-    <Group title="Brand">
-      <Select label="Start from" value="choose" options={[['choose', 'Choose…'], ['blank', 'A blank brand'], ...EXAMPLE_BRANDS.map((b) => [b.name, b.subject.name] as [string, string]), ...REFERENCE_BRANDS.map((b) => [b.id, b.label] as [string, string])]}
-        onValue={(v) => void start(v)} />
-    </Group>
-  );
+export function BrandEditor({ brand, onBrand }: { brand: Brand | null; onBrand: (b: Brand) => void }) {
+  return <BrandForm brand={brand ?? BLANK} onBrand={onBrand} />;
 }
 
 function BrandForm({ brand, onBrand }: { brand: Brand; onBrand: (b: Brand) => void }) {
