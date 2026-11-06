@@ -1093,6 +1093,26 @@
         "inline"
       ],
       "behavior": "None: an animated ring. label sets the text and the accessible name; hide-label keeps only the name."
+    },
+    "kbd": {
+      "geometryFamily": "kbd",
+      "element": "Host holds a row of caps and a hidden label with the spoken key names; not focusable.",
+      "parts": [
+        "kbd-keys",
+        "kbd-cap",
+        "kbd-label"
+      ],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "form",
+        "inline"
+      ],
+      "behavior": "None: passive notation. keys draws one cap per key for the platform; it registers no shortcut."
     }
   }
 }

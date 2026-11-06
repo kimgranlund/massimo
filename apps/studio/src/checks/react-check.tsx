@@ -17,6 +17,7 @@ import '@massimo/ui-kit/components/input/element';
 import '@massimo/ui-kit/components/field/element';
 import '@massimo/ui-kit/components/separator/element';
 import '@massimo/ui-kit/components/spinner/element';
+import '@massimo/ui-kit/components/kbd/element';
 import '@massimo/ui-kit/components/avatar/element';
 import '@massimo/ui-kit/components/meter/element';
 import '@massimo/ui-kit/components/toggle/element';
@@ -64,6 +65,7 @@ import { Field } from '@massimo/ui-kit/components/field/react';
 import { Slider } from '@massimo/ui-kit/components/range/react';
 import { Separator } from '@massimo/ui-kit/components/separator/react';
 import { Spinner } from '@massimo/ui-kit/components/spinner/react';
+import { Kbd } from '@massimo/ui-kit/components/kbd/react';
 import { Avatar } from '@massimo/ui-kit/components/avatar/react';
 import { Meter } from '@massimo/ui-kit/components/meter/react';
 import { Toggle } from '@massimo/ui-kit/components/toggle/react';
@@ -190,6 +192,7 @@ function Pair({ u }: { u: number }) {
         <div style={{ width: 300 }}><ui-swiper data-k="swp" label="Highlights"><div style={{ height: 80 }}>One</div><div>Two</div><div>Three</div></ui-swiper></div>
         <div style={{ width: 200 }}><ui-image data-k="ims" slideshow ratio="square" alt="Products"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="1" /><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="2" /></ui-image></div>
         <ui-spinner data-k="spn" label="Saving" />
+        <ui-kbd data-k="kb" keys="mod+k" platform="mac" />
         <div style={{ width: 300 }}><ui-separator data-k="sp" /></div>
         <div style={{ display: 'flex', height: 40 }}><ui-separator data-k="spv" orientation="vertical" /></div>
         <ui-avatar data-k="av" name="Ada Lovelace" />
@@ -277,6 +280,7 @@ function Pair({ u }: { u: number }) {
         <div style={{ width: 300 }}><Swiper data-k="swp" label="Highlights"><div style={{ height: 80 }}>One</div><div>Two</div><div>Three</div></Swiper></div>
         <div style={{ width: 200 }}><Image data-k="ims" slideshow ratio="square" alt="Products"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="1" /><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="2" /></Image></div>
         <Spinner data-k="spn" label="Saving" />
+        <Kbd data-k="kb" keys="mod+k" platform="mac" />
         <div style={{ width: 300 }}><Separator data-k="sp" /></div>
         <div style={{ display: 'flex', height: 40 }}><Separator data-k="spv" orientation="vertical" /></div>
         <Avatar data-k="av" name="Ada Lovelace" />
@@ -672,7 +676,7 @@ setTimeout(() => {
   }
   for (const c of root.querySelectorAll('[data-case]')) {
     const [wc, re] = [c.querySelector('[data-side=wc]')!, c.querySelector('[data-side=react]')!];
-    for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'btP', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'fd', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'spn', 'flC', 'flL', 'flG', 'flN', 'gp', 'uc', 'ucN', 'ucL', 'ucL1', 'ucS', 'lb', 'sg', 'swp', 'ims', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD', 'col', 'colD', 'acc', 'tab', 'tabU', 'tst', ...GROUP_KEYS]) {
+    for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'btP', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'fd', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'spn', 'kb', 'flC', 'flL', 'flG', 'flN', 'gp', 'uc', 'ucN', 'ucL', 'ucL1', 'ucS', 'lb', 'sg', 'swp', 'ims', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD', 'col', 'colD', 'acc', 'tab', 'tabU', 'tst', ...GROUP_KEYS]) {
       const a = measure(host(wc, k)), b = measure(host(re, k));
       for (const key of Object.keys(a) as (keyof typeof a)[]) {
         checks++;
@@ -680,7 +684,7 @@ setTimeout(() => {
       }
     }
 
-    for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'btP', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'fd', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'spn', 'flC', 'flL', 'flG', 'flN', 'gp', 'uc', 'ucN', 'ucL', 'ucL1', 'ucS', 'lb', 'sg', 'swp', 'ims', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD', 'col', 'colD', 'acc', 'tab', 'tabU', 'mn', 'mnD', 'cm', 'mb', 'mbV', ...GROUP_KEYS]) {
+    for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'btP', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'fd', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'spn', 'kb', 'flC', 'flL', 'flG', 'flN', 'gp', 'uc', 'ucN', 'ucL', 'ucL1', 'ucS', 'lb', 'sg', 'swp', 'ims', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD', 'col', 'colD', 'acc', 'tab', 'tabU', 'mn', 'mnD', 'cm', 'mb', 'mbV', ...GROUP_KEYS]) {
       const a = measure(host(wc, k)), b = measure(host(re, k));
       for (const key of Object.keys(a) as (keyof typeof a)[]) {
         checks++;

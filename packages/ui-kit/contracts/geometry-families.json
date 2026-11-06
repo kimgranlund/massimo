@@ -589,6 +589,25 @@
       ],
       "ladder": null,
       "ladderWaiver": "One fixed mark per unit: it has no size variants for a ladder to compare."
+    },
+    "kbd": {
+      "id": "geometry:kbd",
+      "resolver": [
+        "resolveKbd"
+      ],
+      "summary": "A 5u cap, at least square, ½u from the next, with 10 + ½u text.",
+      "members": [
+        "component:kbd"
+      ],
+      "searchTerms": [
+        "kbd size",
+        "key cap"
+      ],
+      "csv": [
+        "kbd"
+      ],
+      "ladder": null,
+      "ladderWaiver": "One fixed mark per unit: it has no size variants for a ladder to compare."
     }
   }
 }

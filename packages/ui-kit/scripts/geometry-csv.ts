@@ -4,7 +4,7 @@
 import { writeFileSync } from 'node:fs';
 import { TYPE_ROLES, resolveType, type TypeRoleName } from '../tokens/typography/resolve.ts';
 import { fileURLToPath } from 'node:url';
-import { SIZES, GEOMETRY_DEFAULTS, resolveSpinner, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveButtonContents, resolveTextRun, popupOffset, resolveBtg, resolveChoice, resolveTrack, trackFill, resolveSwatch, resolveSwiper, resolveFieldRow, resolveFieldGrid, resolveImage, IMAGE_RATIOS, resolveContainer, CONTAINERS, PAGE_MAX_WIDTH_REM, resolveSeparator, resolveAvatar, resolveMeter, AVATAR_SIZES, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolveToast, resolveForm, resolveScrollArea, type AvatarSize, type ContainerLevel, resolveDialog, resolveDrawer, resolveMenu, resolveMenubar, resolvePopup, resolveNavigationMenu } from '../tokens/geometry/resolve.ts';
+import { SIZES, GEOMETRY_DEFAULTS, resolveSpinner, resolveKbd, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveButtonContents, resolveTextRun, popupOffset, resolveBtg, resolveChoice, resolveTrack, trackFill, resolveSwatch, resolveSwiper, resolveFieldRow, resolveFieldGrid, resolveImage, IMAGE_RATIOS, resolveContainer, CONTAINERS, PAGE_MAX_WIDTH_REM, resolveSeparator, resolveAvatar, resolveMeter, AVATAR_SIZES, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolveToast, resolveForm, resolveScrollArea, type AvatarSize, type ContainerLevel, resolveDialog, resolveDrawer, resolveMenu, resolveMenubar, resolvePopup, resolveNavigationMenu } from '../tokens/geometry/resolve.ts';
 import { resolveNumberField } from '../tokens/geometry/resolve.ts';
 import { resolveOtpField } from '../tokens/geometry/resolve.ts';
 import { resolveCombobox } from '../tokens/geometry/resolve.ts';
@@ -169,6 +169,9 @@ export const rows: Row[] = [
   { id: 'btg.chip.radius', family: 'btg', element: 'chip', quantity: 'radius', formula: 'min((0.5u′ + slot / 3) * s, chip / 2)', value: (u) => resolveBtg('chip', { unit: u }).radius, status: 'implemented', notes: 'concentric with the slot (the button: 1u + 6u / 3 = 3u); tag and badge use their own u′ and slot' },
 
   // Separator
+  { id: 'kbd.height', family: 'kbd', element: 'kbd', quantity: 'cap height', formula: '5u', value: (u) => resolveKbd({ unit: u }).height, status: 'implemented', notes: 'at least square' },
+  { id: 'kbd.gap', family: 'kbd', element: 'kbd', quantity: 'gap between caps', formula: 'u / 2', value: (u) => resolveKbd({ unit: u }).gap, status: 'implemented', notes: '' },
+  { id: 'kbd.font', family: 'kbd', element: 'kbd', quantity: 'font size', formula: '10 + u / 2', value: (u) => resolveKbd({ unit: u }).fontSize, status: 'implemented', notes: '' },
   { id: 'spinner.ring', family: 'spinner', element: 'spinner', quantity: 'ring diameter', formula: '4u', value: (u) => resolveSpinner({ unit: u }).ring, status: 'implemented', notes: '' },
   { id: 'spinner.stroke', family: 'spinner', element: 'spinner', quantity: 'ring stroke', formula: 'u / 2', value: (u) => resolveSpinner({ unit: u }).stroke, status: 'implemented', notes: '' },
   { id: 'spinner.gap', family: 'spinner', element: 'spinner', quantity: 'gap to the label', formula: '2u', value: (u) => resolveSpinner({ unit: u }).gap, status: 'implemented', notes: '' },

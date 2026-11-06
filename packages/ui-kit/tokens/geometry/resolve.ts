@@ -562,6 +562,15 @@ export function resolveSpinner(input: GeometryInput = {}) {
   return { ring: SPINNER.ring * u, stroke: SPINNER.stroke * u, gap: SPINNER.gap * u };
 }
 
+// ── Display: kbd ──
+/** A key cap's height, gap, inline padding, text step and radius, in u. */
+export const KBD = { height: 5, gap: 0.5, inline: 1, font: 0.5, radius: 1 } as const;
+/** ui-kbd: a 5u cap, at least square, ½u from the next, with 10 + ½u text. Density doesn't change it. */
+export function resolveKbd(input: GeometryInput = {}) {
+  const x = inputs(input), u = x.unit, height = KBD.height * u;
+  return { height, minWidth: height, gap: KBD.gap * u, paddingInline: KBD.inline * u, fontSize: 10 + KBD.font * u, radius: Math.min(KBD.radius * u * x.radiusScale, height / 2) };
+}
+
 // ── Display: avatar ──
 // An avatar is a square on the slot and control ladder: sm = the 6u slot (it fits a button's
 // leading slot), md = the 8u control height (default), lg = 12u, xl = 16u. It is a control scaled by

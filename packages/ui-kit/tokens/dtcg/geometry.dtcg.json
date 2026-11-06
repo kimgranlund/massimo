@@ -5659,6 +5659,119 @@
       }
     }
   },
+  "kbd": {
+    "height": {
+      "$type": "dimension",
+      "$value": {
+        "value": 22.5,
+        "unit": "px"
+      },
+      "$description": "kbd · cap height · at least square",
+      "$extensions": {
+        "com.massimo.formula": "5u",
+        "com.massimo.status": "implemented",
+        "com.massimo.bySize": {
+          "u=2": 10,
+          "u=2.25": 11.25,
+          "u=2.5": 12.5,
+          "u=2.75": 13.75,
+          "u=3": 15,
+          "u=3.5": 17.5,
+          "u=4": 20,
+          "u=4.5": 22.5,
+          "u=5": 25,
+          "u=5.5": 27.5,
+          "u=6": 30,
+          "u=6.5": 32.5,
+          "u=7": 35,
+          "u=7.5": 37.5,
+          "u=8": 40,
+          "u=8.5": 42.5,
+          "u=9": 45,
+          "u=9.5": 47.5,
+          "u=10": 50,
+          "u=10.5": 52.5,
+          "u=11": 55,
+          "u=11.5": 57.5,
+          "u=12": 60
+        }
+      }
+    },
+    "gap": {
+      "$type": "dimension",
+      "$value": {
+        "value": 2.25,
+        "unit": "px"
+      },
+      "$description": "kbd · gap between caps",
+      "$extensions": {
+        "com.massimo.formula": "u / 2",
+        "com.massimo.status": "implemented",
+        "com.massimo.bySize": {
+          "u=2": 1,
+          "u=2.25": 1.125,
+          "u=2.5": 1.25,
+          "u=2.75": 1.375,
+          "u=3": 1.5,
+          "u=3.5": 1.75,
+          "u=4": 2,
+          "u=4.5": 2.25,
+          "u=5": 2.5,
+          "u=5.5": 2.75,
+          "u=6": 3,
+          "u=6.5": 3.25,
+          "u=7": 3.5,
+          "u=7.5": 3.75,
+          "u=8": 4,
+          "u=8.5": 4.25,
+          "u=9": 4.5,
+          "u=9.5": 4.75,
+          "u=10": 5,
+          "u=10.5": 5.25,
+          "u=11": 5.5,
+          "u=11.5": 5.75,
+          "u=12": 6
+        }
+      }
+    },
+    "font": {
+      "$type": "dimension",
+      "$value": {
+        "value": 12.25,
+        "unit": "px"
+      },
+      "$description": "kbd · font size",
+      "$extensions": {
+        "com.massimo.formula": "10 + u / 2",
+        "com.massimo.status": "implemented",
+        "com.massimo.bySize": {
+          "u=2": 11,
+          "u=2.25": 11.125,
+          "u=2.5": 11.25,
+          "u=2.75": 11.375,
+          "u=3": 11.5,
+          "u=3.5": 11.75,
+          "u=4": 12,
+          "u=4.5": 12.25,
+          "u=5": 12.5,
+          "u=5.5": 12.75,
+          "u=6": 13,
+          "u=6.5": 13.25,
+          "u=7": 13.5,
+          "u=7.5": 13.75,
+          "u=8": 14,
+          "u=8.5": 14.25,
+          "u=9": 14.5,
+          "u=9.5": 14.75,
+          "u=10": 15,
+          "u=10.5": 15.25,
+          "u=11": 15.5,
+          "u=11.5": 15.75,
+          "u=12": 16
+        }
+      }
+    }
+  },
   "spinner": {
     "ring": {
       "$type": "dimension",

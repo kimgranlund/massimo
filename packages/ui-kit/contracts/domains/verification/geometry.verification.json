@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "tokens/geometry/resolve.ts",
-      "sha256": "498a86b6681c472929849a05efea3bc87cb35cb97a972178c6de89c0137b7d6c"
+      "sha256": "955471b22aff3e2f3a0910dba11986ffe3ff1f7c499bbd1a4488214740b4aff5"
     },
     {
       "path": "tokens/geometry/index.ts",
@@ -14,7 +14,7 @@
     },
     {
       "path": "styles/geometry.ts",
-      "sha256": "b978ecd171ac7a0a9637edbef84d9763e29c7e48c293cc468247453fc8f88f7b"
+      "sha256": "653adb9ddd21b5945d486fb980029e04d2be2945e3dd6d26d391c7a9f597ec97"
     },
     {
       "path": "tokens/elevation/index.ts",

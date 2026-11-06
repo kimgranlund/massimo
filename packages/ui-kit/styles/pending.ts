@@ -56,6 +56,7 @@ export const pending = defineGlobalStyles({
   // A toast viewport has no size of its own until toasts arrive; it stays out of sight until defined.
   'ui-toast-viewport:not(:defined)': { display: 'none' },
   // A separator reserves its rule (thickness max(1px, B)) until its classes arrive.
+  'ui-kbd:not(:defined)': { display: 'inline-block', minWidth: 'calc(5 * var(--u))', minHeight: 'calc(5 * var(--u))' },
   'ui-spinner:not(:defined)': { display: 'inline-block', minWidth: 'calc(4 * var(--u))', minHeight: 'calc(4 * var(--u))' },
   'ui-separator:not(:defined)': { display: 'block', flexShrink: 0, alignSelf: 'stretch', height: 'var(--separator)' },
   'ui-separator[orientation=vertical]:not(:defined)': { height: 'auto', width: 'var(--separator)' },

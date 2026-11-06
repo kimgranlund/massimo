@@ -14,6 +14,7 @@ import { image } from './image/image.recipe.ts';
 import { uiContainer } from './container/container.recipe.ts';
 import { row } from './row/row.recipe.ts';
 import { spinner } from './spinner/spinner.recipe.ts';
+import { kbd } from './kbd/kbd.recipe.ts';
 import { column, grid, list } from './flow/flow.recipe.ts';
 import { section } from './section/section.recipe.ts';
 import { field, fieldGrid } from './field/field.recipe.ts';
@@ -45,7 +46,7 @@ import { tooltip } from './tooltip/tooltip.recipe.ts';
 import { previewCard } from './preview-card/preview-card.recipe.ts';
 import { navigationMenu } from './navigation-menu/navigation-menu.recipe.ts';
 
-export const slotRecipes = { badge, tag, chip, button, checkbox, radio, switchRecipe, range, progress, swatch, palette, listbox, segmented, option, input, select, swiper, image, uiContainer, row, column, list, gridRecipe: grid, section, field, fieldGrid, separator, spinner, avatar, meter, toggle, radioGroup, checkboxGroup, fieldset, collapsible, accordion, tabs, toast, form, scrollArea, numberField, otpField, combobox, autocomplete, toggleGroup, dialog, alertDialog, drawer, menu, contextMenu, menubar, popover, tooltip, previewCard, navigationMenu };
+export const slotRecipes = { badge, tag, chip, button, checkbox, radio, switchRecipe, range, progress, swatch, palette, listbox, segmented, option, input, select, swiper, image, uiContainer, row, column, list, gridRecipe: grid, section, field, fieldGrid, separator, spinner, kbd, avatar, meter, toggle, radioGroup, checkboxGroup, fieldset, collapsible, accordion, tabs, toast, form, scrollArea, numberField, otpField, combobox, autocomplete, toggleGroup, dialog, alertDialog, drawer, menu, contextMenu, menubar, popover, tooltip, previewCard, navigationMenu };
 
 
 

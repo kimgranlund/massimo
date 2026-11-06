@@ -1,0 +1,254 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "kbd",
+  "primary": "component:kbd",
+  "module": "./kbd.element.ts",
+  "registration": "on-import",
+  "documentation": "./kbd.md",
+  "examples": "./kbd.examples.json",
+  "contract": "../../contracts/components.json#/components/kbd",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./kbd.recipe.ts"
+  },
+  "nodes": [
+    {
+      "id": "component:kbd",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-kbd",
+      "class": "UIKbd",
+      "extends": "UIElement",
+      "intent": [
+        "Show keys and keyboard shortcuts"
+      ],
+      "properties": [
+        {
+          "key": "keys",
+          "type": "string",
+          "default": "",
+          "attribute": "keys",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "platform",
+          "type": "string",
+          "default": "auto",
+          "attribute": "platform",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        }
+      ],
+      "attributes": [],
+      "events": [],
+      "semantics": {
+        "role": null,
+        "formAssociated": false,
+        "accessibleName": {
+          "sources": [
+            "the spoken key names"
+          ],
+          "required": false
+        }
+      },
+      "content": {
+        "ownership": "component",
+        "acceptsChildren": true,
+        "children": "Text content is the keys input for a single key."
+      },
+      "layout": {
+        "display": "inline-flex",
+        "sizing": "intrinsic"
+      },
+      "constraints": [
+        "Notation only: it registers no shortcut and takes no focus.",
+        "Assistive technology reads the key names, not the symbols.",
+        "Density doesn't change the cap."
+      ],
+      "avoidWhen": [
+        {
+          "when": "The user acts by pressing it on screen.",
+          "reason": "A kbd is passive.",
+          "useInstead": "component:button"
+        },
+        {
+          "when": "A short status or count.",
+          "reason": "A kbd only names keys.",
+          "useInstead": "component:badge"
+        }
+      ],
+      "searchTerms": [
+        "kbd",
+        "keyboard",
+        "shortcut",
+        "hotkey",
+        "key cap",
+        "keycap",
+        "command key"
+      ]
+    },
+    {
+      "id": "part:kbd-keys",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "span",
+      "selector": ":scope > [data-part=keys]",
+      "summary": "The row of caps, hidden from assistive technology."
+    },
+    {
+      "id": "part:kbd-cap",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "span",
+      "selector": ":scope > [data-part=keys] > [data-part=cap]",
+      "summary": "One key."
+    },
+    {
+      "id": "part:kbd-label",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "span",
+      "selector": ":scope > [data-part=label]",
+      "summary": "The visually hidden spoken key names."
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:kbd",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:kbd",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:kbd",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:kbd",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:kbd",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:kbd",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:kbd",
+      "relation": "usesGeometry",
+      "to": "geometry:kbd"
+    },
+    {
+      "from": "component:kbd",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:kbd",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:kbd",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:kbd",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:kbd",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:kbd",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:kbd",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:kbd",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:kbd",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:kbd",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
+      "from": "component:kbd",
+      "relation": "ownsPart",
+      "to": "part:kbd-keys"
+    },
+    {
+      "from": "component:kbd",
+      "relation": "ownsPart",
+      "to": "part:kbd-cap"
+    },
+    {
+      "from": "component:kbd",
+      "relation": "ownsPart",
+      "to": "part:kbd-label"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./kbd.element.ts",
+      "exports": {
+        "component:kbd": "UIKbd"
+      },
+      "verification": "./verification/kbd.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./kbd.react.tsx",
+      "exports": {
+        "component:kbd": "Kbd"
+      },
+      "verification": "./verification/kbd.verification.json#/renderers/react",
+      "props": {
+        "component:kbd": {
+          "inherits": [
+            "Omit<HTMLAttributes<HTMLElement>, 'children'>"
+          ],
+          "props": [
+            "keys: string // Keys joined with +, such as mod+shift+p. mod is Command on a Mac and Control elsewhere.",
+            "platform?: 'auto' | KbdPlatform = 'auto' // auto follows the viewer's platform.",
+            "size?: number // Unit u in px for this element."
+          ]
+        }
+      }
+    }
+  }
+}

@@ -323,6 +323,21 @@
         "form field"
       ]
     },
+    "component:kbd": {
+      "kind": "component",
+      "source": "components/kbd/kbd.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-kbd",
+      "searchTerms": [
+        "kbd",
+        "keyboard",
+        "shortcut",
+        "hotkey",
+        "key cap",
+        "keycap",
+        "command key"
+      ]
+    },
     "component:list": {
       "kind": "component",
       "source": "components/flow/flow.manifest.json#/nodes/1",
@@ -2453,6 +2468,15 @@
         "slideshow"
       ]
     },
+    "geometry:kbd": {
+      "kind": "geometry",
+      "source": "contracts/geometry-families.json#/families/kbd",
+      "availability": "implemented",
+      "searchTerms": [
+        "kbd size",
+        "key cap"
+      ]
+    },
     "geometry:menu": {
       "kind": "geometry",
       "source": "contracts/geometry-families.json#/families/menu",
@@ -4470,6 +4494,33 @@
       "tag": "div",
       "searchTerms": [
         "input editor"
+      ]
+    },
+    "part:kbd-cap": {
+      "kind": "part",
+      "source": "components/kbd/kbd.manifest.json#/nodes/2",
+      "availability": "implemented",
+      "tag": "span",
+      "searchTerms": [
+        "kbd cap"
+      ]
+    },
+    "part:kbd-keys": {
+      "kind": "part",
+      "source": "components/kbd/kbd.manifest.json#/nodes/1",
+      "availability": "implemented",
+      "tag": "span",
+      "searchTerms": [
+        "kbd keys"
+      ]
+    },
+    "part:kbd-label": {
+      "kind": "part",
+      "source": "components/kbd/kbd.manifest.json#/nodes/3",
+      "availability": "implemented",
+      "tag": "span",
+      "searchTerms": [
+        "kbd label"
       ]
     },
     "part:menu-checkbox-item": {
@@ -8914,6 +8965,106 @@
       "from": "component:input",
       "relation": "uses",
       "to": "foundation:modality"
+    },
+    {
+      "from": "component:kbd",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:kbd",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:kbd",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:kbd",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:kbd",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:kbd",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:kbd",
+      "relation": "usesGeometry",
+      "to": "geometry:kbd"
+    },
+    {
+      "from": "component:kbd",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:kbd",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:kbd",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:kbd",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:kbd",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:kbd",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:kbd",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:kbd",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:kbd",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:kbd",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
+      "from": "component:kbd",
+      "relation": "ownsPart",
+      "to": "part:kbd-keys"
+    },
+    {
+      "from": "component:kbd",
+      "relation": "ownsPart",
+      "to": "part:kbd-cap"
+    },
+    {
+      "from": "component:kbd",
+      "relation": "ownsPart",
+      "to": "part:kbd-label"
     },
     {
       "from": "component:listbox",

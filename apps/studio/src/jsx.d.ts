@@ -37,6 +37,7 @@ declare module 'react' {
       'ui-input': El<{ ref?: any; label?: string; type?: string; name?: string; value?: string; placeholder?: string; description?: string; error?: string; required?: boolean; disabled?: boolean; readonly?: boolean; minlength?: number; pattern?: string; labelledby?: string; describedby?: string }>;
       'ui-field': El<{ label?: string; unit?: string; readout?: string; description?: string; error?: string; layout?: 'stacked' | 'inline' }>;
       'ui-field-grid': El<{}>;
+      'ui-kbd': El<{ keys?: string; platform?: 'auto' | 'mac' | 'other' }>;
       'ui-spinner': El<{ label?: string; 'hide-label'?: string | boolean }>;
       'ui-separator': El<{ orientation?: 'horizontal' | 'vertical' }>;
       'ui-toggle': El<{ pressed?: boolean; 'default-pressed'?: boolean; disabled?: boolean; value?: string; 'icon-size'?: string }>;
