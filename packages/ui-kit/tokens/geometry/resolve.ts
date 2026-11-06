@@ -553,6 +553,15 @@ export function resolveSeparator(input: GeometryInput = {}) {
   return { unit: x.unit, border: b, thickness: Math.max(1, b) };
 }
 
+// ── Display: spinner ──
+/** A spinner's ring, stroke and label gap, in u. */
+export const SPINNER = { ring: 4, stroke: 0.5, gap: 2 } as const;
+/** ui-spinner: a 4u ring with a u/2 stroke, 2u from its label. */
+export function resolveSpinner(input: GeometryInput = {}) {
+  const u = inputs(input).unit;
+  return { ring: SPINNER.ring * u, stroke: SPINNER.stroke * u, gap: SPINNER.gap * u };
+}
+
 // ── Display: avatar ──
 // An avatar is a square on the slot and control ladder: sm = the 6u slot (it fits a button's
 // leading slot), md = the 8u control height (default), lg = 12u, xl = 16u. It is a control scaled by

@@ -1,0 +1,72 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "spinner",
+  "scope": "Role, orientation and data-* of the web component in happy-dom and of the React renderer in react-dom/server (node:test), and their state parity. Rendered thickness is covered by the browser geometry check; visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "components/spinner/spinner.element.ts",
+      "sha256": "7d35f0db60ead1730f7dae27bf833034192e95185303de887ba8d328a13278f3"
+    },
+    {
+      "path": "components/spinner/spinner.react.tsx",
+      "sha256": "7a4e872149bfb6b844a16dbc4a29089fe90fd480772d1162f4299faa296ffb21"
+    },
+    {
+      "path": "components/spinner/spinner.recipe.ts",
+      "sha256": "23fe8a245a38dd0d7ea1807e4539bcbb2bde6fa22044b126dd61a815328568d6"
+    },
+    {
+      "path": "components/spinner/spinner.manifest.json",
+      "sha256": "5c336b1cc10abe00322c800f96d9d5430322d57851f7bbaf42675aba066b30ca"
+    },
+    {
+      "path": "dom/display.ts",
+      "sha256": "c462000f5f63e141072f22e124db0311f3ccb3adb492b43882a3370d2a069d99"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test test/spinner.test.ts",
+          "covers": "role, accessible name, label, resolver, intent token and reduced motion"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-06",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/spinner.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test test/spinner.test.ts",
+          "covers": "SSR markup and semantics"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-06",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/spinner.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "Geometry review (manual, 2026-11-02): thickness max(1px, B) checked in apps/studio/geometry-check.html at every size × B 0 and 1 (horizontal height, vertical width, full span); growth: a horizontal spinner spans any container width and a vertical one any row height, it has no text; RTL: nothing to mirror; focus: not focusable; light and dark screenshots of the Display family at the theme unit and the size ladder (3, 4, 6) on the Components page.",
+    "React styling parity is checked in the browser: apps/studio/react-check.html compares the React Spinner with ui-spinner at five sizes (\"fails\": []).",
+    "The source list is the direct sources, not every transitive dependency.",
+    "Geometry review, manual items (2026-11-06): 2 ring, stroke and gap derive from u; 3 the ring is a fixed 4u mark, not a slot; 4 no leading or trailing parts; 5 and 6 no border budget, and the ring is a circle; 7 the label uses the body-sm role; 8 the 2u gap is fixed; 9 no floating layer; 10 the ring never shrinks and a long label wraps beside it; 11 no focus stop."
+  ]
+}

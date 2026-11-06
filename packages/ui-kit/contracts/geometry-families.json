@@ -569,6 +569,26 @@
         "popup"
       ],
       "ladder": "popup"
+    },
+    "spinner": {
+      "id": "geometry:spinner",
+      "resolver": [
+        "resolveSpinner"
+      ],
+      "summary": "A 4u ring with a u/2 stroke, 2u from its label.",
+      "members": [
+        "component:spinner"
+      ],
+      "searchTerms": [
+        "spinner size",
+        "ring",
+        "loading indicator"
+      ],
+      "csv": [
+        "spinner"
+      ],
+      "ladder": null,
+      "ladderWaiver": "One fixed mark per unit: it has no size variants for a ladder to compare."
     }
   }
 }

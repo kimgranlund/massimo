@@ -61,3 +61,6 @@ export function avatarAttrs(s: { alt?: string; name?: string }): Attrs {
   const label = s.alt || s.name || undefined;
   return { role: label ? 'img' : undefined, 'aria-label': label };
 }
+
+/** Spinner ARIA: a polite status named by its label, or Loading. */
+export const spinnerAttrs = (label: string): Attrs => ({ role: 'status', 'aria-label': label || 'Loading' });

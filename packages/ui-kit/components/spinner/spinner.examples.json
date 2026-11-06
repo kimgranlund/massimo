@@ -1,0 +1,34 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "spinner",
+  "title": "Spinner",
+  "summary": "A ring for pending work of unknown length.",
+  "defaultExample": "bare",
+  "examples": [
+    {
+      "id": "bare",
+      "label": "Ring only",
+      "subject": "component:spinner",
+      "markup": "<ui-spinner></ui-spinner>"
+    },
+    {
+      "id": "label",
+      "label": "With a label",
+      "subject": "component:spinner",
+      "markup": "<ui-spinner label=\"Saving changes\"></ui-spinner>"
+    },
+    {
+      "id": "hidden-label",
+      "label": "Named, with no visible text",
+      "subject": "component:spinner",
+      "markup": "<ui-spinner label=\"Loading results\" hide-label></ui-spinner>"
+    },
+    {
+      "id": "sizes",
+      "label": "Follows the unit",
+      "subject": "component:spinner",
+      "markup": "<ui-spinner size=\"3\"></ui-spinner><ui-spinner size=\"4\"></ui-spinner><ui-spinner size=\"6\"></ui-spinner>"
+    }
+  ]
+}

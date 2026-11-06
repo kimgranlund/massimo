@@ -618,6 +618,20 @@
         "line"
       ]
     },
+    "component:spinner": {
+      "kind": "component",
+      "source": "components/spinner/spinner.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-spinner",
+      "searchTerms": [
+        "spinner",
+        "loading",
+        "loader",
+        "busy",
+        "pending",
+        "activity indicator"
+      ]
+    },
     "component:swatch": {
       "kind": "component",
       "source": "components/color/color.manifest.json#/nodes/0",
@@ -2505,6 +2519,16 @@
         "separator thickness",
         "divider",
         "rule"
+      ]
+    },
+    "geometry:spinner": {
+      "kind": "geometry",
+      "source": "contracts/geometry-families.json#/families/spinner",
+      "availability": "implemented",
+      "searchTerms": [
+        "spinner size",
+        "ring",
+        "loading indicator"
       ]
     },
     "geometry:swatch": {
@@ -4962,6 +4986,24 @@
       "searchTerms": [
         "trailing icon",
         "trailing slot"
+      ]
+    },
+    "part:spinner-label": {
+      "kind": "part",
+      "source": "components/spinner/spinner.manifest.json#/nodes/2",
+      "availability": "implemented",
+      "tag": "span",
+      "searchTerms": [
+        "spinner label"
+      ]
+    },
+    "part:spinner-ring": {
+      "kind": "part",
+      "source": "components/spinner/spinner.manifest.json#/nodes/1",
+      "availability": "implemented",
+      "tag": "span",
+      "searchTerms": [
+        "spinner ring"
       ]
     },
     "part:swiper-dot": {
@@ -11007,6 +11049,101 @@
       "from": "component:separator",
       "relation": "allowedIn",
       "to": "context:inline"
+    },
+    {
+      "from": "component:spinner",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:spinner",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:spinner",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:spinner",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:spinner",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:spinner",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:spinner",
+      "relation": "usesGeometry",
+      "to": "geometry:spinner"
+    },
+    {
+      "from": "component:spinner",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:spinner",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:spinner",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:spinner",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:spinner",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:spinner",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:spinner",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:spinner",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:spinner",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:spinner",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
+      "from": "component:spinner",
+      "relation": "ownsPart",
+      "to": "part:spinner-ring"
+    },
+    {
+      "from": "component:spinner",
+      "relation": "ownsPart",
+      "to": "part:spinner-label"
     },
     {
       "from": "component:swiper",

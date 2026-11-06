@@ -4,7 +4,7 @@
 import { writeFileSync } from 'node:fs';
 import { TYPE_ROLES, resolveType, type TypeRoleName } from '../tokens/typography/resolve.ts';
 import { fileURLToPath } from 'node:url';
-import { SIZES, GEOMETRY_DEFAULTS, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveButtonContents, resolveTextRun, popupOffset, resolveBtg, resolveChoice, resolveTrack, trackFill, resolveSwatch, resolveSwiper, resolveFieldRow, resolveFieldGrid, resolveImage, IMAGE_RATIOS, resolveContainer, CONTAINERS, PAGE_MAX_WIDTH_REM, resolveSeparator, resolveAvatar, resolveMeter, AVATAR_SIZES, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolveToast, resolveForm, resolveScrollArea, type AvatarSize, type ContainerLevel, resolveDialog, resolveDrawer, resolveMenu, resolveMenubar, resolvePopup, resolveNavigationMenu } from '../tokens/geometry/resolve.ts';
+import { SIZES, GEOMETRY_DEFAULTS, resolveSpinner, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveButtonContents, resolveTextRun, popupOffset, resolveBtg, resolveChoice, resolveTrack, trackFill, resolveSwatch, resolveSwiper, resolveFieldRow, resolveFieldGrid, resolveImage, IMAGE_RATIOS, resolveContainer, CONTAINERS, PAGE_MAX_WIDTH_REM, resolveSeparator, resolveAvatar, resolveMeter, AVATAR_SIZES, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolveToast, resolveForm, resolveScrollArea, type AvatarSize, type ContainerLevel, resolveDialog, resolveDrawer, resolveMenu, resolveMenubar, resolvePopup, resolveNavigationMenu } from '../tokens/geometry/resolve.ts';
 import { resolveNumberField } from '../tokens/geometry/resolve.ts';
 import { resolveOtpField } from '../tokens/geometry/resolve.ts';
 import { resolveCombobox } from '../tokens/geometry/resolve.ts';
@@ -169,6 +169,9 @@ export const rows: Row[] = [
   { id: 'btg.chip.radius', family: 'btg', element: 'chip', quantity: 'radius', formula: 'min((0.5u′ + slot / 3) * s, chip / 2)', value: (u) => resolveBtg('chip', { unit: u }).radius, status: 'implemented', notes: 'concentric with the slot (the button: 1u + 6u / 3 = 3u); tag and badge use their own u′ and slot' },
 
   // Separator
+  { id: 'spinner.ring', family: 'spinner', element: 'spinner', quantity: 'ring diameter', formula: '4u', value: (u) => resolveSpinner({ unit: u }).ring, status: 'implemented', notes: '' },
+  { id: 'spinner.stroke', family: 'spinner', element: 'spinner', quantity: 'ring stroke', formula: 'u / 2', value: (u) => resolveSpinner({ unit: u }).stroke, status: 'implemented', notes: '' },
+  { id: 'spinner.gap', family: 'spinner', element: 'spinner', quantity: 'gap to the label', formula: '2u', value: (u) => resolveSpinner({ unit: u }).gap, status: 'implemented', notes: '' },
   { id: 'separator.thickness', family: 'separator', element: 'separator', quantity: 'thickness (height, or width when vertical)', formula: 'max(1px, B)', value: (u) => resolveSeparator({ unit: u }).thickness, status: 'implemented', notes: 'B = min(border, u/2): a hairline at B = 0 and 1; the theme border above' },
   { id: 'separator.thicknessAtB2', family: 'separator', element: 'separator', quantity: 'thickness at B = 2', formula: 'max(1px, min(2, u/2))', value: (u) => resolveSeparator({ unit: u, border: Math.min(2, u / 2) }).thickness, status: 'implemented', notes: 'spans the other axis; no padding or margin (the container gap spaces it)' },
 

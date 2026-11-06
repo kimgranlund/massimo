@@ -1074,6 +1074,25 @@
         "dialog"
       ],
       "behavior": "None."
+    },
+    "spinner": {
+      "geometryFamily": "spinner",
+      "element": "Host is the status (role=status), with a decorative ring and a label part; not focusable.",
+      "parts": [
+        "spinner-ring",
+        "spinner-label"
+      ],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "form",
+        "inline"
+      ],
+      "behavior": "None: an animated ring. label sets the text and the accessible name; hide-label keeps only the name."
     }
   }
 }

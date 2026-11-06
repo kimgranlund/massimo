@@ -1,0 +1,241 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "spinner",
+  "primary": "component:spinner",
+  "module": "./spinner.element.ts",
+  "registration": "on-import",
+  "documentation": "./spinner.md",
+  "examples": "./spinner.examples.json",
+  "contract": "../../contracts/components.json#/components/spinner",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./spinner.recipe.ts"
+  },
+  "nodes": [
+    {
+      "id": "component:spinner",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-spinner",
+      "class": "UISpinner",
+      "extends": "UIElement",
+      "intent": [
+        "Show pending work of unknown length"
+      ],
+      "properties": [
+        {
+          "key": "label",
+          "type": "string",
+          "default": "",
+          "attribute": "label",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "hideLabel",
+          "type": "boolean",
+          "default": false,
+          "attribute": "hide-label",
+          "reflects": false,
+          "inspector": {
+            "control": "toggle"
+          }
+        }
+      ],
+      "attributes": [],
+      "events": [],
+      "semantics": {
+        "role": "status",
+        "formAssociated": false,
+        "accessibleName": {
+          "sources": [
+            "label",
+            "Loading by default"
+          ],
+          "required": false
+        }
+      },
+      "content": {
+        "ownership": "component",
+        "acceptsChildren": false,
+        "children": "None: the label attribute is the text."
+      },
+      "layout": {
+        "display": "inline-flex",
+        "sizing": "intrinsic"
+      },
+      "constraints": [
+        "Mount it while work is pending and remove it when the work ends.",
+        "A polite status: no focus stop, and no timer of its own.",
+        "The ring holds still under prefers-reduced-motion."
+      ],
+      "avoidWhen": [
+        {
+          "when": "The amount done is known.",
+          "reason": "A spinner gives no measure of progress.",
+          "useInstead": "component:progress"
+        },
+        {
+          "when": "Reporting how an operation ended.",
+          "reason": "A spinner only means pending.",
+          "useInstead": "component:toast"
+        }
+      ],
+      "searchTerms": [
+        "spinner",
+        "loading",
+        "loader",
+        "busy",
+        "pending",
+        "activity indicator"
+      ]
+    },
+    {
+      "id": "part:spinner-ring",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "span",
+      "selector": ":scope > [data-part=ring]",
+      "summary": "The decorative turning ring; hidden from assistive technology."
+    },
+    {
+      "id": "part:spinner-label",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "span",
+      "selector": ":scope > [data-part=label]",
+      "summary": "The visible label. Hidden when there is none, or with hide-label."
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:spinner",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:spinner",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:spinner",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:spinner",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:spinner",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:spinner",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:spinner",
+      "relation": "usesGeometry",
+      "to": "geometry:spinner"
+    },
+    {
+      "from": "component:spinner",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:spinner",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:spinner",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:spinner",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:spinner",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:spinner",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:spinner",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:spinner",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:spinner",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:spinner",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
+      "from": "component:spinner",
+      "relation": "ownsPart",
+      "to": "part:spinner-ring"
+    },
+    {
+      "from": "component:spinner",
+      "relation": "ownsPart",
+      "to": "part:spinner-label"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./spinner.element.ts",
+      "exports": {
+        "component:spinner": "UISpinner"
+      },
+      "verification": "./verification/spinner.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./spinner.react.tsx",
+      "exports": {
+        "component:spinner": "Spinner"
+      },
+      "verification": "./verification/spinner.verification.json#/renderers/react",
+      "props": {
+        "component:spinner": {
+          "inherits": [
+            "HTMLAttributes<HTMLSpanElement>"
+          ],
+          "props": [
+            "label?: string = '' // The visible text and accessible name. With none, the ring stands alone, named \"Loading\".",
+            "hideLabel?: boolean = false // Keep the label as the accessible name without showing it.",
+            "size?: number // Unit u in px for this element."
+          ]
+        }
+      }
+    }
+  }
+}

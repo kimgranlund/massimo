@@ -22,7 +22,7 @@
     },
     {
       "path": "dom/display.ts",
-      "sha256": "1192a66ad5e7842810e9e4c946e7b0672d6da69c16a59433db6bd97460c8244a"
+      "sha256": "c462000f5f63e141072f22e124db0311f3ccb3adb492b43882a3370d2a069d99"
     }
   ],
   "renderers": {
@@ -34,7 +34,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-04",
+        "date": "2026-11-06",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"ui-separator|resolveSeparator\" test/separator.test.ts"
@@ -52,7 +52,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-04",
+        "date": "2026-11-06",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"React Separator|state parity\" test/separator.test.ts"

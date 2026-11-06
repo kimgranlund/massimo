@@ -52,6 +52,8 @@
     "./components/field/element": "./components/field/field.element.ts",
     "./components/field/react": "./components/field/field.react.tsx",
     "./components/separator/element": "./components/separator/separator.element.ts",
+    "./components/spinner/element": "./components/spinner/spinner.element.ts",
+    "./components/spinner/react": "./components/spinner/spinner.react.tsx",
     "./components/separator/react": "./components/separator/separator.react.tsx",
     "./components/avatar/element": "./components/avatar/avatar.element.ts",
     "./components/avatar/react": "./components/avatar/avatar.react.tsx",

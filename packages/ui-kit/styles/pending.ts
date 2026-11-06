@@ -6,6 +6,7 @@ import { defineGlobalStyles, defineKeyframes } from '@pandacss/dev';
 export const pendingKeyframes = defineKeyframes({
   'ui-reveal': { to: { visibility: 'visible' } },
   // Indeterminate progress sweep.
+  'ui-spin': { to: { rotate: '1turn' } },
   'ui-indeterminate': { from: { translate: '-100% 0' }, to: { translate: '340% 0' } },
 });
 
@@ -55,6 +56,7 @@ export const pending = defineGlobalStyles({
   // A toast viewport has no size of its own until toasts arrive; it stays out of sight until defined.
   'ui-toast-viewport:not(:defined)': { display: 'none' },
   // A separator reserves its rule (thickness max(1px, B)) until its classes arrive.
+  'ui-spinner:not(:defined)': { display: 'inline-block', minWidth: 'calc(4 * var(--u))', minHeight: 'calc(4 * var(--u))' },
   'ui-separator:not(:defined)': { display: 'block', flexShrink: 0, alignSelf: 'stretch', height: 'var(--separator)' },
   'ui-separator[orientation=vertical]:not(:defined)': { height: 'auto', width: 'var(--separator)' },
   // An avatar keeps its square; its initials stay hidden until the fallback is set up.
