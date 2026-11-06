@@ -48,11 +48,11 @@ async function checkDocs(page: Page): Promise<string[]> {
   page.on('response', failed);
   await page.goto(docsUrl);
   await page.waitForSelector('nav a', { timeout: 120_000 });
-  const slugs = await page.$$eval('nav a', (links) => links.map((a) => a.getAttribute('href')!.slice(2)));
+  const slugs = ['components', ...await page.$$eval('nav a', (links) => links.map((a) => a.getAttribute('href')!.slice(2)))];
   if (!slugs.length) fails.push('docs: no component pages');
   for (const slug of slugs) {
     await page.evaluate((s) => { location.hash = `#/${s}`; }, slug);
-    await page.waitForSelector('[data-example]', { timeout: 60_000 });
+    await page.waitForSelector('[data-page]', { timeout: 60_000 });
     await page.waitForTimeout(150); // a page's elements load on first visit
     const r = await page.evaluate((cssOnly) => {
       const parts = [...document.querySelectorAll('[data-example]')];

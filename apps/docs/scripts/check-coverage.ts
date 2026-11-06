@@ -3,6 +3,7 @@
 import { readdirSync, readFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { buildPages, missingPages, type ExamplesFile, type Manifest } from '../src/model.ts';
+import { groupProblems } from '../src/groups.ts';
 
 const kit = fileURLToPath(new URL('../../../packages/ui-kit/', import.meta.url));
 const json = <T>(path: string) => JSON.parse(readFileSync(path, 'utf8')) as T;
@@ -17,4 +18,6 @@ const pages = buildPages(manifests, examples), missing = missingPages(ids, pages
 const without = examples.slice(1), dropped = missingPages(ids, buildPages(manifests, without));
 if (!dropped.length) throw new Error('coverage check is vacuous: dropping an examples file reported nothing');
 if (missing.length) { console.error(`no docs page for: ${missing.join(', ')}`); process.exit(1); }
+const grouping = groupProblems(pages.map((p) => p.slug));
+if (grouping.length) { console.error(`pages not in exactly one nav group (src/groups.ts): ${grouping.join(', ')}`); process.exit(1); }
 console.log(`docs: ${pages.length} pages for ${ids.length} components`);

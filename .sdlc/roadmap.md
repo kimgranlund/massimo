@@ -36,5 +36,6 @@ New ticket: `/ticket new <feature|bug|chore|spike|idea> <slug> "title"`. Build p
 | T-0062 | [data-table](tickets/data-table/handoff.md) | Parity W6 · Data table | feature | L3 | P2 | T-0045 | 🔵 ready |
 | T-0063 | [chart](tickets/chart/handoff.md) | Parity W6 · Chart | feature | L3 | P2 | T-0031 | 🔵 ready |
 | T-0064 | [parity-wave-7-scope](tickets/parity-wave-7-scope/handoff.md) | Parity W7 · Decide scope of specialist components | idea | L2 | P3 | T-0062, T-0063 | ⏳ proposed |
+| T-0065 | [docs-foundations](tickets/docs-foundations/handoff.md) | Docs site: story home, install and foundation pages, grouped navigation | feature | L2 | P2 | none | ⏳ proposed |
 
 Closed: 33 done, 0 dropped (git log or .NNNN-* folders)

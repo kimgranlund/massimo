@@ -63,7 +63,7 @@ export function ComponentPage({ page }: { page: DocPage }) {
     return target ? <a className={s.link} href={`#/${target.slug}`}>{target.title}</a> : slugOf(id);
   };
   return (
-    <article>
+    <article data-page="">
       <h1 className={s.title}>{page.title}</h1>
       <p className={s.tag}>&lt;{page.tag}&gt;</p>
       {page.intent.length > 0 && <p className={s.lead}>{page.intent.join('. ')}.</p>}
