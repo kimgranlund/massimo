@@ -1,0 +1,71 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "copy-field",
+  "scope": "Role, orientation and data-* of the web component in happy-dom and of the React renderer in react-dom/server (node:test), and their state parity. Rendered thickness is covered by the browser geometry check; visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "components/copy-field/copy-field.element.ts",
+      "sha256": "6cea6b89a0c8d8170482fd99f47f0dd40633c03b8387d62d35e9ebeb72a4f79f"
+    },
+    {
+      "path": "components/copy-field/copy-field.react.tsx",
+      "sha256": "73a51a271719c40aa09415a5e55482b24fe120470440fe8f5dca5fb0bfea4223"
+    },
+    {
+      "path": "components/copy-field/copy-field.recipe.ts",
+      "sha256": "9ac410a403b4b3566a77975363232e27637d169486687014e363153a979d59f3"
+    },
+    {
+      "path": "components/copy-field/copy-field.manifest.json",
+      "sha256": "eb8c5a04f693cb8da82b893833136aac1f844d5db1bab3f4e03dfbb62bd6815c"
+    },
+    {
+      "path": "dom/copy.ts",
+      "sha256": "bed142375017a03348cb1299654516fef3c539c37275c90ca49bbff1701f8273"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test test/patterns.test.ts",
+          "covers": "read-only value, action name, status, refused clipboard"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-07",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/patterns.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test test/patterns.test.ts",
+          "covers": "SSR markup and parts"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-07",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/patterns.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "React styling parity is checked in the browser: apps/studio/react-check.html compares the React CopyField with ui-copy-field at five sizes (\"fails\": []).",
+    "The source list is the direct sources, not every transitive dependency.",
+    "Geometry review, manual items (2026-11-06): the field and button are the kit's own, so items 2 to 8 and 10 follow ui-input; the action follows resolveFieldAction; 9 no floating layer; 11 the input's ring and the button's."
+  ]
+}

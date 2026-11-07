@@ -1,0 +1,71 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "color-picker",
+  "scope": "Role, orientation and data-* of the web component in happy-dom and of the React renderer in react-dom/server (node:test), and their state parity. Rendered thickness is covered by the browser geometry check; visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "components/color-picker/color-picker.element.ts",
+      "sha256": "089b8abd6ef2b6c617cd26afc3115e0a568d26b2a39b2db2b7b8a802c512c5f2"
+    },
+    {
+      "path": "components/color-picker/color-picker.react.tsx",
+      "sha256": "9c6f15f8750ac42032789431ab5a58e32e34188b106faf430d9bb82e52e055b3"
+    },
+    {
+      "path": "components/color-picker/color-picker.recipe.ts",
+      "sha256": "70b8e8e4ba913aaf5d76298ad2a7f69791f2bf07a38c7988b6accbd73c2c2e52"
+    },
+    {
+      "path": "components/color-picker/color-picker.manifest.json",
+      "sha256": "4b3e053348b126d3a6a652b8bacad7246c7e866003fbe8d0041c7acf43b2b3ee"
+    },
+    {
+      "path": "dom/color.ts",
+      "sha256": "7386cad9cc348ac1737464796b42042b357949d06adb39441f7bbe9938e4360c"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test test/wave-2.test.ts",
+          "covers": "draft model, popover and channels"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-07",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/wave-2.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test test/wave-2.test.ts",
+          "covers": "SSR markup and parts"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-07",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/wave-2.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "React styling parity is checked in the browser: apps/studio/react-check.html compares the React ColorPicker with ui-color-picker at five sizes (\"fails\": []).",
+    "The source list is the direct sources, not every transitive dependency.",
+    "Geometry review, manual items (2026-11-06): popover, range and button are the kit components; 2 the preview and width derive from u; 9 the popover owns offsets; 11 each part owns focus."
+  ]
+}

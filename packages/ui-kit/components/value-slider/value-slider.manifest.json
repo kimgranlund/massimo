@@ -1,0 +1,287 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "value-slider",
+  "primary": "component:value-slider",
+  "module": "./value-slider.element.ts",
+  "registration": "on-import",
+  "documentation": "./value-slider.md",
+  "examples": "./value-slider.examples.json",
+  "contract": "../../contracts/components.json#/components/value-slider",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./value-slider.recipe.ts"
+  },
+  "nodes": [
+    {
+      "id": "component:value-slider",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-value-slider",
+      "class": "UIValueSlider",
+      "extends": "UIElement",
+      "intent": [
+        "Tune a number in a compact panel"
+      ],
+      "properties": [
+        {
+          "key": "label",
+          "type": "string",
+          "default": "",
+          "attribute": "label",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "name",
+          "type": "string",
+          "default": "",
+          "attribute": "name",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "value",
+          "type": "number",
+          "default": 50,
+          "attribute": "value",
+          "reflects": false,
+          "inspector": {
+            "control": "number"
+          }
+        },
+        {
+          "key": "min",
+          "type": "number",
+          "default": 0,
+          "attribute": "min",
+          "reflects": false,
+          "inspector": {
+            "control": "number"
+          }
+        },
+        {
+          "key": "max",
+          "type": "number",
+          "default": 100,
+          "attribute": "max",
+          "reflects": false,
+          "inspector": {
+            "control": "number"
+          }
+        },
+        {
+          "key": "step",
+          "type": "number",
+          "default": 1,
+          "attribute": "step",
+          "reflects": false,
+          "inspector": {
+            "control": "number"
+          }
+        },
+        {
+          "key": "unit",
+          "type": "string",
+          "default": "",
+          "attribute": "unit",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        }
+      ],
+      "attributes": [],
+      "events": [],
+      "semantics": {
+        "role": null,
+        "formAssociated": false,
+        "accessibleName": {
+          "sources": [
+            "label"
+          ],
+          "required": true
+        }
+      },
+      "content": {
+        "ownership": "component",
+        "acceptsChildren": false,
+        "children": "None."
+      },
+      "layout": {
+        "display": "block",
+        "sizing": "fill"
+      },
+      "constraints": [
+        "It wraps ui-range, which owns keyboard, pointer, form and ARIA behavior.",
+        "The visible text is hidden from assistive technology: the range states the name and value."
+      ],
+      "avoidWhen": [
+        {
+          "when": "A form with room for a label and readout.",
+          "reason": "A field with a range reads more clearly.",
+          "useInstead": "component:field"
+        }
+      ],
+      "searchTerms": [
+        "value slider",
+        "slider field",
+        "scrubber",
+        "tuning",
+        "number slider"
+      ]
+    },
+    {
+      "id": "part:value-slider-label",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "span",
+      "selector": ":scope > [data-part=label]",
+      "summary": "The visible name."
+    },
+    {
+      "id": "part:value-slider-value",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "span",
+      "selector": ":scope > [data-part=value]",
+      "summary": "The visible value."
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:value-slider",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:value-slider",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:value-slider",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:value-slider",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:value-slider",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:value-slider",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:value-slider",
+      "relation": "usesGeometry",
+      "to": "geometry:track"
+    },
+    {
+      "from": "component:value-slider",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:value-slider",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:value-slider",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:value-slider",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:value-slider",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:value-slider",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:value-slider",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:value-slider",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:value-slider",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:value-slider",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
+      "from": "component:value-slider",
+      "relation": "ownsPart",
+      "to": "part:value-slider-label"
+    },
+    {
+      "from": "component:value-slider",
+      "relation": "ownsPart",
+      "to": "part:value-slider-value"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./value-slider.element.ts",
+      "exports": {
+        "component:value-slider": "UIValueSlider"
+      },
+      "verification": "./verification/value-slider.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./value-slider.react.tsx",
+      "exports": {
+        "component:value-slider": "ValueSlider"
+      },
+      "verification": "./verification/value-slider.verification.json#/renderers/react",
+      "props": {
+        "component:value-slider": {
+          "inherits": [],
+          "props": [
+            "label: string",
+            "name?: string",
+            "defaultValue?: number = 50",
+            "min?: number = 0",
+            "max?: number = 100",
+            "step?: number = 1",
+            "unit?: string = ''",
+            "onValueChange?: (value: number) => void",
+            "className?: string"
+          ]
+        }
+      }
+    }
+  }
+}

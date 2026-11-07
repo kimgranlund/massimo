@@ -1,0 +1,67 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "chip-select",
+  "scope": "Role, orientation and data-* of the web component in happy-dom and of the React renderer in react-dom/server (node:test), and their state parity. Rendered thickness is covered by the browser geometry check; visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "components/chip-select/chip-select.element.ts",
+      "sha256": "b207572bc9498685c8ee7c45e0722985a001286819219b42dd7cc5ce98b6e5b6"
+    },
+    {
+      "path": "components/chip-select/chip-select.react.tsx",
+      "sha256": "ba688c0160252bbb1ee9664a2d26490d75b230ededae10d415d8e809f6316fc2"
+    },
+    {
+      "path": "components/chip-select/chip-select.recipe.ts",
+      "sha256": "6bf46ab280e468de52a47ac023e24ed58fc42fc8c1dede636fa637e1dbd34a52"
+    },
+    {
+      "path": "components/chip-select/chip-select.manifest.json",
+      "sha256": "f2b44283e36cff8a69356f885946a20dfc7bdd2134ed8f4128afa72fe225f80e"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test test/wave-2.test.ts",
+          "covers": "select behavior and the chip class"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-07",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/wave-2.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test test/wave-2.test.ts",
+          "covers": "SSR markup and parts"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-07",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/wave-2.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "React styling parity is checked in the browser: apps/studio/react-check.html compares the React ChipSelect with ui-chip-select at five sizes (\"fails\": []).",
+    "The source list is the direct sources, not every transitive dependency.",
+    "Geometry review, manual items (2026-11-06): the trigger is 6u tall with the slot radius; everything else follows ui-select."
+  ]
+}

@@ -43,6 +43,12 @@ declare module 'react' {
       'ui-setting-row': El<{}>;
       'ui-data-list': El<{ divided?: string; layout?: 'inline' | 'stacked' }>;
       'ui-stat-card': El<{ label?: string; value?: string; delta?: string; tone?: 'positive' | 'negative' | 'neutral'; comparison?: string; trend?: string }>;
+      'ui-copy-field': El<any>;
+      'ui-value-slider': El<any>;
+      'ui-chip-select': El<any>;
+      'ui-selection-control': El<any>;
+      'ui-file-picker': El<any>;
+      'ui-color-picker': El<any>;
       'ui-kbd': El<{ keys?: string; platform?: 'auto' | 'mac' | 'other' }>;
       'ui-spinner': El<{ label?: string; 'hide-label'?: string | boolean }>;
       'ui-separator': El<{ orientation?: 'horizontal' | 'vertical' }>;

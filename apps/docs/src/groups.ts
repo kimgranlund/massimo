@@ -3,9 +3,9 @@
 export const GROUPS: [string, string[]][] = [
   ['Actions', ['button', 'button-link', 'toggle', 'toggle-group']],
   ['Labels', ['badge', 'tag', 'chip', 'kbd']],
-  ['Fields', ['input', 'textarea', 'number-field', 'otp-field', 'select', 'combobox', 'autocomplete', 'field', 'field-grid', 'fieldset', 'form']],
-  ['Selection', ['listbox', 'option', 'segmented', 'checkbox', 'checkbox-group', 'radio', 'radio-group', 'switch']],
-  ['Progress', ['range', 'progress', 'meter', 'spinner']],
+  ['Fields', ['color-picker', 'file-picker', 'copy-field', 'input', 'textarea', 'number-field', 'otp-field', 'select', 'combobox', 'autocomplete', 'field', 'field-grid', 'fieldset', 'form']],
+  ['Selection', ['selection-control', 'chip-select', 'listbox', 'option', 'segmented', 'checkbox', 'checkbox-group', 'radio', 'radio-group', 'switch']],
+  ['Progress', ['value-slider', 'range', 'progress', 'meter', 'spinner']],
   ['Layout', ['container', 'section', 'row', 'setting-row', 'column', 'list', 'grid', 'separator', 'scroll-area']],
   ['Data', ['data-list', 'stat-card']],
   ['Media', ['image', 'swiper', 'avatar', 'swatch', 'palette']],

@@ -1,0 +1,16 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "copy-field",
+  "title": "Copy field",
+  "summary": "A value to copy.",
+  "defaultExample": "link",
+  "examples": [
+    {
+      "id": "link",
+      "label": "A link",
+      "subject": "component:copy-field",
+      "markup": "<ui-copy-field label=\"Share link\" value=\"massimo.app/p/mercury\" style=\"width: 100%\"></ui-copy-field>"
+    }
+  ]
+}

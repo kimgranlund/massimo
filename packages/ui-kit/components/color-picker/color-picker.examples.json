@@ -1,0 +1,16 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "color-picker",
+  "title": "Color picker",
+  "summary": "Edit a color in OKLCH and accept or cancel.",
+  "defaultExample": "basic",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "An accent color",
+      "subject": "component:color-picker",
+      "markup": "<ui-color-picker label=\"Accent\" value=\"oklch(0.6 0.15 250)\"></ui-color-picker>"
+    }
+  ]
+}

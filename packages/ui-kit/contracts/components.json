@@ -1233,6 +1233,120 @@
         "dialog"
       ],
       "behavior": "None: it presents a metric. tone is explicit."
+    },
+    "copy-field": {
+      "geometryFamily": "field",
+      "element": "Host holds a read-only ui-input with a ui-button.",
+      "parts": [
+        "copy-field-status"
+      ],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "form",
+        "inline"
+      ],
+      "behavior": "The button copies the value and reports it."
+    },
+    "value-slider": {
+      "geometryFamily": "track",
+      "element": "Host wraps a ui-range and shows its label and value inside the track.",
+      "parts": [
+        "value-slider-label",
+        "value-slider-value"
+      ],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "form",
+        "inline"
+      ],
+      "behavior": "The range owns everything; the value text follows it."
+    },
+    "chip-select": {
+      "geometryFamily": "field",
+      "element": "A ui-select with the chip class.",
+      "parts": [],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "form",
+        "inline"
+      ],
+      "behavior": "ui-select."
+    },
+    "selection-control": {
+      "geometryFamily": "field-row",
+      "element": "Host wraps one control with label and value parts.",
+      "parts": [
+        "selection-control-label",
+        "selection-control-value"
+      ],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "form",
+        "inline"
+      ],
+      "behavior": "Reads the child value on input and change."
+    },
+    "file-picker": {
+      "geometryFamily": "field",
+      "element": "A form-associated host with a button and the chosen name.",
+      "parts": [
+        "file-picker-label",
+        "file-picker-control",
+        "file-picker-name",
+        "file-picker-description",
+        "file-picker-error"
+      ],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "form",
+        "inline"
+      ],
+      "behavior": "The platform picker or a drop sets the files."
+    },
+    "color-picker": {
+      "geometryFamily": "popup",
+      "element": "A form-associated host with a popover of three ranges.",
+      "parts": [
+        "color-picker-channels",
+        "color-picker-preview",
+        "color-picker-actions"
+      ],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "form",
+        "inline"
+      ],
+      "behavior": "Draft until Apply."
     }
   }
 }

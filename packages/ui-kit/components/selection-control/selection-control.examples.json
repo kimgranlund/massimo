@@ -1,0 +1,22 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "selection-control",
+  "title": "Selection control",
+  "summary": "A control beside its label and live value.",
+  "defaultExample": "range",
+  "examples": [
+    {
+      "id": "range",
+      "label": "A range",
+      "subject": "component:selection-control",
+      "markup": "<ui-selection-control label=\"Volume\" unit=\"%\" style=\"width: 100%\"><ui-range label=\"Volume\" value=\"40\"></ui-range></ui-selection-control>"
+    },
+    {
+      "id": "switch",
+      "label": "A switch",
+      "subject": "component:selection-control",
+      "markup": "<ui-selection-control label=\"Auto-save\"><ui-switch label=\"Auto-save\" checked></ui-switch></ui-selection-control>"
+    }
+  ]
+}

@@ -352,6 +352,15 @@ export function resolveField(input: GeometryInput = {}) {
   return { ...c, contentsStart: label.start, contentsEnd: label.end, paddingStart: c.padding + label.start, paddingEnd: c.padding + label.end, textEdge: c.inset + label.start };
 }
 
+/**
+ * A button in a field's trailing slot, on the composite rule: ½u from the field's edge, its corners
+ * nested, so the field keeps its height. The slot gives up that ½u on three sides.
+ */
+export function resolveFieldAction(input: GeometryInput = {}) {
+  const f = resolveField(input), edge = 0.5 * f.unit;
+  return { edge, height: f.height - 2 * edge, radius: Math.max(0, f.radius - edge) };
+}
+
 /** The rows a ui-textarea shows by default. */
 export const TEXTAREA_ROWS = 3;
 /** ui-textarea: the field's control, grown by one text line per row, so one row is an input's height. */
@@ -607,6 +616,13 @@ export const STAT_CARD = { trend: 10, deltaGap: 2 } as const;
 export function resolveStatCard(input: GeometryInput = {}) {
   const u = inputs(input).unit;
   return { trend: STAT_CARD.trend * u, deltaGap: STAT_CARD.deltaGap * u };
+}
+
+// ── Display: value slider ──
+/** ui-value-slider: a control-height track holding its label and value, with a thin bar for a thumb. */
+export function resolveValueSlider(input: GeometryInput = {}) {
+  const c = resolveControl(input);
+  return { height: c.height, textEdge: 2 * c.unit, thumb: Math.max(2, 0.5 * c.unit), thumbHeight: c.slot };
 }
 
 // ── Display: avatar ──

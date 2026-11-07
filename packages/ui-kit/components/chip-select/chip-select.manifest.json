@@ -1,0 +1,329 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "chip-select",
+  "primary": "component:chip-select",
+  "module": "./chip-select.element.ts",
+  "registration": "on-import",
+  "documentation": "./chip-select.md",
+  "examples": "./chip-select.examples.json",
+  "contract": "../../contracts/components.json#/components/chip-select",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./chip-select.recipe.ts"
+  },
+  "nodes": [
+    {
+      "id": "component:chip-select",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-chip-select",
+      "class": "UIChipSelect",
+      "extends": "UIFormElement",
+      "intent": [
+        "Make a contextual choice at chip size"
+      ],
+      "properties": [
+        {
+          "key": "name",
+          "type": "string",
+          "default": "",
+          "attribute": "name",
+          "reflects": true,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "disabled",
+          "type": "boolean",
+          "default": false,
+          "attribute": "disabled",
+          "reflects": true,
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "required",
+          "type": "boolean",
+          "default": false,
+          "attribute": "required",
+          "reflects": true,
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "value",
+          "type": "string",
+          "default": "",
+          "attribute": "value",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "defaultValue",
+          "type": "string",
+          "default": null,
+          "attribute": "default-value",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "open",
+          "type": "boolean",
+          "default": false,
+          "attribute": "open",
+          "reflects": false,
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "defaultOpen",
+          "type": "boolean",
+          "default": false,
+          "attribute": "default-open",
+          "reflects": false,
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "label",
+          "type": "string",
+          "default": "",
+          "attribute": "label",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "placeholder",
+          "type": "string",
+          "default": "Select…",
+          "attribute": "placeholder",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "description",
+          "type": "string",
+          "default": "",
+          "attribute": "description",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "error",
+          "type": "string",
+          "default": "",
+          "attribute": "error",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "labelledby",
+          "type": "string",
+          "default": "",
+          "attribute": "labelledby",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "describedby",
+          "type": "string",
+          "default": "",
+          "attribute": "describedby",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        }
+      ],
+      "attributes": [],
+      "events": [],
+      "semantics": {
+        "role": null,
+        "roleTarget": "[data-part=trigger]",
+        "formAssociated": true,
+        "accessibleName": {
+          "sources": [
+            "label"
+          ],
+          "required": true
+        }
+      },
+      "content": {
+        "ownership": "mixed",
+        "acceptsChildren": true,
+        "children": "ui-option children."
+      },
+      "layout": {
+        "display": "inline-flex",
+        "sizing": "intrinsic"
+      },
+      "constraints": [
+        "It is ui-select at chip size, so the popup, keyboard and form value are the same."
+      ],
+      "avoidWhen": [
+        {
+          "when": "A form with room for a full field.",
+          "reason": "A chip select has no visible label.",
+          "useInstead": "component:select"
+        }
+      ],
+      "searchTerms": [
+        "chip select",
+        "sort",
+        "filter select",
+        "compact select"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:chip-select",
+      "relation": "extends",
+      "to": "foundation:form-element"
+    },
+    {
+      "from": "component:chip-select",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:chip-select",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:chip-select",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:chip-select",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:chip-select",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:chip-select",
+      "relation": "usesGeometry",
+      "to": "geometry:field"
+    },
+    {
+      "from": "component:chip-select",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:chip-select",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:chip-select",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:chip-select",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:chip-select",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:chip-select",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:chip-select",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:chip-select",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:chip-select",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:chip-select",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./chip-select.element.ts",
+      "exports": {
+        "component:chip-select": "UIChipSelect"
+      },
+      "verification": "./verification/chip-select.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./chip-select.react.tsx",
+      "exports": {
+        "component:chip-select": "ChipSelect"
+      },
+      "verification": "./verification/chip-select.verification.json#/renderers/react",
+      "props": {
+        "component:chip-select": {
+          "inherits": [
+            "Omit<SelectHTMLAttributes<HTMLSelectElement>, 'size' | 'prefix' | 'className'>"
+          ],
+          "props": [
+            "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+            "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+            "label?: string",
+            "hideLabel?: boolean // Keep the label as the accessible name but do not draw it.",
+            "description?: string",
+            "error?: string // Author error, shown at once; native :user-invalid shows built-in problems after interaction.",
+            "leading?: ReactNode",
+            "prefix?: ReactNode",
+            "suffix?: ReactNode",
+            "gap?: number",
+            "size?: number",
+            "children?: ReactNode // <SelectOption> children (Select.Root: the parts).",
+            "onValueChange?: (value: string, details: ChangeDetails) => void // An option was chosen (Base UI onValueChange; reason 'item-press'). The native onChange still fires.",
+            "open?: boolean // Open the picker (Base UI open). Opening needs user activation (showPicker); a native picker cannot be closed from script.",
+            "defaultOpen?: boolean // Open the picker on mount (Base UI defaultOpen); with the same user-activation limit.",
+            "onOpenChange?: (open: boolean, details: ChangeDetails) => void // The picker opened or closed (Base UI onOpenChange), read from select:open after each interaction."
+          ]
+        }
+      }
+    }
+  }
+}

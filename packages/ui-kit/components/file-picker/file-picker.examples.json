@@ -1,0 +1,22 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "file-picker",
+  "title": "File picker",
+  "summary": "Choose local files for a form.",
+  "defaultExample": "basic",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "A file",
+      "subject": "component:file-picker",
+      "markup": "<ui-file-picker label=\"Attachment\" name=\"attachment\" accept=\"image/*,.pdf\" description=\"PNG or PDF.\" style=\"width: 100%\"></ui-file-picker>"
+    },
+    {
+      "id": "multiple",
+      "label": "Several files",
+      "subject": "component:file-picker",
+      "markup": "<ui-file-picker label=\"Photos\" multiple accept=\"image/*\" style=\"width: 100%\"></ui-file-picker>"
+    }
+  ]
+}

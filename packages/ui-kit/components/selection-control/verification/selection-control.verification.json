@@ -1,0 +1,71 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "selection-control",
+  "scope": "Role, orientation and data-* of the web component in happy-dom and of the React renderer in react-dom/server (node:test), and their state parity. Rendered thickness is covered by the browser geometry check; visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "components/selection-control/selection-control.element.ts",
+      "sha256": "5252518385061380cd2c842cdd6f5730b81c8b9d1208c68a10e09cbb4ce6d32e"
+    },
+    {
+      "path": "components/selection-control/selection-control.react.tsx",
+      "sha256": "5548bd85c31f2a8de34ed9e4ae7c73088977b281193df8a4e479016d18a6ba6a"
+    },
+    {
+      "path": "components/selection-control/selection-control.recipe.ts",
+      "sha256": "af6c808e9024e187e91bfc2f7a62244e8e42ea81a1efc4a0d2875d8e1a6bc263"
+    },
+    {
+      "path": "components/selection-control/selection-control.manifest.json",
+      "sha256": "abdb2864f7c999c426f126175e43f035bab1875370845b7e876c9d32c68870d4"
+    },
+    {
+      "path": "dom/selection.ts",
+      "sha256": "f554a4353757d74026dc756cdc102a495977b269bdd4885b66cd1ad726ed3951"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test test/wave-2.test.ts",
+          "covers": "reads and follows the child value"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-07",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/wave-2.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test test/wave-2.test.ts",
+          "covers": "SSR markup and parts"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-07",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/wave-2.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "React styling parity is checked in the browser: apps/studio/react-check.html compares the React SelectionControl with ui-selection-control at five sizes (\"fails\": []).",
+    "The source list is the direct sources, not every transitive dependency.",
+    "Geometry review, manual items (2026-11-06): 2 gap and value width derive from u; 3 to 6 the child owns them; 7 label and control roles; 8 the 3u gap is fixed; 9 no floating layer; 10 the row fills its parent; 11 the child owns focus."
+  ]
+}

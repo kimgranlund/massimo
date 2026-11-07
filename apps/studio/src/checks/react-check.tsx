@@ -18,6 +18,12 @@ import '@massimo/ui-kit/components/field/element';
 import '@massimo/ui-kit/components/separator/element';
 import '@massimo/ui-kit/components/spinner/element';
 import '@massimo/ui-kit/components/kbd/element';
+import '@massimo/ui-kit/components/color-picker/element';
+import '@massimo/ui-kit/components/file-picker/element';
+import '@massimo/ui-kit/components/selection-control/element';
+import '@massimo/ui-kit/components/chip-select/element';
+import '@massimo/ui-kit/components/value-slider/element';
+import '@massimo/ui-kit/components/copy-field/element';
 import '@massimo/ui-kit/components/stat-card/element';
 import '@massimo/ui-kit/components/button-link/element';
 import '@massimo/ui-kit/components/breadcrumb/element';
@@ -70,6 +76,12 @@ import { Slider } from '@massimo/ui-kit/components/range/react';
 import { Separator } from '@massimo/ui-kit/components/separator/react';
 import { Spinner } from '@massimo/ui-kit/components/spinner/react';
 import { Kbd } from '@massimo/ui-kit/components/kbd/react';
+import { ColorPicker } from '@massimo/ui-kit/components/color-picker/react';
+import { FilePicker } from '@massimo/ui-kit/components/file-picker/react';
+import { SelectionControl } from '@massimo/ui-kit/components/selection-control/react';
+import { ChipSelect } from '@massimo/ui-kit/components/chip-select/react';
+import { ValueSlider } from '@massimo/ui-kit/components/value-slider/react';
+import { CopyField } from '@massimo/ui-kit/components/copy-field/react';
 import { SettingRow } from '@massimo/ui-kit/components/setting-row/react';
 import { DataList } from '@massimo/ui-kit/components/data-list/react';
 import { StatCard } from '@massimo/ui-kit/components/stat-card/react';
@@ -203,6 +215,12 @@ function Pair({ u }: { u: number }) {
         <div style={{ width: 200 }}><ui-image data-k="ims" slideshow ratio="square" alt="Products"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="1" /><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="2" /></ui-image></div>
         <ui-spinner data-k="spn" label="Saving" />
         <ui-kbd data-k="kb" keys="mod+k" platform="mac" />
+        <span data-k="clp" style={{ display: 'inline-block' }}><ui-color-picker label="C" /></span>
+        <div style={{ width: 300 }}><span data-k="fp" style={{ display: 'block' }}><ui-file-picker label="F" /></span></div>
+        <span data-k="slc" style={{ display: 'block' }}><ui-selection-control label="V"><ui-switch aria-label="V" /></ui-selection-control></span>
+        <span data-k="cps" style={{ display: 'inline-block' }}><ui-chip-select label="S" hide-label value="a"><ui-option value="a">A</ui-option></ui-chip-select></span>
+        <div style={{ width: 300 }}><span data-k="vsl" style={{ display: 'block' }}><ui-value-slider label="u" value={40} /></span></div>
+        <div style={{ width: 300 }}><span data-k="cpf" style={{ display: 'block' }}><ui-copy-field label="Link" value="a.b" /></span></div>
         <div style={{ width: 400 }}><ui-setting-row data-k="sr"><div data-part="copy"><span data-part="title">T</span><span data-part="description">D</span></div></ui-setting-row></div>
         <div style={{ width: 400 }}><ui-data-list data-k="dtl" divided=""><dl><div><dt>A</dt><dd>B</dd></div></dl></ui-data-list></div>
         <div style={{ width: 300 }}><ui-stat-card data-k="stc" label="L" value="1" delta="+1" tone="positive" trend="1,2,3" /></div>
@@ -297,6 +315,12 @@ function Pair({ u }: { u: number }) {
         <div style={{ width: 200 }}><Image data-k="ims" slideshow ratio="square" alt="Products"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="1" /><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="2" /></Image></div>
         <Spinner data-k="spn" label="Saving" />
         <Kbd data-k="kb" keys="mod+k" platform="mac" />
+        <span data-k="clp" style={{ display: 'inline-block' }}><ColorPicker label="C" /></span>
+        <div style={{ width: 300 }}><span data-k="fp" style={{ display: 'block' }}><FilePicker label="F" /></span></div>
+        <span data-k="slc" style={{ display: 'block' }}><SelectionControl label="V" value="Off"><Switch aria-label="V" /></SelectionControl></span>
+        <span data-k="cps" style={{ display: 'inline-block' }}><ChipSelect label="S" hideLabel defaultValue="a"><SelectOption value="a">A</SelectOption></ChipSelect></span>
+        <div style={{ width: 300 }}><span data-k="vsl" style={{ display: 'block' }}><ValueSlider label="u" defaultValue={40} /></span></div>
+        <div style={{ width: 300 }}><span data-k="cpf" style={{ display: 'block' }}><CopyField label="Link" value="a.b" /></span></div>
         <div style={{ width: 400 }}><SettingRow data-k="sr" title="T" description="D" /></div>
         <div style={{ width: 400 }}><DataList data-k="dtl" divided><DataList.Item label="A">B</DataList.Item></DataList></div>
         <div style={{ width: 300 }}><StatCard data-k="stc" label="L" value="1" delta="+1" tone="positive" trend={[1, 2, 3]} /></div>
@@ -620,9 +644,9 @@ setTimeout(() => {
       boxAfter: box ? ((k: CSSStyleDeclaration) => k.translate + ' ' + k.backgroundColor)(box.querySelector(':scope > [data-part=thumb]') ? getComputedStyle(box.querySelector(':scope > [data-part=thumb]')!) : getComputedStyle(box, '::after')) : '',
       mark: box ? [...box.querySelectorAll('i')].map((i) => getComputedStyle(i).display).join(',') : '',
       // A contents part inside a closed popup has no box: it counts as absent.
-      contentsLeft: contents && !contents.hidden && contents.getClientRects().length ? r2(rect(contents)!.left - er.left) : 0,
+      contentsLeft: contents && !contents.hidden && !contents.closest('option, selectedcontent') && contents.getClientRects().length ? r2(rect(contents)!.left - er.left) : 0,
       fillW: fill ? r2(rect(fill)!.width) : 0, trackH: track ? r2(rect(track)!.height) : 0,
-      thumbLeft: thumb ? r2(rect(thumb)!.left - er.left) : 0, opacity: getComputedStyle(el).opacity,
+      thumbLeft: thumb && thumb.getClientRects().length ? r2(rect(thumb)!.left - er.left) : 0, opacity: getComputedStyle(el).opacity,
       font: getComputedStyle(el).fontFamily,
       bg: getComputedStyle(el).backgroundColor, radius: getComputedStyle(el).borderTopLeftRadius, pad: getComputedStyle(el).paddingLeft,
       // Child layout: each part's offset and size (covers slots, labels, swatches and container gaps).
@@ -698,7 +722,7 @@ setTimeout(() => {
   }
   for (const c of root.querySelectorAll('[data-case]')) {
     const [wc, re] = [c.querySelector('[data-side=wc]')!, c.querySelector('[data-side=react]')!];
-    for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'btP', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'fd', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'spn', 'kb', 'sr', 'dtl', 'stc', 'bc', 'ta', 'flC', 'flL', 'flG', 'flN', 'gp', 'uc', 'ucN', 'ucL', 'ucL1', 'ucS', 'lb', 'sg', 'swp', 'ims', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD', 'col', 'colD', 'acc', 'tab', 'tabU', 'tst', ...GROUP_KEYS]) {
+    for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'btP', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'fd', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'spn', 'kb', 'clp', 'fp', 'slc', ...(CSS.supports('appearance', 'base-select') ? ['cps'] : []), 'vsl', 'cpf', 'sr', 'dtl', 'stc', 'bc', 'ta', 'flC', 'flL', 'flG', 'flN', 'gp', 'uc', 'ucN', 'ucL', 'ucL1', 'ucS', 'lb', 'sg', 'swp', 'ims', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD', 'col', 'colD', 'acc', 'tab', 'tabU', 'tst', ...GROUP_KEYS]) {
       const a = measure(host(wc, k)), b = measure(host(re, k));
       for (const key of Object.keys(a) as (keyof typeof a)[]) {
         checks++;
@@ -706,7 +730,7 @@ setTimeout(() => {
       }
     }
 
-    for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'btP', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'fd', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'spn', 'kb', 'sr', 'dtl', 'stc', 'bc', 'ta', 'flC', 'flL', 'flG', 'flN', 'gp', 'uc', 'ucN', 'ucL', 'ucL1', 'ucS', 'lb', 'sg', 'swp', 'ims', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD', 'col', 'colD', 'acc', 'tab', 'tabU', 'mn', 'mnD', 'cm', 'mb', 'mbV', ...GROUP_KEYS]) {
+    for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'btP', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'fd', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'spn', 'kb', 'clp', 'fp', 'slc', ...(CSS.supports('appearance', 'base-select') ? ['cps'] : []), 'vsl', 'cpf', 'sr', 'dtl', 'stc', 'bc', 'ta', 'flC', 'flL', 'flG', 'flN', 'gp', 'uc', 'ucN', 'ucL', 'ucL1', 'ucS', 'lb', 'sg', 'swp', 'ims', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD', 'col', 'colD', 'acc', 'tab', 'tabU', 'mn', 'mnD', 'cm', 'mb', 'mbV', ...GROUP_KEYS]) {
       const a = measure(host(wc, k)), b = measure(host(re, k));
       for (const key of Object.keys(a) as (keyof typeof a)[]) {
         checks++;

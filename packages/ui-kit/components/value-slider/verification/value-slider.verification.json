@@ -1,0 +1,67 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "value-slider",
+  "scope": "Role, orientation and data-* of the web component in happy-dom and of the React renderer in react-dom/server (node:test), and their state parity. Rendered thickness is covered by the browser geometry check; visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "components/value-slider/value-slider.element.ts",
+      "sha256": "8aabb8c699badf98f99326d4e51b3c49049e38432c68710c5391aefeb2e29fdc"
+    },
+    {
+      "path": "components/value-slider/value-slider.react.tsx",
+      "sha256": "f9054f4f6ac4af8650566cbf7ca119b87fa40859e022cebd7b1f076277f2a238"
+    },
+    {
+      "path": "components/value-slider/value-slider.recipe.ts",
+      "sha256": "ba680dbe9aa0af8f1f34af19b61b507eeef6ab0ba740cb9e80a1fee0e67abfdb"
+    },
+    {
+      "path": "components/value-slider/value-slider.manifest.json",
+      "sha256": "8e44350beb4ef69d55a706f03a4e7a98569db9c54fbc3edd0b8e80cb6b79155e"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test test/patterns.test.ts",
+          "covers": "wraps the range, visible text, resolver"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-07",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/patterns.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test test/patterns.test.ts",
+          "covers": "SSR markup and parts"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-07",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/patterns.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "React styling parity is checked in the browser: apps/studio/react-check.html compares the React ValueSlider with ui-value-slider at five sizes (\"fails\": []).",
+    "The source list is the direct sources, not every transitive dependency.",
+    "Geometry review, manual items (2026-11-06): 2 and 3 height and text edge derive from u; 4 text sits inside the track; 5 no border; 6 control radius; 7 control type; 8 no gap; 9 no floating layer; 10 the track fills its parent; 11 the range's focus ring."
+  ]
+}

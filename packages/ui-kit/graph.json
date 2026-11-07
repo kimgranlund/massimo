@@ -148,6 +148,18 @@
         "input chip"
       ]
     },
+    "component:chip-select": {
+      "kind": "component",
+      "source": "components/chip-select/chip-select.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-chip-select",
+      "searchTerms": [
+        "chip select",
+        "sort",
+        "filter select",
+        "compact select"
+      ]
+    },
     "component:collapsible": {
       "kind": "component",
       "source": "components/collapsible/collapsible.manifest.json#/nodes/0",
@@ -159,6 +171,18 @@
         "expand collapse",
         "show more",
         "details summary"
+      ]
+    },
+    "component:color-picker": {
+      "kind": "component",
+      "source": "components/color-picker/color-picker.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-color-picker",
+      "searchTerms": [
+        "color picker",
+        "oklch",
+        "color input",
+        "channels"
       ]
     },
     "component:column": {
@@ -219,6 +243,19 @@
         "right click menu",
         "secondary click",
         "long press menu"
+      ]
+    },
+    "component:copy-field": {
+      "kind": "component",
+      "source": "components/copy-field/copy-field.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-copy-field",
+      "searchTerms": [
+        "copy",
+        "clipboard",
+        "share link",
+        "api key",
+        "copy field"
       ]
     },
     "component:data-list": {
@@ -305,6 +342,19 @@
         "form section",
         "disable fields",
         "group of fields"
+      ]
+    },
+    "component:file-picker": {
+      "kind": "component",
+      "source": "components/file-picker/file-picker.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-file-picker",
+      "searchTerms": [
+        "file",
+        "upload",
+        "attachment",
+        "dropzone",
+        "file input"
       ]
     },
     "component:form": {
@@ -662,6 +712,18 @@
         "popup select"
       ]
     },
+    "component:selection-control": {
+      "kind": "component",
+      "source": "components/selection-control/selection-control.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-selection-control",
+      "searchTerms": [
+        "selection control",
+        "labelled slider",
+        "readout",
+        "setting value"
+      ]
+    },
     "component:separator": {
       "kind": "component",
       "source": "components/separator/separator.manifest.json#/nodes/0",
@@ -843,6 +905,19 @@
         "hint",
         "hover label",
         "title text"
+      ]
+    },
+    "component:value-slider": {
+      "kind": "component",
+      "source": "components/value-slider/value-slider.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-value-slider",
+      "searchTerms": [
+        "value slider",
+        "slider field",
+        "scrubber",
+        "tuning",
+        "number slider"
       ]
     },
     "concept:adaptivity": {
@@ -4373,6 +4448,33 @@
         "collapsible trigger"
       ]
     },
+    "part:color-picker-actions": {
+      "kind": "part",
+      "source": "components/color-picker/color-picker.manifest.json#/nodes/3",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "color picker actions"
+      ]
+    },
+    "part:color-picker-channels": {
+      "kind": "part",
+      "source": "components/color-picker/color-picker.manifest.json#/nodes/1",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "color picker channels"
+      ]
+    },
+    "part:color-picker-preview": {
+      "kind": "part",
+      "source": "components/color-picker/color-picker.manifest.json#/nodes/2",
+      "availability": "implemented",
+      "tag": "span",
+      "searchTerms": [
+        "color picker preview"
+      ]
+    },
     "part:combobox-chip": {
       "kind": "part",
       "source": "components/combobox/combobox.manifest.json#/nodes/3",
@@ -4488,6 +4590,15 @@
       "tag": "div",
       "searchTerms": [
         "context menu trigger"
+      ]
+    },
+    "part:copy-field-status": {
+      "kind": "part",
+      "source": "components/copy-field/copy-field.manifest.json#/nodes/1",
+      "availability": "implemented",
+      "tag": "span",
+      "searchTerms": [
+        "copy field status"
       ]
     },
     "part:dialog-actions": {
@@ -4614,6 +4725,51 @@
       "tag": "div",
       "searchTerms": [
         "fieldset legend"
+      ]
+    },
+    "part:file-picker-control": {
+      "kind": "part",
+      "source": "components/file-picker/file-picker.manifest.json#/nodes/2",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "file picker control"
+      ]
+    },
+    "part:file-picker-description": {
+      "kind": "part",
+      "source": "components/file-picker/file-picker.manifest.json#/nodes/4",
+      "availability": "implemented",
+      "tag": "span",
+      "searchTerms": [
+        "file picker description"
+      ]
+    },
+    "part:file-picker-error": {
+      "kind": "part",
+      "source": "components/file-picker/file-picker.manifest.json#/nodes/5",
+      "availability": "implemented",
+      "tag": "span",
+      "searchTerms": [
+        "file picker error"
+      ]
+    },
+    "part:file-picker-label": {
+      "kind": "part",
+      "source": "components/file-picker/file-picker.manifest.json#/nodes/1",
+      "availability": "implemented",
+      "tag": "span",
+      "searchTerms": [
+        "file picker label"
+      ]
+    },
+    "part:file-picker-name": {
+      "kind": "part",
+      "source": "components/file-picker/file-picker.manifest.json#/nodes/3",
+      "availability": "implemented",
+      "tag": "span",
+      "searchTerms": [
+        "file picker name"
       ]
     },
     "part:image-slide": {
@@ -5138,6 +5294,24 @@
         "select value"
       ]
     },
+    "part:selection-control-label": {
+      "kind": "part",
+      "source": "components/selection-control/selection-control.manifest.json#/nodes/1",
+      "availability": "implemented",
+      "tag": "span",
+      "searchTerms": [
+        "selection control label"
+      ]
+    },
+    "part:selection-control-value": {
+      "kind": "part",
+      "source": "components/selection-control/selection-control.manifest.json#/nodes/2",
+      "availability": "implemented",
+      "tag": "span",
+      "searchTerms": [
+        "selection control value"
+      ]
+    },
     "part:slot-contents": {
       "kind": "part",
       "source": "contracts/parts.json#/parts/slot-contents",
@@ -5471,6 +5645,24 @@
       "searchTerms": [
         "fill",
         "indicator"
+      ]
+    },
+    "part:value-slider-label": {
+      "kind": "part",
+      "source": "components/value-slider/value-slider.manifest.json#/nodes/1",
+      "availability": "implemented",
+      "tag": "span",
+      "searchTerms": [
+        "value slider label"
+      ]
+    },
+    "part:value-slider-value": {
+      "kind": "part",
+      "source": "components/value-slider/value-slider.manifest.json#/nodes/2",
+      "availability": "implemented",
+      "tag": "span",
+      "searchTerms": [
+        "value slider value"
       ]
     },
     "territory:alpine": {
@@ -7002,6 +7194,91 @@
       "to": "component:checkbox"
     },
     {
+      "from": "component:chip-select",
+      "relation": "extends",
+      "to": "foundation:form-element"
+    },
+    {
+      "from": "component:chip-select",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:chip-select",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:chip-select",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:chip-select",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:chip-select",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:chip-select",
+      "relation": "usesGeometry",
+      "to": "geometry:field"
+    },
+    {
+      "from": "component:chip-select",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:chip-select",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:chip-select",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:chip-select",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:chip-select",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:chip-select",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:chip-select",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:chip-select",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:chip-select",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:chip-select",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
       "from": "component:checkbox",
       "relation": "extends",
       "to": "foundation:form-element"
@@ -7545,6 +7822,106 @@
       "from": "component:collapsible",
       "relation": "uses",
       "to": "foundation:icons"
+    },
+    {
+      "from": "component:color-picker",
+      "relation": "extends",
+      "to": "foundation:form-element"
+    },
+    {
+      "from": "component:color-picker",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:color-picker",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:color-picker",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:color-picker",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:color-picker",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:color-picker",
+      "relation": "usesGeometry",
+      "to": "geometry:popup"
+    },
+    {
+      "from": "component:color-picker",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:color-picker",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:color-picker",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:color-picker",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:color-picker",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:color-picker",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:color-picker",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:color-picker",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:color-picker",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:color-picker",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
+      "from": "component:color-picker",
+      "relation": "ownsPart",
+      "to": "part:color-picker-channels"
+    },
+    {
+      "from": "component:color-picker",
+      "relation": "ownsPart",
+      "to": "part:color-picker-preview"
+    },
+    {
+      "from": "component:color-picker",
+      "relation": "ownsPart",
+      "to": "part:color-picker-actions"
     },
     {
       "from": "component:swatch",
@@ -8130,6 +8507,96 @@
       "from": "component:context-menu",
       "relation": "allowedIn",
       "to": "context:collection"
+    },
+    {
+      "from": "component:copy-field",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:copy-field",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:copy-field",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:copy-field",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:copy-field",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:copy-field",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:copy-field",
+      "relation": "usesGeometry",
+      "to": "geometry:field"
+    },
+    {
+      "from": "component:copy-field",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:copy-field",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:copy-field",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:copy-field",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:copy-field",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:copy-field",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:copy-field",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:copy-field",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:copy-field",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:copy-field",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
+      "from": "component:copy-field",
+      "relation": "ownsPart",
+      "to": "part:copy-field-status"
     },
     {
       "from": "component:data-list",
@@ -8845,6 +9312,116 @@
       "from": "component:fieldset",
       "relation": "acceptsChild",
       "to": "component:switch"
+    },
+    {
+      "from": "component:file-picker",
+      "relation": "extends",
+      "to": "foundation:form-element"
+    },
+    {
+      "from": "component:file-picker",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:file-picker",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:file-picker",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:file-picker",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:file-picker",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:file-picker",
+      "relation": "usesGeometry",
+      "to": "geometry:field"
+    },
+    {
+      "from": "component:file-picker",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:file-picker",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:file-picker",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:file-picker",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:file-picker",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:file-picker",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:file-picker",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:file-picker",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:file-picker",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:file-picker",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
+      "from": "component:file-picker",
+      "relation": "ownsPart",
+      "to": "part:file-picker-label"
+    },
+    {
+      "from": "component:file-picker",
+      "relation": "ownsPart",
+      "to": "part:file-picker-control"
+    },
+    {
+      "from": "component:file-picker",
+      "relation": "ownsPart",
+      "to": "part:file-picker-name"
+    },
+    {
+      "from": "component:file-picker",
+      "relation": "ownsPart",
+      "to": "part:file-picker-description"
+    },
+    {
+      "from": "component:file-picker",
+      "relation": "ownsPart",
+      "to": "part:file-picker-error"
     },
     {
       "from": "component:column",
@@ -11607,6 +12184,101 @@
       "to": "foundation:modality"
     },
     {
+      "from": "component:selection-control",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:selection-control",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:selection-control",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:selection-control",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:selection-control",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:selection-control",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:selection-control",
+      "relation": "usesGeometry",
+      "to": "geometry:field-row"
+    },
+    {
+      "from": "component:selection-control",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:selection-control",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:selection-control",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:selection-control",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:selection-control",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:selection-control",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:selection-control",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:selection-control",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:selection-control",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:selection-control",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
+      "from": "component:selection-control",
+      "relation": "ownsPart",
+      "to": "part:selection-control-label"
+    },
+    {
+      "from": "component:selection-control",
+      "relation": "ownsPart",
+      "to": "part:selection-control-value"
+    },
+    {
       "from": "component:separator",
       "relation": "extends",
       "to": "foundation:element"
@@ -12835,6 +13507,101 @@
       "from": "component:tooltip",
       "relation": "uses",
       "to": "component:popover"
+    },
+    {
+      "from": "component:value-slider",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:value-slider",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:value-slider",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:value-slider",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:value-slider",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:value-slider",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:value-slider",
+      "relation": "usesGeometry",
+      "to": "geometry:track"
+    },
+    {
+      "from": "component:value-slider",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:value-slider",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:value-slider",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:value-slider",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:value-slider",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:value-slider",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:value-slider",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:value-slider",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:value-slider",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:value-slider",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
+      "from": "component:value-slider",
+      "relation": "ownsPart",
+      "to": "part:value-slider-label"
+    },
+    {
+      "from": "component:value-slider",
+      "relation": "ownsPart",
+      "to": "part:value-slider-value"
     },
     {
       "from": "parameters:unit",

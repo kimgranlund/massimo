@@ -1,0 +1,231 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "selection-control",
+  "primary": "component:selection-control",
+  "module": "./selection-control.element.ts",
+  "registration": "on-import",
+  "documentation": "./selection-control.md",
+  "examples": "./selection-control.examples.json",
+  "contract": "../../contracts/components.json#/components/selection-control",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./selection-control.recipe.ts"
+  },
+  "nodes": [
+    {
+      "id": "component:selection-control",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-selection-control",
+      "class": "UISelectionControl",
+      "extends": "UIElement",
+      "intent": [
+        "Show a control with its label and current value"
+      ],
+      "properties": [
+        {
+          "key": "label",
+          "type": "string",
+          "default": "",
+          "attribute": "label",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "unit",
+          "type": "string",
+          "default": "",
+          "attribute": "unit",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        }
+      ],
+      "attributes": [],
+      "events": [],
+      "semantics": {
+        "role": null,
+        "formAssociated": false,
+        "accessibleName": {
+          "sources": [
+            "the child control's own name"
+          ],
+          "required": false
+        }
+      },
+      "content": {
+        "ownership": "consumer",
+        "acceptsChildren": true,
+        "children": "One ui-range, ui-checkbox, ui-switch or ui-radio-group."
+      },
+      "layout": {
+        "display": "block",
+        "sizing": "fill"
+      },
+      "constraints": [
+        "The child keeps its name, value, form and keyboard behavior.",
+        "The value is plain text, not an editor."
+      ],
+      "avoidWhen": [
+        {
+          "when": "The number is typed.",
+          "reason": "The value text can't be edited.",
+          "useInstead": "component:number-field"
+        }
+      ],
+      "searchTerms": [
+        "selection control",
+        "labelled slider",
+        "readout",
+        "setting value"
+      ]
+    },
+    {
+      "id": "part:selection-control-label",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "span",
+      "selector": ":scope > [data-part=label]",
+      "summary": "The visible label."
+    },
+    {
+      "id": "part:selection-control-value",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "span",
+      "selector": ":scope > [data-part=value]",
+      "summary": "The value as text."
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:selection-control",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:selection-control",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:selection-control",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:selection-control",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:selection-control",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:selection-control",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:selection-control",
+      "relation": "usesGeometry",
+      "to": "geometry:field-row"
+    },
+    {
+      "from": "component:selection-control",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:selection-control",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:selection-control",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:selection-control",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:selection-control",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:selection-control",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:selection-control",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:selection-control",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:selection-control",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:selection-control",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
+      "from": "component:selection-control",
+      "relation": "ownsPart",
+      "to": "part:selection-control-label"
+    },
+    {
+      "from": "component:selection-control",
+      "relation": "ownsPart",
+      "to": "part:selection-control-value"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./selection-control.element.ts",
+      "exports": {
+        "component:selection-control": "UISelectionControl"
+      },
+      "verification": "./verification/selection-control.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./selection-control.react.tsx",
+      "exports": {
+        "component:selection-control": "SelectionControl"
+      },
+      "verification": "./verification/selection-control.verification.json#/renderers/react",
+      "props": {
+        "component:selection-control": {
+          "inherits": [],
+          "props": [
+            "label: string",
+            "value?: ReactNode // The value as text.",
+            "children?: ReactNode",
+            "className?: string"
+          ]
+        }
+      }
+    }
+  }
+}

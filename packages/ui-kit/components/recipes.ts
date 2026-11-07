@@ -15,6 +15,12 @@ import { uiContainer } from './container/container.recipe.ts';
 import { row } from './row/row.recipe.ts';
 import { spinner } from './spinner/spinner.recipe.ts';
 import { kbd } from './kbd/kbd.recipe.ts';
+import { colorPicker } from './color-picker/color-picker.recipe.ts';
+import { filePicker } from './file-picker/file-picker.recipe.ts';
+import { selectionControl } from './selection-control/selection-control.recipe.ts';
+import { chipSelect } from './chip-select/chip-select.recipe.ts';
+import { valueSlider } from './value-slider/value-slider.recipe.ts';
+import { copyField } from './copy-field/copy-field.recipe.ts';
 import { settingRow } from './setting-row/setting-row.recipe.ts';
 import { dataList } from './data-list/data-list.recipe.ts';
 import { statCard } from './stat-card/stat-card.recipe.ts';
@@ -52,7 +58,7 @@ import { tooltip } from './tooltip/tooltip.recipe.ts';
 import { previewCard } from './preview-card/preview-card.recipe.ts';
 import { navigationMenu } from './navigation-menu/navigation-menu.recipe.ts';
 
-export const slotRecipes = { badge, tag, chip, button, checkbox, radio, switchRecipe, range, progress, swatch, palette, listbox, segmented, option, input, select, swiper, image, uiContainer, row, column, list, gridRecipe: grid, section, field, fieldGrid, separator, spinner, kbd, textarea, breadcrumb, buttonLink, settingRow, dataList, statCard, avatar, meter, toggle, radioGroup, checkboxGroup, fieldset, collapsible, accordion, tabs, toast, form, scrollArea, numberField, otpField, combobox, autocomplete, toggleGroup, dialog, alertDialog, drawer, menu, contextMenu, menubar, popover, tooltip, previewCard, navigationMenu };
+export const slotRecipes = { badge, tag, chip, button, checkbox, radio, switchRecipe, range, progress, swatch, palette, listbox, segmented, option, input, select, swiper, image, uiContainer, row, column, list, gridRecipe: grid, section, field, fieldGrid, separator, spinner, kbd, colorPicker, filePicker, selectionControl, chipSelect, valueSlider, copyField, textarea, breadcrumb, buttonLink, settingRow, dataList, statCard, avatar, meter, toggle, radioGroup, checkboxGroup, fieldset, collapsible, accordion, tabs, toast, form, scrollArea, numberField, otpField, combobox, autocomplete, toggleGroup, dialog, alertDialog, drawer, menu, contextMenu, menubar, popover, tooltip, previewCard, navigationMenu };
 
 
 

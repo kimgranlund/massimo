@@ -42,6 +42,12 @@
       "subject": "component:input",
       "markup": "<ui-input name=\"price\" value=\"40\"><span data-part=\"label\">Price</span><div data-part=\"control\"><span data-part=\"prefix\">$</span><span data-part=\"contents\"></span><span data-part=\"suffix\">USD</span></div><span data-part=\"description\">Before tax</span></ui-input>",
       "note": "React: Input.Root › Input.Label, Input.Control (prefix, suffix props), Input.Description."
+    },
+    {
+      "id": "action",
+      "label": "An inline action",
+      "subject": "component:input",
+      "markup": "<ui-input label=\"Email address\" placeholder=\"name@studio.com\"><ui-button slot=\"trailing\" variant=\"primary\">Verify</ui-button></ui-input>"
     }
   ]
 }

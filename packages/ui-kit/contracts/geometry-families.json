@@ -47,7 +47,8 @@
         "resolveField",
         "resolveSelectTrigger",
         "resolveCombobox",
-        "resolveTextarea"
+        "resolveTextarea",
+        "resolveFieldAction"
       ],
       "summary": "The control family applied to field hosts: the input control ([leading] [prefix] [editor] [suffix] [trailing]) and select trigger ([leading] [prefix] [value] [suffix] [chevron]) have pad = u − B and use the control text-run rule; the chevron is icon size sm. The combobox input row is the select trigger's control row with the editable text as its contents (2u bare, 1u beside the 6u clear and trigger slots, sm icons); chips are 6u, radius min(3u, control radius − u), 0.5u apart, and wrap the row onto lines 0.5u apart; the popup is the select's composite, the empty state at an option label's inset (resolveCombobox). The autocomplete is the same row without chips; without the trigger its text ends 2u from a bare edge, or 1u before the clear slot.",
       "members": [
@@ -55,7 +56,10 @@
         "component:select",
         "component:combobox",
         "component:autocomplete",
-        "component:textarea"
+        "component:textarea",
+        "component:copy-field",
+        "component:chip-select",
+        "component:file-picker"
       ],
       "searchTerms": [
         "field geometry",
@@ -80,7 +84,8 @@
       "summary": "Field rows place a label, a control, a readout and a description; the control keeps its own geometry. Stacked: label above, row gap 1.5u, label-to-unit 1u. Inline: label | control | readout, column gap 2u, row gap 1u to the description, the unit at least 2u from the label text. Field grid: column and row gap 2u, label column content-sized up to 40% of the grid, readout column at least 10u; a heading after the first has 4u above it. Lengths are spacing and sizes tokens in u (resolveFieldRow, resolveFieldGrid).",
       "members": [
         "component:field",
-        "component:field-grid"
+        "component:field-grid",
+        "component:selection-control"
       ],
       "searchTerms": [
         "field row",
@@ -144,13 +149,15 @@
         "trackFill",
         "trackPairFill",
         "thumbOffset",
-        "resolveMeter"
+        "resolveMeter",
+        "resolveValueSlider"
       ],
       "summary": "4u track rounded at half height. Range thumb inside it like a switch thumb (track − u, inset 0.5u, concentric radius), travelling width − track; the fill ends one track-radius past the thumb center (track + p·(width − track)) with the track radius, so its cap wraps the thumb; a two-thumb range's fill starts r0·(width − track) and is track + (r1 − r0)·(width − track) wide, wrapping both thumbs (trackPairFill). Progress fill = p·width. The ratio arrives as --ui-ratio. Meter: the progress track under a label | value row (control text, column gap 2u) 1.5u above it (resolveMeter).",
       "members": [
         "component:range",
         "component:progress",
-        "component:meter"
+        "component:meter",
+        "component:value-slider"
       ],
       "searchTerms": [
         "range track",
@@ -564,7 +571,8 @@
         "component:popover",
         "component:tooltip",
         "component:preview-card",
-        "component:navigation-menu"
+        "component:navigation-menu",
+        "component:color-picker"
       ],
       "searchTerms": [
         "popup geometry",

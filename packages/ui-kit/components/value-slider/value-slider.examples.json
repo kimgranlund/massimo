@@ -1,0 +1,22 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "value-slider",
+  "title": "Value slider",
+  "summary": "A range with its label and value inside the track.",
+  "defaultExample": "unit",
+  "examples": [
+    {
+      "id": "unit",
+      "label": "A unit",
+      "subject": "component:value-slider",
+      "markup": "<ui-value-slider label=\"u\" unit=\"px\" min=\"2\" max=\"12\" step=\"0.5\" value=\"4.5\"></ui-value-slider>"
+    },
+    {
+      "id": "percent",
+      "label": "A percentage",
+      "subject": "component:value-slider",
+      "markup": "<ui-value-slider label=\"Opacity\" unit=\"%\" value=\"60\"></ui-value-slider>"
+    }
+  ]
+}

@@ -1,0 +1,334 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "file-picker",
+  "primary": "component:file-picker",
+  "module": "./file-picker.element.ts",
+  "registration": "on-import",
+  "documentation": "./file-picker.md",
+  "examples": "./file-picker.examples.json",
+  "contract": "../../contracts/components.json#/components/file-picker",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./file-picker.recipe.ts"
+  },
+  "nodes": [
+    {
+      "id": "component:file-picker",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-file-picker",
+      "class": "UIFilePicker",
+      "extends": "UIFormElement",
+      "intent": [
+        "Choose local files for a form"
+      ],
+      "properties": [
+        {
+          "key": "name",
+          "type": "string",
+          "default": "",
+          "attribute": "name",
+          "reflects": true,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "disabled",
+          "type": "boolean",
+          "default": false,
+          "attribute": "disabled",
+          "reflects": true,
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "required",
+          "type": "boolean",
+          "default": false,
+          "attribute": "required",
+          "reflects": true,
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "label",
+          "type": "string",
+          "default": "",
+          "attribute": "label",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "description",
+          "type": "string",
+          "default": "",
+          "attribute": "description",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "accept",
+          "type": "string",
+          "default": "",
+          "attribute": "accept",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "multiple",
+          "type": "boolean",
+          "default": false,
+          "attribute": "multiple",
+          "reflects": false,
+          "inspector": {
+            "control": "toggle"
+          }
+        }
+      ],
+      "attributes": [],
+      "events": [
+        {
+          "name": "change",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": false,
+          "trigger": "the user commits a new value"
+        }
+      ],
+      "semantics": {
+        "role": null,
+        "formAssociated": true,
+        "accessibleName": {
+          "sources": [
+            "label"
+          ],
+          "required": true
+        }
+      },
+      "content": {
+        "ownership": "component",
+        "acceptsChildren": false,
+        "children": "None."
+      },
+      "layout": {
+        "display": "block",
+        "sizing": "fill"
+      },
+      "constraints": [
+        "The web tag keeps no native input in the page.",
+        "accept also applies to dropped files.",
+        "Files stay on the device until the form submits them."
+      ],
+      "avoidWhen": [
+        {
+          "when": "Text entry.",
+          "reason": "A file picker only takes files.",
+          "useInstead": "component:input"
+        }
+      ],
+      "searchTerms": [
+        "file",
+        "upload",
+        "attachment",
+        "dropzone",
+        "file input"
+      ]
+    },
+    {
+      "id": "part:file-picker-label",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "span",
+      "selector": ":scope > [data-part=label]",
+      "summary": "The label."
+    },
+    {
+      "id": "part:file-picker-control",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=control]",
+      "summary": "The button, name and drop target."
+    },
+    {
+      "id": "part:file-picker-name",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "span",
+      "selector": ":scope > [data-part=control] > [data-part=name]",
+      "summary": "The chosen name."
+    },
+    {
+      "id": "part:file-picker-description",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "span",
+      "selector": ":scope > [data-part=description]",
+      "summary": "Help text."
+    },
+    {
+      "id": "part:file-picker-error",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "span",
+      "selector": ":scope > [data-part=error]",
+      "summary": "An error."
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:file-picker",
+      "relation": "extends",
+      "to": "foundation:form-element"
+    },
+    {
+      "from": "component:file-picker",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:file-picker",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:file-picker",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:file-picker",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:file-picker",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:file-picker",
+      "relation": "usesGeometry",
+      "to": "geometry:field"
+    },
+    {
+      "from": "component:file-picker",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:file-picker",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:file-picker",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:file-picker",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:file-picker",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:file-picker",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:file-picker",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:file-picker",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:file-picker",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:file-picker",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
+      "from": "component:file-picker",
+      "relation": "ownsPart",
+      "to": "part:file-picker-label"
+    },
+    {
+      "from": "component:file-picker",
+      "relation": "ownsPart",
+      "to": "part:file-picker-control"
+    },
+    {
+      "from": "component:file-picker",
+      "relation": "ownsPart",
+      "to": "part:file-picker-name"
+    },
+    {
+      "from": "component:file-picker",
+      "relation": "ownsPart",
+      "to": "part:file-picker-description"
+    },
+    {
+      "from": "component:file-picker",
+      "relation": "ownsPart",
+      "to": "part:file-picker-error"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./file-picker.element.ts",
+      "exports": {
+        "component:file-picker": "UIFilePicker"
+      },
+      "verification": "./verification/file-picker.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./file-picker.react.tsx",
+      "exports": {
+        "component:file-picker": "FilePicker"
+      },
+      "verification": "./verification/file-picker.verification.json#/renderers/react",
+      "props": {
+        "component:file-picker": {
+          "inherits": [],
+          "props": [
+            "label?: string",
+            "description?: string",
+            "name?: string",
+            "accept?: string = ''",
+            "multiple?: boolean",
+            "disabled?: boolean",
+            "onFiles?: (files: File[]) => void",
+            "className?: string"
+          ]
+        }
+      }
+    }
+  }
+}

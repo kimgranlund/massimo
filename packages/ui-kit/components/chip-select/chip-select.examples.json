@@ -1,0 +1,16 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "chip-select",
+  "title": "Chip select",
+  "summary": "A compact choice beside the content it affects.",
+  "defaultExample": "sort",
+  "examples": [
+    {
+      "id": "sort",
+      "label": "A sort order",
+      "subject": "component:chip-select",
+      "markup": "<ui-chip-select label=\"Sort\" hide-label value=\"new\"><ui-option value=\"new\">Newest</ui-option><ui-option value=\"top\">Top rated</ui-option></ui-chip-select>"
+    }
+  ]
+}

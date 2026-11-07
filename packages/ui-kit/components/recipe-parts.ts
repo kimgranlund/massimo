@@ -217,6 +217,8 @@ export const ROW_BLOCK = 'calc(3 * (0.5 + 0.5 * var(--ui-density)) * var(--ui-un
 export const FIELD_TEXT_EDGE = `calc((${DENSITY_INSET_CSS} + 2) * var(--ui-unit) * 1px)`; // from the theme: ui-field has no --u of its own
 
 /** Field label, description and error slots. */
+/** What the field's action rule applies to: a button in either renderer. */
+const FIELD_ACTION = ':is(ui-button, [data-ui=button])';
 export const fieldParts: Record<'label' | 'description' | 'error', Style> = {
   // Label and caption take their role's color (muted by default; theme typography.colors).
   // All three start where the control's text starts (resolveField textEdge), not at its edge.
@@ -247,6 +249,9 @@ export function fieldControl(state: { invalid: string; disabled: string; readonl
     [`&${state.readonly}`]: { bg: 'bg.subtle', cursor: 'default' },
     [`&${state.disabled}`]: { opacity: 0.5, cursor: 'not-allowed' },
     '& > [data-part=contents]::placeholder': { color: 'fg.subtle' },
+    // A button in the trailing slot sits ½u from the edge with nested corners (resolveFieldAction), whatever the density's padding.
+    [`& > [data-part=trailing]:has(> ${FIELD_ACTION})`]: { marginBlock: 'calc(0.5 * var(--u) - var(--pad) - var(--b))', marginInlineEnd: 'calc(0.5 * var(--u) - var(--pad) - var(--b))' },
+    [`& > [data-part=trailing] > ${FIELD_ACTION}`]: { width: 'auto', height: 'calc(var(--h) - var(--u))', minHeight: 0, borderRadius: 'max(0px, calc(var(--radius) - 0.5 * var(--u)))' },
     [FORCED]: FORCED_EDGE,
   };
 }

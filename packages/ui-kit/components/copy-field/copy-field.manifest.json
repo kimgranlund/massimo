@@ -1,0 +1,239 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "copy-field",
+  "primary": "component:copy-field",
+  "module": "./copy-field.element.ts",
+  "registration": "on-import",
+  "documentation": "./copy-field.md",
+  "examples": "./copy-field.examples.json",
+  "contract": "../../contracts/components.json#/components/copy-field",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./copy-field.recipe.ts"
+  },
+  "nodes": [
+    {
+      "id": "component:copy-field",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-copy-field",
+      "class": "UICopyField",
+      "extends": "UIElement",
+      "intent": [
+        "Show a value and copy it"
+      ],
+      "properties": [
+        {
+          "key": "label",
+          "type": "string",
+          "default": "",
+          "attribute": "label",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "value",
+          "type": "string",
+          "default": "",
+          "attribute": "value",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "hideLabel",
+          "type": "boolean",
+          "default": false,
+          "attribute": "hide-label",
+          "reflects": false,
+          "inspector": {
+            "control": "toggle"
+          }
+        }
+      ],
+      "attributes": [],
+      "events": [
+        {
+          "name": "copy-value",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": false,
+          "trigger": "the browser accepted the copy",
+          "detail": "{ value: string }"
+        }
+      ],
+      "semantics": {
+        "role": null,
+        "formAssociated": false,
+        "accessibleName": {
+          "sources": [
+            "label"
+          ],
+          "required": true
+        }
+      },
+      "content": {
+        "ownership": "component",
+        "acceptsChildren": false,
+        "children": "None."
+      },
+      "layout": {
+        "display": "block",
+        "sizing": "fill"
+      },
+      "constraints": [
+        "A read-only input with a button in its trailing slot.",
+        "A hidden status reports the copy, or that the browser refused."
+      ],
+      "avoidWhen": [
+        {
+          "when": "The value can be edited.",
+          "reason": "A copy field is read-only.",
+          "useInstead": "component:input"
+        }
+      ],
+      "searchTerms": [
+        "copy",
+        "clipboard",
+        "share link",
+        "api key",
+        "copy field"
+      ]
+    },
+    {
+      "id": "part:copy-field-status",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "span",
+      "selector": ":scope > [data-part=status]",
+      "summary": "The hidden status."
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:copy-field",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:copy-field",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:copy-field",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:copy-field",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:copy-field",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:copy-field",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:copy-field",
+      "relation": "usesGeometry",
+      "to": "geometry:field"
+    },
+    {
+      "from": "component:copy-field",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:copy-field",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:copy-field",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:copy-field",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:copy-field",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:copy-field",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:copy-field",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:copy-field",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:copy-field",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:copy-field",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
+      "from": "component:copy-field",
+      "relation": "ownsPart",
+      "to": "part:copy-field-status"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./copy-field.element.ts",
+      "exports": {
+        "component:copy-field": "UICopyField"
+      },
+      "verification": "./verification/copy-field.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./copy-field.react.tsx",
+      "exports": {
+        "component:copy-field": "CopyField"
+      },
+      "verification": "./verification/copy-field.verification.json#/renderers/react",
+      "props": {
+        "component:copy-field": {
+          "inherits": [],
+          "props": [
+            "label?: string",
+            "hideLabel?: boolean",
+            "value: string",
+            "onCopy?: (value: string) => void",
+            "className?: string"
+          ]
+        }
+      }
+    }
+  }
+}

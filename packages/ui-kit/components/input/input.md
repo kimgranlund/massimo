@@ -84,6 +84,14 @@ Base UI's props and event details ([components spec](../../../../docs/specs/comp
 | `ui-input` | `value`, `defaultValue` (`default-value`; without it the `value` attribute) | `input` while typing: `detail { value, reason: 'none', event }` (the editor's native input event stops at the editor and is `detail.event`); `change` on blur when the value changed since focus, like a native input |
 | React Input | native `value` / `defaultValue` | `onValueChange(value, { reason: 'none', event })`; native `onChange` still fires |
 
+## Inline actions
+
+Put a `ui-button` in the trailing slot for an action on the value, such as Verify. It sits ½u from the field's edge with nested corners, and the field keeps its height.
+
+```html
+<ui-input label="Email address" placeholder="name@studio.com"><ui-button slot="trailing" variant="primary">Verify</ui-button></ui-input>
+```
+
 ## Geometry and appearance
 
 Geometry families: `field` ([geometry-families.json](../../contracts/geometry-families.json), resolver `tokens/geometry/resolve.ts`, CSS `styles/geometry.ts`). Styles: the slot recipes in [input.recipe.ts](input.recipe.ts) (Panda `theme.slotRecipes`, one class per part, variants for finite attributes), applied by the web component and the React renderer alike; lengths read the geometry variables, colors are color roles, states use the shared conditions ([states.json](../../contracts/states.json), `styles/conditions.ts`), and motion and forced colors live in the same recipe.

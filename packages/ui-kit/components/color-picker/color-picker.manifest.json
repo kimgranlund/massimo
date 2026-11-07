@@ -1,0 +1,283 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "color-picker",
+  "primary": "component:color-picker",
+  "module": "./color-picker.element.ts",
+  "registration": "on-import",
+  "documentation": "./color-picker.md",
+  "examples": "./color-picker.examples.json",
+  "contract": "../../contracts/components.json#/components/color-picker",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./color-picker.recipe.ts"
+  },
+  "nodes": [
+    {
+      "id": "component:color-picker",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-color-picker",
+      "class": "UIColorPicker",
+      "extends": "UIFormElement",
+      "intent": [
+        "Edit a color's OKLCH channels"
+      ],
+      "properties": [
+        {
+          "key": "name",
+          "type": "string",
+          "default": "",
+          "attribute": "name",
+          "reflects": true,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "disabled",
+          "type": "boolean",
+          "default": false,
+          "attribute": "disabled",
+          "reflects": true,
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "required",
+          "type": "boolean",
+          "default": false,
+          "attribute": "required",
+          "reflects": true,
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "label",
+          "type": "string",
+          "default": "Color",
+          "attribute": "label",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "value",
+          "type": "string",
+          "default": "oklch(0.6 0.15 250)",
+          "attribute": "value",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        }
+      ],
+      "attributes": [],
+      "events": [
+        {
+          "name": "change",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": false,
+          "trigger": "the user commits a new value"
+        }
+      ],
+      "semantics": {
+        "role": null,
+        "formAssociated": true,
+        "accessibleName": {
+          "sources": [
+            "label"
+          ],
+          "required": true
+        }
+      },
+      "content": {
+        "ownership": "component",
+        "acceptsChildren": false,
+        "children": "None."
+      },
+      "layout": {
+        "display": "inline-flex",
+        "sizing": "intrinsic"
+      },
+      "constraints": [
+        "Only an accepted color submits: dragging changes a draft.",
+        "Cancel or dismissing discards the draft."
+      ],
+      "avoidWhen": [
+        {
+          "when": "Picking from a fixed set of colors.",
+          "reason": "A picker offers every color.",
+          "useInstead": "component:palette"
+        }
+      ],
+      "searchTerms": [
+        "color picker",
+        "oklch",
+        "color input",
+        "channels"
+      ]
+    },
+    {
+      "id": "part:color-picker-channels",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope [data-part=channels]",
+      "summary": "The draft editors."
+    },
+    {
+      "id": "part:color-picker-preview",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "span",
+      "selector": ":scope [data-part=preview]",
+      "summary": "The draft color."
+    },
+    {
+      "id": "part:color-picker-actions",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope [data-part=actions]",
+      "summary": "Cancel and Apply."
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:color-picker",
+      "relation": "extends",
+      "to": "foundation:form-element"
+    },
+    {
+      "from": "component:color-picker",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:color-picker",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:color-picker",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:color-picker",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:color-picker",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:color-picker",
+      "relation": "usesGeometry",
+      "to": "geometry:popup"
+    },
+    {
+      "from": "component:color-picker",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:color-picker",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:color-picker",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:color-picker",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:color-picker",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:color-picker",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:color-picker",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:color-picker",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:color-picker",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:color-picker",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
+      "from": "component:color-picker",
+      "relation": "ownsPart",
+      "to": "part:color-picker-channels"
+    },
+    {
+      "from": "component:color-picker",
+      "relation": "ownsPart",
+      "to": "part:color-picker-preview"
+    },
+    {
+      "from": "component:color-picker",
+      "relation": "ownsPart",
+      "to": "part:color-picker-actions"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./color-picker.element.ts",
+      "exports": {
+        "component:color-picker": "UIColorPicker"
+      },
+      "verification": "./verification/color-picker.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./color-picker.react.tsx",
+      "exports": {
+        "component:color-picker": "ColorPicker"
+      },
+      "verification": "./verification/color-picker.verification.json#/renderers/react",
+      "props": {
+        "component:color-picker": {
+          "inherits": [],
+          "props": [
+            "label?: string = 'Color'",
+            "defaultValue?: string = 'oklch(0.6 0.15 250)'",
+            "name?: string",
+            "onValueChange?: (value: string) => void",
+            "className?: string"
+          ]
+        }
+      }
+    }
+  }
+}

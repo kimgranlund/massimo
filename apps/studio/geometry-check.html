@@ -17,6 +17,12 @@ import '@massimo/ui-kit/components/field/element';
 import '@massimo/ui-kit/components/separator/element';
 import '@massimo/ui-kit/components/spinner/element';
 import '@massimo/ui-kit/components/kbd/element';
+import '@massimo/ui-kit/components/color-picker/element';
+import '@massimo/ui-kit/components/file-picker/element';
+import '@massimo/ui-kit/components/selection-control/element';
+import '@massimo/ui-kit/components/chip-select/element';
+import '@massimo/ui-kit/components/value-slider/element';
+import '@massimo/ui-kit/components/copy-field/element';
 import '@massimo/ui-kit/components/stat-card/element';
 import '@massimo/ui-kit/components/button-link/element';
 import '@massimo/ui-kit/components/breadcrumb/element';
@@ -38,7 +44,7 @@ import { TYPE_ROLES, resolveType } from '@massimo/ui-kit/tokens/typography/resol
 import { SHADOW_LAYERS, elevationTokenVars } from '@massimo/ui-kit/tokens/elevation/index';
 import '@massimo/ui-kit/components/number-field/element';
 import '@massimo/ui-kit/components/otp-field/element';
-import { resolveBreadcrumb, resolveDataList, resolveSettingRow, resolveStatCard, resolveFlow, resolveKbd, resolveSpinner, resolveTextarea, resolveIcon, resolveOtpField } from '@massimo/ui-kit/tokens/geometry/resolve';
+import { resolveFieldAction, resolveValueSlider, resolveBreadcrumb, resolveDataList, resolveSettingRow, resolveStatCard, resolveFlow, resolveKbd, resolveSpinner, resolveTextarea, resolveIcon, resolveOtpField } from '@massimo/ui-kit/tokens/geometry/resolve';
 import { resolveNumberField } from '@massimo/ui-kit/tokens/geometry/resolve';
 import '@massimo/ui-kit/components/combobox/element';
 import '@massimo/ui-kit/components/autocomplete/element';
@@ -121,7 +127,7 @@ for (const c of cases) {
     <div style="width:400px"><ui-progress id="prog" value="30"></ui-progress></div>
     <ui-toggle id="tgl" icon-size="${c.icon}" pressed><span slot="leading"></span>Bold</ui-toggle><ui-toggle id="tglO" aria-label="x"><span slot="leading"></span></ui-toggle><ui-toggle id="tglT">Text</ui-toggle>
     <div style="width:400px"><ui-meter id="met" label="Storage" value="30"></ui-meter></div>
-    <ui-spinner id="spin" label="Saving"></ui-spinner><ui-kbd id="keys" keys="ctrl+i" platform="mac"></ui-kbd><div style="width:${120 * c.unit}px"><ui-setting-row id="sr"><div data-part="copy"><span data-part="title">T</span></div><i></i></ui-setting-row><ui-data-list id="dl" divided><dl><div><dt>A</dt><dd>B</dd></div><div><dt>C</dt><dd>D</dd></div></dl></ui-data-list><ui-stat-card id="stat" label="L" value="1" delta="+1" trend="1,2,3"></ui-stat-card></div><ui-button id="blB">Go</ui-button><ui-button-link id="blL" href="#x">Go</ui-button-link><ui-breadcrumb id="crumbs" max-items="2"><a href="#a">A</a><a href="#b">B</a><span>C</span></ui-breadcrumb><ui-textarea id="ta3" label="T"></ui-textarea><ui-textarea id="ta1" label="T" rows="1"></ui-textarea><div style="width:400px"><ui-separator id="sepH"></ui-separator></div><div style="display:flex;height:40px"><ui-separator id="sepV" orientation="vertical"></ui-separator></div>
+    <ui-spinner id="spin" label="Saving"></ui-spinner><ui-kbd id="keys" keys="ctrl+i" platform="mac"></ui-kbd><div style="width:${120 * c.unit}px"><ui-setting-row id="sr"><div data-part="copy"><span data-part="title">T</span></div><i></i></ui-setting-row><ui-data-list id="dl" divided><dl><div><dt>A</dt><dd>B</dd></div><div><dt>C</dt><dd>D</dd></div></dl></ui-data-list><ui-stat-card id="stat" label="L" value="1" delta="+1" trend="1,2,3"></ui-stat-card></div><ui-copy-field id="cpf" label="L" value="v"></ui-copy-field><ui-input id="fa" label="L"><ui-button slot="trailing" variant="primary">Go</ui-button></ui-input><div style="width:300px"><ui-value-slider id="vsl" label="u" value="40"></ui-value-slider></div><ui-chip-select id="cps" label="S" hide-label value="a"><ui-option value="a">A</ui-option></ui-chip-select><ui-selection-control id="slc" label="V"><ui-switch label="V"></ui-switch></ui-selection-control><ui-file-picker id="fp" label="F"></ui-file-picker><ui-color-picker id="clp" label="C"></ui-color-picker><ui-button id="blB">Go</ui-button><ui-button-link id="blL" href="#x">Go</ui-button-link><ui-breadcrumb id="crumbs" max-items="2"><a href="#a">A</a><a href="#b">B</a><span>C</span></ui-breadcrumb><ui-textarea id="ta3" label="T"></ui-textarea><ui-textarea id="ta1" label="T" rows="1"></ui-textarea><div style="width:400px"><ui-separator id="sepH"></ui-separator></div><div style="display:flex;height:40px"><ui-separator id="sepV" orientation="vertical"></ui-separator></div>
     <div style="display:flex;width:10px"><ui-avatar id="av-sm" avatar-size="sm" name="Ada Lovelace"></ui-avatar><ui-avatar id="av-md" name="Ada Lovelace"></ui-avatar><ui-avatar id="av-lg" avatar-size="lg"></ui-avatar><ui-avatar id="av-xl" avatar-size="xl" name="Ada"></ui-avatar></div>
     <ui-swiper id="swp" label="S" style="width:${48 * c.unit}px"><div style="height:${24 * c.unit}px">1</div><div style="height:${24 * c.unit}px">2</div><div style="height:${24 * c.unit}px">3</div></ui-swiper>
     <div style="width:${48 * c.unit}px"><ui-image id="imgShow" ratio="landscape" slideshow alt="Show"><span>1</span><span>2</span></ui-image></div>
@@ -438,6 +444,13 @@ for (const c of cases) {
     checks['dataList.gap'] = [px(cs($('dl').querySelector('dl > div')).columnGap), rd.gap];
     checks['statCard.trend'] = [r2(rect($('stat').querySelector('[data-part=trend]')).height), rc.trend];
     checks['statCard.deltaGap'] = [px(cs($('stat').querySelector('[data-part=value]')).columnGap), rc.deltaGap];
+  }
+  {
+    const rv = resolveValueSlider(g), rf = resolveFieldAction(g), inp = $('fa'), btn = inp.querySelector('ui-button'), ctl = inp.querySelector('[data-part=control]');
+    checks['valueSlider.height'] = [r2(rect($('vsl').querySelector('[data-part=track]')).height), rv.height];
+    checks['fieldAction.height'] = [r2(rect(btn).height), rf.height];
+    checks['fieldAction.edge'] = [r2(rect(ctl).right - rect(btn).right), rf.edge];
+    checks['fieldAction.fieldHeight'] = [r2(rect(ctl).height), rf.height + 2 * rf.edge];
   }
   // Kbd: 5u caps, at least square, ½u apart, 10 + ½u text.
   {
