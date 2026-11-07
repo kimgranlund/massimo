@@ -1,4 +1,4 @@
-<!-- sdlc:managed:start v1 sha256:e76c8fa008a2 -->
+<!-- sdlc:managed:start v1 sha256:91c75176b15d -->
 # Work records
 
 This folder holds SDLC tickets, task records, `roadmap.md`, `notes.md`, and `config`. `tickets.py roadmap` (also run by `new` and `close`) generates this block: do not edit inside it; change a ticket's `handoff.md` front matter and rerun `roadmap`. `roadmap.md` lists every ticket in dependency order. Closed `.NNNN-*` folders are history: open one only when asked.
@@ -10,17 +10,16 @@ This folder holds SDLC tickets, task records, `roadmap.md`, `notes.md`, and `con
 
 ## Stages
 
-- proposed: 5
-  - T-0064 Parity W7 · Decide scope of specialist components (parity-wave-7-scope)
+- proposed: 4
   - T-0070 Data table: selection, pagination and virtual scrolling (data-table-depth)
   - T-0071 Chart: histogram, scatter, heatmap, pie, rings, timeline, bullet, sparkline and time windows (chart-more-kinds)
-  - T-0072 Data roles: a palette that passes colour-blind separation in dark on its own (data-role-contrast)
   - T-0073 Docs: real React snippets for the waves 2 to 6 components (react-doc-snippets)
+  - T-0074 A separate patterns package for the specialist components (patterns-package)
 - ready: 0
 - claimed: 0
 - paused: 0
 - blocked: 0
-- done: 68
+- done: 70
 - dropped: 0
 
 ## Procedures

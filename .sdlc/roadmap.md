@@ -5,13 +5,12 @@ New ticket: `/ticket new <feature|bug|chore|spike|idea> <slug> "title"`. Build p
 
 | ID | Ticket | Title | Type | Size | Pri | Depends on | Status |
 |---|---|---|---|---|---|---|---|
-| T-0064 | [parity-wave-7-scope](tickets/parity-wave-7-scope/handoff.md) | Parity W7 · Decide scope of specialist components | idea | L2 | P3 | T-0062, T-0063 | ⏳ proposed |
 | T-0070 | [data-table-depth](tickets/data-table-depth/handoff.md) | Data table: selection, pagination and virtual scrolling | feature | L2 | P2 | none | ⏳ proposed |
 | T-0071 | [chart-more-kinds](tickets/chart-more-kinds/handoff.md) | Chart: histogram, scatter, heatmap, pie, rings, timeline, bullet, sparkline and time windows | feature | L2 | P2 | none | ⏳ proposed |
-| T-0072 | [data-role-contrast](tickets/data-role-contrast/handoff.md) | Data roles: a palette that passes colour-blind separation in dark on its own | chore | L2 | P2 | none | ⏳ proposed |
 | T-0073 | [react-doc-snippets](tickets/react-doc-snippets/handoff.md) | Docs: real React snippets for the waves 2 to 6 components | chore | L2 | P2 | none | ⏳ proposed |
+| T-0074 | [patterns-package](tickets/patterns-package/handoff.md) | A separate patterns package for the specialist components | feature | L2 | P2 | none | ⏳ proposed |
 
-Closed: 68 done, 0 dropped (git log or .NNNN-* folders)
+Closed: 70 done, 0 dropped (git log or .NNNN-* folders)
 
 ## Open follow-ups
 

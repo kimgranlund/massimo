@@ -2,7 +2,7 @@
 id: T-0064
 title: "Parity W7 · Decide scope of specialist components"
 type: idea            # feature | bug | chore | spike | idea
-status: proposed     # proposed | ready | claimed | paused | blocked | done | dropped (build progress lives in /board)
+status: done     # proposed | ready | claimed | paused | blocked | done | dropped (build progress lives in /board)
 size: L2             # L1 | L2 | L3 | L4 (L5 reserved)
 priority: P3         # P1 | P2 | P3
 depends: [T-0062, T-0063]
@@ -20,3 +20,9 @@ Decide where Maison UI's remaining specialist components belong once waves 0 to 
 
 ## Context
 Parked by the user's choice of core now, specialist later.
+
+## Outcome
+
+2026-11-06 · lane: full L2 · verdict: closed by reason (decided 2026-11-06: all eleven go in a separate patterns package, see patterns-package) · verifier: none · base: none
+- Changed: scope decided
+- Commits: none
