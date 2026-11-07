@@ -1,4 +1,4 @@
-<!-- sdlc:managed:start v1 sha256:b2fda5f6d71f -->
+<!-- sdlc:managed:start v1 sha256:e76c8fa008a2 -->
 # Work records
 
 This folder holds SDLC tickets, task records, `roadmap.md`, `notes.md`, and `config`. `tickets.py roadmap` (also run by `new` and `close`) generates this block: do not edit inside it; change a ticket's `handoff.md` front matter and rerun `roadmap`. `roadmap.md` lists every ticket in dependency order. Closed `.NNNN-*` folders are history: open one only when asked.
@@ -10,36 +10,17 @@ This folder holds SDLC tickets, task records, `roadmap.md`, `notes.md`, and `con
 
 ## Stages
 
-- proposed: 1
+- proposed: 5
   - T-0064 Parity W7 · Decide scope of specialist components (parity-wave-7-scope)
-- ready: 23
-  - T-0041 Parity W2 · File picker (file-picker)
-  - T-0042 Parity W2 · Chip select (chip-select)
-  - T-0043 Parity W2 · Selection control (selection-control)
-  - T-0044 Parity W2 · Color picker (color-picker)
-  - T-0045 Parity W3 · Grid keyboard navigation foundation (grid-navigation)
-  - T-0046 Parity W3 · Calendar (calendar)
-  - T-0047 Parity W3 · Date picker (date-picker)
-  - T-0048 Parity W3 · Date range picker (date-range-picker)
-  - T-0049 Parity W3 · Time picker (time-picker)
-  - T-0050 Parity W4 · Toolbar (toolbar)
-  - T-0051 Parity W4 · Command bar (command-bar)
-  - T-0052 Parity W4 · Search trigger (search-trigger)
-  - T-0053 Parity W4 · Tree view (tree-view)
-  - T-0054 Parity W4 · Sidebar (sidebar)
-  - T-0055 Parity W5 · Pane and scroll-region geometry foundation (scroll-region-geometry)
-  - T-0056 Parity W5 · Page (page)
-  - T-0057 Parity W5 · Pane (pane)
-  - T-0058 Parity W5 · Content shell (content-shell)
-  - T-0059 Parity W5 · App and editor shell (app-shell)
-  - T-0060 Parity W5 · Admin shell (admin-shell)
-  - T-0061 Parity W5 · Floating panel (floating-panel)
-  - T-0062 Parity W6 · Data table (data-table)
-  - T-0063 Parity W6 · Chart (chart)
+  - T-0070 Data table: selection, pagination and virtual scrolling (data-table-depth)
+  - T-0071 Chart: histogram, scatter, heatmap, pie, rings, timeline, bullet, sparkline and time windows (chart-more-kinds)
+  - T-0072 Data roles: a palette that passes colour-blind separation in dark on its own (data-role-contrast)
+  - T-0073 Docs: real React snippets for the waves 2 to 6 components (react-doc-snippets)
+- ready: 0
 - claimed: 0
 - paused: 0
 - blocked: 0
-- done: 42
+- done: 68
 - dropped: 0
 
 ## Procedures

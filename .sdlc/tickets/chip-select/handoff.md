@@ -2,7 +2,7 @@
 id: T-0042
 title: "Parity W2 · Chip select"
 type: feature        # feature | bug | chore | spike | idea
-status: ready     # proposed | ready | claimed | paused | blocked | done | dropped (build progress lives in /board)
+status: done     # proposed | ready | claimed | paused | blocked | done | dropped (build progress lives in /board)
 size: L1             # L1 | L2 | L3 | L4 (L5 reserved)
 priority: P2         # P1 | P2 | P3
 depends: [T-0031]
@@ -26,3 +26,9 @@ Maison UI parity, wave 2: Chip select exists in ui-kit for both renderers and pa
 
 ## Constraints
 Zero native form elements in web components; every length from the geometry system; colours from Spectrum roles; motion via intent tokens; icons through the pinned Phosphor runtime; no runtime stylesheets.
+
+## Outcome
+
+2026-11-06 · lane: full L1 · verdict: closed by reason (delivered in 960bd0db; gates green in Chromium, Firefox and WebKit) · verifier: none · base: none
+- Changed: shipped in the patterns and wave 2 commit
+- Commits: none

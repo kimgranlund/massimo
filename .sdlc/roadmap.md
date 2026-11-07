@@ -5,32 +5,13 @@ New ticket: `/ticket new <feature|bug|chore|spike|idea> <slug> "title"`. Build p
 
 | ID | Ticket | Title | Type | Size | Pri | Depends on | Status |
 |---|---|---|---|---|---|---|---|
-| T-0041 | [file-picker](tickets/file-picker/handoff.md) | Parity W2 · File picker | feature | L2 | P2 | T-0031 | 🔵 ready |
-| T-0042 | [chip-select](tickets/chip-select/handoff.md) | Parity W2 · Chip select | feature | L1 | P2 | T-0031 | 🔵 ready |
-| T-0043 | [selection-control](tickets/selection-control/handoff.md) | Parity W2 · Selection control | feature | L2 | P2 | T-0031 | 🔵 ready |
-| T-0044 | [color-picker](tickets/color-picker/handoff.md) | Parity W2 · Color picker | feature | L2 | P2 | T-0031 | 🔵 ready |
-| T-0045 | [grid-navigation](tickets/grid-navigation/handoff.md) | Parity W3 · Grid keyboard navigation foundation | chore | L2 | P2 | T-0031 | 🔵 ready |
-| T-0046 | [calendar](tickets/calendar/handoff.md) | Parity W3 · Calendar | feature | L2 | P2 | T-0045 | 🔵 ready |
-| T-0047 | [date-picker](tickets/date-picker/handoff.md) | Parity W3 · Date picker | feature | L2 | P2 | T-0046 | 🔵 ready |
-| T-0048 | [date-range-picker](tickets/date-range-picker/handoff.md) | Parity W3 · Date range picker | feature | L2 | P2 | T-0047 | 🔵 ready |
-| T-0049 | [time-picker](tickets/time-picker/handoff.md) | Parity W3 · Time picker | feature | L2 | P2 | T-0031 | 🔵 ready |
-| T-0050 | [toolbar](tickets/toolbar/handoff.md) | Parity W4 · Toolbar | feature | L2 | P2 | T-0031 | 🔵 ready |
-| T-0051 | [command-bar](tickets/command-bar/handoff.md) | Parity W4 · Command bar | feature | L2 | P2 | T-0034 | 🔵 ready |
-| T-0052 | [search-trigger](tickets/search-trigger/handoff.md) | Parity W4 · Search trigger | feature | L1 | P2 | T-0051 | 🔵 ready |
-| T-0053 | [tree-view](tickets/tree-view/handoff.md) | Parity W4 · Tree view | feature | L2 | P2 | T-0031 | 🔵 ready |
-| T-0054 | [sidebar](tickets/sidebar/handoff.md) | Parity W4 · Sidebar | feature | L2 | P2 | T-0031 | 🔵 ready |
-| T-0055 | [scroll-region-geometry](tickets/scroll-region-geometry/handoff.md) | Parity W5 · Pane and scroll-region geometry foundation | chore | L2 | P2 | T-0031 | 🔵 ready |
-| T-0056 | [page](tickets/page/handoff.md) | Parity W5 · Page | feature | L1 | P2 | T-0055 | 🔵 ready |
-| T-0057 | [pane](tickets/pane/handoff.md) | Parity W5 · Pane | feature | L2 | P2 | T-0055 | 🔵 ready |
-| T-0058 | [content-shell](tickets/content-shell/handoff.md) | Parity W5 · Content shell | feature | L2 | P2 | T-0057 | 🔵 ready |
-| T-0059 | [app-shell](tickets/app-shell/handoff.md) | Parity W5 · App and editor shell | feature | L2 | P2 | T-0057 | 🔵 ready |
-| T-0060 | [admin-shell](tickets/admin-shell/handoff.md) | Parity W5 · Admin shell | feature | L2 | P2 | T-0059, T-0054 | 🔵 ready |
-| T-0061 | [floating-panel](tickets/floating-panel/handoff.md) | Parity W5 · Floating panel | feature | L2 | P2 | T-0055 | 🔵 ready |
-| T-0062 | [data-table](tickets/data-table/handoff.md) | Parity W6 · Data table | feature | L3 | P2 | T-0045 | 🔵 ready |
-| T-0063 | [chart](tickets/chart/handoff.md) | Parity W6 · Chart | feature | L3 | P2 | T-0031 | 🔵 ready |
 | T-0064 | [parity-wave-7-scope](tickets/parity-wave-7-scope/handoff.md) | Parity W7 · Decide scope of specialist components | idea | L2 | P3 | T-0062, T-0063 | ⏳ proposed |
+| T-0070 | [data-table-depth](tickets/data-table-depth/handoff.md) | Data table: selection, pagination and virtual scrolling | feature | L2 | P2 | none | ⏳ proposed |
+| T-0071 | [chart-more-kinds](tickets/chart-more-kinds/handoff.md) | Chart: histogram, scatter, heatmap, pie, rings, timeline, bullet, sparkline and time windows | feature | L2 | P2 | none | ⏳ proposed |
+| T-0072 | [data-role-contrast](tickets/data-role-contrast/handoff.md) | Data roles: a palette that passes colour-blind separation in dark on its own | chore | L2 | P2 | none | ⏳ proposed |
+| T-0073 | [react-doc-snippets](tickets/react-doc-snippets/handoff.md) | Docs: real React snippets for the waves 2 to 6 components | chore | L2 | P2 | none | ⏳ proposed |
 
-Closed: 42 done, 0 dropped (git log or .NNNN-* folders)
+Closed: 68 done, 0 dropped (git log or .NNNN-* folders)
 
 ## Open follow-ups
 
