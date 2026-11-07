@@ -2,7 +2,7 @@
 id: T-0037
 title: "Parity W1 · Button link"
 type: feature        # feature | bug | chore | spike | idea
-status: claimed     # proposed | ready | claimed | paused | blocked | done | dropped (build progress lives in /board)
+status: done     # proposed | ready | claimed | paused | blocked | done | dropped (build progress lives in /board)
 size: L1             # L1 | L2 | L3 | L4 (L5 reserved)
 priority: P2         # P1 | P2 | P3
 depends: [T-0031]
@@ -27,3 +27,9 @@ Maison UI parity, wave 1: Button link exists in ui-kit for both renderers and pa
 
 ## Constraints
 Zero native form elements in web components; every length from the geometry system; colours from Spectrum roles; motion via intent tokens; icons through the pinned Phosphor runtime; no runtime stylesheets.
+
+## Outcome
+
+2026-11-06 · lane: full L1 · verdict: closed by reason (built live; gates passed in Chromium, Firefox and WebKit) · verifier: none · base: none
+- Changed: components/button-link: ui-button-link, React ButtonLink, dom/button-link
+- Commits: none

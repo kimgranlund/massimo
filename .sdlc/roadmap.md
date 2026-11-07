@@ -5,7 +5,6 @@ New ticket: `/ticket new <feature|bug|chore|spike|idea> <slug> "title"`. Build p
 
 | ID | Ticket | Title | Type | Size | Pri | Depends on | Status |
 |---|---|---|---|---|---|---|---|
-| T-0037 | [button-link](tickets/button-link/handoff.md) | Parity W1 · Button link | feature | L1 | P2 | T-0031 | 🟡 claimed |
 | T-0038 | [setting-row](tickets/setting-row/handoff.md) | Parity W1 · Setting row | feature | L1 | P2 | T-0031 | 🔵 ready |
 | T-0039 | [data-list](tickets/data-list/handoff.md) | Parity W1 · Data list | feature | L2 | P2 | T-0031 | 🔵 ready |
 | T-0040 | [stat-card](tickets/stat-card/handoff.md) | Parity W1 · Stat card | feature | L2 | P2 | T-0031 | 🔵 ready |
@@ -34,7 +33,7 @@ New ticket: `/ticket new <feature|bug|chore|spike|idea> <slug> "title"`. Build p
 | T-0063 | [chart](tickets/chart/handoff.md) | Parity W6 · Chart | feature | L3 | P2 | T-0031 | 🔵 ready |
 | T-0064 | [parity-wave-7-scope](tickets/parity-wave-7-scope/handoff.md) | Parity W7 · Decide scope of specialist components | idea | L2 | P3 | T-0062, T-0063 | ⏳ proposed |
 
-Closed: 38 done, 0 dropped (git log or .NNNN-* folders)
+Closed: 39 done, 0 dropped (git log or .NNNN-* folders)
 
 ## Open follow-ups
 
