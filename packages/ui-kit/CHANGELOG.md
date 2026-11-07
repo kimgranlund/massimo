@@ -2,18 +2,31 @@
 
 `@massimo/ui-kit`. Versions follow semver; until 1.0.0 a minor version may break, and each break is listed under **Breaking**. How to cut a release: [docs/guides/release.md](../../docs/guides/release.md).
 
-## Unreleased
+## 0.2.0 (2026-11-06)
 
 **Added**
 
+- `ui-spinner`, `ui-kbd`, `ui-textarea`, `ui-breadcrumb`, `ui-button-link`, `ui-stat-card` and their React twins.
+- `ui-column`, `ui-list`, `ui-grid`, `ui-setting-row` and `ui-data-list`, CSS-only layout tags with React twins.
+- `surface="solid"` on `ui-container`: type roles inside take the panel's on-solid text.
+- `color.spectrum.keyIntensity` and `keyDepth`: dials for the chroma and tone of steps 9–12 alone.
+- The `solid-depth` brand character scale: `standard`, `deep`, `deepest`.
+- Steps 9–12 settle into one run around an anchor, and `ink` and `ground` pins blend into the neutral ramp.
 - `variant="ghost"` on `ui-button`: no resting fill, for repeated or low-priority actions.
 - `ui-section` (React `Section`): a card's child, supplying the card's inset, or part of it at a smaller `size`, and `divided` makes its children rows. A title is a section holding a `ui-row`: at the panels' size its margin collapses with theirs, and at the card's size it is flush and can be painted.
 - `ui-row` (React `Row`): a line of text and actions.
 - `color.spectrum.generator`: `oklch` generates the ramps in OKLCH with the same families, steps, contrast targets and anchors. `hct` stays the default.
 - `reach` on a color anchor: `key` or `ramp`, how far the anchor's chroma spreads through its family.
 
+**Fixed**
+
+- A `hide-label` control's hidden label stays inside its field, so it no longer stretches a scrolling page.
+- `fg.subtle` moves to neutral step 10 and clears Lc 45 on every surface in both schemes.
+- `ui-badge` and `ui-tag` hug their label in a stack.
+
 **Breaking**
 
+- `fg.subtle` is neutral step 10, not 8: use it for placeholders and hints, and check any design that relied on the lighter value.
 - Ramp tokens lose the `spectrum` level, with no aliases: `--colors-spectrum-indigo-9` is `--colors-indigo-9`, `colors.spectrum.indigo.9` is `colors.indigo.9` and DTCG `color.spectrum.indigo.9` is `color.indigo.9`. The neutral family's tokens are `gray` (`--colors-gray-9`), because `--colors-neutral-9` is the role.
 - Type roles are renamed in `data-type`, `textStyle`, `typography.colors`, the DTCG tokens and `--ui-type-color-<role>`, with no aliases: `body-large` is `body-lg`, `body` is `body-md`, `caption` is `body-sm`, `control` is `control-md`, `control-small` is `control-sm`. The `body` voice keeps its name.
 - `ui-container` nesting is padding first (decision 0017). A card's radius is its padding × min(1, s), not the control radius + padding. A nested container's radius is max(R_parent − p_parent, R_parent × k), and `container-ratio` now defaults to 0.4. `radius` on a card and `radius-card` run to 4. A nested card steps down the ladder to 3u. A group or collection with no `surface` or `padding` has no padding or border; set one of them to keep the inset.
