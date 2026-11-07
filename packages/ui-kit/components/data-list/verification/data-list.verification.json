@@ -1,0 +1,64 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "data-list",
+  "scope": "Behavior, ARIA and form participation of the web component in happy-dom (node:test). Rendered lengths are covered by the browser geometry check; visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "components/data-list/data-list.react.tsx",
+      "sha256": "49054e9ec7777bf97e64524efc41fd4008e49d7ee676ea069e41ca17096b5fe2"
+    },
+    {
+      "path": "components/data-list/data-list.recipe.ts",
+      "sha256": "9a1c8392a6b4716d6534defb72a61260420cb659e076b3c2ed117541c340953e"
+    },
+    {
+      "path": "components/data-list/data-list.manifest.json",
+      "sha256": "d676f816d2514d07a896e1cd94eda1c64559d0ff904ea6030bf1da8d9061c715"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test test/wave-1-end.test.ts",
+          "covers": "data-list rules, parts, resolver"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-07",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/wave-1-end.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test test/wave-1-end.test.ts",
+          "covers": "data-list SSR markup"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-07",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/wave-1-end.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "CSS-only: lengths are verified in the browser geometry check (apps/studio/geometry-check.html), not by these unit tests.",
+    "The source list is the direct sources, not every transitive dependency.",
+    "React styling parity is checked in the browser: apps/studio/react-check.html compares each React twin with its web component at five sizes (\"fails\": []).",
+    "Geometry review, manual items (2026-11-06): 2 row block, label column and gap derive from u; 3 to 7 no slots or radius, the divider is the separator width, and text uses type roles; 8 rows own their gutters, so there is no gap; 9 no floating layer; 10 values wrap; 11 no focus stop of its own."
+  ]
+}

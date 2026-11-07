@@ -18,6 +18,7 @@ import '@massimo/ui-kit/components/field/element';
 import '@massimo/ui-kit/components/separator/element';
 import '@massimo/ui-kit/components/spinner/element';
 import '@massimo/ui-kit/components/kbd/element';
+import '@massimo/ui-kit/components/stat-card/element';
 import '@massimo/ui-kit/components/button-link/element';
 import '@massimo/ui-kit/components/breadcrumb/element';
 import '@massimo/ui-kit/components/textarea/element';
@@ -69,6 +70,9 @@ import { Slider } from '@massimo/ui-kit/components/range/react';
 import { Separator } from '@massimo/ui-kit/components/separator/react';
 import { Spinner } from '@massimo/ui-kit/components/spinner/react';
 import { Kbd } from '@massimo/ui-kit/components/kbd/react';
+import { SettingRow } from '@massimo/ui-kit/components/setting-row/react';
+import { DataList } from '@massimo/ui-kit/components/data-list/react';
+import { StatCard } from '@massimo/ui-kit/components/stat-card/react';
 import { ButtonLink } from '@massimo/ui-kit/components/button-link/react';
 import { Breadcrumb } from '@massimo/ui-kit/components/breadcrumb/react';
 import { Textarea } from '@massimo/ui-kit/components/textarea/react';
@@ -199,6 +203,9 @@ function Pair({ u }: { u: number }) {
         <div style={{ width: 200 }}><ui-image data-k="ims" slideshow ratio="square" alt="Products"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="1" /><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="2" /></ui-image></div>
         <ui-spinner data-k="spn" label="Saving" />
         <ui-kbd data-k="kb" keys="mod+k" platform="mac" />
+        <div style={{ width: 400 }}><ui-setting-row data-k="sr"><div data-part="copy"><span data-part="title">T</span><span data-part="description">D</span></div></ui-setting-row></div>
+        <div style={{ width: 400 }}><ui-data-list data-k="dtl" divided=""><dl><div><dt>A</dt><dd>B</dd></div></dl></ui-data-list></div>
+        <div style={{ width: 300 }}><ui-stat-card data-k="stc" label="L" value="1" delta="+1" tone="positive" trend="1,2,3" /></div>
         <span data-k="bl" style={{ display: 'inline-flex' }}><ui-button-link href="#x" variant="primary">Go</ui-button-link></span>
         <ui-breadcrumb data-k="bc" max-items={2}><a href="#a">A</a><a href="#b">B</a><span>C</span></ui-breadcrumb>
         <div style={{ width: 300 }}><ui-textarea data-k="ta" label="Notes" rows={4} /></div>
@@ -290,6 +297,9 @@ function Pair({ u }: { u: number }) {
         <div style={{ width: 200 }}><Image data-k="ims" slideshow ratio="square" alt="Products"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="1" /><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="2" /></Image></div>
         <Spinner data-k="spn" label="Saving" />
         <Kbd data-k="kb" keys="mod+k" platform="mac" />
+        <div style={{ width: 400 }}><SettingRow data-k="sr" title="T" description="D" /></div>
+        <div style={{ width: 400 }}><DataList data-k="dtl" divided><DataList.Item label="A">B</DataList.Item></DataList></div>
+        <div style={{ width: 300 }}><StatCard data-k="stc" label="L" value="1" delta="+1" tone="positive" trend={[1, 2, 3]} /></div>
         <span data-k="bl" style={{ display: 'inline-flex' }}><ButtonLink href="#x" variant="primary">Go</ButtonLink></span>
         <Breadcrumb data-k="bc" maxItems={2}><a href="#a">A</a><a href="#b">B</a><span>C</span></Breadcrumb>
         <div style={{ width: 300 }}><Textarea data-k="ta" label="Notes" rows={4} /></div>
@@ -688,7 +698,7 @@ setTimeout(() => {
   }
   for (const c of root.querySelectorAll('[data-case]')) {
     const [wc, re] = [c.querySelector('[data-side=wc]')!, c.querySelector('[data-side=react]')!];
-    for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'btP', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'fd', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'spn', 'kb', 'bc', 'ta', 'flC', 'flL', 'flG', 'flN', 'gp', 'uc', 'ucN', 'ucL', 'ucL1', 'ucS', 'lb', 'sg', 'swp', 'ims', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD', 'col', 'colD', 'acc', 'tab', 'tabU', 'tst', ...GROUP_KEYS]) {
+    for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'btP', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'fd', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'spn', 'kb', 'sr', 'dtl', 'stc', 'bc', 'ta', 'flC', 'flL', 'flG', 'flN', 'gp', 'uc', 'ucN', 'ucL', 'ucL1', 'ucS', 'lb', 'sg', 'swp', 'ims', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD', 'col', 'colD', 'acc', 'tab', 'tabU', 'tst', ...GROUP_KEYS]) {
       const a = measure(host(wc, k)), b = measure(host(re, k));
       for (const key of Object.keys(a) as (keyof typeof a)[]) {
         checks++;
@@ -696,7 +706,7 @@ setTimeout(() => {
       }
     }
 
-    for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'btP', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'fd', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'spn', 'kb', 'bc', 'ta', 'flC', 'flL', 'flG', 'flN', 'gp', 'uc', 'ucN', 'ucL', 'ucL1', 'ucS', 'lb', 'sg', 'swp', 'ims', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD', 'col', 'colD', 'acc', 'tab', 'tabU', 'mn', 'mnD', 'cm', 'mb', 'mbV', ...GROUP_KEYS]) {
+    for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'btP', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'fd', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'spn', 'kb', 'sr', 'dtl', 'stc', 'bc', 'ta', 'flC', 'flL', 'flG', 'flN', 'gp', 'uc', 'ucN', 'ucL', 'ucL1', 'ucS', 'lb', 'sg', 'swp', 'ims', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD', 'col', 'colD', 'acc', 'tab', 'tabU', 'mn', 'mnD', 'cm', 'mb', 'mbV', ...GROUP_KEYS]) {
       const a = measure(host(wc, k)), b = measure(host(re, k));
       for (const key of Object.keys(a) as (keyof typeof a)[]) {
         checks++;

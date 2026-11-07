@@ -1179,6 +1179,60 @@
         "inline"
       ],
       "behavior": "Native link navigation. disabled removes the href; unsafe schemes are dropped."
+    },
+    "setting-row": {
+      "geometryFamily": "container",
+      "element": "CSS-only copy and controls (React SettingRow).",
+      "parts": [],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "form",
+        "dialog"
+      ],
+      "behavior": "None."
+    },
+    "data-list": {
+      "geometryFamily": "container",
+      "element": "CSS-only wrapper around a native dl (React DataList).",
+      "parts": [],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "form",
+        "dialog"
+      ],
+      "behavior": "None."
+    },
+    "stat-card": {
+      "geometryFamily": "container",
+      "element": "Host holds a card with label, value, delta, comparison and trend parts.",
+      "parts": [
+        "stat-card-label",
+        "stat-card-value",
+        "stat-card-delta",
+        "stat-card-comparison",
+        "stat-card-trend"
+      ],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "form",
+        "dialog"
+      ],
+      "behavior": "None: it presents a metric. tone is explicit."
     }
   }
 }

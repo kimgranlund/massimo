@@ -40,6 +40,9 @@ declare module 'react' {
       'ui-textarea': El<{ ref?: any; label?: string; name?: string; value?: string; rows?: string | number; placeholder?: string; description?: string; error?: string; required?: boolean; disabled?: boolean; readonly?: boolean }>;
       'ui-breadcrumb': El<{ label?: string; 'max-items'?: string | number }>;
       'ui-button-link': El<{ href?: string; target?: string; rel?: string; variant?: 'neutral' | 'primary' | 'ghost'; disabled?: boolean | string }>;
+      'ui-setting-row': El<{}>;
+      'ui-data-list': El<{ divided?: string; layout?: 'inline' | 'stacked' }>;
+      'ui-stat-card': El<{ label?: string; value?: string; delta?: string; tone?: 'positive' | 'negative' | 'neutral'; comparison?: string; trend?: string }>;
       'ui-kbd': El<{ keys?: string; platform?: 'auto' | 'mac' | 'other' }>;
       'ui-spinner': El<{ label?: string; 'hide-label'?: string | boolean }>;
       'ui-separator': El<{ orientation?: 'horizontal' | 'vertical' }>;

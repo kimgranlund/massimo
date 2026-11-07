@@ -1,0 +1,210 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "data-list",
+  "primary": "component:data-list",
+  "module": null,
+  "registration": "none",
+  "documentation": "./data-list.md",
+  "examples": "./data-list.examples.json",
+  "contract": "../../contracts/components.json#/components/data-list",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./data-list.recipe.ts"
+  },
+  "independentLayers": [],
+  "nodes": [
+    {
+      "id": "component:data-list",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-data-list",
+      "contract": "../../contracts/components.json#/components/data-list",
+      "intent": [
+        "Show labelled records with wrapping values."
+      ],
+      "properties": [],
+      "attributes": [
+        {
+          "name": "divided",
+          "type": "boolean",
+          "readBy": "css",
+          "description": "Rule the rows.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "name": "layout",
+          "type": "string",
+          "enum": [
+            "inline",
+            "stacked"
+          ],
+          "readBy": "css",
+          "description": "inline: label beside value. stacked: label above value.",
+          "inspector": {
+            "control": "select"
+          }
+        }
+      ],
+      "events": [],
+      "semantics": {
+        "role": null,
+        "formAssociated": false
+      },
+      "content": {
+        "ownership": "consumer",
+        "acceptsChildren": true,
+        "children": "A native dl with a div per record, each holding dt and dd."
+      },
+      "layout": {
+        "display": "block",
+        "sizing": "fill"
+      },
+      "constraints": [
+        "Write a native dl inside the web tag: it carries the meaning.",
+        "Rows own their gutters, so the list has no gap.",
+        "Values wrap, and can hold links and controls."
+      ],
+      "avoidWhen": [
+        {
+          "when": "The user picks a record.",
+          "reason": "A data list has no selection or keyboard.",
+          "useInstead": "component:listbox"
+        }
+      ],
+      "searchTerms": [
+        "data list",
+        "key value",
+        "description list",
+        "dl",
+        "metadata",
+        "details"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:data-list",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:data-list",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:data-list",
+      "relation": "usesGeometry",
+      "to": "geometry:container"
+    },
+    {
+      "from": "component:data-list",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:data-list",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:data-list",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:data-list",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:data-list",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:data-list",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:data-list",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:data-list",
+      "relation": "allowedIn",
+      "to": "context:dialog"
+    },
+    {
+      "from": "component:data-list",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:data-list",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:data-list",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:data-list",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:data-list",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "documentation": "./data-list.md",
+      "verification": "./verification/data-list.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./data-list.react.tsx",
+      "exports": {
+        "component:data-list": "DataList"
+      },
+      "verification": "./verification/data-list.verification.json#/renderers/react",
+      "props": {
+        "component:data-list": {
+          "inherits": [
+            "HTMLAttributes<HTMLDivElement>"
+          ],
+          "props": [
+            "divided?: boolean // Rule the rows.",
+            "layout?: 'inline' | 'stacked' // inline (default): label beside value. stacked: label above value.",
+            "children?: ReactNode"
+          ]
+        }
+      },
+      "parts": {
+        "component:data-list": {
+          "DataList.Item": {
+            "inherits": [
+              "HTMLAttributes<HTMLDivElement>"
+            ],
+            "props": [
+              "label: ReactNode",
+              "children?: ReactNode"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "setting-row",
+  "scope": "Behavior, ARIA and form participation of the web component in happy-dom (node:test). Rendered lengths are covered by the browser geometry check; visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "components/setting-row/setting-row.react.tsx",
+      "sha256": "5f360e8f807534eb888229efa0f36436f42007436b7ad566dae5da56a03c44b0"
+    },
+    {
+      "path": "components/setting-row/setting-row.recipe.ts",
+      "sha256": "cbd08146627976b82e5903e4ef56eb2b15e6be245c23291327051c477ebfbf63"
+    },
+    {
+      "path": "components/setting-row/setting-row.manifest.json",
+      "sha256": "229ae1cd450da6421182b3ad1b2cb914d16e3db88236cb1eca3c1e412a376ef8"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test test/wave-1-end.test.ts",
+          "covers": "setting-row rules, parts, resolver"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-07",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/wave-1-end.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test test/wave-1-end.test.ts",
+          "covers": "setting-row SSR markup"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-07",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/wave-1-end.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "CSS-only: lengths are verified in the browser geometry check (apps/studio/geometry-check.html), not by these unit tests.",
+    "The source list is the direct sources, not every transitive dependency.",
+    "React styling parity is checked in the browser: apps/studio/react-check.html compares each React twin with its web component at five sizes (\"fails\": []).",
+    "Geometry review, manual items (2026-11-06): 2 gap and copy width derive from u; 3 to 7 no slots, border or radius, and copy uses type roles; 8 the 4u gap is fixed; 9 no floating layer; 10 copy and controls wrap; 11 no focus stop of its own."
+  ]
+}

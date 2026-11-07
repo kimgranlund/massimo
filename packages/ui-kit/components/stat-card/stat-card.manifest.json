@@ -1,0 +1,319 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "stat-card",
+  "primary": "component:stat-card",
+  "module": "./stat-card.element.ts",
+  "registration": "on-import",
+  "documentation": "./stat-card.md",
+  "examples": "./stat-card.examples.json",
+  "contract": "../../contracts/components.json#/components/stat-card",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./stat-card.recipe.ts"
+  },
+  "nodes": [
+    {
+      "id": "component:stat-card",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-stat-card",
+      "class": "UIStatCard",
+      "extends": "UIElement",
+      "intent": [
+        "Show a metric with its change, comparison and trend"
+      ],
+      "properties": [
+        {
+          "key": "label",
+          "type": "string",
+          "default": "",
+          "attribute": "label",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "value",
+          "type": "string",
+          "default": "",
+          "attribute": "value",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "delta",
+          "type": "string",
+          "default": "",
+          "attribute": "delta",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "tone",
+          "type": "string",
+          "default": "neutral",
+          "attribute": "tone",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "comparison",
+          "type": "string",
+          "default": "",
+          "attribute": "comparison",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "trend",
+          "type": "string",
+          "default": "",
+          "attribute": "trend",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        }
+      ],
+      "attributes": [],
+      "events": [],
+      "semantics": {
+        "role": null,
+        "formAssociated": false,
+        "accessibleName": {
+          "sources": [
+            "the label part",
+            "the trend's description"
+          ],
+          "required": false
+        }
+      },
+      "content": {
+        "ownership": "component",
+        "acceptsChildren": false,
+        "children": "None: the attributes hold the content."
+      },
+      "layout": {
+        "display": "block",
+        "sizing": "fill"
+      },
+      "constraints": [
+        "tone is stated by the author; the delta's sign never sets it.",
+        "Empty parts are left out.",
+        "The trend has no axes: it shows direction, and its description states the first and last values."
+      ],
+      "avoidWhen": [
+        {
+          "when": "The exact values over time matter.",
+          "reason": "A trend has no axes or points.",
+          "useInstead": "component:data-list"
+        }
+      ],
+      "searchTerms": [
+        "stat",
+        "stat card",
+        "metric",
+        "kpi",
+        "sparkline",
+        "delta",
+        "number card"
+      ]
+    },
+    {
+      "id": "part:stat-card-label",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "span",
+      "selector": ":scope [data-part=label]",
+      "summary": "The metric's name."
+    },
+    {
+      "id": "part:stat-card-value",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "span",
+      "selector": ":scope [data-part=value]",
+      "summary": "The metric."
+    },
+    {
+      "id": "part:stat-card-delta",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "span",
+      "selector": ":scope [data-part=value] > [data-part=delta]",
+      "summary": "The change, on the value's baseline."
+    },
+    {
+      "id": "part:stat-card-comparison",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "span",
+      "selector": ":scope [data-part=comparison]",
+      "summary": "What the change is measured against."
+    },
+    {
+      "id": "part:stat-card-trend",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "span",
+      "selector": ":scope [data-part=trend]",
+      "summary": "The trend line."
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:stat-card",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:stat-card",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:stat-card",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:stat-card",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:stat-card",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:stat-card",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:stat-card",
+      "relation": "usesGeometry",
+      "to": "geometry:container"
+    },
+    {
+      "from": "component:stat-card",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:stat-card",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:stat-card",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:stat-card",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:stat-card",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:stat-card",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:stat-card",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:stat-card",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:stat-card",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:stat-card",
+      "relation": "allowedIn",
+      "to": "context:dialog"
+    },
+    {
+      "from": "component:stat-card",
+      "relation": "ownsPart",
+      "to": "part:stat-card-label"
+    },
+    {
+      "from": "component:stat-card",
+      "relation": "ownsPart",
+      "to": "part:stat-card-value"
+    },
+    {
+      "from": "component:stat-card",
+      "relation": "ownsPart",
+      "to": "part:stat-card-delta"
+    },
+    {
+      "from": "component:stat-card",
+      "relation": "ownsPart",
+      "to": "part:stat-card-comparison"
+    },
+    {
+      "from": "component:stat-card",
+      "relation": "ownsPart",
+      "to": "part:stat-card-trend"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./stat-card.element.ts",
+      "exports": {
+        "component:stat-card": "UIStatCard"
+      },
+      "verification": "./verification/stat-card.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./stat-card.react.tsx",
+      "exports": {
+        "component:stat-card": "StatCard"
+      },
+      "verification": "./verification/stat-card.verification.json#/renderers/react",
+      "props": {
+        "component:stat-card": {
+          "inherits": [
+            "HTMLAttributes<HTMLDivElement>"
+          ],
+          "props": [
+            "label: string",
+            "value: string",
+            "delta?: string",
+            "tone?: 'positive' | 'negative' | 'neutral' = 'neutral' // Whether the delta is good news. A sign can't say: a falling number can be good.",
+            "comparison?: string",
+            "trend?: number[] = [] // At least two values draw a line."
+          ]
+        }
+      }
+    }
+  }
+}

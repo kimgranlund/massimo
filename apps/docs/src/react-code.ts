@@ -5,7 +5,7 @@
 // derived snippet against the renderers.
 import type { Manifest } from './model.ts';
 
-const REACT_DIFFERS = new Set(['accordion', 'autocomplete', 'checkbox-group', 'field', 'form', 'image', 'range', 'row', 'scroll-area', 'toggle-group']);
+const REACT_DIFFERS = new Set(['setting-row', 'data-list', 'stat-card', 'accordion', 'autocomplete', 'checkbox-group', 'field', 'form', 'image', 'range', 'row', 'scroll-area', 'toggle-group']);
 export type ReactName = { name: string; folder: string };
 export function reactNames(manifests: Manifest[]) {
   return new Map(manifests.flatMap((m) => m.nodes.flatMap((n) => {

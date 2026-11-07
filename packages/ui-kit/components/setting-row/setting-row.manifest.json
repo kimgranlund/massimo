@@ -1,0 +1,172 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "setting-row",
+  "primary": "component:setting-row",
+  "module": null,
+  "registration": "none",
+  "documentation": "./setting-row.md",
+  "examples": "./setting-row.examples.json",
+  "contract": "../../contracts/components.json#/components/setting-row",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./setting-row.recipe.ts"
+  },
+  "independentLayers": [],
+  "nodes": [
+    {
+      "id": "component:setting-row",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-setting-row",
+      "contract": "../../contracts/components.json#/components/setting-row",
+      "intent": [
+        "Place a setting's copy beside its controls."
+      ],
+      "properties": [],
+      "attributes": [],
+      "events": [],
+      "semantics": {
+        "role": null,
+        "formAssociated": false
+      },
+      "content": {
+        "ownership": "consumer",
+        "acceptsChildren": true,
+        "children": "A [data-part=copy] with title and description parts, then the controls."
+      },
+      "layout": {
+        "display": "flex",
+        "sizing": "fill"
+      },
+      "constraints": [
+        "The row names nothing: give each control its own accessible name.",
+        "Copy and controls wrap apart when the row gets narrow."
+      ],
+      "avoidWhen": [
+        {
+          "when": "A line of mixed text and actions.",
+          "reason": "A setting row expects copy and a control.",
+          "useInstead": "component:row"
+        }
+      ],
+      "searchTerms": [
+        "setting",
+        "settings row",
+        "preference",
+        "option row",
+        "toggle row"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:setting-row",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:setting-row",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:setting-row",
+      "relation": "usesGeometry",
+      "to": "geometry:container"
+    },
+    {
+      "from": "component:setting-row",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:setting-row",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:setting-row",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:setting-row",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:setting-row",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:setting-row",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:setting-row",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:setting-row",
+      "relation": "allowedIn",
+      "to": "context:dialog"
+    },
+    {
+      "from": "component:setting-row",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:setting-row",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:setting-row",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:setting-row",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:setting-row",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "documentation": "./setting-row.md",
+      "verification": "./verification/setting-row.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./setting-row.react.tsx",
+      "exports": {
+        "component:setting-row": "SettingRow"
+      },
+      "verification": "./verification/setting-row.verification.json#/renderers/react",
+      "props": {
+        "component:setting-row": {
+          "inherits": [
+            "Omit<HTMLAttributes<HTMLDivElement>, 'title'>"
+          ],
+          "props": [
+            "title: ReactNode",
+            "description?: ReactNode",
+            "children?: ReactNode // The controls. Give each its own accessible name."
+          ]
+        }
+      }
+    }
+  }
+}

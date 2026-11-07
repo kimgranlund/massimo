@@ -1,0 +1,28 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "stat-card",
+  "title": "Stat card",
+  "summary": "A metric with its change, comparison and trend.",
+  "defaultExample": "full",
+  "examples": [
+    {
+      "id": "full",
+      "label": "With a trend",
+      "subject": "component:stat-card",
+      "markup": "<ui-stat-card label=\"Revenue\" value=\"$48,200\" delta=\"+12%\" tone=\"positive\" comparison=\"vs last month\" trend=\"31,34,33,40,44,48\" style=\"width: 100%\"></ui-stat-card>"
+    },
+    {
+      "id": "negative",
+      "label": "A falling number can be good",
+      "subject": "component:stat-card",
+      "markup": "<ui-stat-card label=\"Churn\" value=\"2.1%\" delta=\"-0.4%\" tone=\"positive\" comparison=\"vs May\" trend=\"3,2.8,2.5,2.1\" style=\"width: 100%\"></ui-stat-card>"
+    },
+    {
+      "id": "bare",
+      "label": "Value only",
+      "subject": "component:stat-card",
+      "markup": "<ui-stat-card label=\"Members\" value=\"128\" style=\"width: 100%\"></ui-stat-card>"
+    }
+  ]
+}

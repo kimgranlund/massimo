@@ -18,6 +18,8 @@ import { slotRecipes } from './components/recipes.ts';
 import { containerTags } from './components/container/container.recipe.ts';
 import { rowTags } from './components/row/row.recipe.ts';
 import { flowTags } from './components/flow/flow.recipe.ts';
+import { settingRowTags } from './components/setting-row/setting-row.recipe.ts';
+import { dataListTags } from './components/data-list/data-list.recipe.ts';
 import { sectionTags } from './components/section/section.recipe.ts';
 
 type Css = Record<string, Record<string, unknown>>;
@@ -32,7 +34,7 @@ export function mergeGlobalCss(...parts: Css[]): Css {
   return out;
 }
 
-export const globalCssParts = { theme: themeCss(), reset, typography, scheme: { '.dark': { colorScheme: 'dark' }, '.light': { colorScheme: 'light' } }, geometry, motion, defaults, containers: containerTags, rows: rowTags, flows: flowTags, sections: sectionTags, pending } as Record<string, Css>;
+export const globalCssParts = { theme: themeCss(), reset, typography, scheme: { '.dark': { colorScheme: 'dark' }, '.light': { colorScheme: 'light' } }, geometry, motion, defaults, containers: containerTags, rows: rowTags, flows: flowTags, settingRows: settingRowTags, dataLists: dataListTags, sections: sectionTags, pending } as Record<string, Css>;
 
 export const uiKitPreset = definePreset({
   name: 'ui-kit',

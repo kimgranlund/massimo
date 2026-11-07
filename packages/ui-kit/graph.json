@@ -221,6 +221,20 @@
         "long press menu"
       ]
     },
+    "component:data-list": {
+      "kind": "component",
+      "source": "components/data-list/data-list.manifest.json#/nodes/0",
+      "availability": "css-only",
+      "tag": "ui-data-list",
+      "searchTerms": [
+        "data list",
+        "key value",
+        "description list",
+        "dl",
+        "metadata",
+        "details"
+      ]
+    },
     "component:dialog": {
       "kind": "component",
       "source": "components/dialog/dialog.manifest.json#/nodes/0",
@@ -661,6 +675,19 @@
         "line"
       ]
     },
+    "component:setting-row": {
+      "kind": "component",
+      "source": "components/setting-row/setting-row.manifest.json#/nodes/0",
+      "availability": "css-only",
+      "tag": "ui-setting-row",
+      "searchTerms": [
+        "setting",
+        "settings row",
+        "preference",
+        "option row",
+        "toggle row"
+      ]
+    },
     "component:spinner": {
       "kind": "component",
       "source": "components/spinner/spinner.manifest.json#/nodes/0",
@@ -673,6 +700,21 @@
         "busy",
         "pending",
         "activity indicator"
+      ]
+    },
+    "component:stat-card": {
+      "kind": "component",
+      "source": "components/stat-card/stat-card.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-stat-card",
+      "searchTerms": [
+        "stat",
+        "stat card",
+        "metric",
+        "kpi",
+        "sparkline",
+        "delta",
+        "number card"
       ]
     },
     "component:swatch": {
@@ -5162,6 +5204,51 @@
         "spinner ring"
       ]
     },
+    "part:stat-card-comparison": {
+      "kind": "part",
+      "source": "components/stat-card/stat-card.manifest.json#/nodes/4",
+      "availability": "implemented",
+      "tag": "span",
+      "searchTerms": [
+        "stat card comparison"
+      ]
+    },
+    "part:stat-card-delta": {
+      "kind": "part",
+      "source": "components/stat-card/stat-card.manifest.json#/nodes/3",
+      "availability": "implemented",
+      "tag": "span",
+      "searchTerms": [
+        "stat card delta"
+      ]
+    },
+    "part:stat-card-label": {
+      "kind": "part",
+      "source": "components/stat-card/stat-card.manifest.json#/nodes/1",
+      "availability": "implemented",
+      "tag": "span",
+      "searchTerms": [
+        "stat card label"
+      ]
+    },
+    "part:stat-card-trend": {
+      "kind": "part",
+      "source": "components/stat-card/stat-card.manifest.json#/nodes/5",
+      "availability": "implemented",
+      "tag": "span",
+      "searchTerms": [
+        "stat card trend"
+      ]
+    },
+    "part:stat-card-value": {
+      "kind": "part",
+      "source": "components/stat-card/stat-card.manifest.json#/nodes/2",
+      "availability": "implemented",
+      "tag": "span",
+      "searchTerms": [
+        "stat card value"
+      ]
+    },
     "part:swiper-dot": {
       "kind": "part",
       "source": "components/swiper/swiper.manifest.json#/nodes/4",
@@ -8043,6 +8130,86 @@
       "from": "component:context-menu",
       "relation": "allowedIn",
       "to": "context:collection"
+    },
+    {
+      "from": "component:data-list",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:data-list",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:data-list",
+      "relation": "usesGeometry",
+      "to": "geometry:container"
+    },
+    {
+      "from": "component:data-list",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:data-list",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:data-list",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:data-list",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:data-list",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:data-list",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:data-list",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:data-list",
+      "relation": "allowedIn",
+      "to": "context:dialog"
+    },
+    {
+      "from": "component:data-list",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:data-list",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:data-list",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:data-list",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:data-list",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
     },
     {
       "from": "component:dialog",
@@ -11525,6 +11692,86 @@
       "to": "context:inline"
     },
     {
+      "from": "component:setting-row",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:setting-row",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:setting-row",
+      "relation": "usesGeometry",
+      "to": "geometry:container"
+    },
+    {
+      "from": "component:setting-row",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:setting-row",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:setting-row",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:setting-row",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:setting-row",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:setting-row",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:setting-row",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:setting-row",
+      "relation": "allowedIn",
+      "to": "context:dialog"
+    },
+    {
+      "from": "component:setting-row",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:setting-row",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:setting-row",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:setting-row",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:setting-row",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
       "from": "component:spinner",
       "relation": "extends",
       "to": "foundation:element"
@@ -11618,6 +11865,116 @@
       "from": "component:spinner",
       "relation": "ownsPart",
       "to": "part:spinner-label"
+    },
+    {
+      "from": "component:stat-card",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:stat-card",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:stat-card",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:stat-card",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:stat-card",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:stat-card",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:stat-card",
+      "relation": "usesGeometry",
+      "to": "geometry:container"
+    },
+    {
+      "from": "component:stat-card",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:stat-card",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:stat-card",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:stat-card",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:stat-card",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:stat-card",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:stat-card",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:stat-card",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:stat-card",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:stat-card",
+      "relation": "allowedIn",
+      "to": "context:dialog"
+    },
+    {
+      "from": "component:stat-card",
+      "relation": "ownsPart",
+      "to": "part:stat-card-label"
+    },
+    {
+      "from": "component:stat-card",
+      "relation": "ownsPart",
+      "to": "part:stat-card-value"
+    },
+    {
+      "from": "component:stat-card",
+      "relation": "ownsPart",
+      "to": "part:stat-card-delta"
+    },
+    {
+      "from": "component:stat-card",
+      "relation": "ownsPart",
+      "to": "part:stat-card-comparison"
+    },
+    {
+      "from": "component:stat-card",
+      "relation": "ownsPart",
+      "to": "part:stat-card-trend"
     },
     {
       "from": "component:swiper",

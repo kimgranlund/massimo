@@ -1,0 +1,22 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "setting-row",
+  "title": "Setting row",
+  "summary": "A setting's copy beside its controls.",
+  "defaultExample": "basic",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "With a switch",
+      "subject": "component:setting-row",
+      "markup": "<ui-setting-row style=\"width: 100%\"><div data-part=\"copy\"><span data-part=\"title\">Weekly digest</span><span data-part=\"description\">A summary every Monday.</span></div><ui-switch label=\"Weekly digest\" hide-label></ui-switch></ui-setting-row>"
+    },
+    {
+      "id": "button",
+      "label": "With a button",
+      "subject": "component:setting-row",
+      "markup": "<ui-setting-row style=\"width: 100%\"><div data-part=\"copy\"><span data-part=\"title\">Delete workspace</span><span data-part=\"description\">Removes every project for everyone.</span></div><ui-button>Delete</ui-button></ui-setting-row>"
+    }
+  ]
+}

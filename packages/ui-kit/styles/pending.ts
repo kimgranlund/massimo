@@ -59,6 +59,7 @@ export const pending = defineGlobalStyles({
   'ui-textarea:not(:defined)': { display: 'block', minHeight: 'calc(var(--h) + 2 * var(--line))' },
   'ui-breadcrumb:not(:defined)': { display: 'block', minHeight: 'var(--line)' },
   'ui-button-link:not(:defined)': { display: 'inline-block', minHeight: 'var(--h)' },
+  'ui-stat-card:not(:defined)': { display: 'block', minHeight: 'calc(16 * var(--u))' },
   'ui-kbd:not(:defined)': { display: 'inline-block', minWidth: 'calc(5 * var(--u))', minHeight: 'calc(5 * var(--u))' },
   'ui-spinner:not(:defined)': { display: 'inline-block', minWidth: 'calc(4 * var(--u))', minHeight: 'calc(4 * var(--u))' },
   'ui-separator:not(:defined)': { display: 'block', flexShrink: 0, alignSelf: 'stretch', height: 'var(--separator)' },

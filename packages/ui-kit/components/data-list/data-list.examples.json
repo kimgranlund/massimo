@@ -1,0 +1,22 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "data-list",
+  "title": "Data list",
+  "summary": "Labelled records with wrapping values.",
+  "defaultExample": "divided",
+  "examples": [
+    {
+      "id": "divided",
+      "label": "Divided rows",
+      "subject": "component:data-list",
+      "markup": "<ui-data-list divided style=\"width: 100%\"><dl><div><dt>Plan</dt><dd>Pro</dd></div><div><dt>Renews</dt><dd>March 3, 2027</dd></div><div><dt>Owner</dt><dd><a href=\"#/\">Ada Lindqvist</a></dd></div></dl></ui-data-list>"
+    },
+    {
+      "id": "stacked",
+      "label": "Stacked",
+      "subject": "component:data-list",
+      "markup": "<ui-data-list layout=\"stacked\" style=\"width: 100%\"><dl><div><dt>Summary</dt><dd>Ships the new editor and faster sync, with a long value that wraps inside its row instead of pushing the label aside.</dd></div></dl></ui-data-list>"
+    }
+  ]
+}

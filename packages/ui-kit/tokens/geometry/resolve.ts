@@ -588,6 +588,27 @@ export function resolveBreadcrumb(input: GeometryInput = {}) {
   return { gap: BREADCRUMB.gap * u, ellipsis: BREADCRUMB.ellipsis * u, maxLabel: BREADCRUMB.maxLabel * u };
 }
 
+// ── Display: setting row, data list, stat card ──
+/** A setting row's gap and the copy's width before wrapping, in u. */
+export const SETTING_ROW = { gap: 4, copy: 40 } as const;
+export function resolveSettingRow(input: GeometryInput = {}) {
+  const u = inputs(input).unit;
+  return { gap: SETTING_ROW.gap * u, copy: SETTING_ROW.copy * u };
+}
+/** A data list's label column, column gap and row block padding, in u. */
+export const DATA_LIST = { label: 30, gap: 4, rowBlock: 1.5 } as const;
+/** ui-data-list: rows own their gutters, so the list has no gap; the row block scales with density. */
+export function resolveDataList(input: GeometryInput = {}) {
+  const x = inputs(input), u = x.unit;
+  return { label: DATA_LIST.label * u, gap: DATA_LIST.gap * u, rowBlock: DATA_LIST.rowBlock * u * x.factor };
+}
+/** A stat card's trend height and the gap between value and delta, in u. */
+export const STAT_CARD = { trend: 10, deltaGap: 2 } as const;
+export function resolveStatCard(input: GeometryInput = {}) {
+  const u = inputs(input).unit;
+  return { trend: STAT_CARD.trend * u, deltaGap: STAT_CARD.deltaGap * u };
+}
+
 // ── Display: avatar ──
 // An avatar is a square on the slot and control ladder: sm = the 6u slot (it fits a button's
 // leading slot), md = the 8u control height (default), lg = 12u, xl = 16u. It is a control scaled by

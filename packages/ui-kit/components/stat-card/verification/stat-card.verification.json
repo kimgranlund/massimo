@@ -1,0 +1,72 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "stat-card",
+  "scope": "Behavior, ARIA and form participation of the web component in happy-dom (node:test). Rendered lengths are covered by the browser geometry check; visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "components/stat-card/stat-card.element.ts",
+      "sha256": "7c2da6f483069179980a6699cc9e28850f982620c7e15c99fdf8689f042ed4e7"
+    },
+    {
+      "path": "components/stat-card/stat-card.react.tsx",
+      "sha256": "5292c49428cf78eb554536575d39e3e3b18cbcabef5f3c193d25714f6e52beb3"
+    },
+    {
+      "path": "components/stat-card/stat-card.recipe.ts",
+      "sha256": "6f5bedbd1d30dd8bd9689a13b8d05225207c1eee99b836563fc8a91d917e9ac1"
+    },
+    {
+      "path": "components/stat-card/stat-card.manifest.json",
+      "sha256": "853acb904f7c7a314f00dd36ab8dec378fe1e6003619ea7d1085fd0baf27fb4e"
+    },
+    {
+      "path": "dom/stat.ts",
+      "sha256": "34c5106fafe92295d5cd44184ba8542488ae55fa3280321412f774e8331de868"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test test/wave-1-end.test.ts",
+          "covers": "stat-card rules, parts, resolver"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-07",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/wave-1-end.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test test/wave-1-end.test.ts",
+          "covers": "stat-card SSR markup"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-07",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/wave-1-end.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "CSS-only: lengths are verified in the browser geometry check (apps/studio/geometry-check.html), not by these unit tests.",
+    "The source list is the direct sources, not every transitive dependency.",
+    "React styling parity is checked in the browser: apps/studio/react-check.html compares each React twin with its web component at five sizes (\"fails\": []).",
+    "Geometry review, manual items (2026-11-06): 2 trend height and delta gap derive from u; 3 to 6 the card supplies border and radius; 7 type roles; 8 the card ladder; 9 no floating layer; 10 the value and delta wrap; 11 no focus stop."
+  ]
+}
