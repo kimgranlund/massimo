@@ -1,0 +1,71 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "tree-view",
+  "scope": "Role, orientation and data-* of the web component in happy-dom and of the React renderer in react-dom/server (node:test), and their state parity. Rendered thickness is covered by the browser geometry check; visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "components/tree-view/tree-view.element.ts",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "path": "components/tree-view/tree-view.react.tsx",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "path": "components/tree-view/tree-view.recipe.ts",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "path": "components/tree-view/tree-view.manifest.json",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "path": "dom/tree.ts",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test test/wave-4.test.ts",
+          "covers": "visible rows, keys and selection"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-06",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/tree-view.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test test/wave-4.test.ts",
+          "covers": "SSR markup and parts"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-06",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/tree-view.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "React styling parity is checked in the browser: apps/studio/react-check.html compares the React TreeView with ui-tree-view at five sizes (\"fails\": []).",
+    "The source list is the direct sources, not every transitive dependency.",
+    "Geometry review, manual items (2026-11-06): 2 row, indent and gap from resolveTreeView; 3 no border; 4 no nesting; 5 rows are 7u; 6 no composite; 7 selected on the primary subtle fill; 8 density leaves rows alone; 9 no floating layer; 10 fills and truncates labels; 11 rows take the focus ring."
+  ]
+}

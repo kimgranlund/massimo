@@ -1,0 +1,16 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "tree-view",
+  "title": "Tree view",
+  "summary": "A hierarchy to browse and select from.",
+  "defaultExample": "default",
+  "examples": [
+    {
+      "id": "default",
+      "label": "A tree",
+      "subject": "component:tree-view",
+      "markup": "<ui-tree-view label=\"Files\" items='[{\"id\":\"src\",\"label\":\"src\",\"children\":[{\"id\":\"main\",\"label\":\"main.ts\"}]},{\"id\":\"readme\",\"label\":\"README.md\"}]' expanded=\"src\" style=\"width: 100%\"></ui-tree-view>"
+    }
+  ]
+}

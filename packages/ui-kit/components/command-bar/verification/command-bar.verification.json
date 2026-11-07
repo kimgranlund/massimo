@@ -1,0 +1,71 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "command-bar",
+  "scope": "Role, orientation and data-* of the web component in happy-dom and of the React renderer in react-dom/server (node:test), and their state parity. Rendered thickness is covered by the browser geometry check; visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "components/command-bar/command-bar.element.ts",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "path": "components/command-bar/command-bar.react.tsx",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "path": "components/command-bar/command-bar.recipe.ts",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "path": "components/command-bar/command-bar.manifest.json",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "path": "dom/command.ts",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test test/wave-4.test.ts",
+          "covers": "filter, group, highlight and dialog"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-06",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/command-bar.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test test/wave-4.test.ts",
+          "covers": "SSR markup and parts"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-06",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/command-bar.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "React styling parity is checked in the browser: apps/studio/react-check.html compares the React CommandBar with ui-command-bar at five sizes (\"fails\": []).",
+    "The source list is the direct sources, not every transitive dependency.",
+    "Geometry review, manual items (2026-11-06): 2 item, list and gap from resolveCommand; 3 to 6 the dialog and field own them; 7 the highlight is a hover fill; 8 density leaves it alone; 9 the dialog owns its layer; 10 scrolls at 80u; 11 the field keeps focus and the list is its active descendant."
+  ]
+}

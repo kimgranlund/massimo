@@ -1,0 +1,265 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "tree-view",
+  "primary": "component:tree-view",
+  "module": "./tree-view.element.ts",
+  "registration": "on-import",
+  "documentation": "./tree-view.md",
+  "examples": "./tree-view.examples.json",
+  "contract": "../../contracts/components.json#/components/tree-view",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./tree-view.recipe.ts"
+  },
+  "nodes": [
+    {
+      "id": "component:tree-view",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-tree-view",
+      "class": "UITreeView",
+      "extends": "UIElement",
+      "intent": [
+        "Browse and select from a hierarchy"
+      ],
+      "properties": [
+        {
+          "key": "label",
+          "type": "string",
+          "default": "",
+          "attribute": "label",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "value",
+          "type": "string",
+          "default": "",
+          "attribute": "value",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "items",
+          "type": "string",
+          "default": null,
+          "attribute": "items",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        }
+      ],
+      "attributes": [],
+      "events": [
+        {
+          "name": "change",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": false,
+          "trigger": "the user commits a new value"
+        }
+      ],
+      "semantics": {
+        "role": "tree",
+        "formAssociated": false,
+        "accessibleName": {
+          "sources": [
+            "label"
+          ],
+          "required": true
+        }
+      },
+      "content": {
+        "ownership": "component",
+        "acceptsChildren": false,
+        "children": "Rendered from items."
+      },
+      "layout": {
+        "display": "flex",
+        "sizing": "fill"
+      },
+      "constraints": [
+        "One tab stop; arrow keys walk the visible rows.",
+        "Focus and selection are separate states.",
+        "Items are data: id, label, children."
+      ],
+      "avoidWhen": [
+        {
+          "when": "The list is flat.",
+          "reason": "A tree implies depth.",
+          "useInstead": "component:listbox"
+        }
+      ],
+      "searchTerms": [
+        "tree",
+        "tree view",
+        "hierarchy",
+        "outline"
+      ]
+    },
+    {
+      "id": "part:tree-view-row",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": "[data-part=row]",
+      "summary": "One row."
+    },
+    {
+      "id": "part:tree-view-caret",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "span",
+      "selector": "[data-part=caret]",
+      "summary": "The expander."
+    },
+    {
+      "id": "part:tree-view-label",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "span",
+      "selector": "[data-part=label]",
+      "summary": "The label."
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:tree-view",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:tree-view",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:tree-view",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:tree-view",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:tree-view",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:tree-view",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:tree-view",
+      "relation": "usesGeometry",
+      "to": "geometry:tree"
+    },
+    {
+      "from": "component:tree-view",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:tree-view",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:tree-view",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:tree-view",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:tree-view",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:tree-view",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:tree-view",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:tree-view",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:tree-view",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:tree-view",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
+      "from": "component:tree-view",
+      "relation": "ownsPart",
+      "to": "part:tree-view-row"
+    },
+    {
+      "from": "component:tree-view",
+      "relation": "ownsPart",
+      "to": "part:tree-view-caret"
+    },
+    {
+      "from": "component:tree-view",
+      "relation": "ownsPart",
+      "to": "part:tree-view-label"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./tree-view.element.ts",
+      "exports": {
+        "component:tree-view": "UITreeView"
+      },
+      "verification": "./verification/tree-view.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./tree-view.react.tsx",
+      "exports": {
+        "component:tree-view": "TreeView"
+      },
+      "verification": "./verification/tree-view.verification.json#/renderers/react",
+      "props": {
+        "component:tree-view": {
+          "inherits": [
+            "Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'defaultValue'>"
+          ],
+          "props": [
+            "label: string",
+            "items: TreeItem[]",
+            "defaultValue?: string = ''",
+            "onValueChange?: (id: string) => void"
+          ]
+        }
+      }
+    }
+  }
+}

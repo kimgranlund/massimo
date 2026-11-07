@@ -1,0 +1,16 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "command-bar",
+  "title": "Command bar",
+  "summary": "Search and run commands.",
+  "defaultExample": "default",
+  "examples": [
+    {
+      "id": "default",
+      "label": "Commands",
+      "subject": "component:command-bar",
+      "markup": "<ui-command-bar open commands='[{\"id\":\"a\",\"label\":\"New project\",\"group\":\"Create\"},{\"id\":\"b\",\"label\":\"Theme\",\"group\":\"View\"}]'></ui-command-bar>"
+    }
+  ]
+}

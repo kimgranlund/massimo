@@ -1,0 +1,28 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "calendar",
+  "title": "Calendar",
+  "summary": "A keyboard-navigable month grid.",
+  "defaultExample": "single",
+  "examples": [
+    {
+      "id": "single",
+      "label": "One date",
+      "subject": "component:calendar",
+      "markup": "<ui-calendar value=\"2026-11-06\" locale=\"en-US\"></ui-calendar>"
+    },
+    {
+      "id": "range",
+      "label": "A range",
+      "subject": "component:calendar",
+      "markup": "<ui-calendar mode=\"range\" value=\"2026-11-09/2026-11-13\" locale=\"en-US\"></ui-calendar>"
+    },
+    {
+      "id": "bounds",
+      "label": "Bounded",
+      "subject": "component:calendar",
+      "markup": "<ui-calendar value=\"2026-11-06\" min=\"2026-11-02\" max=\"2026-11-20\" locale=\"en-US\"></ui-calendar>"
+    }
+  ]
+}

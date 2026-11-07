@@ -1347,6 +1347,171 @@
         "inline"
       ],
       "behavior": "Draft until Apply."
+    },
+    "calendar": {
+      "geometryFamily": "calendar",
+      "element": "Host with header and a grid of day cells.",
+      "parts": [
+        "calendar-header",
+        "calendar-title",
+        "calendar-grid",
+        "calendar-row",
+        "calendar-weekday",
+        "calendar-cell"
+      ],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "form",
+        "inline"
+      ],
+      "behavior": "Roving grid focus; picks on click, Enter or Space."
+    },
+    "date-picker": {
+      "geometryFamily": "calendar",
+      "element": "Host around ui-popover, ui-button and ui-calendar.",
+      "parts": [],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "form",
+        "inline"
+      ],
+      "behavior": "Opens on the trigger; closes on pick."
+    },
+    "date-range-picker": {
+      "geometryFamily": "calendar",
+      "element": "Host around ui-popover, ui-button and ui-calendar.",
+      "parts": [
+        "date-range-picker-body",
+        "date-range-picker-actions"
+      ],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "form",
+        "inline"
+      ],
+      "behavior": "Draft until Apply."
+    },
+    "time-picker": {
+      "geometryFamily": "field",
+      "element": "Host around ui-autocomplete.",
+      "parts": [],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "form",
+        "inline"
+      ],
+      "behavior": "Parses on blur, suggests 30-minute slots."
+    },
+    "toolbar": {
+      "geometryFamily": "toolbar",
+      "element": "Host with command children.",
+      "parts": [],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "form",
+        "inline"
+      ],
+      "behavior": "Roving focus and overflow into a menu."
+    },
+    "command-bar": {
+      "geometryFamily": "command",
+      "element": "Host around ui-dialog, a field and a listbox.",
+      "parts": [
+        "command-bar-list",
+        "command-bar-group",
+        "command-bar-item",
+        "command-bar-empty"
+      ],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "form",
+        "inline"
+      ],
+      "behavior": "Filters as you type; Enter runs the highlight."
+    },
+    "search-trigger": {
+      "geometryFamily": "command",
+      "element": "Host around ui-button.",
+      "parts": [],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "form",
+        "inline"
+      ],
+      "behavior": "Opens the bar it names."
+    },
+    "tree-view": {
+      "geometryFamily": "tree",
+      "element": "Host with rendered treeitem rows.",
+      "parts": [
+        "tree-view-row",
+        "tree-view-caret",
+        "tree-view-label"
+      ],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "form",
+        "inline"
+      ],
+      "behavior": "Roving focus; Enter selects."
+    },
+    "sidebar": {
+      "geometryFamily": "sidebar",
+      "element": "Host landmark with a toggle.",
+      "parts": [
+        "sidebar-toggle"
+      ],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "form",
+        "inline"
+      ],
+      "behavior": "Toggles collapsed."
     }
   }
 }

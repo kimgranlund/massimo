@@ -18,6 +18,15 @@ import '@massimo/ui-kit/components/field/element';
 import '@massimo/ui-kit/components/separator/element';
 import '@massimo/ui-kit/components/spinner/element';
 import '@massimo/ui-kit/components/kbd/element';
+import '@massimo/ui-kit/components/sidebar/element';
+import '@massimo/ui-kit/components/tree-view/element';
+import '@massimo/ui-kit/components/search-trigger/element';
+import '@massimo/ui-kit/components/command-bar/element';
+import '@massimo/ui-kit/components/toolbar/element';
+import '@massimo/ui-kit/components/time-picker/element';
+import '@massimo/ui-kit/components/date-range-picker/element';
+import '@massimo/ui-kit/components/date-picker/element';
+import '@massimo/ui-kit/components/calendar/element';
 import '@massimo/ui-kit/components/color-picker/element';
 import '@massimo/ui-kit/components/file-picker/element';
 import '@massimo/ui-kit/components/selection-control/element';
@@ -76,6 +85,15 @@ import { Slider } from '@massimo/ui-kit/components/range/react';
 import { Separator } from '@massimo/ui-kit/components/separator/react';
 import { Spinner } from '@massimo/ui-kit/components/spinner/react';
 import { Kbd } from '@massimo/ui-kit/components/kbd/react';
+import { Sidebar } from '@massimo/ui-kit/components/sidebar/react';
+import { TreeView } from '@massimo/ui-kit/components/tree-view/react';
+import { SearchTrigger } from '@massimo/ui-kit/components/search-trigger/react';
+import { CommandBar } from '@massimo/ui-kit/components/command-bar/react';
+import { Toolbar } from '@massimo/ui-kit/components/toolbar/react';
+import { TimePicker } from '@massimo/ui-kit/components/time-picker/react';
+import { DateRangePicker } from '@massimo/ui-kit/components/date-range-picker/react';
+import { DatePicker } from '@massimo/ui-kit/components/date-picker/react';
+import { Calendar } from '@massimo/ui-kit/components/calendar/react';
 import { ColorPicker } from '@massimo/ui-kit/components/color-picker/react';
 import { FilePicker } from '@massimo/ui-kit/components/file-picker/react';
 import { SelectionControl } from '@massimo/ui-kit/components/selection-control/react';
@@ -215,6 +233,15 @@ function Pair({ u }: { u: number }) {
         <div style={{ width: 200 }}><ui-image data-k="ims" slideshow ratio="square" alt="Products"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="1" /><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="2" /></ui-image></div>
         <ui-spinner data-k="spn" label="Saving" />
         <ui-kbd data-k="kb" keys="mod+k" platform="mac" />
+        <span data-k="sdb" style={{ display: 'block' }}><ui-sidebar label="S" /></span>
+        <span data-k="trv" style={{ display: 'block' }}><ui-tree-view label="T" items='[{"id":"a","label":"A"}]' /></span>
+        <span data-k="srt" style={{ display: 'block' }}><ui-search-trigger label="S" /></span>
+        <span data-k="cmd" style={{ display: 'block' }}><ui-command-bar label="C" /></span>
+        <span data-k="tbr" style={{ display: 'block' }}><ui-toolbar label="T"><ui-button>A</ui-button></ui-toolbar></span>
+        <span data-k="tmp" style={{ display: 'block' }}><ui-time-picker label="T" value="09:30" /></span>
+        <span data-k="drp" style={{ display: 'block' }}><ui-date-range-picker value="2026-11-01/2026-11-30" locale="en-US" /></span>
+        <span data-k="dtp" style={{ display: 'block' }}><ui-date-picker value="2026-11-06" locale="en-US" /></span>
+        <span data-k="cal" style={{ display: 'block' }}><ui-calendar value="2026-11-06" locale="en-US" /></span>
         <span data-k="clp" style={{ display: 'inline-block' }}><ui-color-picker label="C" /></span>
         <div style={{ width: 300 }}><span data-k="fp" style={{ display: 'block' }}><ui-file-picker label="F" /></span></div>
         <span data-k="slc" style={{ display: 'block' }}><ui-selection-control label="V"><ui-switch aria-label="V" /></ui-selection-control></span>
@@ -315,6 +342,15 @@ function Pair({ u }: { u: number }) {
         <div style={{ width: 200 }}><Image data-k="ims" slideshow ratio="square" alt="Products"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="1" /><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="2" /></Image></div>
         <Spinner data-k="spn" label="Saving" />
         <Kbd data-k="kb" keys="mod+k" platform="mac" />
+        <span data-k="sdb" style={{ display: 'block' }}><Sidebar label="S" /></span>
+        <span data-k="trv" style={{ display: 'block' }}><TreeView label="T" items={[{ id: 'a', label: 'A' }]} /></span>
+        <span data-k="srt" style={{ display: 'block' }}><SearchTrigger label="S" /></span>
+        <span data-k="cmd" style={{ display: 'block' }}><CommandBar label="C" commands={[]} open={false} onOpenChange={() => {}} onSelect={() => {}} /></span>
+        <span data-k="tbr" style={{ display: 'block' }}><Toolbar label="T"><Button>A</Button></Toolbar></span>
+        <span data-k="tmp" style={{ display: 'block' }}><TimePicker label="T" defaultValue="09:30" /></span>
+        <span data-k="drp" style={{ display: 'block' }}><DateRangePicker defaultValue="2026-11-01/2026-11-30" locale="en-US" /></span>
+        <span data-k="dtp" style={{ display: 'block' }}><DatePicker defaultValue="2026-11-06" locale="en-US" /></span>
+        <span data-k="cal" style={{ display: 'block' }}><Calendar defaultValue="2026-11-06" locale="en-US" /></span>
         <span data-k="clp" style={{ display: 'inline-block' }}><ColorPicker label="C" /></span>
         <div style={{ width: 300 }}><span data-k="fp" style={{ display: 'block' }}><FilePicker label="F" /></span></div>
         <span data-k="slc" style={{ display: 'block' }}><SelectionControl label="V" value="Off"><Switch aria-label="V" /></SelectionControl></span>
@@ -722,7 +758,7 @@ setTimeout(() => {
   }
   for (const c of root.querySelectorAll('[data-case]')) {
     const [wc, re] = [c.querySelector('[data-side=wc]')!, c.querySelector('[data-side=react]')!];
-    for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'btP', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'fd', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'spn', 'kb', 'clp', 'fp', 'slc', ...(CSS.supports('appearance', 'base-select') ? ['cps'] : []), 'vsl', 'cpf', 'sr', 'dtl', 'stc', 'bc', 'ta', 'flC', 'flL', 'flG', 'flN', 'gp', 'uc', 'ucN', 'ucL', 'ucL1', 'ucS', 'lb', 'sg', 'swp', 'ims', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD', 'col', 'colD', 'acc', 'tab', 'tabU', 'tst', ...GROUP_KEYS]) {
+    for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'btP', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'fd', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'spn', 'kb', 'sdb', 'trv', 'srt', 'cmd', 'tbr', 'tmp', 'drp', 'dtp', 'cal', 'clp', 'fp', 'slc', ...(CSS.supports('appearance', 'base-select') ? ['cps'] : []), 'vsl', 'cpf', 'sr', 'dtl', 'stc', 'bc', 'ta', 'flC', 'flL', 'flG', 'flN', 'gp', 'uc', 'ucN', 'ucL', 'ucL1', 'ucS', 'lb', 'sg', 'swp', 'ims', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD', 'col', 'colD', 'acc', 'tab', 'tabU', 'tst', ...GROUP_KEYS]) {
       const a = measure(host(wc, k)), b = measure(host(re, k));
       for (const key of Object.keys(a) as (keyof typeof a)[]) {
         checks++;
@@ -730,7 +766,7 @@ setTimeout(() => {
       }
     }
 
-    for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'btP', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'fd', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'spn', 'kb', 'clp', 'fp', 'slc', ...(CSS.supports('appearance', 'base-select') ? ['cps'] : []), 'vsl', 'cpf', 'sr', 'dtl', 'stc', 'bc', 'ta', 'flC', 'flL', 'flG', 'flN', 'gp', 'uc', 'ucN', 'ucL', 'ucL1', 'ucS', 'lb', 'sg', 'swp', 'ims', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD', 'col', 'colD', 'acc', 'tab', 'tabU', 'mn', 'mnD', 'cm', 'mb', 'mbV', ...GROUP_KEYS]) {
+    for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'btP', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'fd', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'spn', 'kb', 'sdb', 'trv', 'srt', 'cmd', 'tbr', 'tmp', 'drp', 'dtp', 'cal', 'clp', 'fp', 'slc', ...(CSS.supports('appearance', 'base-select') ? ['cps'] : []), 'vsl', 'cpf', 'sr', 'dtl', 'stc', 'bc', 'ta', 'flC', 'flL', 'flG', 'flN', 'gp', 'uc', 'ucN', 'ucL', 'ucL1', 'ucS', 'lb', 'sg', 'swp', 'ims', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD', 'col', 'colD', 'acc', 'tab', 'tabU', 'mn', 'mnD', 'cm', 'mb', 'mbV', ...GROUP_KEYS]) {
       const a = measure(host(wc, k)), b = measure(host(re, k));
       for (const key of Object.keys(a) as (keyof typeof a)[]) {
         checks++;

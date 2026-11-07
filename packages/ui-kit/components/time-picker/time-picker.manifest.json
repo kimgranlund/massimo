@@ -1,0 +1,246 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "time-picker",
+  "primary": "component:time-picker",
+  "module": "./time-picker.element.ts",
+  "registration": "on-import",
+  "documentation": "./time-picker.md",
+  "examples": "./time-picker.examples.json",
+  "contract": "../../contracts/components.json#/components/time-picker",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./time-picker.recipe.ts"
+  },
+  "nodes": [
+    {
+      "id": "component:time-picker",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-time-picker",
+      "class": "UITimePicker",
+      "extends": "UIElement",
+      "intent": [
+        "Enter a wall-clock time by typing or from suggestions"
+      ],
+      "properties": [
+        {
+          "key": "label",
+          "type": "string",
+          "default": "Time",
+          "attribute": "label",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "name",
+          "type": "string",
+          "default": "",
+          "attribute": "name",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "value",
+          "type": "string",
+          "default": "",
+          "attribute": "value",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "step",
+          "type": "number",
+          "default": 30,
+          "attribute": "step",
+          "reflects": false,
+          "inspector": {
+            "control": "number"
+          }
+        },
+        {
+          "key": "required",
+          "type": "boolean",
+          "default": false,
+          "attribute": "required",
+          "reflects": false,
+          "inspector": {
+            "control": "toggle"
+          }
+        }
+      ],
+      "attributes": [],
+      "events": [
+        {
+          "name": "change",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": false,
+          "trigger": "the user commits a new value"
+        }
+      ],
+      "semantics": {
+        "role": null,
+        "formAssociated": false,
+        "accessibleName": {
+          "sources": [
+            "label"
+          ],
+          "required": true
+        }
+      },
+      "content": {
+        "ownership": "component",
+        "acceptsChildren": false,
+        "children": "A text field with time suggestions."
+      },
+      "layout": {
+        "display": "block",
+        "sizing": "fill"
+      },
+      "constraints": [
+        "Submits 24-hour HH:mm.",
+        "Accepts 9:30 pm, 2130 and 21:30.",
+        "No time zone."
+      ],
+      "avoidWhen": [
+        {
+          "when": "A date is chosen too.",
+          "reason": "It holds a time only.",
+          "useInstead": "component:date-picker"
+        }
+      ],
+      "searchTerms": [
+        "time picker",
+        "time field",
+        "clock"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:time-picker",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:time-picker",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:time-picker",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:time-picker",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:time-picker",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:time-picker",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:time-picker",
+      "relation": "usesGeometry",
+      "to": "geometry:field"
+    },
+    {
+      "from": "component:time-picker",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:time-picker",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:time-picker",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:time-picker",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:time-picker",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:time-picker",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:time-picker",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:time-picker",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:time-picker",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:time-picker",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./time-picker.element.ts",
+      "exports": {
+        "component:time-picker": "UITimePicker"
+      },
+      "verification": "./verification/time-picker.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./time-picker.react.tsx",
+      "exports": {
+        "component:time-picker": "TimePicker"
+      },
+      "verification": "./verification/time-picker.verification.json#/renderers/react",
+      "props": {
+        "component:time-picker": {
+          "inherits": [],
+          "props": [
+            "label?: string = 'Time'",
+            "name?: string",
+            "defaultValue?: string = ''",
+            "step?: number = 30",
+            "required?: boolean",
+            "onValueChange?: (value: string) => void",
+            "className?: string"
+          ]
+        }
+      }
+    }
+  }
+}

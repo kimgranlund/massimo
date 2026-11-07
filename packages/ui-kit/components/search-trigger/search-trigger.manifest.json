@@ -1,0 +1,214 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "search-trigger",
+  "primary": "component:search-trigger",
+  "module": "./search-trigger.element.ts",
+  "registration": "on-import",
+  "documentation": "./search-trigger.md",
+  "examples": "./search-trigger.examples.json",
+  "contract": "../../contracts/components.json#/components/search-trigger",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./search-trigger.recipe.ts"
+  },
+  "nodes": [
+    {
+      "id": "component:search-trigger",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-search-trigger",
+      "class": "UISearchTrigger",
+      "extends": "UIElement",
+      "intent": [
+        "Open a search or command surface from a button drawn like a field"
+      ],
+      "properties": [
+        {
+          "key": "label",
+          "type": "string",
+          "default": "Search",
+          "attribute": "label",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "shortcut",
+          "type": "string",
+          "default": "mod+k",
+          "attribute": "shortcut",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "for",
+          "type": "string",
+          "default": "",
+          "attribute": "for",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        }
+      ],
+      "attributes": [],
+      "events": [],
+      "semantics": {
+        "role": null,
+        "formAssociated": false,
+        "accessibleName": {
+          "sources": [
+            "label"
+          ],
+          "required": true
+        }
+      },
+      "content": {
+        "ownership": "component",
+        "acceptsChildren": false,
+        "children": "A button with a search icon and shortcut."
+      },
+      "layout": {
+        "display": "inline-flex",
+        "sizing": "intrinsic"
+      },
+      "constraints": [
+        "It is a button, not a field.",
+        "for names the command bar it opens."
+      ],
+      "avoidWhen": [
+        {
+          "when": "The user types into it.",
+          "reason": "It has no text entry.",
+          "useInstead": "component:input"
+        }
+      ],
+      "searchTerms": [
+        "search trigger",
+        "search button",
+        "search field"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:search-trigger",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:search-trigger",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:search-trigger",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:search-trigger",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:search-trigger",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:search-trigger",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:search-trigger",
+      "relation": "usesGeometry",
+      "to": "geometry:command"
+    },
+    {
+      "from": "component:search-trigger",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:search-trigger",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:search-trigger",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:search-trigger",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:search-trigger",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:search-trigger",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:search-trigger",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:search-trigger",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:search-trigger",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:search-trigger",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./search-trigger.element.ts",
+      "exports": {
+        "component:search-trigger": "UISearchTrigger"
+      },
+      "verification": "./verification/search-trigger.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./search-trigger.react.tsx",
+      "exports": {
+        "component:search-trigger": "SearchTrigger"
+      },
+      "verification": "./verification/search-trigger.verification.json#/renderers/react",
+      "props": {
+        "component:search-trigger": {
+          "inherits": [],
+          "props": [
+            "label?: string = 'Search'",
+            "shortcut?: string = 'mod+k'",
+            "onClick?: () => void",
+            "className?: string"
+          ]
+        }
+      }
+    }
+  }
+}

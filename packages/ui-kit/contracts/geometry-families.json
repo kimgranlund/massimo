@@ -59,7 +59,8 @@
         "component:textarea",
         "component:copy-field",
         "component:chip-select",
-        "component:file-picker"
+        "component:file-picker",
+        "component:time-picker"
       ],
       "searchTerms": [
         "field geometry",
@@ -643,6 +644,99 @@
       ],
       "ladder": null,
       "ladderWaiver": "One text run per unit: it has no size variants for a ladder to compare."
+    },
+    "calendar": {
+      "id": "geometry:calendar",
+      "resolver": [
+        "resolveCalendar"
+      ],
+      "summary": "A month grid of square cells.",
+      "members": [
+        "component:calendar",
+        "component:date-picker",
+        "component:date-range-picker"
+      ],
+      "searchTerms": [
+        "calendar size"
+      ],
+      "csv": [
+        "calendar"
+      ],
+      "ladder": null,
+      "ladderWaiver": "One cell size: the grid has no size variants for a ladder to compare."
+    },
+    "toolbar": {
+      "id": "geometry:toolbar",
+      "resolver": [
+        "resolveToolbar"
+      ],
+      "summary": "A strip of commands.",
+      "members": [
+        "component:toolbar"
+      ],
+      "searchTerms": [
+        "toolbar size"
+      ],
+      "csv": [
+        "toolbar"
+      ],
+      "ladder": null,
+      "ladderWaiver": "One size per unit: there are no size variants for a ladder to compare."
+    },
+    "command": {
+      "id": "geometry:command",
+      "resolver": [
+        "resolveCommand"
+      ],
+      "summary": "A search field over grouped commands, and its trigger.",
+      "members": [
+        "component:command-bar",
+        "component:search-trigger"
+      ],
+      "searchTerms": [
+        "command-bar size"
+      ],
+      "csv": [
+        "command"
+      ],
+      "ladder": null,
+      "ladderWaiver": "One size per unit: there are no size variants for a ladder to compare."
+    },
+    "tree": {
+      "id": "geometry:tree",
+      "resolver": [
+        "resolveTreeView"
+      ],
+      "summary": "Rows indented by level.",
+      "members": [
+        "component:tree-view"
+      ],
+      "searchTerms": [
+        "tree-view size"
+      ],
+      "csv": [
+        "tree"
+      ],
+      "ladder": null,
+      "ladderWaiver": "One size per unit: there are no size variants for a ladder to compare."
+    },
+    "sidebar": {
+      "id": "geometry:sidebar",
+      "resolver": [
+        "resolveSidebar"
+      ],
+      "summary": "A navigation column and its rail.",
+      "members": [
+        "component:sidebar"
+      ],
+      "searchTerms": [
+        "sidebar size"
+      ],
+      "csv": [
+        "sidebar"
+      ],
+      "ladder": null,
+      "ladderWaiver": "One size per unit: there are no size variants for a ladder to compare."
     }
   }
 }

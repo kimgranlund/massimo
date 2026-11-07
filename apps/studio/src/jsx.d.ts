@@ -49,6 +49,15 @@ declare module 'react' {
       'ui-selection-control': El<any>;
       'ui-file-picker': El<any>;
       'ui-color-picker': El<any>;
+      'ui-calendar': El<any>;
+      'ui-date-picker': El<any>;
+      'ui-date-range-picker': El<any>;
+      'ui-time-picker': El<any>;
+      'ui-toolbar': El<any>;
+      'ui-command-bar': El<any>;
+      'ui-search-trigger': El<any>;
+      'ui-tree-view': El<any>;
+      'ui-sidebar': El<any>;
       'ui-kbd': El<{ keys?: string; platform?: 'auto' | 'mac' | 'other' }>;
       'ui-spinner': El<{ label?: string; 'hide-label'?: string | boolean }>;
       'ui-separator': El<{ orientation?: 'horizontal' | 'vertical' }>;

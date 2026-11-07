@@ -1,0 +1,22 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "toolbar",
+  "title": "Toolbar",
+  "summary": "A named strip of commands.",
+  "defaultExample": "default",
+  "examples": [
+    {
+      "id": "default",
+      "label": "Commands",
+      "subject": "component:toolbar",
+      "markup": "<ui-toolbar label=\"Formatting\"><ui-button aria-label=\"Bold\"><i slot=\"leading\" name=\"text-b\"></i></ui-button><ui-button aria-label=\"Italic\"><i slot=\"leading\" name=\"text-italic\"></i></ui-button></ui-toolbar>"
+    },
+    {
+      "id": "vertical",
+      "label": "Vertical",
+      "subject": "component:toolbar",
+      "markup": "<ui-toolbar label=\"Tools\" orientation=\"vertical\"><ui-button aria-label=\"Move\"><i slot=\"leading\" name=\"arrows-out-cardinal\"></i></ui-button><ui-button aria-label=\"Pen\"><i slot=\"leading\" name=\"pen\"></i></ui-button></ui-toolbar>"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "time-picker",
+  "title": "Time picker",
+  "summary": "Enter a wall-clock time.",
+  "defaultExample": "default",
+  "examples": [
+    {
+      "id": "default",
+      "label": "A time",
+      "subject": "component:time-picker",
+      "markup": "<ui-time-picker label=\"Start\" value=\"09:30\" style=\"width: 100%\"></ui-time-picker>"
+    }
+  ]
+}

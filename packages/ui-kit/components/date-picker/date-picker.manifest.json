@@ -1,0 +1,276 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "date-picker",
+  "primary": "component:date-picker",
+  "module": "./date-picker.element.ts",
+  "registration": "on-import",
+  "documentation": "./date-picker.md",
+  "examples": "./date-picker.examples.json",
+  "contract": "../../contracts/components.json#/components/date-picker",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./date-picker.recipe.ts"
+  },
+  "nodes": [
+    {
+      "id": "component:date-picker",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-date-picker",
+      "class": "UIDatePicker",
+      "extends": "UIFormElement",
+      "intent": [
+        "Choose one date from a popup calendar and submit it"
+      ],
+      "properties": [
+        {
+          "key": "name",
+          "type": "string",
+          "default": "",
+          "attribute": "name",
+          "reflects": true,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "disabled",
+          "type": "boolean",
+          "default": false,
+          "attribute": "disabled",
+          "reflects": true,
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "required",
+          "type": "boolean",
+          "default": false,
+          "attribute": "required",
+          "reflects": true,
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "label",
+          "type": "string",
+          "default": "Choose a date",
+          "attribute": "label",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "value",
+          "type": "string",
+          "default": "",
+          "attribute": "value",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "min",
+          "type": "string",
+          "default": "",
+          "attribute": "min",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "max",
+          "type": "string",
+          "default": "",
+          "attribute": "max",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "locale",
+          "type": "string",
+          "default": "",
+          "attribute": "locale",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        }
+      ],
+      "attributes": [],
+      "events": [
+        {
+          "name": "change",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": false,
+          "trigger": "the user commits a new value"
+        }
+      ],
+      "semantics": {
+        "role": null,
+        "formAssociated": true,
+        "accessibleName": {
+          "sources": [
+            "label"
+          ],
+          "required": true
+        }
+      },
+      "content": {
+        "ownership": "component",
+        "acceptsChildren": false,
+        "children": "A trigger and a calendar in a popover."
+      },
+      "layout": {
+        "display": "inline-flex",
+        "sizing": "intrinsic"
+      },
+      "constraints": [
+        "Submits one ISO date.",
+        "Choosing a day closes the popup."
+      ],
+      "avoidWhen": [
+        {
+          "when": "The calendar stays open.",
+          "reason": "A popup hides it.",
+          "useInstead": "component:calendar"
+        }
+      ],
+      "searchTerms": [
+        "date picker",
+        "date field",
+        "calendar popup"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:date-picker",
+      "relation": "extends",
+      "to": "foundation:form-element"
+    },
+    {
+      "from": "component:date-picker",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:date-picker",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:date-picker",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:date-picker",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:date-picker",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:date-picker",
+      "relation": "usesGeometry",
+      "to": "geometry:calendar"
+    },
+    {
+      "from": "component:date-picker",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:date-picker",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:date-picker",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:date-picker",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:date-picker",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:date-picker",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:date-picker",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:date-picker",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:date-picker",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:date-picker",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./date-picker.element.ts",
+      "exports": {
+        "component:date-picker": "UIDatePicker"
+      },
+      "verification": "./verification/date-picker.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./date-picker.react.tsx",
+      "exports": {
+        "component:date-picker": "DatePicker"
+      },
+      "verification": "./verification/date-picker.verification.json#/renderers/react",
+      "props": {
+        "component:date-picker": {
+          "inherits": [],
+          "props": [
+            "label?: string = 'Choose a date'",
+            "defaultValue?: string = ''",
+            "min?: string",
+            "max?: string",
+            "locale?: string",
+            "name?: string",
+            "onValueChange?: (value: string) => void",
+            "className?: string"
+          ]
+        }
+      }
+    }
+  }
+}

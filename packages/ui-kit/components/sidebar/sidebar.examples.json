@@ -1,0 +1,22 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "sidebar",
+  "title": "Sidebar",
+  "summary": "Navigation sections that collapse to a rail.",
+  "defaultExample": "default",
+  "examples": [
+    {
+      "id": "default",
+      "label": "Sections",
+      "subject": "component:sidebar",
+      "markup": "<ui-sidebar label=\"Main\"><div data-part=\"section\"><span data-part=\"heading\">Work</span><a href=\"#\" aria-current=\"page\"><i name=\"house\"></i><span>Home</span></a><a href=\"#\"><i name=\"tray\"></i><span>Inbox</span></a></div></ui-sidebar>"
+    },
+    {
+      "id": "rail",
+      "label": "Collapsed",
+      "subject": "component:sidebar",
+      "markup": "<ui-sidebar label=\"Main\" collapsed><div data-part=\"section\"><a href=\"#\" aria-current=\"page\"><i name=\"house\"></i><span>Home</span></a></div></ui-sidebar>"
+    }
+  ]
+}

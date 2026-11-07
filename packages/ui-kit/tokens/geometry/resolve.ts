@@ -625,6 +625,86 @@ export function resolveValueSlider(input: GeometryInput = {}) {
   return { height: c.height, textEdge: 2 * c.unit, thumb: Math.max(2, 0.5 * c.unit), thumbHeight: c.slot };
 }
 
+// ── Date: calendar ──
+/** A calendar's cell, gap and cell corner, in u. */
+export const CALENDAR = { cell: 8, gap: 2, radius: 3 } as const;
+/** ui-calendar: seven 8u cells a row, 2u between its header and grid. Density doesn't change it. */
+export function resolveCalendar(input: GeometryInput = {}) {
+  const x = inputs(input), u = x.unit, cell = CALENDAR.cell * u;
+  return { cell, width: 7 * cell, gap: CALENDAR.gap * u, radius: Math.min(CALENDAR.radius * u * x.radiusScale, cell / 2) };
+}
+
+// ── Commands: toolbar, command bar, tree, sidebar ──
+export const TOOLBAR = { gap: 1, inset: 0.5 } as const;
+/** ui-toolbar: commands 1u apart in a ½u edge. */
+export function resolveToolbar(input: GeometryInput = {}) {
+  const u = inputs(input).unit;
+  return { gap: TOOLBAR.gap * u, inset: TOOLBAR.inset * u };
+}
+export const COMMAND = { item: 7, list: 80, gap: 1, trigger: 50 } as const;
+/** ui-command-bar and ui-search-trigger: 7u items, a list scrolling at 80u, a 50u trigger. */
+export function resolveCommand(input: GeometryInput = {}) {
+  const u = inputs(input).unit;
+  return { item: COMMAND.item * u, list: COMMAND.list * u, gap: COMMAND.gap * u, trigger: COMMAND.trigger * u };
+}
+export const TREE = { row: 7, indent: 4, gap: 1 } as const;
+/** ui-tree-view: 7u rows, indented 4u a level from a 1u edge. */
+export function resolveTreeView(level = 1, input: GeometryInput = {}) {
+  const u = inputs(input).unit;
+  return { row: TREE.row * u, indent: (level - 1) * TREE.indent * u + TREE.gap * u, gap: TREE.gap * u };
+}
+export const SIDEBAR = { width: 60, rail: 12, gap: 4, inset: 2, item: 8 } as const;
+/** ui-sidebar: a 60u column or 12u rail, sections 4u apart, 8u links. */
+export function resolveSidebar(input: GeometryInput = {}) {
+  const u = inputs(input).unit;
+  return { width: SIDEBAR.width * u, rail: SIDEBAR.rail * u, gap: SIDEBAR.gap * u, inset: SIDEBAR.inset * u, item: SIDEBAR.item * u };
+}
+
+// ── Shells: scroll regions, pages, panes ──
+/** A persistent bar's height, a region's inset and the gap inside a bar, in u. */
+export const SCROLL_REGION = { bar: 12, inset: 4, gap: 2 } as const;
+/** A scrolling region: a body between persistent bars of at least 12u, inset 4u. Density doesn't change it. */
+export function resolveScrollRegion(input: GeometryInput = {}) {
+  const u = inputs(input).unit;
+  return { bar: SCROLL_REGION.bar * u, inset: SCROLL_REGION.inset * u, gap: SCROLL_REGION.gap * u };
+}
+/** Content widths, shared by Page and ContentShell, in u. */
+export const PAGE_WIDTHS = { readable: 160, wide: 320, full: 335 } as const;
+export type PageWidth = keyof typeof PAGE_WIDTHS;
+export const PAGE = { inset: 6, gap: 4 } as const;
+/** ui-page: content at most the width's u, inside a fixed 6u inset; its size doesn't scale the inset. */
+export function resolvePage(width: PageWidth = 'readable', input: GeometryInput = {}) {
+  const u = inputs(input).unit;
+  if (!Object.hasOwn(PAGE_WIDTHS, width)) throw new RangeError('unknown page width');
+  return { width: PAGE_WIDTHS[width] * u, inset: PAGE.inset * u, gap: PAGE.gap * u, maxWidth: (PAGE_WIDTHS[width] + 2 * PAGE.inset) * u };
+}
+export const SHELL = { start: 60, rail: 12, end: 80, content: 120 } as const;
+/** Application shells: a 60u start pane or 12u rail, an 80u end pane, and at least 120u for content. */
+export function resolveShell(input: GeometryInput = {}) {
+  const u = inputs(input).unit;
+  return { start: SHELL.start * u, rail: SHELL.rail * u, end: SHELL.end * u, content: SHELL.content * u };
+}
+export const FLOATING_PANEL = { width: 80, min: 40, header: 10, margin: 4, step: 4, grip: 4 } as const;
+/** ui-floating-panel: 80u wide by default, at least 40u, a 10u header, 4u from the viewport, 4u a key press. */
+export function resolveFloatingPanel(input: GeometryInput = {}) {
+  const u = inputs(input).unit;
+  return { width: FLOATING_PANEL.width * u, min: FLOATING_PANEL.min * u, header: FLOATING_PANEL.header * u, margin: FLOATING_PANEL.margin * u, step: FLOATING_PANEL.step * u, grip: FLOATING_PANEL.grip * u };
+}
+
+// ── Data: table, chart ──
+export const DATA_TABLE = { block: 2, inline: 3, header: 8 } as const;
+/** ui-data-table: cells 3u in, 2u × density above and below, an 8u header row. */
+export function resolveDataTable(input: GeometryInput = {}) {
+  const x = inputs(input), u = x.unit;
+  return { block: DATA_TABLE.block * u * x.factor, inline: DATA_TABLE.inline * u, header: DATA_TABLE.header * u };
+}
+export const CHART = { height: 64, gap: 2, line: 2, marker: 8, end: 4, legend: 2 } as const;
+/** ui-chart: 64u tall, 4u label space per axis tick row. Marks are in px, not u: 2px lines and gaps, 8px markers, 4px rounded ends. */
+export function resolveChart(input: GeometryInput = {}) {
+  const u = inputs(input).unit;
+  return { height: CHART.height * u, gap: CHART.gap, line: CHART.line, marker: CHART.marker, end: CHART.end, legend: CHART.legend * u };
+}
+
 // ── Display: avatar ──
 // An avatar is a square on the slot and control ladder: sm = the 6u slot (it fits a button's
 // leading slot), md = the 8u control height (default), lg = 12u, xl = 16u. It is a control scaled by

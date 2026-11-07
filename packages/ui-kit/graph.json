@@ -109,6 +109,18 @@
         "navigate"
       ]
     },
+    "component:calendar": {
+      "kind": "component",
+      "source": "components/calendar/calendar.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-calendar",
+      "searchTerms": [
+        "calendar",
+        "month grid",
+        "date grid",
+        "day picker"
+      ]
+    },
     "component:checkbox": {
       "kind": "component",
       "source": "components/choice/choice.manifest.json#/nodes/0",
@@ -212,6 +224,18 @@
         "tag picker"
       ]
     },
+    "component:command-bar": {
+      "kind": "component",
+      "source": "components/command-bar/command-bar.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-command-bar",
+      "searchTerms": [
+        "command bar",
+        "command palette",
+        "spotlight",
+        "quick open"
+      ]
+    },
     "component:container": {
       "kind": "component",
       "source": "components/container/container.manifest.json#/nodes/0",
@@ -270,6 +294,28 @@
         "dl",
         "metadata",
         "details"
+      ]
+    },
+    "component:date-picker": {
+      "kind": "component",
+      "source": "components/date-picker/date-picker.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-date-picker",
+      "searchTerms": [
+        "date picker",
+        "date field",
+        "calendar popup"
+      ]
+    },
+    "component:date-range-picker": {
+      "kind": "component",
+      "source": "components/date-range-picker/date-range-picker.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-date-range-picker",
+      "searchTerms": [
+        "date range",
+        "range picker",
+        "period"
       ]
     },
     "component:dialog": {
@@ -669,6 +715,17 @@
         "thumb"
       ]
     },
+    "component:search-trigger": {
+      "kind": "component",
+      "source": "components/search-trigger/search-trigger.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-search-trigger",
+      "searchTerms": [
+        "search trigger",
+        "search button",
+        "search field"
+      ]
+    },
     "component:section": {
       "kind": "component",
       "source": "components/section/section.manifest.json#/nodes/0",
@@ -748,6 +805,18 @@
         "preference",
         "option row",
         "toggle row"
+      ]
+    },
+    "component:sidebar": {
+      "kind": "component",
+      "source": "components/sidebar/sidebar.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-sidebar",
+      "searchTerms": [
+        "sidebar",
+        "side nav",
+        "rail",
+        "navigation"
       ]
     },
     "component:spinner": {
@@ -854,6 +923,17 @@
         "description field"
       ]
     },
+    "component:time-picker": {
+      "kind": "component",
+      "source": "components/time-picker/time-picker.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-time-picker",
+      "searchTerms": [
+        "time picker",
+        "time field",
+        "clock"
+      ]
+    },
     "component:toast": {
       "kind": "component",
       "source": "components/toast/toast.manifest.json#/nodes/0",
@@ -895,6 +975,18 @@
         "button group"
       ]
     },
+    "component:toolbar": {
+      "kind": "component",
+      "source": "components/toolbar/toolbar.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-toolbar",
+      "searchTerms": [
+        "toolbar",
+        "action bar",
+        "commands",
+        "overflow"
+      ]
+    },
     "component:tooltip": {
       "kind": "component",
       "source": "components/tooltip/tooltip.manifest.json#/nodes/0",
@@ -905,6 +997,18 @@
         "hint",
         "hover label",
         "title text"
+      ]
+    },
+    "component:tree-view": {
+      "kind": "component",
+      "source": "components/tree-view/tree-view.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-tree-view",
+      "searchTerms": [
+        "tree",
+        "tree view",
+        "hierarchy",
+        "outline"
       ]
     },
     "component:value-slider": {
@@ -2500,6 +2604,14 @@
         "chip height"
       ]
     },
+    "geometry:calendar": {
+      "kind": "geometry",
+      "source": "contracts/geometry-families.json#/families/calendar",
+      "availability": "implemented",
+      "searchTerms": [
+        "calendar size"
+      ]
+    },
     "geometry:choice": {
       "kind": "geometry",
       "source": "contracts/geometry-families.json#/families/choice",
@@ -2518,6 +2630,14 @@
         "radio group spacing",
         "checkbox group spacing",
         "choice list gap"
+      ]
+    },
+    "geometry:command": {
+      "kind": "geometry",
+      "source": "contracts/geometry-families.json#/families/command",
+      "availability": "implemented",
+      "searchTerms": [
+        "command-bar size"
       ]
     },
     "geometry:container": {
@@ -2713,6 +2833,14 @@
         "rule"
       ]
     },
+    "geometry:sidebar": {
+      "kind": "geometry",
+      "source": "contracts/geometry-families.json#/families/sidebar",
+      "availability": "implemented",
+      "searchTerms": [
+        "sidebar size"
+      ]
+    },
     "geometry:spinner": {
       "kind": "geometry",
       "source": "contracts/geometry-families.json#/families/spinner",
@@ -2752,6 +2880,14 @@
         "toast width"
       ]
     },
+    "geometry:toolbar": {
+      "kind": "geometry",
+      "source": "contracts/geometry-families.json#/families/toolbar",
+      "availability": "implemented",
+      "searchTerms": [
+        "toolbar size"
+      ]
+    },
     "geometry:track": {
       "kind": "geometry",
       "source": "contracts/geometry-families.json#/families/track",
@@ -2761,6 +2897,14 @@
         "slider thumb",
         "progress height",
         "meter"
+      ]
+    },
+    "geometry:tree": {
+      "kind": "geometry",
+      "source": "contracts/geometry-families.json#/families/tree",
+      "availability": "implemented",
+      "searchTerms": [
+        "tree-view size"
       ]
     },
     "grounding:art-deco": {
@@ -4412,6 +4556,60 @@
         "button link link"
       ]
     },
+    "part:calendar-cell": {
+      "kind": "part",
+      "source": "components/calendar/calendar.manifest.json#/nodes/6",
+      "availability": "implemented",
+      "tag": "span",
+      "searchTerms": [
+        "calendar cell"
+      ]
+    },
+    "part:calendar-grid": {
+      "kind": "part",
+      "source": "components/calendar/calendar.manifest.json#/nodes/3",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "calendar grid"
+      ]
+    },
+    "part:calendar-header": {
+      "kind": "part",
+      "source": "components/calendar/calendar.manifest.json#/nodes/1",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "calendar header"
+      ]
+    },
+    "part:calendar-row": {
+      "kind": "part",
+      "source": "components/calendar/calendar.manifest.json#/nodes/4",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "calendar row"
+      ]
+    },
+    "part:calendar-title": {
+      "kind": "part",
+      "source": "components/calendar/calendar.manifest.json#/nodes/2",
+      "availability": "implemented",
+      "tag": "span",
+      "searchTerms": [
+        "calendar title"
+      ]
+    },
+    "part:calendar-weekday": {
+      "kind": "part",
+      "source": "components/calendar/calendar.manifest.json#/nodes/5",
+      "availability": "implemented",
+      "tag": "span",
+      "searchTerms": [
+        "calendar weekday"
+      ]
+    },
     "part:chip-remove": {
       "kind": "part",
       "source": "components/btg/btg.manifest.json#/nodes/3",
@@ -4583,6 +4781,42 @@
         "combobox trigger"
       ]
     },
+    "part:command-bar-empty": {
+      "kind": "part",
+      "source": "components/command-bar/command-bar.manifest.json#/nodes/4",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "command bar empty"
+      ]
+    },
+    "part:command-bar-group": {
+      "kind": "part",
+      "source": "components/command-bar/command-bar.manifest.json#/nodes/2",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "command bar group"
+      ]
+    },
+    "part:command-bar-item": {
+      "kind": "part",
+      "source": "components/command-bar/command-bar.manifest.json#/nodes/3",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "command bar item"
+      ]
+    },
+    "part:command-bar-list": {
+      "kind": "part",
+      "source": "components/command-bar/command-bar.manifest.json#/nodes/1",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "command bar list"
+      ]
+    },
     "part:context-menu-trigger": {
       "kind": "part",
       "source": "components/context-menu/context-menu.manifest.json#/nodes/1",
@@ -4599,6 +4833,24 @@
       "tag": "span",
       "searchTerms": [
         "copy field status"
+      ]
+    },
+    "part:date-range-picker-actions": {
+      "kind": "part",
+      "source": "components/date-range-picker/date-range-picker.manifest.json#/nodes/2",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "date range picker actions"
+      ]
+    },
+    "part:date-range-picker-body": {
+      "kind": "part",
+      "source": "components/date-range-picker/date-range-picker.manifest.json#/nodes/1",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "date range picker body"
       ]
     },
     "part:dialog-actions": {
@@ -5312,6 +5564,15 @@
         "selection control value"
       ]
     },
+    "part:sidebar-toggle": {
+      "kind": "part",
+      "source": "components/sidebar/sidebar.manifest.json#/nodes/1",
+      "availability": "implemented",
+      "tag": "ui-button",
+      "searchTerms": [
+        "sidebar toggle"
+      ]
+    },
     "part:slot-contents": {
       "kind": "part",
       "source": "contracts/parts.json#/parts/slot-contents",
@@ -5645,6 +5906,33 @@
       "searchTerms": [
         "fill",
         "indicator"
+      ]
+    },
+    "part:tree-view-caret": {
+      "kind": "part",
+      "source": "components/tree-view/tree-view.manifest.json#/nodes/2",
+      "availability": "implemented",
+      "tag": "span",
+      "searchTerms": [
+        "tree view caret"
+      ]
+    },
+    "part:tree-view-label": {
+      "kind": "part",
+      "source": "components/tree-view/tree-view.manifest.json#/nodes/3",
+      "availability": "implemented",
+      "tag": "span",
+      "searchTerms": [
+        "tree view label"
+      ]
+    },
+    "part:tree-view-row": {
+      "kind": "part",
+      "source": "components/tree-view/tree-view.manifest.json#/nodes/1",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "tree view row"
       ]
     },
     "part:value-slider-label": {
@@ -7104,6 +7392,121 @@
       "to": "foundation:modality"
     },
     {
+      "from": "component:calendar",
+      "relation": "extends",
+      "to": "foundation:form-element"
+    },
+    {
+      "from": "component:calendar",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:calendar",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:calendar",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:calendar",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:calendar",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:calendar",
+      "relation": "usesGeometry",
+      "to": "geometry:calendar"
+    },
+    {
+      "from": "component:calendar",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:calendar",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:calendar",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:calendar",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:calendar",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:calendar",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:calendar",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:calendar",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:calendar",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:calendar",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
+      "from": "component:calendar",
+      "relation": "ownsPart",
+      "to": "part:calendar-header"
+    },
+    {
+      "from": "component:calendar",
+      "relation": "ownsPart",
+      "to": "part:calendar-title"
+    },
+    {
+      "from": "component:calendar",
+      "relation": "ownsPart",
+      "to": "part:calendar-grid"
+    },
+    {
+      "from": "component:calendar",
+      "relation": "ownsPart",
+      "to": "part:calendar-row"
+    },
+    {
+      "from": "component:calendar",
+      "relation": "ownsPart",
+      "to": "part:calendar-weekday"
+    },
+    {
+      "from": "component:calendar",
+      "relation": "ownsPart",
+      "to": "part:calendar-cell"
+    },
+    {
       "from": "component:checkbox-group",
       "relation": "extends",
       "to": "foundation:form-element"
@@ -8309,6 +8712,111 @@
       "to": "foundation:modality"
     },
     {
+      "from": "component:command-bar",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:command-bar",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:command-bar",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:command-bar",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:command-bar",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:command-bar",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:command-bar",
+      "relation": "usesGeometry",
+      "to": "geometry:command"
+    },
+    {
+      "from": "component:command-bar",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:command-bar",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:command-bar",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:command-bar",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:command-bar",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:command-bar",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:command-bar",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:command-bar",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:command-bar",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:command-bar",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
+      "from": "component:command-bar",
+      "relation": "ownsPart",
+      "to": "part:command-bar-list"
+    },
+    {
+      "from": "component:command-bar",
+      "relation": "ownsPart",
+      "to": "part:command-bar-group"
+    },
+    {
+      "from": "component:command-bar",
+      "relation": "ownsPart",
+      "to": "part:command-bar-item"
+    },
+    {
+      "from": "component:command-bar",
+      "relation": "ownsPart",
+      "to": "part:command-bar-empty"
+    },
+    {
       "from": "component:container",
       "relation": "usesFoundation",
       "to": "foundation:colors"
@@ -8677,6 +9185,186 @@
       "from": "component:data-list",
       "relation": "usesTokens",
       "to": "tokens:geometry"
+    },
+    {
+      "from": "component:date-picker",
+      "relation": "extends",
+      "to": "foundation:form-element"
+    },
+    {
+      "from": "component:date-picker",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:date-picker",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:date-picker",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:date-picker",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:date-picker",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:date-picker",
+      "relation": "usesGeometry",
+      "to": "geometry:calendar"
+    },
+    {
+      "from": "component:date-picker",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:date-picker",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:date-picker",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:date-picker",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:date-picker",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:date-picker",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:date-picker",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:date-picker",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:date-picker",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:date-picker",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
+      "from": "component:date-range-picker",
+      "relation": "extends",
+      "to": "foundation:form-element"
+    },
+    {
+      "from": "component:date-range-picker",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:date-range-picker",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:date-range-picker",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:date-range-picker",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:date-range-picker",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:date-range-picker",
+      "relation": "usesGeometry",
+      "to": "geometry:calendar"
+    },
+    {
+      "from": "component:date-range-picker",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:date-range-picker",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:date-range-picker",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:date-range-picker",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:date-range-picker",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:date-range-picker",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:date-range-picker",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:date-range-picker",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:date-range-picker",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:date-range-picker",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
+      "from": "component:date-range-picker",
+      "relation": "ownsPart",
+      "to": "part:date-range-picker-body"
+    },
+    {
+      "from": "component:date-range-picker",
+      "relation": "ownsPart",
+      "to": "part:date-range-picker-actions"
     },
     {
       "from": "component:dialog",
@@ -11939,6 +12627,91 @@
       "to": "context:fieldset"
     },
     {
+      "from": "component:search-trigger",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:search-trigger",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:search-trigger",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:search-trigger",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:search-trigger",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:search-trigger",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:search-trigger",
+      "relation": "usesGeometry",
+      "to": "geometry:command"
+    },
+    {
+      "from": "component:search-trigger",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:search-trigger",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:search-trigger",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:search-trigger",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:search-trigger",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:search-trigger",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:search-trigger",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:search-trigger",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:search-trigger",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:search-trigger",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
       "from": "component:section",
       "relation": "usesFoundation",
       "to": "foundation:colors"
@@ -12442,6 +13215,96 @@
       "from": "component:setting-row",
       "relation": "usesTokens",
       "to": "tokens:geometry"
+    },
+    {
+      "from": "component:sidebar",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:sidebar",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:sidebar",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:sidebar",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:sidebar",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:sidebar",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:sidebar",
+      "relation": "usesGeometry",
+      "to": "geometry:sidebar"
+    },
+    {
+      "from": "component:sidebar",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:sidebar",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:sidebar",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:sidebar",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:sidebar",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:sidebar",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:sidebar",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:sidebar",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:sidebar",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:sidebar",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
+      "from": "component:sidebar",
+      "relation": "ownsPart",
+      "to": "part:sidebar-toggle"
     },
     {
       "from": "component:spinner",
@@ -13044,6 +13907,91 @@
       "to": "foundation:modality"
     },
     {
+      "from": "component:time-picker",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:time-picker",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:time-picker",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:time-picker",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:time-picker",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:time-picker",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:time-picker",
+      "relation": "usesGeometry",
+      "to": "geometry:field"
+    },
+    {
+      "from": "component:time-picker",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:time-picker",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:time-picker",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:time-picker",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:time-picker",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:time-picker",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:time-picker",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:time-picker",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:time-picker",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:time-picker",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
       "from": "component:toast",
       "relation": "extends",
       "to": "foundation:element"
@@ -13389,6 +14337,91 @@
       "to": "foundation:modality"
     },
     {
+      "from": "component:toolbar",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:toolbar",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:toolbar",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:toolbar",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:toolbar",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:toolbar",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:toolbar",
+      "relation": "usesGeometry",
+      "to": "geometry:toolbar"
+    },
+    {
+      "from": "component:toolbar",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:toolbar",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:toolbar",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:toolbar",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:toolbar",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:toolbar",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:toolbar",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:toolbar",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:toolbar",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:toolbar",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
       "from": "component:tooltip",
       "relation": "extends",
       "to": "foundation:element"
@@ -13507,6 +14540,106 @@
       "from": "component:tooltip",
       "relation": "uses",
       "to": "component:popover"
+    },
+    {
+      "from": "component:tree-view",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:tree-view",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:tree-view",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:tree-view",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:tree-view",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:tree-view",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:tree-view",
+      "relation": "usesGeometry",
+      "to": "geometry:tree"
+    },
+    {
+      "from": "component:tree-view",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:tree-view",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:tree-view",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:tree-view",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:tree-view",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:tree-view",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:tree-view",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:tree-view",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:tree-view",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:tree-view",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
+      "from": "component:tree-view",
+      "relation": "ownsPart",
+      "to": "part:tree-view-row"
+    },
+    {
+      "from": "component:tree-view",
+      "relation": "ownsPart",
+      "to": "part:tree-view-caret"
+    },
+    {
+      "from": "component:tree-view",
+      "relation": "ownsPart",
+      "to": "part:tree-view-label"
     },
     {
       "from": "component:value-slider",

@@ -1,0 +1,229 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "sidebar",
+  "primary": "component:sidebar",
+  "module": "./sidebar.element.ts",
+  "registration": "on-import",
+  "documentation": "./sidebar.md",
+  "examples": "./sidebar.examples.json",
+  "contract": "../../contracts/components.json#/components/sidebar",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./sidebar.recipe.ts"
+  },
+  "nodes": [
+    {
+      "id": "component:sidebar",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-sidebar",
+      "class": "UISidebar",
+      "extends": "UIElement",
+      "intent": [
+        "Hold named navigation sections that collapse to an icon rail"
+      ],
+      "properties": [
+        {
+          "key": "label",
+          "type": "string",
+          "default": "Main",
+          "attribute": "label",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "collapsed",
+          "type": "boolean",
+          "default": false,
+          "attribute": "collapsed",
+          "reflects": true,
+          "inspector": {
+            "control": "toggle"
+          }
+        }
+      ],
+      "attributes": [],
+      "events": [
+        {
+          "name": "collapsedchange",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": false,
+          "trigger": "collapsedchange happens"
+        }
+      ],
+      "semantics": {
+        "role": "navigation",
+        "formAssociated": false,
+        "accessibleName": {
+          "sources": [
+            "label"
+          ],
+          "required": true
+        }
+      },
+      "content": {
+        "ownership": "consumer",
+        "acceptsChildren": true,
+        "children": "Sections of links."
+      },
+      "layout": {
+        "display": "flex",
+        "sizing": "intrinsic"
+      },
+      "constraints": [
+        "Links are the author's own, so the browser owns navigation.",
+        "Collapsed links keep their names for assistive technology.",
+        "The shell owns its height."
+      ],
+      "avoidWhen": [
+        {
+          "when": "Only a few links sit across the top.",
+          "reason": "A column takes the width.",
+          "useInstead": "component:navigation-menu"
+        }
+      ],
+      "searchTerms": [
+        "sidebar",
+        "side nav",
+        "rail",
+        "navigation"
+      ]
+    },
+    {
+      "id": "part:sidebar-toggle",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "ui-button",
+      "selector": "[data-part=toggle]",
+      "summary": "The collapse button."
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:sidebar",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:sidebar",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:sidebar",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:sidebar",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:sidebar",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:sidebar",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:sidebar",
+      "relation": "usesGeometry",
+      "to": "geometry:sidebar"
+    },
+    {
+      "from": "component:sidebar",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:sidebar",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:sidebar",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:sidebar",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:sidebar",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:sidebar",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:sidebar",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:sidebar",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:sidebar",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:sidebar",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
+      "from": "component:sidebar",
+      "relation": "ownsPart",
+      "to": "part:sidebar-toggle"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./sidebar.element.ts",
+      "exports": {
+        "component:sidebar": "UISidebar"
+      },
+      "verification": "./verification/sidebar.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./sidebar.react.tsx",
+      "exports": {
+        "component:sidebar": "Sidebar"
+      },
+      "verification": "./verification/sidebar.verification.json#/renderers/react",
+      "props": {
+        "component:sidebar": {
+          "inherits": [
+            "HTMLAttributes<HTMLElement>"
+          ],
+          "props": [
+            "label?: string = 'Main'",
+            "defaultCollapsed?: boolean = false",
+            "onCollapsedChange?: (collapsed: boolean) => void",
+            "children?: ReactNode"
+          ]
+        }
+      }
+    }
+  }
+}

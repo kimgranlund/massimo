@@ -1,0 +1,71 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "calendar",
+  "scope": "Role, orientation and data-* of the web component in happy-dom and of the React renderer in react-dom/server (node:test), and their state parity. Rendered thickness is covered by the browser geometry check; visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "components/calendar/calendar.element.ts",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "path": "components/calendar/calendar.react.tsx",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "path": "components/calendar/calendar.recipe.ts",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "path": "components/calendar/calendar.manifest.json",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "path": "dom/calendar.ts",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test test/wave-3.test.ts",
+          "covers": "dates, keys, cells, pick and range"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-06",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/calendar.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test test/wave-3.test.ts",
+          "covers": "SSR markup and parts"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-06",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/calendar.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "React styling parity is checked in the browser: apps/studio/react-check.html compares the React Calendar with ui-calendar at five sizes (\"fails\": []).",
+    "The source list is the direct sources, not every transitive dependency.",
+    "Geometry review, manual items (2026-11-06): 2 cell, gap and radius from resolveCalendar; 3 no border budget; 4 cells are squares; 5 month buttons are controls; 6 no nesting; 7 selected on the primary solid, today an inset ring; 8 density leaves cells alone; 9 no floating layer; 10 hugs 56u; 11 cells take the keyboard focus ring."
+  ]
+}

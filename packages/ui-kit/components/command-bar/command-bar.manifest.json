@@ -1,0 +1,284 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "command-bar",
+  "primary": "component:command-bar",
+  "module": "./command-bar.element.ts",
+  "registration": "on-import",
+  "documentation": "./command-bar.md",
+  "examples": "./command-bar.examples.json",
+  "contract": "../../contracts/components.json#/components/command-bar",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./command-bar.recipe.ts"
+  },
+  "nodes": [
+    {
+      "id": "component:command-bar",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-command-bar",
+      "class": "UICommandBar",
+      "extends": "UIElement",
+      "intent": [
+        "Find and run a command from a searchable modal"
+      ],
+      "properties": [
+        {
+          "key": "label",
+          "type": "string",
+          "default": "Commands",
+          "attribute": "label",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "open",
+          "type": "boolean",
+          "default": false,
+          "attribute": "open",
+          "reflects": true,
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "commands",
+          "type": "string",
+          "default": null,
+          "attribute": "commands",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        }
+      ],
+      "attributes": [],
+      "events": [
+        {
+          "name": "openchange",
+          "type": "CustomEvent",
+          "bubbles": false,
+          "cancelable": false,
+          "trigger": "openchange happens"
+        },
+        {
+          "name": "select",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": false,
+          "trigger": "select happens"
+        }
+      ],
+      "semantics": {
+        "role": "dialog",
+        "formAssociated": false,
+        "accessibleName": {
+          "sources": [
+            "label"
+          ],
+          "required": true
+        }
+      },
+      "content": {
+        "ownership": "component",
+        "acceptsChildren": false,
+        "children": "Rendered from commands."
+      },
+      "layout": {
+        "display": "contents",
+        "sizing": "intrinsic"
+      },
+      "constraints": [
+        "Commands are data: id, label, group, keywords, hint.",
+        "Mod+K toggles it.",
+        "The highlight wraps."
+      ],
+      "avoidWhen": [
+        {
+          "when": "The commands should stay visible.",
+          "reason": "A modal hides them.",
+          "useInstead": "component:toolbar"
+        }
+      ],
+      "searchTerms": [
+        "command bar",
+        "command palette",
+        "spotlight",
+        "quick open"
+      ]
+    },
+    {
+      "id": "part:command-bar-list",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": "[data-part=list]",
+      "summary": "The results."
+    },
+    {
+      "id": "part:command-bar-group",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": "[data-part=group]",
+      "summary": "A group heading."
+    },
+    {
+      "id": "part:command-bar-item",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": "[data-part=item]",
+      "summary": "One command."
+    },
+    {
+      "id": "part:command-bar-empty",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": "[data-part=empty]",
+      "summary": "No results."
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:command-bar",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:command-bar",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:command-bar",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:command-bar",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:command-bar",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:command-bar",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:command-bar",
+      "relation": "usesGeometry",
+      "to": "geometry:command"
+    },
+    {
+      "from": "component:command-bar",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:command-bar",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:command-bar",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:command-bar",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:command-bar",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:command-bar",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:command-bar",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:command-bar",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:command-bar",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:command-bar",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
+      "from": "component:command-bar",
+      "relation": "ownsPart",
+      "to": "part:command-bar-list"
+    },
+    {
+      "from": "component:command-bar",
+      "relation": "ownsPart",
+      "to": "part:command-bar-group"
+    },
+    {
+      "from": "component:command-bar",
+      "relation": "ownsPart",
+      "to": "part:command-bar-item"
+    },
+    {
+      "from": "component:command-bar",
+      "relation": "ownsPart",
+      "to": "part:command-bar-empty"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./command-bar.element.ts",
+      "exports": {
+        "component:command-bar": "UICommandBar"
+      },
+      "verification": "./verification/command-bar.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./command-bar.react.tsx",
+      "exports": {
+        "component:command-bar": "CommandBar"
+      },
+      "verification": "./verification/command-bar.verification.json#/renderers/react",
+      "props": {
+        "component:command-bar": {
+          "inherits": [],
+          "props": [
+            "label?: string = 'Commands'",
+            "open: boolean",
+            "commands: Command[]",
+            "onOpenChange: (open: boolean) => void",
+            "onSelect: (command: Command) => void"
+          ]
+        }
+      }
+    }
+  }
+}

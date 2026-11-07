@@ -1,0 +1,302 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "date-range-picker",
+  "primary": "component:date-range-picker",
+  "module": "./date-range-picker.element.ts",
+  "registration": "on-import",
+  "documentation": "./date-range-picker.md",
+  "examples": "./date-range-picker.examples.json",
+  "contract": "../../contracts/components.json#/components/date-range-picker",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./date-range-picker.recipe.ts"
+  },
+  "nodes": [
+    {
+      "id": "component:date-range-picker",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-date-range-picker",
+      "class": "UIDateRangePicker",
+      "extends": "UIFormElement",
+      "intent": [
+        "Edit one inclusive date range and apply it only when finished"
+      ],
+      "properties": [
+        {
+          "key": "name",
+          "type": "string",
+          "default": "",
+          "attribute": "name",
+          "reflects": true,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "disabled",
+          "type": "boolean",
+          "default": false,
+          "attribute": "disabled",
+          "reflects": true,
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "required",
+          "type": "boolean",
+          "default": false,
+          "attribute": "required",
+          "reflects": true,
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "label",
+          "type": "string",
+          "default": "Choose dates",
+          "attribute": "label",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "value",
+          "type": "string",
+          "default": "",
+          "attribute": "value",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "min",
+          "type": "string",
+          "default": "",
+          "attribute": "min",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "max",
+          "type": "string",
+          "default": "",
+          "attribute": "max",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "locale",
+          "type": "string",
+          "default": "",
+          "attribute": "locale",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        }
+      ],
+      "attributes": [],
+      "events": [
+        {
+          "name": "change",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": false,
+          "trigger": "the user commits a new value"
+        }
+      ],
+      "semantics": {
+        "role": null,
+        "formAssociated": true,
+        "accessibleName": {
+          "sources": [
+            "label"
+          ],
+          "required": true
+        }
+      },
+      "content": {
+        "ownership": "component",
+        "acceptsChildren": false,
+        "children": "A trigger and a range calendar with Cancel and Apply."
+      },
+      "layout": {
+        "display": "inline-flex",
+        "sizing": "intrinsic"
+      },
+      "constraints": [
+        "Only a finished range is accepted.",
+        "Cancel restores the applied range."
+      ],
+      "avoidWhen": [
+        {
+          "when": "Only one date is chosen.",
+          "reason": "A range needs two picks.",
+          "useInstead": "component:date-picker"
+        }
+      ],
+      "searchTerms": [
+        "date range",
+        "range picker",
+        "period"
+      ]
+    },
+    {
+      "id": "part:date-range-picker-body",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": "[data-part=body]",
+      "summary": "The draft calendar."
+    },
+    {
+      "id": "part:date-range-picker-actions",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": "[data-part=actions]",
+      "summary": "Cancel and Apply."
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:date-range-picker",
+      "relation": "extends",
+      "to": "foundation:form-element"
+    },
+    {
+      "from": "component:date-range-picker",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:date-range-picker",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:date-range-picker",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:date-range-picker",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:date-range-picker",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:date-range-picker",
+      "relation": "usesGeometry",
+      "to": "geometry:calendar"
+    },
+    {
+      "from": "component:date-range-picker",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:date-range-picker",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:date-range-picker",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:date-range-picker",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:date-range-picker",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:date-range-picker",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:date-range-picker",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:date-range-picker",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:date-range-picker",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:date-range-picker",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
+      "from": "component:date-range-picker",
+      "relation": "ownsPart",
+      "to": "part:date-range-picker-body"
+    },
+    {
+      "from": "component:date-range-picker",
+      "relation": "ownsPart",
+      "to": "part:date-range-picker-actions"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./date-range-picker.element.ts",
+      "exports": {
+        "component:date-range-picker": "UIDateRangePicker"
+      },
+      "verification": "./verification/date-range-picker.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./date-range-picker.react.tsx",
+      "exports": {
+        "component:date-range-picker": "DateRangePicker"
+      },
+      "verification": "./verification/date-range-picker.verification.json#/renderers/react",
+      "props": {
+        "component:date-range-picker": {
+          "inherits": [],
+          "props": [
+            "label?: string = 'Choose dates'",
+            "defaultValue?: string = ''",
+            "min?: string",
+            "max?: string",
+            "locale?: string",
+            "name?: string",
+            "onValueChange?: (value: string) => void",
+            "className?: string"
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,207 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "toolbar",
+  "primary": "component:toolbar",
+  "module": "./toolbar.element.ts",
+  "registration": "on-import",
+  "documentation": "./toolbar.md",
+  "examples": "./toolbar.examples.json",
+  "contract": "../../contracts/components.json#/components/toolbar",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./toolbar.recipe.ts"
+  },
+  "nodes": [
+    {
+      "id": "component:toolbar",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-toolbar",
+      "class": "UIToolbar",
+      "extends": "UIElement",
+      "intent": [
+        "Group commands into one tab stop with overflow"
+      ],
+      "properties": [
+        {
+          "key": "label",
+          "type": "string",
+          "default": "",
+          "attribute": "label",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "orientation",
+          "type": "string",
+          "default": "horizontal",
+          "attribute": "orientation",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        }
+      ],
+      "attributes": [],
+      "events": [],
+      "semantics": {
+        "role": "toolbar",
+        "formAssociated": false,
+        "accessibleName": {
+          "sources": [
+            "label"
+          ],
+          "required": true
+        }
+      },
+      "content": {
+        "ownership": "consumer",
+        "acceptsChildren": true,
+        "children": "Buttons and toggles."
+      },
+      "layout": {
+        "display": "flex",
+        "sizing": "fill"
+      },
+      "constraints": [
+        "One tab stop: arrow keys move along it.",
+        "Commands that don't fit move into a More menu.",
+        "Vertical toolbars don't overflow."
+      ],
+      "avoidWhen": [
+        {
+          "when": "The items are navigation.",
+          "reason": "A toolbar holds commands.",
+          "useInstead": "component:menubar"
+        }
+      ],
+      "searchTerms": [
+        "toolbar",
+        "action bar",
+        "commands",
+        "overflow"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:toolbar",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:toolbar",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:toolbar",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:toolbar",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:toolbar",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:toolbar",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:toolbar",
+      "relation": "usesGeometry",
+      "to": "geometry:toolbar"
+    },
+    {
+      "from": "component:toolbar",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:toolbar",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:toolbar",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:toolbar",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:toolbar",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:toolbar",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:toolbar",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:toolbar",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:toolbar",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:toolbar",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./toolbar.element.ts",
+      "exports": {
+        "component:toolbar": "UIToolbar"
+      },
+      "verification": "./verification/toolbar.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./toolbar.react.tsx",
+      "exports": {
+        "component:toolbar": "Toolbar"
+      },
+      "verification": "./verification/toolbar.verification.json#/renderers/react",
+      "props": {
+        "component:toolbar": {
+          "inherits": [
+            "HTMLAttributes<HTMLDivElement>"
+          ],
+          "props": [
+            "label: string",
+            "orientation?: 'horizontal' | 'vertical' = 'horizontal'",
+            "children?: ReactNode"
+          ]
+        }
+      }
+    }
+  }
+}
