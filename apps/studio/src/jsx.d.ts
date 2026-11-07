@@ -39,6 +39,7 @@ declare module 'react' {
       'ui-field-grid': El<{}>;
       'ui-textarea': El<{ ref?: any; label?: string; name?: string; value?: string; rows?: string | number; placeholder?: string; description?: string; error?: string; required?: boolean; disabled?: boolean; readonly?: boolean }>;
       'ui-breadcrumb': El<{ label?: string; 'max-items'?: string | number }>;
+      'ui-button-link': El<{ href?: string; target?: string; rel?: string; variant?: 'neutral' | 'primary' | 'ghost'; disabled?: boolean | string }>;
       'ui-kbd': El<{ keys?: string; platform?: 'auto' | 'mac' | 'other' }>;
       'ui-spinner': El<{ label?: string; 'hide-label'?: string | boolean }>;
       'ui-separator': El<{ orientation?: 'horizontal' | 'vertical' }>;

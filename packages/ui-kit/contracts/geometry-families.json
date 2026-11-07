@@ -26,7 +26,8 @@
       "members": [
         "component:button",
         "component:option",
-        "component:toggle"
+        "component:toggle",
+        "component:button-link"
       ],
       "searchTerms": [
         "control geometry",

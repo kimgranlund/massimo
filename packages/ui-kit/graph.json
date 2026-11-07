@@ -95,6 +95,20 @@
         "command"
       ]
     },
+    "component:button-link": {
+      "kind": "component",
+      "source": "components/button-link/button-link.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-button-link",
+      "searchTerms": [
+        "button link",
+        "link button",
+        "href",
+        "anchor",
+        "cta",
+        "navigate"
+      ]
+    },
     "component:checkbox": {
       "kind": "component",
       "source": "components/choice/choice.manifest.json#/nodes/0",
@@ -4272,6 +4286,15 @@
         "breadcrumb separator"
       ]
     },
+    "part:button-link-link": {
+      "kind": "part",
+      "source": "components/button-link/button-link.manifest.json#/nodes/1",
+      "availability": "implemented",
+      "tag": "a",
+      "searchTerms": [
+        "button link link"
+      ]
+    },
     "part:chip-remove": {
       "kind": "part",
       "source": "components/btg/btg.manifest.json#/nodes/3",
@@ -6575,6 +6598,96 @@
       "from": "component:chip",
       "relation": "uses",
       "to": "foundation:modality"
+    },
+    {
+      "from": "component:button-link",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:button-link",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:button-link",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:button-link",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:button-link",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:button-link",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:button-link",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:button-link",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:button-link",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:button-link",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:button-link",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:button-link",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:button-link",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:button-link",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:button-link",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:button-link",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
+      "from": "component:button-link",
+      "relation": "ownsPart",
+      "to": "part:button-link-link"
+    },
+    {
+      "from": "component:button-link",
+      "relation": "usesGeometry",
+      "to": "geometry:control"
     },
     {
       "from": "component:button",

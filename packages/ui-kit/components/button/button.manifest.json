@@ -245,7 +245,8 @@
         },
         {
           "when": "Navigating to a URL.",
-          "reason": "Navigation needs a native <a href> so the browser owns links, history and open-in-new-tab. The kit has no link component yet."
+          "reason": "Navigation needs a real link so the browser owns links, history and open-in-new-tab.",
+          "useInstead": "component:button-link"
         }
       ],
       "searchTerms": [

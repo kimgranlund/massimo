@@ -1,0 +1,75 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "button-link",
+  "scope": "Role, orientation and data-* of the web component in happy-dom and of the React renderer in react-dom/server (node:test), and their state parity. Rendered thickness is covered by the browser geometry check; visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "components/button-link/button-link.element.ts",
+      "sha256": "4940c23b6c455dd1ccb4d471393aaeb22162bb1646b0292c228921e3ae75b8a2"
+    },
+    {
+      "path": "components/button-link/button-link.react.tsx",
+      "sha256": "f4454a6b708807a0109df9dcf7a59c84e586ee597700b5a6044bab5d4e1e9126"
+    },
+    {
+      "path": "components/button-link/button-link.recipe.ts",
+      "sha256": "64747eebb85f40eeffac522d3aa5fa81b220b70b341bb840f80a8f9b89a5ff99"
+    },
+    {
+      "path": "components/button-link/button-link.manifest.json",
+      "sha256": "41bf4ea0892c266c993d1cc21449bab451c1630f17785adb26bcf68ee910ccfa"
+    },
+    {
+      "path": "components/button/button.recipe.ts",
+      "sha256": "5c3f1092995756e84ebfb8df493c84cf3280fe042f2ab64eee4aaa814d743b7b"
+    },
+    {
+      "path": "dom/button-link.ts",
+      "sha256": "3112a97d49b1535899bf27398e7ec7f40bea66806aa9718f58101485600d586d"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test test/button-link.test.ts",
+          "covers": "real link, button recipe, slots, disabled, URL safety"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-06",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/button-link.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test test/button-link.test.ts",
+          "covers": "SSR markup, host and link shape, disabled"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-06",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/button-link.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "React styling parity is checked in the browser: apps/studio/react-check.html compares the React ButtonLink with ui-button-link at five sizes (\"fails\": []).",
+    "The source list is the direct sources, not every transitive dependency.",
+    "Geometry review, manual items (2026-11-06): the link wears the button's recipe and data-ui, so items 2 to 8 and 10 follow ui-button; 9 no floating layer; 11 the kit's focus ring on the link."
+  ]
+}

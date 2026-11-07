@@ -1,0 +1,261 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "button-link",
+  "primary": "component:button-link",
+  "module": "./button-link.element.ts",
+  "registration": "on-import",
+  "documentation": "./button-link.md",
+  "examples": "./button-link.examples.json",
+  "contract": "../../contracts/components.json#/components/button-link",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./button-link.recipe.ts"
+  },
+  "nodes": [
+    {
+      "id": "component:button-link",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-button-link",
+      "class": "UIButtonLink",
+      "extends": "UIElement",
+      "intent": [
+        "Go to another page with a control that looks like a button"
+      ],
+      "properties": [
+        {
+          "key": "href",
+          "type": "string",
+          "default": "",
+          "attribute": "href",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "target",
+          "type": "string",
+          "default": "",
+          "attribute": "target",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "rel",
+          "type": "string",
+          "default": "",
+          "attribute": "rel",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "variant",
+          "type": "string",
+          "default": "neutral",
+          "attribute": "variant",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "disabled",
+          "type": "boolean",
+          "default": false,
+          "attribute": "disabled",
+          "reflects": true,
+          "inspector": {
+            "control": "toggle"
+          }
+        }
+      ],
+      "attributes": [],
+      "events": [],
+      "semantics": {
+        "role": "link",
+        "roleTarget": "[data-part=link]",
+        "formAssociated": false,
+        "accessibleName": {
+          "sources": [
+            "text content",
+            "aria-label"
+          ],
+          "required": true
+        }
+      },
+      "content": {
+        "ownership": "consumer",
+        "acceptsChildren": true,
+        "children": "The label, and adornments with slot=\"leading\" | \"prefix\" | \"suffix\" | \"trailing\"."
+      },
+      "layout": {
+        "display": "inline-flex",
+        "sizing": "intrinsic"
+      },
+      "constraints": [
+        "The link is a real a, so the browser owns navigation.",
+        "It wears the button's recipe and geometry.",
+        "A disabled link has no href, and unsafe URL schemes are dropped.",
+        "target=_blank adds rel=noopener noreferrer unless rel is set."
+      ],
+      "avoidWhen": [
+        {
+          "when": "An action on this page.",
+          "reason": "Links navigate, and activating one shouldn't change the page in place.",
+          "useInstead": "component:button"
+        }
+      ],
+      "searchTerms": [
+        "button link",
+        "link button",
+        "href",
+        "anchor",
+        "cta",
+        "navigate"
+      ]
+    },
+    {
+      "id": "part:button-link-link",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "a",
+      "selector": ":scope > [data-part=link]",
+      "summary": "The real link, wearing the button's recipe."
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:button-link",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:button-link",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:button-link",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:button-link",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:button-link",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:button-link",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:button-link",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:button-link",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:button-link",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:button-link",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:button-link",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:button-link",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:button-link",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:button-link",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:button-link",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:button-link",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
+      "from": "component:button-link",
+      "relation": "ownsPart",
+      "to": "part:button-link-link"
+    },
+    {
+      "from": "component:button-link",
+      "relation": "usesGeometry",
+      "to": "geometry:control"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./button-link.element.ts",
+      "exports": {
+        "component:button-link": "UIButtonLink"
+      },
+      "verification": "./verification/button-link.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./button-link.react.tsx",
+      "exports": {
+        "component:button-link": "ButtonLink"
+      },
+      "verification": "./verification/button-link.verification.json#/renderers/react",
+      "props": {
+        "component:button-link": {
+          "inherits": [
+            "Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'prefix'>"
+          ],
+          "props": [
+            "href: string",
+            "variant?: 'neutral' | 'primary' | 'ghost' = 'neutral' // primary: the primary solid; neutral (default) the muted fill; ghost no resting fill.",
+            "disabled?: boolean // Drops the href, so it can't be followed.",
+            "leading?: ReactNode",
+            "prefix?: ReactNode",
+            "suffix?: ReactNode",
+            "trailing?: ReactNode",
+            "iconSize?: IconSize",
+            "size?: number // Unit u in px."
+          ]
+        }
+      }
+    }
+  }
+}

@@ -18,6 +18,7 @@ import '@massimo/ui-kit/components/field/element';
 import '@massimo/ui-kit/components/separator/element';
 import '@massimo/ui-kit/components/spinner/element';
 import '@massimo/ui-kit/components/kbd/element';
+import '@massimo/ui-kit/components/button-link/element';
 import '@massimo/ui-kit/components/breadcrumb/element';
 import '@massimo/ui-kit/components/textarea/element';
 import '@massimo/ui-kit/components/avatar/element';
@@ -68,6 +69,7 @@ import { Slider } from '@massimo/ui-kit/components/range/react';
 import { Separator } from '@massimo/ui-kit/components/separator/react';
 import { Spinner } from '@massimo/ui-kit/components/spinner/react';
 import { Kbd } from '@massimo/ui-kit/components/kbd/react';
+import { ButtonLink } from '@massimo/ui-kit/components/button-link/react';
 import { Breadcrumb } from '@massimo/ui-kit/components/breadcrumb/react';
 import { Textarea } from '@massimo/ui-kit/components/textarea/react';
 import { Avatar } from '@massimo/ui-kit/components/avatar/react';
@@ -197,6 +199,7 @@ function Pair({ u }: { u: number }) {
         <div style={{ width: 200 }}><ui-image data-k="ims" slideshow ratio="square" alt="Products"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="1" /><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="2" /></ui-image></div>
         <ui-spinner data-k="spn" label="Saving" />
         <ui-kbd data-k="kb" keys="mod+k" platform="mac" />
+        <span data-k="bl" style={{ display: 'inline-flex' }}><ui-button-link href="#x" variant="primary">Go</ui-button-link></span>
         <ui-breadcrumb data-k="bc" max-items={2}><a href="#a">A</a><a href="#b">B</a><span>C</span></ui-breadcrumb>
         <div style={{ width: 300 }}><ui-textarea data-k="ta" label="Notes" rows={4} /></div>
         <div style={{ width: 300 }}><ui-separator data-k="sp" /></div>
@@ -287,6 +290,7 @@ function Pair({ u }: { u: number }) {
         <div style={{ width: 200 }}><Image data-k="ims" slideshow ratio="square" alt="Products"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="1" /><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="2" /></Image></div>
         <Spinner data-k="spn" label="Saving" />
         <Kbd data-k="kb" keys="mod+k" platform="mac" />
+        <span data-k="bl" style={{ display: 'inline-flex' }}><ButtonLink href="#x" variant="primary">Go</ButtonLink></span>
         <Breadcrumb data-k="bc" maxItems={2}><a href="#a">A</a><a href="#b">B</a><span>C</span></Breadcrumb>
         <div style={{ width: 300 }}><Textarea data-k="ta" label="Notes" rows={4} /></div>
         <div style={{ width: 300 }}><Separator data-k="sp" /></div>

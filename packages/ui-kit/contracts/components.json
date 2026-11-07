@@ -1161,6 +1161,24 @@
         "inline"
       ],
       "behavior": "The last crumb is the current page. max-items folds the middle; the ellipsis shows every crumb and moves focus to the first revealed."
+    },
+    "button-link": {
+      "geometryFamily": "control",
+      "element": "Host holds a real a that wears the button recipe.",
+      "parts": [
+        "button-link-link"
+      ],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "form",
+        "inline"
+      ],
+      "behavior": "Native link navigation. disabled removes the href; unsafe schemes are dropped."
     }
   }
 }

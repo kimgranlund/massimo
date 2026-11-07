@@ -58,6 +58,7 @@ export const pending = defineGlobalStyles({
   // A separator reserves its rule (thickness max(1px, B)) until its classes arrive.
   'ui-textarea:not(:defined)': { display: 'block', minHeight: 'calc(var(--h) + 2 * var(--line))' },
   'ui-breadcrumb:not(:defined)': { display: 'block', minHeight: 'var(--line)' },
+  'ui-button-link:not(:defined)': { display: 'inline-block', minHeight: 'var(--h)' },
   'ui-kbd:not(:defined)': { display: 'inline-block', minWidth: 'calc(5 * var(--u))', minHeight: 'calc(5 * var(--u))' },
   'ui-spinner:not(:defined)': { display: 'inline-block', minWidth: 'calc(4 * var(--u))', minHeight: 'calc(4 * var(--u))' },
   'ui-separator:not(:defined)': { display: 'block', flexShrink: 0, alignSelf: 'stretch', height: 'var(--separator)' },

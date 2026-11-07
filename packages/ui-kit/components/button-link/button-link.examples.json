@@ -1,0 +1,28 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "button-link",
+  "title": "Button link",
+  "summary": "A real link with the look of a button.",
+  "defaultExample": "basic",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "Variants",
+      "subject": "component:button-link",
+      "markup": "<ui-button-link href=\"#/get-started\" variant=\"primary\">Get started</ui-button-link><ui-button-link href=\"#/components\">All components</ui-button-link><ui-button-link href=\"#/color\" variant=\"ghost\">Color</ui-button-link>"
+    },
+    {
+      "id": "icon",
+      "label": "With an icon",
+      "subject": "component:button-link",
+      "markup": "<ui-button-link href=\"#/components\"><i slot=\"trailing\" name=\"arrow-right\"></i>Browse</ui-button-link>"
+    },
+    {
+      "id": "disabled",
+      "label": "Disabled",
+      "subject": "component:button-link",
+      "markup": "<ui-button-link href=\"#/\" disabled>Not available</ui-button-link>"
+    }
+  ]
+}
