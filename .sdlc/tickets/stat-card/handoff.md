@@ -2,7 +2,7 @@
 id: T-0040
 title: "Parity W1 · Stat card"
 type: feature        # feature | bug | chore | spike | idea
-status: ready     # proposed | ready | claimed | paused | blocked | done | dropped (build progress lives in /board)
+status: done     # proposed | ready | claimed | paused | blocked | done | dropped (build progress lives in /board)
 size: L2             # L1 | L2 | L3 | L4 (L5 reserved)
 priority: P2         # P1 | P2 | P3
 depends: [T-0031]
@@ -26,3 +26,9 @@ Maison UI parity, wave 1: Stat card exists in ui-kit for both renderers and pass
 
 ## Constraints
 Zero native form elements in web components; every length from the geometry system; colours from Spectrum roles; motion via intent tokens; icons through the pinned Phosphor runtime; no runtime stylesheets.
+
+## Outcome
+
+2026-11-06 · lane: full L2 · verdict: closed by reason (built live; gates passed in Chromium, Firefox and WebKit) · verifier: none · base: none
+- Changed: ui-stat-card, React StatCard, resolveStatCard, dom/stat
+- Commits: none
