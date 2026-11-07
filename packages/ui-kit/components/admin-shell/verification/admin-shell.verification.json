@@ -1,0 +1,71 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "admin-shell",
+  "scope": "Role, orientation and data-* of the web component in happy-dom and of the React renderer in react-dom/server (node:test), and their state parity. Rendered thickness is covered by the browser geometry check; visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "components/admin-shell/admin-shell.element.ts",
+      "sha256": "1971fde2f7665c29e7f4d9e6649b3dbccf037aed37e0f64da0aecb746682c373"
+    },
+    {
+      "path": "components/admin-shell/admin-shell.react.tsx",
+      "sha256": "a1e5191164ac31ccd237a07db41150ae15f63da0b4e04fb13eb2da4783126a19"
+    },
+    {
+      "path": "components/admin-shell/admin-shell.recipe.ts",
+      "sha256": "837e367857e1a63bfc426f577151034fd7677dcae7edee6fdc389e3a5e8232ed"
+    },
+    {
+      "path": "components/admin-shell/admin-shell.manifest.json",
+      "sha256": "fd0510ba1fbf247d262d48ac18b20193d1dc36cfe7134af321213384bb5bd43c"
+    },
+    {
+      "path": "dom/shell.ts",
+      "sha256": "f72758da2f2b9a1d4e204e865b0435007308a41d7742d712b1e92bc2eca10e90"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test test/wave-5.test.ts",
+          "covers": "allocation, scrim and methods"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-07",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/wave-5.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test test/wave-5.test.ts",
+          "covers": "SSR markup and parts"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-07",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/wave-5.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "React styling parity is checked in the browser: apps/studio/react-check.html compares the React AdminShell with ui-admin-shell at five sizes (\"fails\": []).",
+    "The source list is the direct sources, not every transitive dependency.",
+    "Geometry review, manual items (2026-11-06): 2 widths from resolveShell; 3 separators own their width; 4 children own theirs; 5 bars grow; 6 no curvature; 7 panes take the page fill; 8 density leaves it alone; 9 a drawer overlays the host; 10 allocates by host width; 11 focus moves into a drawer and back."
+  ]
+}

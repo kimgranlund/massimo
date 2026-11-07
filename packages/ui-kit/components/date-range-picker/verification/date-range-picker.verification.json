@@ -6,23 +6,23 @@
   "sources": [
     {
       "path": "components/date-range-picker/date-range-picker.element.ts",
-      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      "sha256": "a002a62c8e9f07fab00533a9165f625044446f8ff05604672f8253fc69953c9a"
     },
     {
       "path": "components/date-range-picker/date-range-picker.react.tsx",
-      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      "sha256": "08ccc4e34a7aff4649b760793decf2138e909f7b103dec8690dd1187553822aa"
     },
     {
       "path": "components/date-range-picker/date-range-picker.recipe.ts",
-      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      "sha256": "413d62465a5e4a405e007185280a6de5df861c73fb16e513516d3586d6c28c75"
     },
     {
       "path": "components/date-range-picker/date-range-picker.manifest.json",
-      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      "sha256": "006c0d6e4e2c8ebdca2501879367a10262b677f375958d0c868ee37ab712f97b"
     },
     {
       "path": "dom/calendar.ts",
-      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      "sha256": "11def7aba4a34431e56c2c46889502cc98f405df29fd83adc22628c2c8f11730"
     }
   ],
   "renderers": {
@@ -34,10 +34,10 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-06",
+        "date": "2026-11-07",
         "outcome": "pass",
         "commands": [
-          "node --test test/date-range-picker.test.ts"
+          "node --test test/wave-3.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"
@@ -52,10 +52,10 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-06",
+        "date": "2026-11-07",
         "outcome": "pass",
         "commands": [
-          "node --test test/date-range-picker.test.ts"
+          "node --test test/wave-3.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"

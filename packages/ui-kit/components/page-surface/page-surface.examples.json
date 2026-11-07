@@ -1,0 +1,22 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "page-surface",
+  "title": "PageSurface",
+  "summary": "A normal-flow document surface.",
+  "defaultExample": "default",
+  "examples": [
+    {
+      "id": "default",
+      "label": "Readable",
+      "subject": "component:page-surface",
+      "markup": "<ui-page-surface><h2>Title</h2><p>Body copy sits at a readable width.</p></ui-page-surface>"
+    },
+    {
+      "id": "wide",
+      "label": "Wide",
+      "subject": "component:page-surface",
+      "markup": "<ui-page-surface width=\"wide\" gap=\"2\"><h2>Title</h2><p>A wider page.</p></ui-page-surface>"
+    }
+  ]
+}

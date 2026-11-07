@@ -6311,7 +6311,7 @@
         "value": 27,
         "unit": "px"
       },
-      "$description": "page · inset",
+      "$description": "page-surface · inset",
       "$extensions": {
         "com.massimo.formula": "6u",
         "com.massimo.status": "implemented",
@@ -6348,7 +6348,7 @@
         "value": 720,
         "unit": "px"
       },
-      "$description": "page · readable width",
+      "$description": "page-surface · readable width",
       "$extensions": {
         "com.massimo.formula": "160u",
         "com.massimo.status": "implemented",
@@ -6385,7 +6385,7 @@
         "value": 1440,
         "unit": "px"
       },
-      "$description": "page · wide width",
+      "$description": "page-surface · wide width",
       "$extensions": {
         "com.massimo.formula": "320u",
         "com.massimo.status": "implemented",
@@ -6422,7 +6422,7 @@
         "value": 1507.5,
         "unit": "px"
       },
-      "$description": "page · full width",
+      "$description": "page-surface · full width",
       "$extensions": {
         "com.massimo.formula": "335u",
         "com.massimo.status": "implemented",

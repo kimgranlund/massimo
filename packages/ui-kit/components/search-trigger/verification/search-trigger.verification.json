@@ -6,19 +6,19 @@
   "sources": [
     {
       "path": "components/search-trigger/search-trigger.element.ts",
-      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      "sha256": "5c4c62ce2d66d7974a2779d0c8e4e9f01ca12e673ff8bc00128360a01e49d522"
     },
     {
       "path": "components/search-trigger/search-trigger.react.tsx",
-      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      "sha256": "7c91dc2d8b2b8790a381c230cc2bd98c245d535b747641cf9e8860ec3007fdc6"
     },
     {
       "path": "components/search-trigger/search-trigger.recipe.ts",
-      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      "sha256": "37b51cb2cff04aacaac1e861a4a0740dd5e96c1992c439ae87c1a94c4a8078d8"
     },
     {
       "path": "components/search-trigger/search-trigger.manifest.json",
-      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      "sha256": "3a5ff9a5dcfd7ffa6c3cf78b04c358721e51f29a0a7908c9c980c81560e52c36"
     }
   ],
   "renderers": {
@@ -30,10 +30,10 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-06",
+        "date": "2026-11-07",
         "outcome": "pass",
         "commands": [
-          "node --test test/search-trigger.test.ts"
+          "node --test test/wave-4.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"
@@ -48,10 +48,10 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-06",
+        "date": "2026-11-07",
         "outcome": "pass",
         "commands": [
-          "node --test test/search-trigger.test.ts"
+          "node --test test/wave-4.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"

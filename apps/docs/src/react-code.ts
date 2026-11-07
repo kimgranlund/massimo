@@ -5,7 +5,7 @@
 // derived snippet against the renderers.
 import type { Manifest } from './model.ts';
 
-const REACT_DIFFERS = new Set(['sidebar', 'tree-view', 'search-trigger', 'command-bar', 'toolbar', 'time-picker', 'date-range-picker', 'date-picker', 'calendar', 'color-picker', 'file-picker', 'selection-control', 'chip-select', 'value-slider', 'copy-field', 'setting-row', 'data-list', 'stat-card', 'accordion', 'autocomplete', 'checkbox-group', 'field', 'form', 'image', 'range', 'row', 'scroll-area', 'toggle-group']);
+const REACT_DIFFERS = new Set(['chart', 'data-table', 'floating-panel', 'admin-shell', 'app-shell', 'content-shell', 'page-surface', 'pane', 'sidebar', 'tree-view', 'search-trigger', 'command-bar', 'toolbar', 'time-picker', 'date-range-picker', 'date-picker', 'calendar', 'color-picker', 'file-picker', 'selection-control', 'chip-select', 'value-slider', 'copy-field', 'setting-row', 'data-list', 'stat-card', 'accordion', 'autocomplete', 'checkbox-group', 'field', 'form', 'image', 'range', 'row', 'scroll-area', 'toggle-group']);
 export type ReactName = { name: string; folder: string };
 export function reactNames(manifests: Manifest[]) {
   return new Map(manifests.flatMap((m) => m.nodes.flatMap((n) => {

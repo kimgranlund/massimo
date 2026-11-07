@@ -1,0 +1,22 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "data-table",
+  "title": "Data table",
+  "summary": "Semantic records with sorting and interactive cells.",
+  "defaultExample": "default",
+  "examples": [
+    {
+      "id": "default",
+      "label": "Sortable",
+      "subject": "component:data-table",
+      "markup": "<ui-data-table label=\"Orders\" sort=\"total:desc\" columns='[{\"key\":\"name\",\"label\":\"Name\",\"sort\":\"text\"},{\"key\":\"total\",\"label\":\"Total\",\"sort\":\"number\",\"align\":\"end\"}]' rows='[{\"name\":\"Ada\",\"total\":120},{\"name\":\"Lin\",\"total\":80},{\"name\":\"Sam\",\"total\":200}]'></ui-data-table>"
+    },
+    {
+      "id": "grid",
+      "label": "Navigable",
+      "subject": "component:data-table",
+      "markup": "<ui-data-table label=\"Orders\" navigable columns='[{\"key\":\"name\",\"label\":\"Name\",\"sort\":\"text\"},{\"key\":\"total\",\"label\":\"Total\",\"sort\":\"number\",\"align\":\"end\"}]' rows='[{\"name\":\"Ada\",\"total\":120},{\"name\":\"Lin\",\"total\":80},{\"name\":\"Sam\",\"total\":200}]'></ui-data-table>"
+    }
+  ]
+}

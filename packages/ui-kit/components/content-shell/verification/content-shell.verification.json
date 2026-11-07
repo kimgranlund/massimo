@@ -1,0 +1,63 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "content-shell",
+  "scope": "Role, orientation and data-* of the web component in happy-dom and of the React renderer in react-dom/server (node:test), and their state parity. Rendered thickness is covered by the browser geometry check; visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "components/content-shell/content-shell.react.tsx",
+      "sha256": "45f06ec944f0957c52ba1a7eca0527b4b4a6aab5beda97b342799cf6a9d769dc"
+    },
+    {
+      "path": "components/content-shell/content-shell.recipe.ts",
+      "sha256": "abea63eac34e1f4eeb157dd9e5889a330b9dac496407eda74ebdedc382e7dc36"
+    },
+    {
+      "path": "components/content-shell/content-shell.manifest.json",
+      "sha256": "83dd5ebc649d25b04633c1f4e08a6178750f3a1263760c320a83448d5407fe52"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test test/wave-5.test.ts",
+          "covers": "host and parts"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-07",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/wave-5.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test test/wave-5.test.ts",
+          "covers": "SSR markup and parts"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-07",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/wave-5.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "React styling parity is checked in the browser: apps/studio/react-check.html compares the React ContentShell with ui-content-shell at five sizes (\"fails\": []).",
+    "The source list is the direct sources, not every transitive dependency.",
+    "Geometry review, manual items (2026-11-06): 2 widths from resolveShell and bars from resolveScrollRegion; 3 separators own their width; 4 children own theirs; 5 bars grow; 6 no curvature; 7 the sticky header takes the page fill; 8 density leaves it alone; 9 no floating layer; 10 fills, regions scroll alone; 11 no focus of its own."
+  ]
+}

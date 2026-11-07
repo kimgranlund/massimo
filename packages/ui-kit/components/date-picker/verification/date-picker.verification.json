@@ -6,23 +6,23 @@
   "sources": [
     {
       "path": "components/date-picker/date-picker.element.ts",
-      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      "sha256": "9faa9f9c0eacdfcdc1fd42aa0966d422ef7fd7d2212137c6a5233144637fafa6"
     },
     {
       "path": "components/date-picker/date-picker.react.tsx",
-      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      "sha256": "39ce3f3872916c5e4ce58bffc55646332ddcf66ff68d2bd32d521348f96193ce"
     },
     {
       "path": "components/date-picker/date-picker.recipe.ts",
-      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      "sha256": "327a8ff0373efb81cda2f3e02e4b534009fec358a8a8cf6aeed6071143757308"
     },
     {
       "path": "components/date-picker/date-picker.manifest.json",
-      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      "sha256": "e6fe9bdd4f4b493b1b9eda09b141d7624c4d1a4dfa09d4fb18391b10c14c9fa4"
     },
     {
       "path": "dom/calendar.ts",
-      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      "sha256": "11def7aba4a34431e56c2c46889502cc98f405df29fd83adc22628c2c8f11730"
     }
   ],
   "renderers": {
@@ -34,10 +34,10 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-06",
+        "date": "2026-11-07",
         "outcome": "pass",
         "commands": [
-          "node --test test/date-picker.test.ts"
+          "node --test test/wave-3.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"
@@ -52,10 +52,10 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-06",
+        "date": "2026-11-07",
         "outcome": "pass",
         "commands": [
-          "node --test test/date-picker.test.ts"
+          "node --test test/wave-3.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"

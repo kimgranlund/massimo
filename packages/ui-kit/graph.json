@@ -14,6 +14,19 @@
         "disclosure group"
       ]
     },
+    "component:admin-shell": {
+      "kind": "component",
+      "source": "components/admin-shell/admin-shell.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-admin-shell",
+      "searchTerms": [
+        "admin shell",
+        "dashboard layout",
+        "drawer",
+        "rail",
+        "responsive shell"
+      ]
+    },
     "component:alert-dialog": {
       "kind": "component",
       "source": "components/alert-dialog/alert-dialog.manifest.json#/nodes/0",
@@ -25,6 +38,18 @@
         "confirmation",
         "are you sure",
         "destructive action"
+      ]
+    },
+    "component:app-shell": {
+      "kind": "component",
+      "source": "components/app-shell/app-shell.manifest.json#/nodes/0",
+      "availability": "css-only",
+      "tag": "ui-app-shell",
+      "searchTerms": [
+        "app shell",
+        "application frame",
+        "editor layout",
+        "workspace"
       ]
     },
     "component:autocomplete": {
@@ -119,6 +144,21 @@
         "month grid",
         "date grid",
         "day picker"
+      ]
+    },
+    "component:chart": {
+      "kind": "component",
+      "source": "components/chart/chart.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-chart",
+      "searchTerms": [
+        "chart",
+        "graph",
+        "plot",
+        "bar chart",
+        "line chart",
+        "donut",
+        "data viz"
       ]
     },
     "component:checkbox": {
@@ -257,6 +297,18 @@
         "stack"
       ]
     },
+    "component:content-shell": {
+      "kind": "component",
+      "source": "components/content-shell/content-shell.manifest.json#/nodes/0",
+      "availability": "css-only",
+      "tag": "ui-content-shell",
+      "searchTerms": [
+        "content shell",
+        "docs layout",
+        "document layout",
+        "sidebar layout"
+      ]
+    },
     "component:context-menu": {
       "kind": "component",
       "source": "components/context-menu/context-menu.manifest.json#/nodes/0",
@@ -294,6 +346,19 @@
         "dl",
         "metadata",
         "details"
+      ]
+    },
+    "component:data-table": {
+      "kind": "component",
+      "source": "components/data-table/data-table.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-data-table",
+      "searchTerms": [
+        "table",
+        "data table",
+        "grid",
+        "sortable",
+        "records"
       ]
     },
     "component:date-picker": {
@@ -401,6 +466,18 @@
         "attachment",
         "dropzone",
         "file input"
+      ]
+    },
+    "component:floating-panel": {
+      "kind": "component",
+      "source": "components/floating-panel/floating-panel.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-floating-panel",
+      "searchTerms": [
+        "floating panel",
+        "palette window",
+        "inspector",
+        "draggable panel"
       ]
     },
     "component:form": {
@@ -599,6 +676,18 @@
         "segmented input"
       ]
     },
+    "component:page-surface": {
+      "kind": "component",
+      "source": "components/page-surface/page-surface.manifest.json#/nodes/0",
+      "availability": "css-only",
+      "tag": "ui-page-surface",
+      "searchTerms": [
+        "page",
+        "document",
+        "content width",
+        "readable width"
+      ]
+    },
     "component:palette": {
       "kind": "component",
       "source": "components/color/color.manifest.json#/nodes/1",
@@ -610,6 +699,18 @@
         "color picker",
         "swatches",
         "tones"
+      ]
+    },
+    "component:pane": {
+      "kind": "component",
+      "source": "components/pane/pane.manifest.json#/nodes/0",
+      "availability": "css-only",
+      "tag": "ui-pane",
+      "searchTerms": [
+        "pane",
+        "panel",
+        "scroll region",
+        "sticky header"
       ]
     },
     "component:popover": {
@@ -2612,6 +2713,14 @@
         "calendar size"
       ]
     },
+    "geometry:chart": {
+      "kind": "geometry",
+      "source": "contracts/geometry-families.json#/families/chart",
+      "availability": "implemented",
+      "searchTerms": [
+        "chart size"
+      ]
+    },
     "geometry:choice": {
       "kind": "geometry",
       "source": "contracts/geometry-families.json#/families/choice",
@@ -2662,6 +2771,14 @@
         "label padding",
         "icon slot",
         "text run"
+      ]
+    },
+    "geometry:data-table": {
+      "kind": "geometry",
+      "source": "contracts/geometry-families.json#/families/data-table",
+      "availability": "implemented",
+      "searchTerms": [
+        "data-table size"
       ]
     },
     "geometry:dialog": {
@@ -2733,6 +2850,14 @@
         "fieldset spacing",
         "legend gap",
         "field group spacing"
+      ]
+    },
+    "geometry:floating-panel": {
+      "kind": "geometry",
+      "source": "contracts/geometry-families.json#/families/floating-panel",
+      "availability": "implemented",
+      "searchTerms": [
+        "floating-panel size"
       ]
     },
     "geometry:form": {
@@ -2821,6 +2946,14 @@
         "scrollbar thickness",
         "thumb size",
         "scroll area geometry"
+      ]
+    },
+    "geometry:scroll-region": {
+      "kind": "geometry",
+      "source": "contracts/geometry-families.json#/families/scroll-region",
+      "availability": "implemented",
+      "searchTerms": [
+        "pane size"
       ]
     },
     "geometry:separator": {
@@ -4835,6 +4968,51 @@
         "copy field status"
       ]
     },
+    "part:data-table-cell": {
+      "kind": "part",
+      "source": "components/data-table/data-table.manifest.json#/nodes/5",
+      "availability": "implemented",
+      "tag": "td",
+      "searchTerms": [
+        "data table cell"
+      ]
+    },
+    "part:data-table-content": {
+      "kind": "part",
+      "source": "components/data-table/data-table.manifest.json#/nodes/1",
+      "availability": "implemented",
+      "tag": "table",
+      "searchTerms": [
+        "data table content"
+      ]
+    },
+    "part:data-table-header": {
+      "kind": "part",
+      "source": "components/data-table/data-table.manifest.json#/nodes/2",
+      "availability": "implemented",
+      "tag": "th",
+      "searchTerms": [
+        "data table header"
+      ]
+    },
+    "part:data-table-row": {
+      "kind": "part",
+      "source": "components/data-table/data-table.manifest.json#/nodes/4",
+      "availability": "implemented",
+      "tag": "tr",
+      "searchTerms": [
+        "data table row"
+      ]
+    },
+    "part:data-table-sort": {
+      "kind": "part",
+      "source": "components/data-table/data-table.manifest.json#/nodes/3",
+      "availability": "implemented",
+      "tag": "span",
+      "searchTerms": [
+        "data table sort"
+      ]
+    },
     "part:date-range-picker-actions": {
       "kind": "part",
       "source": "components/date-range-picker/date-range-picker.manifest.json#/nodes/2",
@@ -5022,6 +5200,42 @@
       "tag": "span",
       "searchTerms": [
         "file picker name"
+      ]
+    },
+    "part:floating-panel-body": {
+      "kind": "part",
+      "source": "components/floating-panel/floating-panel.manifest.json#/nodes/3",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "floating panel body"
+      ]
+    },
+    "part:floating-panel-controls": {
+      "kind": "part",
+      "source": "components/floating-panel/floating-panel.manifest.json#/nodes/2",
+      "availability": "implemented",
+      "tag": "span",
+      "searchTerms": [
+        "floating panel controls"
+      ]
+    },
+    "part:floating-panel-grip": {
+      "kind": "part",
+      "source": "components/floating-panel/floating-panel.manifest.json#/nodes/4",
+      "availability": "implemented",
+      "tag": "span",
+      "searchTerms": [
+        "floating panel grip"
+      ]
+    },
+    "part:floating-panel-header": {
+      "kind": "part",
+      "source": "components/floating-panel/floating-panel.manifest.json#/nodes/1",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "floating panel header"
       ]
     },
     "part:image-slide": {
@@ -6287,6 +6501,91 @@
       "to": "component:collapsible"
     },
     {
+      "from": "component:admin-shell",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:admin-shell",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:admin-shell",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:admin-shell",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:admin-shell",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:admin-shell",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:admin-shell",
+      "relation": "usesGeometry",
+      "to": "geometry:scroll-region"
+    },
+    {
+      "from": "component:admin-shell",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:admin-shell",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:admin-shell",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:admin-shell",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:admin-shell",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:admin-shell",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:admin-shell",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:admin-shell",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:admin-shell",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:admin-shell",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
       "from": "component:alert-dialog",
       "relation": "extends",
       "to": "foundation:element"
@@ -6410,6 +6709,91 @@
       "from": "component:alert-dialog",
       "relation": "allowedIn",
       "to": "context:dialog"
+    },
+    {
+      "from": "component:app-shell",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:app-shell",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:app-shell",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:app-shell",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:app-shell",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:app-shell",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:app-shell",
+      "relation": "usesGeometry",
+      "to": "geometry:scroll-region"
+    },
+    {
+      "from": "component:app-shell",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:app-shell",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:app-shell",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:app-shell",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:app-shell",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:app-shell",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:app-shell",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:app-shell",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:app-shell",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:app-shell",
+      "relation": "allowedIn",
+      "to": "context:inline"
     },
     {
       "from": "component:autocomplete",
@@ -7505,6 +7889,91 @@
       "from": "component:calendar",
       "relation": "ownsPart",
       "to": "part:calendar-cell"
+    },
+    {
+      "from": "component:chart",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:chart",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:chart",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:chart",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:chart",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:chart",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:chart",
+      "relation": "usesGeometry",
+      "to": "geometry:chart"
+    },
+    {
+      "from": "component:chart",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:chart",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:chart",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:chart",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:chart",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:chart",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:chart",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:chart",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:chart",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:chart",
+      "relation": "allowedIn",
+      "to": "context:inline"
     },
     {
       "from": "component:checkbox-group",
@@ -8927,6 +9396,91 @@
       "to": "context:page"
     },
     {
+      "from": "component:content-shell",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:content-shell",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:content-shell",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:content-shell",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:content-shell",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:content-shell",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:content-shell",
+      "relation": "usesGeometry",
+      "to": "geometry:scroll-region"
+    },
+    {
+      "from": "component:content-shell",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:content-shell",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:content-shell",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:content-shell",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:content-shell",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:content-shell",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:content-shell",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:content-shell",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:content-shell",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:content-shell",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
       "from": "component:context-menu",
       "relation": "extends",
       "to": "foundation:element"
@@ -9185,6 +9739,116 @@
       "from": "component:data-list",
       "relation": "usesTokens",
       "to": "tokens:geometry"
+    },
+    {
+      "from": "component:data-table",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:data-table",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:data-table",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:data-table",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:data-table",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:data-table",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:data-table",
+      "relation": "usesGeometry",
+      "to": "geometry:data-table"
+    },
+    {
+      "from": "component:data-table",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:data-table",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:data-table",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:data-table",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:data-table",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:data-table",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:data-table",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:data-table",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:data-table",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:data-table",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
+      "from": "component:data-table",
+      "relation": "ownsPart",
+      "to": "part:data-table-content"
+    },
+    {
+      "from": "component:data-table",
+      "relation": "ownsPart",
+      "to": "part:data-table-header"
+    },
+    {
+      "from": "component:data-table",
+      "relation": "ownsPart",
+      "to": "part:data-table-sort"
+    },
+    {
+      "from": "component:data-table",
+      "relation": "ownsPart",
+      "to": "part:data-table-row"
+    },
+    {
+      "from": "component:data-table",
+      "relation": "ownsPart",
+      "to": "part:data-table-cell"
     },
     {
       "from": "component:date-picker",
@@ -10110,6 +10774,111 @@
       "from": "component:file-picker",
       "relation": "ownsPart",
       "to": "part:file-picker-error"
+    },
+    {
+      "from": "component:floating-panel",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:floating-panel",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:floating-panel",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:floating-panel",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:floating-panel",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:floating-panel",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:floating-panel",
+      "relation": "usesGeometry",
+      "to": "geometry:floating-panel"
+    },
+    {
+      "from": "component:floating-panel",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:floating-panel",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:floating-panel",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:floating-panel",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:floating-panel",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:floating-panel",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:floating-panel",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:floating-panel",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:floating-panel",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:floating-panel",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
+      "from": "component:floating-panel",
+      "relation": "ownsPart",
+      "to": "part:floating-panel-header"
+    },
+    {
+      "from": "component:floating-panel",
+      "relation": "ownsPart",
+      "to": "part:floating-panel-controls"
+    },
+    {
+      "from": "component:floating-panel",
+      "relation": "ownsPart",
+      "to": "part:floating-panel-body"
+    },
+    {
+      "from": "component:floating-panel",
+      "relation": "ownsPart",
+      "to": "part:floating-panel-grip"
     },
     {
       "from": "component:column",
@@ -11910,6 +12679,176 @@
       "from": "component:otp-field",
       "relation": "allowedIn",
       "to": "context:field-grid"
+    },
+    {
+      "from": "component:page-surface",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:page-surface",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:page-surface",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:page-surface",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:page-surface",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:page-surface",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:page-surface",
+      "relation": "usesGeometry",
+      "to": "geometry:scroll-region"
+    },
+    {
+      "from": "component:page-surface",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:page-surface",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:page-surface",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:page-surface",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:page-surface",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:page-surface",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:page-surface",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:page-surface",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:page-surface",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:page-surface",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
+      "from": "component:pane",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:pane",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:pane",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:pane",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:pane",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:pane",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:pane",
+      "relation": "usesGeometry",
+      "to": "geometry:scroll-region"
+    },
+    {
+      "from": "component:pane",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:pane",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:pane",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:pane",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:pane",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:pane",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:pane",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:pane",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:pane",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:pane",
+      "relation": "allowedIn",
+      "to": "context:inline"
     },
     {
       "from": "component:popover",

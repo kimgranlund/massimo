@@ -58,6 +58,14 @@ declare module 'react' {
       'ui-search-trigger': El<any>;
       'ui-tree-view': El<any>;
       'ui-sidebar': El<any>;
+      'ui-pane': El<any>;
+      'ui-page-surface': El<any>;
+      'ui-content-shell': El<any>;
+      'ui-app-shell': El<any>;
+      'ui-admin-shell': El<any>;
+      'ui-floating-panel': El<any>;
+      'ui-data-table': El<any>;
+      'ui-chart': El<any>;
       'ui-kbd': El<{ keys?: string; platform?: 'auto' | 'mac' | 'other' }>;
       'ui-spinner': El<{ label?: string; 'hide-label'?: string | boolean }>;
       'ui-separator': El<{ orientation?: 'horizontal' | 'vertical' }>;

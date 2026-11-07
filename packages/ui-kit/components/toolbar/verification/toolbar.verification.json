@@ -6,23 +6,23 @@
   "sources": [
     {
       "path": "components/toolbar/toolbar.element.ts",
-      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      "sha256": "f6165a4ddf22448d14103329f6d97b4ff95abb78ee6b850608fe1cd272402278"
     },
     {
       "path": "components/toolbar/toolbar.react.tsx",
-      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      "sha256": "a6ab2e386f154b690adb0885f388de0e72819291339652b9b3a350a1d7650d92"
     },
     {
       "path": "components/toolbar/toolbar.recipe.ts",
-      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      "sha256": "86ae40af85d03ea1854e00faf729e2b83e3e461deb4adf3cce78015e7efa70ae"
     },
     {
       "path": "components/toolbar/toolbar.manifest.json",
-      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      "sha256": "7320a6a43642bc8698429acec64f4f3c20ffb3a356a5aae919c7fe69318b432a"
     },
     {
       "path": "dom/toolbar.ts",
-      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      "sha256": "41a628406b277abe2b94eff343621aee66cde6a6c1238d6d8a91b6faab1dea59"
     }
   ],
   "renderers": {
@@ -34,10 +34,10 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-06",
+        "date": "2026-11-07",
         "outcome": "pass",
         "commands": [
-          "node --test test/toolbar.test.ts"
+          "node --test test/wave-4.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"
@@ -52,10 +52,10 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-06",
+        "date": "2026-11-07",
         "outcome": "pass",
         "commands": [
-          "node --test test/toolbar.test.ts"
+          "node --test test/wave-4.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"

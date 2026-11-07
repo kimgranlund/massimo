@@ -1,0 +1,63 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "pane",
+  "scope": "Role, orientation and data-* of the web component in happy-dom and of the React renderer in react-dom/server (node:test), and their state parity. Rendered thickness is covered by the browser geometry check; visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "components/pane/pane.react.tsx",
+      "sha256": "ac994f9b711e57030c28f44eca0d71b1fdbef212afac6649e82c010490aece43"
+    },
+    {
+      "path": "components/pane/pane.recipe.ts",
+      "sha256": "826b62b832b8bd8f0e323808c3e6905b636a117b3b9cb636e46090da05ef05d4"
+    },
+    {
+      "path": "components/pane/pane.manifest.json",
+      "sha256": "3f0a3b0ce834ccd37ff937324c8c299980f08c4a5dfcf25007c23878266f5f9d"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test test/wave-5.test.ts",
+          "covers": "host and parts"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-07",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/wave-5.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test test/wave-5.test.ts",
+          "covers": "SSR markup and parts"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-07",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/wave-5.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "React styling parity is checked in the browser: apps/studio/react-check.html compares the React Pane with ui-pane at five sizes (\"fails\": []).",
+    "The source list is the direct sources, not every transitive dependency.",
+    "Geometry review, manual items (2026-11-06): 2 bar, inset and gap from resolveScrollRegion; 3 the separator owns its own width; 4 children own their geometry; 5 bars grow with content; 6 no nesting of curvature; 7 no fill; 8 density leaves it alone; 9 no floating layer; 10 fills its parent, the body scrolls; 11 children own focus, the body is a tab stop."
+  ]
+}

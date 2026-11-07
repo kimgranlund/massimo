@@ -1,0 +1,75 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "data-table",
+  "scope": "Role, orientation and data-* of the web component in happy-dom and of the React renderer in react-dom/server (node:test), and their state parity. Rendered thickness is covered by the browser geometry check; visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "components/data-table/data-table.element.ts",
+      "sha256": "d5093b5fe74b33274784b2e50f0923e8331a688d08fb04be62c806130550e724"
+    },
+    {
+      "path": "components/data-table/data-table.react.tsx",
+      "sha256": "6ccc18eec51e91d95bb13793cae4565ca42ade7c8d2b9058e2ae0a00c67f5c7d"
+    },
+    {
+      "path": "components/data-table/data-table.recipe.ts",
+      "sha256": "1f3f62cb758111c7ddb71652cc9343f12ea0eacd9004f7fa4bc00696a54a8c29"
+    },
+    {
+      "path": "components/data-table/data-table.manifest.json",
+      "sha256": "043df7795a097813df3f7d96736d38034a93d557d7a2ecc2dccc29beee7ab6bd"
+    },
+    {
+      "path": "dom/table.ts",
+      "sha256": "bd356cffc04772988c336ecf6f86acdebe8dd889a9335c088fc1be30e9060d2e"
+    },
+    {
+      "path": "dom/grid-nav.ts",
+      "sha256": "42b39f01ad683c1528ae6341d9f51a6308b1744062ccb8c0b86421d33858c3dd"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test test/wave-6.test.ts",
+          "covers": "sorting, cells and grid"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-07",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/wave-6.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test test/wave-6.test.ts",
+          "covers": "SSR markup and parts"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-07",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/wave-6.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "React styling parity is checked in the browser: apps/studio/react-check.html compares the React DataTable with ui-data-table at five sizes (\"fails\": []).",
+    "The source list is the direct sources, not every transitive dependency.",
+    "Geometry review, manual items (2026-11-06): 2 cell and header from resolveDataTable; 3 the rule owns its width; 4 cells hold their content; 5 no control heights; 6 no curvature; 7 rows take the hover fill, the header the page fill; 8 density scales cell block only; 9 no floating layer; 10 scrolls on both axes, the header stays; 11 the host, sort controls and grid cells take focus."
+  ]
+}

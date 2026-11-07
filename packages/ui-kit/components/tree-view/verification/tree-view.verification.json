@@ -6,23 +6,23 @@
   "sources": [
     {
       "path": "components/tree-view/tree-view.element.ts",
-      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      "sha256": "211ed838a60085eb0ca2314af34c1e3864506d3a48ffc89aa4a8d7fe5c3e8ad6"
     },
     {
       "path": "components/tree-view/tree-view.react.tsx",
-      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      "sha256": "d12ffeeb980de4355f3a483caba7ef703308573feb50434155e6f09c3d6504a6"
     },
     {
       "path": "components/tree-view/tree-view.recipe.ts",
-      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      "sha256": "3b13777971c12ed6c537cfc77a3146caa96f410c73e264884a6a0d92456b4d16"
     },
     {
       "path": "components/tree-view/tree-view.manifest.json",
-      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      "sha256": "65d4ecd9d8e936f9977c21aeeeb6e82cfaa7c6a91bc6e30f598c212169a8adc7"
     },
     {
       "path": "dom/tree.ts",
-      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      "sha256": "f9eebfec51cdefc6e179576b8f83dfdf7b97aaa53c67168f459e9d1a4e59281c"
     }
   ],
   "renderers": {
@@ -34,10 +34,10 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-06",
+        "date": "2026-11-07",
         "outcome": "pass",
         "commands": [
-          "node --test test/tree-view.test.ts"
+          "node --test test/wave-4.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"
@@ -52,10 +52,10 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-06",
+        "date": "2026-11-07",
         "outcome": "pass",
         "commands": [
-          "node --test test/tree-view.test.ts"
+          "node --test test/wave-4.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"

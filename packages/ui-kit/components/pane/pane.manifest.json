@@ -1,0 +1,176 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "pane",
+  "primary": "component:pane",
+  "module": null,
+  "registration": "none",
+  "documentation": "./pane.md",
+  "examples": "./pane.examples.json",
+  "contract": "../../contracts/components.json#/components/pane",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./pane.recipe.ts"
+  },
+  "nodes": [
+    {
+      "id": "component:pane",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-pane",
+      "intent": [
+        "Keep content in a scrolling body with optional persistent header and footer"
+      ],
+      "properties": [],
+      "attributes": [],
+      "events": [],
+      "semantics": {
+        "role": null,
+        "formAssociated": false,
+        "accessibleName": {
+          "sources": [
+            "label"
+          ],
+          "required": false
+        }
+      },
+      "content": {
+        "ownership": "consumer",
+        "acceptsChildren": true,
+        "children": "One body, with an optional header before it and footer after it."
+      },
+      "layout": {
+        "display": "flex",
+        "sizing": "fill"
+      },
+      "constraints": [
+        "One direct body, with optional header before and footer after it.",
+        "A pane never reorders or remounts children.",
+        "The shell owns its size, gutters and docking."
+      ],
+      "avoidWhen": [
+        {
+          "when": "The whole document scrolls.",
+          "reason": "A pane fixes a region.",
+          "useInstead": "component:content-shell"
+        }
+      ],
+      "searchTerms": [
+        "pane",
+        "panel",
+        "scroll region",
+        "sticky header"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:pane",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:pane",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:pane",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:pane",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:pane",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:pane",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:pane",
+      "relation": "usesGeometry",
+      "to": "geometry:scroll-region"
+    },
+    {
+      "from": "component:pane",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:pane",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:pane",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:pane",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:pane",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:pane",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:pane",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:pane",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:pane",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:pane",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "verification": "./verification/pane.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./pane.react.tsx",
+      "exports": {
+        "component:pane": "Pane"
+      },
+      "verification": "./verification/pane.verification.json#/renderers/react",
+      "props": {
+        "component:pane": {
+          "inherits": [
+            "HTMLAttributes<HTMLDivElement>"
+          ],
+          "props": []
+        }
+      }
+    }
+  }
+}

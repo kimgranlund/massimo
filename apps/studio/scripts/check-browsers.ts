@@ -41,7 +41,7 @@ const docsUrl = `http://127.0.0.1:${docsPort}/docs/`;
 for (let i = 0; i < 100; i++) { if (await fetch(docsUrl).then((r) => r.ok, () => false)) break; await new Promise((r) => setTimeout(r, 200)); }
 
 /** Tags with no script: they have no custom element to define. */
-const CSS_ONLY = new Set(['ui-container', 'ui-section', 'ui-row', 'ui-column', 'ui-list', 'ui-grid', 'ui-setting-row', 'ui-data-list']);
+const CSS_ONLY = new Set(['ui-container', 'ui-section', 'ui-row', 'ui-column', 'ui-list', 'ui-grid', 'ui-setting-row', 'ui-data-list', 'ui-pane', 'ui-page-surface', 'ui-content-shell', 'ui-app-shell']);
 // Multiline entry in the engine's own editor: Enter adds a line and the value has one newline for it.
 async function checkTextarea(page: Page): Promise<string[]> {
   const fails: string[] = [];

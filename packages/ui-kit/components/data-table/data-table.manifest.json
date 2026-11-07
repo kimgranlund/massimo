@@ -1,0 +1,327 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "data-table",
+  "primary": "component:data-table",
+  "module": "./data-table.element.ts",
+  "registration": "on-import",
+  "documentation": "./data-table.md",
+  "examples": "./data-table.examples.json",
+  "contract": "../../contracts/components.json#/components/data-table",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./data-table.recipe.ts"
+  },
+  "nodes": [
+    {
+      "id": "component:data-table",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-data-table",
+      "class": "UIDataTable",
+      "extends": "UIElement",
+      "intent": [
+        "Present semantic tabular records with shared columns and independently interactive cells",
+        "Sort text or numeric columns"
+      ],
+      "properties": [
+        {
+          "key": "label",
+          "type": "string",
+          "default": "",
+          "attribute": "label",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "columns",
+          "type": "string",
+          "default": null,
+          "attribute": "columns",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "rows",
+          "type": "string",
+          "default": null,
+          "attribute": "rows",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "sort",
+          "type": "string",
+          "default": "",
+          "attribute": "sort",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "locale",
+          "type": "string",
+          "default": "",
+          "attribute": "locale",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "navigable",
+          "type": "boolean",
+          "default": false,
+          "attribute": "navigable",
+          "reflects": false,
+          "inspector": {
+            "control": "toggle"
+          }
+        }
+      ],
+      "attributes": [],
+      "events": [
+        {
+          "name": "sortchange",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": false,
+          "trigger": "the user changes the sort"
+        }
+      ],
+      "semantics": {
+        "role": "region",
+        "formAssociated": false,
+        "accessibleName": {
+          "sources": [
+            "label"
+          ],
+          "required": true
+        }
+      },
+      "content": {
+        "ownership": "component",
+        "acceptsChildren": false,
+        "children": "Rendered from columns and rows; a column's render fills a cell."
+      },
+      "layout": {
+        "display": "block",
+        "sizing": "fill"
+      },
+      "constraints": [
+        "A native table in a scroll region.",
+        "Empty values sort last.",
+        "navigable makes it an ARIA grid with one tab stop.",
+        "Selection, pagination and virtual scrolling are out of scope."
+      ],
+      "avoidWhen": [
+        {
+          "when": "Labelled facts about one thing.",
+          "reason": "A table compares records.",
+          "useInstead": "component:data-list"
+        }
+      ],
+      "searchTerms": [
+        "table",
+        "data table",
+        "grid",
+        "sortable",
+        "records"
+      ]
+    },
+    {
+      "id": "part:data-table-content",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "table",
+      "selector": "[data-part=content]",
+      "summary": "The table."
+    },
+    {
+      "id": "part:data-table-header",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "th",
+      "selector": "[data-part=header]",
+      "summary": "A column header."
+    },
+    {
+      "id": "part:data-table-sort",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "span",
+      "selector": "[data-part=sort]",
+      "summary": "A sort control."
+    },
+    {
+      "id": "part:data-table-row",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "tr",
+      "selector": "[data-part=row]",
+      "summary": "A record."
+    },
+    {
+      "id": "part:data-table-cell",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "td",
+      "selector": "[data-part=cell]",
+      "summary": "A cell."
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:data-table",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:data-table",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:data-table",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:data-table",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:data-table",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:data-table",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:data-table",
+      "relation": "usesGeometry",
+      "to": "geometry:data-table"
+    },
+    {
+      "from": "component:data-table",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:data-table",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:data-table",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:data-table",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:data-table",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:data-table",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:data-table",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:data-table",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:data-table",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:data-table",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
+      "from": "component:data-table",
+      "relation": "ownsPart",
+      "to": "part:data-table-content"
+    },
+    {
+      "from": "component:data-table",
+      "relation": "ownsPart",
+      "to": "part:data-table-header"
+    },
+    {
+      "from": "component:data-table",
+      "relation": "ownsPart",
+      "to": "part:data-table-sort"
+    },
+    {
+      "from": "component:data-table",
+      "relation": "ownsPart",
+      "to": "part:data-table-row"
+    },
+    {
+      "from": "component:data-table",
+      "relation": "ownsPart",
+      "to": "part:data-table-cell"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./data-table.element.ts",
+      "exports": {
+        "component:data-table": "UIDataTable"
+      },
+      "verification": "./verification/data-table.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./data-table.react.tsx",
+      "exports": {
+        "component:data-table": "DataTable"
+      },
+      "verification": "./verification/data-table.verification.json#/renderers/react",
+      "props": {
+        "component:data-table": {
+          "inherits": [
+            "HTMLAttributes<HTMLDivElement>"
+          ],
+          "props": [
+            "label: string",
+            "columns: TableColumn<Row>[]",
+            "rows: Row[]",
+            "defaultSort?: string = '' // key:asc or key:desc.",
+            "onSortChange?: (sort: string) => void",
+            "locale?: string",
+            "navigable?: boolean = false"
+          ]
+        }
+      }
+    }
+  }
+}

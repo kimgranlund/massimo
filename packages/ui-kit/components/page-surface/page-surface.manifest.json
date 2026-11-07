@@ -1,0 +1,206 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "page-surface",
+  "primary": "component:page-surface",
+  "module": null,
+  "registration": "none",
+  "documentation": "./page-surface.md",
+  "examples": "./page-surface.examples.json",
+  "contract": "../../contracts/components.json#/components/page-surface",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./page-surface.recipe.ts"
+  },
+  "nodes": [
+    {
+      "id": "component:page-surface",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-page-surface",
+      "intent": [
+        "Provide a normal-flow document surface with a fixed inset and centred content width"
+      ],
+      "properties": [],
+      "attributes": [
+        {
+          "name": "width",
+          "type": "string",
+          "enum": [
+            "readable",
+            "wide",
+            "full"
+          ],
+          "readBy": "css",
+          "description": "Content width: readable 160u, wide 320u, full 335u. Default readable.",
+          "inspector": {
+            "control": "select"
+          }
+        },
+        {
+          "name": "gap",
+          "type": "number",
+          "readBy": "css",
+          "description": "Gutter between children in units of u, 0…8 in 0.5 steps. Default 4.",
+          "inspector": {
+            "control": "number",
+            "min": 0,
+            "max": 8,
+            "step": 0.5
+          }
+        }
+      ],
+      "events": [],
+      "semantics": {
+        "role": null,
+        "formAssociated": false,
+        "accessibleName": {
+          "sources": [
+            "label"
+          ],
+          "required": false
+        }
+      },
+      "content": {
+        "ownership": "consumer",
+        "acceptsChildren": true,
+        "children": "Document content."
+      },
+      "layout": {
+        "display": "flex",
+        "sizing": "fill"
+      },
+      "constraints": [
+        "The containing shell owns scrolling.",
+        "The inset is fixed in u, and local font size doesn't change it.",
+        "Widths are shared with ContentShell: readable 160u, wide 320u, full 335u."
+      ],
+      "avoidWhen": [
+        {
+          "when": "Regions scroll on their own.",
+          "reason": "A page is normal flow.",
+          "useInstead": "component:pane"
+        }
+      ],
+      "searchTerms": [
+        "page",
+        "document",
+        "content width",
+        "readable width"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:page-surface",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:page-surface",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:page-surface",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:page-surface",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:page-surface",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:page-surface",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:page-surface",
+      "relation": "usesGeometry",
+      "to": "geometry:scroll-region"
+    },
+    {
+      "from": "component:page-surface",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:page-surface",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:page-surface",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:page-surface",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:page-surface",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:page-surface",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:page-surface",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:page-surface",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:page-surface",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:page-surface",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "verification": "./verification/page-surface.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./page-surface.react.tsx",
+      "exports": {
+        "component:page-surface": "PageSurface"
+      },
+      "verification": "./verification/page-surface.verification.json#/renderers/react",
+      "props": {
+        "component:page-surface": {
+          "inherits": [
+            "HTMLAttributes<HTMLDivElement>"
+          ],
+          "props": [
+            "width?: PageWidth // readable 160u, wide 320u, full 335u. Default readable.",
+            "gap?: number // Gutter between children in units of u, 0 … 8 in 0.5 steps. Default 4."
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "app-shell",
+  "title": "App shell",
+  "summary": "An application frame.",
+  "defaultExample": "default",
+  "examples": [
+    {
+      "id": "default",
+      "label": "Frame",
+      "subject": "component:app-shell",
+      "markup": "<ui-app-shell style=\"height: 240px\"><header data-part=\"header\"><strong>Project</strong></header><div data-part=\"body\"><p>Content.</p></div><footer data-part=\"footer\">Saved</footer></ui-app-shell>"
+    },
+    {
+      "id": "editor",
+      "label": "Editor",
+      "subject": "component:app-shell",
+      "markup": "<ui-app-shell variant=\"editor\" style=\"height: 240px\"><header data-part=\"header\"><strong>Project</strong></header><div data-part=\"body\"><aside data-part=\"start\">Files</aside><main data-part=\"main\">Canvas</main><aside data-part=\"end\">Inspector</aside></div></ui-app-shell>"
+    }
+  ]
+}

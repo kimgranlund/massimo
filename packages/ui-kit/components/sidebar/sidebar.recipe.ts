@@ -17,6 +17,6 @@ export const sidebar = defineSlotRecipe({
       '&[data-collapsed] a > span': { position: 'absolute', width: '1px', height: '1px', overflow: 'hidden', clipPath: 'inset(50%)', whiteSpace: 'nowrap' },
       '&[data-collapsed] a': { justifyContent: 'center', paddingInline: 0, position: 'relative' },
     },
-    toggle: { alignSelf: 'flex-end' },
+    toggle: { display: 'flex', alignSelf: 'flex-end' },
   },
 });

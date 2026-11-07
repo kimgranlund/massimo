@@ -1,0 +1,16 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "admin-shell",
+  "title": "Admin shell",
+  "summary": "Panes around content, responsive to rail and drawer.",
+  "defaultExample": "default",
+  "examples": [
+    {
+      "id": "default",
+      "label": "Panes",
+      "subject": "component:admin-shell",
+      "markup": "<ui-admin-shell style=\"height: 280px\"><aside data-part=\"start\"><p>Navigation</p></aside><div data-part=\"toolbar\"><strong>Orders</strong></div><main data-part=\"content\"><p>Content.</p></main></ui-admin-shell>"
+    }
+  ]
+}

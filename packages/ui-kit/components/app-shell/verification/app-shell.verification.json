@@ -1,0 +1,63 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "app-shell",
+  "scope": "Role, orientation and data-* of the web component in happy-dom and of the React renderer in react-dom/server (node:test), and their state parity. Rendered thickness is covered by the browser geometry check; visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "components/app-shell/app-shell.react.tsx",
+      "sha256": "ff2f1462ed14dd4e7803b213d0e366e96980ef2f81714bd166e10702d84aad27"
+    },
+    {
+      "path": "components/app-shell/app-shell.recipe.ts",
+      "sha256": "ed02c4ea0e8100d22103d37fb3a5da3a2da02337b2ec831f8beb4c8948771079"
+    },
+    {
+      "path": "components/app-shell/app-shell.manifest.json",
+      "sha256": "2f9d4f5a87be89f439368109795784f531da161225d2e5e7d54532bbd075a90b"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test test/wave-5.test.ts",
+          "covers": "host, parts and variant"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-07",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/wave-5.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test test/wave-5.test.ts",
+          "covers": "SSR markup and parts"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-07",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/wave-5.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "React styling parity is checked in the browser: apps/studio/react-check.html compares the React AppShell with ui-app-shell at five sizes (\"fails\": []).",
+    "The source list is the direct sources, not every transitive dependency.",
+    "Geometry review, manual items (2026-11-06): 2 widths from resolveShell, bars from resolveScrollRegion; 3 separators own their width; 4 children own theirs; 5 bars grow; 6 no curvature; 7 no fill; 8 density leaves it alone; 9 no floating layer; 10 fills, regions scroll alone; 11 no focus of its own."
+  ]
+}

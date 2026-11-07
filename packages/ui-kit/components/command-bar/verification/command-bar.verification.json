@@ -6,23 +6,23 @@
   "sources": [
     {
       "path": "components/command-bar/command-bar.element.ts",
-      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      "sha256": "cf11a5b461b030a660c8bf2ff04ca10a340d2236c7bd7c41a4a5b75d98cfa8a3"
     },
     {
       "path": "components/command-bar/command-bar.react.tsx",
-      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      "sha256": "5a488bd24159b872bd3366f6c6a6ebf8f10920b5ccea97dd784559b220260797"
     },
     {
       "path": "components/command-bar/command-bar.recipe.ts",
-      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      "sha256": "7178f97e093f4768a31709b5e2188aa23a00648db1f64f540acd3c30345dd8ab"
     },
     {
       "path": "components/command-bar/command-bar.manifest.json",
-      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      "sha256": "022d336954315c83a540a1d3744207bfa3a61545434367c25c134c0b98207db2"
     },
     {
       "path": "dom/command.ts",
-      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      "sha256": "cbc597746a1dfb4137c19104ac1f3e9261c1d198da7ee6ddac3cf54c0eda7939"
     }
   ],
   "renderers": {
@@ -34,10 +34,10 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-06",
+        "date": "2026-11-07",
         "outcome": "pass",
         "commands": [
-          "node --test test/command-bar.test.ts"
+          "node --test test/wave-4.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"
@@ -52,10 +52,10 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-06",
+        "date": "2026-11-07",
         "outcome": "pass",
         "commands": [
-          "node --test test/command-bar.test.ts"
+          "node --test test/wave-4.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"

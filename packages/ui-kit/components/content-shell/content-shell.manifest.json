@@ -1,0 +1,194 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "content-shell",
+  "primary": "component:content-shell",
+  "module": null,
+  "registration": "none",
+  "documentation": "./content-shell.md",
+  "examples": "./content-shell.examples.json",
+  "contract": "../../contracts/components.json#/components/content-shell",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./content-shell.recipe.ts"
+  },
+  "nodes": [
+    {
+      "id": "component:content-shell",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-content-shell",
+      "intent": [
+        "Arrange a document scrollport beside optional independently scrolling navigation"
+      ],
+      "properties": [],
+      "attributes": [
+        {
+          "name": "width",
+          "type": "string",
+          "enum": [
+            "readable",
+            "wide",
+            "full"
+          ],
+          "readBy": "css",
+          "description": "The body's limit. Default wide.",
+          "inspector": {
+            "control": "select"
+          }
+        }
+      ],
+      "events": [],
+      "semantics": {
+        "role": null,
+        "formAssociated": false,
+        "accessibleName": {
+          "sources": [
+            "label"
+          ],
+          "required": false
+        }
+      },
+      "content": {
+        "ownership": "consumer",
+        "acceptsChildren": true,
+        "children": "A sidebar and a main, with header, body and footer in the main."
+      },
+      "layout": {
+        "display": "flex",
+        "sizing": "fill"
+      },
+      "constraints": [
+        "Sidebar and main are direct children.",
+        "Header, body and footer are direct children of main.",
+        "Main owns document scrolling.",
+        "It has no workflow state."
+      ],
+      "avoidWhen": [
+        {
+          "when": "Panes open and close.",
+          "reason": "It has no pane state.",
+          "useInstead": "component:admin-shell"
+        }
+      ],
+      "searchTerms": [
+        "content shell",
+        "docs layout",
+        "document layout",
+        "sidebar layout"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:content-shell",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:content-shell",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:content-shell",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:content-shell",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:content-shell",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:content-shell",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:content-shell",
+      "relation": "usesGeometry",
+      "to": "geometry:scroll-region"
+    },
+    {
+      "from": "component:content-shell",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:content-shell",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:content-shell",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:content-shell",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:content-shell",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:content-shell",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:content-shell",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:content-shell",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:content-shell",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:content-shell",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "verification": "./verification/content-shell.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./content-shell.react.tsx",
+      "exports": {
+        "component:content-shell": "ContentShell"
+      },
+      "verification": "./verification/content-shell.verification.json#/renderers/react",
+      "props": {
+        "component:content-shell": {
+          "inherits": [
+            "HTMLAttributes<HTMLDivElement>"
+          ],
+          "props": [
+            "width?: PageWidth // The body's limit: readable 160u, wide 320u, full 335u. Default wide."
+          ]
+        }
+      }
+    }
+  }
+}

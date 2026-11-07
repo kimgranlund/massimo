@@ -17,6 +17,10 @@ import '@massimo/ui-kit/components/field/element';
 import '@massimo/ui-kit/components/separator/element';
 import '@massimo/ui-kit/components/spinner/element';
 import '@massimo/ui-kit/components/kbd/element';
+import '@massimo/ui-kit/components/chart/element';
+import '@massimo/ui-kit/components/data-table/element';
+import '@massimo/ui-kit/components/floating-panel/element';
+import '@massimo/ui-kit/components/admin-shell/element';
 import '@massimo/ui-kit/components/sidebar/element';
 import '@massimo/ui-kit/components/tree-view/element';
 import '@massimo/ui-kit/components/search-trigger/element';
@@ -53,7 +57,7 @@ import { TYPE_ROLES, resolveType } from '@massimo/ui-kit/tokens/typography/resol
 import { SHADOW_LAYERS, elevationTokenVars } from '@massimo/ui-kit/tokens/elevation/index';
 import '@massimo/ui-kit/components/number-field/element';
 import '@massimo/ui-kit/components/otp-field/element';
-import { resolveFieldAction, resolveValueSlider, resolveCalendar, resolveToolbar, resolveCommand, resolveTreeView, resolveSidebar, resolveBreadcrumb, resolveDataList, resolveSettingRow, resolveStatCard, resolveFlow, resolveKbd, resolveSpinner, resolveTextarea, resolveIcon, resolveOtpField } from '@massimo/ui-kit/tokens/geometry/resolve';
+import { resolveFieldAction, resolveValueSlider, resolveCalendar, resolveToolbar, resolveCommand, resolveTreeView, resolveSidebar, resolveScrollRegion, resolvePage, resolveShell, resolveFloatingPanel, resolveDataTable, resolveChart, resolveBreadcrumb, resolveDataList, resolveSettingRow, resolveStatCard, resolveFlow, resolveKbd, resolveSpinner, resolveTextarea, resolveIcon, resolveOtpField } from '@massimo/ui-kit/tokens/geometry/resolve';
 import { resolveNumberField } from '@massimo/ui-kit/tokens/geometry/resolve';
 import '@massimo/ui-kit/components/combobox/element';
 import '@massimo/ui-kit/components/autocomplete/element';
@@ -136,7 +140,7 @@ for (const c of cases) {
     <div style="width:400px"><ui-progress id="prog" value="30"></ui-progress></div>
     <ui-toggle id="tgl" icon-size="${c.icon}" pressed><span slot="leading"></span>Bold</ui-toggle><ui-toggle id="tglO" aria-label="x"><span slot="leading"></span></ui-toggle><ui-toggle id="tglT">Text</ui-toggle>
     <div style="width:400px"><ui-meter id="met" label="Storage" value="30"></ui-meter></div>
-    <ui-spinner id="spin" label="Saving"></ui-spinner><ui-kbd id="keys" keys="ctrl+i" platform="mac"></ui-kbd><div style="width:${120 * c.unit}px"><ui-setting-row id="sr"><div data-part="copy"><span data-part="title">T</span></div><i></i></ui-setting-row><ui-data-list id="dl" divided><dl><div><dt>A</dt><dd>B</dd></div><div><dt>C</dt><dd>D</dd></div></dl></ui-data-list><ui-stat-card id="stat" label="L" value="1" delta="+1" trend="1,2,3"></ui-stat-card></div><ui-copy-field id="cpf" label="L" value="v"></ui-copy-field><ui-input id="fa" label="L"><ui-button slot="trailing" variant="primary">Go</ui-button></ui-input><div style="width:300px"><ui-value-slider id="vsl" label="u" value="40"></ui-value-slider></div><ui-chip-select id="cps" label="S" hide-label value="a"><ui-option value="a">A</ui-option></ui-chip-select><ui-selection-control id="slc" label="V"><ui-switch label="V"></ui-switch></ui-selection-control><ui-file-picker id="fp" label="F"></ui-file-picker><ui-color-picker id="clp" label="C"></ui-color-picker><ui-calendar id="cal" value="2026-11-06" locale="en-US"></ui-calendar><ui-date-picker id="dtp" value="2026-11-06" locale="en-US"></ui-date-picker><ui-date-range-picker id="drp" value="2026-11-01/2026-11-30" locale="en-US"></ui-date-range-picker><ui-time-picker id="tmp" label="T" value="09:30"></ui-time-picker><ui-toolbar id="tbr" label="T"><ui-button>A</ui-button><ui-button>B</ui-button></ui-toolbar><ui-command-bar id="cmd"></ui-command-bar><ui-search-trigger id="srt" label="S"></ui-search-trigger><ui-tree-view id="trv" label="T" items='[{"id":"a","label":"A"}]'></ui-tree-view><ui-sidebar id="sdb" label="S"></ui-sidebar><ui-button id="blB">Go</ui-button><ui-button-link id="blL" href="#x">Go</ui-button-link><ui-breadcrumb id="crumbs" max-items="2"><a href="#a">A</a><a href="#b">B</a><span>C</span></ui-breadcrumb><ui-textarea id="ta3" label="T"></ui-textarea><ui-textarea id="ta1" label="T" rows="1"></ui-textarea><div style="width:400px"><ui-separator id="sepH"></ui-separator></div><div style="display:flex;height:40px"><ui-separator id="sepV" orientation="vertical"></ui-separator></div>
+    <ui-spinner id="spin" label="Saving"></ui-spinner><ui-kbd id="keys" keys="ctrl+i" platform="mac"></ui-kbd><div style="width:${120 * c.unit}px"><ui-setting-row id="sr"><div data-part="copy"><span data-part="title">T</span></div><i></i></ui-setting-row><ui-data-list id="dl" divided><dl><div><dt>A</dt><dd>B</dd></div><div><dt>C</dt><dd>D</dd></div></dl></ui-data-list><ui-stat-card id="stat" label="L" value="1" delta="+1" trend="1,2,3"></ui-stat-card></div><ui-copy-field id="cpf" label="L" value="v"></ui-copy-field><ui-input id="fa" label="L"><ui-button slot="trailing" variant="primary">Go</ui-button></ui-input><div style="width:300px"><ui-value-slider id="vsl" label="u" value="40"></ui-value-slider></div><ui-chip-select id="cps" label="S" hide-label value="a"><ui-option value="a">A</ui-option></ui-chip-select><ui-selection-control id="slc" label="V"><ui-switch label="V"></ui-switch></ui-selection-control><ui-file-picker id="fp" label="F"></ui-file-picker><ui-color-picker id="clp" label="C"></ui-color-picker><ui-calendar id="cal" value="2026-11-06" locale="en-US"></ui-calendar><ui-date-picker id="dtp" value="2026-11-06" locale="en-US"></ui-date-picker><ui-date-range-picker id="drp" value="2026-11-01/2026-11-30" locale="en-US"></ui-date-range-picker><ui-time-picker id="tmp" label="T" value="09:30"></ui-time-picker><ui-toolbar id="tbr" label="T"><ui-button>A</ui-button><ui-button>B</ui-button></ui-toolbar><ui-command-bar id="cmd"></ui-command-bar><ui-search-trigger id="srt" label="S"></ui-search-trigger><ui-tree-view id="trv" label="T" items='[{"id":"a","label":"A"}]'></ui-tree-view><ui-sidebar id="sdb" label="S"></ui-sidebar><ui-pane id="pan" style="height: 200px"><div data-part="header">H</div><div data-part="body">B</div></ui-pane><ui-page-surface id="pag"><p>P</p></ui-page-surface><ui-content-shell id="csh" style="height: 200px"><nav data-part="sidebar">N</nav><main data-part="main">M</main></ui-content-shell><ui-app-shell id="ash" variant="editor" style="height: 200px"><div data-part="body"><aside data-part="start">S</aside><main data-part="main">M</main><aside data-part="end">E</aside></div></ui-app-shell><ui-admin-shell id="adm" style="height: 200px"><main data-part="content">C</main></ui-admin-shell><ui-floating-panel id="fpn" label="F"><div data-part="header">F</div><div data-part="body">B</div></ui-floating-panel><ui-data-table id="dtb" label="T" columns='[{"key":"a","label":"A"}]' rows='[{"a":"1"}]'></ui-data-table><ui-chart id="cht" label="C" data='{"categories":["a"],"series":[{"name":"s","values":[1]}]}'></ui-chart><ui-button id="blB">Go</ui-button><ui-button-link id="blL" href="#x">Go</ui-button-link><ui-breadcrumb id="crumbs" max-items="2"><a href="#a">A</a><a href="#b">B</a><span>C</span></ui-breadcrumb><ui-textarea id="ta3" label="T"></ui-textarea><ui-textarea id="ta1" label="T" rows="1"></ui-textarea><div style="width:400px"><ui-separator id="sepH"></ui-separator></div><div style="display:flex;height:40px"><ui-separator id="sepV" orientation="vertical"></ui-separator></div>
     <div style="display:flex;width:10px"><ui-avatar id="av-sm" avatar-size="sm" name="Ada Lovelace"></ui-avatar><ui-avatar id="av-md" name="Ada Lovelace"></ui-avatar><ui-avatar id="av-lg" avatar-size="lg"></ui-avatar><ui-avatar id="av-xl" avatar-size="xl" name="Ada"></ui-avatar></div>
     <ui-swiper id="swp" label="S" style="width:${48 * c.unit}px"><div style="height:${24 * c.unit}px">1</div><div style="height:${24 * c.unit}px">2</div><div style="height:${24 * c.unit}px">3</div></ui-swiper>
     <div style="width:${48 * c.unit}px"><ui-image id="imgShow" ratio="landscape" slideshow alt="Show"><span>1</span><span>2</span></ui-image></div>
@@ -472,11 +476,38 @@ for (const c of cases) {
   }
   {
     const rv = resolveTreeView(1, g);
-    checks['tree.row'] = [r2(rect($('trv').querySelector('[data-part=row]')).height), rv.row];
+    // Rows and bars are at least this tall: the smallest unit's text can grow them.
+    checks['tree.row'] = [r2(parseFloat(getComputedStyle($('trv').querySelector('[data-part=row]')).minHeight)), rv.row];
   }
   {
     const rs = resolveSidebar(g);
     checks['sidebar.width'] = [r2(rect($('sdb')).width), rs.width];
+  }
+  {
+    const rr = resolveScrollRegion(g), hd = $('pan').querySelector('[data-part=header]');
+    checks['scrollRegion.bar'] = [r2(parseFloat(getComputedStyle(hd).minHeight)), rr.bar];
+    checks['scrollRegion.inset'] = [r2(parseFloat(getComputedStyle(hd).paddingLeft)), rr.inset];
+  }
+  {
+    const rp = resolvePage('readable', g);
+    checks['page.inset'] = [r2(parseFloat(getComputedStyle($('pag')).paddingLeft)), rp.inset];
+  }
+  {
+    const rh = resolveShell(g);
+    checks['shell.start'] = [r2(rect($('csh').querySelector('[data-part=sidebar]')).width), rh.start];
+  }
+  {
+    const rh2 = resolveShell(g);
+    checks['shell.end'] = [r2(rect($('ash').querySelector('[data-part=end]')).width), rh2.end];
+  }
+  {
+    const rd = resolveDataTable(g), td = $('dtb').querySelector('td');
+    checks['dataTable.inline'] = [r2(parseFloat(getComputedStyle(td).paddingLeft)), rd.inline];
+    checks['dataTable.block'] = [r2(parseFloat(getComputedStyle(td).paddingTop)), rd.block];
+  }
+  {
+    const rc2 = resolveChart(g);
+    checks['chart.height'] = [r2(rect($('cht').querySelector('svg')).height), rc2.height];
   }
   // Kbd: 5u caps, at least square, ½u apart, 10 + ½u text.
   {

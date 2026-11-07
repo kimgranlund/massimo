@@ -17,6 +17,7 @@ A design system and its tuning jig, as npm workspaces: `packages/ui-kit` (`@mass
 | Elevation: levels, fills, shadows, layers | [elevation](docs/specs/elevation.md) |
 | The system as a function: every input and what it drives (`contracts/parameters.json`) | [system](docs/specs/system.md#the-system-as-a-function) |
 | Theme parameters, the theme object (`contracts/theme.schema.json`), domains, descriptors, the Brand (`contracts/brand.schema.json`), saved themes, Panda preset and configs | [theming](docs/specs/theming.md) |
+| Charts: forms, data color, marks | [charts](docs/specs/charts.md) |
 | Icons / the jig | [icons](docs/specs/icons.md) / [studio](docs/specs/studio.md) |
 
 ## Rules that bite

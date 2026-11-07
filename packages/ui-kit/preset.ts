@@ -20,6 +20,10 @@ import { rowTags } from './components/row/row.recipe.ts';
 import { flowTags } from './components/flow/flow.recipe.ts';
 import { settingRowTags } from './components/setting-row/setting-row.recipe.ts';
 import { dataListTags } from './components/data-list/data-list.recipe.ts';
+import { paneTags } from './components/pane/pane.recipe.ts';
+import { pageSurfaceTags } from './components/page-surface/page-surface.recipe.ts';
+import { contentShellTags } from './components/content-shell/content-shell.recipe.ts';
+import { appShellTags } from './components/app-shell/app-shell.recipe.ts';
 import { sectionTags } from './components/section/section.recipe.ts';
 
 type Css = Record<string, Record<string, unknown>>;
@@ -34,7 +38,7 @@ export function mergeGlobalCss(...parts: Css[]): Css {
   return out;
 }
 
-export const globalCssParts = { theme: themeCss(), reset, typography, scheme: { '.dark': { colorScheme: 'dark' }, '.light': { colorScheme: 'light' } }, geometry, motion, defaults, containers: containerTags, rows: rowTags, flows: flowTags, settingRows: settingRowTags, dataLists: dataListTags, sections: sectionTags, pending } as Record<string, Css>;
+export const globalCssParts = { theme: themeCss(), reset, typography, scheme: { '.dark': { colorScheme: 'dark' }, '.light': { colorScheme: 'light' } }, geometry, motion, defaults, containers: containerTags, rows: rowTags, flows: flowTags, settingRows: settingRowTags, dataLists: dataListTags, shells: { ...paneTags, ...pageSurfaceTags, ...contentShellTags, ...appShellTags }, sections: sectionTags, pending } as Record<string, Css>;
 
 export const uiKitPreset = definePreset({
   name: 'ui-kit',

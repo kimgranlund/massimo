@@ -6,19 +6,19 @@
   "sources": [
     {
       "path": "components/sidebar/sidebar.element.ts",
-      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      "sha256": "0b737079bb7e670727dac63de50666054fd17a78f8beadab4b9ab87eda203959"
     },
     {
       "path": "components/sidebar/sidebar.react.tsx",
-      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      "sha256": "d79a6ccd1783d7244948293a9f065adf227726e92e6f4e03bd1869f3899399e7"
     },
     {
       "path": "components/sidebar/sidebar.recipe.ts",
-      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      "sha256": "6924764bcb8b53386a2e51d0baa184a1f505e2cde22e56f5ae6de6ce9cb6d9a1"
     },
     {
       "path": "components/sidebar/sidebar.manifest.json",
-      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      "sha256": "58f4ab68e46693e98616943ae19b6a528e375f86cccb3dfcca0b90decf4601df"
     }
   ],
   "renderers": {
@@ -30,10 +30,10 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-06",
+        "date": "2026-11-07",
         "outcome": "pass",
         "commands": [
-          "node --test test/sidebar.test.ts"
+          "node --test test/wave-4.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"
@@ -48,10 +48,10 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-06",
+        "date": "2026-11-07",
         "outcome": "pass",
         "commands": [
-          "node --test test/sidebar.test.ts"
+          "node --test test/wave-4.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"

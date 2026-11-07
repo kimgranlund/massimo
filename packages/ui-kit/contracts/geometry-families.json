@@ -737,6 +737,84 @@
       ],
       "ladder": null,
       "ladderWaiver": "One size per unit: there are no size variants for a ladder to compare."
+    },
+    "scroll-region": {
+      "id": "geometry:scroll-region",
+      "resolver": [
+        "resolveScrollRegion",
+        "resolvePage",
+        "resolveShell"
+      ],
+      "summary": "A scrolling body between persistent bars, shared by every shell.",
+      "members": [
+        "component:pane",
+        "component:page-surface",
+        "component:content-shell",
+        "component:app-shell",
+        "component:admin-shell"
+      ],
+      "searchTerms": [
+        "pane size"
+      ],
+      "csv": [
+        "scroll-region"
+      ],
+      "ladder": null,
+      "ladderWaiver": "One size per unit: there are no size variants for a ladder to compare."
+    },
+    "floating-panel": {
+      "id": "geometry:floating-panel",
+      "resolver": [
+        "resolveFloatingPanel"
+      ],
+      "summary": "A retained panel.",
+      "members": [
+        "component:floating-panel"
+      ],
+      "searchTerms": [
+        "floating-panel size"
+      ],
+      "csv": [
+        "floating-panel"
+      ],
+      "ladder": null,
+      "ladderWaiver": "One size per unit: there are no size variants for a ladder to compare."
+    },
+    "data-table": {
+      "id": "geometry:data-table",
+      "resolver": [
+        "resolveDataTable"
+      ],
+      "summary": "A native table in a scroll region.",
+      "members": [
+        "component:data-table"
+      ],
+      "searchTerms": [
+        "data-table size"
+      ],
+      "csv": [
+        "data-table"
+      ],
+      "ladder": null,
+      "ladderWaiver": "One size per unit: there are no size variants for a ladder to compare."
+    },
+    "chart": {
+      "id": "geometry:chart",
+      "resolver": [
+        "resolveChart"
+      ],
+      "summary": "SVG marks on the data roles.",
+      "members": [
+        "component:chart"
+      ],
+      "searchTerms": [
+        "chart size"
+      ],
+      "csv": [
+        "chart"
+      ],
+      "ladder": null,
+      "ladderWaiver": "One size per unit: there are no size variants for a ladder to compare."
     }
   }
 }

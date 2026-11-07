@@ -8,11 +8,11 @@ export const GROUPS: [string, string[]][] = [
   ['Selection', ['selection-control', 'chip-select', 'listbox', 'option', 'segmented', 'checkbox', 'checkbox-group', 'radio', 'radio-group', 'switch']],
   ['Progress', ['value-slider', 'range', 'progress', 'meter', 'spinner']],
   ['Layout', ['container', 'section', 'row', 'setting-row', 'column', 'list', 'grid', 'separator', 'scroll-area']],
-  ['Data', ['data-list', 'stat-card']],
-  ['Shells', []],
+  ['Data', ['chart', 'data-table', 'data-list', 'stat-card']],
+  ['Shells', ['admin-shell', 'app-shell', 'content-shell', 'page-surface', 'pane', ]],
   ['Media', ['image', 'swiper', 'avatar', 'swatch', 'palette']],
   ['Disclosure', ['collapsible', 'accordion', 'tabs']],
-  ['Overlays', ['dialog', 'alert-dialog', 'drawer', 'popover', 'tooltip', 'preview-card', 'toast']],
+  ['Overlays', ['floating-panel', 'dialog', 'alert-dialog', 'drawer', 'popover', 'tooltip', 'preview-card', 'toast']],
   ['Navigation', ['sidebar', 'tree-view', 'search-trigger', 'command-bar', 'breadcrumb', 'menu', 'context-menu', 'menubar', 'navigation-menu']],
 ];
 

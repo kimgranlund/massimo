@@ -1,0 +1,16 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "pane",
+  "title": "Pane",
+  "summary": "A scrolling body with persistent bars.",
+  "defaultExample": "default",
+  "examples": [
+    {
+      "id": "default",
+      "label": "Header and footer",
+      "subject": "component:pane",
+      "markup": "<ui-pane style=\"height: 240px\"><div data-part=\"header\"><strong>Layers</strong></div><div data-part=\"body\" tabindex=\"0\"><p>Scrolling content.</p></div><div data-part=\"footer\"><ui-button>Add</ui-button></div></ui-pane>"
+    }
+  ]
+}

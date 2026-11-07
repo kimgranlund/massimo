@@ -1,0 +1,16 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "floating-panel",
+  "title": "Floating panel",
+  "summary": "A retained nonmodal panel.",
+  "defaultExample": "default",
+  "examples": [
+    {
+      "id": "default",
+      "label": "A panel",
+      "subject": "component:floating-panel",
+      "markup": "<ui-floating-panel label=\"Tools\" open><div data-part=\"header\">Tools</div><div data-part=\"body\"><p>Controls.</p></div></ui-floating-panel>"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "content-shell",
+  "title": "Content shell",
+  "summary": "A document scrollport beside navigation.",
+  "defaultExample": "default",
+  "examples": [
+    {
+      "id": "default",
+      "label": "Sidebar and document",
+      "subject": "component:content-shell",
+      "markup": "<ui-content-shell width=\"readable\" style=\"height: 280px\"><nav data-part=\"sidebar\"><p>Navigation</p></nav><main data-part=\"main\"><header data-part=\"header\"><strong>Title</strong></header><div data-part=\"body\"><p>Document.</p></div></main></ui-content-shell>"
+    }
+  ]
+}

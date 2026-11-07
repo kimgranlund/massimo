@@ -1,0 +1,254 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "chart",
+  "primary": "component:chart",
+  "module": "./chart.element.ts",
+  "registration": "on-import",
+  "documentation": "./chart.md",
+  "examples": "./chart.examples.json",
+  "contract": "../../contracts/components.json#/components/chart",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./chart.recipe.ts"
+  },
+  "nodes": [
+    {
+      "id": "component:chart",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-chart",
+      "class": "UIChart",
+      "extends": "UIElement",
+      "intent": [
+        "Visualize numeric data as column, bar, line, area or donut"
+      ],
+      "properties": [
+        {
+          "key": "label",
+          "type": "string",
+          "default": "",
+          "attribute": "label",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "kind",
+          "type": "string",
+          "default": "column",
+          "attribute": "kind",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "data",
+          "type": "string",
+          "default": null,
+          "attribute": "data",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "stacked",
+          "type": "boolean",
+          "default": false,
+          "attribute": "stacked",
+          "reflects": false,
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "height",
+          "type": "number",
+          "default": 0,
+          "attribute": "height",
+          "reflects": false,
+          "inspector": {
+            "control": "number"
+          }
+        },
+        {
+          "key": "locale",
+          "type": "string",
+          "default": "",
+          "attribute": "locale",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        }
+      ],
+      "attributes": [],
+      "events": [],
+      "semantics": {
+        "role": "figure",
+        "formAssociated": false,
+        "accessibleName": {
+          "sources": [
+            "label"
+          ],
+          "required": true
+        }
+      },
+      "content": {
+        "ownership": "component",
+        "acceptsChildren": false,
+        "children": "Rendered from data."
+      },
+      "layout": {
+        "display": "block",
+        "sizing": "fill"
+      },
+      "constraints": [
+        "Colors follow series position on the data roles.",
+        "A seventh series folds into Other.",
+        "One axis only.",
+        "null is a gap."
+      ],
+      "avoidWhen": [
+        {
+          "when": "The data is one number.",
+          "reason": "A chart needs a comparison.",
+          "useInstead": "component:stat-card"
+        }
+      ],
+      "searchTerms": [
+        "chart",
+        "graph",
+        "plot",
+        "bar chart",
+        "line chart",
+        "donut",
+        "data viz"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:chart",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:chart",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:chart",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:chart",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:chart",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:chart",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:chart",
+      "relation": "usesGeometry",
+      "to": "geometry:chart"
+    },
+    {
+      "from": "component:chart",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:chart",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:chart",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:chart",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:chart",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:chart",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:chart",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:chart",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:chart",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:chart",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./chart.element.ts",
+      "exports": {
+        "component:chart": "UIChart"
+      },
+      "verification": "./verification/chart.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./chart.react.tsx",
+      "exports": {
+        "component:chart": "Chart"
+      },
+      "verification": "./verification/chart.verification.json#/renderers/react",
+      "props": {
+        "component:chart": {
+          "inherits": [
+            "HTMLAttributes<HTMLDivElement>"
+          ],
+          "props": [
+            "label: string",
+            "kind?: ChartKind = 'column'",
+            "data: ChartData",
+            "stacked?: boolean = false",
+            "height?: number // Height in px. Default 64u.",
+            "locale?: string"
+          ]
+        }
+      }
+    }
+  }
+}

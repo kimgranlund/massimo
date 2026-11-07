@@ -1512,6 +1512,145 @@
         "inline"
       ],
       "behavior": "Toggles collapsed."
+    },
+    "pane": {
+      "geometryFamily": "scroll-region",
+      "element": "CSS-only tag.",
+      "parts": [],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "form",
+        "inline"
+      ],
+      "behavior": "None."
+    },
+    "content-shell": {
+      "geometryFamily": "scroll-region",
+      "element": "CSS-only tag.",
+      "parts": [],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "form",
+        "inline"
+      ],
+      "behavior": "None."
+    },
+    "app-shell": {
+      "geometryFamily": "scroll-region",
+      "element": "CSS-only tag.",
+      "parts": [],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "form",
+        "inline"
+      ],
+      "behavior": "None."
+    },
+    "admin-shell": {
+      "geometryFamily": "scroll-region",
+      "element": "Host with authored parts and a scrim.",
+      "parts": [],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "form",
+        "inline"
+      ],
+      "behavior": "Allocates panes by host width; drawers dismiss on Escape and scrim."
+    },
+    "floating-panel": {
+      "geometryFamily": "floating-panel",
+      "element": "Host with authored header and body, plus controls and grip.",
+      "parts": [
+        "floating-panel-header",
+        "floating-panel-controls",
+        "floating-panel-body",
+        "floating-panel-grip"
+      ],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "form",
+        "inline"
+      ],
+      "behavior": "Moves, resizes, collapses."
+    },
+    "data-table": {
+      "geometryFamily": "data-table",
+      "element": "Host around a rendered native table.",
+      "parts": [
+        "data-table-content",
+        "data-table-header",
+        "data-table-sort",
+        "data-table-row",
+        "data-table-cell"
+      ],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "form",
+        "inline"
+      ],
+      "behavior": "Sorts by column; optional grid navigation."
+    },
+    "chart": {
+      "geometryFamily": "chart",
+      "element": "Host around rendered SVG, legend and table.",
+      "parts": [],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "form",
+        "inline"
+      ],
+      "behavior": "Redraws at its width; hover tooltip."
+    },
+    "page-surface": {
+      "geometryFamily": "scroll-region",
+      "element": "CSS-only tag.",
+      "parts": [],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "form",
+        "inline"
+      ],
+      "behavior": "None."
     }
   }
 }

@@ -6,23 +6,23 @@
   "sources": [
     {
       "path": "components/calendar/calendar.element.ts",
-      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      "sha256": "15579aa18cc6b48fd2e38a5e7827751a717caf1e2fe7fce14dd1324cf903e2ff"
     },
     {
       "path": "components/calendar/calendar.react.tsx",
-      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      "sha256": "f45d2b1ea74a1c476d16b17e71b425e3fe3cde48d17f98cef19cd132f5ff9a74"
     },
     {
       "path": "components/calendar/calendar.recipe.ts",
-      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      "sha256": "5ae42a8c9f3b07d4e4d157380cb6042c2ad19cba6a6012749036fb96309d738b"
     },
     {
       "path": "components/calendar/calendar.manifest.json",
-      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      "sha256": "5a1a1e9ee13178ed8114b38a2bbc0958f789667e62357cc5052be0640c381d50"
     },
     {
       "path": "dom/calendar.ts",
-      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      "sha256": "11def7aba4a34431e56c2c46889502cc98f405df29fd83adc22628c2c8f11730"
     }
   ],
   "renderers": {
@@ -34,10 +34,10 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-06",
+        "date": "2026-11-07",
         "outcome": "pass",
         "commands": [
-          "node --test test/calendar.test.ts"
+          "node --test test/wave-3.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"
@@ -52,10 +52,10 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-06",
+        "date": "2026-11-07",
         "outcome": "pass",
         "commands": [
-          "node --test test/calendar.test.ts"
+          "node --test test/wave-3.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"

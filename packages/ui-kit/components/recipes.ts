@@ -15,6 +15,14 @@ import { uiContainer } from './container/container.recipe.ts';
 import { row } from './row/row.recipe.ts';
 import { spinner } from './spinner/spinner.recipe.ts';
 import { kbd } from './kbd/kbd.recipe.ts';
+import { chart } from './chart/chart.recipe.ts';
+import { dataTable } from './data-table/data-table.recipe.ts';
+import { floatingPanel } from './floating-panel/floating-panel.recipe.ts';
+import { adminShell } from './admin-shell/admin-shell.recipe.ts';
+import { appShell } from './app-shell/app-shell.recipe.ts';
+import { contentShell } from './content-shell/content-shell.recipe.ts';
+import { pageSurface } from './page-surface/page-surface.recipe.ts';
+import { pane } from './pane/pane.recipe.ts';
 import { sidebar } from './sidebar/sidebar.recipe.ts';
 import { treeView } from './tree-view/tree-view.recipe.ts';
 import { searchTrigger } from './search-trigger/search-trigger.recipe.ts';
@@ -67,7 +75,7 @@ import { tooltip } from './tooltip/tooltip.recipe.ts';
 import { previewCard } from './preview-card/preview-card.recipe.ts';
 import { navigationMenu } from './navigation-menu/navigation-menu.recipe.ts';
 
-export const slotRecipes = { badge, tag, chip, button, checkbox, radio, switchRecipe, range, progress, swatch, palette, listbox, segmented, option, input, select, swiper, image, uiContainer, row, column, list, gridRecipe: grid, section, field, fieldGrid, separator, spinner, kbd, sidebar, treeView, searchTrigger, commandBar, toolbar, timePicker, dateRangePicker, datePicker, calendar, colorPicker, filePicker, selectionControl, chipSelect, valueSlider, copyField, textarea, breadcrumb, buttonLink, settingRow, dataList, statCard, avatar, meter, toggle, radioGroup, checkboxGroup, fieldset, collapsible, accordion, tabs, toast, form, scrollArea, numberField, otpField, combobox, autocomplete, toggleGroup, dialog, alertDialog, drawer, menu, contextMenu, menubar, popover, tooltip, previewCard, navigationMenu };
+export const slotRecipes = { badge, tag, chip, button, checkbox, radio, switchRecipe, range, progress, swatch, palette, listbox, segmented, option, input, select, swiper, image, uiContainer, row, column, list, gridRecipe: grid, section, field, fieldGrid, separator, spinner, kbd, chart, dataTable, floatingPanel, adminShell, appShell, contentShell, pageSurface, pane, sidebar, treeView, searchTrigger, commandBar, toolbar, timePicker, dateRangePicker, datePicker, calendar, colorPicker, filePicker, selectionControl, chipSelect, valueSlider, copyField, textarea, breadcrumb, buttonLink, settingRow, dataList, statCard, avatar, meter, toggle, radioGroup, checkboxGroup, fieldset, collapsible, accordion, tabs, toast, form, scrollArea, numberField, otpField, combobox, autocomplete, toggleGroup, dialog, alertDialog, drawer, menu, contextMenu, menubar, popover, tooltip, previewCard, navigationMenu };
 
 
 

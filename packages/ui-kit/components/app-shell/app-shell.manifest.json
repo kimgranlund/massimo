@@ -1,0 +1,191 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "app-shell",
+  "primary": "component:app-shell",
+  "module": null,
+  "registration": "none",
+  "documentation": "./app-shell.md",
+  "examples": "./app-shell.examples.json",
+  "contract": "../../contracts/components.json#/components/app-shell",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./app-shell.recipe.ts"
+  },
+  "nodes": [
+    {
+      "id": "component:app-shell",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-app-shell",
+      "intent": [
+        "Frame an application with header, body and footer regions, and the editor variant"
+      ],
+      "properties": [],
+      "attributes": [
+        {
+          "name": "variant",
+          "type": "string",
+          "enum": [
+            "default",
+            "editor"
+          ],
+          "readBy": "css",
+          "description": "editor lays the body out as start, main and end panes.",
+          "inspector": {
+            "control": "select"
+          }
+        }
+      ],
+      "events": [],
+      "semantics": {
+        "role": null,
+        "formAssociated": false,
+        "accessibleName": {
+          "sources": [
+            "label"
+          ],
+          "required": false
+        }
+      },
+      "content": {
+        "ownership": "consumer",
+        "acceptsChildren": true,
+        "children": "Header, body and footer. In the editor variant the body holds start, main and end."
+      },
+      "layout": {
+        "display": "flex",
+        "sizing": "fill"
+      },
+      "constraints": [
+        "It fills its parent, so give the parent a height.",
+        "The editor body doesn't scroll; its panes do."
+      ],
+      "avoidWhen": [
+        {
+          "when": "Panes respond to the available width.",
+          "reason": "This frame has fixed panes.",
+          "useInstead": "component:admin-shell"
+        }
+      ],
+      "searchTerms": [
+        "app shell",
+        "application frame",
+        "editor layout",
+        "workspace"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:app-shell",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:app-shell",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:app-shell",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:app-shell",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:app-shell",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:app-shell",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:app-shell",
+      "relation": "usesGeometry",
+      "to": "geometry:scroll-region"
+    },
+    {
+      "from": "component:app-shell",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:app-shell",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:app-shell",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:app-shell",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:app-shell",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:app-shell",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:app-shell",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:app-shell",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:app-shell",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:app-shell",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "verification": "./verification/app-shell.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./app-shell.react.tsx",
+      "exports": {
+        "component:app-shell": "AppShell"
+      },
+      "verification": "./verification/app-shell.verification.json#/renderers/react",
+      "props": {
+        "component:app-shell": {
+          "inherits": [
+            "HTMLAttributes<HTMLDivElement>"
+          ],
+          "props": [
+            "variant?: 'default' | 'editor' // editor lays the body out as start, main and end panes."
+          ]
+        }
+      }
+    }
+  }
+}

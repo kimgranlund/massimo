@@ -1,0 +1,71 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "floating-panel",
+  "scope": "Role, orientation and data-* of the web component in happy-dom and of the React renderer in react-dom/server (node:test), and their state parity. Rendered thickness is covered by the browser geometry check; visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "components/floating-panel/floating-panel.element.ts",
+      "sha256": "fb41182d8924cc455fb60941ebedf5e28ccbd82c3aac07dbd92030e6a87c5d35"
+    },
+    {
+      "path": "components/floating-panel/floating-panel.react.tsx",
+      "sha256": "0ae8bd8f15074408571cc3772239df1e988c67412df815b9daf60df63ef20e94"
+    },
+    {
+      "path": "components/floating-panel/floating-panel.recipe.ts",
+      "sha256": "dea450888c7023ec931c2a523454acfeb36648f6c73813de3e0261cafd39e859"
+    },
+    {
+      "path": "components/floating-panel/floating-panel.manifest.json",
+      "sha256": "f531c04480fd3d075fc09036d8956a41cbc62a8ae3a560b91e592b14237b09fb"
+    },
+    {
+      "path": "dom/drag.ts",
+      "sha256": "7b02861385e44df2947979589c0301750b1e130700b1fd5d3e509c59058e1de7"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test test/wave-5.test.ts",
+          "covers": "placement, methods and collapse"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-07",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/wave-5.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test test/wave-5.test.ts",
+          "covers": "SSR markup and parts"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-07",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/wave-5.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "React styling parity is checked in the browser: apps/studio/react-check.html compares the React FloatingPanel with ui-floating-panel at five sizes (\"fails\": []).",
+    "The source list is the direct sources, not every transitive dependency.",
+    "Geometry review, manual items (2026-11-06): 2 width, header, margin and step from resolveFloatingPanel; 3 no border; 4 controls are controls; 5 the header holds them at 10u; 6 no curvature nesting; 7 raised fill and shadow; 8 density leaves it alone; 9 the browser top layer, kept inside the viewport; 10 resizes from 40u; 11 the header is a tab stop and never traps focus."
+  ]
+}

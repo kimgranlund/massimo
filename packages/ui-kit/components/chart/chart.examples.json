@@ -1,0 +1,46 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "chart",
+  "title": "Chart",
+  "summary": "Data as column, bar, line, area or donut marks.",
+  "defaultExample": "column",
+  "examples": [
+    {
+      "id": "column",
+      "label": "Columns",
+      "subject": "component:chart",
+      "markup": "<ui-chart label=\"Revenue\" kind=\"column\" data='{\"categories\":[\"Q1\",\"Q2\",\"Q3\",\"Q4\"],\"series\":[{\"name\":\"North\",\"values\":[12,18,16,24]},{\"name\":\"South\",\"values\":[8,11,14,13]}]}'></ui-chart>"
+    },
+    {
+      "id": "stacked",
+      "label": "Stacked",
+      "subject": "component:chart",
+      "markup": "<ui-chart label=\"Revenue\" kind=\"column\" stacked data='{\"categories\":[\"Q1\",\"Q2\",\"Q3\",\"Q4\"],\"series\":[{\"name\":\"North\",\"values\":[12,18,16,24]},{\"name\":\"South\",\"values\":[8,11,14,13]}]}'></ui-chart>"
+    },
+    {
+      "id": "bar",
+      "label": "Bars",
+      "subject": "component:chart",
+      "markup": "<ui-chart label=\"Revenue\" kind=\"bar\" data='{\"categories\":[\"Q1\",\"Q2\",\"Q3\",\"Q4\"],\"series\":[{\"name\":\"North\",\"values\":[12,18,16,24]},{\"name\":\"South\",\"values\":[8,11,14,13]}]}'></ui-chart>"
+    },
+    {
+      "id": "line",
+      "label": "Line",
+      "subject": "component:chart",
+      "markup": "<ui-chart label=\"Revenue\" kind=\"line\" data='{\"categories\":[\"Q1\",\"Q2\",\"Q3\",\"Q4\"],\"series\":[{\"name\":\"North\",\"values\":[12,18,16,24]},{\"name\":\"South\",\"values\":[8,11,14,13]}]}'></ui-chart>"
+    },
+    {
+      "id": "area",
+      "label": "Area",
+      "subject": "component:chart",
+      "markup": "<ui-chart label=\"Revenue\" kind=\"area\" data='{\"categories\":[\"Q1\",\"Q2\",\"Q3\",\"Q4\"],\"series\":[{\"name\":\"North\",\"values\":[12,18,16,24]},{\"name\":\"South\",\"values\":[8,11,14,13]}]}'></ui-chart>"
+    },
+    {
+      "id": "donut",
+      "label": "Donut",
+      "subject": "component:chart",
+      "markup": "<ui-chart label=\"Share\" kind=\"donut\" data='{\"categories\":[\"Web\",\"Mobile\",\"Other\"],\"series\":[{\"name\":\"Share\",\"values\":[52,31,17]}]}'></ui-chart>"
+    }
+  ]
+}

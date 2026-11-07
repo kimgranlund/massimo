@@ -18,6 +18,10 @@ import '@massimo/ui-kit/components/field/element';
 import '@massimo/ui-kit/components/separator/element';
 import '@massimo/ui-kit/components/spinner/element';
 import '@massimo/ui-kit/components/kbd/element';
+import '@massimo/ui-kit/components/chart/element';
+import '@massimo/ui-kit/components/data-table/element';
+import '@massimo/ui-kit/components/floating-panel/element';
+import '@massimo/ui-kit/components/admin-shell/element';
 import '@massimo/ui-kit/components/sidebar/element';
 import '@massimo/ui-kit/components/tree-view/element';
 import '@massimo/ui-kit/components/search-trigger/element';
@@ -85,6 +89,14 @@ import { Slider } from '@massimo/ui-kit/components/range/react';
 import { Separator } from '@massimo/ui-kit/components/separator/react';
 import { Spinner } from '@massimo/ui-kit/components/spinner/react';
 import { Kbd } from '@massimo/ui-kit/components/kbd/react';
+import { Chart } from '@massimo/ui-kit/components/chart/react';
+import { DataTable } from '@massimo/ui-kit/components/data-table/react';
+import { FloatingPanel } from '@massimo/ui-kit/components/floating-panel/react';
+import { AdminShell, AdminContent } from '@massimo/ui-kit/components/admin-shell/react';
+import { AppShell, AppHeader, AppBody } from '@massimo/ui-kit/components/app-shell/react';
+import { ContentShell, ContentSidebar, ContentMain } from '@massimo/ui-kit/components/content-shell/react';
+import { PageSurface } from '@massimo/ui-kit/components/page-surface/react';
+import { Pane, PaneHeader, PaneBody } from '@massimo/ui-kit/components/pane/react';
 import { Sidebar } from '@massimo/ui-kit/components/sidebar/react';
 import { TreeView } from '@massimo/ui-kit/components/tree-view/react';
 import { SearchTrigger } from '@massimo/ui-kit/components/search-trigger/react';
@@ -233,6 +245,14 @@ function Pair({ u }: { u: number }) {
         <div style={{ width: 200 }}><ui-image data-k="ims" slideshow ratio="square" alt="Products"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="1" /><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="2" /></ui-image></div>
         <ui-spinner data-k="spn" label="Saving" />
         <ui-kbd data-k="kb" keys="mod+k" platform="mac" />
+        <span data-k="cht" style={{ display: 'block' }}><ui-chart label="C" data='{"categories":["a"],"series":[{"name":"s","values":[1]}]}' /></span>
+        <span data-k="dtb" style={{ display: 'block' }}><ui-data-table label="T" columns='[{"key":"a","label":"A"}]' rows='[{"a":"1"}]' /></span>
+        <span data-k="fpn" style={{ display: 'block' }}><ui-floating-panel label="F"><div data-part="header">F</div><div data-part="body">B</div></ui-floating-panel></span>
+        <span data-k="adm" style={{ display: 'block', height: 120 }}><ui-admin-shell><main data-part="content">C</main></ui-admin-shell></span>
+        <span data-k="ash" style={{ display: 'block', height: 120 }}><ui-app-shell><header data-part="header">H</header><div data-part="body">B</div></ui-app-shell></span>
+        <span data-k="csh" style={{ display: 'block', height: 120 }}><ui-content-shell><nav data-part="sidebar">N</nav><main data-part="main">M</main></ui-content-shell></span>
+        <span data-k="pag" style={{ display: 'block', height: 120 }}><ui-page-surface><p>P</p></ui-page-surface></span>
+        <span data-k="pan" style={{ display: 'block', height: 120 }}><ui-pane><div data-part="header">H</div><div data-part="body">B</div></ui-pane></span>
         <span data-k="sdb" style={{ display: 'block' }}><ui-sidebar label="S" /></span>
         <span data-k="trv" style={{ display: 'block' }}><ui-tree-view label="T" items='[{"id":"a","label":"A"}]' /></span>
         <span data-k="srt" style={{ display: 'block' }}><ui-search-trigger label="S" /></span>
@@ -342,6 +362,14 @@ function Pair({ u }: { u: number }) {
         <div style={{ width: 200 }}><Image data-k="ims" slideshow ratio="square" alt="Products"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="1" /><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="2" /></Image></div>
         <Spinner data-k="spn" label="Saving" />
         <Kbd data-k="kb" keys="mod+k" platform="mac" />
+        <span data-k="cht" style={{ display: 'block' }}><Chart label="C" data={{ categories: ['a'], series: [{ name: 's', values: [1] }] }} /></span>
+        <span data-k="dtb" style={{ display: 'block' }}><DataTable label="T" columns={[{ key: 'a', label: 'A' }]} rows={[{ a: '1' }]} /></span>
+        <span data-k="fpn" style={{ display: 'block' }}><FloatingPanel label="F">B</FloatingPanel></span>
+        <span data-k="adm" style={{ display: 'block', height: 120 }}><AdminShell><AdminContent>C</AdminContent></AdminShell></span>
+        <span data-k="ash" style={{ display: 'block', height: 120 }}><AppShell><AppHeader>H</AppHeader><AppBody>B</AppBody></AppShell></span>
+        <span data-k="csh" style={{ display: 'block', height: 120 }}><ContentShell><ContentSidebar>N</ContentSidebar><ContentMain>M</ContentMain></ContentShell></span>
+        <span data-k="pag" style={{ display: 'block', height: 120 }}><PageSurface><p>P</p></PageSurface></span>
+        <span data-k="pan" style={{ display: 'block', height: 120 }}><Pane><PaneHeader>H</PaneHeader><PaneBody>B</PaneBody></Pane></span>
         <span data-k="sdb" style={{ display: 'block' }}><Sidebar label="S" /></span>
         <span data-k="trv" style={{ display: 'block' }}><TreeView label="T" items={[{ id: 'a', label: 'A' }]} /></span>
         <span data-k="srt" style={{ display: 'block' }}><SearchTrigger label="S" /></span>
@@ -658,6 +686,8 @@ async function popupParity(fails: string[]) {
 
 setTimeout(() => {
   const fails: string[] = []; let checks = 0;
+  // Anything still gliding reads between states on a slow load: finish it, so the twins compare end states.
+  for (const a of document.getAnimations()) if (a instanceof CSSTransition) a.finish();
   // The toast twins mounted with their enter transition (reveal intent, a long spring tail): settle it.
   for (const el of document.querySelectorAll<HTMLElement>('[data-k=tst] :is([data-part=toast], [data-part=content])')) { el.style.transition = 'none'; el.removeAttribute('data-starting-style'); }
   // The open menus mounted with their popup's open transition (scale and fade on the reveal intent): settle it.
@@ -758,7 +788,7 @@ setTimeout(() => {
   }
   for (const c of root.querySelectorAll('[data-case]')) {
     const [wc, re] = [c.querySelector('[data-side=wc]')!, c.querySelector('[data-side=react]')!];
-    for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'btP', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'fd', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'spn', 'kb', 'sdb', 'trv', 'srt', 'cmd', 'tbr', 'tmp', 'drp', 'dtp', 'cal', 'clp', 'fp', 'slc', ...(CSS.supports('appearance', 'base-select') ? ['cps'] : []), 'vsl', 'cpf', 'sr', 'dtl', 'stc', 'bc', 'ta', 'flC', 'flL', 'flG', 'flN', 'gp', 'uc', 'ucN', 'ucL', 'ucL1', 'ucS', 'lb', 'sg', 'swp', 'ims', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD', 'col', 'colD', 'acc', 'tab', 'tabU', 'tst', ...GROUP_KEYS]) {
+    for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'btP', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'fd', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'spn', 'kb', 'cht', 'dtb', 'fpn', 'adm', 'ash', 'csh', 'pag', 'pan', 'sdb', 'trv', 'srt', 'tbr', 'tmp', 'drp', 'dtp', 'cal', 'clp', 'fp', 'slc', ...(CSS.supports('appearance', 'base-select') ? ['cps'] : []), 'vsl', 'cpf', 'sr', 'dtl', 'stc', 'bc', 'ta', 'flC', 'flL', 'flG', 'flN', 'gp', 'uc', 'ucN', 'ucL', 'ucL1', 'ucS', 'lb', 'sg', 'swp', 'ims', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD', 'col', 'colD', 'acc', 'tab', 'tabU', 'tst', ...GROUP_KEYS]) {
       const a = measure(host(wc, k)), b = measure(host(re, k));
       for (const key of Object.keys(a) as (keyof typeof a)[]) {
         checks++;
@@ -766,7 +796,7 @@ setTimeout(() => {
       }
     }
 
-    for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'btP', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'fd', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'spn', 'kb', 'sdb', 'trv', 'srt', 'cmd', 'tbr', 'tmp', 'drp', 'dtp', 'cal', 'clp', 'fp', 'slc', ...(CSS.supports('appearance', 'base-select') ? ['cps'] : []), 'vsl', 'cpf', 'sr', 'dtl', 'stc', 'bc', 'ta', 'flC', 'flL', 'flG', 'flN', 'gp', 'uc', 'ucN', 'ucL', 'ucL1', 'ucS', 'lb', 'sg', 'swp', 'ims', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD', 'col', 'colD', 'acc', 'tab', 'tabU', 'mn', 'mnD', 'cm', 'mb', 'mbV', ...GROUP_KEYS]) {
+    for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'btP', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'fd', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'spn', 'kb', 'cht', 'dtb', 'fpn', 'adm', 'ash', 'csh', 'pag', 'pan', 'sdb', 'trv', 'srt', 'tbr', 'tmp', 'drp', 'dtp', 'cal', 'clp', 'fp', 'slc', ...(CSS.supports('appearance', 'base-select') ? ['cps'] : []), 'vsl', 'cpf', 'sr', 'dtl', 'stc', 'bc', 'ta', 'flC', 'flL', 'flG', 'flN', 'gp', 'uc', 'ucN', 'ucL', 'ucL1', 'ucS', 'lb', 'sg', 'swp', 'ims', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD', 'col', 'colD', 'acc', 'tab', 'tabU', 'mn', 'mnD', 'cm', 'mb', 'mbV', ...GROUP_KEYS]) {
       const a = measure(host(wc, k)), b = measure(host(re, k));
       for (const key of Object.keys(a) as (keyof typeof a)[]) {
         checks++;

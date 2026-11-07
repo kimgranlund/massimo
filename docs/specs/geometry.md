@@ -164,6 +164,35 @@ No border; the bars overlay the content's edge. Lengths that follow the scroll p
 | navigation menu | the list a composite row without a fill (8u, edge 0.5u); triggers and links composite options (7u, labels 2u / 1u, the caret icon sm in trailing); the popup a composite container (edge 0.5u, the control radius) 1u below the open trigger, aligned to its start, sized to the open content (at most 120u) (`resolveNavigationMenu`) | 32 / 28 / 14 |
 | preview card | the card-md level: padding 4u − B, radius 4u·min(1, s), the collection gap 2u, at most 80u (`resolvePopup('preview-card')`) | 16 / 16 / 8 |
 
+## Scroll regions and shells
+
+Family `scroll-region` (`resolveScrollRegion`, `resolvePage`, `resolveShell`), shared by `ui-pane`, `ui-page-surface`, `ui-content-shell`, `ui-app-shell` and `ui-admin-shell`. The sibling `floating-panel` family is `resolveFloatingPanel`.
+
+| Quantity | Value |
+|---|---|
+| Persistent bar | at least 12u, grows with its content |
+| Region inset, gap inside a bar | 4u, 2u |
+| Page inset | 6u, fixed: local font size doesn't change it |
+| Content widths | readable 160u, wide 320u, full 335u |
+| Start pane, rail, end pane | 60u, 12u, 80u |
+| Content minimum | 120u |
+
+The body scrolls and the bars don't. The shell owns a pane's size, gutters and docking, so a pane has no viewport height or sticky position of its own. Density leaves all of these alone: they frame content, they aren't content.
+
+`ui-admin-shell` allocates by its own width, never the viewport's (`allocatePanes`). The end pane leaves first, needing content + start + end. Start falls to the rail below content + start, and closes below content + rail. A closed pane can still be requested as a drawer, which overlays the host.
+
+## Calendar, commands, tree, sidebar, table, chart
+
+| Family | Resolver | Values |
+|---|---|---|
+| `calendar` | `resolveCalendar` | 8u cells, 2u gap, corners min(3u · s, 4u) |
+| `toolbar` | `resolveToolbar` | 1u gap, ½u inset |
+| `command` | `resolveCommand` | 7u items, 80u list, 50u trigger |
+| `tree` | `resolveTreeView` | 7u rows, 4u a level from a 1u edge |
+| `sidebar` | `resolveSidebar` | 60u wide, 12u rail, 4u between sections, 8u links |
+| `data-table` | `resolveDataTable` | cells 3u in and 2u × (½ + ½ density) high, 8u header |
+| `chart` | `resolveChart` | 64u tall. Marks stay in px ([charts](charts.md)) |
+
 ## Containers
 
 Containers come in four families, each with one radius rule. Every level has a padding p; padding and gap are theme parameters per level (`pad-<level>`, `gap-<level>`, in u; the table shows their defaults), the `gap` attribute overrides the gap on one element, and the border lives inside the padding. All radii are capped at half the height.

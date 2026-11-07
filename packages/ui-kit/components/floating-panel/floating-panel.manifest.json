@@ -1,0 +1,289 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "floating-panel",
+  "primary": "component:floating-panel",
+  "module": "./floating-panel.element.ts",
+  "registration": "on-import",
+  "documentation": "./floating-panel.md",
+  "examples": "./floating-panel.examples.json",
+  "contract": "../../contracts/components.json#/components/floating-panel",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./floating-panel.recipe.ts"
+  },
+  "nodes": [
+    {
+      "id": "component:floating-panel",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-floating-panel",
+      "class": "UIFloatingPanel",
+      "extends": "UIElement",
+      "intent": [
+        "Keep utility controls available in a panel that moves, resizes, collapses and expands"
+      ],
+      "properties": [
+        {
+          "key": "label",
+          "type": "string",
+          "default": "",
+          "attribute": "label",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "open",
+          "type": "boolean",
+          "default": false,
+          "attribute": "open",
+          "reflects": true,
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "collapsed",
+          "type": "boolean",
+          "default": false,
+          "attribute": "collapsed",
+          "reflects": true,
+          "inspector": {
+            "control": "toggle"
+          }
+        }
+      ],
+      "attributes": [],
+      "events": [
+        {
+          "name": "openchange",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": false,
+          "trigger": "it opens or closes"
+        },
+        {
+          "name": "collapsedchange",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": false,
+          "trigger": "it collapses or expands"
+        }
+      ],
+      "semantics": {
+        "role": "region",
+        "formAssociated": false,
+        "accessibleName": {
+          "sources": [
+            "label"
+          ],
+          "required": true
+        }
+      },
+      "content": {
+        "ownership": "consumer",
+        "acceptsChildren": true,
+        "children": "One header and one body."
+      },
+      "layout": {
+        "display": "flex",
+        "sizing": "intrinsic"
+      },
+      "constraints": [
+        "One header stays visible; the body stays mounted, hidden when collapsed.",
+        "show, hide, toggle and snap are the API.",
+        "Do not call popover APIs on it.",
+        "It stays inside the viewport and doesn't trap focus."
+      ],
+      "avoidWhen": [
+        {
+          "when": "The task blocks the page.",
+          "reason": "A panel is nonmodal.",
+          "useInstead": "component:dialog"
+        }
+      ],
+      "searchTerms": [
+        "floating panel",
+        "palette window",
+        "inspector",
+        "draggable panel"
+      ]
+    },
+    {
+      "id": "part:floating-panel-header",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=header]",
+      "summary": "The drag handle."
+    },
+    {
+      "id": "part:floating-panel-controls",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "span",
+      "selector": "[data-part=controls]",
+      "summary": "Collapse and close."
+    },
+    {
+      "id": "part:floating-panel-body",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=body]",
+      "summary": "The body."
+    },
+    {
+      "id": "part:floating-panel-grip",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "span",
+      "selector": ":scope > [data-part=grip]",
+      "summary": "The resize grip."
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:floating-panel",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:floating-panel",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:floating-panel",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:floating-panel",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:floating-panel",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:floating-panel",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:floating-panel",
+      "relation": "usesGeometry",
+      "to": "geometry:floating-panel"
+    },
+    {
+      "from": "component:floating-panel",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:floating-panel",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:floating-panel",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:floating-panel",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:floating-panel",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:floating-panel",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:floating-panel",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:floating-panel",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:floating-panel",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:floating-panel",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
+      "from": "component:floating-panel",
+      "relation": "ownsPart",
+      "to": "part:floating-panel-header"
+    },
+    {
+      "from": "component:floating-panel",
+      "relation": "ownsPart",
+      "to": "part:floating-panel-controls"
+    },
+    {
+      "from": "component:floating-panel",
+      "relation": "ownsPart",
+      "to": "part:floating-panel-body"
+    },
+    {
+      "from": "component:floating-panel",
+      "relation": "ownsPart",
+      "to": "part:floating-panel-grip"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./floating-panel.element.ts",
+      "exports": {
+        "component:floating-panel": "UIFloatingPanel"
+      },
+      "verification": "./verification/floating-panel.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./floating-panel.react.tsx",
+      "exports": {
+        "component:floating-panel": "FloatingPanel"
+      },
+      "verification": "./verification/floating-panel.verification.json#/renderers/react",
+      "props": {
+        "component:floating-panel": {
+          "inherits": [
+            "Omit<HTMLAttributes<HTMLDivElement>, 'title'>"
+          ],
+          "props": [
+            "label: string",
+            "title?: ReactNode",
+            "open?: boolean = false",
+            "onOpenChange?: (open: boolean) => void",
+            "defaultCollapsed?: boolean = false",
+            "onCollapsedChange?: (collapsed: boolean) => void",
+            "ref?: Ref<FloatingPanelHandle>"
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,218 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "admin-shell",
+  "primary": "component:admin-shell",
+  "module": "./admin-shell.element.ts",
+  "registration": "on-import",
+  "documentation": "./admin-shell.md",
+  "examples": "./admin-shell.examples.json",
+  "contract": "../../contracts/components.json#/components/admin-shell",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./admin-shell.recipe.ts"
+  },
+  "nodes": [
+    {
+      "id": "component:admin-shell",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-admin-shell",
+      "class": "UIAdminShell",
+      "extends": "UIElement",
+      "intent": [
+        "Coordinate navigation and detail panes around content, with responsive rail and drawer allocation"
+      ],
+      "properties": [
+        {
+          "key": "startClosed",
+          "type": "boolean",
+          "default": false,
+          "attribute": "start-closed",
+          "reflects": false,
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "endClosed",
+          "type": "boolean",
+          "default": false,
+          "attribute": "end-closed",
+          "reflects": false,
+          "inspector": {
+            "control": "toggle"
+          }
+        }
+      ],
+      "attributes": [],
+      "events": [
+        {
+          "name": "panechange",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": false,
+          "trigger": "a pane changes between inline, rail, drawer and closed"
+        }
+      ],
+      "semantics": {
+        "role": null,
+        "formAssociated": false,
+        "accessibleName": {
+          "sources": [
+            "label"
+          ],
+          "required": false
+        }
+      },
+      "content": {
+        "ownership": "consumer",
+        "acceptsChildren": true,
+        "children": "Start, toolbar, content, footer and end."
+      },
+      "layout": {
+        "display": "grid",
+        "sizing": "fill"
+      },
+      "constraints": [
+        "One start pane and one end pane, each optional.",
+        "Fit comes from the host, with no viewport breakpoints.",
+        "The end pane leaves first.",
+        "The rest of the shell is inert while a drawer is open."
+      ],
+      "avoidWhen": [
+        {
+          "when": "The panes never change.",
+          "reason": "It carries state you don't need.",
+          "useInstead": "component:app-shell"
+        }
+      ],
+      "searchTerms": [
+        "admin shell",
+        "dashboard layout",
+        "drawer",
+        "rail",
+        "responsive shell"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:admin-shell",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:admin-shell",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:admin-shell",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:admin-shell",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:admin-shell",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:admin-shell",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:admin-shell",
+      "relation": "usesGeometry",
+      "to": "geometry:scroll-region"
+    },
+    {
+      "from": "component:admin-shell",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:admin-shell",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:admin-shell",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:admin-shell",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:admin-shell",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:admin-shell",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:admin-shell",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:admin-shell",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:admin-shell",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:admin-shell",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./admin-shell.element.ts",
+      "exports": {
+        "component:admin-shell": "UIAdminShell"
+      },
+      "verification": "./verification/admin-shell.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./admin-shell.react.tsx",
+      "exports": {
+        "component:admin-shell": "AdminShell"
+      },
+      "verification": "./verification/admin-shell.verification.json#/renderers/react",
+      "props": {
+        "component:admin-shell": {
+          "inherits": [
+            "HTMLAttributes<HTMLDivElement>"
+          ],
+          "props": [
+            "startClosed?: boolean = false",
+            "endClosed?: boolean = false",
+            "onPaneChange?: (detail: { start: PaneMode; end: PaneMode }) => void",
+            "ref?: Ref<AdminShellHandle>"
+          ]
+        }
+      }
+    }
+  }
+}

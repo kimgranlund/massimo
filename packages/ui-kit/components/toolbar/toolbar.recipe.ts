@@ -8,7 +8,7 @@ export const toolbar = defineSlotRecipe({
   slots: ['root'],
   base: {
     root: {
-      display: 'flex', alignItems: 'center', gap: 'var(--u)', minWidth: 0, overflow: 'hidden', padding: 'calc(0.5 * var(--u))', borderRadius: 'var(--radius)', bg: 'bg.muted',
+      display: 'flex', alignItems: 'center', gap: 'var(--u)', minWidth: 0, padding: 'calc(0.5 * var(--u))', borderRadius: 'var(--radius)', bg: 'bg.muted',
       '&[data-orientation=vertical]': { flexDirection: 'column', alignItems: 'stretch', width: 'fit-content' },
       '& > [data-part=spacer]': { flex: '1' },
     },
