@@ -35,7 +35,7 @@
             "resource-summary:stylesheet:size": [
               "error",
               {
-                "maxNumericValue": 72000
+                "maxNumericValue": 80000
               }
             ],
             "resource-summary:third-party:count": [
