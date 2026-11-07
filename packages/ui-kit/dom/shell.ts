@@ -62,7 +62,7 @@ export function attachPanes(host: HTMLElement, options: PaneOptions) {
   const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape' && drawer) { e.stopPropagation(); close(); } };
   const onClick = (e: Event) => { if ((e.target as Element).closest?.('[data-part=scrim]')) close(); };
   host.addEventListener('keydown', onKey); host.addEventListener('click', onClick);
-  const size = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(sync) : undefined;
+  const size = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(() => requestAnimationFrame(sync)) : undefined;
   size?.observe(host); sync();
   return { toggle, close, sync, stop() { size?.disconnect(); host.removeEventListener('keydown', onKey); host.removeEventListener('click', onClick); } };
 }

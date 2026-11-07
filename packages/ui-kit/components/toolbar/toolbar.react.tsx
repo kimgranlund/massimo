@@ -12,7 +12,7 @@ export interface ToolbarProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export function Toolbar({ label, orientation = 'horizontal', className, children, ...rest }: ToolbarProps) {
-  const host = useRef<HTMLDivElement>(null), [count, setCount] = useState(Infinity);
+  const host = useRef<HTMLDivElement>(null), moreWidth = useRef(40), [count, setCount] = useState(Infinity), [fits, setFits] = useState(0);
   const items = Children.toArray(children).filter(isValidElement) as ReactElement<Record<string, unknown>>[];
   useEffect(() => {
     const el = host.current!, roving = attachRoving(el, () => orientation === 'vertical');
@@ -22,12 +22,17 @@ export function Toolbar({ label, orientation = 'horizontal', className, children
       const kids = ([...el.children] as HTMLElement[]).filter((c) => !c.hasAttribute('data-part'));
       kids.forEach((k) => { k.hidden = false; });
       const cs = getComputedStyle(el);
-      setCount(fitCount(kids.map((k) => k.getBoundingClientRect().width), el.clientWidth - 2 * (parseFloat(cs.paddingInlineStart) || 0), parseFloat(cs.columnGap) || 0, 40));
+      setCount(fitCount(kids.map((k) => k.getBoundingClientRect().width), el.clientWidth - 2 * (parseFloat(cs.paddingInlineStart) || 0), parseFloat(cs.columnGap) || 0, moreWidth.current));
     };
-    const size = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(fit) : undefined;
+    const size = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(() => requestAnimationFrame(fit)) : undefined;
     size?.observe(el);
     return () => { roving.stop(); size?.disconnect(); };
-  }, [orientation]);
+  }, [orientation, fits]);
+  // The More menu's width is only known once it's drawn: fit again if the guess was short.
+  useEffect(() => {
+    const w = host.current?.querySelector('[data-part=more]')?.getBoundingClientRect().width ?? 0;
+    if (w > moreWidth.current + 0.5) { moreWidth.current = w; setFits(fits + 1); }
+  }, [count]);
   const hidden = items.slice(count);
   return (
     <div {...rest} ref={host} role="toolbar" aria-label={label} aria-orientation={orientation} data-orientation={orientation} data-ui="toolbar" className={[toolbar().root, className].filter(Boolean).join(' ')}>

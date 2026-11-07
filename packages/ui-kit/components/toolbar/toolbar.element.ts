@@ -20,7 +20,7 @@ export class UIToolbar extends UIElement {
 
   connected() {
     this.#roving = attachRoving(this, () => this.orientation === 'vertical');
-    if (typeof ResizeObserver !== 'undefined') { this.#size = new ResizeObserver(this.#fit); this.#size.observe(this); }
+    if (typeof ResizeObserver !== 'undefined') { this.#size = new ResizeObserver(() => requestAnimationFrame(this.#fit)); this.#size.observe(this); }
   }
   disconnected() { this.#roving?.stop(); this.#size?.disconnect(); }
 
@@ -33,13 +33,14 @@ export class UIToolbar extends UIElement {
     this.#roving?.sync();
   }
 
+  #moreWidth = 40;
   #items() { return ([...this.children] as HTMLElement[]).filter((c) => c !== this.#more && !c.hasAttribute('data-part')); }
   #fit = () => {
     if (this.orientation === 'vertical') return;
     const items = this.#items();
     items.forEach((i) => { i.hidden = false; });
     const u = parseFloat(getComputedStyle(this).columnGap) || 0;
-    const count = fitCount(items.map((i) => i.getBoundingClientRect().width), this.clientWidth - 2 * (parseFloat(getComputedStyle(this).paddingInlineStart) || 0), u, 40);
+    const count = fitCount(items.map((i) => i.getBoundingClientRect().width), this.clientWidth - 2 * (parseFloat(getComputedStyle(this).paddingInlineStart) || 0), u, this.#moreWidth);
     items.forEach((item, i) => { item.hidden = i >= count; });
     this.#more?.remove();
     this.#more = undefined;
@@ -57,6 +58,8 @@ export class UIToolbar extends UIElement {
       }
       this.#more = menu;
       this.append(menu);
+      // The menu's width is only known once it's drawn: fit again if the guess was short.
+      requestAnimationFrame(() => { const w = menu.getBoundingClientRect().width; if (w > this.#moreWidth + 0.5) { this.#moreWidth = w; this.#fit(); } });
     }
     this.#roving?.sync();
   };

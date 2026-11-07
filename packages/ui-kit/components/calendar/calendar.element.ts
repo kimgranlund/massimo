@@ -31,6 +31,8 @@ export class UICalendar extends UIFormElement {
 
   #focus = signal('');
   #anchor = '';
+  /** A key moved the focus day: the rebuilt grid takes focus back. */
+  #refocus = false;
   get #range() { const [a = '', b = ''] = this.mode === 'range' ? this.value.split('/') : []; return [a, b]; }
   get focusDate() { return this.#focus.value || this.#range[0] || (parseIso(this.value) ? this.value : '') || todayIso(); }
 
@@ -51,7 +53,8 @@ export class UICalendar extends UIFormElement {
     const grid = partOf(this, 'grid') as HTMLElement | null;
     if (!grid) return;
     grid.setAttribute('aria-label', this.label);
-    const had = grid.contains(document.activeElement);
+    const had = this.#refocus || grid.contains(document.activeElement);
+    this.#refocus = false;
     const row = (children: HTMLElement[]) => { const r = document.createElement('div'); r.setAttribute('role', 'row'); r.setAttribute('data-part', 'row'); setClasses(r, c.row); r.append(...children); return r; };
     const head = row(weekdays(start, loc).map((d) => { const s = document.createElement('span'); s.setAttribute('role', 'columnheader'); s.setAttribute('aria-label', d.long); s.setAttribute('data-part', 'weekday'); setClasses(s, c.weekday); s.textContent = d.short; return s; }));
     const weeks = calendarCells({ focus, start, value: this.mode === 'single' ? this.value : undefined, rangeStart: a, rangeEnd: b, min: this.min, max: this.max, today: todayIso(), locale: loc }).map((w) => row(w.map((cell) => {
@@ -86,6 +89,7 @@ export class UICalendar extends UIFormElement {
     const next = calendarKey(e.key, this.focusDate, weekStart(this.locale || undefined), e.shiftKey, rtl);
     if (!next) return;
     e.preventDefault();
+    this.#refocus = true;
     this.#focus.value = next;
   };
 }

@@ -10,6 +10,7 @@ export const toolbar = defineSlotRecipe({
     root: {
       display: 'flex', alignItems: 'center', gap: 'var(--u)', minWidth: 0, padding: 'calc(0.5 * var(--u))', borderRadius: 'var(--radius)', bg: 'bg.muted',
       '&[data-orientation=vertical]': { flexDirection: 'column', alignItems: 'stretch', width: 'fit-content' },
+      '& > *': { flexShrink: 0 },
       '& > [data-part=spacer]': { flex: '1' },
     },
   },

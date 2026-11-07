@@ -33,7 +33,7 @@ export const chart = defineSlotRecipe({
       '& [data-part=key]': { flex: 'none', width: '8px', height: '8px', borderRadius: '2px', bg: 'var(--chart-c)' },
       '& > [data-part=data]': { position: 'absolute', width: '1px', height: '1px', overflow: 'hidden', clipPath: 'inset(50%)', whiteSpace: 'nowrap' },
       '& > [data-part=tooltip]': {
-        position: 'absolute', left: 'var(--tip-x, 0)', top: 'var(--tip-y, 0)', zIndex: 1, display: 'flex', flexDirection: 'column', gap: 'calc(0.5 * var(--u))', padding: 'calc(2 * var(--u))', pointerEvents: 'none', borderRadius: 'calc(var(--u) * var(--ui-radius-scale))', bg: 'bg.raised', boxShadow: 'md', textStyle: 'label', whiteSpace: 'nowrap',
+        position: 'absolute', left: 'var(--tip-x, 0)', top: 'var(--tip-y, 0)', zIndex: 1, display: 'flex', flexDirection: 'column', gap: 'calc(0.5 * var(--u))', padding: 'calc(2 * var(--u))', pointerEvents: 'none', borderRadius: 'calc(var(--u) * var(--ui-radius-scale))', bg: 'elevation.overlay', boxShadow: 'floating', textStyle: 'label', whiteSpace: 'nowrap',
         '&[hidden]': { display: 'none' },
       },
       '& [data-part=tip-row] > :last-child': { marginInlineStart: 'auto', paddingInlineStart: 'calc(2 * var(--u))', color: 'fg.strong', fontVariantNumeric: 'tabular-nums' },

@@ -85,6 +85,14 @@ test('ui-calendar: a grid with one tab stop, and clicking picks a day', async ()
   assert.equal(el.formValue(), '2026-11-10');
 });
 
+test('ui-calendar: an arrow key moves focus with the day', async () => {
+  const el = await mount('<ui-calendar value="2026-11-06" locale="en-US"></ui-calendar>');
+  (el.querySelector('[role=gridcell][tabindex="0"]') as HTMLElement).focus();
+  document.activeElement!.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }));
+  await tick(); await tick();
+  assert.equal(document.activeElement!.getAttribute('data-date'), '2026-11-07');
+});
+
 test('ui-calendar range: two picks make one ordered range', async () => {
   const el = await mount('<ui-calendar mode="range" value="2026-11-20/2026-11-22" locale="en-US"></ui-calendar>');
   el.querySelector('[data-date="2026-11-10"]').click(); await tick();

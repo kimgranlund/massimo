@@ -6,7 +6,8 @@ import { SCROLL_REGION, SHELL } from '../../tokens/geometry/resolve.ts';
 
 const BAR = { display: 'flex', alignItems: 'center', gap: `calc(${SCROLL_REGION.gap} * var(--u))`, minHeight: `calc(${SCROLL_REGION.bar} * var(--u))`, paddingInline: `calc(${SCROLL_REGION.inset} * var(--u))`, minWidth: 0 };
 const PANE = { minHeight: 0, minWidth: 0, overflowY: 'auto', overscrollBehavior: 'contain', bg: 'bg' };
-const DRAWER = { position: 'absolute', insetBlock: 0, zIndex: 2, maxWidth: '100%', boxShadow: 'lg' };
+// gridArea auto: a grid area would be the drawer's containing block, and a closed column has no width.
+const DRAWER = { position: 'absolute', gridArea: 'auto', insetBlock: 0, zIndex: 2, maxWidth: '100%', boxShadow: 'floating' };
 
 export const adminShell = defineSlotRecipe({
   className: 'ui-admin-shell',
@@ -21,7 +22,7 @@ export const adminShell = defineSlotRecipe({
       '& > [data-part=toolbar]': { ...BAR, gridArea: 'toolbar', borderBlockEndWidth: 'var(--separator)', borderBlockEndStyle: 'solid', borderColor: 'border' },
       '& > [data-part=content]': { gridArea: 'content', minHeight: 0, minWidth: 0, overflowY: 'auto', padding: `calc(${SCROLL_REGION.inset} * var(--u))` },
       '& > [data-part=footer]': { ...BAR, gridArea: 'footer', borderBlockStartWidth: 'var(--separator)', borderBlockStartStyle: 'solid', borderColor: 'border' },
-      '& > [data-part=scrim]': { display: 'none', position: 'absolute', inset: 0, zIndex: 1, bg: 'bg.scrim' },
+      '& > [data-part=scrim]': { display: 'none', position: 'absolute', inset: 0, zIndex: 1, bg: 'bg.backdrop' },
       '&[data-drawer-open] > [data-part=scrim]': { display: 'block' },
       '&[data-start=closed] > [data-part=start], &[data-end=closed] > [data-part=end]': { display: 'none' },
       '&[data-start=rail] > [data-part=start]': { width: `calc(${SHELL.rail} * var(--u))` },

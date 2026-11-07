@@ -14,7 +14,7 @@
     },
     {
       "path": "components/admin-shell/admin-shell.recipe.ts",
-      "sha256": "837e367857e1a63bfc426f577151034fd7677dcae7edee6fdc389e3a5e8232ed"
+      "sha256": "bc43cdea382c87f91ff7141eb5f40abfe6f2cb4e4c91ac1a4f557ac76e200be6"
     },
     {
       "path": "components/admin-shell/admin-shell.manifest.json",
@@ -22,7 +22,7 @@
     },
     {
       "path": "dom/shell.ts",
-      "sha256": "f72758da2f2b9a1d4e204e865b0435007308a41d7742d712b1e92bc2eca10e90"
+      "sha256": "20bc8c8d1dd683d75b77b7bf9618a432be1dd3bbc20d3a392db0c3dc23a04247"
     }
   ],
   "renderers": {

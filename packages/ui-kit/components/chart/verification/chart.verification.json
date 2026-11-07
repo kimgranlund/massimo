@@ -6,15 +6,15 @@
   "sources": [
     {
       "path": "components/chart/chart.element.ts",
-      "sha256": "aae5513034a3c64fdef205c7aa04c3e34a6ef13afc5808ff13fe35ec54979618"
+      "sha256": "34dc75671a573574fc09ad7a6525fa72c1bfff2068dc42c1f643d60323c127bd"
     },
     {
       "path": "components/chart/chart.react.tsx",
-      "sha256": "91c5a01ec07abfab2b348bc2e346f5daacc208a55acdad913e611d5c9fb02351"
+      "sha256": "d5bd842034e346aa7975faca25c2c3853881d0b525656b041feb572a49d437c9"
     },
     {
       "path": "components/chart/chart.recipe.ts",
-      "sha256": "bedb34b3eb5ee812df20feee79dda3e2897f39ab48d0269d1326dd578b158f63"
+      "sha256": "d77f0a2dd406330a97ad52f255b8ab1fa47a24f7116b9a2db3a290fbfd48c04a"
     },
     {
       "path": "components/chart/chart.manifest.json",

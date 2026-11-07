@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "components/calendar/calendar.element.ts",
-      "sha256": "15579aa18cc6b48fd2e38a5e7827751a717caf1e2fe7fce14dd1324cf903e2ff"
+      "sha256": "a4d0743568ab2b582edf3488da408a4b62873563bcbe434d0ad0917a20b45e08"
     },
     {
       "path": "components/calendar/calendar.react.tsx",

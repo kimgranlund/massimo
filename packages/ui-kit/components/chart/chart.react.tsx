@@ -22,7 +22,7 @@ export function Chart({ label, kind = 'column', data, stacked = false, height, l
     const el = host.current!, stop = attachChartHover(el, () => live.current);
     setH(resolveChart({ unit: parseFloat(getComputedStyle(el).scrollPaddingTop) || 4 }).height);
     setWidth(el.clientWidth);
-    const size = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(() => setWidth(Math.round(el.clientWidth))) : undefined;
+    const size = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(() => requestAnimationFrame(() => setWidth(Math.round(el.clientWidth)))) : undefined;
     size?.observe(el);
     return () => { stop(); size?.disconnect(); };
   }, []);

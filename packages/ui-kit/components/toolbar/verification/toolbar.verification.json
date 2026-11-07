@@ -6,15 +6,15 @@
   "sources": [
     {
       "path": "components/toolbar/toolbar.element.ts",
-      "sha256": "f6165a4ddf22448d14103329f6d97b4ff95abb78ee6b850608fe1cd272402278"
+      "sha256": "876cb64eb69b41f5fe02b047bae74866a9dd1a080dd4911ced9db1cb9de795b0"
     },
     {
       "path": "components/toolbar/toolbar.react.tsx",
-      "sha256": "a6ab2e386f154b690adb0885f388de0e72819291339652b9b3a350a1d7650d92"
+      "sha256": "fa107c2db42f082ba77af50bb3592586f7b72906b135c1661e7ab2ec68fe9d03"
     },
     {
       "path": "components/toolbar/toolbar.recipe.ts",
-      "sha256": "86ae40af85d03ea1854e00faf729e2b83e3e461deb4adf3cce78015e7efa70ae"
+      "sha256": "e3a6ff2ebdf529439b6a8488de1b010201dd1df8b8702f20a6a40f5c30e77078"
     },
     {
       "path": "components/toolbar/toolbar.manifest.json",

@@ -31,7 +31,7 @@ export class UIChart extends UIElement {
 
   connected() {
     this.#stop = attachChartHover(this, () => ({ kind: this.kind, data: this.#data, locale: this.locale || undefined }));
-    if (typeof ResizeObserver !== 'undefined') { this.#size = new ResizeObserver(() => { const w = Math.round(this.clientWidth); if (w && w !== this.#width) { this.#width = w; this.#draw(); } }); this.#size.observe(this); }
+    if (typeof ResizeObserver !== 'undefined') { this.#size = new ResizeObserver(() => requestAnimationFrame(() => { const w = Math.round(this.clientWidth); if (w && w !== this.#width) { this.#width = w; this.#draw(); } })); this.#size.observe(this); }
   }
   disconnected() { this.#stop?.(); this.#size?.disconnect(); }
 

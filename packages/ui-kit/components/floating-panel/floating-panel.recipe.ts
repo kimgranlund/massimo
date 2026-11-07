@@ -13,7 +13,7 @@ export const floatingPanel = defineSlotRecipe({
       position: 'fixed', inset: 'auto', margin: 0, right: 'calc(4 * var(--u))', bottom: 'calc(4 * var(--u))', scrollPaddingTop: 'var(--u)',
       '&[data-placed]': { left: 'var(--panel-x)', top: 'var(--panel-y)', right: 'auto', bottom: 'auto' },
       flexDirection: 'column', width: `var(--panel-w, calc(${FLOATING_PANEL.width} * var(--u)))`, maxWidth: 'calc(100vw - 8 * var(--u))', height: 'var(--panel-h, auto)', maxHeight: 'calc(100vh - 8 * var(--u))',
-      padding: 0, overflow: 'hidden', borderRadius: 'calc(2 * var(--u) * var(--ui-radius-scale))', bg: 'bg.raised', boxShadow: 'lg', borderWidth: 0, color: 'fg',
+      padding: 0, overflow: 'hidden', borderRadius: 'calc(2 * var(--u) * var(--ui-radius-scale))', bg: 'elevation.overlay', boxShadow: 'floating', borderWidth: 0, color: 'fg',
       '&:popover-open, &[data-open]': { display: 'flex' },
       '&[data-dragging]': { userSelect: 'none' },
       '&[data-collapsed]': { height: 'auto' },
